@@ -3,6 +3,8 @@ This is the initial state of the Redux Store. I store it in a separate file beca
 it in the reducers when we do the Reset action.
 
 It returns a function instead of an object to make sure no one can change the initial state.
+
+Shape of the state object matches the keys of the passed reducers
 */
 
 var C = require("./constants");
@@ -33,6 +35,10 @@ module.exports = function(){
 			doing: {batman:C.WAITING,superman:C.WAITING,spiderman:C.WAITING,"he-man":C.WAITING},
 			standing: 4,
 			log: ["Ready.... fight!"]
+		},
+		about:{
+			generalInfo:{description: 'fuisabfiusabfasui'},
+			members:[{name:'ionut',email:'ionut@ionut.com',id:1, key:1}, {name:'tudrel',email:'tudrel@tudrel.com',id:2, key:2}]
 		}
 	};
 };

@@ -29,5 +29,15 @@ module.exports = {
 				dispatch({type:constants.KILL_HERO,killer:killer,victim:victim});
 			},2000);
 		};
-	}
+	},
+	addMember: function(member){	
+		return function( member){
+			dispatch({type:constants.ADD_MEMBER,member:member});			
+		};
+	},
+	removeMember: function(member){	
+		return function( member){
+			dispatch({type:constants.REMOVE_MEMBER,member:member});			
+		};
+	},
 };
