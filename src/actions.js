@@ -31,13 +31,13 @@ module.exports = {
 		};
 	},
 	addMember: function(member){	
-		return function( member){
+		return function( dispatch,getState){
 			dispatch({type:constants.ADD_MEMBER,member:member});			
 		};
 	},
 	removeMember: function(member){	
-		return function( member){
+		return function( dispatch,getState){
 			dispatch({type:constants.REMOVE_MEMBER,member:member});			
 		};
 	},
-};
+};	

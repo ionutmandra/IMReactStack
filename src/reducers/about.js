@@ -12,11 +12,11 @@ module.exports = function(state,action){
 		case C.GET_MEMBERS:
 			return initialState().about.members;
 		case C.ADD_MEMBER:
-			newstate.about.members.push(action.member);
+			newstate.members.push(action.member);
 			return newstate;
 		case C.REMOVE_MEMBER:			
-			var elementPos = state.about.members.map(function(x) {return x.id; }).indexOf(action.member.id);			
-			newstate.about.members.splice(elementPos,1);
+			var elementPos = state.members.map(function(x) {return x.id; }).indexOf(action.member);			
+			newstate.members.splice(elementPos,1);
 			return newstate;		
 		default: return state || initialState();
 	}

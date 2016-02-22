@@ -25,8 +25,9 @@ var aboutList = React.createClass({
 				return <div key={item.key}>
 					{item.name}
 					<Link to={"/about/" + item.name}>{item.name}</Link>
+					<input type="button" value="removeMember" onClick={p.removeMember.bind(this, item.id)} />
 				</div>;
-			// return <Battler key={name} name={name} doing={p.doing} kill={kill} duck={duck} />;
+				// return <Battler key={name} name={name} doing={p.doing} kill={kill} duck={duck} />;
 		},this);
 
 		return (
@@ -48,8 +49,10 @@ var mapStateToProps = function(state){
 
 var mapDispatchToProps = function(dispatch){
 	return {
-		addMember: function(member){ dispatch(actions.addMember(member)); },
-		removeMember: function(member){ dispatch(actions.removeMember(member)); }		
+		addMember: function(member){ 
+			dispatch(actions.addMember(member)); },
+		removeMember: function(member){ 			
+			dispatch(actions.removeMember(member)); }		
 	}
 };
 

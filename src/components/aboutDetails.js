@@ -5,13 +5,14 @@ var React = require("react"),
 
 var aboutDetails = React.createClass({
 	propTypes: {
-		
+		params: ptypes.shape({name:ptypes.string.isRequired}).isRequired,
 	},
-	render: function(){
-		
+	render: function(){		
+		var p = this.props.params;		
+
 		return (
 			<div>
-				about details		
+				Details for	{p.name}
 			</div>
 		);
 	}
