@@ -12,7 +12,8 @@ module.exports = function(state,action){
 		case C.GET_MEMBERS:
 			return initialState().about.members;
 		case C.ADD_MEMBER:
-			newstate.members.push(action.member);
+			var index = newstate.members.length + 1;
+			newstate.members.push({name:action.member,email:'c@c.com',id:index, key:index});
 			return newstate;
 		case C.REMOVE_MEMBER:			
 			var elementPos = state.members.map(function(x) {return x.id; }).indexOf(action.member);			

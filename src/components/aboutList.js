@@ -16,6 +16,9 @@ var aboutList = React.createClass({
 		addMember: ptypes.func.isRequired,
 		removeMember: ptypes.func.isRequired
 	},
+	handleChange:function(e){
+		this.setState({ newItemText: e.target.value })
+	},
 	render: function(){
 		
 		var p = this.props;		
@@ -33,6 +36,9 @@ var aboutList = React.createClass({
 		return (
 			<div>
 				{members}				
+				<div className="memberAdd">
+					<input type="text" onChange={this.handleChange}/><input type="button" value="AddItem" onClick={p.addMember.bind(this)} />
+				</div>
 				<div className="memberDetails">				
 					{this.props.children}
 				</div>				
@@ -50,10 +56,11 @@ var mapStateToProps = function(state){
 var mapDispatchToProps = function(dispatch){
 	return {
 		addMember: function(member){ 
-			dispatch(actions.addMember(member)); },
+			dispatch(actions.addMember(this.state.newItemText)); },
 		removeMember: function(member){ 			
 			dispatch(actions.removeMember(member)); }		
 	}
 };
+
 
 module.exports = ReactRedux.connect(mapStateToProps,mapDispatchToProps)(aboutList);
