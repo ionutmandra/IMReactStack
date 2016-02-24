@@ -25,7 +25,7 @@ var aboutList = React.createClass({
 
 		var members = _.map(p.aboutState.members,function(item){ 
 				//key should be added on components. If not components than add it to html
-				return <div key={item.key}>
+				return <div key={item.id}>
 					{item.name}
 					<Link to={"/about/" + item.name}>{item.name}</Link>
 					<input type="button" value="removeMember" onClick={p.removeMember.bind(this, item.id)} />

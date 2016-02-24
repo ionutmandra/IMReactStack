@@ -13,7 +13,7 @@ module.exports = function(state,action){
 			return initialState().about.members;
 		case C.ADD_MEMBER:
 			var index = newstate.members.length + 1;
-			newstate.members.push({name:action.member,email:'c@c.com',id:index, key:index});
+			newstate.members.push({name:action.member,email:'c@c.com',id:index});
 			return newstate;
 		case C.REMOVE_MEMBER:			
 			var elementPos = state.members.map(function(x) {return x.id; }).indexOf(action.member);			
