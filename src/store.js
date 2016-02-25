@@ -16,5 +16,46 @@ var rootReducer = Redux.combineReducers({
 	about: aboutReducer,
 });
 
-module.exports = Redux.applyMiddleware(thunk)(Redux.createStore)(rootReducer,initialState());
 
+  const store = Redux.createStore(
+    rootReducer,
+    initialState(),
+    Redux.compose(
+      Redux.applyMiddleware(thunk),
+       window.devToolsExtension ? window.devToolsExtension(): f=>f      
+    )
+  );
+
+  module.exports = store;
+
+
+ // var store = Redux.applyMiddleware(thunk)(Redux.createStore)(
+ // 	rootReducer,
+ // 	initialState(),
+ // 	window.devToolsExtension ? window.devToolsExtension() : undefined);
+
+
+// window.__redux__ = store;
+
+// module.exports = store;
+
+//   module.exports =  Redux.createStore(
+//     rootReducer,
+//     initialState(),
+//     Redux.applyMiddleware(thunk)   
+//   );
+
+// after declaration make fetch initial data
+//  store.dispatch(fetchPosts('reactjs')).then(() =>
+//   console.log(store.getState())
+// )
+
+// module.exports = Redux.createStore(
+//   rootReducer,
+//   initialState(),
+//   Redux.applyMiddleware(thunk));
+
+// module.exports = Redux.createStore(rootReducer, initialState(), Redux.compose(
+//     Redux.applyMiddleware(thunk),
+//     window.devToolsExtension ? window.devToolsExtension() : f => f
+//   ));
