@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "babelify": "^7.2.0",
     "browserify": "^12.0.1",
     "lodash": "^4.0.0",
     "react": "^0.14.7",
@@ -12,7 +13,7 @@
     "watchify": "^3.7.0"
   },
   "scripts": {
-    "build": "browserify --debug -t [reactify --es6] src/index.js > bundle.js",
-    "watchify": "watchify -t [reactify --es6] src/index.js -o bundle.js -dv"    
+    "build": "browserify --debug -t [babelify] src/index.js > bundle.js",
+    "watchify": "watchify -t [babelify] src/index.js -o bundle.js -dv"
   }
 }

@@ -3,10 +3,12 @@ This is the entry point for the app! From here we merely import our routes defin
 then use React and React-DOM to render it.
 */
 
+import { hashHistory } from 'react-router'
+
 var React = require('react'),
 	ReactDOM = require('react-dom'),
 	Router = require('react-router').Router,
-	hashHistory = require('react-router').hashHistory,
+	//hashHistory = require('react-router').hashHistory,
 	Provider = require('react-redux').Provider,
 	store = require('./store'),
 	routes = require('./routes');

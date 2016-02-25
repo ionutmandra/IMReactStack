@@ -3,6 +3,8 @@ This file defines the main Redux Store. It will be required by all "smart" compo
 in our case Home and Hero.
 */
 
+// import { hashHistory } from 'react-router'
+
 var Redux = require("redux"),
 	heroReducer = require("./reducers/heroes"),
 	battlefieldReducer = require("./reducers/battlefield"),

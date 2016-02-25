@@ -1,8 +1,8 @@
 var React = require("react"),
 	ptypes = React.PropTypes,
 	ReactRedux = require("react-redux"),
-	Log = require("./log");	
-	actions = require("../actions");
+	Log = require("./log"),
+	actions = require("../actions"),
 	_ = require("lodash"),
 	Link = require("react-router").Link;
 
