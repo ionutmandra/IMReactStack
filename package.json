@@ -22,5 +22,8 @@
   "scripts": {
     "build": "browserify --debug -t [babelify] src/index.js > bundle.js",
     "watchify": "watchify -t [babelify] src/index.js -o bundle.js -dv"
+  },
+  "dependencies": {
+    "express": "^4.13.4"
   }
 }
