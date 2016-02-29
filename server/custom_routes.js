@@ -4,7 +4,7 @@ var fs = require('fs');
 var rootPath = '';
 
 function setApiRoutes(router){
-	router.get('/api/members', function(req, res) {
+	router.get('/api/members', function(req, res) {		
 
 		var initialState = {
 			generalInfo:{description: 'fuisabfiusabfasui'},
@@ -12,6 +12,18 @@ function setApiRoutes(router){
 			{name:'ionut',email:'ionut@ionut.com',id:1}, 
 			{name:'tudrel',email:'tudrel@tudrel.com',id:2},
 			{name:'marusica',email:'marusciac@tudrel.com',id:3}]};
+
+			res.json(initialState);
+		});
+
+	router.get('/api/blogs', function(req, res) {		
+		console.log('getting blogs');
+		var initialState = {
+			generalInfo:{description: 'blogs main description'},
+			blogList:[ 
+			{name:'blog1',email:'ionut@ionut.com',id:1}, 
+			{name:'blog2',email:'tudrel@tudrel.com',id:2},
+			{name:'blog3',email:'marusciac@tudrel.com',id:3}]};
 
 			res.json(initialState);
 		});

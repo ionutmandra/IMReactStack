@@ -10,38 +10,17 @@ Shape of the state object matches the keys of the passed reducers
 var C = require("./constants");
 
 module.exports = function(){
-	return {
-		// "persistent" data on heroes
-		heroes: {
-			batman: {
-				quote: "I'm batman.",
-				kills: 0
-			},
-			superman: {
-				quote: "I can fly!",
-				kills: 0
-			},
-			spiderman: {
-				quote: "Why don't you love me, Lois?",
-				kills: 0
-			},
-			"he-man": {
-				quote: "By the power of Grayskull!",
-				kills: 0
-			}
-		},
-		// data on the current battle
-		battlefield: {
-			doing: {batman:C.WAITING,superman:C.WAITING,spiderman:C.WAITING,"he-man":C.WAITING},
-			standing: 4,
-			log: ["Ready.... fight!"]
-		},
+	return {		
 		about:{
-			generalInfo:{description: 'fuisabfiusabfasui'},
+			generalInfo:{description: 'about description'},
 			 members:[]
 			// members:[
 			// {name:'ionut',email:'ionut@ionut.com',id:1}, 
 			// {name:'tudrel',email:'tudrel@tudrel.com',id:2}]
+		},
+		blogs:{
+			generalInfo:{description: 'blogs description'},
+			blogList:[],
 		}
 	};
 };

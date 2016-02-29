@@ -16,8 +16,7 @@ var React = require('react'),
 
 module.exports = (
     <Route path="/" component={Wrapper}>
-        <IndexRoute component={Home} />
-        <Route path="/hero/:name" component={Hero} />
+        <IndexRoute component={Home} />        
         <Route path="/about" component={AboutList}>        
             <Route path="/about/:name" component={AboutDetails} />
         </Route>
