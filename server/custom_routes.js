@@ -17,7 +17,7 @@ function setApiRoutes(router){
 		});
 
 	router.get('/api/blogs', function(req, res) {		
-		console.log('getting blogs');
+		// console.log('getting blogs');
 		var initialState = {
 			generalInfo:{description: 'blogs main description'},
 			blogList:[ 
