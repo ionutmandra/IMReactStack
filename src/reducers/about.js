@@ -18,7 +18,11 @@ module.exports = function(state,action){
 		case C.REMOVE_MEMBER:			
 			var elementPos = state.members.map(function(x) {return x.id; }).indexOf(action.member);			
 			newstate.members.splice(elementPos,1);
+			return newstate;
+		case C.INIT_MEMBERS_LIST:			
+			newstate.members = action.data.members;
+			newstate.generalInfo = action.data.generalInfo;
 			return newstate;		
 		default: return state || initialState();
 	}
-};
+	};

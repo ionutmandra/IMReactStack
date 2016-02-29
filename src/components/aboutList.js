@@ -19,6 +19,9 @@ var aboutList = React.createClass({
 	handleChange:function(e){
 		this.setState({ newItemText: e.target.value })
 	},
+	componentWillMount: function() {
+		this.props.getInitialMembers();
+	},
 	render: function(){
 		
 		var p = this.props;		
@@ -58,7 +61,9 @@ var mapDispatchToProps = function(dispatch){
 		addMember: function(member){ 
 			dispatch(actions.addMember(this.state.newItemText)); },
 		removeMember: function(member){ 			
-			dispatch(actions.removeMember(member)); }		
+			dispatch(actions.removeMember(member)); },
+		getInitialMembers:function(){ 			
+			dispatch(actions.getInitialMembers()); }
 	}
 };
 

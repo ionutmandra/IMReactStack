@@ -3,9 +3,11 @@ This module contains action creators. They are functions which will return an ob
 These actions are imported by Redux-aware components who need them, in our case it is just Home.
 */
 
+import fetch from 'isomorphic-fetch'
 var constants = require("./constants");
+require('es6-promise').polyfill();
 
-module.exports = {
+	module.exports = {
 	reset: function(){
 		// A normal action creator, returns a simple object describing the action.
 		return {type:constants.RESET};
@@ -40,4 +42,11 @@ module.exports = {
 			dispatch({type:constants.REMOVE_MEMBER,member:member});			
 		};
 	},
+	getInitialMembers: function(){	
+		return function( dispatch,getState){
+			return fetch('http://localhost:8080/api/members')
+      				.then(response => response.json())
+      				.then(json => dispatch({type:constants.INIT_MEMBERS_LIST, data:json}));	
+		};
+	}
 };	

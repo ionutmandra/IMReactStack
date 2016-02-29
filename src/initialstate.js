@@ -38,9 +38,10 @@ module.exports = function(){
 		},
 		about:{
 			generalInfo:{description: 'fuisabfiusabfasui'},
-			members:[
-			{name:'ionut',email:'ionut@ionut.com',id:1}, 
-			{name:'tudrel',email:'tudrel@tudrel.com',id:2}]
+			 members:[]
+			// members:[
+			// {name:'ionut',email:'ionut@ionut.com',id:1}, 
+			// {name:'tudrel',email:'tudrel@tudrel.com',id:2}]
 		}
 	};
 };

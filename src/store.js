@@ -3,8 +3,6 @@ This file defines the main Redux Store. It will be required by all "smart" compo
 in our case Home and Hero.
 */
 
-// import { hashHistory } from 'react-router'
-
 var Redux = require("redux"),
 	heroReducer = require("./reducers/heroes"),
 	battlefieldReducer = require("./reducers/battlefield"),
@@ -29,35 +27,3 @@ var rootReducer = Redux.combineReducers({
   );
 
   module.exports = store;
-
-
- // var store = Redux.applyMiddleware(thunk)(Redux.createStore)(
- // 	rootReducer,
- // 	initialState(),
- // 	window.devToolsExtension ? window.devToolsExtension() : undefined);
-
-
-// window.__redux__ = store;
-
-// module.exports = store;
-
-//   module.exports =  Redux.createStore(
-//     rootReducer,
-//     initialState(),
-//     Redux.applyMiddleware(thunk)   
-//   );
-
-// after declaration make fetch initial data
-//  store.dispatch(fetchPosts('reactjs')).then(() =>
-//   console.log(store.getState())
-// )
-
-// module.exports = Redux.createStore(
-//   rootReducer,
-//   initialState(),
-//   Redux.applyMiddleware(thunk));
-
-// module.exports = Redux.createStore(rootReducer, initialState(), Redux.compose(
-//     Redux.applyMiddleware(thunk),
-//     window.devToolsExtension ? window.devToolsExtension() : f => f
-//   ));

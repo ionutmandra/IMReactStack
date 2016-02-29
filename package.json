@@ -24,6 +24,8 @@
     "watchify": "watchify -t [babelify] src/index.js -o bundle.js -dv"
   },
   "dependencies": {
-    "express": "^4.13.4"
+    "es6-promise": "^3.1.2",
+    "express": "^4.13.4",
+    "isomorphic-fetch": "^2.2.1"
   }
 }
