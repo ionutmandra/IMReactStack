@@ -3,6 +3,7 @@ var gulp = require('gulp');
 var browserify = require('browserify');
 var babelify = require('babelify');
 var source = require('vinyl-source-stream');
+var sass = require('gulp-sass');
 import watchify from 'watchify';
 import notify from 'gulp-notify';
 import reload from 'browser-sync';
@@ -39,5 +40,16 @@ gulp.task('watchify', () => {
 
   return rebundle();
 });
+
+gulp.task('sass', function () {
+  return gulp.src(['./lib/**/*.scss', './scss/**/*.scss'])
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('./css'));
+});
+
+gulp.task('test', watchify(function(watchify){
+  gulp.watch('./src/**/*.js', ['build']);
+  gulp.watch('./sass/**/*.scss', ['sass']);
+}));
 
 gulp.task('default', ['watchify'])

@@ -13,6 +13,7 @@
     "gulp-duration": "0.0.0",
     "gulp-notify": "^2.2.0",
     "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.2.0",
     "lodash": "^4.0.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
