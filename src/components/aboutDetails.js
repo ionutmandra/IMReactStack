@@ -18,4 +18,4 @@ var aboutDetails = React.createClass({
 	}
 });
 
-module.exports = ReactRedux.connect()(aboutDetails);
+module.exports = aboutDetails;//ReactRedux.connect()(aboutDetails);
