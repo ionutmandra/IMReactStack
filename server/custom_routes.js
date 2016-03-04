@@ -2,8 +2,13 @@ var express = require('express');
 var path = require('path');
 var fs = require('fs');
 var rootPath = '';
+var winston = require('winston');
 
 function setApiRoutes(router){
+
+	// debugger;	
+	winston.log('info', 'setting api routes ', {timestamp: Date.now(), pid: process.pid});	
+
 	router.get('/api/members', function(req, res) {		
 
 		var initialState = {
@@ -17,7 +22,7 @@ function setApiRoutes(router){
 		});
 
 	router.get('/api/blogs', function(req, res) {		
-		// console.log('getting blogs');
+		
 		var initialState = {
 			generalInfo:{description: 'blogs main description'},
 			blogList:[ 
@@ -32,7 +37,11 @@ function setApiRoutes(router){
 function setPageRoutes(router){
 	router.get('/', function(req, res) {
 		fs.readFile("../index.html", 'utf-8', function (error, data) {
+
+			winston.log('index html ', {timestamp: Date.now(), pid: process.pid});
+
 			res.sendFile(path.join(rootPath + '/index.html'));
+			//https://www.npmjs.com/package/serve-static
 		});
 	});
 

@@ -5,6 +5,7 @@ Log = require("./log"),
 actions = require("../actions"),
 _ = require("lodash"),
 Link = require("react-router").Link;
+var rules = require('../businessRules/blogRules')();
 
 var blogList = React.createClass({
 	propTypes: componentPropsConstraints,
@@ -12,11 +13,15 @@ var blogList = React.createClass({
 		this.setState({ newItemText: e.target.value })
 	},
 	componentWillMount: function() {
-		this.props.getInitialBlogs();
+		this.props.getInitialBlogs()		
 	},
 	render: function(){
 		
 		var p = this.props;		
+
+		//test business rules
+		var ok = rules.haveSameAuthor(p.blogs.blogList);
+		console.log('rules check ',ok);
 
 		var blogs = _.map(p.blogs.blogList,function(item){ 				
 			return <div key={item.id}>

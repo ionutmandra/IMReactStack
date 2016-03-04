@@ -8,7 +8,7 @@ var React = require('react'),
     IndexRoute = ReactRouter.IndexRoute,
     Wrapper = require('./components/wrapper'),
     Home = require('./components/home'),
-    Hero = require('./components/hero'),
+    
     AboutList = require('./components/aboutList'),
     AboutDetails = require('./components/aboutDetails'),
     BlogList = require('./components/blogList'),

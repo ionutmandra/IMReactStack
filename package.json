@@ -20,7 +20,8 @@
     "redux": "^3.2.1",
     "redux-thunk": "^1.0.3",
     "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.7.0"
+    "watchify": "^3.7.0",
+    "winston": "^2.2.0"
   },
   "scripts": {
     "build": "browserify --debug -t [babelify] src/index.js > bundle.js",
