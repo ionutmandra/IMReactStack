@@ -26,7 +26,7 @@ gulp.task('watchify', () => {
 
   function rebundle() {
 
-  console.log('recreating bundle');
+  console.log('['+(new Date().toTimeString().substring(0, 8))+'] recreating bundle');
 
     return bundler.bundle()
       .on('error', notify.onError())
