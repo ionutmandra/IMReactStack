@@ -4,6 +4,7 @@ then use React and React-DOM to render it.
 */
 
 import { hashHistory } from 'react-router'
+import * as actions from './actions'
 
 var React = require('react'),
 	ReactDOM = require('react-dom'),
@@ -19,3 +20,8 @@ ReactDOM.render(
 	</Provider>,
 	document.getElementById("root")
 );
+
+let token = localStorage.getItem('token');
+if (token !== null) {
+    store.dispatch(actions.loginUserSuccess(token));
+}

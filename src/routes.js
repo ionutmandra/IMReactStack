@@ -8,11 +8,14 @@ var React = require('react'),
     IndexRoute = ReactRouter.IndexRoute,
     Wrapper = require('./components/wrapper'),
     Home = require('./components/home'),
+    AdminHome = require('./components/adminHome'),
     
     AboutList = require('./components/aboutList'),
     AboutDetails = require('./components/aboutDetails'),
     BlogList = require('./components/blogList'),
-    BlogDetails = require('./components/blogDetails');
+    BlogDetails = require('./components/blogDetails'),
+    LoginComponent = require('./components/LoginComponent');
+    import {requireAuthentication} from './components/AuthenticatedComponent';
 
 module.exports = (
     <Route path="/" component={Wrapper}>
@@ -22,6 +25,10 @@ module.exports = (
         </Route>
         <Route path="/blogs" component={BlogList}>
             <Route path="/blogs/:name" component={BlogDetails} />
+        </Route>
+        <Route path="/authenticate" component={LoginComponent}>
+        </Route>        
+        <Route path="/adminHome" component={requireAuthentication(AdminHome)}>        
         </Route>
     </Route>
 );

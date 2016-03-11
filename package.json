@@ -30,8 +30,13 @@
     "watchify": "watchify -t [babelify] src/index.js -o bundle.js -dv"
   },
   "dependencies": {
+    "body-parser": "^1.15.0",
     "es6-promise": "^3.1.2",
     "express": "^4.13.4",
-    "isomorphic-fetch": "^2.2.1"
+    "isomorphic-fetch": "^2.2.1",
+    "jsonwebtoken": "^5.7.0",
+    "jwt-decode": "^1.5.1",
+    "redux-router": "^1.0.0-beta7",
+    "redux-store": "0.0.0"
   }
 }
