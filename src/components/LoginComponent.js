@@ -19,25 +19,21 @@ var comp = React.createClass({
 	},
 	doLogin:function(){		
 		this.props.doLogin(this.state.user,this.state.password);
-	},
-	testToken:function(){		
-		this.props.testToken();
-	},
+	},	
 
 	//lifecycle events
 	render: function(){		
 		var p = this.props.params;		
 
 		return (
-			<div>			
+			<div  className='loginCtainer'>			
 			<input type='text' placeholder='user' onChange={this.handleUserChange}/>
 			<br />
 			<input type='text' placeholder='password' onChange={this.handlePwdChange}/>
 			<br />
 			<input type='button' value='Login' onClick={this.doLogin} />
 			<br />
-			{ this.props.authState.isAuthenticated ? <Link to={"/adminHome"}>adminHome</Link> : null }
-			{/*<input type='button' value='TestToken' onClick={this.testToken} />*/}
+			{ this.props.authState.isAuthenticated ? <Link to={"/adminHome"}>adminHome</Link> : null }			
 			</div>
 			);
 	}
@@ -51,8 +47,7 @@ const mapStateToProps = (state) =>{
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		doLogin : (usr, pwd) => { dispatch(actions.doLogin(usr, pwd));},
-		testToken : () => { dispatch(actions.testToken());},
+		doLogin : (usr, pwd) => { dispatch(actions.doLogin(usr, pwd));}	
 	};
 };
 

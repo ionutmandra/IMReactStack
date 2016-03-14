@@ -17,7 +17,7 @@ var Home = React.createClass({
 				<br />
 				<Link to={"/blogs"}>Blogs</Link>
 				<br />
-				<Link to={"/authenticate"}>Authenticate</Link>
+				{/* <Link to={"/admin"}>Authenticate</Link> */}
 			</div>
 		);
 	}

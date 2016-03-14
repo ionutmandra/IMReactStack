@@ -3,32 +3,36 @@ This is the "sitemap" of our app!
 */
 
 var React = require('react'),
-    ReactRouter = require('react-router'),
-    Route = ReactRouter.Route,
-    IndexRoute = ReactRouter.IndexRoute,
-    Wrapper = require('./components/wrapper'),
-    Home = require('./components/home'),
-    AdminHome = require('./components/adminHome'),
-    
-    AboutList = require('./components/aboutList'),
-    AboutDetails = require('./components/aboutDetails'),
-    BlogList = require('./components/blogList'),
-    BlogDetails = require('./components/blogDetails'),
-    LoginComponent = require('./components/LoginComponent');
-    import {requireAuthentication} from './components/AuthenticatedComponent';
+ReactRouter = require('react-router'),
+Route = ReactRouter.Route,
+IndexRoute = ReactRouter.IndexRoute,
+Wrapper = require('./components/wrapper'),
+Home = require('./components/home'),
+AdminHome = require('./components/adminHome'),
+
+AboutList = require('./components/aboutList'),
+AboutDetails = require('./components/aboutDetails'),
+BlogList = require('./components/blogList'),
+BlogDetails = require('./components/blogDetails'),
+LoginComponent = require('./components/LoginComponent');
+import {requireAuthentication} from './components/AuthenticatedComponent';
 
 module.exports = (
-    <Route path="/" component={Wrapper}>
-        <IndexRoute component={Home} />        
-        <Route path="/about" component={AboutList}>        
-            <Route path="/about/:name" component={AboutDetails} />
+    <div class="root">
+        <Route path="/" component={Wrapper}>
+            <IndexRoute component={Home} />        
+            <Route path="/about" component={AboutList}>        
+                <Route path="/about/:name" component={AboutDetails} />
+            </Route>
+            <Route path="/blogs" component={BlogList}>
+                <Route path="/blogs/:name" component={BlogDetails} />
+            </Route>        
         </Route>
-        <Route path="/blogs" component={BlogList}>
-            <Route path="/blogs/:name" component={BlogDetails} />
-        </Route>
-        <Route path="/authenticate" component={LoginComponent}>
-        </Route>        
-        <Route path="/adminHome" component={requireAuthentication(AdminHome)}>        
-        </Route>
-    </Route>
-);
+        <div>
+            <Route path="/admin" component={LoginComponent}>
+            </Route>        
+            <Route path="/adminHome" component={requireAuthentication(AdminHome)}>        
+            </Route>
+        </div>
+    </div>
+    );
