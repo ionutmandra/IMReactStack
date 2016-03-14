@@ -20,10 +20,10 @@ var blogList = React.createClass({
 		var p = this.props;		
 
 		//test business rules
-		var ok = rules.haveSameAuthor(p.blogs.blogList);
+		var ok = rules.haveSameAuthor(p.blogState.blogList);
 		console.log('rules check ',ok);
 
-		var blogs = _.map(p.blogs.blogList,function(item){ 				
+		var blogs = _.map(p.blogState.blogList,function(item){ 				
 			return <div key={item.id}>
 			{item.name}
 			<Link to={"/blogs/" + item.name}>{item.name}</Link>
@@ -43,7 +43,7 @@ var blogList = React.createClass({
 	}
 });
 
-var mapStateToProps = function(state){	return {blogs: state.blogs}};
+var mapStateToProps = function(state){	return {blogState: state.blogs}};
 
 var mapDispatchToProps = function(dispatch){
 	return {
@@ -58,7 +58,7 @@ module.exports = ReactRedux.connect(mapStateToProps,mapDispatchToProps)(blogList
 var componentPropsConstraints = {
 	blogState: ptypes.shape({ 
 		blogList: ptypes.array,
-		generalInfo: ptypes.object.isRequired
+		blogsInfo: ptypes.object.isRequired
 	}).isRequired,
 
 	addBlog: ptypes.func.isRequired,

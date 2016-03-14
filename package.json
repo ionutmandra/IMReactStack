@@ -30,6 +30,7 @@
     "watchify": "watchify -t [babelify] src/index.js -o bundle.js -dv"
   },
   "dependencies": {
+    "async": "^1.5.2",
     "body-parser": "^1.15.0",
     "es6-promise": "^3.1.2",
     "express": "^4.13.4",

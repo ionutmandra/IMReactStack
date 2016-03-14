@@ -1,9 +1,9 @@
 var jwt = require('jsonwebtoken');
 
 module.exports = {
-  configureAuth:function(app, router){
+  setLoginRoutes:function(app, router){
 
-    router.post('/authenticate', function(req, res) {      
+    router.post('/auth/login', function(req, res) {      
 
       var usr = req.body.user;
       var pwd = req.body.password;
@@ -31,5 +31,11 @@ module.exports = {
           token: token
         });
       });
+
+    router.post('/auth/logout', function(req, res) {    
+    });  
+
+    router.post('/auth/register', function(req, res) {    
+    });      
   }
 };

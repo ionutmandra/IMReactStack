@@ -10,7 +10,7 @@ var aboutList = React.createClass({
 	propTypes: {
 		aboutState: ptypes.shape({ 
 			members: ptypes.array,
-			generalInfo: ptypes.object.isRequired
+			membersInfo: ptypes.object.isRequired
 		}).isRequired,
 		
 		addMember: ptypes.func.isRequired,
@@ -50,7 +50,7 @@ var aboutList = React.createClass({
 	}
 });
 
-var mapStateToProps = function(state){	
+var mapStateToProps = function(state){		
 	return {
 		aboutState: state.about		
 	};

@@ -60,7 +60,7 @@ module.exports = {
 	doLogin: function(usr, pwd, redirect="/"){	
 		return function( dispatch,getState){
 			dispatch(loginUserRequest());
-			return fetch('http://localhost:8080/authenticate',{
+			return fetch('http://localhost:8080/auth/login',{
 				method: 'post',
 				credentials: 'include',
 				headers: {
