@@ -60,6 +60,7 @@ module.exports = {
 	doLogin: function(usr, pwd, redirect="/"){	
 		return function( dispatch,getState){
 			dispatch(loginUserRequest());
+
 			return fetch('http://localhost:8080/auth/login',{
 				method: 'post',
 				credentials: 'include',
@@ -70,12 +71,16 @@ module.exports = {
 				body: JSON.stringify({user: usr, password: pwd})
 			})
 			.then(response => response.json())
-			.then(response => {
+			.then(response => {			
+
 				try {
 					let decoded = jwtDecode(response.token);
 					dispatch(loginUserSuccess(response.token));
 					dispatch(pushState(null, redirect));
-				} catch (e) {                	
+				} catch (e) {    
+
+					console.log('Login Err', e);
+
 					dispatch(loginUserFailure({
 						response: {
 							status: 403,
