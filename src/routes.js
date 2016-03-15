@@ -10,19 +10,20 @@ Wrapper = require('./components/wrapper'),
 Home = require('./components/home'),
 AdminHome = require('./components/adminHome'),
 
-AboutList = require('./components/aboutList'),
-AboutDetails = require('./components/aboutDetails'),
+AboutList = require('./components/aboutList').component,
+// AboutDetails = require('./components/aboutDetails'),
 BlogList = require('./components/blogList'),
 BlogDetails = require('./components/blogDetails'),
 LoginComponent = require('./components/LoginComponent');
+import aboutDetails from  './components/aboutDetails';
 import {requireAuthentication} from './components/AuthenticatedComponent';
 
 module.exports = (
-    <div class="root">
+    <div class="root">    
         <Route path="/" component={Wrapper}>
             <IndexRoute component={Home} />        
             <Route path="/about" component={AboutList}>        
-                <Route path="/about/:name" component={AboutDetails} />
+                <Route path="/about/:name" component={aboutDetails} />                
             </Route>
             <Route path="/blogs" component={BlogList}>
                 <Route path="/blogs/:name" component={BlogDetails} />

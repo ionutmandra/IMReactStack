@@ -67,5 +67,5 @@ var mapDispatchToProps = function(dispatch){
 	}
 };
 
-
-module.exports = ReactRedux.connect(mapStateToProps,mapDispatchToProps)(aboutList);
+module.exports.rawComponent = aboutList;
+module.exports.component = ReactRedux.connect(mapStateToProps,mapDispatchToProps)(aboutList);
