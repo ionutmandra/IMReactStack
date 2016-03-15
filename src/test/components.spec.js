@@ -14,8 +14,6 @@ function setup() {
   
   let output = renderer.getRenderOutput()
 
-  console.log(output);
-
   return {
     props,
     output,
