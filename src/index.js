@@ -4,6 +4,7 @@ then use React and React-DOM to render it.
 */
 
 import { hashHistory } from 'react-router'
+import { browserHistory  } from 'react-router'
 import * as actions from './actions'
 
 var React = require('react'),
@@ -16,7 +17,7 @@ var React = require('react'),
 ReactDOM.render(
 	// The top-level Provider is what allows us to `connect` components to the store using ReactRedux.connect
 	<Provider store={store}>
-		<Router routes={routes} history={hashHistory} />
+		<Router routes={routes} history={browserHistory } />
 	</Provider>,
 	document.getElementById("root")
 );
