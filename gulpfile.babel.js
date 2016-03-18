@@ -4,6 +4,7 @@ var browserify = require('browserify');
 var babelify = require('babelify');
 var source = require('vinyl-source-stream');
 var sass = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps');
 import watchify from 'watchify';
 import notify from 'gulp-notify';
 import reload from 'browser-sync';
@@ -25,7 +26,7 @@ gulp.task('watchify', () => {
       .on('error', notify.onError())
       .pipe(source('bundle.js'))
       .pipe(duration('rebuilding files'))
-      .pipe(gulp.dest('dist'));      
+      .pipe(gulp.dest('./dist/js'));      
   }
 
   bundler.transform(babelify).on('update', rebundle);
@@ -35,8 +36,10 @@ gulp.task('watchify', () => {
 
 gulp.task('sass', function () {
   return gulp.src(scssPaths)
+    .pipe(sourcemaps.init())
     .pipe(sass().on('error', notify.onError()))
-    .pipe(gulp.dest('./css'));
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('./dist/css'));
 });
 
 gulp.task('default', ['watchify', 'sass'], function(){
