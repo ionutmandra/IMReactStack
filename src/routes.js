@@ -9,7 +9,6 @@ IndexRoute = ReactRouter.IndexRoute,
 Wrapper = require('./components/wrapper'),
 Home = require('./components/home'),
 AdminHome = require('./components/adminHome'),
-
 AboutList = require('./components/aboutList').component,
 // AboutDetails = require('./components/aboutDetails'),
 BlogList = require('./components/blogList'),
