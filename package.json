@@ -8,6 +8,7 @@
     "babelify": "^7.2.0",
     "browser-sync": "^2.11.1",
     "browserify": "^12.0.1",
+    "chai": "^3.5.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-duration": "0.0.0",
@@ -15,13 +16,18 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.2.0",
     "lodash": "^4.0.0",
+    "mocha": "^2.4.5",
+    "nock": "^7.2.2",
     "react": "^0.14.7",
+    "react-addons-test-utils": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-redux": "^4.2.1",
     "react-router": "2.0.0",
     "reactify": "^1.1.1",
     "redux": "^3.2.1",
+    "redux-mock-store": "^1.0.2",
     "redux-thunk": "^1.0.3",
+    "sinon": "^1.17.3",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0",
     "winston": "^2.2.0"
@@ -31,8 +37,14 @@
     "watchify": "watchify -t [babelify] src/index.js -o bundle.js -dv"
   },
   "dependencies": {
+    "async": "^1.5.2",
+    "body-parser": "^1.15.0",
     "es6-promise": "^3.1.2",
     "express": "^4.13.4",
-    "isomorphic-fetch": "^2.2.1"
+    "isomorphic-fetch": "^2.2.1",
+    "jsonwebtoken": "^5.7.0",
+    "jwt-decode": "^1.5.1",
+    "redux-router": "^1.0.0-beta7",
+    "redux-store": "0.0.0"
   }
 }

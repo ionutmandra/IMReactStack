@@ -27,7 +27,7 @@ module.exports = function(state,action){
 		
 		case C.INIT_MEMBERS_LIST:			
 		newstate.members = action.data.members;
-		newstate.generalInfo = action.data.generalInfo;
+		newstate.membersInfo = action.data.membersInfo;
 		return newstate;		
 		default: return state || initialState();
 	}

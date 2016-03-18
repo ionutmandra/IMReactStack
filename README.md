@@ -18,6 +18,7 @@ This is a boilerplate for new apps using a specific technology stack. It contain
 1. `npm i`
 1. `npm i gulp-cli -g`
 1. `npm i nodemon -g`
+1. `npm i mocha -g`
  
 ### Start server & client
 You can do one of the following:

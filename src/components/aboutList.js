@@ -10,7 +10,7 @@ var aboutList = React.createClass({
 	propTypes: {
 		aboutState: ptypes.shape({ 
 			members: ptypes.array,
-			generalInfo: ptypes.object.isRequired
+			membersInfo: ptypes.object.isRequired
 		}).isRequired,
 		
 		addMember: ptypes.func.isRequired,
@@ -50,7 +50,7 @@ var aboutList = React.createClass({
 	}
 });
 
-var mapStateToProps = function(state){	
+var mapStateToProps = function(state){		
 	return {
 		aboutState: state.about		
 	};
@@ -67,5 +67,5 @@ var mapDispatchToProps = function(dispatch){
 	}
 };
 
-
-module.exports = ReactRedux.connect(mapStateToProps,mapDispatchToProps)(aboutList);
+module.exports.rawComponent = aboutList;
+module.exports.component = ReactRedux.connect(mapStateToProps,mapDispatchToProps)(aboutList);

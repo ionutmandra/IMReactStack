@@ -12,14 +12,14 @@ var C = require("./constants");
 module.exports = function(){
 	return {		
 		about:{
-			generalInfo:{description: 'about description'},
+			membersInfo:{description: 'about description'},
 			 members:[]
 			// members:[
 			// {name:'ionut',email:'ionut@ionut.com',id:1}, 
 			// {name:'tudrel',email:'tudrel@tudrel.com',id:2}]
 		},
 		blogs:{
-			generalInfo:{description: 'blogs description'},
+			blogsInfo:{description: 'blogs description'},
 			blogList:[],
 		}
 	};

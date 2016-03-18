@@ -1,26 +1,37 @@
 "use strict";
 // nodemon server.js
-// require("babel-core/register");
 
+//node modules
 var express = require('express');
+var bodyParser  = require('body-parser');
+
+//cust modules
+var config 	= require('./server/config');
+var login 	= require('./server/routesLogin');
+var authCheck = require('./server/authenticationCheck');
+
+//vars
 var app     = express();
-var port    =   process.env.PORT || 8080;
+var router  = express.Router();
+var port    = process.env.PORT || 8080;
 
-console.log('starting server...');
+app.set('superSecret', config.secret);
 
-var router = express.Router();
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-//middleware must be defined before routes
-router.use(function(req, res, next) {   
-    console.log(req.method, req.url);
-    next(); 
-});
+login.setLoginRoutes(app, router);
 
-var custRoutes = require('./server/custom_routes.js');
-custRoutes.init(__dirname);
-custRoutes.setPageRoutes(router);
-custRoutes.setApiRoutes(router);
-custRoutes.setFileRoutes(app);
+var routes = require('./server/routesCustom.js').init(__dirname);
+
+routes.setPageRoutes(router);
+routes.setApiRoutes(router);
+routes.setFileRoutes(app);
+
+//routes defined after this midleware will check roles/rights
+authCheck.configure(app, router);
+
+routes.setAdminRoutes(router);
 
 app.use('/', router);
 
