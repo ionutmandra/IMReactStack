@@ -9,18 +9,10 @@ import notify from 'gulp-notify';
 import reload from 'browser-sync';
 var duration = require('gulp-duration');
 
+const scssPaths = ['./lib/**/*.scss', './scss/**/*.scss'];
+
 const customOpts = {entries: 'src/index.js',debug: true};
-
 const opts = Object.assign({}, watchify.args, customOpts);
-
-gulp.task('build', function() {	
-   browserify(opts)
-  .transform(babelify)
-  .bundle()
-  .pipe(source('bundle.js'))
-  .pipe(duration('rebuilding files'))
-  .pipe(gulp.dest('dist'));
-});
 
 gulp.task('watchify', () => {
   let bundler = watchify(browserify(opts));
@@ -42,14 +34,20 @@ gulp.task('watchify', () => {
 });
 
 gulp.task('sass', function () {
-  return gulp.src(['./lib/**/*.scss', './scss/**/*.scss'])
-    .pipe(sass().on('error', sass.logError))
+  return gulp.src(scssPaths)
+    .pipe(sass().on('error', notify.onError()))
     .pipe(gulp.dest('./css'));
 });
 
-gulp.task('test', watchify(function(watchify){
-  gulp.watch('./src/**/*.js', ['build']);
-  gulp.watch('./sass/**/*.scss', ['sass']);
-}));
+gulp.task('default', ['watchify', 'sass'], function(){
+  return gulp.watch(scssPaths, ['sass']);
+});
 
-gulp.task('default', ['watchify'])
+// gulp.task('build', function() {  
+//    browserify(opts)
+//   .transform(babelify)
+//   .bundle()
+//   .pipe(source('bundle.js'))
+//   .pipe(duration('rebuilding files'))
+//   .pipe(gulp.dest('dist'));
+// });

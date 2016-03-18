@@ -1,3 +1,5 @@
-body {
-	background: fade-out(black, .95);
+@import "../lib/bootstrap/scss/bootstrap";
+
+.loginCtainer {
+	background-color: black;
 }

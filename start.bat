@@ -1,2 +1,2 @@
 start cmd /k nodemon server
-start cmd /k gulp watchify
+start cmd /k gulp
