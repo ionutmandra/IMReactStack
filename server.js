@@ -2,7 +2,6 @@
 // nodemon server.js
 
 //node modules
-require("node-jsx").install();
 var express = require('express');
 var bodyParser  = require('body-parser');
 
