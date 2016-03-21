@@ -8,12 +8,12 @@ var async = require('async');
 var routePaths = require('../routePaths');
 var pathToRegexp = require('path-to-regexp');
 
-//setup regexes to test for 404 (prevent server authenticated routes to get 404)
-var regexes404 = [];
+//setup regexes to skip when checking for 404 (prevent server authenticated routes to get 404)
+var skip404regexes = [];
 var routes = routePaths.serverAuthorized;
 for (var r in routes) {
 	if (routes.hasOwnProperty(r)) {
-		regexes404.push(pathToRegexp(routes[r]));
+		skip404regexes.push(pathToRegexp(routes[r]));
 	}
 }
 
@@ -115,18 +115,16 @@ function setAdminRoutes(router){
 
 function catch404(router){
 	router.use(function(req, res, next){
-		var matchFound = false;
-		for (var r of regexes404) {
-			matchFound = r.test(req.path) || matchFound;
-		}
-		if (matchFound) {
-			next();
-		}else{
-			res.status(404).send({ 
-		        success: false, 
-		        message: '404 Not found',
-		    });
-		}
+		for (var r of skip404regexes) {
+			if (r.test(req.path)){
+				next();
+				return;
+			}
+		}		
+		res.status(404).send({ 
+			success: false, 
+			message: '404 Not found',
+		});		
 	});
 }
 
