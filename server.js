@@ -2,6 +2,7 @@
 // nodemon server.js
 
 //node modules
+require("node-jsx").install();
 var express = require('express');
 var bodyParser  = require('body-parser');
 
@@ -24,9 +25,9 @@ login.setLoginRoutes(app, router);
 
 var routes = require('./server/routesCustom.js').init(__dirname);
 
-routes.setPageRoutes(router);
 routes.setApiRoutes(router);
 routes.setFileRoutes(app);
+routes.setPageRoutes(router);
 
 //routes defined after this midleware will check roles/rights
 authCheck.configure(app, router);

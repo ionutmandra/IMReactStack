@@ -17,8 +17,7 @@ var React = require('react'),
 ReactDOM.render(
 	// The top-level Provider is what allows us to `connect` components to the store using ReactRedux.connect
 	<Provider store={store}>
-		<Router routes={routes} history={hashHistory } />
-		{/* <Router routes={routes} history={browserHistory } /> *//**//**/}
+		<Router routes={routes} history={browserHistory } />
 	</Provider>,
 	document.getElementById("root")
 );

@@ -3,7 +3,7 @@ var jwt = require('jsonwebtoken');
 module.exports = {
   setLoginRoutes:function(app, router){
 
-    router.post('/auth/login', function(req, res) {      
+    router.post('/api/auth/login', function(req, res) {      
 
       var usr = req.body.user;
       var pwd = req.body.password;
@@ -32,10 +32,10 @@ module.exports = {
         });
       });
 
-    router.post('/auth/logout', function(req, res) {    
+    router.post('/api/auth/logout', function(req, res) {    
     });  
 
-    router.post('/auth/register', function(req, res) {    
+    router.post('/api/auth/register', function(req, res) {    
     });      
   }
 };

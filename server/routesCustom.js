@@ -5,6 +5,9 @@ var rootPath = '';
 var winston = require('winston');
 var db = require(__dirname + '/respository');
 var async = require('async');
+var clientRoutes = require('../src/routes.js');
+// var React = require('react');
+// var Router = require('react-router');
 
 function setApiRoutes(router){
 	
@@ -55,9 +58,26 @@ function setApiRoutes(router){
 				}
 			});
 	});
+
+	router.get('/api/about', function(req, res) {
+		res.send('im the about page2!'); 
+	});
+
+	router.get('/api/hello/:name', function(req, res) {
+		res.send('hello ' + req.params.name + '!');
+	});
 };
 
 function setPageRoutes(router){
+	// app.use(function(req, res, next) {
+
+	//   var router = Router.create({location: req.url, routes: routes})
+	//   router.run(function(Handler, state) {
+	//     // var html = React.renderToString(<Handler/>)
+	//     // return res.render('react_page', {html: html})
+	//     next();
+	//   })
+	// })
 	router.get('/', function(req, res) {
 		fs.readFile("../index.html", 'utf-8', function (error, data) {
 
@@ -66,20 +86,12 @@ function setPageRoutes(router){
 			res.sendFile(path.join(rootPath + '/index.html'));
 			//https://www.npmjs.com/package/serve-static
 		});
-	});
-
-	router.get('/about', function(req, res) {
-		res.send('im the about page2!'); 
-	});
-
-	router.get('/hello/:name', function(req, res) {
-		res.send('hello ' + req.params.name + '!');
-	});
+	});	
 };
 
 function setFileRoutes(app){
 	app.use('/dist', express.static(path.join(rootPath + '/dist')));
-	app.use('/css', express.static(path.join(rootPath + '/css')));
+	app.use('/res', express.static(path.join(rootPath + '/res')));
 };
 
 function setAdminRoutes(router){
