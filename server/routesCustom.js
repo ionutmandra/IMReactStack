@@ -6,6 +6,16 @@ var winston = require('winston');
 var db = require(__dirname + '/respository');
 var async = require('async');
 var routePaths = require('../routePaths');
+var pathToRegexp = require('path-to-regexp');
+
+//setup regexes to test for 404 (prevent server authenticated routes to get 404)
+var regexes404 = [];
+var routes = routePaths.serverAuthorized;
+for (var r in routes) {
+	if (routes.hasOwnProperty(r)) {
+		regexes404.push(pathToRegexp(routes[r]));
+	}
+}
 
 function setApiRoutes(router){
 	
@@ -104,21 +114,11 @@ function setAdminRoutes(router){
 };
 
 function catch404(router){
-	var routes = routePaths.serverAuthorized, matchFound = false;
-
 	router.use(function(req, res, next){
-		matchFound = false;
-		next();
-	});
-	for (var r in routes) {
-		if (routes.hasOwnProperty(r)) {
-			router.all(routes[r], function(req, res, next){
-				matchFound = true;
-				next();
-			});	
+		var matchFound = false;
+		for (var r of regexes404) {
+			matchFound = r.test(req.path) || matchFound;
 		}
-	}
-	router.use(function(req, res, next){
 		if (matchFound) {
 			next();
 		}else{
