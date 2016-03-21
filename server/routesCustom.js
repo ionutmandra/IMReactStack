@@ -5,9 +5,7 @@ var rootPath = '';
 var winston = require('winston');
 var db = require(__dirname + '/respository');
 var async = require('async');
-var clientRoutes = require('../src/routes.js');
-// var React = require('react');
-// var Router = require('react-router');
+var routePaths = require('../routePaths');
 
 function setApiRoutes(router){
 	
@@ -68,25 +66,22 @@ function setApiRoutes(router){
 	});
 };
 
-function setPageRoutes(router){
-	// app.use(function(req, res, next) {
+function setClientRoutes(router){
+	var routes = routePaths.client;
 
-	//   var router = Router.create({location: req.url, routes: routes})
-	//   router.run(function(Handler, state) {
-	//     // var html = React.renderToString(<Handler/>)
-	//     // return res.render('react_page', {html: html})
-	//     next();
-	//   })
-	// })
-	router.get('/', function(req, res) {
-		fs.readFile("../index.html", 'utf-8', function (error, data) {
+	for (var r in routes) {
+		if (routes.hasOwnProperty(r)) {
+			router.all(routes[r], function (req, res) {
+				fs.readFile("../index.html", 'utf-8', function (error, data) {
 
-			winston.log('index html ', {timestamp: Date.now(), pid: process.pid});
+					winston.log('index html ', {timestamp: Date.now(), pid: process.pid});
 
-			res.sendFile(path.join(rootPath + '/index.html'));
-			//https://www.npmjs.com/package/serve-static
-		});
-	});	
+					res.sendFile(path.join(rootPath + '/index.html'));
+					//https://www.npmjs.com/package/serve-static
+				});
+			});	
+		}
+	}
 };
 
 function setFileRoutes(app){
@@ -95,7 +90,7 @@ function setFileRoutes(app){
 };
 
 function setAdminRoutes(router){
-	router.get('/api/editMembers', function(req, res) {			
+	router.get(routePaths.serverAuthorized.apiEditMembers, function(req, res) {			
 
 		var initialState = {
 			generalInfo:{description: 'fuisabfiusabfasui'},
@@ -108,15 +103,43 @@ function setAdminRoutes(router){
 		});
 };
 
+function catch404(router){
+	var routes = routePaths.serverAuthorized, matchFound = false;
+
+	router.use(function(req, res, next){
+		matchFound = false;
+		next();
+	});
+	for (var r in routes) {
+		if (routes.hasOwnProperty(r)) {
+			router.all(routes[r], function(req, res, next){
+				matchFound = true;
+				next();
+			});	
+		}
+	}
+	router.use(function(req, res, next){
+		if (matchFound) {
+			next();
+		}else{
+			res.status(404).send({ 
+		        success: false, 
+		        message: '404 Not found',
+		    });
+		}
+	});
+}
+
 module.exports = {
 	init:function(rootPathParam){
 		rootPath =rootPathParam;
 
 		return{
-			setPageRoutes:setPageRoutes,
+			setClientRoutes:setClientRoutes,
 			setApiRoutes:setApiRoutes,
 			setFileRoutes:setFileRoutes,
-			setAdminRoutes: setAdminRoutes
+			setAdminRoutes: setAdminRoutes,
+			catch404: catch404,
 		};
 	}	
 };

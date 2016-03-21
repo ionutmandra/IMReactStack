@@ -45,12 +45,3 @@ gulp.task('sass', function () {
 gulp.task('default', ['watchify', 'sass'], function(){
   return gulp.watch(scssPaths, ['sass']);
 });
-
-// gulp.task('build', function() {  
-//    browserify(opts)
-//   .transform(babelify)
-//   .bundle()
-//   .pipe(source('bundle.js'))
-//   .pipe(duration('rebuilding files'))
-//   .pipe(gulp.dest('dist'));
-// });

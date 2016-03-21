@@ -27,7 +27,8 @@ var routes = require('./server/routesCustom.js').init(__dirname);
 
 routes.setApiRoutes(router);
 routes.setFileRoutes(app);
-routes.setPageRoutes(router);
+routes.setClientRoutes(router);
+routes.catch404(router);
 
 //routes defined after this midleware will check roles/rights
 authCheck.configure(app, router);
