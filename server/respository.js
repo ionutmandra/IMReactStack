@@ -34,6 +34,8 @@ var db = {
   users: [{}, {}]
 };
 
+var neo4j = require('neo4j');
+var neo4jDb = new neo4j.GraphDatabase('http://neo4j:123@localhost:7474');
 
 module.exports = {
   create: function(repo) {
@@ -46,37 +48,16 @@ module.exports = {
       }
     };
   },
-  getAllUsers: function(){
-         var cypherCall = db.cypher({
-            query: 'MATCH (user:User) RETURN user',
-            params: {
-                email: '',
-            },
-        }, callback);
-
-        console.log(cypherCall);
-
-        return {};
+  getAllUsers: function(callback) {
+    neo4jDb.cypher({
+      query: 'MATCH (user:User) RETURN user.username as name, user.email as email, id(user) as id',
+      params: {
+        email: '',
+      },
+    }, function(err, results) {
+      callback(err, {
+        data: results
+      });
+    });
   },
-};
-
-var neo4j = require('neo4j');
-var db = new neo4j.GraphDatabase('http://neo4j:123@localhost:7474');
-
-// db.cypher({
-//     query: 'MATCH (user:User) RETURN user',
-//     params: {
-//         email: '',
-//     },
-// }, callback);
-
-function callback(err, results) {
-    if (err) throw err;
-    var result = results[0];
-    if (!result) {
-        console.log('No user found.');
-    } else {
-        var user = result['user'];
-        console.log(user);
-    }
 };
