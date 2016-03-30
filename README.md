@@ -13,18 +13,16 @@ This is a boilerplate for new apps using a specific technology stack. It contain
 #Installation
 
 ### Download and install
-1. install [Python 2.7 ](https://www.python.org/ftp/python/2.7.11/python-2.7.11.msi)
-1. add python environment variable `python=<pathToPython>`
-1. visual studio must be installed with Windows SDK 8.1 & 10
+1. Install and configure [node-gyp](https://github.com/nodejs/node-gyp)
 1. Fork [the original repository](https://github.com/ionutmandra/IMReactStack)
-1. clone your forked repository in a `folder`
-1. open cmd in `folder` and run:
+1. Clone your forked repository `git clone https://github.com/<yourusername>/IMReactStack`
+1. Open cmd in `folder` and run:
 1. `git remote add upstream https://github.com/ionutmandra/IMReactStack`
 1. `npm i`
 1. `npm i gulp-cli -g`
 1. `npm i nodemon -g`
 1. `npm i mocha -g`
-1. if node version has been updated run `npm rebuild`
+1. If node version has been updated run `npm rebuild`
  
 ### Start server & client
 You can do one of the following:
