@@ -13,25 +13,26 @@ AboutList = require('./components/aboutList').component,
 // AboutDetails = require('./components/aboutDetails'),
 BlogList = require('./components/blogList'),
 BlogDetails = require('./components/blogDetails'),
-LoginComponent = require('./components/LoginComponent');
+LoginComponent = require('./components/LoginComponent'),
+routePaths = require('../routePaths');
 import aboutDetails from  './components/aboutDetails';
 import {requireAuthentication} from './components/AuthenticatedComponent';
 
 module.exports = (
     <div class="root">    
-        <Route path="/" component={Wrapper}>
+        <Route path={routePaths.client.root} component={Wrapper}>
             <IndexRoute component={Home} />        
-            <Route path="/about" component={AboutList}>        
-                <Route path="/about/:name" component={aboutDetails} />                
+            <Route path={routePaths.client.about} component={AboutList}>        
+                <Route path={routePaths.client.aboutName} component={aboutDetails} />                
             </Route>
-            <Route path="/blogs" component={BlogList}>
-                <Route path="/blogs/:name" component={BlogDetails} />
+            <Route path={routePaths.client.blogs} component={BlogList}>
+                <Route path={routePaths.client.blogsName} component={BlogDetails} />
             </Route>        
         </Route>
         <div>
-            <Route path="/admin" component={LoginComponent}>
+            <Route path={routePaths.client.admin} component={LoginComponent}>
             </Route>        
-            <Route path="/adminHome" component={requireAuthentication(AdminHome)}>        
+            <Route path={routePaths.client.adminHome} component={requireAuthentication(AdminHome)}>        
             </Route>
         </div>
     </div>

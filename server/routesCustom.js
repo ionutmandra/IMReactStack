@@ -5,6 +5,17 @@ var rootPath = '';
 var winston = require('winston');
 var db = require(__dirname + '/respository');
 var async = require('async');
+var routePaths = require('../routePaths');
+var pathToRegexp = require('path-to-regexp');
+
+//setup regexes to skip when checking for 404 (prevent server authenticated routes to get 404)
+var skip404regexes = [];
+var routes = routePaths.serverAuthorized;
+for (var r in routes) {
+	if (routes.hasOwnProperty(r)) {
+		skip404regexes.push(pathToRegexp(routes[r]));
+	}
+}
 
 function setApiRoutes(router){
 	
@@ -55,35 +66,41 @@ function setApiRoutes(router){
 				}
 			});
 	});
-};
 
-function setPageRoutes(router){
-	router.get('/', function(req, res) {
-		fs.readFile("../index.html", 'utf-8', function (error, data) {
-
-			winston.log('index html ', {timestamp: Date.now(), pid: process.pid});
-
-			res.sendFile(path.join(rootPath + '/index.html'));
-			//https://www.npmjs.com/package/serve-static
-		});
-	});
-
-	router.get('/about', function(req, res) {
+	router.get('/api/about', function(req, res) {
 		res.send('im the about page2!'); 
 	});
 
-	router.get('/hello/:name', function(req, res) {
+	router.get('/api/hello/:name', function(req, res) {
 		res.send('hello ' + req.params.name + '!');
 	});
 };
 
+function setClientRoutes(router){
+	var routes = routePaths.client;
+
+	for (var r in routes) {
+		if (routes.hasOwnProperty(r)) {
+			router.all(routes[r], function (req, res) {
+				fs.readFile("../index.html", 'utf-8', function (error, data) {
+
+					winston.log('index html ', {timestamp: Date.now(), pid: process.pid});
+
+					res.sendFile(path.join(rootPath + '/index.html'));
+					//https://www.npmjs.com/package/serve-static
+				});
+			});	
+		}
+	}
+};
+
 function setFileRoutes(app){
 	app.use('/dist', express.static(path.join(rootPath + '/dist')));
-	app.use('/css', express.static(path.join(rootPath + '/css')));
+	app.use('/res', express.static(path.join(rootPath + '/res')));
 };
 
 function setAdminRoutes(router){
-	router.get('/api/editMembers', function(req, res) {			
+	router.get(routePaths.serverAuthorized.apiEditMembers, function(req, res) {			
 
 		var initialState = {
 			generalInfo:{description: 'fuisabfiusabfasui'},
@@ -96,15 +113,31 @@ function setAdminRoutes(router){
 		});
 };
 
+function catch404(router){
+	router.use(function(req, res, next){
+		for (var r of skip404regexes) {
+			if (r.test(req.path)){
+				next();
+				return;
+			}
+		}		
+		res.status(404).send({ 
+			success: false, 
+			message: '404 Not found',
+		});		
+	});
+}
+
 module.exports = {
 	init:function(rootPathParam){
 		rootPath =rootPathParam;
 
 		return{
-			setPageRoutes:setPageRoutes,
+			setClientRoutes:setClientRoutes,
 			setApiRoutes:setApiRoutes,
 			setFileRoutes:setFileRoutes,
-			setAdminRoutes: setAdminRoutes
+			setAdminRoutes: setAdminRoutes,
+			catch404: catch404,
 		};
 	}	
 };

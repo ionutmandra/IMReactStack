@@ -61,7 +61,7 @@ module.exports = {
 		return function( dispatch,getState){
 			dispatch(loginUserRequest());
 
-			return fetch('http://localhost:8080/auth/login',{
+			return fetch('http://localhost:8080/api/auth/login',{
 				method: 'post',
 				credentials: 'include',
 				headers: {
