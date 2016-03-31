@@ -2,4 +2,9 @@
 *.log
 node_modules
 dist
-.idea
+.ideaicomoon/demo-files
+icomoon/ie7
+icomoon/demo.html
+icomoon/Read Me.txt
+icomoon/selection.json
+icomoon/style.css
