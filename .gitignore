@@ -2,6 +2,7 @@
 *.log
 node_modules
 dist
+.*/
 icomoon/demo-files
 icomoon/ie7
 icomoon/demo.html
