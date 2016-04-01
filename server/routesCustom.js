@@ -5,8 +5,10 @@ var rootPath = '';
 var winston = require('winston');
 var db = require(__dirname + '/respository');
 var async = require('async');
-var routePaths = require('../routePaths');
+var routePaths = require('../common/routePaths');
 var pathToRegexp = require('path-to-regexp');
+var validators = require('../common/validators');
+var _ = require('lodash');
 
 //setup regexes to skip when checking for 404 (prevent server authenticated routes to get 404)
 var skip404regexes = [];
@@ -74,7 +76,16 @@ function setApiRoutes(router){
 	router.get('/api/hello/:name', function(req, res) {
 		res.send('hello ' + req.params.name + '!');
 	});
-};
+    
+    router.post('/api/contact', function(req, res) {
+        var errors = validators.contact(req.body), 
+            success = _.isEmpty(errors);
+        
+        //TODO: save contact request in db
+        
+        res.send({success, errors}); 
+    });
+}
 
 function setClientRoutes(router){
 	var routes = routePaths.client;
