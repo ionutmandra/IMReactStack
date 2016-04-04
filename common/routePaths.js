@@ -8,6 +8,7 @@ module.exports = {
 		'blogsName': '/blogs/:name',
 		'admin': '/admin',
 		'adminHome': '/adminHome',
+        'contact': '/contact',
 	},
 	'serverAuthorized': {
 		//server routes which require authentication

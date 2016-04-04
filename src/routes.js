@@ -14,8 +14,9 @@ AboutList = require('./components/aboutList').component,
 BlogList = require('./components/blogList'),
 BlogDetails = require('./components/blogDetails'),
 LoginComponent = require('./components/LoginComponent'),
-routePaths = require('../routePaths');
+routePaths = require('../common/routePaths');
 import aboutDetails from  './components/aboutDetails';
+import ContactPage from './components/contact';
 import {requireAuthentication} from './components/AuthenticatedComponent';
 
 module.exports = (
@@ -28,6 +29,7 @@ module.exports = (
             <Route path={routePaths.client.blogs} component={BlogList}>
                 <Route path={routePaths.client.blogsName} component={BlogDetails} />
             </Route>        
+            <Route path={routePaths.client.contact} component={ContactPage} />
         </Route>
         <div>
             <Route path={routePaths.client.admin} component={LoginComponent}>
