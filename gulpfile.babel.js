@@ -14,9 +14,9 @@ import rename from 'gulp-rename';
 import runSequence from 'run-sequence';
 
 
-const scssPaths = ['./lib/**/*.scss', './scss/**/*.scss'];
-const scssPathsToWatch  = ['./icomoon/*'];
-scssPathsToWatch.push(scssPaths);
+
+
+
 
 const opts = Object.assign({}, watchify.args, {
   entries: 'src/index.js',
@@ -51,6 +51,7 @@ gulp.task('icomoon-fonts', function() {
     .pipe(gulp.dest('./dist/fonts'));
 });
 
+const scssPaths = ['./lib/**/*.scss', './scss/**/*.scss'];
 gulp.task('sass', function() {
   gulp.src(scssPaths)
     .pipe(sourcemaps.init())
@@ -63,6 +64,7 @@ gulp.task('app-sass', function(callback){
   runSequence('icomoon-variables','icomoon-fonts', 'sass', callback);
 });
 
+const scssPathsToWatch  = ['./lib/**/*.scss', './scss/**/*.scss','./icomoon/*'];
 gulp.task('default', ['watchify', 'app-sass'], function() {
   gulp.watch(scssPathsToWatch, ['app-sass']);
 });
