@@ -14,39 +14,39 @@ module.exports = {
 	reset: function(){
 		// A normal action creator, returns a simple object describing the action.
 		return {type:constants.RESET};
-	},	
-	addMember: function(member){	
+	},
+	addMember: function(member){
 		return function( dispatch,getState){
-			dispatch({type:constants.ADD_MEMBER,member:member});			
+			dispatch({type:constants.ADD_MEMBER,member:member});
 		};
 	},
-	removeMember: function(member){	
+	removeMember: function(member){
 		return function( dispatch,getState){
-			dispatch({type:constants.REMOVE_MEMBER,member:member});			
+			dispatch({type:constants.REMOVE_MEMBER,member:member});
 		};
 	},
-	getInitialMembers: function(){	
+	getInitialMembers: function(){
 		return function( dispatch,getState){
 			return fetch('http://localhost:8080/api/members')
 			.then(response => response.json())
-			.then(json => dispatch({type:constants.INIT_MEMBERS_LIST, data:json}));	
+			.then(json => dispatch({type:constants.INIT_MEMBERS_LIST, data:json}));
 		};
 	},
-	addBlog: function(blog){	
+	addBlog: function(blog){
 		return function( dispatch,getState){
-			dispatch({type:constants.ADD_BLOG,blog:blog});			
+			dispatch({type:constants.ADD_BLOG,blog:blog});
 		};
 	},
-	removeBlog: function(blog){	
+	removeBlog: function(blog){
 		return function( dispatch,getState){
 			dispatch({type:constants.REMOVE_BLOG,blog:blog});
 		};
 	},
-	getInitialBlogs: function(){	
+	getInitialBlogs: function(){
 		return function( dispatch,getState){
 			return fetch('http://localhost:8080/api/blogs')
 			.then(response => response.json())
-			.then(json => dispatch({type:constants.INIT_BLOGS_LIST, data:json}));	
+			.then(json => dispatch({type:constants.INIT_BLOGS_LIST, data:json}));
 		}
 	},
 
@@ -57,7 +57,7 @@ module.exports = {
 	logout:logout,
 	logoutAndRedirect:logoutAndRedirect,
 
-	doLogin: function(usr, pwd, redirect="/"){	
+	doLogin: function(usr, pwd, redirect="/"){
 		return function( dispatch,getState){
 			dispatch(loginUserRequest());
 
@@ -71,13 +71,13 @@ module.exports = {
 				body: JSON.stringify({user: usr, password: pwd})
 			})
 			.then(response => response.json())
-			.then(response => {			
+			.then(response => {
 
 				try {
 					let decoded = jwtDecode(response.token);
 					dispatch(loginUserSuccess(response.token));
 					dispatch(pushState(null, redirect));
-				} catch (e) {    
+				} catch (e) {
 
 					console.log('Login Err', e);
 
@@ -88,20 +88,20 @@ module.exports = {
 						}
 					}));
 				}
-			});				
+			});
 		}
 	},
-	editMembers: function(token){	
+	editMembers: function(token){
 		return function( dispatch,getState){
 			return fetch('http://localhost:8080/api/editMembers',{
 				headers:{
 					'x-access-token':token
 				}
 			})
-			.then(response => response.json());			
+			.then(response => response.json());
 		}
 	},
-};	
+};
 
 //AUTH
 function loginUserRequest() {
