@@ -9,6 +9,7 @@ module.exports = {
 		'admin': '/admin',
 		'adminHome': '/adminHome',
         'lists':'/lists'
+        'contact': '/contact',
 	},
 	'serverAuthorized': {
 		//server routes which require authentication
