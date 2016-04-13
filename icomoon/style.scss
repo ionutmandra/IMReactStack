@@ -1,0 +1,799 @@
+@import "variables";
+
+@font-face {
+    font-family: 'new-company-site';
+    src:    url('#{$icomoon-font-path}/new-company-site.eot?d3f6cv');
+    src:    url('#{$icomoon-font-path}/new-company-site.eot?d3f6cv#iefix') format('embedded-opentype'),
+        url('#{$icomoon-font-path}/new-company-site.ttf?d3f6cv') format('truetype'),
+        url('#{$icomoon-font-path}/new-company-site.woff?d3f6cv') format('woff'),
+        url('#{$icomoon-font-path}/new-company-site.svg?d3f6cv#new-company-site') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+i {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'new-company-site' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.ncs-check {
+    &:before {
+        content: $ncs-check;
+    }
+}
+.ncs-close {
+    &:before {
+        content: $ncs-close;
+    }
+}
+.ncs-remove {
+    &:before {
+        content: $ncs-remove;
+    }
+}
+.ncs-times {
+    &:before {
+        content: $ncs-times;
+    }
+}
+.ncs-cog {
+    &:before {
+        content: $ncs-cog;
+    }
+}
+.ncs-gear {
+    &:before {
+        content: $ncs-gear;
+    }
+}
+.ncs-home {
+    &:before {
+        content: $ncs-home;
+    }
+}
+.ncs-file-o {
+    &:before {
+        content: $ncs-file-o;
+    }
+}
+.ncs-download {
+    &:before {
+        content: $ncs-download;
+    }
+}
+.ncs-refresh {
+    &:before {
+        content: $ncs-refresh;
+    }
+}
+.ncs-map-marker {
+    &:before {
+        content: $ncs-map-marker;
+    }
+}
+.ncs-plus-circle {
+    &:before {
+        content: $ncs-plus-circle;
+    }
+}
+.ncs-minus-circle {
+    &:before {
+        content: $ncs-minus-circle;
+    }
+}
+.ncs-times-circle {
+    &:before {
+        content: $ncs-times-circle;
+    }
+}
+.ncs-check-circle {
+    &:before {
+        content: $ncs-check-circle;
+    }
+}
+.ncs-question-circle {
+    &:before {
+        content: $ncs-question-circle;
+    }
+}
+.ncs-info-circle {
+    &:before {
+        content: $ncs-info-circle;
+    }
+}
+.ncs-eye {
+    &:before {
+        content: $ncs-eye;
+    }
+}
+.ncs-calendar {
+    &:before {
+        content: $ncs-calendar;
+    }
+}
+.ncs-chevron-up {
+    &:before {
+        content: $ncs-chevron-up;
+    }
+}
+.ncs-chevron-down {
+    &:before {
+        content: $ncs-chevron-down;
+    }
+}
+.ncs-twitter-square {
+    &:before {
+        content: $ncs-twitter-square;
+    }
+}
+.ncs-facebook-square {
+    &:before {
+        content: $ncs-facebook-square;
+    }
+}
+.ncs-comments {
+    &:before {
+        content: $ncs-comments;
+    }
+}
+.ncs-linkedin-square {
+    &:before {
+        content: $ncs-linkedin-square;
+    }
+}
+.ncs-upload {
+    &:before {
+        content: $ncs-upload;
+    }
+}
+.ncs-twitter {
+    &:before {
+        content: $ncs-twitter;
+    }
+}
+.ncs-facebook {
+    &:before {
+        content: $ncs-facebook;
+    }
+}
+.ncs-facebook-f {
+    &:before {
+        content: $ncs-facebook-f;
+    }
+}
+.ncs-github {
+    &:before {
+        content: $ncs-github;
+    }
+}
+.ncs-filter {
+    &:before {
+        content: $ncs-filter;
+    }
+}
+.ncs-group {
+    &:before {
+        content: $ncs-group;
+    }
+}
+.ncs-users {
+    &:before {
+        content: $ncs-users;
+    }
+}
+.ncs-cloud {
+    &:before {
+        content: $ncs-cloud;
+    }
+}
+.ncs-copy {
+    &:before {
+        content: $ncs-copy;
+    }
+}
+.ncs-files-o {
+    &:before {
+        content: $ncs-files-o;
+    }
+}
+.ncs-floppy-o {
+    &:before {
+        content: $ncs-floppy-o;
+    }
+}
+.ncs-save {
+    &:before {
+        content: $ncs-save;
+    }
+}
+.ncs-pinterest {
+    &:before {
+        content: $ncs-pinterest;
+    }
+}
+.ncs-pinterest-square {
+    &:before {
+        content: $ncs-pinterest-square;
+    }
+}
+.ncs-google-plus-square {
+    &:before {
+        content: $ncs-google-plus-square;
+    }
+}
+.ncs-google-plus {
+    &:before {
+        content: $ncs-google-plus;
+    }
+}
+.ncs-caret-down {
+    &:before {
+        content: $ncs-caret-down;
+    }
+}
+.ncs-caret-up {
+    &:before {
+        content: $ncs-caret-up;
+    }
+}
+.ncs-caret-left {
+    &:before {
+        content: $ncs-caret-left;
+    }
+}
+.ncs-caret-right {
+    &:before {
+        content: $ncs-caret-right;
+    }
+}
+.ncs-linkedin {
+    &:before {
+        content: $ncs-linkedin;
+    }
+}
+.ncs-cloud-download {
+    &:before {
+        content: $ncs-cloud-download;
+    }
+}
+.ncs-cloud-upload {
+    &:before {
+        content: $ncs-cloud-upload;
+    }
+}
+.ncs-bell {
+    &:before {
+        content: $ncs-bell;
+    }
+}
+.ncs-desktop {
+    &:before {
+        content: $ncs-desktop;
+    }
+}
+.ncs-laptop {
+    &:before {
+        content: $ncs-laptop;
+    }
+}
+.ncs-tablet {
+    &:before {
+        content: $ncs-tablet;
+    }
+}
+.ncs-mobile {
+    &:before {
+        content: $ncs-mobile;
+    }
+}
+.ncs-mobile-phone {
+    &:before {
+        content: $ncs-mobile-phone;
+    }
+}
+.ncs-folder-o {
+    &:before {
+        content: $ncs-folder-o;
+    }
+}
+.ncs-folder-open-o {
+    &:before {
+        content: $ncs-folder-open-o;
+    }
+}
+.ncs-keyboard-o {
+    &:before {
+        content: $ncs-keyboard-o;
+    }
+}
+.ncs-chain-broken {
+    &:before {
+        content: $ncs-chain-broken;
+    }
+}
+.ncs-unlink {
+    &:before {
+        content: $ncs-unlink;
+    }
+}
+.ncs-html5 {
+    &:before {
+        content: $ncs-html5;
+    }
+}
+.ncs-css3 {
+    &:before {
+        content: $ncs-css3;
+    }
+}
+.ncs-eur {
+    &:before {
+        content: $ncs-eur;
+    }
+}
+.ncs-euro {
+    &:before {
+        content: $ncs-euro;
+    }
+}
+.ncs-gbp {
+    &:before {
+        content: $ncs-gbp;
+    }
+}
+.ncs-dollar {
+    &:before {
+        content: $ncs-dollar;
+    }
+}
+.ncs-usd {
+    &:before {
+        content: $ncs-usd;
+    }
+}
+.ncs-inr {
+    &:before {
+        content: $ncs-inr;
+    }
+}
+.ncs-rupee {
+    &:before {
+        content: $ncs-rupee;
+    }
+}
+.ncs-cny {
+    &:before {
+        content: $ncs-cny;
+    }
+}
+.ncs-jpy {
+    &:before {
+        content: $ncs-jpy;
+    }
+}
+.ncs-rmb {
+    &:before {
+        content: $ncs-rmb;
+    }
+}
+.ncs-yen {
+    &:before {
+        content: $ncs-yen;
+    }
+}
+.ncs-rouble {
+    &:before {
+        content: $ncs-rouble;
+    }
+}
+.ncs-rub {
+    &:before {
+        content: $ncs-rub;
+    }
+}
+.ncs-ruble {
+    &:before {
+        content: $ncs-ruble;
+    }
+}
+.ncs-krw {
+    &:before {
+        content: $ncs-krw;
+    }
+}
+.ncs-won {
+    &:before {
+        content: $ncs-won;
+    }
+}
+.ncs-bitcoin {
+    &:before {
+        content: $ncs-bitcoin;
+    }
+}
+.ncs-btc {
+    &:before {
+        content: $ncs-btc;
+    }
+}
+.ncs-sort-alpha-asc {
+    &:before {
+        content: $ncs-sort-alpha-asc;
+    }
+}
+.ncs-sort-alpha-desc {
+    &:before {
+        content: $ncs-sort-alpha-desc;
+    }
+}
+.ncs-sort-amount-asc {
+    &:before {
+        content: $ncs-sort-amount-asc;
+    }
+}
+.ncs-sort-amount-desc {
+    &:before {
+        content: $ncs-sort-amount-desc;
+    }
+}
+.ncs-sort-numeric-asc {
+    &:before {
+        content: $ncs-sort-numeric-asc;
+    }
+}
+.ncs-sort-numeric-desc {
+    &:before {
+        content: $ncs-sort-numeric-desc;
+    }
+}
+.ncs-youtube-play {
+    &:before {
+        content: $ncs-youtube-play;
+    }
+}
+.ncs-dropbox {
+    &:before {
+        content: $ncs-dropbox;
+    }
+}
+.ncs-apple {
+    &:before {
+        content: $ncs-apple;
+    }
+}
+.ncs-windows {
+    &:before {
+        content: $ncs-windows;
+    }
+}
+.ncs-android {
+    &:before {
+        content: $ncs-android;
+    }
+}
+.ncs-linux {
+    &:before {
+        content: $ncs-linux;
+    }
+}
+.ncs-skype {
+    &:before {
+        content: $ncs-skype;
+    }
+}
+.ncs-sun-o {
+    &:before {
+        content: $ncs-sun-o;
+    }
+}
+.ncs-moon-o {
+    &:before {
+        content: $ncs-moon-o;
+    }
+}
+.ncs-vk {
+    &:before {
+        content: $ncs-vk;
+    }
+}
+.ncs-vimeo-square {
+    &:before {
+        content: $ncs-vimeo-square;
+    }
+}
+.ncs-try {
+    &:before {
+        content: $ncs-try;
+    }
+}
+.ncs-turkish-lira {
+    &:before {
+        content: $ncs-turkish-lira;
+    }
+}
+.ncs-slack {
+    &:before {
+        content: $ncs-slack;
+    }
+}
+.ncs-wordpress {
+    &:before {
+        content: $ncs-wordpress;
+    }
+}
+.ncs-google {
+    &:before {
+        content: $ncs-google;
+    }
+}
+.ncs-reddit {
+    &:before {
+        content: $ncs-reddit;
+    }
+}
+.ncs-digg {
+    &:before {
+        content: $ncs-digg;
+    }
+}
+.ncs-pied-piper {
+    &:before {
+        content: $ncs-pied-piper;
+    }
+}
+.ncs-drupal {
+    &:before {
+        content: $ncs-drupal;
+    }
+}
+.ncs-joomla {
+    &:before {
+        content: $ncs-joomla;
+    }
+}
+.ncs-cube {
+    &:before {
+        content: $ncs-cube;
+    }
+}
+.ncs-cubes {
+    &:before {
+        content: $ncs-cubes;
+    }
+}
+.ncs-soundcloud {
+    &:before {
+        content: $ncs-soundcloud;
+    }
+}
+.ncs-database {
+    &:before {
+        content: $ncs-database;
+    }
+}
+.ncs-file-pdf-o {
+    &:before {
+        content: $ncs-file-pdf-o;
+    }
+}
+.ncs-file-word-o {
+    &:before {
+        content: $ncs-file-word-o;
+    }
+}
+.ncs-file-excel-o {
+    &:before {
+        content: $ncs-file-excel-o;
+    }
+}
+.ncs-file-powerpoint-o {
+    &:before {
+        content: $ncs-file-powerpoint-o;
+    }
+}
+.ncs-file-image-o {
+    &:before {
+        content: $ncs-file-image-o;
+    }
+}
+.ncs-file-photo-o {
+    &:before {
+        content: $ncs-file-photo-o;
+    }
+}
+.ncs-file-picture-o {
+    &:before {
+        content: $ncs-file-picture-o;
+    }
+}
+.ncs-file-archive-o {
+    &:before {
+        content: $ncs-file-archive-o;
+    }
+}
+.ncs-file-zip-o {
+    &:before {
+        content: $ncs-file-zip-o;
+    }
+}
+.ncs-file-audio-o {
+    &:before {
+        content: $ncs-file-audio-o;
+    }
+}
+.ncs-file-sound-o {
+    &:before {
+        content: $ncs-file-sound-o;
+    }
+}
+.ncs-file-movie-o {
+    &:before {
+        content: $ncs-file-movie-o;
+    }
+}
+.ncs-file-video-o {
+    &:before {
+        content: $ncs-file-video-o;
+    }
+}
+.ncs-file-code-o {
+    &:before {
+        content: $ncs-file-code-o;
+    }
+}
+.ncs-jsfiddle {
+    &:before {
+        content: $ncs-jsfiddle;
+    }
+}
+.ncs-area-chart {
+    &:before {
+        content: $ncs-area-chart;
+    }
+}
+.ncs-pie-chart {
+    &:before {
+        content: $ncs-pie-chart;
+    }
+}
+.ncs-line-chart {
+    &:before {
+        content: $ncs-line-chart;
+    }
+}
+.ncs-toggle-off {
+    &:before {
+        content: $ncs-toggle-off;
+    }
+}
+.ncs-toggle-on {
+    &:before {
+        content: $ncs-toggle-on;
+    }
+}
+.ncs-facebook-official {
+    &:before {
+        content: $ncs-facebook-official;
+    }
+}
+.ncs-pinterest-p {
+    &:before {
+        content: $ncs-pinterest-p;
+    }
+}
+.ncs-whatsapp {
+    &:before {
+        content: $ncs-whatsapp;
+    }
+}
+.ncs-user-plus {
+    &:before {
+        content: $ncs-user-plus;
+    }
+}
+.ncs-user-times {
+    &:before {
+        content: $ncs-user-times;
+    }
+}
+.ncs-y-combinator {
+    &:before {
+        content: $ncs-y-combinator;
+    }
+}
+.ncs-yc {
+    &:before {
+        content: $ncs-yc;
+    }
+}
+.ncs-trademark {
+    &:before {
+        content: $ncs-trademark;
+    }
+}
+.ncs-registered {
+    &:before {
+        content: $ncs-registered;
+    }
+}
+.ncs-creative-commons {
+    &:before {
+        content: $ncs-creative-commons;
+    }
+}
+.ncs-tripadvisor {
+    &:before {
+        content: $ncs-tripadvisor;
+    }
+}
+.ncs-wikipedia-w {
+    &:before {
+        content: $ncs-wikipedia-w;
+    }
+}
+.ncs-safari {
+    &:before {
+        content: $ncs-safari;
+    }
+}
+.ncs-chrome {
+    &:before {
+        content: $ncs-chrome;
+    }
+}
+.ncs-firefox {
+    &:before {
+        content: $ncs-firefox;
+    }
+}
+.ncs-opera {
+    &:before {
+        content: $ncs-opera;
+    }
+}
+.ncs-internet-explorer {
+    &:before {
+        content: $ncs-internet-explorer;
+    }
+}
+.ncs-television {
+    &:before {
+        content: $ncs-television;
+    }
+}
+.ncs-tv {
+    &:before {
+        content: $ncs-tv;
+    }
+}
+.ncs-amazon {
+    &:before {
+        content: $ncs-amazon;
+    }
+}
+.ncs-vimeo {
+    &:before {
+        content: $ncs-vimeo;
+    }
+}
+.ncs-reddit-alien {
+    &:before {
+        content: $ncs-reddit-alien;
+    }
+}
+.ncs-edge {
+    &:before {
+        content: $ncs-edge;
+    }
+}
+
