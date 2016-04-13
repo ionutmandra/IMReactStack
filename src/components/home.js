@@ -20,21 +20,8 @@ var Home = React.createClass({
 				{/* <Link to={"/admin"}>Authenticate</Link> */}
 			</div>
 		);
-	}
+	},
 });
 
-// now we connect the component to the Redux store:
-var mapStateToProps = function(state){
-	// This component will have access to `state.battlefield` through `this.props.battle`
-	return {battle:state.battlefield};
-};
 
-var mapDispatchToProps = function(dispatch){
-	return {
-		kill: function(killer,victim){ dispatch(actions.aimAt(killer,victim)); },
-		duck: function(coward){ dispatch(actions.duckDown(coward)); },
-		reset: function(){ dispatch(actions.reset()); }
-	}
-};
-
-module.exports = ReactRedux.connect(mapStateToProps,mapDispatchToProps)(Home);
+module.exports = ReactRedux.connect()(Home);

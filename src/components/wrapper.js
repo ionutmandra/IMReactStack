@@ -1,8 +1,3 @@
-/*
-This is our top-level component. Sub-components matching specific routes will be
-contained in `this.props.children` and rendered out.
-*/
-
 var Link = require("react-router").Link;
 var React = require('react');
 
