@@ -1,7 +1,6 @@
 var React = require("react"),
 ptypes = React.PropTypes,
-ReactRedux = require("react-redux"),
-Log = require("./log");	
+ReactRedux = require("react-redux");
 
 // var aboutDetails = React.createClass({
 // 	propTypes: {

@@ -8,7 +8,7 @@ module.exports = {
 		'blogsName': '/blogs/:name',
 		'admin': '/admin',
 		'adminHome': '/adminHome',
-        'lists':'/lists'
+        'lists':'/lists',
         'contact': '/contact',
 	},
 	'serverAuthorized': {

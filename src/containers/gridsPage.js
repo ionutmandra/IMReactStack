@@ -1,4 +1,4 @@
-import SimpleGrid from './simpleList';
+import SimpleGrid from '../components/simpleList';
 
 var React = require('react'),
     ptypes = React.PropTypes,

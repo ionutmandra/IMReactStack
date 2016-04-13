@@ -1,6 +1,5 @@
 import React, { PropTypes as ptypes} from 'react';
 import * as ReactRedux from 'react-redux';
-import Log from './log';
 import actions from '../actions';
 import _ from 'lodash';
 import {Link} from 'react-router';
