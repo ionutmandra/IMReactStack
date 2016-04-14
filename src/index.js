@@ -3,7 +3,6 @@ This is the entry point for the app! From here we merely import our routes defin
 then use React and React-DOM to render it.
 */
 
-import { hashHistory } from 'react-router'
 import { browserHistory  } from 'react-router'
 import * as actions from './actions'
 
@@ -19,7 +18,7 @@ ReactDOM.render(
 	<Provider store={store}>
 		<Router routes={routes} history={browserHistory} />
 	</Provider>,
-	document.getElementById("root")
+	document.getElementById('root')
 );
 
 let token = localStorage.getItem('token');

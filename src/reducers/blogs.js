@@ -5,7 +5,7 @@ module.exports = function(state,action){
 	var newstate = Object.assign({},state); // sloppily copying the old state here, so we never mutate it
 	switch(action.type){
 		case C.GET_BLOGS:
-		return initialState().blogs.blogList;
+		return initialState.blogs.blogList;
 		
 		case C.ADD_BLOG:
 		var index = newstate.blogList.length + 1;
@@ -24,6 +24,6 @@ module.exports = function(state,action){
 		newstate.blogList = action.data.blogList;
 		newstate.generalInfo = action.data.generalInfo;
 		return newstate;		
-		default: return state || initialState();
+		default: return state || initialState;
 	}
 };
