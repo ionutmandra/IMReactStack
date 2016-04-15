@@ -1,9 +1,7 @@
 import C from '../constants';
+import { lang as defaults } from './defaults';
 
 export default (state, action) => {
-    const defaults = {
-        current: 'en',
-    };
     let newState = Object.assign({}, defaults, state);
     
     switch (action.type) {

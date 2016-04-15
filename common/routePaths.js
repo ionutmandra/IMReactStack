@@ -10,6 +10,8 @@ module.exports = {
 		'adminHome': '/adminHome',
         'lists':'/lists',
         'contact': '/contact',
+		'projects': '/projects',
+		'projectDetails': '/projects/:key',
 	},
 	'serverAuthorized': {
 		//server routes which require authentication

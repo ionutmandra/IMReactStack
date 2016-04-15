@@ -20,7 +20,7 @@ var blogList = React.createClass({
 
 		//test business rules
 		var ok = rules.haveSameAuthor(p.blogState.blogList);
-		console.log('rules check ',ok);
+		//console.log('rules check ',ok);
 
 		var blogs = _.map(p.blogState.blogList,function(item){ 				
 			return <div key={item.id}>
