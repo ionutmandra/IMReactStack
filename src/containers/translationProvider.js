@@ -8,12 +8,12 @@ class TranslationProvider extends Component {
         };
     }
     render() {
-        return <div>{this.props.children}</div>;
+        return <div {...this.props}>{this.props.children}</div>;
     }
 }
 
 TranslationProvider.propTypes = {
-    children: PropTypes.object,
+    children: PropTypes.node,
 };
 
 TranslationProvider.childContextTypes = {

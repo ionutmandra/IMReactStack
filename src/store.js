@@ -9,6 +9,7 @@ var aboutReducer = require('./reducers/about'),
 import * as Redux from 'redux';
 import {reducer as formReducer} from 'redux-form';
 import langReducer from './reducers/lang';
+import projectsReducer from './reducers/projects';
 import initialState from './initialstate';
 
 initialState[authReducer.reducerName] = authReducer.initialState;
@@ -18,6 +19,7 @@ const rootReducer = Redux.combineReducers({
     blogs: blogsReducer,
     form: formReducer,
     lang: langReducer,
+    projects: projectsReducer,
     [authReducer.reducerName]: authReducer.createReducer,
 });
 

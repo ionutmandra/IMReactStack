@@ -6,31 +6,35 @@ var React = require('react'),
     ReactRouter = require('react-router'),
     Route = ReactRouter.Route,
     IndexRoute = ReactRouter.IndexRoute,
-    Home = require('./components/home'),
     AdminHome = require('./containers/adminHome'),
     AboutList = require('./containers/aboutList').component,
     BlogList = require('./containers/blogList'),
     BlogDetails = require('./components/blogDetails'),
     LoginComponent = require('./components/LoginComponent'),
 routePaths = require('../common/routePaths');
-import aboutDetails from  './components/aboutDetails';
+import AboutDetails from  './components/aboutDetails';
 import ContactPage from './components/contact';
 import {requireAuthentication} from './components/AuthenticatedComponent';
 import GridsPage from './containers/gridsPage';
-import Wrapper from './components/wrapper';
-import translate from './hoc/translation';
+import ProjectsList from './containers/projectsList';
+import ProjectDetails from './components/projectDetails';
+import Wrapper from './containers/wrapper';
+import Home from './components/home';
 
 module.exports = (
     <div className="root">
         <Route path={routePaths.client.root} component={Wrapper}>
             <IndexRoute component={Home} />
             <Route path={routePaths.client.about} component={AboutList}>
-                <Route path={routePaths.client.aboutName} component={translate('aboutDetails')(aboutDetails)} />
+                <Route path={routePaths.client.aboutName} component={AboutDetails} />
             </Route>
             <Route path={routePaths.client.blogs} component={BlogList}>
                 <Route path={routePaths.client.blogsName} component={BlogDetails} />
             </Route>
             <Route path={routePaths.client.contact} component={ContactPage} />
+            <Route path={routePaths.client.projects} component={ProjectsList}>
+                <Route path={routePaths.client.projectDetails} component={ProjectDetails} />
+            </Route>
         </Route>
         <Route path={routePaths.client.lists} component={GridsPage} />
         <div>
