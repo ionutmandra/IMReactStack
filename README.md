@@ -40,6 +40,7 @@ You can do one of the following:
   - uglify and minify source code
   - take off source maps
   - set process.env.NODE_ENV = 'production', so react code knows it's in production mode (https://facebook.github.io/react/downloads.html)
+  - run unit tests
  
 ### Have fun :)
 - open browser to localhost:8080 (or what the port says in the `nodemon` console)
