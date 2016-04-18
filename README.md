@@ -32,6 +32,14 @@ You can do one of the following:
 - open 2 consoles in `folder` and run:
 - `nodemon server` (console 1)
 - `gulp` (console 2)
+
+### Production
+- run `gulp deploy`. 
+  This will:
+  - minify css
+  - uglify and minify source code
+  - take off source maps
+  - set process.env.NODE_ENV = 'production', so react code knows it's in production mode (https://facebook.github.io/react/downloads.html)
  
 ### Have fun :)
 - open browser to localhost:8080 (or what the port says in the `nodemon` console)
