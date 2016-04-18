@@ -1,5 +1,5 @@
 /*
-This is the "sitemap" of our app! 
+This is the "sitemap" of our app!
 */
 
 var React = require('react'),
@@ -15,6 +15,7 @@ var React = require('react'),
 routePaths = require('../common/routePaths');
 import aboutDetails from  './components/aboutDetails';
 import ContactPage from './components/contact';
+import GalleryExample from './components/galleryExample';
 import {requireAuthentication} from './components/AuthenticatedComponent';
 import GridsPage from './containers/gridsPage';
 import Wrapper from './components/wrapper';
@@ -38,4 +39,5 @@ module.exports = (
             <Route path={routePaths.client.adminHome} component={requireAuthentication(AdminHome)} />
         </div>
     </div>
+  </div>
 );
