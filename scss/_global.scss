@@ -34,3 +34,8 @@ a.close-page {
         font-size: 36px;
     }
 }
+
+//TODO: move this rule to a more appropriate place
+.simple-list-row {
+    @extend .clearfix;
+}

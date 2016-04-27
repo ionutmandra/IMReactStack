@@ -62,23 +62,28 @@ function setApiRoutes(router){
     });
 }
 
-function setClientRoutes(router){
-	var routes = routePaths.client;
+function setClientRoutes(router, routes){
+	routes = routes || routePaths.client;
 
 	for (var r in routes) {
 		if (routes.hasOwnProperty(r)) {
-			router.all(routes[r], function (req, res) {
-				fs.readFile("../index.html", 'utf-8', function (error, data) {
-
-					winston.log('index html ', {timestamp: Date.now(), pid: process.pid});
-
-					res.sendFile(path.join(rootPath + '/index.html'));
-					//https://www.npmjs.com/package/serve-static
-				});
-			});
+			if (_.isString(routes[r])) {
+				router.all(routes[r], serveIndex);
+			}	
+			if (_.isObject(routes[r])) {
+				setClientRoutes(router, routes[r]);
+			}
 		}
 	}
-};
+	
+	function serveIndex(req, res) {
+		fs.readFile('../index.html', 'utf-8', function (error, data) {
+			winston.log('index html ', {timestamp: Date.now(), pid: process.pid});
+			res.sendFile(path.join(rootPath + '/index.html'));
+			//https://www.npmjs.com/package/serve-static
+		});
+	}
+}
 
 function setFileRoutes(app){
 	app.use('/dist', express.static(path.join(rootPath + '/dist')));
