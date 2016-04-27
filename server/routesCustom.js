@@ -46,29 +46,6 @@ function setApiRoutes(router){
 			});
 	});
 
-	router.get('/api/blogs', function(req, res) {
-
-		var membersRepo = new db.create('blogList');
-		var memberslInfo = new db.create('blogsInfo');
-
-		async.parallel([
-			function(cb) { membersRepo.find(cb) },
-			function(cb) { memberslInfo.find( cb) }
-			], function(err, dataResult) {
-				if (!err) {
-
-					var result = Object.assign({},
-						{blogList:dataResult[0].data},
-						{blogsInfo:dataResult[1].data});
-
-					res.json(result);
-				}
-				else{
-					res.json({Err:err});
-				}
-			});
-	});
-
 	router.get('/api/about', function(req, res) {
 		res.send('im the about page2!');
 	});
