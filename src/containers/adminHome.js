@@ -11,7 +11,7 @@ class AdminHome extends React.Component {
 
 	fetchData () {
 		let token = this.props.token;
-		this.props.fetchProtectedData(token);
+		this.props.fetchProtectedData(token); 
 	}
 
 	render () {
@@ -39,7 +39,8 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		fetchProtectedData: function(token){ 
 			dispatch(actions.editMembers(token)); },
-		}};
+		};
+	};
 
 
 

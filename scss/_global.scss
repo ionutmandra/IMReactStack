@@ -26,3 +26,11 @@ button, input[type=button] {
         text-shadow: 0 0 transparent;
     }
 }
+
+a.close-page {
+    text-decoration: none !important;
+    
+    i {
+        font-size: 36px;
+    }
+}

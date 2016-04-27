@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+import React, { PropTypes, Component } from 'react';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+const routePaths = require('../../common/routePaths');
 
 const stateToProps = state => ({
     items: state.projects.items,
@@ -8,17 +10,37 @@ const stateToProps = state => ({
 
 class ProjectDetails extends Component {
     render() {
-        const key = this.props.params.key,
+        const s = this.props.strings,
+            key = this.props.params.key,
             items = this.props.items,
             index = _.findIndex(items, i => i.key == key),
-            item = index >= 0 ? items[index] : null;
+            item = index >= 0 ? items[index] : null,
+            link = routePaths.client.projects;
 
         if (item != null) {
             return (<div className="project">
-                Project: <img src={item.img} />
+                <Link to={link} className="pull-xs-right close-page">
+                    <i className="ncs-close" />
+                </Link>
+                <img src={item.img} />
+                <h3>{item.name}</h3>
+                <ul>
+                    <li><a href={item.website} rel="external" target="_blank">{s.projectWebsite}</a></li>
+                    <li>{item.description}</li>
+                </ul>
             </div>);
         }
     }
 }
+
+ProjectDetails.propTypes = {
+    strings: PropTypes.object.isRequired,
+};
+
+ProjectDetails.defaultProps = {
+    strings: {
+        projectWebsite: 'Project Website (opens in new window)',
+    },
+};
 
 export default connect(stateToProps)(ProjectDetails);
