@@ -8,7 +8,8 @@ class HeaderLinks extends Component {
         return (<nav className="header-links">
             <ul>
                 <li><Link to={"/"}>{s.home}</Link></li>
-                <li><Link to={"/about"}>{s.about}</Link></li>
+                {/*<li><Link to={"/about"}>{s.about}</Link></li>*/}
+                <li><Link to={"/services"}>{s.services}</Link></li>
                 <li><Link to={"/projects"}>{s.projects}</Link></li>
                 <li><Link to={"/contact"}>{s.contact}</Link></li>
             </ul>
@@ -26,6 +27,7 @@ HeaderLinks.defaultProps = {
         about: 'About',
         projects: 'Projects',
         contact: 'Contact',
+        services: 'Services',
     },
 };
 

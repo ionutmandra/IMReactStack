@@ -9,6 +9,7 @@ module.exports = {
         'lists':'/lists',
         'contact': '/contact',
 		'projects': '/projects',
+		'services': '/services',
 		'projectDetails': '/projects/:key',
 	},
 	'serverAuthorized': {
