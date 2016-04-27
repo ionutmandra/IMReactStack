@@ -3,12 +3,6 @@ This file contains all constants in the app.
 */
 
 module.exports = {
-	// BLOGS
-	GET_BLOGS:'GET_BLOGS',
-	REMOVE_BLOG:'REMOVE_BLOG',
-	ADD_BLOG: 'ADD_BLOG',
-	INIT_BLOGS_LIST: 'INIT_BLOGS_LIST',
-
 	//ABOUT MEMBERS
 	GET_MEMBERS:'GET_MEMBERS',
 	REMOVE_MEMBER:'REMOVE_MEMBER',

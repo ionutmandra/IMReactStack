@@ -5,7 +5,6 @@ export default {
     HeaderLinks: {
         home: 'Home',
         about: 'About',
-        blogs: 'Blogs',
         projects: 'Projects',
         contact: 'Contact',
     },

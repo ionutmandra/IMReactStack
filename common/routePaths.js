@@ -4,8 +4,6 @@ module.exports = {
 		'root': '/',
 		'about': '/about',
 		'aboutName': '/about/:name',
-		'blogs': '/blogs',
-		'blogsName': '/blogs/:name',
 		'admin': '/admin',
 		'adminHome': '/adminHome',
         'lists':'/lists',

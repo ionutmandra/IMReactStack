@@ -8,8 +8,6 @@ var React = require('react'),
     IndexRoute = ReactRouter.IndexRoute,
     AdminHome = require('./containers/adminHome'),
     AboutList = require('./containers/aboutList').component,
-    BlogList = require('./containers/blogList'),
-    BlogDetails = require('./components/blogDetails'),
     LoginComponent = require('./components/LoginComponent'),
 routePaths = require('../common/routePaths');
 import AboutDetails from  './components/aboutDetails';
@@ -27,9 +25,6 @@ module.exports = (
             <IndexRoute component={Home} />
             <Route path={routePaths.client.about} component={AboutList}>
                 <Route path={routePaths.client.aboutName} component={AboutDetails} />
-            </Route>
-            <Route path={routePaths.client.blogs} component={BlogList}>
-                <Route path={routePaths.client.blogsName} component={BlogDetails} />
             </Route>
             <Route path={routePaths.client.contact} component={ContactPage} />
             <Route path={routePaths.client.projects} component={ProjectsList}>
