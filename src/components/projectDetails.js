@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import translate from '../hoc/translate';
 import _ from 'lodash';
 const routePaths = require('../../common/routePaths');
 
@@ -43,4 +44,4 @@ ProjectDetails.defaultProps = {
     },
 };
 
-export default connect(stateToProps)(ProjectDetails);
+export default connect(stateToProps)(translate('ProjectDetails')(ProjectDetails));

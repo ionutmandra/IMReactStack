@@ -29,7 +29,35 @@ const defaults = {
             },
         ],
     },
+    services: {
+        items: [
+            {
+                key: 'innovation',
+                name: 'Innovation',
+                icon: 'cog',
+                description: 'We boost startup recognition by creating unique, innovative apps!',
+            },
+            {
+                key: 'maintenance',
+                name: 'Maintenance',
+                icon: 'save',
+                description: 'We keep your project running at peak performance forever!',
+            },
+            {
+                key: 'consulting',
+                name: 'Consulting',
+                icon: 'comments',
+                description: 'Don\'t know how to make your dream idea come true? We do!',
+            },
+            {
+                key: 'cooking',
+                name: 'Cooking',
+                icon: 'pie-chart',
+                description: 'We\'ll slap you with the best pizza in town!',
+            },
+        ],
+    },
 };
 
 export default defaults;
-export let {lang, projects} = defaults;
+export let {lang, projects, services} = defaults;

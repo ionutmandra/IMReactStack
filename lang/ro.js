@@ -7,6 +7,7 @@ export default {
         about: 'Despre',
         projects: 'Proiecte',
         contact: 'Contact',
+        services: 'Servicii',
     },
     Footer: {
         copyright: '©2016 Adaptabi • Toate drepturile rezervate',
@@ -19,5 +20,11 @@ export default {
     },
     ProjectsList: {
         projects: 'Proiecte',
+    },
+    ProjectDetails: {
+        projectWebsite: 'Website-ul proiectului (se deschide in fereastra noua)',
+    },
+    Services: {
+        services: 'Servicii',
     },
 };

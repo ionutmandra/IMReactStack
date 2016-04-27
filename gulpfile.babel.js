@@ -51,7 +51,7 @@ gulp.task('icomoon-fonts', function() {
     .pipe(gulp.dest('./dist/fonts'));
 });
 
-const scssPaths = ['./lib/**/*.scss', './scss/**/*.scss'];
+const scssPaths = ['./lib/**/*.scss', './scss/**/*.scss', './src/**/*.scss'];
 gulp.task('sass', function() {
   gulp.src(scssPaths)
     .pipe(sourcemaps.init())
@@ -64,7 +64,7 @@ gulp.task('app-sass', function(callback){
   runSequence('icomoon-variables','icomoon-fonts', 'sass', callback);
 });
 
-const scssPathsToWatch  = ['./lib/**/*.scss', './scss/**/*.scss','./icomoon/*'];
+const scssPathsToWatch  = ['./lib/**/*.scss', './scss/**/*.scss', './src/**/*.scss', './icomoon/*'];
 gulp.task('default', ['watchify', 'app-sass'], function() {
   gulp.watch(scssPathsToWatch, ['app-sass']);
 });
