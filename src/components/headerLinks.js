@@ -9,7 +9,6 @@ class HeaderLinks extends Component {
             <ul>
                 <li><Link to={"/"}>{s.home}</Link></li>
                 <li><Link to={"/about"}>{s.about}</Link></li>
-                <li><Link to={"/blogs"}>{s.blogs}</Link></li>
                 <li><Link to={"/projects"}>{s.projects}</Link></li>
                 <li><Link to={"/contact"}>{s.contact}</Link></li>
             </ul>
@@ -25,7 +24,6 @@ HeaderLinks.defaultProps = {
     strings: {
         home: 'Home',
         about: 'About',
-        blogs: 'Blogs',
         projects: 'Projects',
         contact: 'Contact',
     },

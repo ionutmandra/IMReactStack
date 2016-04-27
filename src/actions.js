@@ -31,23 +31,6 @@ module.exports = {
                 .then(json => dispatch({ type: C.INIT_MEMBERS_LIST, data: json }));
         };
     },
-    addBlog: function(blog) {
-        return function(dispatch, getState) {
-            dispatch({ type: C.ADD_BLOG, blog: blog });
-        };
-    },
-    removeBlog: function(blog) {
-        return function(dispatch, getState) {
-            dispatch({ type: C.REMOVE_BLOG, blog: blog });
-        };
-    },
-    getInitialBlogs: function() {
-        return function(dispatch, getState) {
-            return fetch('http://localhost:8080/api/blogs')
-                .then(response => response.json())
-                .then(json => dispatch({ type: C.INIT_BLOGS_LIST, data: json }));
-        };
-    },
     changeLanguage: function(language) {
         return function(dispatch, getState) {
             dispatch({ type: C.CHANGE_LANGUAGE, language: language });

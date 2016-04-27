@@ -15,22 +15,6 @@ var db = {
     email: 'marusciac@tudrel.com',
     id: 3
   }],
-  blogsInfo: {
-    description: 'blogs main description'
-  },
-  blogList: [{
-    name: 'blog1',
-    email: 'ionut@ionut.com',
-    id: 1
-  }, {
-    name: 'blog2',
-    email: 'tudrel@tudrel.com',
-    id: 2
-  }, {
-    name: 'blog3',
-    email: 'marusciac@tudrel.com',
-    id: 3
-  }],
   users: [{}, {}]
 };
 
