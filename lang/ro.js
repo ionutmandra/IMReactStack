@@ -8,6 +8,7 @@ export default {
         projects: 'Proiecte',
         contact: 'Contact',
         services: 'Servicii',
+        team: 'Echipa',
     },
     Footer: {
         copyright: '©2016 Adaptabi • Toate drepturile rezervate',
@@ -26,5 +27,14 @@ export default {
     },
     Services: {
         services: 'Servicii',
+    },
+    Team: {
+        team: 'Echipa',
+        culture: 'Cultura',
+        members: 'Membri',
+        gallery: 'Galerie',
+    },
+    Members: {
+        members: 'Memberi',
     },
 };

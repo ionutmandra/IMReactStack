@@ -8,6 +8,7 @@ export default {
         projects: 'Projects',
         contact: 'Contact',
         services: 'Services',
+        team: 'Team',
     },
     Footer: {
         copyright: '©2016 Adaptabi • All rights reserved',
@@ -26,5 +27,14 @@ export default {
     },
     Services: {
         services: 'Services',
+    },
+    Team: {
+        team: 'Team',
+        culture: 'Culture',
+        members: 'Members',
+        gallery: 'Gallery',
+    },
+    Members: {
+        members: 'Members',
     },
 };

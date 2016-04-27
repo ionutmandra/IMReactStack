@@ -57,7 +57,44 @@ const defaults = {
             },
         ],
     },
+    team: {
+        culture: 'Lorem ipsum organizational culture text',
+        members: [
+            {
+                key: 'ionut',
+                name: 'Ionut Mandra',
+                img: '/res/img/projects/safetybank.png',
+                position: 'Developer',
+            },
+            {
+                key: 'marius',
+                name: 'Mihai-Marius Baciu',
+                img: '/res/img/projects/safetybank.png',
+                position: 'Developer',
+            },
+            {
+                key: 'teodor',
+                name: 'Teodor Sandu',
+                img: '/res/img/projects/safetybank.png',
+                position: 'Developer',
+            },
+        ],
+        gallery: [
+            {
+                key: '1',
+                img: '/res/img/projects/adaptabi.png',
+            },
+            {
+                key: '2',
+                img: '/res/img/projects/safetybank.png',
+            },
+            {
+                key: '3',
+                img: '/res/img/projects/squires.png',
+            },
+        ],
+    },
 };
 
 export default defaults;
-export let {lang, projects, services} = defaults;
+export let {lang, projects, services, team} = defaults;

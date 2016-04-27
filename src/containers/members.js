@@ -1,35 +1,30 @@
 import SimpleGrid from '../components/simpleList';
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import translate from '../hoc/translate';
 const routePaths = require('../../common/routePaths');
 
 const stateToProps = state => ({
-    items: state.projects.items,
+    items: state.team.members,
 });
 
-// const actionsToProps = dispatch => ({
-//     handleChange: event => dispatch(changeLanguage(event.target.value)),
-// });
-
-class ProjectsList extends Component {
+class Members extends Component {
 
     renderRow(item) {
-        let link = routePaths.client.projectDetails.replace(':key', item.key);
-        return (<Link to={link} className="project clearfix" activeClassName="active">
+        let link = routePaths.client.team.memberDetails.replace(':key', item.key);
+        return (<Link to={link} className="member clearfix" activeClassName="active">
             <img src={item.img} className="pull-xs-left m-r-1" />
             <h4>{item.name} <i className="ncs-caret-right" /></h4>
-            <span className="font-italic">{item.description}</span>
+            <span className="font-italic">{item.position}</span>
         </Link>);
     }
 
     render() {
-        var p = this.props, s = p.strings;
+        var p = this.props;
         let columns = this.props.children ? 6 : 12;
         return (
-            <div className="projects-list">
-                <h1>{s.projects}</h1>
+            <div className="members-list">
                 <div className="row">
                     <div className={'col-sm-' + columns}>
                         <SimpleGrid
@@ -49,14 +44,4 @@ class ProjectsList extends Component {
     }
 }
 
-ProjectsList.propTypes = {
-    strings: PropTypes.object.isRequired,
-};
-
-ProjectsList.defaultProps = {
-    strings: {
-        projects: 'Projects',
-    },
-};
-
-export default connect(stateToProps)(translate('ProjectsList')(ProjectsList));
+export default connect(stateToProps)(translate('Members')(Members));
