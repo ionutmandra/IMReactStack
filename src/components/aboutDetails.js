@@ -1,41 +1,21 @@
-var React = require("react"),
-ptypes = React.PropTypes,
-ReactRedux = require("react-redux");
-
-// var aboutDetails = React.createClass({
-// 	propTypes: {
-// 		params: ptypes.shape({name:ptypes.string.isRequired}).isRequired,
-// 	},
-// 	render: function(){		
-// 		var p = this.props.params;		
-
-// 		return (
-// 			<div>
-// 			Details for	{p.name}
-// 			</div>
-// 			);
-// 	}
-// });
-
-// module.exports = aboutDetails;//ReactRedux.connect()(aboutDetails);
-
-//EQUIVALENTS
+import React, { PropTypes } from 'react';
 
 class aboutDetails extends React.Component {
-	
-
-	render() {
-		var p = this.props.params;	
-		return (
-			<div>
-			Details for	{p.name}
-			</div>
-			)
-	}
+    render() {
+        const name = this.props.strings.detailsFor(this.props.params.name);
+        return <div>{name}</div>;
+    }
 }
 
 aboutDetails.propTypes = {
-	params: ptypes.shape({name:ptypes.string.isRequired}).isRequired,
-}
+    params: PropTypes.shape({ name: PropTypes.string.isRequired }).isRequired,
+    strings: PropTypes.object.isRequired,
+};
 
-export default aboutDetails
+aboutDetails.defaultProps = {
+    strings: {
+        detailsFor: name => 'Details for ' + name,
+    },
+};
+
+export default aboutDetails;

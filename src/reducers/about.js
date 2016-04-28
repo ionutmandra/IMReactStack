@@ -10,7 +10,7 @@ module.exports = function(state,action){
 	var newstate = Object.assign({},state); // sloppily copying the old state here, so we never mutate it
 	switch(action.type){
 		case C.GET_MEMBERS:
-		return initialState().about.members;
+		return initialState.about.members;
 		
 		case C.ADD_MEMBER:
 		var index = newstate.members.length + 1;
@@ -29,6 +29,6 @@ module.exports = function(state,action){
 		newstate.members = action.data.members;
 		newstate.membersInfo = action.data.membersInfo;
 		return newstate;		
-		default: return state || initialState();
+		default: return state || initialState;
 	}
 };
