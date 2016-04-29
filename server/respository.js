@@ -1,63 +1,84 @@
 var db = {
-  membersInfo: {
-    description: 'fuisabfiusabfasui'
-  },
-  members: [{
-    name: 'ionut',
-    email: 'ionut@ionut.com',
-    id: 1
-  }, {
-    name: 'tudrel',
-    email: 'tudrel@tudrel.com',
-    id: 2
-  }, {
-    name: 'marusica',
-    email: 'marusciac@tudrel.com',
-    id: 3
-  }],
-  blogsInfo: {
-    description: 'blogs main description'
-  },
-  blogList: [{
-    name: 'blog1',
-    email: 'ionut@ionut.com',
-    id: 1
-  }, {
-    name: 'blog2',
-    email: 'tudrel@tudrel.com',
-    id: 2
-  }, {
-    name: 'blog3',
-    email: 'marusciac@tudrel.com',
-    id: 3
-  }],
-  users: [{}, {}]
+    membersInfo: {
+        description: 'fuisabfiusabfasui'
+    },
+    members: [{
+        name: 'ionut',
+        email: 'ionut@ionut.com',
+        id: 1
+    }, {
+        name: 'tudrel',
+        email: 'tudrel@tudrel.com',
+        id: 2
+    }, {
+        name: 'marusica',
+        email: 'marusciac@tudrel.com',
+        id: 3
+    }],
+    blogsInfo: {
+        description: 'blogs main description'
+    },
+    blogList: [{
+        name: 'blog1',
+        email: 'ionut@ionut.com',
+        id: 1
+    }, {
+        name: 'blog2',
+        email: 'tudrel@tudrel.com',
+        id: 2
+    }, {
+        name: 'blog3',
+        email: 'marusciac@tudrel.com',
+        id: 3
+    }],
+    users: [{}, {}]
 };
 
-var neo4j = require('neo4j');
-var neo4jDb = new neo4j.GraphDatabase('http://neo4j:123@localhost:7474');
+var MongoClient = require('mongodb').MongoClient;
+var url = 'mongodb://localhost:27017/companysite';
+
+var findUsers = function(args) {
+    var con = MongoClient.connect(url, function(err, db) {
+        if (err == null) {
+
+            db.collection('users').find().toArray(function(err, allUsers) {
+                console.log(allUsers);
+                args.callback && args.callback(null, {
+                    data: allUsers
+                });
+                db.close();
+            });
+        }
+    });
+}
+
+var insertContactDetailsInDB = function(details) {
+    var con = MongoClient.connect(url, function(err, db) {
+        if (err == null) {
+            var colection = db.collection('contacts');
+            colection.insert(details);
+        }
+    });
+}
 
 module.exports = {
-  create: function(repo) {
-    return {
-      repoName: repo,
-      find: function(callback) {
-        callback(null, {
-          data: db[this.repoName]
+    create: function(repo) {
+        return {
+            repoName: repo,
+            find: function(callback) {
+                callback(null, {
+                    data: db[this.repoName]
+                });
+            }
+        };
+    },
+    getAllUsers: function(callback) {
+        findUsers({
+            data: {},
+            callback: callback
         });
-      }
-    };
-  },
-  getAllUsers: function(callback) {
-    neo4jDb.cypher({
-      query: 'MATCH (user:User) RETURN user.username as name, user.email as email, id(user) as id',
-      params: {
-        email: '',
-      },
-    }, function(err, results) {
-      callback(err, {
-        data: results
-      });
-    });
-  },
+    },
+    insertContactDetails: function(details) {
+        insertContactDetailsInDB(details);
+    },
 };

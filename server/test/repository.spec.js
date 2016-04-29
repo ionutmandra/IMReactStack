@@ -15,7 +15,7 @@ describe('When using dummy repo', function () {
 
     it('should result in some result', function () {
         var result = 0;
-        sut.find(function(err,data){        	
+        sut.find(function(err,data){
         	result = data.data;
         });
         expect(result.length).equal(3);

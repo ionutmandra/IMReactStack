@@ -13,11 +13,6 @@ import change from 'gulp-change';
 import rename from 'gulp-rename';
 import runSequence from 'run-sequence';
 
-
-
-
-
-
 const opts = Object.assign({}, watchify.args, {
   entries: 'src/index.js',
   debug: true,
