@@ -17,7 +17,7 @@ class AdminHome extends React.Component {
 	render () {
 		return (
 			<div>
-			
+
 		{/* {this.props.isFetching === true? <h1>Loading data...</h1>: */}
 		<div>
 		<h1>Welcome back,
@@ -37,7 +37,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		fetchProtectedData: function(token){ 
+		fetchProtectedData: function(token){
 			dispatch(actions.editMembers(token)); },
 		}};
 

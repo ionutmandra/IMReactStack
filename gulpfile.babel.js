@@ -13,11 +13,6 @@ import change from 'gulp-change';
 import rename from 'gulp-rename';
 import runSequence from 'run-sequence';
 
-
-
-
-
-
 const opts = Object.assign({}, watchify.args, {
   entries: 'src/index.js',
   debug: true,
@@ -62,6 +57,30 @@ gulp.task('sass', function() {
 
 gulp.task('app-sass', function(callback){
   runSequence('icomoon-variables','icomoon-fonts', 'sass', callback);
+});
+
+const imagePaths = ['./img/**'];
+gulp.task('move-image-files', (callback) => {
+    gulp.src(imagePaths)
+    .pipe(gulp.dest('./dist/img'))
+});
+
+// Due to photoswipe css we will add the needed images near the css
+const photoSwipeimagePaths = ['./lib/default-skin.png', './lib/preloader.gif'];
+gulp.task('move-photoswipe-files', (callback) => {
+    gulp.src(photoSwipeimagePaths)
+    .pipe(gulp.dest('./dist/css'))
+});
+
+
+const libCssToTransform = ['./node_modules/react-photoswipe/dist/*.css'];
+gulp.task('test', (callback) => {
+    gulp.src(libCssToTransform)
+    .pipe(rename((path) => {
+        path.basename = '_' +  path.basename;
+        path.extname = '.scss';
+    }))
+    .pipe(gulp.dest('./lib/test'))
 });
 
 const scssPathsToWatch  = ['./lib/**/*.scss', './scss/**/*.scss','./icomoon/*'];

@@ -76,14 +76,14 @@ function setApiRoutes(router){
 	router.get('/api/hello/:name', function(req, res) {
 		res.send('hello ' + req.params.name + '!');
 	});
-    
+
     router.post('/api/contact', function(req, res) {
-        var errors = validators.contact(req.body), 
+        var errors = validators.contact(req.body),
             success = _.isEmpty(errors);
-        
+
         //TODO: save contact request in db
-        
-        res.send({success, errors}); 
+
+        res.send({success, errors});
     });
 }
 
@@ -100,7 +100,7 @@ function setClientRoutes(router){
 					res.sendFile(path.join(rootPath + '/index.html'));
 					//https://www.npmjs.com/package/serve-static
 				});
-			});	
+			});
 		}
 	}
 };
@@ -111,7 +111,7 @@ function setFileRoutes(app){
 };
 
 function setAdminRoutes(router){
-	router.get(routePaths.serverAuthorized.apiEditMembers, function(req, res) {			
+	router.get(routePaths.serverAuthorized.apiEditMembers, function(req, res) {
 
 		var initialState = {
 			generalInfo:{description: 'fuisabfiusabfasui'},
@@ -131,11 +131,11 @@ function catch404(router){
 				next();
 				return;
 			}
-		}		
-		res.status(404).send({ 
-			success: false, 
+		}
+		res.status(404).send({
+			success: false,
 			message: '404 Not found',
-		});		
+		});
 	});
 }
 

@@ -6,11 +6,11 @@ import {Link} from 'react-router';
 
 var aboutList = React.createClass({
 	propTypes: {
-		aboutState: ptypes.shape({ 
+		aboutState: ptypes.shape({
 			members: ptypes.array,
 			membersInfo: ptypes.object.isRequired,
 		}).isRequired,
-		
+
 		addMember: ptypes.func.isRequired,
 		removeMember: ptypes.func.isRequired,
 	},
@@ -22,7 +22,7 @@ var aboutList = React.createClass({
 	},
 	render: function() {
 		const p = this.props;
-		const members = _.map(p.aboutState.members, function(item) { 
+		const members = _.map(p.aboutState.members, function(item) {
 			return (
                 <div key={item.id}>
                     {item.name}
@@ -34,35 +34,35 @@ var aboutList = React.createClass({
 
 		return (
 			<div>
-				{members}				
+				{members}
 				<div className="memberAdd">
 					<input type="text" onChange={this.handleChange}/>
                     <input type="button" value="AddItem" onClick={p.addMember.bind(this)} />
 				</div>
-				<div className="memberDetails">				
+				<div className="memberDetails">
 					{this.props.children}
-				</div>				
+				</div>
 			</div>
 		);
 	},
 });
 
-var mapStateToProps = function(state) {		
+var mapStateToProps = function(state) {
 	return {
-		aboutState: state.about,	
+		aboutState: state.about,
 	};
 };
 
 var mapDispatchToProps = function(dispatch) {
 	return {
-		addMember: function(member) { 
-			dispatch(actions.addMember(this.state.newItemText)); 
+		addMember: function(member) {
+			dispatch(actions.addMember(this.state.newItemText));
         },
-		removeMember: function(member) { 			
-			dispatch(actions.removeMember(member)); 
+		removeMember: function(member) {
+			dispatch(actions.removeMember(member));
         },
-		getInitialMembers:function() { 			
-			dispatch(actions.getInitialMembers()); 
+		getInitialMembers:function() {
+			dispatch(actions.getInitialMembers());
         },
 	};
 };
