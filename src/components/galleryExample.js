@@ -7,25 +7,27 @@ class GalleryExample extends React.Component {
     super();
   }
   render() {
-    let items = [{
-      src: '/dist/img/gallery/1.jpg',
-      thumbnail: '/dist/img/gallery/1.jpg',
-      w: 1200,
-      h: 900,
-      title: 'Image 1'
-    }, {
-      src: '/dist/img/gallery/2.jpg',
-      thumbnail: '/dist/img/gallery/2.jpg',
-      w: 1200,
-      h: 900,
-      title: 'Image 2'
-    }, {
-      src: '/dist/img/gallery/3.jpg',
-      thumbnail: '/dist/img/gallery/3.jpg',
-      w: 1200,
-      h: 900,
-      title: 'Image 2'
-    }, ];
+    let items = [
+    //   {
+    //   src: '/dist/img/gallery/1.jpg',
+    //   thumbnail: '/dist/img/gallery/1.jpg',
+    //   w: 1200,
+    //   h: 900,
+    //   title: 'Image 1'
+    // }, {
+    //   src: '/dist/img/gallery/2.jpg',
+    //   thumbnail: '/dist/img/gallery/2.jpg',
+    //   w: 1200,
+    //   h: 900,
+    //   title: 'Image 2'
+    // }, {
+    //   src: '/dist/img/gallery/3.jpg',
+    //   thumbnail: '/dist/img/gallery/3.jpg',
+    //   w: 1200,
+    //   h: 900,
+    //   title: 'Image 2'
+    // },
+  ];
 
     let options = {
       //http://photoswipe.com/documentation/options.html

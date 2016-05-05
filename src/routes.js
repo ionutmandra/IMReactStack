@@ -32,6 +32,7 @@ module.exports = (
                 <Route path={routePaths.client.blogsName} component={BlogDetails} />
             </Route>
             <Route path={routePaths.client.contact} component={ContactPage} />
+            <Route path={routePaths.client.gallery} component={GalleryExample} />
         </Route>
         <Route path={routePaths.client.lists} component={GridsPage} />
         <div>
@@ -39,5 +40,4 @@ module.exports = (
             <Route path={routePaths.client.adminHome} component={requireAuthentication(AdminHome)} />
         </div>
     </div>
-  </div>
 );
