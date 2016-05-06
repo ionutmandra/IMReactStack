@@ -60,12 +60,12 @@ function setApiRoutes(router){
 				db.insertContactDetails(req.body);
         res.send({success, errors});
     });
-	
+
 	//init
 	router.get('/api/initUsers', function(req, res) {		
 		db.initUsers();
 	});
-	
+
 }
 
 function setClientRoutes(router, routes){

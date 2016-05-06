@@ -8,7 +8,7 @@ import * as actions from './actions'
 
 var React = require('react'),
 	ReactDOM = require('react-dom'),
-	Router = require('react-router').Router,	
+	Router = require('react-router').Router,
 	Provider = require('react-redux').Provider,
 	store = require('./store'),
 	routes = require('./routes');
