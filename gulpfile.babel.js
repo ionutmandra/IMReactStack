@@ -66,7 +66,7 @@ gulp.task('move-image-files', (callback) => {
 });
 
 // Due to photoswipe css we will add the needed images near the css
-const photoSwipeimagePaths = ['./lib/default-skin.png', './lib/preloader.gif'];
+const photoSwipeimagePaths = ['./lib/photoswipe/default-skin.png', './lib/photoswipe/preloader.gif'];
 gulp.task('move-photoswipe-files', (callback) => {
     gulp.src(photoSwipeimagePaths)
     .pipe(gulp.dest('./dist/css'))
