@@ -8,6 +8,7 @@ module.exports = {
 		'adminHome': '/adminHome',
         'lists':'/lists',
         'contact': '/contact',
+		'gallery': '/galleryExample',
 		'projects': '/projects',
 		'services': '/services',
 		'projectDetails': '/projects/:key',

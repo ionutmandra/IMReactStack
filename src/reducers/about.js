@@ -11,24 +11,24 @@ module.exports = function(state,action){
 	switch(action.type){
 		case C.GET_MEMBERS:
 		return initialState.about.members;
-		
+
 		case C.ADD_MEMBER:
 		var index = newstate.members.length + 1;
 		//new obj in memory
-		newstate.members = state.members.concat({name:action.member,email:'c@c.com',id:index});		
+		newstate.members = state.members.concat({name:action.member,email:'c@c.com',id:index});
 		return newstate;
-		
-		case C.REMOVE_MEMBER:					
-		var index = state.members.map(function(x) {return x.id; }).indexOf(action.member);			
+
+		case C.REMOVE_MEMBER:
+		var index = state.members.map(function(x) {return x.id; }).indexOf(action.member);
 		newstate.members = state.members
 		.slice(0, index)
 		.concat(state.members.slice(index+1));
 		return newstate;
-		
-		case C.INIT_MEMBERS_LIST:			
+
+		case C.INIT_MEMBERS_LIST:
 		newstate.members = action.data.members;
 		newstate.membersInfo = action.data.membersInfo;
-		return newstate;		
+		return newstate;
 		default: return state || initialState;
 	}
 };
