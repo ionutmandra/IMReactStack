@@ -1,21 +1,21 @@
 import React, { PropTypes, Component } from 'react';
 import translate from '../hoc/translate';
 
-class Home extends Component {
+class Footer extends Component {
     render() {
         const s = this.props.strings;
-        return <div>{s.welcome}</div>;
+        return <footer className="site-footer">{s.copyright}</footer>;
     }
 }
 
-Home.propTypes = {
+Footer.propTypes = {
     strings: PropTypes.object.isRequired,
 };
 
-Home.defaultProps = {
+Footer.defaultProps = {
     strings: {
-        welcome: 'WELCOME MESSAGE',
+        copyright: 'COPYRIGHT TEXT',
     },
 };
 
-export default translate('Home')(Home);
+export default translate('Footer')(Footer);

@@ -3,21 +3,25 @@ This file defines the main Redux Store. It will be required by all 'smart' compo
 */
 
 var aboutReducer = require('./reducers/about'),
-    blogsReducer = require('./reducers/blogs'),
     authReducer = require('./reducers/auth'),
     thunk = require('redux-thunk'); // allows us to use asynchronous actions
 import * as Redux from 'redux';
 import {reducer as formReducer} from 'redux-form';
 import langReducer from './reducers/lang';
+import projectsReducer from './reducers/projects';
+import servicesReducer from './reducers/services';
+import teamReducer from './reducers/team';
 import initialState from './initialstate';
 
 initialState[authReducer.reducerName] = authReducer.initialState;
 
 const rootReducer = Redux.combineReducers({
     about: aboutReducer,// about will operate on appState.about,
-    blogs: blogsReducer,
     form: formReducer,
     lang: langReducer,
+    projects: projectsReducer,
+    services: servicesReducer,
+    team: teamReducer,
     [authReducer.reducerName]: authReducer.createReducer,
 });
 

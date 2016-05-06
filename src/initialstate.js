@@ -14,8 +14,4 @@ export default {
         membersInfo: { description: 'about description' },
         members: [],
     },
-    blogs: {
-        blogsInfo: { description: 'blogs description' },
-        blogList: [],
-    },
 };

@@ -1,8 +1,8 @@
 import React from 'react';
 import en from '../../lang/en';
-import fr from '../../lang/fr';
+import ro from '../../lang/ro';
 
-const languages = { en, fr };
+const languages = { en, ro };
 
 export default function translate(key) {
     return Component => {

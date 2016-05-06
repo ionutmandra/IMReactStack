@@ -1,6 +1,7 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
+import translate from '../hoc/translate';
 
-class aboutDetails extends React.Component {
+class aboutDetails extends Component {
     render() {
         const name = this.props.strings.detailsFor(this.props.params.name);
         return <div>{name}</div>;
@@ -18,4 +19,4 @@ aboutDetails.defaultProps = {
     },
 };
 
-export default aboutDetails;
+export default translate('aboutDetails')(aboutDetails);

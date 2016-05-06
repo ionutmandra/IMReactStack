@@ -67,9 +67,9 @@ class GridsPage extends React.Component {
                         drawHead={this.headerDrawer}
                         drawFooter={this.drawFooter}
                         numberOfCellsPerRow = {2}                        
-                        useShowMore = {true}
+                        useShowMore
                         onShowMore={this.onShowMore.bind(this)}
-                        usePagination = {true} 
+                        usePagination 
                         onPaginationClick = {this.onPaginationClick.bind(this)}
                         />
                 </div>

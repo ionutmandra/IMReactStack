@@ -1,4 +1,4 @@
 [
-    { "value": "en", "iso": "en", "name": "English", "englishName": "English" },
-    { "value": "fr", "iso": "fr", "name": "Français", "englishName": "French" }
+    { "value": "en", "iso": "en", "name": "English" },
+    { "value": "ro", "iso": "ro", "name": "Română" }
 ]

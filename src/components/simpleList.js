@@ -21,8 +21,8 @@ class SimpleList extends React.Component {
 
         var p = this.props;
 
-        var cells = _.map(p.data, function(item) {
-            return <span key={item.id}>{p.renderRow(item) }</span>;
+        var cells = _.map(p.data, function(item, index) {
+            return <span key={index}>{p.renderRow(item) }</span>;
         }, this);
 
         var rows = [];
@@ -44,7 +44,7 @@ class SimpleList extends React.Component {
         }
 
         var drawRows = _.map(rows, function(row, index) {
-            return (<div key={index} className="sample-list-row">
+            return (<div key={index} className="list-group-item simple-list-row">
                 {row}
             </div>);
         }, this);
@@ -78,7 +78,7 @@ class SimpleList extends React.Component {
                 <div className="simple-list-header">
                     {p.drawHead() }
                 </div>
-                <div className="simple-list-container">
+                <div className="list-group simple-list-container">
                     {this.drawRows() }
                 </div>
                 <div className="simple-list-foooter">

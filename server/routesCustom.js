@@ -46,29 +46,6 @@ function setApiRoutes(router){
 			});
 	});
 
-	router.get('/api/blogs', function(req, res) {
-
-		var membersRepo = new db.create('blogList');
-		var memberslInfo = new db.create('blogsInfo');
-
-		async.parallel([
-			function(cb) { membersRepo.find(cb) },
-			function(cb) { memberslInfo.find( cb) }
-			], function(err, dataResult) {
-				if (!err) {
-
-					var result = Object.assign({},
-						{blogList:dataResult[0].data},
-						{blogsInfo:dataResult[1].data});
-
-					res.json(result);
-				}
-				else{
-					res.json({Err:err});
-				}
-			});
-	});
-
 	router.get('/api/about', function(req, res) {
 		res.send('im the about page2!');
 	});
@@ -91,23 +68,28 @@ function setApiRoutes(router){
 	
 }
 
-function setClientRoutes(router){
-	var routes = routePaths.client;
+function setClientRoutes(router, routes){
+	routes = routes || routePaths.client;
 
 	for (var r in routes) {
 		if (routes.hasOwnProperty(r)) {
-			router.all(routes[r], function (req, res) {
-				fs.readFile("../index.html", 'utf-8', function (error, data) {
-
-					winston.log('index html ', {timestamp: Date.now(), pid: process.pid});
-
-					res.sendFile(path.join(rootPath + '/index.html'));
-					//https://www.npmjs.com/package/serve-static
-				});
-			});
+			if (_.isString(routes[r])) {
+				router.all(routes[r], serveIndex);
+			}	
+			if (_.isObject(routes[r])) {
+				setClientRoutes(router, routes[r]);
+			}
 		}
 	}
-};
+	
+	function serveIndex(req, res) {
+		fs.readFile('../index.html', 'utf-8', function (error, data) {
+			winston.log('index html ', {timestamp: Date.now(), pid: process.pid});
+			res.sendFile(path.join(rootPath + '/index.html'));
+			//https://www.npmjs.com/package/serve-static
+		});
+	}
+}
 
 function setFileRoutes(app){
 	app.use('/dist', express.static(path.join(rootPath + '/dist')));

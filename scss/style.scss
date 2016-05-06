@@ -1,10 +1,19 @@
-@import "../lib/bootstrap/scss/bootstrap";
-@import "../icomoon/style.scss";
+//Framework
+@import "../lib/bootstrap/scss/bootstrap"; //v4
+@import "../icomoon/style.scss"; //icons font
 
-.loginCtainer {
-	background-color: black;
-}
+//Site-specific vars & mixins
+@import "./variables";
+@import "./mixins";
 
-.simple-list-header{
-    cursor: pointer;
-}
+//Site layout, globals and containers 
+@import "./global";
+@import "./layout";
+@import "../src/containers/header";
+@import "../src/containers/footer";
+@import "../src/containers/page";
+@import "../src/containers/projects";
+@import "../src/containers/services";
+
+//One-off rules (use sparingly) 
+@import "./custom";
