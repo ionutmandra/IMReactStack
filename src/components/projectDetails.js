@@ -26,7 +26,7 @@ class ProjectDetails extends Component {
                 <img src={item.img} />
                 <h3>{item.name}</h3>
                 <ul>
-                    <li><a href={item.website} rel="external" target="_blank">{s.projectWebsite}</a></li>
+                    <li><Link to={item.website} rel="external" target="_blank">{s.projectWebsite}</Link></li>
                     <li>{item.description}</li>
                 </ul>
             </div>);
