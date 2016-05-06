@@ -1,3 +1,5 @@
+var assert = require('assert');
+
 var db = {
     membersInfo: {
         description: 'fuisabfiusabfasui'
@@ -35,10 +37,11 @@ var db = {
 };
 
 var MongoClient = require('mongodb').MongoClient;
-var url = 'mongodb://localhost:27017/companysite';
+var url = 'mongodb://superadmin:dnwCSiteSa@localhost:27017/companysite';
 
 var findUsers = function(args) {
     var con = MongoClient.connect(url, function(err, db) {
+        //TODO refactor err==null check with assert without identation
         if (err == null) {
 
             db.collection('users').find().toArray(function(err, allUsers) {
@@ -61,6 +64,19 @@ var insertContactDetailsInDB = function(details) {
     });
 }
 
+var insertInitMembers = function(){
+    var con = MongoClient.connect(url, function(err, db) {
+       
+       assert.equal(null, err);
+              
+       var colection = db.collection('users');
+       
+       colection.remove({});
+       colection.insert({id:2, name:'Ionut Mandra'});
+       colection.insert({id:3, name:'Teodor Sandu'});       
+    });
+};
+
 module.exports = {
     create: function(repo) {
         return {
@@ -81,4 +97,8 @@ module.exports = {
     insertContactDetails: function(details) {
         insertContactDetailsInDB(details);
     },
+    //init - one time only
+    initUsers: function(){
+        insertInitMembers();
+    }
 };
