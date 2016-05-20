@@ -17,6 +17,7 @@ Steps are done on a VM which runs on top of `dnwserver`. Unless specified otherw
 - install [iisnode](https://github.com/Azure/iisnode)
 - in root add `web.config` adapted [from here](https://tomasz.janczuk.org/2012/05/yaml-configuration-support-in-iisnode.html)
 - in root add `iisnode.yml` adapted [from here](https://github.com/tjanczuk/iisnode/blob/master/src/samples/configuration/iisnode.yml)
+- make sure the application does `app.listen(port);` the port is coming from `process.env.PORT` if specified, this is needed for `iisnode` to make use of clustering processes
 
 #3. Launch
 
