@@ -1,4 +1,4 @@
-import "babel-polyfill";
+import 'babel-polyfill';
 import gulp from 'gulp';
 import browserify from 'browserify';
 import babelify from 'babelify';
@@ -16,12 +16,12 @@ import uglify from 'gulp-uglify';
 import cleanCSS from 'gulp-clean-css';
 import debug from 'gulp-debug';
 import mocha from 'gulp-mocha';
-//import rename from 'gulp-rename';
+import rename from 'gulp-rename';
 //import reload from 'browser-sync';
 
 
 const opts = Object.assign({}, watchify.args, {
-  entries: 'src/index.js',
+  entries: 'client/index.js',
 });
 
 gulp.task('watchify', () => {
@@ -45,24 +45,24 @@ gulp.task('watchify', () => {
       .pipe(sourcemaps.init({ loadMaps: true }))
       .pipe(sourcemaps.write('./'))
       .pipe(duration('rebuilding files'))
-      .pipe(gulp.dest('./dist/js'));
+      .pipe(gulp.dest('./client/dist/js'));
   }
 });
 
 gulp.task('icomoon-variables', function () {
-  return gulp.src(['./icomoon/variables.scss'])
+  return gulp.src(['./client/lib/icomoon/variables.scss'])
     .pipe(change(function (content) {
-      return content.replace('$icomoon-font-path: "fonts" !default;', '$icomoon-font-path: "./../fonts" !default;')
+      return content.replace('$icomoon-font-path: "fonts" !default;', '$icomoon-font-path: "./../fonts" !default;');
     }))
-    .pipe(gulp.dest('./icomoon/'));
+    .pipe(gulp.dest('./client/lib/icomoon/'));
 });
 
 gulp.task('icomoon-fonts', function () {
-  gulp.src('./icomoon/fonts/*')
-    .pipe(gulp.dest('./dist/fonts'));
+  gulp.src('./client/lib/icomoon/fonts/*')
+    .pipe(gulp.dest('./client/dist/fonts'));
 });
 
-const scssPaths = ['./lib/**/*.scss', './scss/**/*.scss', './src/**/*.scss'];
+const scssPaths = ['./client/lib/**/*.scss', './client/scss/**/*.scss'];
 gulp.task('sass', function () {
   var piped = gulp.src(scssPaths);
 
@@ -76,7 +76,7 @@ gulp.task('sass', function () {
     piped = piped.pipe(sourcemaps.write());
   }
 
-  piped = piped.pipe(gulp.dest('./dist/css'));
+  piped = piped.pipe(gulp.dest('./client/dist/css'));
 
   return piped;
 });
@@ -85,17 +85,17 @@ gulp.task('app-sass', function (callback) {
   runSequence('icomoon-variables', 'icomoon-fonts', 'sass', callback);
 });
 
-const imagePaths = ['./img/**'];
+const imagePaths = ['./client/assets/img/**'];
 gulp.task('move-image-files', (callback) => {
     gulp.src(imagePaths)
-    .pipe(gulp.dest('./dist/img'))
+    .pipe(gulp.dest('./client/dist/img'));
 });
 
 // Due to photoswipe css we will add the needed images near the css
-const photoSwipeimagePaths = ['./lib/photoswipe/default-skin.png', './lib/photoswipe/preloader.gif'];
+const photoSwipeimagePaths = ['./client/lib/photoswipe/default-skin.png', './client/lib/photoswipe/preloader.gif'];
 gulp.task('move-photoswipe-files', (callback) => {
     gulp.src(photoSwipeimagePaths)
-    .pipe(gulp.dest('./dist/css'))
+    .pipe(gulp.dest('./client/dist/css'));
 });
 
 
@@ -106,17 +106,17 @@ gulp.task('test', (callback) => {
         path.basename = '_' +  path.basename;
         path.extname = '.scss';
     }))
-    .pipe(gulp.dest('./lib/test'))
+    .pipe(gulp.dest('./client/lib/test'));
 });
 
 
-const scssPathsToWatch  = ['./lib/**/*.scss', './scss/**/*.scss', './src/**/*.scss', './icomoon/*'];
+const scssPathsToWatch  = ['./client/lib/**/*.scss', './client/scss/**/*.scss'];
 gulp.task('default', ['watchify', 'app-sass'], function() {
   gulp.watch(scssPathsToWatch, ['app-sass']);
 });
 
 gulp.task('clean', function () {
-  gulp.src('./dist', { read: false })
+  gulp.src('./client/dist', { read: false })
     .pipe(clean());
 });
 gulp.task('build', function () {
@@ -147,18 +147,18 @@ gulp.task('build', function () {
   }
 
   bundler.pipe(duration('rebuilding files'))
-    .pipe(gulp.dest('./dist/js'));
+    .pipe(gulp.dest('./client/dist/js'));
 });
 
 //PRODUCTION
 gulp.task('minify-css', function () {
-  return gulp.src('./dist/css/*.css')
+  return gulp.src('./client/dist/css/*.css')
     .pipe(debug({ title: 'Minifying css:' }))
     .pipe(cleanCSS({ compatibility: 'ie8' }, function (details) {
       console.log(details.name + ': ' + details.stats.originalSize);
       console.log(details.name + ': ' + details.stats.minifiedSize);
     }))
-    .pipe(gulp.dest('./dist/css'));
+    .pipe(gulp.dest('./client/dist/css'));
 });
 
 gulp.task('apply-prod-environment', function () {
@@ -168,7 +168,7 @@ gulp.task('apply-prod-environment', function () {
 
 gulp.task('unit-tests', function () {
   //mocha src/test --reporter spec --compilers js:babel-register --recursive --watch
-  return gulp.src('./src/test/*.js')
+  return gulp.src('./client/test/*.js')
     .pipe(debug({ title: 'running tests:' }))
     .pipe(mocha(
       {
