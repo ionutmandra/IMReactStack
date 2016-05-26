@@ -49,10 +49,10 @@
     "watchify": "^3.7.0",
     "winston": "^2.2.0"
   },
-  "scripts": {
-    "build": "browserify --debug -t [babelify] src/index.js > bundle.js",
-    "watchify": "watchify -t [babelify] src/index.js -o bundle.js -dv"
-  },
+   "__commented__scripts": {
+     "build": "browserify --debug -t [babelify] client/index.js > client/dist/js/bundle.js",
+     "watchify": "watchify -t [babelify] client/index.js -o client/dist/js/bundle.js -dv"
+   },
   "dependencies": {
     "async": "^1.5.2",
     "body-parser": "^1.15.0",

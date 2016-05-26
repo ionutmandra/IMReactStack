@@ -3,9 +3,11 @@
 node_modules
 dist
 .*/
-icomoon/demo-files
-.ideaicomoon/demo-filesicomoon/ie7
-icomoon/demo.html
-icomoon/Read Me.txt
-icomoon/selection.json
-icomoon/style.css
+client/lib/icomoon/demo-files
+.idea
+client/lib/icomoon/demo-filesicomoon/ie7
+client/lib/icomoon/demo.html
+client/lib/icomoon/Read Me.txt
+client/lib/icomoon/selection.json
+client/lib/icomoon/style.css
+client/dist
