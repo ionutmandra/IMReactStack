@@ -1,0 +1,237 @@
+@mixin layout-grid {
+
+	body,
+	html,
+	#barba-wrapper,
+	.barba-container {
+		height: 100%;
+	}
+
+	// Vars
+	$grid-line-columns: (
+		small : 2,
+		medium: 4,
+		large: 8
+	);
+
+	.page-container {
+		height: 100%;
+		position: relative;
+		z-index: 1;
+	}
+
+	.section {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		transform: translate(0,0);
+		&.is-last {
+			z-index: 998 !important;
+		}
+		&.is-active,
+		&.is-last.is-active {
+			z-index: 999 !important;
+		}
+		&.section--about {
+			z-index: 5;
+			background: linear-gradient(135deg, rgba(214,203,38,1) 0%, rgba(104,188,69,1) 100%);
+			.gradient {
+				background: rgb(214,203,38);
+				//background: linear-gradient(135deg, rgba(214,203,38,1) 0%,rgba(104,188,69,1) 20%,rgba(24,149,163,1) 40%,rgba(79,32,99,1) 60%,rgba(200,7,134,1) 80%,rgba(237,47,46,1) 100%);
+				background: linear-gradient(135deg, rgba(214,203,38,1) 0%, rgba(104,188,69,1) 100%);
+			}
+		}
+		&.section--expertise {
+			z-index: 4;
+			background: linear-gradient(135deg, rgba(104,188,69,1) 0%, rgba(24,149,163,1) 100%);
+			.gradient {
+				background: linear-gradient(135deg, rgba(104,188,69,1) 0%, rgba(24,149,163,1) 100%);
+			}
+			.image-to-back-wrap {
+				width: 50%;
+			}
+		}
+		&.section--portfolio {
+			z-index: 3;
+			background: linear-gradient(135deg, rgba(24,149,163,1) 0%, rgba(200,7,134,1) 100%);
+			.gradient {
+				background: linear-gradient(135deg, rgba(24,149,163,1) 0%, rgba(200,7,134,1) 100%);
+			}
+			.image-to-back-wrap {
+				left: 50%;
+			}
+		}
+		&.section--jobs {
+			z-index: 2;
+			background: linear-gradient(135deg, rgba(24,149,163,1) 0%, rgba(200,7,134,1) 100%);
+			.gradient {
+				background: linear-gradient(135deg, rgba(24,149,163,1) 0%, rgba(200,7,134,1) 100%);
+			}
+		}
+		&.section--contact {
+			z-index: 1;
+			background: linear-gradient(135deg, rgba(200,7,134,1) 0%, rgba(237,47,46,1) 100%);
+			.gradient {
+				background: linear-gradient(135deg, rgba(200,7,134,1) 0%, rgba(237,47,46,1) 100%);
+			}
+		}
+
+		.section-content {
+			position: absolute;
+			h1 {
+				color: $white;
+				font-weight: 600;
+			}
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+		.grid-block-wrap {
+			@include grid-row;
+			.grid-block {
+				@include grid-column;
+				@include grid-col-size(10);
+				@include grid-col-collapse;
+				@include breakpoint(medium up) {
+					@include grid-col-collapse;
+					@include grid-col-pos(9);
+					position: absolute;
+					top: 50%;
+					transform: translateY(-50%);
+					overflow: hidden;
+				}
+			}
+		}
+	}
+
+	.page-content {
+		position: relative;
+		height: 200%;
+	}
+
+	.gradient {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		opacity: 0.8;
+		height: 100%;
+	}
+
+	.image-to-back-wrap {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+
+	.image-to-back {
+		background-size: cover;
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	.header {
+		position: fixed;
+		left: 0;
+		top: 0;
+		width: 100%;
+		z-index: 3;
+		padding: rem-calc(46) 0;
+		@include grid-row($width: 100%);
+		.header-logo {
+			@include grid-column;
+			@include grid-col-size(3);
+			@include grid-col-off(3);
+			@include grid-col-collapse;
+			@include breakpoint(medium up) {
+				@include grid-col-collapse;
+				svg {
+					margin-left: rem-calc(-40);
+				}
+			}
+		}
+		.header-menu {
+			@include grid-column;
+			@include grid-col-size(15);
+			@include grid-col-collapse;
+			@include breakpoint(medium up) {
+				@include grid-col-collapse;
+			}
+			ul {
+				@include grid-row($columns: 5);
+				padding: 0;
+				margin: 0;
+				list-style-type: none;
+				li {
+					overflow: hidden;
+					@include grid-column(1);
+					@include grid-col-collapse;
+					@include breakpoint(medium up) {
+						@include grid-col-collapse;
+					}
+					a {
+						color: $white;
+						transition: padding-left 0.2s cubic-bezier(0.500, 0.000, 0.000, 0.500);
+						display: block;
+						font-weight: 500;
+						&:hover,
+						&.loading {
+							padding-left: rem-calc(map-get($grid-column-gutter, medium) / 2);
+						}
+					}
+				}
+			}
+			.burger {
+				@include hamburger($white, $white, 20px, 15px, 2px);
+			}
+		}
+	}
+
+	.page-grid-wrap {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		right: 0;
+		z-index: 2;
+		.page-grid {
+			height: 100%;
+			width: 100%;
+			position: fixed;
+			.page-grid-col-line {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 1px;
+				height: 100%;
+				background-color: transparentize($black, 0.9);
+				@for $i from 1 through map-get($grid-line-columns, large) - 1 {
+					&:nth-child(#{$i}) {
+						left: 100 / 8 * $i + %;
+					}
+				}
+				.line-over {
+					content: "";
+					background-color: $white;
+					width: 100%;
+					height: 0px;
+					position: absolute;
+					top: 0;
+					left: 0;
+				}
+			}
+		}
+	}
+
+}

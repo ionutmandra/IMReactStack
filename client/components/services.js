@@ -13,13 +13,31 @@ class Services extends Component {
     render() {
         var p = this.props, s = p.strings;
         return (
-            <div className="services-list row">
+
+            <div className="section section--expertise">
+                <div className="image-to-back-wrap">
+                    <div className="image-to-back">
+                        <img src="client/assets/img/photos/temp2.jpg" />
+                    </div>
+                </div>
+                <div className="gradient"></div>
+                <div className="section-content">
+                    <div className="grid-block-wrap">
+                        <div className="grid-block">
+                            <div className="grid-block-content">
+                                <h1>Another headline text goes here</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {/*<div className="services-list row">
                 <h1>{s.services}</h1>
                 <SimpleGrid
                     data = {p.items}
                     renderRow = {this.renderRow}
                     numberOfCellsPerRow = {2}
                     />
+            </div>*/}
             </div>
         );
     }

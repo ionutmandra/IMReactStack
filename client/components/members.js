@@ -33,6 +33,10 @@ class Members extends Component {
                         </div>
                         : null}
                 </div>
+                <Link to="/gsapr" className="pull-xs-right close-page">
+                    gsapr
+                </Link>
+
             </div>
         );
     }

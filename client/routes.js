@@ -25,9 +25,11 @@ import MemberDetails from './containers/memberDetailsContainer';
 import Culture from './containers/cultureContainer';
 import Gallery from './containers/galleryContainer';
 import Wrapper from './components/wrapper';
+import Gsap from './containers/gsap';
+import GsapReact from './containers/gsapReact';
 
 module.exports = (
-    <div className="root">
+    <div className="root">        
         <Route component={Wrapper}>
             <Route path={routePaths.client.root} component={Home} />
             <Route path={routePaths.client.about} component={AboutList}>
@@ -49,9 +51,11 @@ module.exports = (
             <Route path={routePaths.client.gallery} component={GalleryExample} />
         </Route>
         <Route path={routePaths.client.lists} component={GridsPage} />
+        <Route path={routePaths.client.gsap} component={Gsap} />
+        <Route path={routePaths.client.gsapr} component={GsapReact} />
         <div>
             <Route path={routePaths.client.admin} component={LoginComponent} />
-            <Route path={routePaths.client.adminHome} component={requireAuthentication(AdminHome)} />
+            <Route path={routePaths.client.adminHome} component={requireAuthentication(AdminHome) } />
         </div>
     </div>
 );

@@ -12,6 +12,8 @@ module.exports = {
 		'projects': '/projects',
 		'services': '/services',
 		'projectDetails': '/projects/:key',
+		'gsap':'/gsap',
+		'gsapr':'/gsapr',
 		'team': {
 			'index': '/team',
 			'culture': '/team/culture',

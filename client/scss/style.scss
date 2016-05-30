@@ -1,5 +1,5 @@
 //Framework
-@import "../lib/bootstrap/scss/bootstrap"; //v4
+@import "foundationbase";
 @import "../lib/icomoon/style.scss"; //icons font
 @import "../lib/photoswipe/_photoswipe.scss"; //photo gallery
 
@@ -15,6 +15,7 @@
 @import "components/page";
 @import "components/projects";
 @import "components/services";
+@import "components/_home.scss";
 
 //One-off rules (use sparingly) 
 @import "./custom";
