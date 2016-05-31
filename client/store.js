@@ -11,6 +11,7 @@ import langReducer from './reducers/lang';
 import projectsReducer from './reducers/projects';
 import servicesReducer from './reducers/services';
 import teamReducer from './reducers/team';
+import transitionReducer from './reducers/transition';
 
 const rootReducer = Redux.combineReducers({
     about: aboutReducer,
@@ -19,6 +20,7 @@ const rootReducer = Redux.combineReducers({
     projects: projectsReducer,
     services: servicesReducer,
     team: teamReducer,
+    transition: transitionReducer,
     [authReducer.reducerName]: authReducer.createReducer,
 });
 

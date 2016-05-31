@@ -7,7 +7,24 @@ class Team extends Component {
     render() {
         var p = this.props, s = p.strings;
         return (
-            <div className="team-container">
+            <div className="section section--jobs">
+
+                <div className="image-to-back-wrap">
+                    <div className="image-to-back">
+                        <img src="client/assets/img/photos/temp1.jpg" />
+                    </div>
+                </div>
+                <div className="gradient"></div>
+                <div className="section-content">
+                    <div className="grid-block-wrap">
+                        <div className="grid-block">
+                            <div className="grid-block-content">
+                                <h1>Jobs page</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {/*<div className="team-container">
                 <h1>{s.team}</h1>
                 <ul className="nav nav-tabs">
                     <li className="nav-item">
@@ -20,7 +37,7 @@ class Team extends Component {
                         <Link to={routePaths.client.team.gallery} className="nav-link" activeClassName="active">{s.gallery}</Link>
                     </li>
                 </ul>
-                {this.props.children}
+                {this.props.children}*/}
             </div>
         );
     }

@@ -7,17 +7,17 @@ section.page {
 }
 
 .scrollmagic-pin-spacer{
-       top: auto;
+    top: auto;
     left: auto;
     bottom: auto;
     right: auto;
-    margin: 0px;
-    display: block;
+    //margin: 0px;
+    //display: block;
     position: relative;
     box-sizing: content-box;
     height: 100%;
-    padding-top: 0px;
-    padding-bottom: 509.5px;
+    // padding-top: 0px;
+    // padding-bottom: 509.5px;
 }
 
 .page-container-adtb{
@@ -25,9 +25,11 @@ section.page {
     margin: auto;
     top: 0px;
     left: 0px;
-    bottom: auto;
-    right: auto;
+    // bottom: auto;
+    // right: auto;
+    bottom: 0;
+    right: 0;
     box-sizing: border-box;
-    width: 1295px;
-    height: 1019.5px;
+    // width: 1295px;
+    // height: 1019.5px;
 }

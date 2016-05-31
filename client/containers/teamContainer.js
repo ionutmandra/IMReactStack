@@ -1,4 +1,8 @@
 import translate from './translate';
+import transition from './transition';
 import Team from '../components/team';
 
-export default translate('Team')(Team);
+export default 
+    transition(
+        translate('Team')(
+            Team));

@@ -1,6 +1,7 @@
 import {reduxForm} from 'redux-form';
 import fetch from 'isomorphic-fetch';
 import { contact as validate } from '../../common/validators';
+import transition from './transition';
 import Contact from '../components/contact';
 
 require('es6-promise').polyfill();
@@ -33,4 +34,4 @@ ContactContainer = reduxForm({
     validate,
 })(ContactContainer);
 
-export default ContactContainer;
+export default transition(ContactContainer);

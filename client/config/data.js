@@ -115,4 +115,8 @@ export const team = data.team = {
     ],
 };
 
+export const transition = data.transition = {
+    type: false, //no initial transition
+};
+
 export default data;

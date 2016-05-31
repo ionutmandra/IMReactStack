@@ -1,4 +1,8 @@
 import translate from './translate';
+import transition from './transition';
 import Home from '../components/home';
 
-export default translate('Home')(Home);
+export default 
+    transition(
+        translate('Home')(
+            Home));

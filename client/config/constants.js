@@ -17,4 +17,7 @@ module.exports = {
 
     //LANG
     CHANGE_LANGUAGE: 'CHANGE_LANGUAGE',
+	
+	//TRANSITIONS
+	TRANSITION: 'TRANSITION',
 };

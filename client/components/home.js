@@ -5,7 +5,7 @@ class Home extends Component {
         const s = this.props.strings;               
         // style="background-image: url('client/assets/img/photos/temp1.jpg');"
         return (
-           	<div className="section section--about is-active is-last">
+           	<div className="section section--about">
 
                 <div className="image-to-back-wrap">
                     <div className="image-to-back">
@@ -22,7 +22,7 @@ class Home extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="section-content">
+                {/*<div className="section-content">
                     <div className="grid-block-wrap">
                         <div className="grid-block">
                             <div className="grid-block-content">
@@ -33,7 +33,7 @@ class Home extends Component {
                 </div>
 
 
-                {/*<div className="section section--expertise">
+                <div className="section section--expertise">
                 <div className="image-to-back-wrap">
                     <div className="image-to-back">
                         <img src="client/assets/img/photos/temp2.jpg" />

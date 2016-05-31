@@ -18,7 +18,23 @@ class ProjectsList extends Component {
         var p = this.props, s = p.strings;
         let columns = this.props.children ? 6 : 12;
         return (
-            <div className="projects-list">
+            <div className="section section--portfolio">
+                <div className="image-to-back-wrap">
+                    <div className="image-to-back">
+                        <img src="client/assets/img/photos/temp1.jpg" />
+                    </div>
+                </div>
+                <div className="gradient"></div>
+                <div className="section-content">
+                    <div className="grid-block-wrap">
+                        <div className="grid-block">
+                            <div className="grid-block-content">
+                                <h1>Projects here</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {/*<div className="projects-list">
                 <h1>{s.projects}</h1>
                 <div className="row">
                     <div className={'col-sm-' + columns}>
@@ -34,6 +50,7 @@ class ProjectsList extends Component {
                         </div>
                         : null}
                 </div>
+            </div>*/}
             </div>
         );
     }

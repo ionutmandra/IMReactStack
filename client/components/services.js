@@ -13,11 +13,10 @@ class Services extends Component {
     render() {
         var p = this.props, s = p.strings;
         return (
-
             <div className="section section--expertise">
                 <div className="image-to-back-wrap">
                     <div className="image-to-back">
-                        <img src="client/assets/img/photos/temp2.jpg" />
+                        <img src="client/assets/img/photos/temp1.jpg" />
                     </div>
                 </div>
                 <div className="gradient"></div>

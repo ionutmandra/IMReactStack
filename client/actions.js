@@ -88,6 +88,12 @@ module.exports = {
                 .then(response => response.json());
         };
     },
+
+    transition: (setup) => {
+        return (dispatch, getState) => {
+            dispatch({ type: C.TRANSITION, payload: setup });
+        };
+    },
 };
 
 //AUTH
@@ -129,3 +135,4 @@ function logoutAndRedirect() {
         dispatch(pushState(null, '/login'));
     };
 }
+

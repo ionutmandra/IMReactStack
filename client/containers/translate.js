@@ -4,7 +4,7 @@ import ro from '../lang/ro';
 
 const languages = { en, ro };
 
-export default (key) => {
+export default (key) => { 
     return Component => {
         class TranslationComponent extends React.Component {
             render() {

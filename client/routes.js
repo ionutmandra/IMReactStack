@@ -39,14 +39,15 @@ module.exports = (
             <Route path={routePaths.client.projects} component={ProjectsList}>
                 <Route path={routePaths.client.projectDetails} component={ProjectDetails} />
             </Route>
-            <Route path={routePaths.client.team.index} component={Team}>
+            {/*<Route path={routePaths.client.team.index} component={Team}>
                 <IndexRedirect to={routePaths.client.team.culture} />
                 <Route path={routePaths.client.team.culture} component={Culture} />
                 <Route path={routePaths.client.team.members} component={Members}>
                     <Route path={routePaths.client.team.memberDetails} component={MemberDetails} />
                 </Route>
                 <Route path={routePaths.client.team.gallery} component={Gallery} />
-            </Route>
+            </Route>*/}
+            <Route path={routePaths.client.team.index} component={Team} />
             <Route path={routePaths.client.contact} component={ContactPage} />
             <Route path={routePaths.client.gallery} component={GalleryExample} />
         </Route>
