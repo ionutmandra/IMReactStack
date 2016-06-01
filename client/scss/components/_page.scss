@@ -6,28 +6,14 @@ section.page {
     height: 100%;
 }
 
-.scrollmagic-pin-spacer{
-       top: auto;
-    left: auto;
-    bottom: auto;
-    right: auto;
-    margin: 0px;
-    display: block;
-    position: relative;
-    box-sizing: content-box;
-    height: 100%;
-    padding-top: 0px;
-    padding-bottom: 509.5px;
-}
-
 .page-container-adtb{
-      position: fixed;
+      //position: fixed;
     margin: auto;
     top: 0px;
     left: 0px;
     bottom: auto;
     right: auto;
     box-sizing: border-box;
-    width: 1295px;
+    width: 100%;
     height: 1019.5px;
 }
