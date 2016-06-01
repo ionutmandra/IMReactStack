@@ -16,14 +16,14 @@ class Services extends Component {
             <div className="section section--expertise">
                 <div className="image-to-back-wrap">
                     <div className="image-to-back">
-                        <img src="client/assets/img/photos/temp1.jpg" />
+                        <img src="client/assets/img/photos/temp1.jpg" data-ref="background" />
                     </div>
                 </div>
                 <div className="gradient"></div>
                 <div className="section-content">
                     <div className="grid-block-wrap">
                         <div className="grid-block">
-                            <div className="grid-block-content">
+                            <div className="grid-block-content" data-ref="text1">
                                 <h1>Another headline text goes here</h1>
                             </div>
                         </div>
