@@ -21,13 +21,15 @@
 	}
 
 	.section {
-		position: absolute;
-		left: 0;
-		top: 0;
+		// position: absolute;
+		// left: 0;
+		// top: 0;
 		width: 100%;
 		height: 100%;
-		overflow: hidden;
-		transform: translate(0,0);
+		//overflow: hidden;
+		
+		// breaks fixed positioning
+		//transform: translate(0,0);
 		&.is-last {
 			z-index: 998 !important;
 		}
@@ -37,11 +39,11 @@
 		}
 		&.section--about {
 			z-index: 5;
-			background: linear-gradient(135deg, rgba(214,203,38,1) 0%, rgba(104,188,69,1) 100%);
+			//background: linear-gradient(135deg, rgba(214,203,38,1) 0%, rgba(104,188,69,1) 100%);
 			.gradient {
-				background: rgb(214,203,38);
+				//background: rgb(214,203,38);
 				//background: linear-gradient(135deg, rgba(214,203,38,1) 0%,rgba(104,188,69,1) 20%,rgba(24,149,163,1) 40%,rgba(79,32,99,1) 60%,rgba(200,7,134,1) 80%,rgba(237,47,46,1) 100%);
-				background: linear-gradient(135deg, rgba(214,203,38,1) 0%, rgba(104,188,69,1) 100%);
+				//background: linear-gradient(135deg, rgba(214,203,38,1) 0%, rgba(104,188,69,1) 100%);
 			}
 		}
 		&.section--expertise {
@@ -80,13 +82,19 @@
 		}
 
 		.section-content {
-			position: absolute;
+			position: relative;
 			h1 {
 				color: $white;
 				font-weight: 600;
 			}
-			top: 0;
-			left: 0;
+			
+			h2{
+				color: $white;
+				font-weight: 300;
+				font-size: 2rem;
+			}
+			//top: 0;
+			//left: 0;
 			width: 100%;
 			height: 100%;
 		}
@@ -115,7 +123,7 @@
 	}
 
 	.gradient {
-		position: absolute;
+		position: fixed;
 		left: 0;
 		top: 0;
 		width: 100%;
