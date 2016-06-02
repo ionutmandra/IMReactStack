@@ -12,7 +12,7 @@ $grid-row-width: $global-width !default;
 
 /// The default column count of a grid. Changing this value affects the logic of the grid mixins, and the number of CSS classes output.
 /// @type Number
-$grid-column-count: 12 !default;
+$grid-column-count: 24 !default;
 
 /// The amount of space between columns at different screen sizes. To use just one size, set the variable to a number instead of a map.
 /// @type Map | Length

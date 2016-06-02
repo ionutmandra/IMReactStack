@@ -3,17 +3,11 @@ export default {
         siteName: 'Adaptabi',
     },
     HeaderLinks: {
-        // home: 'Home',
-        // about: 'About',
-        // projects: 'Projects',
-        // contact: 'Contact',
-        // services: 'Services',
-        // team: 'Team',
         about: 'About',
         expertise: 'Expertise',
         portfolio: 'Portfolio',
         contact: 'Contact',
-        jobs: 'Jobs',
+        jobs: 'Careers',
     },
     Footer: {
         copyright: '©2016 Adaptabi • All rights reserved',

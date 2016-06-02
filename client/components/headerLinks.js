@@ -10,7 +10,7 @@ class HeaderLinks extends Component {
 
     handleClick(event) {
         this.props.transition({
-            type: 'header',
+            type: this.props.animationType || 'header',
             column: event.target.getAttribute('data-eq'),
             target: event.target,
         });
@@ -18,7 +18,7 @@ class HeaderLinks extends Component {
 
     render() {
         var s = this.props.strings;
-        return (<nav className="header-links" ref="container">
+        return (<nav className="header-links">
             <ul>
                 {/*data-eq attribute tells which grid line the link animates when navigating*/}
                 <li><Link to={routePaths.client.root}       data-eq="3" className="about"       onClick={this.handleClick}>{s.about}</Link></li>
@@ -26,13 +26,13 @@ class HeaderLinks extends Component {
                 <li><Link to={routePaths.client.projects}   data-eq="5" className="portfolio"   onClick={this.handleClick}>{s.portfolio}</Link></li>
                 <li><Link to={routePaths.client.team.index} data-eq="6" className="jobs"        onClick={this.handleClick}>{s.jobs}</Link></li>
                 <li><Link to={routePaths.client.contact}    data-eq="7" className="contact"     onClick={this.handleClick}>{s.contact}</Link></li>
-                {/*<li><Link to="" className="burger" /></li>*/}
             </ul>
         </nav>);
     }
 }
 
 HeaderLinks.propTypes = {
+    animationType: PropTypes.string,
     strings: PropTypes.object.isRequired,
     transition: PropTypes.func.isRequired,
 };
@@ -43,7 +43,7 @@ HeaderLinks.defaultProps = {
         expertise: 'Expertise',
         portfolio: 'Portfolio',
         contact: 'Contact',
-        jobs: 'Jobs',
+        jobs: 'Careers',
     },
 };
 

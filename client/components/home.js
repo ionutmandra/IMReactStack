@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 class Home extends Component {
 
     componentDidMount() {
+        /*
         var controller = new ScrollMagic.Controller();
 
         //gradient(135deg, #d6cb26 0%, #68bc45 100%);
@@ -137,14 +138,57 @@ class Home extends Component {
 
         new ScrollMagic.Scene({ triggerElement: '#sectionContent4', triggerHook: 'onLeave', duration: '100%' })
             .setPin('#sectionContent4').addTo(controller);
+        /**/
     }
 
     render() {
-        const s = this.props.strings;
-
+        //const s = this.props.strings;
         return (
-           	<div className="section section--about is-active is-last">
-                
+            <article className="page-home">
+                <section className="slide slide-1 background">
+                    <div><img src="client/assets/img/photos/temp1.jpg" /></div>
+                </section>
+                <section className="slide slide-2 background">
+                    <div><img src="client/assets/img/photos/temp2.jpg" /></div>
+                </section>
+                <section className="slide slide-3 background">
+                    <div><img src="client/assets/img/photos/temp3.jpg" /></div>
+                </section>
+                <section className="slide slide-4 background">
+                    <div><img src="client/assets/img/photos/temp4.jpg" /></div>
+                </section>
+
+                <div className="gradient" />
+
+                <section className="slide slide-1 content">
+                    <div className="text-1"><h1>{'Software Innovators Happily Together'}</h1></div>
+                    <div className="text-2"><h2>{'Create a truly remarkable working environment and deliver high quality innovative software products and services'}</h2></div>
+                    <div className="scroll-hint"><p>{'Find out more'}</p></div>
+                </section>
+                <section className="slide slide-2 content">
+                    <div className="text-1"><h1>Grow an outstanding working environment driven by our culture</h1></div>
+                    <div className="text-2">
+                        <h2>HAPPINESS</h2>
+                        <h2>TRUST</h2>
+                        <h2>PROFESSIONALISM</h2>
+                        <h2>ADAPTABILITY</h2>
+                    </div>
+                    <div className="text-3">
+                        <h2>PASSION</h2>
+                        <h2>PURPOSE</h2>
+                        <h2>COMMUNICATION</h2>
+                        <h2>INNOVATION</h2>
+                    </div>
+                </section>
+                <section className="slide slide-3 content">
+                    <div className="text-1"><h1>Offering highest quality by constantly improving our skills and processes</h1></div>
+                    <div className="text-2"><h1>Creating high impact software solutions that help business succeed</h1></div>
+                </section>
+                <section className="slide slide-4 content">
+                    <div className="text-1"><h1>Sustaining learning and innovation as a part of our routine </h1></div>
+                </section>
+           	{/*<div className="section section--about is-active is-last">
+
                 <div className="section-content" id="sectionContent1">
                     <div className="image-to-back-wrap" id='kk'>
                         <div className="image-to-back">
@@ -281,9 +325,10 @@ class Home extends Component {
                         </div>
                     </div>
                 </div>
-                
+
                 <div className="gradient"></div>
-            </div >
+            </div >*/}
+            </article>            
         );
     }
 }

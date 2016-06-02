@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
+import Lorem from './lorem';
 
 class Contact extends Component {
     submit(values, dispatch) { } //noop
 
     render() {
-        const {fields: {name, email, message}, handleSubmit} = this.props;
+        //const {fields: {name, email, message}, handleSubmit} = this.props;
         return (
-            <div className="section section--contact">
+             <article className="page-contact">
+                <header>
+                    <div className="image-container"><img src="client/assets/img/photos/temp5.jpg" /></div>
+                    <div className="gradient"></div>
+                    <div className="text-1"><h1>{'Contact us'}</h1></div>
+                </header>
+                <section>
+                    <Lorem />
+                </section>
+            {/*<div className="section section--contact">
 
                 <div className="image-to-back-wrap">
                     <div className="image-to-back">
@@ -41,7 +51,8 @@ class Contact extends Component {
                         <button type="submit">{'Submit'}</button>
                     </form>
                 </section>
-            </div>
+            </div>*/}
+            </article>
         );
     }
 }

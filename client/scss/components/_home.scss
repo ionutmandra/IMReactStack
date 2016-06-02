@@ -1,65 +1,175 @@
-#sectionContent1 .content, #sectionContent2 .content, #sectionContent3 .content, #sectionContent4 .content{
-    .columns{
+article.page-home {
+    transform: none !important;
+    
+    .slide {
+        display: block;
+        position: absolute;
+        left: 0;
+        width: 100%;
         height: 100%;
-    }
-    
-    .grid-block1{
         overflow: hidden;
+        
+        &.background {
+            z-index: 1;
+            
+            div {
+                display: flex;
+                justify-content: center; 
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                
+                img {
+                    min-height: 100%;
+                    width: auto;
+                }
+            } 
+        }
+        &.content {
+            z-index: 3;
+            color: $white;
+        }
+        .text-1, .text-2, .scroll-hint {
+            overflow: hidden;
+        }
+        
+        &.slide-1 {
+            top: 0;
+            
+            &.background {
+                background: linear-gradient(135deg, rgba(214,203,38,1) 0%, rgba(104,188,69,1) 100%);                
+            }
+                    
+            .text-1 {
+                @include grid-column-size(6);
+                @include grid-column-offset(6);
+                position: absolute;
+                top: 30%;
+                text-align: right;
+            }
+            
+            .text-2 {
+                @include grid-column-size(6);
+                @include grid-column-offset(12);
+                position: absolute;
+                top: 50%;
+            }
+            
+            .scroll-hint {
+                @include grid-column-size(4);
+                @include grid-column-offset(10);
+                position: absolute;
+                bottom: 5%;
+                text-align: center;
+            }
+        }
+        &.slide-2 {
+            top: 100%;
+            
+            &.background {
+                background: linear-gradient(135deg, rgba(104,188,69,1) 0%, rgba(24,149,163,1) 100%);                
+                
+                div {
+                    @include grid-column-size(12);
+                    @include grid-column-offset(12);
+                }
+            }
+        }
+        &.slide-3 {
+            top: 200%;
+            
+            &.background {
+                background: linear-gradient(135deg, rgba(24,149,163,1) 0%, rgba(200,7,134,1) 100%);                
+            }
+        }
+        &.slide-4 {
+            top: 300%;
+            
+            &.background {
+                background: linear-gradient(135deg, rgba(200,7,134,1) 0%, rgba(237,47,46,1) 100%);
+                
+                div {
+                    @include grid-column-size(12);
+                }              
+            }
+        }
     }
     
-     .delayed{
-        margin-top: 20%;
-    } 
-}
-    
-#sectionContent1 .content{
-    height:80%;    
-    
-    .grid-block-wrap1{
-        position:relative;
-        top:50%;
-    }                  
-}
-
-
-#sectionContent2{
-    .image-to-back-wrap{
-        width: 50%;
-        right:0;
-        left: auto;
-    }         
-    
-    .content{
-        height:100%;
-    
-        .grid-block-wrap1{
-            position:relative;
-            top:40%;
-            }
-        .values p{
-            margin-bottom: 60%;
-            color: white;
-            font-weight: 600;       
-            }
-        .values .grid-block-wrap1{
-            top:20%;
-            }
-     }
+    > .gradient {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        background: linear-gradient(135deg, rgba(214,203,38,1) 0%, rgba(104,188,69,1) 100%);
+        opacity: .8;
+    }
 }
 
-#sectionContent3 .content, #sectionContent4 .content{
-    height:100%;    
+// #sectionContent1 .content, #sectionContent2 .content, #sectionContent3 .content, #sectionContent4 .content{
+//     .columns{
+//         height: 100%;
+//     }
     
-    .grid-block-wrap1{
-        position:relative;
-        top:50%;
-    }                  
-}
+//     .grid-block1{
+//         overflow: hidden;
+//     }
+    
+//      .delayed{
+//         margin-top: 20%;
+//     } 
+// }
+    
+// #sectionContent1 .content{
+//     height:80%;    
+    
+//     .grid-block-wrap1{
+//         position:relative;
+//         top:50%;
+//     }                  
+// }
 
-#sectionContent4{
-    .image-to-back-wrap{
-        width: 50%;
-        left:0;
-        right: auto;
-    }    
-}
+
+// #sectionContent2{
+//     .image-to-back-wrap{
+//         width: 50%;
+//         right:0;
+//         left: auto;
+//     }         
+    
+//     .content{
+//         height:100%;
+    
+//         .grid-block-wrap1{
+//             position:relative;
+//             top:40%;
+//             }
+//         .values p{
+//             margin-bottom: 60%;
+//             color: white;
+//             font-weight: 600;       
+//             }
+//         .values .grid-block-wrap1{
+//             top:20%;
+//             }
+//      }
+// }
+
+// #sectionContent3 .content, #sectionContent4 .content{
+//     height:100%;    
+    
+//     .grid-block-wrap1{
+//         position:relative;
+//         top:50%;
+//     }                  
+// }
+
+// #sectionContent4{
+//     .image-to-back-wrap{
+//         width: 50%;
+//         left:0;
+//         right: auto;
+//     }    
+// }

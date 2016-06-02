@@ -1,18 +1,29 @@
-import SimpleGrid from '../components/simpleList';
+//import SimpleGrid from '../components/simpleList';
 import React, { PropTypes, Component } from 'react';
+import Lorem from './lorem';
 
 class Services extends Component {
-    renderRow(item) {
-        return (<div className={'service col-sm-6 ' + item.key}>
-            <h4>{item.name}</h4>
-            <i className={'ncs-' + item.icon} />
-            <div className="description">{item.description}</div>
-        </div>);
-    }
+    // renderRow(item) {
+    //     return (<div className={'service col-sm-6 ' + item.key}>
+    //         <h4>{item.name}</h4>
+    //         <i className={'ncs-' + item.icon} />
+    //         <div className="description">{item.description}</div>
+    //     </div>);
+    // }
 
     render() {
-        var p = this.props, s = p.strings;
+        //var p = this.props, s = p.strings;
         return (
+            <article className="page-expertise">
+                <header>
+                    <div className="image-container"><img src="client/assets/img/photos/temp2.jpg" /></div>
+                    <div className="gradient"></div>
+                    <div className="text-1"><h1>{'Expertise'}</h1></div>
+                </header>
+                <section>
+                    <Lorem />
+                </section>
+            {/*
             <div className="section section--expertise">
                 <div className="image-to-back-wrap">
                     <div className="image-to-back">
@@ -29,15 +40,18 @@ class Services extends Component {
                         </div>
                     </div>
                 </div>
-                {/*<div className="services-list row">
+                
+                
+                <div className="services-list row">
                 <h1>{s.services}</h1>
                 <SimpleGrid
                     data = {p.items}
                     renderRow = {this.renderRow}
                     numberOfCellsPerRow = {2}
                     />
-            </div>*/}
             </div>
+            </div>*/}
+            </article>
         );
     }
 }

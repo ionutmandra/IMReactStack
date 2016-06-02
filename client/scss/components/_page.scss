@@ -1,21 +1,116 @@
-section.page {
-    padding: 15px;
+div.page-container {
+    article {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        transform: translate(0, 0);
+        
+        header {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            @include grid-row(24);
+            transform: translate(0, 0);
+            
+            .image-container {
+                position: relative;
+                z-index: 1;
+                @include grid-column-size(24);
+                height: 100%;
+                padding: 0;
+                margin: 0;
+                overflow: hidden;
+                display: flex;
+                justify-content: center; 
+                align-items: center; 
+            }
+            
+            .gradient {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 2;
+                opacity: 0.8;
+            }
+            
+            .text-1 {
+                @include grid-column-size(6);
+                @include grid-column-offset(6);
+                position: absolute;
+                top: 50%;
+                z-index: 3;
+                overflow: hidden;
+                color: $white;
+                
+                h1 {
+                    margin: 0;
+                    padding: 0;
+                    text-indent: -3px;
+                    display: inline-block;
+                }
+            }
+        }
+        
+        &.page-expertise header {
+            background: linear-gradient(135deg, rgba(104,188,69,1) 0%, rgba(24,149,163,1) 100%);
+            .gradient {
+                background: linear-gradient(135deg, rgba(104,188,69,1) 0%, rgba(24,149,163,1) 100%);
+            }
+            
+            .image-container {
+                @include grid-column-size(18);
+            }
+        }
+        &.page-portfolio header {
+            background: linear-gradient(135deg, rgba(24,149,163,1) 0%, rgba(200,7,134,1) 100%);
+            .gradient {
+                background: linear-gradient(135deg, rgba(24,149,163,1) 0%, rgba(200,7,134,1) 100%);
+            }
+        }
+        
+        &.page-careers header {
+            background: linear-gradient(135deg, rgba(24,149,163,1) 0%, rgba(200,7,134,1) 100%);
+            .gradient {
+                background: linear-gradient(135deg, rgba(24,149,163,1) 0%, rgba(200,7,134,1) 100%);
+            }
+            
+            .image-container {
+                @include grid-column-size(18);
+                @include grid-column-offset(6);
+            }
+        }
+        
+        &.page-contact header {
+            background: linear-gradient(135deg, rgba(200,7,134,1) 0%, rgba(237,47,46,1) 100%);
+            .gradient {
+                background: linear-gradient(135deg, rgba(200,7,134,1) 0%, rgba(237,47,46,1) 100%);
+            }
+        }
+    }
 }
 
-.barba-container{
-    height: 100%;
-}
+// section.page {
+//     padding: 15px;
+// }
 
-.page-container-adtb{
-      //position: fixed;
-    margin: auto;
-    top: 0px;
-    left: 0px;
-    // bottom: auto;
-    // right: auto;
-    bottom: 0;
-    right: 0;
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-}
+// .barba-container{
+//     height: 100%;
+// }
+
+// .page-container-adtb{
+//       //position: fixed;
+//     margin: auto;
+//     top: 0px;
+//     left: 0px;
+//     // bottom: auto;
+//     // right: auto;
+//     bottom: 0;
+//     right: 0;
+//     box-sizing: border-box;
+//     width: 100%;
+//     height: 100%;
+// }

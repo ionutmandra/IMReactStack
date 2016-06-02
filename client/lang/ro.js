@@ -3,17 +3,11 @@ export default {
         siteName: 'Adaptabi',
     },
     HeaderLinks: {
-        // home: 'Acasa',
-        // about: 'Despre',
-        // projects: 'Proiecte',
-        // contact: 'Contact',
-        // services: 'Servicii',
-        // team: 'Echipa',
         about: 'Despre',
         contact: 'Contact',
         expertise: 'Expertiza',
         portfolio: 'Portofoliu',
-        jobs: 'Job-uri',
+        jobs: 'Cariere',
     },
     Footer: {
         copyright: '©2016 Adaptabi • Toate drepturile rezervate',

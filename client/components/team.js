@@ -1,12 +1,23 @@
 import React, { PropTypes, Component } from 'react';
-import { Link } from 'react-router';
-const routePaths = require('../../common/routePaths');
+// import { Link } from 'react-router';
+// const routePaths = require('../../common/routePaths');
+import Lorem from './lorem';
 
 class Team extends Component {
 
     render() {
-        var p = this.props, s = p.strings;
+        //var p = this.props, s = p.strings;
         return (
+            <article className="page-careers">
+                <header>
+                    <div className="image-container"><img src="client/assets/img/photos/temp4.jpg" /></div>
+                    <div className="gradient"></div>
+                    <div className="text-1"><h1>{'Careers'}</h1></div>
+                </header>
+                <section>
+                    <Lorem />
+                </section>
+                {/*
             <div className="section section--jobs">
 
                 <div className="image-to-back-wrap">
@@ -38,7 +49,7 @@ class Team extends Component {
                     </li>
                 </ul>
                 {this.props.children}*/}
-            </div>
+            </article>
         );
     }
 }

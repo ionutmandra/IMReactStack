@@ -1,23 +1,23 @@
-.services-list {
-    .simple-list-row {
-        .service { 
-            text-align: center; 
-            position: relative;
+// .services-list {
+//     .simple-list-row {
+//         .service { 
+//             text-align: center; 
+//             position: relative;
             
-            .description {
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: $palette-2;
-                color: white;
-                display: none;
-            }
+//             .description {
+//                 position: absolute;
+//                 top: 0;
+//                 left: 0;
+//                 right: 0;
+//                 bottom: 0;
+//                 background: $palette-2;
+//                 color: white;
+//                 display: none;
+//             }
             
-            &:hover .description {
-                display: block;
-            }
-        } 
-    } 
-}
+//             &:hover .description {
+//                 display: block;
+//             }
+//         } 
+//     } 
+// }
