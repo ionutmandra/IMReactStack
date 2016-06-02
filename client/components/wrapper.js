@@ -22,11 +22,9 @@ class Wrapper extends Component {
                 </div>
             </div>
 
-            <div className="scrollmagic-pin-spacer">
-                <ReactTransitionGroup component="div" className="page-container page-container-adtb">
-                    {React.cloneElement(this.props.children, { key: location.pathname })}
-                </ReactTransitionGroup>
-            </div>
+            <ReactTransitionGroup component="div" className="page-container page-container-adtb">
+                {React.cloneElement(this.props.children, { key: location.pathname })}
+            </ReactTransitionGroup>
             
             <div className="page-content">
                 &nbsp;

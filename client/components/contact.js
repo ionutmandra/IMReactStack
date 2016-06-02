@@ -10,14 +10,14 @@ class Contact extends Component {
 
                 <div className="image-to-back-wrap">
                     <div className="image-to-back">
-                        <img src="client/assets/img/photos/temp1.jpg" />
+                        <img src="client/assets/img/photos/temp1.jpg" data-ref="background" />
                     </div>
                 </div>
-                <div className="gradient"></div>
+                <div className="gradient" data-ref="gradient"></div>
                 <div className="section-content">
                     <div className="grid-block-wrap">
                         <div className="grid-block">
-                            <div className="grid-block-content">
+                            <div className="grid-block-content" data-ref="text1">
                                 <h1>Contact page</h1>
                             </div>
                         </div>

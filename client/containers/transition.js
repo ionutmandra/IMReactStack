@@ -26,7 +26,7 @@ export default (BaseComponent, getRefs) => {
         componentWillEnter(callback) {
             let elements = this.extractDOMElements();
             let transition = this._clone.props.transition;
-            console.warn('will enter', elements, transition, getRefs, getRefs && getRefs());
+            console.warn('will enter', elements, transition);
             if (!transition || !transition.type) {
                 return callback();
             }
@@ -63,22 +63,25 @@ export default (BaseComponent, getRefs) => {
                 container: dom.findDOMNode(this.refs.container),
             }, $container = $(elements.container);
             Object.assign(elements, {
-                background: $container.find('[data-ref=background]'),
-                text1: $container.find('[data-ref=text1]'),
-                text2: $container.find('[data-ref=text2]'),
+                background: $container.find('[data-ref=background]')[0],
+                text1: $container.find('[data-ref=text1]')[0],
+                text2: $container.find('[data-ref=text2]')[0],
+                textBottom: $container.find('[data-ref=textBottom]')[0],
+                gradient: $container.find('[data-ref=gradient]')[0],
             });
-            elements.background && !elements.background.length && (elements.background = false);
-            elements.text1 && !elements.text1.length && (elements.text1 = false);
-            elements.text2 && !elements.text2.length && (elements.text2 = false);
             return elements;
         }
 
         ///////////////// Animations
 
-        _animate_appear(callback, element) {
+        _animate_appear(callback, elements) {
+            elements.background && TweenMax.set(elements.background, { scale: 1.2 });
+            TweenMax.set(elements.container, { opacity: 0 });
             let tl = new TimelineLite({ onComplete: callback })
-                .set(element, { opacity: 0 })
-                .to(element, .35, { opacity: 1, ease: Power2.easeIn });
+                .add(_.filter([
+                    elements.background && TweenMax.to(elements.background, 1, { scale: 1, ease: Power3.easeOut }),                                        
+                    TweenMax.to(elements.container, 1, { opacity: 1, ease: Power3.easeOut }),
+                ]));
         }
 
         _animate_enter_header(callback, elements, transition) {
@@ -89,7 +92,7 @@ export default (BaseComponent, getRefs) => {
 
             //Setup
             let $target = $(transition.target).addClass('hover');
-            elements.text1 && (elements.text1.direction = elements.text1.hasClass('grid-block-contentl') ? 'right' : 'left');
+            elements.text1 && (elements.text1.direction = $(elements.text1).hasClass('grid-block-contentl') ? 'left' : 'right');
             let line = document.getElementById('transition-line-' + transition.column), $line = $(line);
             let left = $line.offset().left;
             let width = $window.width();
@@ -100,35 +103,55 @@ export default (BaseComponent, getRefs) => {
                 TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
             };
             arr2.ease = Power3.easeIn;
+            
+            //Initial state
+            TweenMax.set(elements.container, { opacity: 1, zIndex: 2, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+            TweenMax.set(line, { opacity: 1, height: 0 });
+            elements.text1 && TweenMax.set(elements.text1, { x: elements.text1.direction == 'left' ? '100%' : '-100%' });
+            elements.text2 && TweenMax.set(elements.text2, { x: '-100%' });
+            elements.textBottom && TweenMax.set(elements.textBottom, { y: '100%' });
+            elements.background && TweenMax.set(elements.background, { scale: 1.2, height: '100%' });
+            elements.gradient && TweenMax.set(elements.gradient, { height: '100%' });
 
             //Animation
             let tl1 = new TimelineLite({ onComplete: callback })
-                .set(elements.container, { opacity: 1, zIndex: 2, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' })
-                .set(line, { opacity: 1 })
+                .to(line, 1, { height: '100%', ease: Power3.easeIn, onComplete: () => {
+                    TweenMax.set(line, { opacity: 0 });
+                    $target.removeClass('hover');
+                } })
                 .add(_.filter([
-                    elements.text1 && TweenMax.set(elements.text1[0], { x: '-100%' }),
-                    elements.text2 && TweenMax.set(elements.text2, { x: '-100%' }),
-                ]))
-                .to(line, .2, { height: '30%', ease: Power2.easeIn })
-                .to(line, .2, { height: '80%', ease: Power2.easeOut })
-                .to(line, .1, { height: '100%', ease: Power2.easeIn })
-                .add(() => { $target.removeClass('hover'); })
-                .add(_.filter([
-                    TweenMax.to(line, .5, { opacity: 0 }),
+                    elements.text1 && TweenMax.to(elements.text1, 1, { x: '0%', ease: Power3.easeOut }),
+                    elements.text2 && TweenMax.to(elements.text2, 1, { x: '0%', ease: Power3.easeOut }),                                        
+                    elements.textBottom && TweenMax.to(elements.textBottom, 1, { y: '0%', ease: Power3.easeOut }),                                        
+                    elements.background && TweenMax.to(elements.background, 1, { scale: 1, ease: Power3.easeOut }),                                        
                     TweenMax.to(arr1, 1, arr2),
-                    elements.text1 && TweenMax.to(elements.text1, 1, { x: '0%', ease: Power3.easeInOut }),
-                    elements.text2 && TweenMax.to(elements.text2, 1, { x: '0%', ease: Power3.easeInOut }),                                        
                 ]))
-                .set(line, { height: 0 });
+                .add(_.filter([
+                    elements.background && TweenMax.to(elements.background, 1, { height: '60%', ease: Power3.easeInOut }),
+                    elements.gradient && TweenMax.to(elements.gradient, 1, { height: '60%', ease: Power3.easeInOut }),
+                ]));                
         }
 
         _animate_leave_header(callback, elements, transition) {
-            let tl1 = new TimelineLite({ onComplete: callback })
-                .set(elements.container, { zIndex: 1 })
+            //Setup
+            elements.text1 && (elements.text1.direction = $(elements.text1).hasClass('grid-block-contentl') ? 'left' : 'right');
+            
+            //Initial state
+            TweenMax.set(elements.container, { zIndex: 1 });
+            
+            //Animation
+            let tl1 = new TimelineLite({ 
+                onComplete: callback 
+            })
                 .add(_.filter([
-                    elements.text1 && TweenMax.to(elements.text1, .5, { x: '-100%' }),
+                    elements.text1 && TweenMax.to(elements.text1, 1, { x: elements.text1.direction == 'left' ? '100%' : '-100%' }),
+                    elements.text2 && TweenMax.to(elements.text2, 1, { x: '-100%' }),
+                    elements.textBottom && TweenMax.to(elements.textBottom, 1, { y: '100%' }),
+                    elements.background && TweenMax.to(elements.background, 1, { scale: 1.2, ease: Power3.easeIn }),                                        
+                    elements.gradient && TweenMax.to(elements.gradient, 1, { height: '100%', ease: Power3.easeIn }),                                        
                 ]))
-                .set({}, {}, 1.5);
+                .set({}, {}, 2); //delay before firing onComplete
+            //setTimeout(callback, 20000);
         }
     }
 

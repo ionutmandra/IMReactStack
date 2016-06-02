@@ -21,15 +21,15 @@
 	}
 
 	.section {
-		// position: absolute;
-		// left: 0;
-		// top: 0;
+		position: absolute;
+		left: 0;
+		top: 0;
 		width: 100%;
 		height: 100%;
-		//overflow: hidden;
+		overflow: hidden;
 		
 		// breaks fixed positioning
-		//transform: translate(0,0);
+		
 		&.is-last {
 			z-index: 998 !important;
 		}
@@ -38,7 +38,7 @@
 			z-index: 999 !important;
 		}
 		&.section--about {
-			z-index: 5;
+			transform: translate(0,0);
 			//background: linear-gradient(135deg, rgba(214,203,38,1) 0%, rgba(104,188,69,1) 100%);
 			.gradient {
 				//background: rgb(214,203,38);
@@ -47,37 +47,48 @@
 			}
 		}
 		&.section--expertise {
-			z-index: 4;
-			background: linear-gradient(135deg, rgba(104,188,69,1) 0%, rgba(24,149,163,1) 100%);
+			transform: translate(0,0);
+			//background: linear-gradient(135deg, rgba(104,188,69,1) 0%, rgba(24,149,163,1) 100%);
 			.gradient {
+				height: 60%;
 				background: linear-gradient(135deg, rgba(104,188,69,1) 0%, rgba(24,149,163,1) 100%);
 			}
 			.image-to-back-wrap {
+				height: 60%;
 				width: 50%;
 			}
 		}
 		&.section--portfolio {
-			z-index: 3;
-			background: linear-gradient(135deg, rgba(24,149,163,1) 0%, rgba(200,7,134,1) 100%);
+			transform: translate(0,0);
+			//background: linear-gradient(135deg, rgba(24,149,163,1) 0%, rgba(200,7,134,1) 100%);
 			.gradient {
+				height: 60%;
 				background: linear-gradient(135deg, rgba(24,149,163,1) 0%, rgba(200,7,134,1) 100%);
 			}
-			.image-to-back-wrap {
-				//left: 50%;
+			.image-to-back-wrap img {
+				height: 60%;
 			}
 		}
 		&.section--jobs {
-			z-index: 2;
-			background: linear-gradient(135deg, rgba(24,149,163,1) 0%, rgba(200,7,134,1) 100%);
+			transform: translate(0,0);
+			//background: linear-gradient(135deg, rgba(24,149,163,1) 0%, rgba(200,7,134,1) 100%);
 			.gradient {
+				height: 60%;
 				background: linear-gradient(135deg, rgba(24,149,163,1) 0%, rgba(200,7,134,1) 100%);
+			}
+			.image-to-back-wrap img {
+				//height: 60%;
 			}
 		}
 		&.section--contact {
-			z-index: 1;
-			background: linear-gradient(135deg, rgba(200,7,134,1) 0%, rgba(237,47,46,1) 100%);
+			transform: translate(0,0);
+			//background: linear-gradient(135deg, rgba(200,7,134,1) 0%, rgba(237,47,46,1) 100%);
 			.gradient {
+				height: 60%;
 				background: linear-gradient(135deg, rgba(200,7,134,1) 0%, rgba(237,47,46,1) 100%);
+			}
+			.image-to-back-wrap img {
+				height: 60%;
 			}
 		}
 

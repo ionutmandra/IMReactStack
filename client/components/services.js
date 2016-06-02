@@ -19,7 +19,7 @@ class Services extends Component {
                         <img src="client/assets/img/photos/temp1.jpg" data-ref="background" />
                     </div>
                 </div>
-                <div className="gradient"></div>
+                <div className="gradient" data-ref="gradient"></div>
                 <div className="section-content">
                     <div className="grid-block-wrap">
                         <div className="grid-block">

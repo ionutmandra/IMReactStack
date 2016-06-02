@@ -138,27 +138,19 @@ class Home extends Component {
         return (
            	<div className="section section--about">
                 <div className="gradient"></div>
-
-                <div className="gradient"></div>
-
+                
                 <div className="section-content" id="sectionContent1">
                     <div className="image-to-back-wrap" id='kk'>
                         <div className="image-to-back">
-                            <img src="client/assets/img/photos/temp1.jpg" />
-                        </div>
-                        <div className="grid-block">
-                            <div className="grid-block-content" data-ref="text2">
-                                <h1>Secondary text</h1>
-                            </div>
+                            <img src="client/assets/img/photos/temp1.jpg" data-ref="background"/>
                         </div>
                     </div>
-
 
                     <div className="row content">
                         <div className="columns large-12 text-right">
                             <div className="grid-block-wrap1">
                                 <div className="grid-block1">
-                                    <div className="grid-block-contentl">
+                                    <div className="grid-block-contentl" data-ref="text1">
                                         <h1>Software Innovators Happily Together</h1>
                                     </div>
                                 </div>
@@ -167,7 +159,7 @@ class Home extends Component {
                         <div className="columns large-12  text-left">
                             <div className="grid-block-wrap1 delayed">
                                 <div className="grid-block1">
-                                    <div className="grid-block-contentr">
+                                    <div className="grid-block-contentr" data-ref="text2">
                                         <h2>Create a truly remarkable working environment and deliver high quality.innovative software producst and services</h2>
                                     </div>
                                 </div>
@@ -176,7 +168,7 @@ class Home extends Component {
                     </div>
 
                     <div className="row">
-                        <div className="columns large-24 text-center">
+                        <div className="columns large-24 text-center" data-ref="textBottom">
                             <h2 id="scrollMore">Find out more</h2>
                         </div>
                     </div>
