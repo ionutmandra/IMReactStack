@@ -2,26 +2,26 @@
 This file defines the main Redux Store. It will be required by all 'smart' components in the app
 */
 
-import aboutReducer from './reducers/about';
-import authReducer from './reducers/auth';
 import thunk from 'redux-thunk'; // allows us to use asynchronous actions
 import * as Redux from 'redux';
-import {reducer as formReducer} from 'redux-form';
+// import authReducer from './reducers/auth';
+// import {reducer as formReducer} from 'redux-form';
+// import aboutReducer from './reducers/about';
+// import projectsReducer from './reducers/projects';
+// import servicesReducer from './reducers/services';
+// import teamReducer from './reducers/team';
 import langReducer from './reducers/lang';
-import projectsReducer from './reducers/projects';
-import servicesReducer from './reducers/services';
-import teamReducer from './reducers/team';
 import transitionReducer from './reducers/transition';
 
 const rootReducer = Redux.combineReducers({
-    about: aboutReducer,
-    form: formReducer,
+    // about: aboutReducer,
+    // form: formReducer,
+    // projects: projectsReducer,
+    // services: servicesReducer,
+    // team: teamReducer,
     lang: langReducer,
-    projects: projectsReducer,
-    services: servicesReducer,
-    team: teamReducer,
     transition: transitionReducer,
-    [authReducer.reducerName]: authReducer.createReducer,
+    //[authReducer.reducerName]: authReducer.createReducer,
 });
 
 const store = Redux.createStore(
@@ -30,6 +30,6 @@ const store = Redux.createStore(
         Redux.applyMiddleware(thunk),
         window.devToolsExtension ? window.devToolsExtension() : f => f
     )
-);
+); 
 
 module.exports = store;

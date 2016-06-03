@@ -47,9 +47,10 @@ div.page-container {
                 color: $white;
                 
                 h1 {
+                    @extend .text-left;
                     margin: 0;
                     padding: 0;
-                    text-indent: -3px;
+                    //text-indent: -3px;
                     display: inline-block;
                 }
             }

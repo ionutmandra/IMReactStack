@@ -58,7 +58,7 @@ gulp.task('icomoon-variables', function () {
 });
 
 gulp.task('icomoon-fonts', function () {
-  gulp.src('./client/lib/icomoon/fonts/*')
+  return gulp.src('./client/lib/icomoon/fonts/*')
     .pipe(gulp.dest('./client/dist/fonts'));
 });
 
@@ -87,32 +87,32 @@ gulp.task('app-sass', function (callback) {
 
 const imagePaths = ['./client/assets/img/**'];
 gulp.task('move-image-files', (callback) => {
-    gulp.src(imagePaths)
-    .pipe(gulp.dest('./client/dist/img'));
+    return gulp.src(imagePaths)
+      .pipe(gulp.dest('./client/dist/img'));
 });
 
 const jsFiles = ['./client/lib/gsap/tweenmax.js'];
 gulp.task('move-js-files', (callback) => {
-    gulp.src(jsFiles)
-    .pipe(gulp.dest('./client/dist/js'));
+    return gulp.src(jsFiles)
+      .pipe(gulp.dest('./client/dist/js'));
 });
 
 // Due to photoswipe css we will add the needed images near the css
 const photoSwipeimagePaths = ['./client/lib/photoswipe/default-skin.png', './client/lib/photoswipe/preloader.gif'];
 gulp.task('move-photoswipe-files', (callback) => {
-    gulp.src(photoSwipeimagePaths)
-    .pipe(gulp.dest('./client/dist/css'));
+    return gulp.src(photoSwipeimagePaths)
+      .pipe(gulp.dest('./client/dist/css'));
 });
 
 
 const libCssToTransform = ['./node_modules/react-photoswipe/dist/*.css'];
 gulp.task('test', (callback) => {
-    gulp.src(libCssToTransform)
-    .pipe(rename((path) => {
-        path.basename = '_' +  path.basename;
-        path.extname = '.scss';
-    }))
-    .pipe(gulp.dest('./client/lib/test'));
+    return gulp.src(libCssToTransform)
+      .pipe(rename((path) => {
+          path.basename = '_' +  path.basename;
+          path.extname = '.scss';
+      }))
+      .pipe(gulp.dest('./client/lib/test'));
 });
 
 
@@ -122,7 +122,7 @@ gulp.task('default', ['watchify', 'app-sass', 'move-js-files', 'move-image-files
 });
 
 gulp.task('clean', function () {
-  gulp.src('./client/dist', { read: false })
+  return gulp.src('./client/dist', { read: false })
     .pipe(clean());
 });
 gulp.task('build', function () {
@@ -152,7 +152,7 @@ gulp.task('build', function () {
     bundler = bundler.pipe(buffer()).pipe(uglify());
   }
 
-  bundler.pipe(duration('rebuilding files'))
+  return bundler.pipe(duration('rebuilding files'))
     .pipe(gulp.dest('./client/dist/js'));
 });
 

@@ -7,7 +7,7 @@ import Grid from './grid';
 class Wrapper extends Component {
     render() {
         return (<TranslationProvider id="page-wrapper">
-            <Header />
+            <Header className="top" />
             <ReactTransitionGroup component="div" className="page-container">
                 {React.cloneElement(this.props.children, { key: location.pathname })}
             </ReactTransitionGroup>
