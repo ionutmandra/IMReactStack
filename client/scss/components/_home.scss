@@ -72,6 +72,18 @@ article.page-home {
                     @include grid-column-offset(12);
                 }
             }
+            
+             .text-1 {
+                @include grid-column-size(5);
+                @include grid-column-offset(6);
+                top: 30%;                
+            }
+            
+            .text-2 {
+                @include grid-column-size(6);
+                @include grid-column-offset(12);
+                top: 50%;
+            }
         }
         &.slide-3 {
             top: 200%;

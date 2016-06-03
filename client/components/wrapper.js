@@ -8,7 +8,7 @@ class Wrapper extends Component {
     render() {
         return (<TranslationProvider id="page-wrapper">
             <Header className="top" />
-            <ReactTransitionGroup component="div" className="page-container">
+            <ReactTransitionGroup component="div" id="page-container">
                 {React.cloneElement(this.props.children, { key: location.pathname })}
             </ReactTransitionGroup>
             <Grid />
