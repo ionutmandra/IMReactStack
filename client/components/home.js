@@ -49,7 +49,7 @@ class Home extends Component {
         new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', duration: '100%' }).addTo(controller).setTween(slide3GrTr);
 
         //texts  s1           
-        new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '100%', offset: 200 }).addTo(controller)
+        new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '100%', offset: 300 }).addTo(controller)
             .setTween([
                 TweenMax.to(this._inputCreate, 1, { x: '-100%' }),                
                 TweenMax.to(this._inputSoftware, 1, { x: '+100%' })]);
@@ -60,18 +60,18 @@ class Home extends Component {
                 TweenMax.to(this._inputValuesLeft, 0.5, { x: '0%', ease: Power3.easeIn }),
                 TweenMax.to(this._inputValuesRight, 0.5, { x: '0%', ease: Power3.easeIn })]);
 
-        new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', duration: '50%', offset: 100 }).addTo(controller)
+        new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', duration: '50%', offset: 300 }).addTo(controller)
             .setTween([
                 TweenMax.to(this._inputGrow, 0.5, { x: '-100%', ease: Power3.easeIn }),
                 TweenMax.to(this._inputValuesLeft, 0.5, { x: '+100%', ease: Power3.easeIn }),
-                TweenMax.to(this._inputValuesRight, 0.5, { x: '-100%', ease: Power3.easeIn })]);
+                TweenMax.to(this._inputValuesRight, 0.5, { x: '-100%', ease: Power3.easeIn })]).addIndicators();
 
         new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 1, duration: "100%" }).addTo(controller)
             .setTween([
                 TweenMax.to(this._inputCreating, 0.5, { x: '0%', ease: Power3.easeIn }),
                 TweenMax.to(this._inputOffering, 0.5, { x: '0%', ease: Power3.easeIn })]);
                 
-           new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', duration: '50%', offset: 200 }).addTo(controller)
+           new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', duration: '50%', offset: 300 }).addTo(controller)
             .setTween([
                 TweenMax.to(this._inputCreating, 0.5, { x: '-100%', ease: Power3.easeIn }),
                 TweenMax.to(this._inputOffering, 0.5, { x: '+100%', ease: Power3.easeIn })]);
