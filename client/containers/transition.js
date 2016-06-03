@@ -101,7 +101,7 @@ export default (BaseComponent) => {
             }
             elements.background && TweenMax.set(elements.background, { scale: 1.2 });
             TweenMax.set(elements.container, { opacity: 0 });
-            TweenMax.set(elements.header, { height: '60%' });
+            //TweenMax.set(elements.header, { height: '60%' });
             let tl = new TimelineLite({ onComplete: callback })
                 .add(_.filter([
                     elements.background && TweenMax.to(elements.background, 1, { scale: 1, ease: Power3.easeOut }),
@@ -137,7 +137,7 @@ export default (BaseComponent) => {
             !tweenScroll && $('body').css('overflow', 'hidden');
 
             //Initial state
-            TweenPlugin.activate(['scrollTo']);
+            TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
             TweenMax.set(elements.container, { zIndex: 2 });
             TweenMax.set(elements.header, { opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
             TweenMax.set(line, { left: left, opacity: 1, height: 0 });
@@ -186,7 +186,7 @@ export default (BaseComponent) => {
 
             //Initial state
             TweenMax.set(elements.container, { zIndex: 1 });
-            TweenMax.set(elements.header, { height: '60%' });
+            //TweenMax.set(elements.header, { height: '60%' });
 
             //Animation
             let tl1 = new TimelineLite({ onComplete: callback })

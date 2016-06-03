@@ -19,7 +19,7 @@ class HeaderLinks extends Component {
     render() {
         return (<nav className="links">
             <ul>
-                <li><Link data-animate-line="3" onClick={this.handleClick} to={routePaths.client.root}>{'About'}</Link></li>
+                <li><Link data-animate-line="3" onClick={this.handleClick} to={routePaths.client.about}>{'About'}</Link></li>
                 <li><Link data-animate-line="4" onClick={this.handleClick} to={routePaths.client.expertise}>{'Expertise'}</Link></li>
                 <li><Link data-animate-line="5" onClick={this.handleClick} to={routePaths.client.portfolio}>{'Portfolio'}</Link></li>
                 <li><Link data-animate-line="6" onClick={this.handleClick} to={routePaths.client.careers}>{'Careers'}</Link></li>

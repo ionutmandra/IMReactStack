@@ -11,6 +11,7 @@ import routePaths from '../common/routePaths';
 
 import Wrapper from './components/wrapper';
 import Home from './containers/homeContainer';
+import About from './containers/aboutContainer';
 import Expertise from './containers/expertiseContainer';
 import Portfolio from './containers/portfolioContainer';
 import Careers from './containers/careersContainer'; 
@@ -33,6 +34,7 @@ module.exports = (
     <div className="root">        
         <Route component={Wrapper}>
             <Route path={routePaths.client.root} component={Home} />
+            <Route path={routePaths.client.about} component={About} />
             <Route path={routePaths.client.expertise} component={Expertise} />
             <Route path={routePaths.client.portfolio} component={Portfolio} />
             <Route path={routePaths.client.careers} component={Careers} />

@@ -2,11 +2,11 @@ module.exports = {
 	'client': {
 		//client-side routes, for now all assumed public
 		'root': '/',
+		'about': '/about',
 		'expertise': '/expertise',
 		'portfolio': '/portfolio',
 		'careers': '/careers',
 		'contact': '/contact',
-		// 'about': '/about',
 		// 'aboutName': '/about/:name',
 		// 'admin': '/admin',
 		// 'adminHome': '/adminHome',

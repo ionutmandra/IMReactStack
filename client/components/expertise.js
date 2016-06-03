@@ -1,17 +1,16 @@
 import React, { PropTypes, Component } from 'react';
-import Lorem from './lorem';
 
 class Expertise extends Component {
     render() {
         return (
-            <article className="page-expertise">
+            <article className="page page-expertise">
                 <header>
                     <div className="image-container"><img src="client/assets/img/photos/temp2.jpg" /></div>
                     <div className="gradient"></div>
-                    <div className="text-1"><h1>{'Expertise'}</h1></div>
+                    <div className="text-1"><h1>{'Scurt text despre Adaptabi ca si companie: cine sunt, ce fac si care este misiunea lor'}</h1></div>
                 </header>
-                <section>
-                    <Lorem />
+                <section className="content">
+                    asd
                 </section>
             </article>
         );
