@@ -22,7 +22,7 @@ class Home extends Component {
             }
         }        
         function updateGradientBackground(gr) {
-            TweenLite.set('.gradient', { background: "linear-gradient(135deg, " + gr.color0 + " 0%, " + gr.color1 + " 100%)" });
+            TweenLite.set('.gradient', { background: "linear-gradient(45deg, " + gr.color0 + " 0%, " + gr.color1 + " 100%)" });
         }
         function animateGradientColors(fromGrad, toGrad) {
             return TweenMax.to(fromGrad, 1, { colorProps: toGrad, ease: Linear.easeNone, onUpdate: updateGradientBackground, onUpdateParams: [fromGrad] });
@@ -49,7 +49,7 @@ class Home extends Component {
         new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', duration: '100%' }).addTo(controller).setTween(slide3GrTr);
 
         //texts  s1           
-        new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '100%', offset: 300 }).addTo(controller)
+        new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '50%', offset: 300 }).addTo(controller)
             .setTween([
                 TweenMax.to(this._inputCreate, 1, { x: '-100%' }),                
                 TweenMax.to(this._inputSoftware, 1, { x: '+100%' })]);
