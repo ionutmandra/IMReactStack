@@ -27,7 +27,7 @@ export default (BaseComponent) => {
         }
         componentWillEnter(callback) {
             let transition = this._clone.props.transition;
-            console.warn('will enter', transition);
+            console.warn('will enter', transition, this.props);
             if (!transition || !transition.type) {
                 return callback();
             }
