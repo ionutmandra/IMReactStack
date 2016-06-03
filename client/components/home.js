@@ -20,7 +20,7 @@ class Home extends Component {
             for (var i = 0; i < elems.length; i++) {
                 TweenMax.set(elems[i], { x: '+100%', ease: Linear.easeNone });
             }
-        }
+        }        
         function updateGradientBackground(gr) {
             TweenLite.set('.gradient', { background: "linear-gradient(135deg, " + gr.color0 + " 0%, " + gr.color1 + " 100%)" });
         }
@@ -33,7 +33,6 @@ class Home extends Component {
             }
         }
 
-        return;
         hideLeft([this._inputGrow, this._inputValuesRight, this._inputCreating, this._inputSustaining]);
         hideRight([this._inputValuesLeft, this._inputOffering]);
         pinSections([this._section1, this._section2, this._section3, this._section4]);
@@ -49,120 +48,38 @@ class Home extends Component {
         new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', duration: '100%' }).addTo(controller).setTween(slide2GrTr);
         new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', duration: '100%' }).addTo(controller).setTween(slide3GrTr);
 
-        //texts
-        // var scale_tween = TweenMax.to(this._inputCreate, 1, { x: '-100%', ease: Linear.easeNone, });
-        // new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '20%', offset:200 }).addTo(controller).addIndicators().setTween(scale_tween);
+        //texts  s1           
+        new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '100%', offset: 200 }).addTo(controller)
+            .setTween([
+                TweenMax.to(this._inputCreate, 1, { x: '-100%' }),                
+                TweenMax.to(this._inputSoftware, 1, { x: '+100%' })]);
 
-        var scale_tween21 = TweenMax.to(this._inputGrow, 1, { x: '0%', ease: Linear.easeNone });
-        new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 0.5, duration: '100%' }).addTo(controller).addIndicators().setTween(scale_tween21);
+        new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 1, duration: "100%" }).addTo(controller)
+            .setTween([
+                TweenMax.to(this._inputGrow, 0.5, { x: '0%', ease: Power3.easeIn }),
+                TweenMax.to(this._inputValuesLeft, 0.5, { x: '0%', ease: Power3.easeIn }),
+                TweenMax.to(this._inputValuesRight, 0.5, { x: '0%', ease: Power3.easeIn })]);
 
+        new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', duration: '50%', offset: 100 }).addTo(controller)
+            .setTween([
+                TweenMax.to(this._inputGrow, 0.5, { x: '-100%', ease: Power3.easeIn }),
+                TweenMax.to(this._inputValuesLeft, 0.5, { x: '+100%', ease: Power3.easeIn }),
+                TweenMax.to(this._inputValuesRight, 0.5, { x: '-100%', ease: Power3.easeIn })]);
 
-        /*                                       
-                var scale_tween = TweenMax.to('.grid-block-contentr', 0.5, { x: '-100%', ease: Linear.easeNone, });
-                var scale_tweenr = TweenMax.to('.grid-block-contentl', 0.5, { x: '+100%', ease: Linear.easeNone });
-                var scale_tweenScroll = TweenMax.to('#scrollMore', 0.1, { opacity: 0, ease: Linear.easeNone });
-                var scale_tweenr232kk = TweenMax.to('#kk', 0.5, { height: 0, ease: Linear.easeNone });
-                tlm.add([grtw2, scale_tween, scale_tweenr, scale_tweenScroll]);
-        
-        
-                var sl0 = new ScrollMagic.Scene({ triggerElement: '#sectionContent1', triggerHook: 'onLeave', duration: '100%' })
-                    .addTo(controller).setTween(tlm);
-        
-                new ScrollMagic.Scene({ triggerElement: '#sectionContent1', triggerHook: 'onLeave', duration: '100%' })
-                    .addTo(controller).setTween(scale_tweenr232kk);
-          
-        
-                var scale_tween21 = TweenMax.to('#anim21', 1, { x: '0%', ease: Linear.easeNone });
-                var scale_tween22 = TweenMax.to('#anim22', 1, { x: '0%', ease: Linear.easeNone });
-                var scale_tweenr23 = TweenMax.to('#anim23', 1, { x: '0%', ease: Linear.easeNone });
-                var tlm00 = new TimelineMax();
-                tlm00.add([scale_tween21, scale_tween22, scale_tweenr23])
-        
-                new ScrollMagic.Scene({ triggerElement: '#sectionContent1', triggerHook: 'onLeave', duration: '100%' })
-                .addTo(controller).setTween(tlm00);
-        
-        
-        
-                //========================= 2        =================
-                var tlm2 = new TimelineMax();
-                var myObject = { color0: '#68bc45', color1: '#1895a3' };
-                var grtw = TweenMax.to(myObject, 1, { colorProps: { color0: '#1895a3', color1: '#c80786' }, ease: Linear.easeNone, onUpdate: applyProps });
-                function applyProps() {
-                    TweenLite.set('.gradient', { background: "linear-gradient(135deg, " + myObject.color0 + " 0%, " + myObject.color1 + " 100%)" });
-                }
+        new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 1, duration: "100%" }).addTo(controller)
+            .setTween([
+                TweenMax.to(this._inputCreating, 0.5, { x: '0%', ease: Power3.easeIn }),
+                TweenMax.to(this._inputOffering, 0.5, { x: '0%', ease: Power3.easeIn })]);
                 
-                //tlm2.add([grtw]);
-        
-                var scale_tween212 = TweenMax.to('#anim21', 0.3, { x: '-100%', ease: Linear.easeNone });
-                var scale_tween222 = TweenMax.to('#anim22', 0.3, { x: '100%', ease: Linear.easeNone });
-                var scale_tweenr232 = TweenMax.to('#anim23', 0.3, { x: '-100%', ease: Linear.easeNone });
-                
-                
-                var scale_tween31 = TweenMax.to('#anim31', 0.5, { x: '0%', ease: Linear.easeNone });
-                var scale_tween32 = TweenMax.to('#anim32', 0.5, { x: '0%', ease: Linear.easeNone });
-                
-                tlm2.add([grtw,scale_tween212, scale_tween222, scale_tweenr232,scale_tween31,scale_tween32]);
-        
-                var sl1 = new ScrollMagic.Scene({ triggerElement: '#sectionContent2', triggerHook: 'onLeave', duration: '100%',offset:350 })
-                    .setTween(tlm2).addTo(controller);
-        
-                var sl21 = new ScrollMagic.Scene({ triggerElement: '#sectionContent2', triggerHook: 'onLeave', })
-                    .setPin('#sectionContent2').addTo(controller);
-        
-                var scale_tweenr2322kk = TweenMax.to('#kk2', 1, { height: 0, ease: Linear.easeNone });
-                new ScrollMagic.Scene({ triggerElement: '#sectionContent2', triggerHook: 'onLeave', duration: '100%' })
-                    .addTo(controller).setTween(scale_tweenr2322kk);
-        
-                //========================= 3        =================
-        
-                var tlm3 = new TimelineMax();
-                var myObject3 = { color0: '#1895a3', color1: '#c80786' };
-                var grtw3 = TweenMax.to(myObject3, 1, { colorProps: { color0: '#c80786', color1: '#ed2f2e' }, ease: Linear.easeNone, onUpdate: applyProps3 });
-                function applyProps3() {
-                    TweenLite.set('.gradient', { background: "linear-gradient(135deg, " + myObject3.color0 + " 0%, " + myObject3.color1 + " 100%)" });
-                }
+           new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', duration: '50%', offset: 200 }).addTo(controller)
+            .setTween([
+                TweenMax.to(this._inputCreating, 0.5, { x: '-100%', ease: Power3.easeIn }),
+                TweenMax.to(this._inputOffering, 0.5, { x: '+100%', ease: Power3.easeIn })]);
         
         
-                var scale_tween312 = TweenMax.to('#anim31', 0.5, { x: '100%', ease: Linear.easeNone });
-                var scale_tween322 = TweenMax.to('#anim32', 0.5, { x: '-100%', ease: Linear.easeNone });
-                
-                     var scale_tween41 = TweenMax.to('#anim41', 1, { x: '0%', ease: Linear.easeNone });
-                        
-                tlm3.add([grtw3,scale_tween312, scale_tween322,scale_tween41]);
-        
-                
-        
-                new ScrollMagic.Scene({ triggerElement: '#sectionContent3', triggerHook: 'onLeave', duration: '100%' })
-                    .setTween(tlm3).addTo(controller);
-        
-        
-                new ScrollMagic.Scene({ triggerElement: '#sectionContent3', triggerHook: 'onLeave' })
-                    .setPin('#sectionContent3').addTo(controller);
-        
-                var scale_tweenr3322kk = TweenMax.to('#kk3', 1, { height: 0, ease: Linear.easeNone });
-                new ScrollMagic.Scene({ triggerElement: '#sectionContent3', triggerHook: 'onLeave', duration: '100%' })
-                    .addTo(controller).setTween(scale_tweenr3322kk);
-        
-                //========================= 4        =================
-        
-                var tlm4 = new TimelineMax();
-                var myObject4 = { color0: '#c80786', color1: '#ed2f2e' };
-                var grtw4 = TweenMax.to(myObject4, 1, { colorProps: { color0: '#1895a3', color1: '#c80786' }, ease: Linear.easeNone, onUpdate: applyProps4 });
-                function applyProps4() {
-                    TweenLite.set('.gradient', { background: "linear-gradient(135deg, " + myObject4.color0 + " 0%, " + myObject4.color1 + " 100%)" });
-                }
-        
-        
-        
-           
-                tlm4.add([grtw4]);
-        
-                new ScrollMagic.Scene({ triggerElement: '#sectionContent4', triggerHook: 'onLeave', duration: '100%' })
-                    .setTween(tlm4).addTo(controller);
-        
-                new ScrollMagic.Scene({ triggerElement: '#sectionContent4', triggerHook: 'onLeave', duration: '100%' })
-                    .setPin('#sectionContent4').addTo(controller);
-                /**/
+          new ScrollMagic.Scene({ triggerElement: this._section4, triggerHook: 1, duration: "100%" }).addTo(controller)
+            .setTween([
+                TweenMax.to(this._inputSustaining, 0.5, { x: '0%', ease: Power3.easeIn })]);                      
     }
 
     render() {

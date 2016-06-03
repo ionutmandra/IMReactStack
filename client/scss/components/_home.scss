@@ -7,7 +7,7 @@ article.page-home {
         left: 0;
         width: 100%;
         height: 100%;
-        overflow: hidden;
+        overflow: hidden;                              
         
         &.background {
             z-index: 1;
@@ -27,11 +27,18 @@ article.page-home {
         }
         &.content {
             z-index: 3;
-            color: $white;
+            color: $white;            
         }
-        .text-1, .text-2, .scroll-hint {
+        .text-1, .text-2, .text-3, .scroll-hint {
             overflow: hidden;
             position: absolute;
+            h1{            
+                font-size:38px;
+                font-weight: bold;
+            }
+            h2{
+                font-size:26px;            
+            }           
         }
         
         &.slide-1 {
@@ -45,13 +52,14 @@ article.page-home {
                 @include grid-column-size(6);
                 @include grid-column-offset(6);
                 top: 30%;
-                text-align: right;
+                text-align: right;                
             }
             
             .text-2 {
                 @include grid-column-size(6);
                 @include grid-column-offset(12);
                 top: 50%;
+                
             }
             
             .scroll-hint {
@@ -74,15 +82,27 @@ article.page-home {
             }
             
              .text-1 {
-                @include grid-column-size(5);
+                @include grid-column-size(7);
                 @include grid-column-offset(6);
                 top: 30%;                
             }
             
-            .text-2 {
-                @include grid-column-size(6);
-                @include grid-column-offset(12);
-                top: 50%;
+            .text-2 {                
+                @include grid-column-size(3);
+                @include grid-column-offset(15);
+                text-align: right;
+                top: 20%;
+                h2{
+                    margin-bottom: 40%;
+                }
+            }
+            .text-3 {                
+                @include grid-column-size(3);
+                @include grid-column-offset(18);
+                top: 26%;
+                h2{
+                    margin-bottom: 40%;
+                }                
             }
         }
         &.slide-3 {
@@ -90,6 +110,19 @@ article.page-home {
             
             &.background {
                 //background: linear-gradient(135deg, rgba(24,149,163,1) 0%, rgba(200,7,134,1) 100%);                
+            }
+            
+               .text-1 {
+                @include grid-column-size(6);
+                @include grid-column-offset(3);
+                top: 50%;
+                text-align: right;                
+            }
+            
+            .text-2 {
+                @include grid-column-size(6);
+                @include grid-column-offset(15);
+                top: 50%;                
             }
         }
         &.slide-4 {
@@ -101,6 +134,12 @@ article.page-home {
                 div {
                     @include grid-column-size(12);
                 }              
+            }
+            
+            .text-1 {
+                @include grid-column-size(6);
+                @include grid-column-offset(15);
+                top: 50%;                
             }
         }
     }
