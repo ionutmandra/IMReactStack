@@ -11,21 +11,19 @@ class HeaderLinks extends Component {
     handleClick(event) {
         this.props.transition({
             type: this.props.animationType || 'header',
-            column: event.target.getAttribute('data-eq'),
+            column: event.target.getAttribute('data-animate-line'),
             target: event.target,
         });
     }
 
     render() {
-        var s = this.props.strings;
-        return (<nav className="header-links">
+        return (<nav className="links">
             <ul>
-                {/*data-eq attribute tells which grid line the link animates when navigating*/}
-                <li><Link to={routePaths.client.root}       data-eq="3" className="about"       onClick={this.handleClick}>{s.about}</Link></li>
-                <li><Link to={routePaths.client.services}   data-eq="4" className="expertise"   onClick={this.handleClick}>{s.expertise}</Link></li>
-                <li><Link to={routePaths.client.projects}   data-eq="5" className="portfolio"   onClick={this.handleClick}>{s.portfolio}</Link></li>
-                <li><Link to={routePaths.client.team.index} data-eq="6" className="jobs"        onClick={this.handleClick}>{s.jobs}</Link></li>
-                <li><Link to={routePaths.client.contact}    data-eq="7" className="contact"     onClick={this.handleClick}>{s.contact}</Link></li>
+                <li><Link data-animate-line="3" onClick={this.handleClick} to={routePaths.client.root}>{'About'}</Link></li>
+                <li><Link data-animate-line="4" onClick={this.handleClick} to={routePaths.client.expertise}>{'Expertise'}</Link></li>
+                <li><Link data-animate-line="5" onClick={this.handleClick} to={routePaths.client.portfolio}>{'Portfolio'}</Link></li>
+                <li><Link data-animate-line="6" onClick={this.handleClick} to={routePaths.client.careers}>{'Careers'}</Link></li>
+                <li><Link data-animate-line="7" onClick={this.handleClick} to={routePaths.client.contact}>{'Contact'}</Link></li>
             </ul>
         </nav>);
     }
@@ -39,11 +37,6 @@ HeaderLinks.propTypes = {
 
 HeaderLinks.defaultProps = {
     strings: {
-        about: 'About',
-        expertise: 'Expertise',
-        portfolio: 'Portfolio',
-        contact: 'Contact',
-        jobs: 'Careers',
     },
 };
 

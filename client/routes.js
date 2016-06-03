@@ -11,10 +11,10 @@ import routePaths from '../common/routePaths';
 
 import Wrapper from './components/wrapper';
 import Home from './containers/homeContainer';
-import ServicesList from './containers/servicesContainer';
-import ProjectsList from './containers/projectsListContainer';
-import Team from './containers/teamContainer';
-import ContactPage from './containers/contactContainer';
+import Expertise from './containers/expertiseContainer';
+import Portfolio from './containers/portfolioContainer';
+import Careers from './containers/careersContainer'; 
+import Contact from './containers/contactContainer';
 //import AdminHome from './containers/adminHomeContainer';
 //import { component as AboutList } from './containers/aboutListContainer';
 //import LoginComponent from './containers/loginContainer';
@@ -33,10 +33,10 @@ module.exports = (
     <div className="root">        
         <Route component={Wrapper}>
             <Route path={routePaths.client.root} component={Home} />
-            <Route path={routePaths.client.services} component={ServicesList} />
-            <Route path={routePaths.client.projects} component={ProjectsList} />
-            <Route path={routePaths.client.team.index} component={Team} />
-            <Route path={routePaths.client.contact} component={ContactPage} />
+            <Route path={routePaths.client.expertise} component={Expertise} />
+            <Route path={routePaths.client.portfolio} component={Portfolio} />
+            <Route path={routePaths.client.careers} component={Careers} />
+            <Route path={routePaths.client.contact} component={Contact} />
             {/*<Route path={routePaths.client.root} component={Home} />
             <Route path={routePaths.client.about} component={AboutList}>
                 <Route path={routePaths.client.aboutName} component={AboutDetails} />
