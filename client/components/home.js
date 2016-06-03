@@ -64,7 +64,7 @@ class Home extends Component {
             .setTween([
                 TweenMax.to(this._inputGrow, 0.5, { x: '-100%', ease: Power3.easeIn }),
                 TweenMax.to(this._inputValuesLeft, 0.5, { x: '+100%', ease: Power3.easeIn }),
-                TweenMax.to(this._inputValuesRight, 0.5, { x: '-100%', ease: Power3.easeIn })]).addIndicators();
+                TweenMax.to(this._inputValuesRight, 0.5, { x: '-100%', ease: Power3.easeIn })]);
 
         new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 1, duration: "100%" }).addTo(controller)
             .setTween([
