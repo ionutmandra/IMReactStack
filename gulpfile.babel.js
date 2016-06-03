@@ -91,6 +91,12 @@ gulp.task('move-image-files', (callback) => {
     .pipe(gulp.dest('./client/dist/img'));
 });
 
+const jsFiles = ['./client/lib/gsap/tweenmax.js'];
+gulp.task('move-js-files', (callback) => {
+    gulp.src(jsFiles)
+    .pipe(gulp.dest('./client/dist/js'));
+});
+
 // Due to photoswipe css we will add the needed images near the css
 const photoSwipeimagePaths = ['./client/lib/photoswipe/default-skin.png', './client/lib/photoswipe/preloader.gif'];
 gulp.task('move-photoswipe-files', (callback) => {
@@ -111,7 +117,7 @@ gulp.task('test', (callback) => {
 
 
 const scssPathsToWatch  = ['./client/lib/**/*.scss', './client/scss/**/*.scss'];
-gulp.task('default', ['watchify', 'app-sass'], function() {
+gulp.task('default', ['watchify', 'app-sass', 'move-js-files', 'move-image-files', 'move-photoswipe-files'], function() {
   gulp.watch(scssPathsToWatch, ['app-sass']);
 });
 
@@ -177,5 +183,5 @@ gulp.task('unit-tests', function () {
 });
 
 gulp.task('deploy', function () {
-  return runSequence('apply-prod-environment', 'clean', 'build', 'app-sass', 'minify-css','unit-tests');
+  return runSequence('apply-prod-environment', 'clean', 'build', 'app-sass', 'move-js-files', 'move-image-files', 'move-photoswipe-files', 'minify-css', 'unit-tests');
 });
