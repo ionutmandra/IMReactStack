@@ -35,9 +35,11 @@ article.page-home {
             h1{            
                 font-size:38px;
                 font-weight: bold;
+                color: white;
             }
             h2{
-                font-size:26px;            
+                font-size:26px;
+                color: white;            
             }           
         }
         
@@ -56,7 +58,7 @@ article.page-home {
             }
             
             .text-2 {
-                @include grid-column-size(6);
+                @include grid-column-size(9);
                 @include grid-column-offset(12);
                 top: 50%;
                 
