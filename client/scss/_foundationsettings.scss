@@ -92,8 +92,10 @@ $breakpoint-classes: (small medium large);
 $grid-row-width: $global-width;
 $grid-column-count: 24;
 $grid-column-gutter: (
-  small: 20px,
-  medium: 30px,
+  // small: 20px,
+  // medium: 30px,
+  small: 0,
+  medium: 0,
 );
 $grid-column-align-edge: true;
 $block-grid-max: 8;

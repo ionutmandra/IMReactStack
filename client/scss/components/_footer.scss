@@ -3,3 +3,22 @@
 //     text-align: center;
 //     border-top: 1px solid $palette-1;
 // }
+
+#page-container > article > footer {
+    font-size: rem-calc(12pt);
+    color: $white;
+    background: $text-color;
+    padding: rem-calc(12pt 0 10pt);
+    
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        
+        li {
+            padding: 0;
+            margin: 0;
+            display: inline-block;
+        }
+    }
+}
