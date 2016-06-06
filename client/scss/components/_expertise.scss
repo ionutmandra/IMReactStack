@@ -1,0 +1,30 @@
+#page-container article.page-expertise {
+    .technologies {
+        img {
+            width: 50%;
+            border: 2px solid rgba(0, 0, 0, .15);
+            border-radius: 50%;
+            padding: 20px;
+            filter: grayscale(100%);
+            -webkit-filter: grayscale(100%);
+            transition: all .35s linear;
+            
+            &:hover {
+                filter: grayscale(0%);
+                -webkit-filter: grayscale(0%);
+            }
+        }
+        
+        + .technologies {
+            margin-top: rem-calc(20pt);
+        }
+    }
+    
+    .processes {
+        img {
+            width: 30%;
+            display: block;
+            
+        }
+    }
+}
