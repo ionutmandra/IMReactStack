@@ -1,7 +1,7 @@
-article.page-home {
+#page-container article.page-home {
     transform: none !important;
     
-    .slide {
+    section.slide {
         display: block;
         position: absolute;
         left: 0;
@@ -27,7 +27,9 @@ article.page-home {
         }
         &.content {
             z-index: 3;
-            color: $white;            
+            color: $white;          
+            background: transparent;  
+            min-height: auto;
         }
         .text-1, .text-2, .text-3, .scroll-hint {
             overflow: hidden;

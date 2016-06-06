@@ -3,8 +3,8 @@ This is the "sitemap" of the client side of our app!
 */
 
 import React from 'react';
-//import { Route, IndexRedirect } from 'react-router';
-import { Route } from 'react-router';
+import { Route, IndexRedirect } from 'react-router';
+//import { Route } from 'react-router';
 import routePaths from '../common/routePaths';
 
 //import requireAuthentication from './containers/authenticatedContainer';
@@ -33,6 +33,9 @@ import Contact from './containers/contactContainer';
 module.exports = (
     <div className="root">        
         <Route component={Wrapper}>
+            {/*<Route path={routePaths.client.root}>
+                <IndexRedirect to={routePaths.client.home} />
+            </Route>*/}            
             <Route path={routePaths.client.root} component={Home} />
             <Route path={routePaths.client.about} component={About} />
             <Route path={routePaths.client.expertise} component={Expertise} />
