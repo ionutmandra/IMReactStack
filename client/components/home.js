@@ -40,7 +40,7 @@ class Home extends Component {
             }
         }
         function updateGradientBackground(gr) {
-            timeLines.push(TweenLite.set('.gradient', { background: "linear-gradient(45deg, " + gr.color0 + " 0%, " + gr.color1 + " 100%)" }));
+            timeLines.push(TweenLite.set('article.page-home > .gradient', { background: "linear-gradient(45deg, " + gr.color0 + " 0%, " + gr.color1 + " 100%)" }));
         }
         function animateGradientColors(fromGrad, toGrad) {
             var anim = TweenMax.to(fromGrad, 1, { colorProps: toGrad, ease: Linear.easeNone, onUpdate: updateGradientBackground, onUpdateParams: [fromGrad] });
