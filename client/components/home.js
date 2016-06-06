@@ -21,7 +21,7 @@ class Home extends Component {
     componentDidMount() {
 
         var gradients = ['#d6cb26', '#68bc45', '#1895a3', '#4f2063', '#c80786', '#ed2f2e'];
-
+        var _this = this;
         var controller = new ScrollMagic.Controller();
         this.controller = controller;
         var timeLines = this.timeLines = [];
@@ -83,14 +83,16 @@ class Home extends Component {
         scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', duration: '100%' }).addTo(controller).setTween(slide2GrTr));
         scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', duration: '100%' }).addTo(controller).setTween(slide3GrTr));
 
+        // change behaviour of controller to animate scroll instead of jump
+        controller.scrollTo(function (newpos) {
+            timeLines.push(TweenMax.to(window, 0.7, { scrollTo: { y: newpos }, ease: Power3.easeOut }));
+        });
 
-        //texts  s1           
-        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '50%', offset: 300 }).addTo(controller)
-            .setTween([
-                moveLeft(this._inputCreate),
-                moveRight(this._inputSoftware)
-            ]));
-
+        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '30%', offset: 200 }).addTo(controller)
+            .setTween([moveLeft(this._inputCreate), moveRight(this._inputSoftware)]));
+        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '20%', offset: 150 }).addTo(controller)
+            .on("end", function (event) { if (event.scrollDirection == 'FORWARD') { controller.scrollTo(_this._section2); } }
+            ));
 
         scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 1, duration: "100%" }).addTo(controller)
             .setTween([
@@ -106,6 +108,9 @@ class Home extends Component {
                 moveLeft(this._inputValuesRight)
             ]));
 
+        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', duration: '20%', offset: 250 }).addTo(controller)
+            .on("end", function (event) {if (event.scrollDirection == 'FORWARD') {controller.scrollTo(_this._section3);}}));
+
         scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 1, duration: "100%" }).addTo(controller)
             .setTween([
                 moveToInitial(this._inputCreating),
@@ -118,7 +123,8 @@ class Home extends Component {
                 moveRight(this._inputOffering),
             ]));
 
-
+        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', duration: '20%', offset: 250 }).addTo(controller)
+            .on("end", function (event) {if (event.scrollDirection == 'FORWARD') {controller.scrollTo(_this._section4);}}));
         scenes.push(new ScrollMagic.Scene({ triggerElement: this._section4, triggerHook: 1, duration: "100%" }).addTo(controller)
             .setTween([
                 moveToInitial(this._inputSustaining)
