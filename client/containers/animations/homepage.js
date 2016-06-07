@@ -31,9 +31,9 @@ export function enter_header(ref, callback, transition) {
     //Setup
     let elements = extractDOMElements(ref);
     console.warn('animate enter header SETUP', elements, transition);
-    let $target = $(transition.target).addClass('hover');
+    //let $target = $(transition.target).addClass('hover');
     let grid = document.getElementById('page-grid'), $grid = $(grid);
-    let $baseLine = $grid.find('li:nth-child(' + transition.column + ')'), left = $baseLine.offset().left;
+    let $baseLine = $grid.find('li:nth-child(1)'), left = $baseLine.offset().left;
     let line = $('#page-grid .navigation-line')[0];
     let width = $window.width();
     let position = left * 100 / width;
@@ -58,7 +58,7 @@ export function enter_header(ref, callback, transition) {
             TweenMax.to(line, 1, {
                 height: '100%', ease: Power3.easeIn, onComplete: () => {
                     TweenMax.set(line, { opacity: 0 });
-                    $target.removeClass('hover');
+                    //$target.removeClass('hover');
                 },
             }),
         ]))

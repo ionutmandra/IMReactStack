@@ -26,6 +26,7 @@ export default (BaseComponent) => {
         componentWillAppear(callback) {
             let animation = 'generic';
             this.props.route.path == routePaths.client.root && (animation = 'homepage');
+            this.props.route.path == routePaths.client.contact && (animation = 'contact');
             this.animation = animations[animation];
             
             this.animation.appear(this.refs.container, callback);
@@ -37,13 +38,14 @@ export default (BaseComponent) => {
             }
             let animation = 'generic';
             this.props.route.path == routePaths.client.root && (animation = 'homepage');
+            this.props.route.path == routePaths.client.contact && (animation = 'contact');
             this.animation = animations[animation];
             
             this.animation['enter_' + transition.type](this.refs.container, callback, transition);
         }
         componentWillLeave(callback) {
             let transition = this._clone.props.transition;
-            if (!transition || !transition.type) {
+            if (!transition || !transition.type || !this.animation) {
                 return callback();
             }
             this.animation['leave_' + transition.type](this.refs.container, callback, transition);
