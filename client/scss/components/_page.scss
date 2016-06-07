@@ -1,9 +1,13 @@
 #page-container {
     article {
+        position: relative;
         width: 100%;
         min-height: 100%;
         z-index: 1;
-        transform: translate(0, 0);
+        
+        &.detach-header {
+            position: absolute;
+        }
         
         section.content {
             background: $body-background;

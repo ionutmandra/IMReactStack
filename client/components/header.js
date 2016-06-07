@@ -41,7 +41,7 @@ class Header extends Component {
                     <div className="gradient" />
                     {logo}
                     {links}      
-                    <div className="text-1"><h1>{this.props.title}</h1></div>          
+                    <div className="text"><h1>{this.props.title}</h1></div>          
                 </header>
             );
         }
