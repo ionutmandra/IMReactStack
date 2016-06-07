@@ -9,7 +9,7 @@ class Header extends Component {
         super(props);
         this.handleClick = this.handleClick.bind(this);
     }
-    
+  
     handleClick(event) {
         let $target = $(event.target);
         if (!$target.is('a')){
