@@ -13,9 +13,9 @@
 @import "components/header";
 @import "components/footer";
 @import "components/page";
-@import "components/projects";
-@import "components/services";
-@import "components/_home.scss";
+@import "components/home";
+@import "components/about"; 
+@import "components/expertise";
   
 //One-off rules (use sparingly) 
 @import "./custom"; 
