@@ -50,8 +50,8 @@ class HeaderLinks extends Component {
                 <li><Link ref="portofolio" data-animate-line="5" onClick={this.handleClick} to={routePaths.client.portfolio}>{'Portfolio'}</Link></li>
                 <li><Link ref="careers" data-animate-line="6" onClick={this.handleClick} to={routePaths.client.careers}>{'Careers'}</Link></li>
                 <li><Link ref="contact" data-animate-line="7" onClick={this.handleClick} to={routePaths.client.contact}>{'Contact'}</Link></li>
-                <li><Burger></Burger></li>
             </ul>
+            {/*<Burger />{/**/}
         </nav>);
     }
 }

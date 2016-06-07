@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react';
-import Lorem from './lorem';
+import Header from '../containers/headerContainer';
 import Footer from '../containers/footerContainer';
 
 class Portfolio extends Component {
@@ -8,10 +8,7 @@ class Portfolio extends Component {
         //let columns = this.props.children ? 6 : 12;
         return (
             <article className="page page-portfolio">
-                <header>
-                    <div className="gradient"></div>
-                    <div className="text-1"><h1>{'Scurt text despre Adaptabi ca si companie: cine sunt, ce fac si care este misiunea lor.'}</h1></div>
-                </header>
+                <Header title={'Scurt text despre Adaptabi ca si companie: cine sunt, ce fac si care este misiunea lor.'} />
                 <section className="content">
                     <div className="row align-middle">
                         <div className="large-9 large-offset-3 columns">

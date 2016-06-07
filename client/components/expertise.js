@@ -1,17 +1,14 @@
 import React, { PropTypes, Component } from 'react';
 import { Link } from 'react-router';
 import routePaths from '../../common/routePaths';
+import Header from '../containers/headerContainer';
 import Footer from '../containers/footerContainer';
 
 class Expertise extends Component {
     render() {
         return (
             <article className="page page-expertise">
-                <header>
-                    <div className="image-container"><img src="client/assets/img/photos/temp2.jpg" /></div>
-                    <div className="gradient"></div>
-                    <div className="text-1"><h1>{'Scurt text despre expertiza Adaptabi si cum il poate ajuta pe client.'}</h1></div>
-                </header>
+                <Header title={'Scurt text despre expertiza Adaptabi si cum il poate ajuta pe client.'} />
                 <section className="content">
                     <div className="row">
                         <div className="large-13 large-offset-3 columns">

@@ -8,6 +8,7 @@ let $ = window.$, $window = $(window), TweenMax = window.TweenMax, TimelineLite 
 //////////////////////////////
     
 export function appear(ref, callback) {
+    return callback();
     let elements = extractDOMElements(ref);
     elements.background && TweenMax.set(elements.background, { scale: 1.2 });
     TweenMax.set(elements.container, { opacity: 0 });
@@ -23,6 +24,7 @@ export function appear(ref, callback) {
 /////////////////////////////////////////
 
 export function enter_header(ref, callback, transition) {
+    return callback();
     if (!transition.column || !transition.target) {
         return callback();
     }
@@ -79,6 +81,7 @@ export function enter_header(ref, callback, transition) {
 /////////////////////////
     
 export function leave_header(ref, callback, transition) {
+    return callback();
     let elements = extractDOMElements(ref);
     
     //Setup

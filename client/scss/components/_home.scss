@@ -30,6 +30,7 @@
             color: $white;          
             background: transparent;  
             min-height: auto;
+            @include grid-row(24);
         }
         .text-1, .text-2, .text-3, .scroll-hint {
             overflow: hidden;

@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react';
-import ReactDOM from 'react-dom';
+import Header from '../containers/headerContainer';
 
 class Home extends Component {
 
@@ -135,6 +135,8 @@ class Home extends Component {
         //const s = this.props.strings;
         return (
             <article className="page-home">
+                <Header linksOnly={true} />
+            
                 <section className="slide slide-1 background" ref={(c) => this._section1b = c}>
                     <div><img src="client/assets/img/photos/temp1.jpg" /></div>
                 </section>
