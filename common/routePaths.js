@@ -5,6 +5,7 @@ module.exports = {
 		'about': '/about',
 		'expertise': '/expertise',
 		'portfolio': '/portfolio',
+		'portfolioDetails': '/portfolio/:key',		
 		'careers': '/careers',
 		'contact': '/contact',
 		// 'aboutName': '/about/:name',

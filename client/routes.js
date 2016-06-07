@@ -14,6 +14,7 @@ import Home from './containers/homeContainer';
 import About from './containers/aboutContainer';
 import Expertise from './containers/expertiseContainer';
 import Portfolio from './containers/portfolioContainer';
+import PortfolioDetails from './containers/portfolioDetailsContainer';
 import Careers from './containers/careersContainer'; 
 import Contact from './containers/contactContainer';
 //import AdminHome from './containers/adminHomeContainer';
@@ -40,6 +41,7 @@ module.exports = (
             <Route path={routePaths.client.about} component={About} />
             <Route path={routePaths.client.expertise} component={Expertise} />
             <Route path={routePaths.client.portfolio} component={Portfolio} />
+            <Route path={routePaths.client.portfolioDetails} component={PortfolioDetails} />
             <Route path={routePaths.client.careers} component={Careers} />
             <Route path={routePaths.client.contact} component={Contact} />
             {/*<Route path={routePaths.client.root} component={Home} />

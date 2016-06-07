@@ -82,6 +82,13 @@
             }
         }
         
+         &.page-portfolio-details header {
+            background: linear-gradient(45deg, rgba(24,149,163,1) 0%, rgba(200,7,134,1) 100%);
+            .gradient {
+                background: linear-gradient(45deg, rgba(24,149,163,1) 0%, rgba(200,7,134,1) 100%);
+            }
+        }
+        
         &.page-careers header {
             background: linear-gradient(45deg, rgba(24,149,163,1) 0%, rgba(200,7,134,1) 100%);
             .gradient {

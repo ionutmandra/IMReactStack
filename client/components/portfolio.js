@@ -1,20 +1,44 @@
 import React, { PropTypes, Component } from 'react';
 import Lorem from './lorem';
+import Footer from '../containers/footerContainer';
 
 class Portfolio extends Component {
     render() {
         //var p = this.props, s = p.strings;
         //let columns = this.props.children ? 6 : 12;
         return (
-            <article className="page-portfolio">
+            <article className="page page-portfolio">
                 <header>
-                    <div className="image-container"><img src="client/assets/img/photos/temp3.jpg" /></div>
                     <div className="gradient"></div>
-                    <div className="text-1"><h1>{'Portfolio'}</h1></div>
+                    <div className="text-1"><h1>{'Scurt text despre Adaptabi ca si companie: cine sunt, ce fac si care este misiunea lor.'}</h1></div>
                 </header>
-                <section>
-                    <Lorem />
+                <section className="content">
+                    <div className="row align-middle">
+                        <div className="large-9 large-offset-3 columns">
+                            <h1><a href="portfolio/sfb">Safetybank</a></h1>
+                            <div className="project-description">
+                                Scurt text despre ce inseamna Safetybank pentru Adaptabi.Nunc sit amet tincidunt odio.Praesent quis posuere magna, quis mollis libero
+                            </div>
+                        </div>
+                        <div className="large-9 columns">
+                            <img src="client/assets/img/photos/prjSfb.png" />
+                        </div>
+                    </div>
+                    <div className="spacer-100" />
+                    <div className="row align-middle">
+                        <div className="large-9 large-offset-3 columns">
+                            <h1>EForms</h1>
+                            <div className="project-description">
+                                Scurt text despre ce inseamna Safetybank pentru Adaptabi.Nunc sit amet tincidunt odio.Praesent quis posuere magna, quis mollis libero
+                            </div>
+                        </div>
+                        <div className="large-9 columns">
+                            <img src="client/assets/img/photos/prjSfb.png" />
+                        </div>
+                    </div>
+                    <div className="spacer-100" />
                 </section>
+                <Footer />
             </article>
         );
     }
