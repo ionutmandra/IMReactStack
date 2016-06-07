@@ -91,6 +91,7 @@ module.exports = {
 
     transition: (setup) => {
         return (dispatch, getState) => {
+            console.log('this is the setup',setup);
             dispatch({ type: C.TRANSITION, payload: setup });
         };
     },
