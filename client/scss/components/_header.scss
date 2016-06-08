@@ -157,6 +157,7 @@
         position: fixed;
         top: 0;
         z-index: 3;
+        color: $white;
         
         @include grid-column;
         @include grid-col-size(3);
@@ -236,6 +237,30 @@
                         height: rem-calc(62pt);
                     }
                 }
+            }
+        }
+    }
+    
+    &.detach-header {
+        padding-top: 400px;
+        
+        header.main {
+            position: fixed;
+            top: 0;
+            height: 0%;
+            overflow: hidden;
+            z-index: 2;
+            @include grid-row(24);
+            
+            .image {
+                display: none;
+            }
+            
+            nav {
+                @include grid-col-off(6);
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
             }
         }
     }

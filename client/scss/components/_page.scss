@@ -6,9 +6,14 @@
         z-index: 1;
         @include grid-row(24);
         
-        &.detach-header {
+        &.overlap {
             position: absolute;
         }
+        // &.detach-header {
+        //     position: absolute;
+        //     top: 0;
+        //     padding-top: 400px;
+        // }
         
         section.content {
             background: $body-background;
