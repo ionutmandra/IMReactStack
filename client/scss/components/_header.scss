@@ -216,7 +216,12 @@
                     }
                     
                     &.hover:before {
-                        display: none;
+                        height: 0;
+                        transition: none;                        
+                    }
+                    
+                    &.line.hover:before {
+                        height: rem-calc(62pt);
                     }
                 }
             }

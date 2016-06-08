@@ -39,7 +39,7 @@ class HeaderLinks extends Component {
               type: this.props.animationType || 'header',
               column: event.target.getAttribute('data-animate-line'),
               target: event.target,
-          });
+          });    
       }
 
     render() {

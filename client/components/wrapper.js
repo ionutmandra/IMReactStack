@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactTransitionGroup from 'react-addons-transition-group';
 import TranslationProvider from '../containers/translationProvider';
-import Header from '../containers/headerContainer';
 import Grid from './grid';
 
 class Wrapper extends Component {

@@ -138,16 +138,16 @@ class Home extends Component {
                 <Header linksOnly={true} />
             
                 <section className="slide slide-1 background" ref={(c) => this._section1b = c}>
-                    <div><img src="client/assets/img/photos/temp1.jpg" /></div>
+                    <div className="image"><div className="img" /></div>
                 </section>
                 <section className="slide slide-2 background" ref={(c) => this._section2b = c}>
-                    <div><img src="client/assets/img/photos/temp2.jpg" /></div>
+                    <div className="image"><div className="img" /></div>
                 </section>
                 <section className="slide slide-3 background" ref={(c) => this._section3b = c}>
-                    <div><img src="client/assets/img/photos/temp3.jpg" /></div>
+                    <div className="image"><div className="img" /></div>
                 </section>
                 <section className="slide slide-4 background" ref={(c) => this._section4b = c}>
-                    <div><img src="client/assets/img/photos/temp4.jpg" /></div>
+                    <div className="image"><div className="img" /></div>
                 </section>
 
                 <div className="gradient" />

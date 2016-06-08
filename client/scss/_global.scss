@@ -9,6 +9,10 @@ html {
 
 body { 
     position: relative;
+    
+    &.navigating a {
+        pointer-events: none;
+    }
 }
 
 h1 {
