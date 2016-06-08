@@ -2,11 +2,11 @@
 
 @font-face {
     font-family: 'new-company-site';
-    src:    url('#{$icomoon-font-path}/new-company-site.eot?d3f6cv');
-    src:    url('#{$icomoon-font-path}/new-company-site.eot?d3f6cv#iefix') format('embedded-opentype'),
-        url('#{$icomoon-font-path}/new-company-site.ttf?d3f6cv') format('truetype'),
-        url('#{$icomoon-font-path}/new-company-site.woff?d3f6cv') format('woff'),
-        url('#{$icomoon-font-path}/new-company-site.svg?d3f6cv#new-company-site') format('svg');
+    src:    url('#{$icomoon-font-path}/new-company-site.eot?45cib9');
+    src:    url('#{$icomoon-font-path}/new-company-site.eot?45cib9#iefix') format('embedded-opentype'),
+        url('#{$icomoon-font-path}/new-company-site.ttf?45cib9') format('truetype'),
+        url('#{$icomoon-font-path}/new-company-site.woff?45cib9') format('woff'),
+        url('#{$icomoon-font-path}/new-company-site.svg?45cib9#new-company-site') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -26,6 +26,16 @@ i {
     -moz-osx-font-smoothing: grayscale;
 }
 
+.ncs-chevron-with-circle-right {
+    &:before {
+        content: $ncs-chevron-with-circle-right;
+    }
+}
+.ncs-chevron-with-circle-left {
+    &:before {
+        content: $ncs-chevron-with-circle-left;
+    }
+}
 .ncs-check {
     &:before {
         content: $ncs-check;
@@ -204,16 +214,6 @@ i {
 .ncs-files-o {
     &:before {
         content: $ncs-files-o;
-    }
-}
-.ncs-floppy-o {
-    &:before {
-        content: $ncs-floppy-o;
-    }
-}
-.ncs-save {
-    &:before {
-        content: $ncs-save;
     }
 }
 .ncs-pinterest {
