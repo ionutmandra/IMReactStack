@@ -1,6 +1,6 @@
 #page-container article.page-home {
     transform: none !important;
-    position: absolute;
+    position: absolute;    
     
     section.slide {
         display: block;
@@ -12,7 +12,7 @@
         
         &.background {
             z-index: 1;
-            background-color: gray;
+            //background-color: gray;
             
             .image {
                 position: relative;

@@ -69,6 +69,21 @@ class Home extends Component {
             timeLines.push(t);
             return t;
         }
+        function hideImg(elem) {
+            var t = TweenMax.to(elem, 0.8, { opacity: 0 });
+            timeLines.push(t);
+            return t;
+        }
+        function showImg(elem) {
+            var t = TweenMax.to(elem, 0.8, { opacity: 1 });
+            timeLines.push(t);
+            return t;
+        }
+
+
+        hideImg(_this._img2);
+        hideImg(_this._img3);
+        hideImg(_this._img4);
 
         hideLeft([this._inputGrow, this._inputValuesRight, this._inputCreating, this._inputSustaining]);
         hideRight([this._inputValuesLeft, this._inputOffering]);
@@ -89,21 +104,28 @@ class Home extends Component {
 
         // change behaviour of controller to animate scroll instead of jump
         controller.scrollTo(function (newpos) {
-            var t = TweenMax.to(window, 0.7, { scrollTo: { y: newpos }, ease: Power3.easeOut })
+            var t = TweenMax.to(window, 1, { scrollTo: { y: newpos }, ease: Power3.easeOut })
             timeLines.push(t);
             return t;
         });
 
+        //section1  
         var t = new TimelineMax();
-        t.add([moveLeft(this._inputCreate), moveRight(this._inputSoftware)]);
+        t.add([moveLeft(this._inputCreate), moveRight(this._inputSoftware),hideImg(this._img1)]);
         t.add([
             moveToInitial(_this._inputGrow),
             moveToInitial(_this._inputValuesLeft),
-            moveToInitial(_this._inputValuesRight)]);
+            moveToInitial(_this._inputValuesRight),
+            showImg(this._img2)]);        
 
         scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '80%', offset: 150 })
             .addTo(controller)
             //.addIndicators({name:'1'})
+            .on("end", function (event) {
+                if (event.scrollDirection == 'REVERSE') {
+                    controller.scrollTo(_this._section1);
+                }
+            })
             .setTween(t));
 
         scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '10%', offset: 150 })
@@ -112,10 +134,7 @@ class Home extends Component {
             .on("end", function (event) {
                 if (event.scrollDirection == 'FORWARD') {
                     controller.scrollTo(_this._section2);
-                }
-                if (event.scrollDirection == 'REVERSE') {
-                    controller.scrollTo(_this._section1);
-                }
+                }                
             }));
 
         //section2
@@ -130,19 +149,23 @@ class Home extends Component {
             moveToInitial(_this._inputCreating),
             moveToInitial(_this._inputOffering),
         ]);
+        section2.add(hideImg(this._img2));
+        section2.add(showImg(this._img3));
 
         scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', offset: 150, duration: '80%' })
             .addTo(controller)
-            .setTween(section2));
+            .setTween(section2)
+             .on("end", function (event) {                
+                if (event.scrollDirection == 'REVERSE') {
+                    controller.scrollTo(_this._section2);
+                }
+            }));
 
         scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', duration: '10%', offset: 150 }).addTo(controller)
             .on("end", function (event) {
                 if (event.scrollDirection == 'FORWARD') {
                     controller.scrollTo(_this._section3);
-                }
-                if (event.scrollDirection == 'REVERSE') {
-                    controller.scrollTo(_this._section2);
-                }
+                }                
             }));
 
         //section3
@@ -155,19 +178,23 @@ class Home extends Component {
         section3.add([
             moveToInitial(_this._inputSustaining),
         ]);
+        section3.add(hideImg(this._img3));
+        section3.add(showImg(this._img4));
 
         scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', offset: 150, duration: "80%" })
             .addTo(controller)
-            .setTween(section3));
+            .setTween(section3)
+            .on("end", function (event) {              
+                if (event.scrollDirection == 'REVERSE') {
+                    controller.scrollTo(_this._section3);
+                }
+            }));
 
         scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', duration: '10%', offset: 150 }).addTo(controller)
             .on("end", function (event) {
                 if (event.scrollDirection == 'FORWARD') {
                     controller.scrollTo(_this._section4);
-                }
-                if (event.scrollDirection == 'REVERSE') {
-                    controller.scrollTo(_this._section3);
-                }
+                }                
             }));
     }
 
@@ -176,18 +203,18 @@ class Home extends Component {
         return (
             <article className="page-home">
                 <Header linksOnly={true} />
-            
+
                 <section className="slide slide-1 background" ref={(c) => this._section1b = c}>
-                    <div className="image"><div className="img" /></div>
+                    <div ref={(c) => this._img1 = c} className="image"><div className="img" /></div>
                 </section>
                 <section className="slide slide-2 background" ref={(c) => this._section2b = c}>
-                    <div className="image"><div className="img" /></div>
+                    <div ref={(c) => this._img2 = c} className="image"><div className="img" /></div>
                 </section>
                 <section className="slide slide-3 background" ref={(c) => this._section3b = c}>
-                    <div className="image"><div className="img" /></div>
+                    <div ref={(c) => this._img3 = c} className="image"><div className="img" /></div>
                 </section>
                 <section className="slide slide-4 background" ref={(c) => this._section4b = c}>
-                    <div className="image"><div className="img" /></div>
+                    <div ref={(c) => this._img4 = c} className="image"><div className="img" /></div>
                 </section>
 
                 <div className="gradient" />
@@ -226,7 +253,7 @@ class Home extends Component {
                 <section className="slide slide-4 content"  ref={(c) => this._section4c = c}>
                     <div className="text-1"><h1 ref={(c) => this._inputSustaining = c}>Sustaining learning and innovation as a part of our routine </h1></div>
                 </section>
-                
+
                 <section className="slide slide-1v" ref={(c) => this._section1 = c}></section>
                 <section className="slide slide-2v" ref={(c) => this._section2 = c}></section>
                 <section className="slide slide-3v" ref={(c) => this._section3 = c}></section>

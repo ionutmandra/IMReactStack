@@ -6,8 +6,6 @@ import routePaths from '../../common/routePaths';
 
 class PortfolioDetails extends Component {
     render() {
-        //var p = this.props, s = p.strings;
-        //let columns = this.props.children ? 6 : 12;
         return (
             <article className="page page-portfolio-details">
                 <Header title={'Scurt text despre Adaptabi ca si companie: cine sunt, ce fac si care este misiunea lor'} />

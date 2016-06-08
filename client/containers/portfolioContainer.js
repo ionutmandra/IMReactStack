@@ -1,8 +1,16 @@
 import translate from './translate';
 import transition from './transition';
 import Portfolio from '../components/portfolio';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        transition: function (setup) {
+            dispatch(actions.transition(setup));
+        },
+    };
+};
 
 export default
-    transition(
-        translate('Portfolio')(
-            Portfolio));
+    transition(connect(null, mapDispatchToProps)(translate('Portfolio')(Portfolio)));
