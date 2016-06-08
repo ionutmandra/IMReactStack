@@ -1,10 +1,74 @@
 {
 	"metadata": {
 		"name": "new-company-site",
-		"lastOpened": 1459345784080,
-		"created": 1459343555332
+		"lastOpened": 1465289565835,
+		"created": 1465289563503
 	},
 	"iconSets": [
+		{
+			"selection": [
+				{
+					"order": 1,
+					"id": 1,
+					"prevSize": 20,
+					"code": 59648,
+					"name": "chevron-with-circle-right",
+					"tempChar": ""
+				},
+				{
+					"order": 1,
+					"id": 0,
+					"prevSize": 20,
+					"code": 59649,
+					"name": "chevron-with-circle-left",
+					"tempChar": ""
+				}
+			],
+			"id": 2,
+			"metadata": {
+				"name": "Entypo+ (subset)",
+				"importSize": {
+					"width": 20,
+					"height": 20
+				},
+				"url": "http://www.entypo.com/",
+				"designerURL": "http://www.danielbruce.se/",
+				"designer": "Daniel Bruce",
+				"license": "CC BY-SA 4.0",
+				"licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+				"iconsHash": -340016579
+			},
+			"height": 1024,
+			"prevSize": 20,
+			"icons": [
+				{
+					"id": 1,
+					"paths": [
+						"M563.2 512l-117.862-128.307c-10.035-10.138-10.035-26.573 0-36.762 10.035-10.086 26.368-10.086 36.352 0l143.718 146.637c10.035 10.189 10.035 26.624 0 36.71l-143.718 146.637c-9.984 10.189-26.317 10.138-36.352 0-10.035-10.086-10.035-26.522 0-36.71l117.862-128.205zM512 20.48c271.462 0 491.52 220.058 491.52 491.52 0 271.514-220.058 491.52-491.52 491.52s-491.52-220.006-491.52-491.52c0-271.462 220.058-491.52 491.52-491.52zM512 939.725c236.186 0 427.725-191.488 427.725-427.725s-191.539-427.725-427.725-427.725c-236.288 0-427.725 191.488-427.725 427.725-0.051 236.237 191.437 427.725 427.725 427.725z"
+					],
+					"attrs": [],
+					"isMulticolor": false,
+					"tags": [
+						"chevron-with-circle-right"
+					],
+					"grid": 20
+				},
+				{
+					"id": 0,
+					"paths": [
+						"M578.662 346.931c-10.035-10.086-26.368-10.086-36.352 0l-143.718 146.688c-10.035 10.189-10.035 26.624 0 36.71l143.718 146.637c9.984 10.189 26.317 10.138 36.352 0 10.035-10.086 10.035-26.522 0-36.71l-117.862-128.256 117.862-128.307c10.035-10.138 10.035-26.522 0-36.762zM512 20.48c-271.462 0-491.52 220.058-491.52 491.52 0 271.514 220.058 491.52 491.52 491.52s491.52-220.006 491.52-491.52c0-271.462-220.058-491.52-491.52-491.52zM512 939.725c-236.288 0-427.725-191.488-427.725-427.725s191.437-427.725 427.725-427.725c236.186 0 427.725 191.488 427.725 427.725s-191.539 427.725-427.725 427.725z"
+					],
+					"attrs": [],
+					"isMulticolor": false,
+					"tags": [
+						"chevron-with-circle-left"
+					],
+					"grid": 20
+				}
+			],
+			"invisible": false,
+			"colorThemes": []
+		},
 		{
 			"selection": [
 				{
@@ -73,7 +137,7 @@
 					"name": "check",
 					"prevSize": 28,
 					"code": 61452,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 13,
@@ -81,7 +145,7 @@
 					"name": "close, remove, times",
 					"prevSize": 28,
 					"code": 61453,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 14,
@@ -109,7 +173,7 @@
 					"name": "cog, gear",
 					"prevSize": 28,
 					"code": 61459,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 19,
@@ -122,7 +186,7 @@
 					"name": "home",
 					"prevSize": 28,
 					"code": 61461,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 21,
@@ -130,7 +194,7 @@
 					"name": "file-o",
 					"prevSize": 28,
 					"code": 61462,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 22,
@@ -148,7 +212,7 @@
 					"name": "download",
 					"prevSize": 28,
 					"code": 61465,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 25,
@@ -181,7 +245,7 @@
 					"name": "refresh",
 					"prevSize": 28,
 					"code": 61473,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 31,
@@ -339,7 +403,7 @@
 					"name": "map-marker",
 					"prevSize": 28,
 					"code": 61505,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 62,
@@ -437,7 +501,7 @@
 					"name": "plus-circle",
 					"prevSize": 28,
 					"code": 61525,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 81,
@@ -445,7 +509,7 @@
 					"name": "minus-circle",
 					"prevSize": 28,
 					"code": 61526,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 82,
@@ -453,7 +517,7 @@
 					"name": "times-circle",
 					"prevSize": 28,
 					"code": 61527,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 83,
@@ -461,7 +525,7 @@
 					"name": "check-circle",
 					"prevSize": 28,
 					"code": 61528,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 84,
@@ -469,7 +533,7 @@
 					"name": "question-circle",
 					"prevSize": 28,
 					"code": 61529,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 85,
@@ -477,7 +541,7 @@
 					"name": "info-circle",
 					"prevSize": 28,
 					"code": 61530,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 86,
@@ -575,7 +639,7 @@
 					"name": "eye",
 					"prevSize": 28,
 					"code": 61550,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 105,
@@ -598,7 +662,7 @@
 					"name": "calendar",
 					"prevSize": 28,
 					"code": 61555,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 109,
@@ -621,7 +685,7 @@
 					"name": "chevron-up",
 					"prevSize": 28,
 					"code": 61559,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 113,
@@ -629,7 +693,7 @@
 					"name": "chevron-down",
 					"prevSize": 28,
 					"code": 61560,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 114,
@@ -672,7 +736,7 @@
 					"name": "twitter-square",
 					"prevSize": 28,
 					"code": 61569,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 122,
@@ -680,7 +744,7 @@
 					"name": "facebook-square",
 					"prevSize": 28,
 					"code": 61570,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 123,
@@ -703,7 +767,7 @@
 					"name": "comments",
 					"prevSize": 28,
 					"code": 61574,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 127,
@@ -736,7 +800,7 @@
 					"name": "linkedin-square",
 					"prevSize": 28,
 					"code": 61580,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 133,
@@ -769,7 +833,7 @@
 					"name": "upload",
 					"prevSize": 28,
 					"code": 61587,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 139,
@@ -802,7 +866,7 @@
 					"name": "twitter",
 					"prevSize": 28,
 					"code": 61593,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 145,
@@ -810,7 +874,7 @@
 					"name": "facebook, facebook-f",
 					"prevSize": 28,
 					"code": 61594,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 146,
@@ -818,7 +882,7 @@
 					"name": "github",
 					"prevSize": 28,
 					"code": 61595,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 147,
@@ -916,7 +980,7 @@
 					"name": "filter",
 					"prevSize": 28,
 					"code": 61616,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 166,
@@ -934,7 +998,7 @@
 					"name": "group, users",
 					"prevSize": 28,
 					"code": 61632,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 169,
@@ -947,7 +1011,7 @@
 					"name": "cloud",
 					"prevSize": 28,
 					"code": 61634,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 171,
@@ -965,7 +1029,7 @@
 					"name": "copy, files-o",
 					"prevSize": 28,
 					"code": 61637,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 174,
@@ -1028,7 +1092,7 @@
 					"name": "pinterest",
 					"prevSize": 28,
 					"code": 61650,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 186,
@@ -1036,7 +1100,7 @@
 					"name": "pinterest-square",
 					"prevSize": 28,
 					"code": 61651,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 187,
@@ -1044,7 +1108,7 @@
 					"name": "google-plus-square",
 					"prevSize": 28,
 					"code": 61652,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 188,
@@ -1052,7 +1116,7 @@
 					"name": "google-plus",
 					"prevSize": 28,
 					"code": 61653,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 189,
@@ -1061,11 +1125,11 @@
 				},
 				{
 					"id": 190,
-					"order": 40,
+					"order": 136,
 					"name": "caret-down",
 					"prevSize": 28,
 					"code": 61655,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 191,
@@ -1073,7 +1137,7 @@
 					"name": "caret-up",
 					"prevSize": 28,
 					"code": 61656,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 192,
@@ -1081,7 +1145,7 @@
 					"name": "caret-left",
 					"prevSize": 28,
 					"code": 61657,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 193,
@@ -1089,7 +1153,7 @@
 					"name": "caret-right",
 					"prevSize": 28,
 					"code": 61658,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 194,
@@ -1122,7 +1186,7 @@
 					"name": "linkedin",
 					"prevSize": 28,
 					"code": 61665,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 200,
@@ -1185,7 +1249,7 @@
 					"name": "cloud-download",
 					"prevSize": 28,
 					"code": 61677,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 212,
@@ -1193,7 +1257,7 @@
 					"name": "cloud-upload",
 					"prevSize": 28,
 					"code": 61678,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 213,
@@ -1216,7 +1280,7 @@
 					"name": "bell",
 					"prevSize": 28,
 					"code": 61683,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 217,
@@ -1319,7 +1383,7 @@
 					"name": "desktop",
 					"prevSize": 28,
 					"code": 61704,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 237,
@@ -1327,7 +1391,7 @@
 					"name": "laptop",
 					"prevSize": 28,
 					"code": 61705,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 238,
@@ -1335,7 +1399,7 @@
 					"name": "tablet",
 					"prevSize": 28,
 					"code": 61706,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 239,
@@ -1343,7 +1407,7 @@
 					"name": "mobile, mobile-phone",
 					"prevSize": 28,
 					"code": 61707,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 240,
@@ -1386,7 +1450,7 @@
 					"name": "folder-o",
 					"prevSize": 28,
 					"code": 61716,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 248,
@@ -1394,7 +1458,7 @@
 					"name": "folder-open-o",
 					"prevSize": 28,
 					"code": 61717,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 249,
@@ -1422,7 +1486,7 @@
 					"name": "keyboard-o",
 					"prevSize": 28,
 					"code": 61724,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 254,
@@ -1475,7 +1539,7 @@
 					"name": "chain-broken, unlink",
 					"prevSize": 28,
 					"code": 61735,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 264,
@@ -1573,7 +1637,7 @@
 					"name": "html5",
 					"prevSize": 28,
 					"code": 61755,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 283,
@@ -1581,7 +1645,7 @@
 					"name": "css3",
 					"prevSize": 28,
 					"code": 61756,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 284,
@@ -1689,7 +1753,7 @@
 					"name": "eur, euro",
 					"prevSize": 28,
 					"code": 61779,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 305,
@@ -1697,7 +1761,7 @@
 					"name": "gbp",
 					"prevSize": 28,
 					"code": 61780,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 306,
@@ -1705,7 +1769,7 @@
 					"name": "dollar, usd",
 					"prevSize": 28,
 					"code": 61781,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 307,
@@ -1713,7 +1777,7 @@
 					"name": "inr, rupee",
 					"prevSize": 28,
 					"code": 61782,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 308,
@@ -1721,7 +1785,7 @@
 					"name": "cny, jpy, rmb, yen",
 					"prevSize": 28,
 					"code": 61783,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 309,
@@ -1729,7 +1793,7 @@
 					"name": "rouble, rub, ruble",
 					"prevSize": 28,
 					"code": 61784,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 310,
@@ -1737,7 +1801,7 @@
 					"name": "krw, won",
 					"prevSize": 28,
 					"code": 61785,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 311,
@@ -1745,7 +1809,7 @@
 					"name": "bitcoin, btc",
 					"prevSize": 28,
 					"code": 61786,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 312,
@@ -1763,7 +1827,7 @@
 					"name": "sort-alpha-asc",
 					"prevSize": 28,
 					"code": 61789,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 315,
@@ -1771,7 +1835,7 @@
 					"name": "sort-alpha-desc",
 					"prevSize": 28,
 					"code": 61790,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 316,
@@ -1779,7 +1843,7 @@
 					"name": "sort-amount-asc",
 					"prevSize": 28,
 					"code": 61792,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 317,
@@ -1787,7 +1851,7 @@
 					"name": "sort-amount-desc",
 					"prevSize": 28,
 					"code": 61793,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 318,
@@ -1795,7 +1859,7 @@
 					"name": "sort-numeric-asc",
 					"prevSize": 28,
 					"code": 61794,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 319,
@@ -1803,7 +1867,7 @@
 					"name": "sort-numeric-desc",
 					"prevSize": 28,
 					"code": 61795,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 320,
@@ -1841,7 +1905,7 @@
 					"name": "youtube-play",
 					"prevSize": 28,
 					"code": 61802,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 327,
@@ -1849,7 +1913,7 @@
 					"name": "dropbox",
 					"prevSize": 28,
 					"code": 61803,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 328,
@@ -1917,7 +1981,7 @@
 					"name": "apple",
 					"prevSize": 28,
 					"code": 61817,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 341,
@@ -1925,7 +1989,7 @@
 					"name": "windows",
 					"prevSize": 28,
 					"code": 61818,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 342,
@@ -1933,7 +1997,7 @@
 					"name": "android",
 					"prevSize": 28,
 					"code": 61819,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 343,
@@ -1941,7 +2005,7 @@
 					"name": "linux",
 					"prevSize": 28,
 					"code": 61820,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 344,
@@ -1954,7 +2018,7 @@
 					"name": "skype",
 					"prevSize": 28,
 					"code": 61822,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 346,
@@ -1987,7 +2051,7 @@
 					"name": "sun-o",
 					"prevSize": 28,
 					"code": 61829,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 352,
@@ -1995,7 +2059,7 @@
 					"name": "moon-o",
 					"prevSize": 28,
 					"code": 61830,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 353,
@@ -2013,7 +2077,7 @@
 					"name": "vk",
 					"prevSize": 28,
 					"code": 61833,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 356,
@@ -2066,7 +2130,7 @@
 					"name": "vimeo-square",
 					"prevSize": 28,
 					"code": 61844,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 366,
@@ -2074,7 +2138,7 @@
 					"name": "try, turkish-lira",
 					"prevSize": 28,
 					"code": 61845,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 367,
@@ -2092,7 +2156,7 @@
 					"name": "slack",
 					"prevSize": 28,
 					"code": 61848,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 370,
@@ -2105,7 +2169,7 @@
 					"name": "wordpress",
 					"prevSize": 28,
 					"code": 61850,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 372,
@@ -2133,7 +2197,7 @@
 					"name": "google",
 					"prevSize": 28,
 					"code": 61856,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 377,
@@ -2141,7 +2205,7 @@
 					"name": "reddit",
 					"prevSize": 28,
 					"code": 61857,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 378,
@@ -2169,7 +2233,7 @@
 					"name": "digg",
 					"prevSize": 28,
 					"code": 61862,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 383,
@@ -2177,7 +2241,7 @@
 					"name": "pied-piper",
 					"prevSize": 28,
 					"code": 61863,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 384,
@@ -2190,7 +2254,7 @@
 					"name": "drupal",
 					"prevSize": 28,
 					"code": 61865,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 386,
@@ -2198,7 +2262,7 @@
 					"name": "joomla",
 					"prevSize": 28,
 					"code": 61866,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 387,
@@ -2236,7 +2300,7 @@
 					"name": "cube",
 					"prevSize": 28,
 					"code": 61874,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 394,
@@ -2244,7 +2308,7 @@
 					"name": "cubes",
 					"prevSize": 28,
 					"code": 61875,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 395,
@@ -2302,7 +2366,7 @@
 					"name": "soundcloud",
 					"prevSize": 28,
 					"code": 61886,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 406,
@@ -2310,7 +2374,7 @@
 					"name": "database",
 					"prevSize": 28,
 					"code": 61888,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 407,
@@ -2318,7 +2382,7 @@
 					"name": "file-pdf-o",
 					"prevSize": 28,
 					"code": 61889,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 408,
@@ -2326,7 +2390,7 @@
 					"name": "file-word-o",
 					"prevSize": 28,
 					"code": 61890,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 409,
@@ -2334,7 +2398,7 @@
 					"name": "file-excel-o",
 					"prevSize": 28,
 					"code": 61891,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 410,
@@ -2342,7 +2406,7 @@
 					"name": "file-powerpoint-o",
 					"prevSize": 28,
 					"code": 61892,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 411,
@@ -2350,7 +2414,7 @@
 					"name": "file-image-o, file-photo-o, file-picture-o",
 					"prevSize": 28,
 					"code": 61893,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 412,
@@ -2358,7 +2422,7 @@
 					"name": "file-archive-o, file-zip-o",
 					"prevSize": 28,
 					"code": 61894,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 413,
@@ -2366,7 +2430,7 @@
 					"name": "file-audio-o, file-sound-o",
 					"prevSize": 28,
 					"code": 61895,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 414,
@@ -2374,7 +2438,7 @@
 					"name": "file-movie-o, file-video-o",
 					"prevSize": 28,
 					"code": 61896,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 415,
@@ -2382,7 +2446,7 @@
 					"name": "file-code-o",
 					"prevSize": 28,
 					"code": 61897,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 416,
@@ -2400,7 +2464,7 @@
 					"name": "jsfiddle",
 					"prevSize": 28,
 					"code": 61900,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 419,
@@ -2638,7 +2702,7 @@
 					"name": "area-chart",
 					"prevSize": 28,
 					"code": 61950,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 466,
@@ -2646,7 +2710,7 @@
 					"name": "pie-chart",
 					"prevSize": 28,
 					"code": 61952,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 467,
@@ -2654,7 +2718,7 @@
 					"name": "line-chart",
 					"prevSize": 28,
 					"code": 61953,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 468,
@@ -2672,7 +2736,7 @@
 					"name": "toggle-off",
 					"prevSize": 28,
 					"code": 61956,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 471,
@@ -2680,7 +2744,7 @@
 					"name": "toggle-on",
 					"prevSize": 28,
 					"code": 61957,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 472,
@@ -2873,7 +2937,7 @@
 					"name": "facebook-official",
 					"prevSize": 28,
 					"code": 62000,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 510,
@@ -2881,7 +2945,7 @@
 					"name": "pinterest-p",
 					"prevSize": 28,
 					"code": 62001,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 511,
@@ -2889,7 +2953,7 @@
 					"name": "whatsapp",
 					"prevSize": 28,
 					"code": 62002,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 512,
@@ -2902,7 +2966,7 @@
 					"name": "user-plus",
 					"prevSize": 28,
 					"code": 62004,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 514,
@@ -2910,7 +2974,7 @@
 					"name": "user-times",
 					"prevSize": 28,
 					"code": 62005,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 515,
@@ -2943,7 +3007,7 @@
 					"name": "y-combinator, yc",
 					"prevSize": 28,
 					"code": 62011,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 521,
@@ -3101,7 +3165,7 @@
 					"name": "trademark",
 					"prevSize": 28,
 					"code": 62044,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 552,
@@ -3109,7 +3173,7 @@
 					"name": "registered",
 					"prevSize": 28,
 					"code": 62045,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 553,
@@ -3117,7 +3181,7 @@
 					"name": "creative-commons",
 					"prevSize": 28,
 					"code": 62046,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 554,
@@ -3135,7 +3199,7 @@
 					"name": "tripadvisor",
 					"prevSize": 28,
 					"code": 62050,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 557,
@@ -3158,7 +3222,7 @@
 					"name": "wikipedia-w",
 					"prevSize": 28,
 					"code": 62054,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 561,
@@ -3166,7 +3230,7 @@
 					"name": "safari",
 					"prevSize": 28,
 					"code": 62055,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 562,
@@ -3174,7 +3238,7 @@
 					"name": "chrome",
 					"prevSize": 28,
 					"code": 62056,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 563,
@@ -3182,7 +3246,7 @@
 					"name": "firefox",
 					"prevSize": 28,
 					"code": 62057,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 564,
@@ -3190,7 +3254,7 @@
 					"name": "opera",
 					"prevSize": 28,
 					"code": 62058,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 565,
@@ -3198,7 +3262,7 @@
 					"name": "internet-explorer",
 					"prevSize": 28,
 					"code": 62059,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 566,
@@ -3206,7 +3270,7 @@
 					"name": "television, tv",
 					"prevSize": 28,
 					"code": 62060,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 567,
@@ -3224,7 +3288,7 @@
 					"name": "amazon",
 					"prevSize": 28,
 					"code": 62064,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 570,
@@ -3292,7 +3356,7 @@
 					"name": "vimeo",
 					"prevSize": 28,
 					"code": 62077,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 583,
@@ -3310,7 +3374,7 @@
 					"name": "reddit-alien",
 					"prevSize": 28,
 					"code": 62081,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 586,
@@ -3318,7 +3382,7 @@
 					"name": "edge",
 					"prevSize": 28,
 					"code": 62082,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 587,
@@ -11984,7 +12048,8 @@
 				}
 			],
 			"colorThemes": [],
-			"colorThemeIdx": 0
+			"colorThemeIdx": 0,
+			"invisible": false
 		},
 		{
 			"selection": [
@@ -22920,7 +22985,8 @@
 				}
 			],
 			"colorThemes": [],
-			"colorThemeIdx": 0
+			"colorThemeIdx": 0,
+			"invisible": false
 		}
 	],
 	"preferences": {
@@ -22933,7 +22999,7 @@
 			"metadata": {
 				"fontFamily": "new-company-site",
 				"majorVersion": 1,
-				"minorVersion": 0
+				"minorVersion": 1
 			},
 			"metrics": {
 				"emSize": 1024,
