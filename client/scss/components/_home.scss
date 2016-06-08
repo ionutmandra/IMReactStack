@@ -1,5 +1,6 @@
 #page-container article.page-home {
     transform: none !important;
+    //height: 400%;
     
     section.slide {
         display: block;
@@ -74,7 +75,8 @@
             }
         }
         &.slide-2 {
-            top: 100%;
+            //top: 100%;
+            top: 0;
             
             &.background {
                 //background: linear-gradient(135deg, rgba(104,188,69,1) 0%, rgba(24,149,163,1) 100%);                
@@ -110,7 +112,8 @@
             }
         }
         &.slide-3 {
-            top: 200%;
+            //top: 200%;
+            top: 0;
             
             &.background {
                 //background: linear-gradient(135deg, rgba(24,149,163,1) 0%, rgba(200,7,134,1) 100%);                
@@ -130,7 +133,8 @@
             }
         }
         &.slide-4 {
-            top: 300%;
+            //top: 300%;
+            top: 0;
             
             &.background {
                 //background: linear-gradient(135deg, rgba(200,7,134,1) 0%, rgba(237,47,46,1) 100%);
@@ -145,6 +149,19 @@
                 @include grid-column-offset(15);
                 top: 50%;                
             }
+        }
+        
+        &.slide-1v{
+            
+        }
+        &.slide-2v{
+            top:100%;
+        }
+        &.slide-3v{
+            top:200%;
+        }
+        &.slide-4v{
+            top:300%;
         }
     }
     

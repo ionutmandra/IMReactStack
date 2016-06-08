@@ -53,25 +53,29 @@ class Home extends Component {
             }
         }
         function moveLeft(elem) {
-            var t = TweenMax.to(elem, 1, { x: '-100%' });
+            // var t = TweenMax.to(elem, 0.6, { x: '-100%', ease: Power4.easeIn });
+            var t = TweenMax.to(elem, 0.6, { x: '-100%' });
             timeLines.push(t);
             return t;
         }
         function moveRight(elem) {
-            var t = TweenMax.to(elem, 1, { x: '+100%' });
+            //var t = TweenMax.to(elem, 0.6, { x: '+100%', ease: Power4.easeIn });
+            var t = TweenMax.to(elem, 0.6, { x: '+100%' });
             timeLines.push(t);
             return t;
         }
         function moveToInitial(elem) {
-            var t = TweenMax.to(elem, 1, { x: '0%' });
+            var t = TweenMax.to(elem, 0.8, { x: '0%' });
             timeLines.push(t);
             return t;
         }
 
         hideLeft([this._inputGrow, this._inputValuesRight, this._inputCreating, this._inputSustaining]);
         hideRight([this._inputValuesLeft, this._inputOffering]);
+
         pinSections([this._section1, this._section2, this._section3, this._section4]);
         pinSections([this._section1b, this._section2b, this._section3b, this._section4b]);
+        pinSections([this._section1c, this._section2c, this._section3c, this._section4c]);
 
         //gradient animations
         var slide1GrTr = animateGradientColors({ color0: gradients[0], color1: gradients[1] }, { color0: gradients[1], color1: gradients[2] });
@@ -85,50 +89,86 @@ class Home extends Component {
 
         // change behaviour of controller to animate scroll instead of jump
         controller.scrollTo(function (newpos) {
-            timeLines.push(TweenMax.to(window, 0.7, { scrollTo: { y: newpos }, ease: Power3.easeOut }));
+            var t = TweenMax.to(window, 0.7, { scrollTo: { y: newpos }, ease: Power3.easeOut })
+            timeLines.push(t);
+            return t;
         });
 
-        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '30%', offset: 200 }).addTo(controller)
-            .setTween([moveLeft(this._inputCreate), moveRight(this._inputSoftware)]));
-        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '20%', offset: 150 }).addTo(controller)
-            .on("end", function (event) { if (event.scrollDirection == 'FORWARD') { controller.scrollTo(_this._section2); } }
-            ));
+        var t = new TimelineMax();
+        t.add([moveLeft(this._inputCreate), moveRight(this._inputSoftware)]);
+        t.add([
+            moveToInitial(_this._inputGrow),
+            moveToInitial(_this._inputValuesLeft),
+            moveToInitial(_this._inputValuesRight)]);
 
-        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 1, duration: "100%" }).addTo(controller)
-            .setTween([
-                moveToInitial(this._inputGrow),
-                moveToInitial(this._inputValuesLeft),
-                moveToInitial(this._inputValuesRight)
-            ]));
+        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '80%', offset: 150 })
+            .addTo(controller)
+            //.addIndicators({name:'1'})
+            .setTween(t));
 
-        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', duration: '50%', offset: 300 }).addTo(controller)
-            .setTween([
-                moveLeft(this._inputGrow),
-                moveRight(this._inputValuesLeft),
-                moveLeft(this._inputValuesRight)
-            ]));
+        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '10%', offset: 150 })
+            .addTo(controller)
+            //.addIndicators({name:'2'})
+            .on("end", function (event) {
+                if (event.scrollDirection == 'FORWARD') {
+                    controller.scrollTo(_this._section2);
+                }
+                if (event.scrollDirection == 'REVERSE') {
+                    controller.scrollTo(_this._section1);
+                }
+            }));
 
-        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', duration: '20%', offset: 250 }).addTo(controller)
-            .on("end", function (event) {if (event.scrollDirection == 'FORWARD') {controller.scrollTo(_this._section3);}}));
+        //section2
+        var section2 = new TimelineMax();
+        section2.add([
+            moveLeft(_this._inputGrow),
+            moveRight(_this._inputValuesLeft),
+            moveLeft(_this._inputValuesRight)
+        ]);
+        section2.set({}, {}, .4);
+        section2.add([
+            moveToInitial(_this._inputCreating),
+            moveToInitial(_this._inputOffering),
+        ]);
 
-        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 1, duration: "100%" }).addTo(controller)
-            .setTween([
-                moveToInitial(this._inputCreating),
-                moveToInitial(this._inputOffering),
-            ]));
+        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', offset: 150, duration: '80%' })
+            .addTo(controller)
+            .setTween(section2));
 
-        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', duration: '50%', offset: 300 }).addTo(controller)
-            .setTween([
-                moveLeft(this._inputCreating),
-                moveRight(this._inputOffering),
-            ]));
+        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', duration: '10%', offset: 150 }).addTo(controller)
+            .on("end", function (event) {
+                if (event.scrollDirection == 'FORWARD') {
+                    controller.scrollTo(_this._section3);
+                }
+                if (event.scrollDirection == 'REVERSE') {
+                    controller.scrollTo(_this._section2);
+                }
+            }));
 
-        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', duration: '20%', offset: 250 }).addTo(controller)
-            .on("end", function (event) {if (event.scrollDirection == 'FORWARD') {controller.scrollTo(_this._section4);}}));
-        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section4, triggerHook: 1, duration: "100%" }).addTo(controller)
-            .setTween([
-                moveToInitial(this._inputSustaining)
-            ]));
+        //section3
+        var section3 = new TimelineMax();
+        section3.add([
+            moveLeft(_this._inputCreating),
+            moveRight(_this._inputOffering),
+        ]);
+        section3.set({}, {}, .4);
+        section3.add([
+            moveToInitial(_this._inputSustaining),
+        ]);
+
+        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', offset: 150, duration: "80%" })
+            .addTo(controller)
+            .setTween(section3));
+
+        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', duration: '10%', offset: 150 }).addTo(controller)
+            .on("end", function (event) {
+                if (event.scrollDirection == 'FORWARD') {
+                    controller.scrollTo(_this._section4);
+                }
+                if (event.scrollDirection == 'REVERSE') {
+                    controller.scrollTo(_this._section3);
+                }
+            }));
     }
 
     render() {
@@ -150,13 +190,13 @@ class Home extends Component {
 
                 <div className="gradient" />
 
-                <section className="slide slide-1 content"  ref={(c) => this._section1 = c}>
+                <section className="slide slide-1 content"  ref={(c) => this._section1c = c}>
                     <div className="text-1"><h1 ref={(c) => this._inputSoftware = c}>{'Software Innovators Happily Together'}</h1></div>
                     <div className="text-2"><h2 ref={(c) => this._inputCreate = c}>{'Create a truly remarkable working environment and deliver high quality innovative software products and services'}</h2></div>
                     <div className="scroll-hint"><p>{'Find out more'}</p></div>
                 </section>
 
-                <section className="slide slide-2 content"  ref={(c) => this._section2 = c}>
+                <section className="slide slide-2 content"  ref={(c) => this._section2c = c}>
                     <div className="text-1"><h1 ref={(c) => this._inputGrow = c}>Grow an outstanding working environment driven by our culture</h1></div>
                     <div className="text-2">
                         <div className="text-content" ref={(c) => this._inputValuesLeft = c}>
@@ -176,14 +216,20 @@ class Home extends Component {
                     </div>
                 </section>
 
-                <section className="slide slide-3 content"  ref={(c) => this._section3 = c}>
+                <section className="slide slide-3 content" ref={(c) => this._section3c = c}>
                     <div className="text-1"><h1 ref={(c) => this._inputOffering = c}>Offering highest quality by constantly improving our skills and processes</h1></div>
                     <div className="text-2"><h1 ref={(c) => this._inputCreating = c}>Creating high impact software solutions that help business succeed</h1></div>
                 </section>
 
-                <section className="slide slide-4 content"  ref={(c) => this._section4 = c}>
+                <section className="slide slide-4 content"  ref={(c) => this._section4c = c}>
                     <div className="text-1"><h1 ref={(c) => this._inputSustaining = c}>Sustaining learning and innovation as a part of our routine </h1></div>
                 </section>
+
+                <section className="slide slide-1v" ref={(c) => this._section1 = c}></section>
+                <section className="slide slide-2v" ref={(c) => this._section2 = c}></section>
+                <section className="slide slide-3v"   ref={(c) => this._section3 = c}></section>
+                <section className="slide slide-4v" ref={(c) => this._section4 = c}></section>
+
             </article>
         );
     }
@@ -200,3 +246,55 @@ Home.defaultProps = {
 };
 
 export default Home;
+
+function tests() {
+    // //section1
+    // var section1 = new TimelineMax();
+    // section1.add([
+    //     moveRight(_this._inputSoftware),
+    //     moveLeft(_this._inputCreate)]);
+    // section1.set({}, {}, .4);
+    // section1.add([
+    //     moveToInitial(_this._inputGrow),
+    //     moveToInitial(_this._inputValuesLeft),
+    //     moveToInitial(_this._inputValuesRight),]);
+
+    // scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', offset: 250 })
+    //     .addTo(controller)
+    //     //.on("progress", function (event) { if (event.scrollDirection == 'FORWARD') { controller.scrollTo(_this._section2); } })
+    //     .setTween(section1));
+
+    // //section2
+    // var section2 = new TimelineMax();
+    // section2.add([
+    //     moveLeft(_this._inputGrow),
+    //     moveRight(_this._inputValuesLeft),
+    //     moveLeft(_this._inputValuesRight)
+    // ]);
+    // section2.set({}, {}, .4);
+    // section2.add([
+    //     moveToInitial(_this._inputCreating),
+    //     moveToInitial(_this._inputOffering),
+    // ]);
+
+    // scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', offset: 150, })
+    //     .addTo(controller)
+    //     //.on("progress", function (event) { if (event.scrollDirection == 'FORWARD') { controller.scrollTo(_this._section3); } })
+    //     .setTween(section2));
+
+    // //section3
+    // var section3 = new TimelineMax();
+    // section3.add([
+    //     moveLeft(_this._inputCreating),
+    //     moveRight(_this._inputOffering),
+    // ]);
+    // section3.set({}, {}, .4);
+    // section3.add([
+    //     moveToInitial(_this._inputSustaining),
+    // ]);
+
+    // scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', offset: 150, })
+    //     .addTo(controller)
+    //     //.on("progress", function (event) { if (event.scrollDirection == 'FORWARD') { controller.scrollTo(_this._section4); } })
+    //     .setTween(section3));
+}
