@@ -1,8 +1,17 @@
 import translate from './translate';
 import transition from './transition';
 import CareerDetails from '../components/careerDetails';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        transition: function (setup) {
+            dispatch(actions.transition(setup));
+        },
+    };
+};
 
 export default
     transition(
-        translate('Careers')(
-            CareerDetails));
+    	connect(null, mapDispatchToProps)(translate('Careers')(CareerDetails)));

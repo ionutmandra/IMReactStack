@@ -2,8 +2,23 @@ import React, { PropTypes, Component } from 'react';
 import Lorem from './lorem';
 import Header from '../containers/headerContainer';
 import Footer from '../containers/footerContainer';
+import { Link } from 'react-router';
 
 class CareerDetails extends Component {
+
+     constructor(props) {
+        super(props);
+        this.handleBackToCareersClick = this.handleBackToCareersClick.bind(this);
+    }
+
+    handleBackToCareersClick(event) {
+          this.props.transition({
+              type: 'content',
+              column: 6,
+              target: event.target,
+          });        
+    }
+
     render() {
         
          if (this.props.params.key === 'qualityassurance'){
@@ -13,7 +28,7 @@ class CareerDetails extends Component {
                     <section className="content">
                         <div className="spacer-100"></div>
                         <div className="row">
-                            <a  href="/careers" className="large-3 large-offset-3 columns navigation-link back-to-careers"><i className="ncs-chevron-with-circle-left float-left" />Back </a>
+                            <Link  to="/careers" onClick={this.handleBackToCareersClick} className="large-3 large-offset-3 columns navigation-link back-to-careers"><i className="ncs-chevron-with-circle-left float-left" />Back </Link>
                             <h1 className="large-12 columns">Quality Assurance</h1>
                             {
                              //  <span className="large-3 columns navigation-link go-to-apply">Apply <i className="ncs-chevron-with-circle-right float-right" /></span>
@@ -75,7 +90,7 @@ class CareerDetails extends Component {
                 <section className="content">
                     <div className="spacer-100"></div>
                     <div className="row">
-                        <a  href="/careers" className="large-3 large-offset-3 columns navigation-link back-to-careers"><i className="ncs-chevron-with-circle-left float-left" />Back </a>
+                        <Link  to="/careers" onClick={this.handleBackToCareersClick} className="large-3 large-offset-3 columns navigation-link back-to-careers"><i className="ncs-chevron-with-circle-left float-left" />Back </Link>
                         <h1 className="large-12 columns">Backend Deveoper</h1>
                         {
                          //  <span className="large-3 columns navigation-link go-to-apply">Apply <i className="ncs-chevron-with-circle-right float-right" /></span>

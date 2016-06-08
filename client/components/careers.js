@@ -5,6 +5,21 @@ import Footer from '../containers/footerContainer';
 import { Link } from 'react-router';
 
 class Careers extends Component {
+
+
+     constructor(props) {
+        super(props);
+        this.handleCareerDetailsClick = this.handleCareerDetailsClick.bind(this);
+    }
+
+    handleCareerDetailsClick(event) {
+          this.props.transition({
+              type: 'content',
+              column: 6,
+              target: event.target,
+          });        
+    }
+
     render() {
         return (
             <article className="page-careers">
@@ -15,12 +30,13 @@ class Careers extends Component {
                         <div className="large-6 large-offset-3 columns">
                             <h1>Backend developer</h1>
                             <h3>Full time</h3>
-                            <Link to="/careers/backend"><i className="ncs-chevron-with-circle-right"></i></Link>
+                            <Link to="/careers/backend" onClick={this.handleCareerDetailsClick}><i className="ncs-chevron-with-circle-right"></i></Link>
+
                         </div>
                         <div className="large-6 columns">
                             <h1>Quality Assurance</h1>
                             <h3>Full time</h3>
-                            <a href="careers/qualityassurance"><i className="ncs-chevron-with-circle-right"></i></a>
+                            <Link to="/careers/qualityassurance" onClick={this.handleCareerDetailsClick}><i className="ncs-chevron-with-circle-right"></i></Link>
                         </div>
                     </div>
                     <div className="spacer-60" />
