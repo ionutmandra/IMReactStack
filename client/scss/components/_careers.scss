@@ -1,0 +1,26 @@
+#page-container article.page-careers {
+    section.content {
+        h1 {
+            font-family: "Poppins";
+            font-weight: $semibold;
+            font-size: rem-calc(20pt);
+            line-height: rem-calc(30pt);
+            color: $text-color;
+            margin-bottom: 0px;
+        }
+        h3 {
+            font-family: "Poppins";
+            font-weight: $normal;
+            font-size: rem-calc(14pt);
+            line-height: rem-calc(20pt);
+            color: $text-color;
+        }
+        strong {
+            color: rgba(104, 188, 69, 1);
+        }
+
+        i {
+            font-size: 30px
+        }
+    }
+}

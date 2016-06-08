@@ -8,8 +8,44 @@ class Careers extends Component {
         return (
             <article className="page-careers">
                 <Header title={'Careers'} />
-                <section>
-                    <Lorem />
+                <section className="content">
+                    <div className="spacer-100" />
+                    <div className="row">
+                        <div className="large-6 large-offset-3 columns">
+                            <h1>Backend developer</h1>
+                            <h3>Full time</h3>
+                            <a href="careers/backend"><i className="ncs-caret-right"></i></a>
+                        </div>
+                        <div className="large-6 columns">
+                            <h1>Backend developer</h1>
+                            <h3>Full time</h3>
+                            <i className="ncs-caret-right"> </i>
+                        </div>
+                        <div className="large-6 columns">
+                            <h1>Backend developer</h1>
+                            <h3>Full time</h3>
+                            <i className="ncs-caret-right"> </i>
+                        </div>
+                    </div>
+                    <div className="spacer-60" />
+                    <div className="row">
+                        <div className="large-6 large-offset-3 columns">
+                            <h1>Backend developer</h1>
+                            <h3>Full time</h3>
+                            <i className="ncs-caret-right"> </i>
+                        </div>
+                        <div className="large-6  columns">
+                            <h1>Frontend developer</h1>
+                            <h3>Full time</h3>
+                            <i className="ncs-caret-right"> </i>
+                        </div>
+                        <div className="large-6  columns">
+                            <h1>Quality Destroyer</h1>
+                            <h3>Full time</h3>
+                            <i className="ncs-caret-right"> </i>
+                        </div>
+                    </div>
+                    <div className="spacer-100" />
                 </section>
                 <Footer />
             </article>
