@@ -11,7 +11,7 @@ $scale: 0;			  // icon scale 68/68 default
 .hamburger {
   position: fixed;
   top: 25px;
-  z-index: 3;
+  z-index: 2;
   @include grid-col-size(3);
   @include grid-col-off(21);
   overflow: hidden;

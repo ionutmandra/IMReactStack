@@ -29,7 +29,7 @@ export function enter_header(ref, callback, transition) {
     }
     
     //Setup
-    let elements = extractDOMElements(ref, transition.column), $container = $(elements.container).addClass('detach-header');
+    let elements = extractDOMElements(ref, transition.column), $container = $(elements.container).addClass('overlap');
     let $target = $(transition.target).addClass('hover line');
     let $link = $(elements.link).addClass('hover');
     let grid = document.getElementById('page-grid'), $grid = $(grid);
@@ -54,7 +54,7 @@ export function enter_header(ref, callback, transition) {
     
     //Animation
     new TimelineLite({
-        onComplete: () => { callback(); $body.css('overflow', 'visible'); $container.removeClass('detach-header'); }})
+        onComplete: () => { callback(); $body.css('overflow', 'visible'); $container.removeClass('overlap'); $(elements.header).css('height', ''); }})
         .set({}, {}, .6) //wait for leaving page to hide content
         .add(_.filter([
             TweenMax.to(line, .6, { height: '100%', ease: Power3.easeIn, onComplete: () => { $target.removeClass('line'); TweenMax.set(line, { opacity: 0 }); }}),
@@ -66,8 +66,6 @@ export function enter_header(ref, callback, transition) {
             elements.image && TweenMax.to(elements.image, .6, { scale: 1, ease: Power3.easeOut }),
             elements.header && TweenMax.to(elements.header, .6, { height: 400, ease: Power3.easeOut }),
             elements.text && TweenMax.to(elements.text, .3, { x: '0%', ease: Power3.easeOut, delay: .3, onStart: () => { $target.removeClass('hover'); $link.removeClass('hover'); }}),
-        ]))
-        .add(_.filter([
         ]));
 }
 
@@ -77,7 +75,7 @@ export function enter_header(ref, callback, transition) {
     
 export function leave_header(ref, callback, transition) {
     let elements = extractDOMElements(ref, transition.column), 
-        $container = $(elements.container).addClass('detach-header'),
+        $container = $(elements.container).addClass('overlap'),
         height = $window.height();
     
     //Setup
@@ -86,7 +84,7 @@ export function leave_header(ref, callback, transition) {
     TweenMax.set(elements.container, { zIndex: 1 });
     
     //Animation
-    new TimelineLite({ onComplete: () => { callback(); $container.removeClass('detach-header'); }})
+    new TimelineLite({ onComplete: () => { callback(); $container.removeClass('overlap'); }})
         .add(_.filter([
             elements.text && TweenMax.to(elements.text, .3, { x: '-100%' }),
             elements.image && TweenMax.to(elements.image, 1.65, { scale: height / 400, ease: Power3.easeIn, delay: .15 }),
@@ -118,7 +116,7 @@ export function enter_content(ref, callback, transition) {
     }
     
     //Setup
-    let elements = extractDOMElements(ref, transition.column), $container = $(elements.container).addClass('detach-header');
+    let elements = extractDOMElements(ref, transition.column), $container = $(elements.container).addClass('overlap');
     let $target = $(transition.target).addClass('hover line');
     let $link = $(elements.link);
     //.addClass('hover');
@@ -144,7 +142,7 @@ export function enter_content(ref, callback, transition) {
     
     //Animation
     new TimelineLite({
-        onComplete: () => { callback(); $body.css('overflow', 'visible'); $container.removeClass('detach-header'); }})
+        onComplete: () => { callback(); $body.css('overflow', 'visible'); $container.removeClass('overlap'); }})
         .set({}, {}, .6) //wait for leaving page to hide content
         .add(_.filter([
             TweenMax.to(line, .6, { height: '100%', ease: Power3.easeIn, onComplete: () => { $target.removeClass('line'); TweenMax.set(line, { opacity: 0 }); }}),
@@ -162,7 +160,7 @@ export function enter_content(ref, callback, transition) {
 }
 export function leave_content(ref, callback, transition) {
     let elements = extractDOMElements(ref, transition.column), 
-        $container = $(elements.container).addClass('detach-header'),
+        $container = $(elements.container).addClass('overlap'),
         height = $window.height();
     
     //Setup
@@ -171,7 +169,7 @@ export function leave_content(ref, callback, transition) {
     TweenMax.set(elements.container, { zIndex: 1 });    
     
     //Animation
-    new TimelineLite({ onComplete: () => { callback(); $container.removeClass('detach-header'); }})
+    new TimelineLite({ onComplete: () => { callback(); $container.removeClass('overlap'); }})
         .add(_.filter([
             elements.text && TweenMax.to(elements.text, .3, { x: '-100%' }),
             elements.image && TweenMax.to(elements.image, 1.65, { scale: height / 400, ease: Power3.easeIn, delay: .15 }),

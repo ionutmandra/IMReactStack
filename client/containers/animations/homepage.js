@@ -29,7 +29,7 @@ export function enter_header(ref, callback, transition) {
     }
     
     //Setup
-    let container = dom.findDOMNode(ref), $container = $(container).addClass('detach-header');
+    let container = dom.findDOMNode(ref), $container = $(container).addClass('overlap');
     console.warn('extractDOMElements', ref, container);
     let elements = {
         container: container,
@@ -63,7 +63,7 @@ export function enter_header(ref, callback, transition) {
     
     //Animation
     new TimelineLite({
-        onComplete: () => { callback(); $body.css('overflow', 'visible'); $container.removeClass('detach-header'); }})
+        onComplete: () => { callback(); $body.css('overflow', 'visible'); $container.removeClass('overlap'); }})
         .set({}, {}, .6) //wait for leaving page to hide content
         .add(_.filter([
             TweenMax.to(line, .6, { height: '100%', ease: Power3.easeIn, onComplete: () => { $target.removeClass('line'); TweenMax.set(line, { opacity: 0 }); }}),
@@ -80,7 +80,7 @@ export function enter_header(ref, callback, transition) {
 //    LEAVE - page unload
 /////////////////////////
 export function leave_header(ref, callback, transition) {
-    let container = dom.findDOMNode(ref), $container = $(container).addClass('detach-header'), height = $window.height(), fullHeight = height * 4, scroll = $window.scrollTop();
+    let container = dom.findDOMNode(ref), $container = $(container).addClass('overlap'), height = $window.height(), fullHeight = height * 4, scroll = $window.scrollTop();
     let slide = '.slide-' + Math.round((fullHeight - scroll) / fullHeight);
     let elements = {
         image: $container.find(slide + '.background .img')[0],
@@ -97,7 +97,7 @@ export function leave_header(ref, callback, transition) {
     TweenMax.set(container, { zIndex: 1 });
     
     //Animation
-    new TimelineLite({ onComplete: () => { callback(); $container.removeClass('detach-header'); }})
+    new TimelineLite({ onComplete: () => { callback(); $container.removeClass('overlap'); }})
         .add(_.filter([
             elements.image && TweenMax.to(elements.image, 1.65, { scale: 1.4, ease: Power3.easeIn, delay: .15 }),
             elements.text1 && TweenMax.to(elements.text1, .3, { x: '100%' }),

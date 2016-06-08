@@ -6,106 +6,110 @@ let $ = window.$, $window = $(window), $body = $('body'), TweenMax = window.Twee
 export default class Burger extends Component {
     constructor(props) {
         super(props);
-        this.burgerClick = this.burgerClick.bind(this);
-        this.timeLines = [];
-        this.scenes = [];
+        // this.burgerClick = this.burgerClick.bind(this);
+        // this.timeLines = [];
+        // this.scenes = [];
     }
     
-    componentWillUnmount() {
-        if (this.scenes) {
-            for (var i = 0; i < this.scenes.length; i++) {
-                this.scenes[i].destroy();
-                this.scenes[i] = null;
-            }
-        }
-        if (this.timeLines) {
-            for (i = 0; i < this.timeLines.length; i++) {
-                this.timeLines[i] = null;
-            }
-        }
-        if (this.controller){
-            this.controller.destroy();
-            this.controller = null;
-        }
-    }
+    // componentWillUnmount() {
+    //     if (this.scenes) {
+    //         for (var i = 0; i < this.scenes.length; i++) {
+    //             this.scenes[i].destroy();
+    //             this.scenes[i] = null;
+    //         }
+    //     }
+    //     if (this.timeLines) {
+    //         for (i = 0; i < this.timeLines.length; i++) {
+    //             this.timeLines[i] = null;
+    //         }
+    //     }
+    //     if (this.controller){
+    //         this.controller.destroy();
+    //         this.controller = null;
+    //     }
+    // }
 
-    burgerClick(event){
-        if (this.animating) {
-            return false;
-        }
-        this.animating = true;
-        let $burger = $(event.currentTarget);
-        $burger.is('.is-closed') && this.openBurgerMenu() || this.closeBurgerMenu();
-        $burger.toggleClass('is-closed is-open');
-    }
+    // burgerClick(event){
+    //     if (this.animating) {
+    //         return false;
+    //     }
+    //     this.animating = true;
+    //     window.activeScene && window.activeScene.enabled(false);
+    //     let $burger = $(event.currentTarget);
+    //     $burger.is('.is-closed') && this.openBurgerMenu() || this.closeBurgerMenu();
+    //     $burger.toggleClass('is-closed is-open');
+    // }
     
-    openBurgerMenu() {
-        let el = this.getElements();
-        let timeLines = this.timeLines, scenes = this.scenes;
+    // openBurgerMenu() {
+    //     let el = this.getElements();
+    //     let timeLines = this.timeLines, scenes = this.scenes;
         
-        let animations = _.filter([
-            () => { el.text.hide(); },
-            TweenMax.to(el.logo, .3, { color: '#fefefe' }),
-            TweenMax.to(el.burger, .3, { color: '#fefefe' }),
-            TweenMax.to(el.header, .6, { height: '100%', ease: Power3.easeOut }),
-        ]);
+    //     let animations = _.filter([
+    //         () => { el.text.hide(); },
+    //         TweenMax.to(el.logo, .3, { color: '#fefefe' }),
+    //         TweenMax.to(el.burger, .3, { color: '#fefefe' }),
+    //         TweenMax.to(el.header, .6, { height: '100%', ease: Power3.easeOut }),
+    //     ]);
             
-            //console.warn(animations);
-        timeLines.push(new TimelineLite({ onComplete: this.resetAnimating.bind(this, 'disableScroll') })
-            .add(animations)
-            .add(el.links.toArray().map(link => { return TweenMax.to(link, .3, { x: '0%' }); }))
-        );
+    //         //console.warn(animations);
+    //     timeLines.push(new TimelineLite({ onComplete: this.resetAnimating.bind(this, 'disableScroll') })
+    //         .add(animations)
+    //         .add(el.links.toArray().map(link => { return TweenMax.to(link, .3, { x: '0%' }); }))
+    //     );
         
-        return true; //important!
-    }
+    //     return true; //important!
+    // }
 
-    closeBurgerMenu() {
-        let el = this.getElements();
-        let timeLines = this.timeLines, scenes = this.scenes;
+    // closeBurgerMenu() {
+    //     let el = this.getElements();
+    //     let timeLines = this.timeLines, scenes = this.scenes;
         
-        let animations = _.filter([
-            TweenMax.to(el.logo, .2, { color: '#4d4d4d', delay: .5 }), 
-            TweenMax.to(el.burger, .2, { color: '#4d4d4d', delay: .5 }),
-            TweenMax.to(el.header, .6, { height: '0%', ease: Power3.easeIn }),
-        ]);
+    //     let animations = _.filter([
+    //         TweenMax.to(el.logo, .2, { color: '#4d4d4d', delay: .5 }), 
+    //         TweenMax.to(el.burger, .2, { color: '#4d4d4d', delay: .5 }),
+    //         TweenMax.to(el.header, .6, { height: '0%', ease: Power3.easeOut }),
+    //     ]);
         
-        timeLines.push(new TimelineLite({ onComplete: this.resetAnimating.bind(this, 'enableScroll') })
-            .add(el.links.toArray().map(link => { return TweenMax.to(link, .4, { x: '-100%' }); }))
-            .add(animations)
-            .add(_.filter([() => { el.text.show(); el.header.css('height', ''); }]))            
-        );
-    }
+    //     timeLines.push(new TimelineLite({ onComplete: this.resetAnimating.bind(this, 'enableScroll') })
+    //         .add(el.links.toArray().map(link => { return TweenMax.to(link, .4, { x: '-100%' }); }))
+    //         .add(animations)
+    //         .add(_.filter([() => { el.text.show(); el.header.css('height', ''); }]))            
+    //     );
+    // }
     
-    resetAnimating(fn) {
-        this.animating = false;
-        this[fn]();
-    }
+    // resetAnimating(fn) {
+    //     this.animating = false;
+    //     this[fn]();
+    //     window.activeScene && window.activeScene.enabled(true);
+    // }
     
-    getElements() {
-        let burger = $(dom.findDOMNode(this.refs.hamburg)), 
-            header = burger.closest('header');
-        return { burger, header,
-            links: header.find('nav ul li a'),
-            logo: header.find('> .logo'),
-            text: header.find('> .text'),
-        };
-    }
+    // getElements() {
+    //     let burger = $(dom.findDOMNode(this.refs.hamburg)), 
+    //         header = burger.closest('header');
+    //     return { burger, header,
+    //         links: header.find('nav ul li a'),
+    //         logo: header.find('> .logo'),
+    //         text: header.find('> .text'),
+    //     };
+    // }
     
-    disableScroll() {
-        this._body_scrollTop = $('body').scrollTop();//self.pageYOffset || document.documentElement.scrollTop  || document.body.scrollTop;
-        $('body').css('overflow', 'hidden').scrollTop(this._body_scrollTop);
-        $('root').scrollTop(this._body_scrollTop);
-    }
+    // disableScroll() {
+    //     this.getElements().header.parent().addClass('fix-header');
+    //     // this._body_scrollTop = $('body').scrollTop();
+    //     // $('body').addClass('noscroll').scrollTop(this._body_scrollTop);
+    //     $.scrollLock(true);
+    // }
     
-    enableScroll() {
-        $('body').css('overflow', 'visible').scrollTop(this._body_scrollTop);
-        $('root').scrollTop(this._body_scrollTop);
-    }
+    // enableScroll() {
+    //     this.getElements().header.parent().removeClass('fix-header');
+    //     // $('body').removeClass('noscroll').scrollTop(this._body_scrollTop);
+    //     $.scrollLock(false);
+    // }
 
     render() {
     	return (
             <div className="hamburger">
-                <div className="hamburglar is-closed" onClick={this.burgerClick} ref="hamburg">
+                <div className="hamburglar is-closed" onClick={this.props.onClick}>
                     <div className="burger-icon">
                     <div className="burger-container">
                         <span className="burger-bun-top"></span>

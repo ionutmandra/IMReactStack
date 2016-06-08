@@ -241,7 +241,7 @@
         }
     }
     
-    &.detach-header {
+    &.fix-header {
         padding-top: 400px;
         
         header.main {
@@ -252,6 +252,19 @@
             z-index: 2;
             @include grid-row(24);
             
+            .hamburger {
+                z-index: 4;
+            }
+            
+            .hamburglar.is-open {
+                margin-left: 0 !important;
+                transform: none !important;
+            }
+            
+            .logo {
+                margin-left: 50px !important;
+            }
+            
             .image {
                 display: none;
             }
@@ -261,6 +274,34 @@
                 position: absolute;
                 top: 50%;
                 transform: translateY(-50%);
+                
+                ul li a {
+                    padding: rem-calc(20pt 0 17pt);
+                    vertical-align: middle;
+                    
+                    &:before {
+                        top: 50%;
+                        transform: translateY(-50%);
+                    }
+                    
+                    &:hover,
+                    &.hover {
+                        padding-left: rem-calc(10pt);
+                        
+                        &:before {
+                            height: 100%;
+                        }
+                    }
+                    
+                    &.hover:before {
+                        height: 0;
+                        transition: none;                        
+                    }
+                    
+                    &.line.hover:before {
+                        height: 100%;
+                    }
+                }
             }
         }
     }
