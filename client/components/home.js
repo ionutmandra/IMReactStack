@@ -186,6 +186,11 @@ class Home extends Component {
                 <section className="slide slide-4 content"  ref={(c) => this._section4 = c}>
                     <div className="text-1"><h1 ref={(c) => this._inputSustaining = c}>Sustaining learning and innovation as a part of our routine </h1></div>
                 </section>
+                
+                <section className="slide slide-1v" ref={(c) => this._section1 = c}></section>
+                <section className="slide slide-2v" ref={(c) => this._section2 = c}></section>
+                <section className="slide slide-3v" ref={(c) => this._section3 = c}></section>
+                <section className="slide slide-4v" ref={(c) => this._section4 = c}></section>
             </article>
         );
     }

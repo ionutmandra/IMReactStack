@@ -2,8 +2,9 @@
     article {
         position: relative;
         width: 100%;
-        min-height: 100%;
+        height: 100%;
         z-index: 1;
+        @include grid-row(24);
         
         &.detach-header {
             position: absolute;

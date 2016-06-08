@@ -1,5 +1,6 @@
 #page-container article.page-home {
     transform: none !important;
+    position: absolute;
     
     section.slide {
         display: block;
@@ -34,7 +35,6 @@
             color: $white;          
             background: transparent;  
             min-height: auto;
-            @include grid-row(24);
         }
         .text-1, .text-2, .text-3, .scroll-hint {
             overflow: hidden;
@@ -79,7 +79,7 @@
             }
         }
         &.slide-2 {
-            top: 100%;
+            top: 0;
             
             &.background .image {
                 @include grid-column-size(12);
@@ -115,7 +115,7 @@
             }
         }
         &.slide-3 {
-            top: 200%;
+            top: 0;
             
             &.background .image {
                 .img {
@@ -137,7 +137,7 @@
             }
         }
         &.slide-4 {
-            top: 300%;
+            top: 0;
             
             &.background .image {
                 @include grid-column-size(12);
@@ -152,6 +152,19 @@
                 @include grid-column-offset(15);
                 top: 50%;                
             }
+        }
+        
+        &.slide-1v{
+            
+        }
+        &.slide-2v{
+            top:100%;
+        }
+        &.slide-3v{
+            top:200%;
+        }
+        &.slide-4v{
+            top:300%;
         }
     }
     
