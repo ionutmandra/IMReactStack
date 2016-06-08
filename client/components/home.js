@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react';
-import ReactDOM from 'react-dom';
+import Header from '../containers/headerContainer';
 
 class Home extends Component {
 
@@ -175,17 +175,19 @@ class Home extends Component {
         //const s = this.props.strings;
         return (
             <article className="page-home">
+                <Header linksOnly={true} />
+            
                 <section className="slide slide-1 background" ref={(c) => this._section1b = c}>
-                    <div><img src="client/assets/img/photos/temp1.jpg" /></div>
+                    <div className="image"><div className="img" /></div>
                 </section>
                 <section className="slide slide-2 background" ref={(c) => this._section2b = c}>
-                    <div><img src="client/assets/img/photos/temp2.jpg" /></div>
+                    <div className="image"><div className="img" /></div>
                 </section>
                 <section className="slide slide-3 background" ref={(c) => this._section3b = c}>
-                    <div><img src="client/assets/img/photos/temp3.jpg" /></div>
+                    <div className="image"><div className="img" /></div>
                 </section>
                 <section className="slide slide-4 background" ref={(c) => this._section4b = c}>
-                    <div><img src="client/assets/img/photos/temp4.jpg" /></div>
+                    <div className="image"><div className="img" /></div>
                 </section>
 
                 <div className="gradient" />
@@ -224,12 +226,11 @@ class Home extends Component {
                 <section className="slide slide-4 content"  ref={(c) => this._section4c = c}>
                     <div className="text-1"><h1 ref={(c) => this._inputSustaining = c}>Sustaining learning and innovation as a part of our routine </h1></div>
                 </section>
-
+                
                 <section className="slide slide-1v" ref={(c) => this._section1 = c}></section>
                 <section className="slide slide-2v" ref={(c) => this._section2 = c}></section>
-                <section className="slide slide-3v"   ref={(c) => this._section3 = c}></section>
+                <section className="slide slide-3v" ref={(c) => this._section3 = c}></section>
                 <section className="slide slide-4v" ref={(c) => this._section4 = c}></section>
-
             </article>
         );
     }

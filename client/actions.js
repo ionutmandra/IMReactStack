@@ -90,7 +90,8 @@ module.exports = {
     },
 
     transition: (setup) => {
-        return (dispatch, getState) => {
+        return (dispatch) => {
+            //console.log('this is the setup',setup);
             dispatch({ type: C.TRANSITION, payload: setup });
         };
     },

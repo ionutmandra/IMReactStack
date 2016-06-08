@@ -1,0 +1,46 @@
+#page-container article.page-contact {
+    transform: translate(0, 0);
+    background: linear-gradient(45deg, #c80786 0%, #ed2f2e 100%);
+    
+    .gradient { 
+        background: linear-gradient(45deg, #c80786 0%, #ed2f2e 100%);
+    }
+    
+    .image-container {
+        position: relative;
+        z-index: 1;
+        @include grid-column-size(24);
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+    }
+    
+    .gradient {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        opacity: 0.8;
+    }
+    
+    .text-1 {
+        @include grid-column-size(9);
+        @include grid-column-offset(3);
+        position: absolute;
+        bottom: rem-calc(60pt);
+        z-index: 3;
+        overflow: hidden;
+        text-align: left;
+        
+        h1 {
+            display: inline-block;
+            color: $white;        
+        }
+    }
+}
