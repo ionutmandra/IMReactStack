@@ -264,7 +264,11 @@ class Home extends Component {
                         </h2>
                     </div>
                     <div className="scroll-hint">
-                        <span></span>
+                        <span>
+                            <i className="ncs-chevron-thin-down"></i>    
+                        </span>
+
+                            <i className="ncs-chevron-with-circle-down"></i>    
                         <p>{'Find out more'}</p>
                     </div>
                 </section>
