@@ -16,17 +16,21 @@ class Header extends Component {
     }
     
     componentWillUnmount() {
-        for (var i = 0; i < this.scenes.length; i++) {
-            this.scenes[i].destroy();
-            this.scenes[i] = null;
+        if (this.scenes) {
+            for (var i = 0; i < this.scenes.length; i++) {
+                this.scenes[i].destroy();
+                this.scenes[i] = null;
+            }
         }
-
-        for (i = 0; i < this.timeLines.length; i++) {
-            this.timeLines[i] = null;
+        if (this.timeLines) {
+            for (i = 0; i < this.timeLines.length; i++) {
+                this.timeLines[i] = null;
+            }
         }
-
-        this.controller.destroy();
-        this.controller = null;
+        if (this.controller) {
+            this.controller.destroy();
+            this.controller = null;
+        }
     }
 
     componentDidMount() {
