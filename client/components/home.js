@@ -9,11 +9,11 @@ class Home extends Component {
     }
 
     handleLinkClick(event) {
-          this.props.transition({
-              type: 'header',
-              column: event.target.getAttribute('data-animate-line'),
-              target: event.target,
-          });        
+        this.props.transition({
+            type: 'header',
+            column: event.target.getAttribute('data-animate-line'),
+            target: event.target,
+        });
     }
 
     componentWillUnmount() {
@@ -137,6 +137,15 @@ class Home extends Component {
             return t;
         });
 
+        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', offset: 10 })
+            //.addIndicators({name:'0'})
+            .addTo(controller)
+            .setTween(
+            new TimelineMax()
+                .add(TweenMax.to(this._scrollHint, 0.3, {transformOrigin: "50% 50%",y: '+10',ease: Circ.easeOut}))
+                .add(TweenMax.to(this._scrollHint, 0.3, {transformOrigin: "50% 50%",y: '0',ease: Circ.easeIn}))
+        ));
+
         scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '80%', offset: 150 })
             .addTo(controller)
             //.addIndicators({name:'1'})
@@ -220,7 +229,7 @@ class Home extends Component {
             //.addIndicators({name:'3oe'})
             .setTween(section3)
             .on("end", function (event) {
-                if (event.scrollDirection == 'REVERSE') {                    
+                if (event.scrollDirection == 'REVERSE') {
                     controller.scrollTo(this);
                 }
             }));
@@ -264,17 +273,15 @@ class Home extends Component {
                         </h2>
                     </div>
                     <div className="scroll-hint">
-                        <span>
-                            <i className="ncs-chevron-thin-down"></i>    
+                        <span ref={(c) => this._scrollHint = c}>
+                            <i className="ncs-chevron-thin-down"></i>
                         </span>
-
-                            <i className="ncs-chevron-with-circle-down"></i>    
                         <p>{'Find out more'}</p>
                     </div>
                 </section>
 
                 <section className="slide slide-2 content"  ref={(c) => this._section2c = c}>
-	                <div className="text-1">
+                    <div className="text-1">
                         <h1 ref={(c) => this._inputGrow = c}>
                             <p>Grow an outstanding</p>
                             <p>working environment driven</p>
@@ -301,7 +308,7 @@ class Home extends Component {
 
                 <section className="slide slide-3 content" ref={(c) => this._section3c = c}>
                     <div className="text-1"><h1 ref={(c) => this._inputOffering = c}>Offering highest quality by constantly improving our <Link to="/about" data-animate-line="3" onClick={this.handleLinkClick}>skills and processes</Link></h1></div>
-		            <div className="text-2"><h1 ref={(c) => this._inputCreating = c}>Creating <Link to="/portfolio/sfb" data-animate-line="5" onClick={this.handleLinkClick}>high impact software solutions</Link> that help business succeed
+                    <div className="text-2"><h1 ref={(c) => this._inputCreating = c}>Creating <Link to="/portfolio/sfb" data-animate-line="5" onClick={this.handleLinkClick}>high impact software solutions</Link> that help business succeed
                     </h1></div>
                 </section>
 

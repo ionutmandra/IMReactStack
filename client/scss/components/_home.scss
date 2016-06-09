@@ -99,7 +99,14 @@
                      border-radius: 70px/70px;
                      border:solid 2px white;
                      width:70px;
-                     height:70px;                     
+                     height:70px;
+                     
+                     i{
+                         position: relative;
+                         top: 20px;
+                         font-size: 25px;
+                         margin-left: 1px;
+                     }                     
                 }
             }
         }
