@@ -3,6 +3,18 @@ import Header from '../containers/headerContainer';
 import {Link} from 'react-router';
 
 class Home extends Component {
+    constructor(props) {
+        super(props);
+        this.handleLinkClick = this.handleLinkClick.bind(this);
+    }
+
+    handleLinkClick(event) {
+          this.props.transition({
+              type: 'header',
+              column: event.target.getAttribute('data-animate-line'),
+              target: event.target,
+          });        
+    }
 
     componentWillUnmount() {
 
@@ -120,7 +132,7 @@ class Home extends Component {
 
         // change behaviour of controller to animate scroll instead of jump
         controller.scrollTo(function (newpos) {
-            var t = TweenMax.to(window, 1, { scrollTo: { y: newpos }, ease: Power3.easeOut })
+            var t = TweenMax.to(window, 0.5, { scrollTo: { y: newpos } })
             timeLines.push(t);
             return t;
         });
@@ -130,7 +142,7 @@ class Home extends Component {
             //.addIndicators({name:'1'})
             .on("end", function (event) {
                 if (event.scrollDirection == 'REVERSE') {
-                    controller.scrollTo(_this._section1);
+                    controller.scrollTo(this);
                 }
             })
             .setTween(
@@ -158,6 +170,7 @@ class Home extends Component {
         //section2
         scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', offset: 150, duration: '80%' })
             .addTo(controller)
+            //.addIndicators({name:'2oe'})
             .setTween(new TimelineMax()
                 .add([
                     moveLeft(_this._inputGrow),
@@ -176,7 +189,7 @@ class Home extends Component {
             )
             .on("end", function (event) {
                 if (event.scrollDirection == 'REVERSE') {
-                    controller.scrollTo(_this._section2);
+                    controller.scrollTo(this);
                 }
             }));
 
@@ -204,10 +217,11 @@ class Home extends Component {
 
         scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', offset: 150, duration: "80%" })
             .addTo(controller)
+            //.addIndicators({name:'3oe'})
             .setTween(section3)
             .on("end", function (event) {
-                if (event.scrollDirection == 'REVERSE') {
-                    controller.scrollTo(_this._section3);
+                if (event.scrollDirection == 'REVERSE') {                    
+                    controller.scrollTo(this);
                 }
             }));
 
@@ -245,12 +259,16 @@ class Home extends Component {
                     <div className="text-2">
                         <h2 ref={(c) => this._inputCreate = c}>
                             <p>Create a truly remarkable working environment</p>
-                            <p>and deliver high quality innovative software</p>
+                            <p>and deliver high quality, innovative software</p>
                             <p>products and services</p>
                         </h2>
                     </div>
                     <div className="scroll-hint">
-                        <span>dd</span>
+                        <span>
+                            <i className="ncs-chevron-thin-down"></i>    
+                        </span>
+
+                            <i className="ncs-chevron-with-circle-down"></i>    
                         <p>{'Find out more'}</p>
                     </div>
                 </section>
@@ -260,7 +278,7 @@ class Home extends Component {
                         <h1 ref={(c) => this._inputGrow = c}>
                             <p>Grow an outstanding</p>
                             <p>working environment driven</p>
-                            <p>by <Link to="/about">our culture</Link></p>
+                            <p>by <Link to="/about" data-animate-line="3" onClick={this.handleLinkClick}>our culture</Link></p>
                         </h1>
                     </div>
                     <div className="text-2">
@@ -282,13 +300,13 @@ class Home extends Component {
                 </section>
 
                 <section className="slide slide-3 content" ref={(c) => this._section3c = c}>
-                    <div className="text-1"><h1 ref={(c) => this._inputOffering = c}>Offering highest quality by constantly improving our <Link to="/about">skills and processes</Link></h1></div>
-		<div className="text-2"><h1 ref={(c) => this._inputCreating = c}>Creating <Link to="/portfolio/sfb">high impact software solutions</Link> that help business succeed
-</h1></div>
+                    <div className="text-1"><h1 ref={(c) => this._inputOffering = c}>Offering highest quality by constantly improving our <Link to="/about" data-animate-line="3" onClick={this.handleLinkClick}>skills and processes</Link></h1></div>
+		            <div className="text-2"><h1 ref={(c) => this._inputCreating = c}>Creating <Link to="/portfolio/sfb" data-animate-line="5" onClick={this.handleLinkClick}>high impact software solutions</Link> that help business succeed
+                    </h1></div>
                 </section>
 
                 <section className="slide slide-4 content"  ref={(c) => this._section4c = c}>
-                    <div className="text-1"><h1 ref={(c) => this._inputSustaining = c}>Sustaining <Link to="/about">learning and innovation</Link> as a part day to day activity.</h1></div>
+                    <div className="text-1"><h1 ref={(c) => this._inputSustaining = c}>Sustaining <Link to="/about" data-animate-line="3" onClick={this.handleLinkClick}>learning and innovation</Link> as a part day to day activity.</h1></div>
                 </section>
 
                 <section className="slide slide-1v" ref={(c) => this._section1 = c}></section>

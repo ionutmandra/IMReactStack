@@ -76,7 +76,7 @@ class About extends Component {
                                     <p className="memeber-job">Software Developer</p>
                                 </div>
                                 <div className="large-12 memeber-details-top">
-                                    <p className="memeber-name">Madalina Dumitriu</p>
+                                    <p className="memeber-name">Mădălina Dumitriu</p>
                                     <p className="memeber-job">Quality Engineer</p>
                                 </div>
                             </div>
@@ -91,17 +91,17 @@ class About extends Component {
                                     <p className="memeber-job">Software Developer</p>
                                 </div>
                                 <div className="large-12 memeber-details-top">
-                                    <p className="memeber-name">Ionut Mandra</p>
+                                    <p className="memeber-name">Ionuţ Mândra</p>
                                     <p className="memeber-job">Software Developer</p>
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="large-12  memeber-details-top">
-                                    <p className="memeber-name">Dragos Radu</p>
+                                    <p className="memeber-name">Dragoş Radu</p>
                                     <p className="memeber-job">Quality Engineer</p>
                                 </div>
                                 <div className="large-12 memeber-details-top">
-                                    <p className="memeber-name">Tudor Dumitriu</p>
+                                    <p className="memeber-name">Teodor Sandu</p>
                                     <p className="memeber-job">Software Developer</p>
                                 </div>
                             </div>
