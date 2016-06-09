@@ -267,7 +267,8 @@
             }
             
             .logo {
-                margin-left: 50px !important;
+                margin-left: 50px;
+                pointer-events: none;
             }
             
             .image {

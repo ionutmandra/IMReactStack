@@ -3,9 +3,10 @@ import { Link } from 'react-router';
 import routePaths from '../../common/routePaths';
 //import HeaderLinks from '../containers/headerLinksContainer';
 import Burger from './burger';
+import _ from 'lodash';
 import dom from 'react-dom';
 
-let $ = window.$, $window = $(window), ScrollMagic = window.ScrollMagic, TweenMax = window.TweenMax, Power3 = window.Power3;
+let $ = window.$, $window = $(window), ScrollMagic = window.ScrollMagic, TweenMax = window.TweenMax, Power3 = window.Power3, TimelineLite = window.TimelineLite;
 
 class Header extends Component {
     constructor(props) {
@@ -15,27 +16,12 @@ class Header extends Component {
         this.burgerClick = this.burgerClick.bind(this);
     }
     
-    componentWillUnmount() {
-        if (this.scenes) {
-            for (var i = 0; i < this.scenes.length; i++) {
-                this.scenes[i].destroy();
-                this.scenes[i] = null;
-            }
-        }
-        if (this.timeLines) {
-            for (i = 0; i < this.timeLines.length; i++) {
-                this.timeLines[i] = null;
-            }
-        }
-        if (this.controller) {
-            this.controller.destroy();
-            this.controller = null;
-        }
-    }
+    /////
+    //    HEADER MENU ANIMATION - when scrolling
+    ////////////////////////////////////////////////////
 
     componentDidMount() {
-        if (this.props.linksOnly) {
-            //disabled on homepage
+        if (this.props.linksOnly) { //disabled on homepage
             return;
         }
         var controller = new ScrollMagic.Controller();
@@ -85,13 +71,11 @@ class Header extends Component {
         scenes.push(this.activeScene = new ScrollMagic.Scene({ triggerElement: $container, triggerHook: 'onLeave', duration: 310, offset: 90 }).addTo(controller)
             .addIndicators({name:'1'})
             .on('start', event => {
-                //console.warn('START', event.scrollDirection);
                 if (event.scrollDirection == 'FORWARD') {
                     controller.scrollTo(headerBottom);
                 }
             })
             .on('end', event => {
-                //console.warn('END', event.scrollDirection);
                 if (event.scrollDirection == 'FORWARD') {
                     $container.addClass('fix-header');
                 }
@@ -102,9 +86,30 @@ class Header extends Component {
             })
             .setTween(tweens)
         );  
-        //this.activeScene.enabled(false);    
+    }
+
+    componentWillUnmount() {
+        if (this.scenes) {
+            for (var i = 0; i < this.scenes.length; i++) {
+                this.scenes[i].destroy();
+                this.scenes[i] = null;
+            }
+        }
+        if (this.timeLines) {
+            for (i = 0; i < this.timeLines.length; i++) {
+                this.timeLines[i] = null;
+            }
+        }
+        if (this.controller) {
+            this.controller.destroy();
+            this.controller = null;
+        }
     }
   
+    /////
+    //    HANDLE CLICKS
+    ////////////////////////////////////////////////////
+
     handleHomepageClick(event) {
         let $target = $(event.target);
         !$target.is('a') && ($target = $target.closest('a'));
@@ -131,6 +136,86 @@ class Header extends Component {
         });
     }
     
+    /////
+    //    BURGER MENU
+    ////////////////////////////////////////////////////
+
+    burgerClick(event){
+        if (this.animating) {
+            return false;
+        }
+        this.animating = true;
+        let $burger = $(event.currentTarget);
+        $burger.is('.is-closed') && this.openBurgerMenu() || this.closeBurgerMenu();
+        $burger.toggleClass('is-closed is-open');
+    }
+    
+    openBurgerMenu() {
+        let el = this.getElements();
+        let timeLines = this.timeLines;
+        let _this = this;
+        
+        let animations = _.filter([
+            () => { el.text.hide(); },
+            TweenMax.to(el.logo, .6, { color: '#fefefe', marginLeft: '12.5%', ease: Power3.easeOut }),
+            TweenMax.to(el.burger, .3, { color: '#fefefe', ease: Power3.easeOut }),
+            TweenMax.to(el.header, .6, { height: '100%', ease: Power3.easeOut }),
+        ].concat(el.links.toArray().map(link => { return TweenMax.to(link, .3, { x: '0%', delay: .3 }); })));
+        
+        timeLines.push(new TimelineLite({ onComplete: () => {
+                _this.resetAnimating(true);
+                $(el.logo).css('pointer-events', 'all');
+            }})
+            .add(animations)
+        );
+        
+        return true; //important! otherwise burgerClick will call both open AND close!
+    }
+
+    closeBurgerMenu() {
+        let el = this.getElements();
+        let timeLines = this.timeLines;
+        let _this = this;
+        
+        let animations = _.filter([
+            TweenMax.to(el.logo, .6, { marginLeft: '50px', ease: Power3.easeOut }),
+            TweenMax.to(el.logo, .3, { color: '#4d4d4d', delay: .3, ease: Power3.easeOut }), 
+            TweenMax.to(el.burger, .3, { color: '#4d4d4d', delay: .3, ease: Power3.easeOut }),
+            TweenMax.to(el.header, .6, { height: '0%', ease: Power3.easeOut }),
+        ]);
+        
+        $(el.logo).css('pointer-events', '');
+        timeLines.push(new TimelineLite({ onComplete: () => {
+                _this.resetAnimating(false);
+            }})
+            .add(el.links.toArray().map(link => { return TweenMax.to(link, .3, { x: '-100%' }); }))
+            .add(animations)
+            .add(_.filter([() => { el.text.show(); el.header.css('height', ''); }]))     
+            .add(() => { $(el.logo).css('margin-left', ''); })       
+        );
+    }
+    
+    resetAnimating(lock, restoreScroll) {
+        this.animating = false;
+        lock && this.activeScene.enabled(false);
+        $.scrollLock(lock, restoreScroll);
+        !lock && setTimeout((() => { this.activeScene.enabled(true); }).bind(this), 100);
+    }
+    
+    getElements() {
+        let header = $(dom.findDOMNode(this.refs.header)), 
+            burger = header.find('.hamburglar');
+        return { burger, header,
+            links: header.find('nav ul li a'),
+            logo: header.find('> .logo'),
+            text: header.find('> .text'),
+        };
+    }
+
+    /////
+    //    RENDER
+    ////////////////////////////////////////////////////
+
     render() {
         const logo = (<Link to={routePaths.client.root} onClick={this.handleHomepageClick} className="logo">
                         <svg width="131px" height="36px" viewBox="400 345 131 36">
@@ -166,72 +251,6 @@ class Header extends Component {
                 </header>
             );
         }
-    }
-    
-    burgerClick(event){
-        if (this.animating) {
-            return false;
-        }
-        this.animating = true;
-        //console.warn('stopping', this.activeScene);
-        //this.activeScene.enabled(false);
-        let $burger = $(event.currentTarget);
-        $burger.is('.is-closed') && this.openBurgerMenu() || this.closeBurgerMenu();
-        $burger.toggleClass('is-closed is-open');
-    }
-    
-    openBurgerMenu() {
-        let el = this.getElements();
-        let timeLines = this.timeLines, scenes = this.scenes;
-        
-        let animations = _.filter([
-            () => { el.text.hide(); },
-            TweenMax.to(el.logo, .3, { color: '#fefefe' }),
-            TweenMax.to(el.burger, .3, { color: '#fefefe' }),
-            TweenMax.to(el.header, .6, { height: '100%', ease: Power3.easeOut }),
-        ]);
-            
-            //console.warn(animations);
-        timeLines.push(new TimelineLite({ onComplete: this.resetAnimating.bind(this, true) })
-            .add(animations)
-            .add(el.links.toArray().map(link => { return TweenMax.to(link, .3, { x: '0%' }); }))
-        );
-        
-        return true; //important!
-    }
-
-    closeBurgerMenu() {
-        let el = this.getElements();
-        let timeLines = this.timeLines, scenes = this.scenes;
-        
-        let animations = _.filter([
-            TweenMax.to(el.logo, .2, { color: '#4d4d4d', delay: .5 }), 
-            TweenMax.to(el.burger, .2, { color: '#4d4d4d', delay: .5 }),
-            TweenMax.to(el.header, .6, { height: '0%', ease: Power3.easeOut }),
-        ]);
-        
-        timeLines.push(new TimelineLite({ onComplete: this.resetAnimating.bind(this, false) })
-            .add(el.links.toArray().map(link => { return TweenMax.to(link, .4, { x: '-100%' }); }))
-            .add(animations)
-            .add(_.filter([() => { el.text.show(); el.header.css('height', ''); }]))            
-        );
-    }
-    
-    resetAnimating(lock, restoreScroll) {
-        this.animating = false;
-        lock && this.activeScene.enabled(false);
-        $.scrollLock(lock, restoreScroll);
-        !lock && setTimeout((() => { this.activeScene.enabled(true); }).bind(this), 100);
-    }
-    
-    getElements() {
-        let header = $(dom.findDOMNode(this.refs.header)), 
-            burger = header.find('.hamburglar');
-        return { burger, header,
-            links: header.find('nav ul li a'),
-            logo: header.find('> .logo'),
-            text: header.find('> .text'),
-        };
     }
 }
 
