@@ -18,6 +18,9 @@
                 clear: both;
                 @include grid-column-size(24);
                 
+                &-120 {
+                    height: rem-calc(120pt);
+                } 
                 &-100 {
                     height: rem-calc(100pt);
                 }

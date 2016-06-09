@@ -27,29 +27,74 @@ class About extends Component {
                         <p className="large-5 large-pull-2 columns">We believe in energizing ourselves by following our <strong>passion</strong>.</p>
                     </div>
                     <div className="row align-middle">
-                        <p className="large-5 large-offset-3 columns">We believe there should be a clear <strong>purpose</strong> in everything we do.</p>
+                        <p className="large-5 large-offset-6 columns">We believe there should be a clear <strong>purpose</strong> in everything we do.</p>
                         <div className="image light show-for-medium-up large-6 large-push-7 columns"><img src="/client/dist/img/photos/temp1.jpg" /></div>
                         <p className="large-5 large-pull-2 columns">We believe <strong>trust</strong> in each other will allow us to be more autonomous and responsible.</p>
                     </div>
-                    {/*
-                    <div className="image light show-for-medium-up"><img src="/client/dist/img/photos/temp1.jpg" /></div>
-                    <p>We believe in delivering quality by continuous learning and <strong>professionalism</strong>.</p>
-                    <p>We believe openness and transparency always leads to meaningful <strong>communication</strong>.</p>
-                    <p>We believe everything changes so <strong>adaptability</strong> and <strong>innovation</strong> are essential.</p>
-                    <div className="image light show-for-medium-up"><img src="/client/dist/img/photos/temp2.jpg" /></div>
-                    <h2>The team</h2>
-                    <div className="image show-for-medium-up"><img src="/client/dist/img/photos/temp2.jpg" /></div>
-                    <div className="image show-for-medium-up"><img src="/client/dist/img/photos/temp2.jpg" /></div>
-                    <ul className="team">
-                        <li><h3>Tudor Popescu</h3><small>CEO</small><Link to="https://www.linkedin.com/">Linkedin</Link></li>
-                        <li><h3>Nume foarte lung pe 1 rand</h3><small>CEO</small><Link to="https://www.linkedin.com/">Linkedin</Link></li>
-                        <li><h3>Nume foarte lung pe doua randuri</h3><small>CEO</small><Link to="https://www.linkedin.com/">Linkedin</Link></li>
-                        <li><h3>John Doe</h3><small>CEO</small><Link to="https://www.linkedin.com/">Linkedin</Link></li>
-                        <li><h3>Tudor Popescu</h3><small>CEO</small><Link to="https://www.linkedin.com/">Linkedin</Link></li>
-                        <li><h3>John Doe</h3><small>CEO</small><Link to="https://www.linkedin.com/">Linkedin</Link></li>
-                        <li><h3>Tudor Popescu</h3><small>CEO</small><Link to="https://www.linkedin.com/">Linkedin</Link></li>
-                        <li><h3>John Doe</h3><small>CEO</small><Link to="https://www.linkedin.com/">Linkedin</Link></li>
-                    </ul>{/**/}
+                    <div className="row align-middle">
+                        <div className="image light show-for-medium-up large-6 columns"><img src="/client/dist/img/photos/temp1.jpg" /></div>
+                        <p className="large-5 large-pull-3 columns">We believe in delivering quality by continuous learning and <strong>professionalism</strong>.</p>
+                        <p className="large-5 large-offset-1 columns">We believe openness and transparency always leads to meaningful <strong>communication</strong>.</p>
+                    </div>
+                    <div className="row align-middle">
+                        <p className="large-5 large-offset-6 columns">We believe everything changes so <strong>adaptability</strong> and <strong>innovation</strong> are essential.</p>
+                        <div className="image light large-6 large-offset-1 columns"><img src="/client/dist/img/photos/temp1.jpg" /></div>
+                    </div>
+                    <div className="spacer-100"/>
+                    <div className="row">
+                        <h2 className="large-offset-3">The team</h2>
+                    </div>               
+                    <div className="spacer-40"/>     
+                    <div className="row">
+                        <div className="large-12 large-offset-3 memeber-details-top">
+                            <div className="row">
+                                <div className="large-12 memeber-details-top">
+                                    <p className="memeber-name">Tudor Dumitriu</p>
+                                    <p className="memeber-job">CEO</p>
+                                </div>
+                                <div className="large-12 memeber-details-top">
+                                    <p className="memeber-name">Tudor Dumitriu</p>
+                                    <p className="memeber-job">CEO</p>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="large-12  memeber-details-top">
+                                    <p className="memeber-name">Tudor Dumitriu</p>
+                                    <p className="memeber-job">CEO</p>
+                                </div>
+                                <div className="large-12 memeber-details-top">
+                                    <p className="memeber-name">Tudor Dumitriu</p>
+                                    <p className="memeber-job">CEO</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="image show-for-medium-up light large-9 columns members-background-image"><img src="/client/dist/img/photos/temp1.jpg" /></div>
+                    </div>
+                     <div className="row">
+                        <div className="large-12 large-offset-3 memeber-details-group">
+                            <div className="row">
+                                <div className="large-12 memeber-details-top">
+                                    <p className="memeber-name">Tudor Dumitriu</p>
+                                    <p className="memeber-job">CEO</p>
+                                </div>
+                                <div className="large-12 memeber-details-top">
+                                    <p className="memeber-name">Tudor Dumitriu</p>
+                                    <p className="memeber-job">CEO</p>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="large-12  memeber-details-top">
+                                    <p className="memeber-name">Tudor Dumitriu</p>
+                                    <p className="memeber-job">CEO</p>
+                                </div>
+                                <div className="large-12 memeber-details-top">
+                                    <p className="memeber-name">Tudor Dumitriu</p>
+                                    <p className="memeber-job">CEO</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="image show-for-medium-up large-9 large-pull-3 light columns members-background-image"><img src="/client/dist/img/photos/temp1.jpg" /></div>
+                    </div>
                     <div className="spacer-100" />
                 </section>
                 <section className="call-to-action row align-middle">

@@ -92,37 +92,37 @@ $.scrollLock = ( function scrollLockClosure() {
         locked = true;
     }
 
-    function unlock() {
+    function unlock(restoreScroll) {
         // Duplicate execution will break DOM statefulness
         if( !locked ) {
             return;
         }
 
         // Revert styles
-        $html.attr( 'style', $( '<x>' ).css( prevStyles ).attr( 'style' ) || '' );
+        restoreScroll !== false && $html.attr( 'style', $( '<x>' ).css( prevStyles ).attr( 'style' ) || '' );
 
         // Revert scroll values
-        $( window )
+        restoreScroll !== false && $( window )
             .scrollLeft( prevScroll.scrollLeft )
             .scrollTop(  prevScroll.scrollTop );
 
         locked = false;
     }
 
-    return function scrollLock( on ) {
+    return function scrollLock( on, restoreScroll ) {
         // If an argument is passed, lock or unlock depending on truthiness
         if( arguments.length ) {
             if( on ) {
                 lock();
             }
             else {
-                unlock();
+                unlock(restoreScroll);
             }
         }
         // Otherwise, toggle
         else {
             if( locked ){
-                unlock();
+                unlock(restoreScroll);
             }
             else {
                 lock();

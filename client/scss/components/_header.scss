@@ -235,6 +235,11 @@
                     
                     &.line.hover:before {
                         height: rem-calc(62pt);
+                        transition: none;                                                
+                    }
+
+                    &.line, &.hover, &.line.hover {
+                        transition: none;
                     }
                 }
             }
@@ -270,7 +275,6 @@
             }
             
             nav {
-                @include grid-col-off(6);
                 position: absolute;
                 top: 50%;
                 transform: translateY(-50%);
