@@ -119,7 +119,7 @@ class Home extends Component {
 
         // change behaviour of controller to animate scroll instead of jump
         controller.scrollTo(function (newpos) {
-            var t = TweenMax.to(window, 1, { scrollTo: { y: newpos }, ease: Power3.easeOut })
+            var t = TweenMax.to(window, 0.5, { scrollTo: { y: newpos } })
             timeLines.push(t);
             return t;
         });
@@ -249,7 +249,7 @@ class Home extends Component {
                         </h2>
                     </div>
                     <div className="scroll-hint">
-                        <span>dd</span>
+                        <span></span>
                         <p>{'Find out more'}</p>
                     </div>
                 </section>
