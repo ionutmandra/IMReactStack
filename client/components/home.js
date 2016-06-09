@@ -3,6 +3,18 @@ import Header from '../containers/headerContainer';
 import {Link} from 'react-router';
 
 class Home extends Component {
+    constructor(props) {
+        super(props);
+        this.handleLinkClick = this.handleLinkClick.bind(this);
+    }
+
+    handleLinkClick(event) {
+          this.props.transition({
+              type: 'header',
+              column: event.target.getAttribute('data-animate-line'),
+              target: event.target,
+          });        
+    }
 
     componentWillUnmount() {
 
@@ -247,7 +259,7 @@ class Home extends Component {
                     <div className="text-2">
                         <h2 ref={(c) => this._inputCreate = c}>
                             <p>Create a truly remarkable working environment</p>
-                            <p>and deliver high quality innovative software</p>
+                            <p>and deliver high quality, innovative software</p>
                             <p>products and services</p>
                         </h2>
                     </div>
@@ -262,7 +274,7 @@ class Home extends Component {
                         <h1 ref={(c) => this._inputGrow = c}>
                             <p>Grow an outstanding</p>
                             <p>working environment driven</p>
-                            <p>by <Link to="/about">our culture</Link></p>
+                            <p>by <Link to="/about" data-animate-line="3" onClick={this.handleLinkClick}>our culture</Link></p>
                         </h1>
                     </div>
                     <div className="text-2">
@@ -284,13 +296,13 @@ class Home extends Component {
                 </section>
 
                 <section className="slide slide-3 content" ref={(c) => this._section3c = c}>
-                    <div className="text-1"><h1 ref={(c) => this._inputOffering = c}>Offering highest quality by constantly improving our <Link to="/about">skills and processes</Link></h1></div>
-		<div className="text-2"><h1 ref={(c) => this._inputCreating = c}>Creating <Link to="/portfolio/sfb">high impact software solutions</Link> that help business succeed
-</h1></div>
+                    <div className="text-1"><h1 ref={(c) => this._inputOffering = c}>Offering highest quality by constantly improving our <Link to="/about" data-animate-line="3" onClick={this.handleLinkClick}>skills and processes</Link></h1></div>
+		            <div className="text-2"><h1 ref={(c) => this._inputCreating = c}>Creating <Link to="/portfolio/sfb" data-animate-line="5" onClick={this.handleLinkClick}>high impact software solutions</Link> that help business succeed
+                    </h1></div>
                 </section>
 
                 <section className="slide slide-4 content"  ref={(c) => this._section4c = c}>
-                    <div className="text-1"><h1 ref={(c) => this._inputSustaining = c}>Sustaining <Link to="/about">learning and innovation</Link> as a part day to day activity.</h1></div>
+                    <div className="text-1"><h1 ref={(c) => this._inputSustaining = c}>Sustaining <Link to="/about" data-animate-line="3" onClick={this.handleLinkClick}>learning and innovation</Link> as a part day to day activity.</h1></div>
                 </section>
 
                 <section className="slide slide-1v" ref={(c) => this._section1 = c}></section>
