@@ -235,6 +235,7 @@
                     
                     &.line.hover:before {
                         height: rem-calc(62pt);
+                        transition: none;                                                
                     }
                 }
             }
