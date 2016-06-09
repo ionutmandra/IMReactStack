@@ -2,11 +2,11 @@
 
 @font-face {
     font-family: 'new-company-site';
-    src:    url('#{$icomoon-font-path}/new-company-site.eot?45cib9');
-    src:    url('#{$icomoon-font-path}/new-company-site.eot?45cib9#iefix') format('embedded-opentype'),
-        url('#{$icomoon-font-path}/new-company-site.ttf?45cib9') format('truetype'),
-        url('#{$icomoon-font-path}/new-company-site.woff?45cib9') format('woff'),
-        url('#{$icomoon-font-path}/new-company-site.svg?45cib9#new-company-site') format('svg');
+    src:    url('#{$icomoon-font-path}/new-company-site.eot?1o8x46');
+    src:    url('#{$icomoon-font-path}/new-company-site.eot?1o8x46#iefix') format('embedded-opentype'),
+        url('#{$icomoon-font-path}/new-company-site.ttf?1o8x46') format('truetype'),
+        url('#{$icomoon-font-path}/new-company-site.woff?1o8x46') format('woff'),
+        url('#{$icomoon-font-path}/new-company-site.svg?1o8x46#new-company-site') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -26,14 +26,69 @@ i {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.ncs-chevron-with-circle-right {
+.ncs-processes_tests {
     &:before {
-        content: $ncs-chevron-with-circle-right;
+        content: $ncs-processes_tests;
+    }
+}
+.ncs-processes_adaptaion {
+    &:before {
+        content: $ncs-processes_adaptaion;
+    }
+}
+.ncs-processes_feedback {
+    &:before {
+        content: $ncs-processes_feedback;
+    }
+}
+.ncs-processes_delivery {
+    &:before {
+        content: $ncs-processes_delivery;
+    }
+}
+.ncs-processes_automation {
+    &:before {
+        content: $ncs-processes_automation;
+    }
+}
+.ncs-chevron-thin-right {
+    &:before {
+        content: $ncs-chevron-thin-right;
     }
 }
 .ncs-chevron-with-circle-left {
     &:before {
         content: $ncs-chevron-with-circle-left;
+    }
+}
+.ncs-chevron-thin-left {
+    &:before {
+        content: $ncs-chevron-thin-left;
+    }
+}
+.ncs-chevron-with-circle-down {
+    &:before {
+        content: $ncs-chevron-with-circle-down;
+    }
+}
+.ncs-chevron-thin-down {
+    &:before {
+        content: $ncs-chevron-thin-down;
+    }
+}
+.ncs-chevron-with-circle-up {
+    &:before {
+        content: $ncs-chevron-with-circle-up;
+    }
+}
+.ncs-chevron-thin-up {
+    &:before {
+        content: $ncs-chevron-thin-up;
+    }
+}
+.ncs-chevron-with-circle-right {
+    &:before {
+        content: $ncs-chevron-with-circle-right;
     }
 }
 .ncs-check {
