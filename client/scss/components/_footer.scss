@@ -3,29 +3,33 @@
 //     text-align: center;
 //     border-top: 1px solid $palette-1;
 // }
-#page-container > article > footer {
-    font-size: rem-calc(12pt);
-    color: $white;
-    background: $text-color;
-    padding: rem-calc(12pt 0 10pt);
+#page-container {
+    & > article { 
+        & > footer {
+            font-size: rem-calc(12pt);
+            color: $white;
+            background: $text-color;
+            padding: rem-calc(12pt 0 10pt);
 
-    width: 100%;
-    position: absolute;
-    bottom:0;
-    left:0;
+            width: 100%;
+            position: absolute;
+            bottom:0;
+            left:0;
 
-    ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-        li {
-            padding: 0;
-            margin: 0 15px 0 0;
-            display: inline-block;
-            
-            i {
-                font-size: 30px;
-                color: #dddddd;
+            ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+                li {
+                    padding: 0;
+                    margin: 0 15px 0 0;
+                    display: inline-block;
+                    
+                    i {
+                        font-size: 30px;
+                        color: #dddddd;
+                    }
+                }
             }
         }
     }

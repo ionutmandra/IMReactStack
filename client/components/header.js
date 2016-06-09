@@ -5,7 +5,7 @@ import routePaths from '../../common/routePaths';
 import Burger from './burger';
 import dom from 'react-dom';
 
-let $ = window.$, ScrollMagic = window.ScrollMagic, TweenMax = window.TweenMax, Power3 = window.Power3;
+let $ = window.$, $window = $(window), ScrollMagic = window.ScrollMagic, TweenMax = window.TweenMax, Power3 = window.Power3;
 
 class Header extends Component {
     constructor(props) {
@@ -85,13 +85,13 @@ class Header extends Component {
         scenes.push(this.activeScene = new ScrollMagic.Scene({ triggerElement: $container, triggerHook: 'onLeave', duration: 310, offset: 90 }).addTo(controller)
             .addIndicators({name:'1'})
             .on('start', event => {
-                console.warn('START', event.scrollDirection);
+                //console.warn('START', event.scrollDirection);
                 if (event.scrollDirection == 'FORWARD') {
                     controller.scrollTo(headerBottom);
                 }
             })
             .on('end', event => {
-                console.warn('END', event.scrollDirection);
+                //console.warn('END', event.scrollDirection);
                 if (event.scrollDirection == 'FORWARD') {
                     $container.addClass('fix-header');
                 }
@@ -116,11 +116,15 @@ class Header extends Component {
     }
     
     handleClick(event) {
+        !this.$article && (this.$article = $(event.target).closest('article.page'));
+        let burger = this.$article.is('.fix-header');
+        burger && this.resetAnimating.bind(this, false, false);
+        burger && $window.scrollTop(0);    
         this.props.transition({
-            type: this.props.animationType || 'header',
+            type: burger && 'burger' || 'header',
             column: event.target.getAttribute('data-animate-line'),
             target: event.target,
-        });    
+        });
     }
     
     render() {
@@ -209,10 +213,10 @@ class Header extends Component {
         );
     }
     
-    resetAnimating(lock) {
+    resetAnimating(lock, restoreScroll) {
         this.animating = false;
         lock && this.activeScene.enabled(false);
-        $.scrollLock(lock);
+        $.scrollLock(lock, restoreScroll);
         !lock && setTimeout((() => { this.activeScene.enabled(true); }).bind(this), 100);
     }
     

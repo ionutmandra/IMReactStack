@@ -20,7 +20,7 @@ export function appear(ref, callback) {
 }
     
 ////
-//    ENTER - navigation after first load
+//    HEADER
 /////////////////////////////////////////
 
 export function enter_header(ref, callback, transition) {
@@ -50,7 +50,7 @@ export function enter_header(ref, callback, transition) {
     TweenMax.set(line, { left: left, opacity: 1, height: 0 });
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.image && TweenMax.set(elements.image, { scale: height / 400 });
-    elements.header && TweenMax.set(elements.header, { height: height });
+    elements.header && TweenMax.set(elements.header, { height: height, display: 'none' });
     
     //Animation
     new TimelineLite({
@@ -60,6 +60,7 @@ export function enter_header(ref, callback, transition) {
             TweenMax.to(line, .6, { height: '100%', ease: Power3.easeIn, onComplete: () => { $target.removeClass('line'); TweenMax.set(line, { opacity: 0 }); }}),
         ]))
         .add(_.filter([
+            elements.header && TweenMax.set(elements.header, { display: 'block' }),            
             TweenMax.to(arr1, .6, arr2),
         ]))
         .add(_.filter([
@@ -69,10 +70,6 @@ export function enter_header(ref, callback, transition) {
         ]));
 }
 
-////
-//    LEAVE - page unload
-/////////////////////////
-    
 export function leave_header(ref, callback, transition) {
     let elements = extractDOMElements(ref, transition.column), 
         $container = $(elements.container).addClass('overlap'),
@@ -93,22 +90,101 @@ export function leave_header(ref, callback, transition) {
 }
 
 ////
-//    PRIVATE UTILITY FUNCTIONS
-///////////////////////////////
+//    BURGER
+/////////////////////////////////////////
 
-function extractDOMElements(ref, column) {
-    let container = dom.findDOMNode(ref), $container = $(container);
-    console.warn('extractDOMElements', $container);
-    return {
-        container: container,
-        link: column && $container.find('header nav ul li:nth-child(' + (column - 2) + ') a')[0],
-        header: $container.find('header.main')[0],
-        image: $container.find('header.main .image .img')[0],
-        text: $container.find('header .text h1')[0],
-        gradient: $container.find('header .gradient')[0],
-    };
+export function enter_burger(ref, callback, transition) {
+    if (!transition.column || !transition.target) {
+        return callback();
+    }
+    
+    //Setup
+    let elements = extractDOMElements(ref, transition.column), $container = $(elements.container).addClass('overlap'), linksAnimation = [];
+    let $target = $(transition.target).addClass('hover line');
+    let $link = $(elements.link);//.addClass('hover');
+    let grid = document.getElementById('page-grid'), $grid = $(grid);
+    let $baseLine = $grid.find('li:nth-child(' + transition.column + ')'), left = $baseLine.offset().left;
+    let $line = $grid.find('.navigation-line'), line = $line[0];
+    let width = $window.width(), height = $window.height();
+    let position = left * 100 / width;
+    var arr1 = [0, 100 - position, 0, position];
+    var arr2 = Object.assign([0, 0, 0, 0], { ease: Power3.easeIn, onUpdate: () => {
+        TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+    }});
+    if (elements.links && elements.links.length) {
+        elements.links.each((index, link) => {
+            console.warn('each', link);
+            linksAnimation.push(TweenMax.to(link, .3, { x: '0%', ease: Power3.easeOut, delay: .3 }));
+        });
+    }
+    $body.css('overflow', 'visible');
+    $window.scrollTop(0);
+    $body.css('overflow', 'hidden');
+    $line.addClass('burger');
+    $container.removeClass('fix-header');
+    console.warn('ENTER BURGER', $('html').css({ position: '', top: '' }).attr('style'));
+
+    //Initial state
+    TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
+    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+    TweenMax.set(line, { left: left, opacity: 1, height: 0 });
+    elements.text && TweenMax.set(elements.text, { x: '-100%' });
+    elements.image && TweenMax.set(elements.image, { scale: height / 400 });
+    elements.header && TweenMax.set(elements.header, { height: height, display: 'none' });
+    if (elements.links && elements.links.length) {
+        elements.links.each((index, link) => {
+            TweenMax.set(link, { x: '-100%' });
+        });
+    }
+    
+    //Animation
+    new TimelineLite({
+        onComplete: () => { callback(); 
+            $body.css('overflow', 'visible'); 
+            $container.removeClass('overlap'); 
+            $(elements.header).css('height', ''); 
+            $line.removeClass('burger'); }})
+        //.set({}, {}, .6) //wait for leaving page to hide content
+        .add(_.filter([
+            TweenMax.to(line, .6, { height: '100%', ease: Power3.easeIn, onComplete: () => { $target.removeClass('line'); TweenMax.set(line, { opacity: 0 }); }}),
+        ]))
+        .add(_.filter([
+            elements.header && TweenMax.set(elements.header, { display: 'block' }),    
+            TweenMax.to(arr1, .6, arr2),
+        ]))
+        .add(_.filter([
+            elements.image && TweenMax.to(elements.image, .6, { scale: 1, ease: Power3.easeOut }),
+            elements.header && TweenMax.to(elements.header, .6, { height: 400, ease: Power3.easeOut }),
+            elements.text && TweenMax.to(elements.text, .3, { x: '0%', ease: Power3.easeOut, delay: .3, onStart: () => { $target.removeClass('hover'); $link.removeClass('hover'); }}),
+            linksAnimation,                    
+        ]));
 }
 
+export function leave_burger(ref, callback, transition) {
+    let elements = extractDOMElements(ref, transition.column), 
+        $container = $(elements.container),//.addClass('overlap'),
+        height = $window.height(), linksAnimation = [];
+    
+    //Setup
+    if (elements.links && elements.links.length) {
+        elements.links.each((index, link) => {
+            console.warn('each', link);
+            linksAnimation.push(TweenMax.to(link, 1, { x: '-100%' }));
+        });
+    }
+
+    //Initial state
+    TweenMax.set(elements.header, { zIndex: 1 });
+    console.warn('BURGER LEAVE', linksAnimation, elements.links);
+    //Animation
+    new TimelineLite({ onComplete: () => { callback(); $container.removeClass('overlap'); $(elements.header).css('z-index', 2); }})
+        .add(linksAnimation)
+        .set({}, {}, 1.2);
+}
+
+////
+//    CONTENT
+/////////////////////////////////////////
 
 export function enter_content(ref, callback, transition) {
     if (!transition.column || !transition.target) {
@@ -158,6 +234,7 @@ export function enter_content(ref, callback, transition) {
         .add(_.filter([
         ]));
 }
+
 export function leave_content(ref, callback, transition) {
     let elements = extractDOMElements(ref, transition.column), 
         $container = $(elements.container).addClass('overlap'),
@@ -178,3 +255,23 @@ export function leave_content(ref, callback, transition) {
         
         
 }
+
+////
+//    UTILITIES
+///////////////////////////////
+
+function extractDOMElements(ref, column) {
+    let container = dom.findDOMNode(ref), $container = $(container);
+    return {
+        container: container,
+        link: column && $container.find('header nav ul li:nth-child(' + (column - 2) + ') a')[0],
+        links: column && $container.find('header nav ul li a'),
+        header: $container.find('header.main')[0],
+        image: $container.find('header.main .image .img')[0],
+        text: $container.find('header .text h1')[0],
+        gradient: $container.find('header .gradient')[0],
+    };
+}
+
+
+
