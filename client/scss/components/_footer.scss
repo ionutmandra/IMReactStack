@@ -9,16 +9,17 @@
             font-size: rem-calc(12pt);
             color: $white;
             background: $text-color;
-            padding: rem-calc(12pt 0 10pt);
+            padding: 0;
 
             width: 100%;
             position: absolute;
             bottom:0;
             left:0;
+            overflow: hidden;
 
             ul {
                 list-style-type: none;
-                padding: 0;
+                padding: rem-calc(12pt 0 10pt);
                 margin: 0;
                 li {
                     padding: 0;

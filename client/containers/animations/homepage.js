@@ -8,6 +8,7 @@ let $ = window.$, $window = $(window), $body = $('body'), TweenMax = window.Twee
 //////////////////////////////
     
 export function appear(ref, callback) {
+    $body.removeClass('navigating');
     let container = dom.findDOMNode(ref), $container = $(container);
     let image = $container.find('.slide-1.background .img')[0];
     image && TweenMax.set(image, { scale: 1.4 });
