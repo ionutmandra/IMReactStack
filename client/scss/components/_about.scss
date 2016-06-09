@@ -1,7 +1,57 @@
 #page-container article.page-about {
     section.content {
+        h1 {
+            font-family: "Poppins";
+            font-weight: $semibold;
+            font-size: rem-calc(26pt);
+            line-height: rem-calc(36pt);
+            color: $text-color;
+            margin-bottom: 0px;
+        }
+        h2 {
+            font-family: "Poppins";
+            font-weight: $semibold;
+            font-size: rem-calc(24pt);
+            line-height: rem-calc(34pt);
+            color: $text-color;
+            margin-bottom: 0px;
+        }
+        p {
+            font-family: "Poppins";
+            font-weight: $normal;
+            font-size: rem-calc(16pt);
+            line-height: rem-calc(24pt);
+            color: $text-color;
+            margin-bottom: 0px;
+            &.memeber-name {
+                padding-bottom: 10px;
+                font-weight: $normal;
+                font-size: rem-calc(20pt);
+                line-height: rem-calc(30pt);
+            }
+            &.memeber-job {
+                font-weight: $normal;
+                font-size: rem-calc(14pt);
+                line-height: rem-calc(20pt);
+                padding-bottom: 20px;
+                color: #c3c3c3;
+            }
+        }
         strong {
-            color: rgba(104,188,69,1);
+            color: rgba(104, 188, 69, 1);
+            text-transform: capitalize;
+        }
+        .memeber-details-top {
+            padding-top: 40px;
+        }
+        .memeber-details-group {
+            padding-bottom: 40px;
+        }
+        .members-background-image {
+            img {
+                max-height: 325px;
+                width: 100%;
+            }
         }
     }
 }

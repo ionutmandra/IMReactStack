@@ -43,18 +43,6 @@ class Portfolio extends Component {
                         </div>
                     </div>
                     <div className="spacer-100" />
-                    <div className="row align-middle">
-                        <div className="large-9 large-offset-3 columns">
-                            <h1>EForms</h1>
-                            <div className="project-description">
-                                Scurt text despre ce inseamna Safetybank pentru Adaptabi.Nunc sit amet tincidunt odio.Praesent quis posuere magna, quis mollis libero
-                            </div>
-                        </div>
-                        <div className="large-9 columns">
-                            <img src="client/assets/img/photos/prjSfb.png" />
-                        </div>
-                    </div>
-                    <div className="spacer-100" />
                 </section>
                 <Footer />
             </article>
