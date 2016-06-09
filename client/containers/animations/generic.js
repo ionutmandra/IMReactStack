@@ -9,7 +9,6 @@ let $ = window.$, $window = $(window), $body = $('body'), TweenMax = window.Twee
     
 export function appear(ref, callback) {
     let elements = extractDOMElements(ref);
-    console.warn('generic appear', elements);
     elements.image && TweenMax.set(elements.image, { scale: 1.2 });
     TweenMax.set(elements.container, { opacity: 0 });
     new TimelineLite({ onComplete: callback })
@@ -122,7 +121,6 @@ export function enter_burger(ref, callback, transition) {
     $body.css('overflow', 'hidden');
     $line.addClass('burger');
     $container.removeClass('fix-header');
-    console.warn('ENTER BURGER', $('html').css({ position: '', top: '' }).attr('style'));
 
     //Initial state
     TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
@@ -175,7 +173,6 @@ export function leave_burger(ref, callback, transition) {
 
     //Initial state
     TweenMax.set(elements.header, { zIndex: 1 });
-    console.warn('BURGER LEAVE', linksAnimation, elements.links);
     //Animation
     new TimelineLite({ onComplete: () => { callback(); $container.removeClass('overlap'); $(elements.header).css('z-index', 2); }})
         .add(linksAnimation)

@@ -108,8 +108,12 @@ class Header extends Component {
     handleHomepageClick(event) {
         let $target = $(event.target);
         !$target.is('a') && ($target = $target.closest('a'));
+        !this.$article && (this.$article = $target.closest('article.page'));        
+        let burger = this.$article.is('.fix-header');
+        burger && this.resetAnimating.bind(this, false, false);
+        burger && $window.scrollTop(0);
         this.props.transition({
-            type: 'header',
+            type: burger && 'burger' || 'header',
             column: 1,
             target: $target[0],
         });
