@@ -5,16 +5,28 @@ import { Link } from 'react-router';
 import routePaths from '../../common/routePaths';
 
 class PortfolioDetails extends Component {
+
+    constructor(props) {
+        super(props);
+        this.handleCallToActionClick = this.handleCallToActionClick.bind(this);
+    }
+    handleCallToActionClick(event) {
+          this.props.transition({
+              type: 'content',
+              column: 6,
+              target: event.target,
+          });        
+    }
     render() {
         return (
             <article className="page page-portfolio-details">
-                <Header title={'Scurt text despre Adaptabi ca si companie: cine sunt, ce fac si care este misiunea lor'} />
+                <Header title={'We create high impact software solutions that help business succeed'} />
                 <section className="content">
                     <div className="row align-middle">
                         <div className="large-9 large-offset-3 columns">
                             <h1>Safetybank</h1>
                             <div className="project-description">
-                                Scurt text despre ce inseamna Safetybank pentru Adaptabi.Nunc sit amet tincidunt odio.Praesent quis posuere magna, quis mollis libero
+                                Safetybank is our largest project and we took it from a 50 hours concept to a 50 000 hours enterprise class application.
                             </div>
                         </div>
                         <div className="large-9 columns">
@@ -44,8 +56,7 @@ class PortfolioDetails extends Component {
                     <div className="row align-middle">
                         <div className="large-12 large-offset-6 columns">
                             <h1>Serving thousands of companies</h1>
-                            The text needs revision.It has to be ﬂowy and to present ideas in a ore logical order.Custom data collection and reporting via built-in dynamic forms.
-                            Signature capture, Geolocation support, Image processing.
+                            Hosted on Azure Cloud on a top cluster configuration offers the functionality that a 21st century building company needs to safely manage its projects.
                         </div>
                     </div>
                     <div className="row align-middle">
@@ -81,7 +92,7 @@ class PortfolioDetails extends Component {
                     </div>
                     <div className="large-8 large-offset-3 columns">
                         <p>Everything changes but our passion.</p>
-                        <p className="cta">Want to meet us? <Link to={routePaths.client.careers}>Let's talk</Link></p>
+                        <p className="cta">Want to meet us? <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}>Let's talk</Link></p>
                     </div>
                 </section>
                 <Footer />

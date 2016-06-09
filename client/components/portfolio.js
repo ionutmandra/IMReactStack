@@ -27,7 +27,7 @@ class Portfolio extends Component {
 
         return (
             <article className="page page-portfolio">
-                <Header title={'Scurt text despre Adaptabi ca si companie: cine sunt, ce fac si care este misiunea lor.'} />
+                <Header title={'We create high impact software solutions that help business succeed'} />
                 <section className="content">
                     <div className="row align-middle">
                         <div className="large-9 large-offset-3 columns">
@@ -35,7 +35,7 @@ class Portfolio extends Component {
                                 <Link ref="projDetails"   to={link} onClick={this.handleProjDetailsClick}>{'Safetybank'}</Link>
                             </h1>
                             <div className="project-description">
-                                Scurt text despre ce inseamna Safetybank pentru Adaptabi.Nunc sit amet tincidunt odio.Praesent quis posuere magna, quis mollis libero
+                                Safetybank is our largest project and we took it from a 50 hours concept to a 50 000 hours enterprise class application.
                             </div>
                         </div>
                         <div className="large-9 columns">

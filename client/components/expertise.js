@@ -5,6 +5,19 @@ import Header from '../containers/headerContainer';
 import Footer from '../containers/footerContainer';
 
 class Expertise extends Component {
+     constructor(props) {
+        super(props);
+        this.handleCallToActionClick = this.handleCallToActionClick.bind(this);
+    }
+    handleCallToActionClick(event) {
+          this.props.transition({
+              type: 'content',
+              column: 6,
+              target: event.target,
+          });        
+    }
+
+
     render() {
         return (
             <article className="page page-expertise">
@@ -41,21 +54,21 @@ class Expertise extends Component {
                     <div className="spacer-40"/>
                     <div className="row processes">
                         <div className="large-5 large-offset-3 columns">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/480px-Unofficial_JavaScript_logo_2.svg.png" />
+                        <i className="ncs-processes_feedback"></i>
                             <div className="spacer-40"/>
                             <strong>Quick feedback cycles</strong>
                             <div className="spacer-20"/>
                             <p>Nunc sit amet tincidunt odio. Praesent quis posuere magna, quis mollis libero.</p>
                         </div>
                         <div className="large-5 large-offset-1 columns">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/480px-Unofficial_JavaScript_logo_2.svg.png" />
+                            <i className="ncs-processes_delivery"></i>
                             <div className="spacer-40"/>
                             <strong>Continuous delivery</strong>
                             <div className="spacer-20"/>
                             <p>Nunc sit amet tincidunt odio. Praesent quis posuere magna, quis mollis libero.</p>
                         </div>
                         <div className="large-5 large-offset-1 columns">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/480px-Unofficial_JavaScript_logo_2.svg.png" />
+                            <i className="ncs-processes_tests"></i>
                             <div className="spacer-40"/>
                             <strong>Automated tests</strong>
                             <div className="spacer-20"/>
@@ -65,14 +78,14 @@ class Expertise extends Component {
                     <div className="spacer-60"/>
                     <div className="row processes">
                         <div className="large-5 large-offset-3 columns">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/480px-Unofficial_JavaScript_logo_2.svg.png" />
+                            <i className="ncs-processes_automation"></i>
                             <div className="spacer-40"/>
                             <strong>Build and deployment automation</strong>
                             <div className="spacer-20"/>
                             <p>Nunc sit amet tincidunt odio. Praesent quis posuere magna, quis mollis libero.</p>
                         </div>
                         <div className="large-5 large-offset-1 columns">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/480px-Unofficial_JavaScript_logo_2.svg.png" />
+                            <i className="ncs-processes_adaptaion"></i>
                             <div className="spacer-40"/>
                             <strong>Inspect and adapt on every iteration</strong>
                             <div className="spacer-20"/>
@@ -84,7 +97,7 @@ class Expertise extends Component {
                 <section className="call-to-action row align-middle">
                     <div className="large-9 large-offset-3 columns">
                         <p>Everything changes but our passion.</p>
-                        <p className="cta">Want to meet us? <Link to={routePaths.client.careers}>Let's talk</Link></p>
+                        <p className="cta">Want to meet us? <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}>Let's talk</Link></p>
                     </div>
                     <div className="image large-9 columns">
                         <img src="/client/dist/img/photos/temp3.jpg" />
