@@ -130,7 +130,7 @@ class Home extends Component {
             //.addIndicators({name:'1'})
             .on("end", function (event) {
                 if (event.scrollDirection == 'REVERSE') {
-                    controller.scrollTo(_this._section1);
+                    controller.scrollTo(this);
                 }
             })
             .setTween(
@@ -158,6 +158,7 @@ class Home extends Component {
         //section2
         scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', offset: 150, duration: '80%' })
             .addTo(controller)
+            //.addIndicators({name:'2oe'})
             .setTween(new TimelineMax()
                 .add([
                     moveLeft(_this._inputGrow),
@@ -176,7 +177,7 @@ class Home extends Component {
             )
             .on("end", function (event) {
                 if (event.scrollDirection == 'REVERSE') {
-                    controller.scrollTo(_this._section2);
+                    controller.scrollTo(this);
                 }
             }));
 
@@ -204,10 +205,11 @@ class Home extends Component {
 
         scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', offset: 150, duration: "80%" })
             .addTo(controller)
+            //.addIndicators({name:'3oe'})
             .setTween(section3)
             .on("end", function (event) {
-                if (event.scrollDirection == 'REVERSE') {
-                    controller.scrollTo(_this._section3);
+                if (event.scrollDirection == 'REVERSE') {                    
+                    controller.scrollTo(this);
                 }
             }));
 
