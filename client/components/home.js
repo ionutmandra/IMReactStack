@@ -79,6 +79,21 @@ class Home extends Component {
             timeLines.push(t);
             return t;
         }
+        function hideSlide(elem) {
+            var t = TweenMax.to(elem, 0.1, { display: 'none' });
+            timeLines.push(t);
+            return t;
+        }
+        function showSlide(elem) {
+            var t = TweenMax.to(elem, 0.1, { display: 'block' });
+            timeLines.push(t);
+            return t;
+        }
+
+
+        hideSlide(this._section2c);
+        hideSlide(this._section3c);
+        hideSlide(this._section4c);
 
 
         hideImg(_this._img2);
@@ -109,15 +124,6 @@ class Home extends Component {
             return t;
         });
 
-        //section1  
-        var t = new TimelineMax();
-        t.add([moveLeft(this._inputCreate), moveRight(this._inputSoftware),hideImg(this._img1)]);
-        t.add([
-            moveToInitial(_this._inputGrow),
-            moveToInitial(_this._inputValuesLeft),
-            moveToInitial(_this._inputValuesRight),
-            showImg(this._img2)]);        
-
         scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '80%', offset: 150 })
             .addTo(controller)
             //.addIndicators({name:'1'})
@@ -126,7 +132,18 @@ class Home extends Component {
                     controller.scrollTo(_this._section1);
                 }
             })
-            .setTween(t));
+            .setTween(
+            new TimelineMax()
+                .add([moveLeft(this._inputCreate), moveRight(this._inputSoftware), hideImg(this._img1)])
+                .add(hideSlide(this._section1c))
+                .add(showSlide(this._section2c))
+                .add([
+                    moveToInitial(_this._inputGrow),
+                    moveToInitial(_this._inputValuesLeft),
+                    moveToInitial(_this._inputValuesRight),
+                    showImg(this._img2)])
+
+            ));
 
         scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '10%', offset: 150 })
             .addTo(controller)
@@ -134,28 +151,29 @@ class Home extends Component {
             .on("end", function (event) {
                 if (event.scrollDirection == 'FORWARD') {
                     controller.scrollTo(_this._section2);
-                }                
+                }
             }));
 
         //section2
-        var section2 = new TimelineMax();
-        section2.add([
-            moveLeft(_this._inputGrow),
-            moveRight(_this._inputValuesLeft),
-            moveLeft(_this._inputValuesRight)
-        ]);
-        section2.set({}, {}, .4);
-        section2.add([
-            moveToInitial(_this._inputCreating),
-            moveToInitial(_this._inputOffering),
-        ]);
-        section2.add(hideImg(this._img2));
-        section2.add(showImg(this._img3));
-
         scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', offset: 150, duration: '80%' })
             .addTo(controller)
-            .setTween(section2)
-             .on("end", function (event) {                
+            .setTween(new TimelineMax()
+                .add([
+                    moveLeft(_this._inputGrow),
+                    moveRight(_this._inputValuesLeft),
+                    moveLeft(_this._inputValuesRight)
+                ])
+                .add(hideSlide(this._section2c))
+                .add(showSlide(this._section3c))
+                .set({}, {}, .4)
+                .add([
+                    moveToInitial(_this._inputCreating),
+                    moveToInitial(_this._inputOffering),
+                ])
+                .add(hideImg(this._img2))
+                .add(showImg(this._img3))
+            )
+            .on("end", function (event) {
                 if (event.scrollDirection == 'REVERSE') {
                     controller.scrollTo(_this._section2);
                 }
@@ -165,7 +183,7 @@ class Home extends Component {
             .on("end", function (event) {
                 if (event.scrollDirection == 'FORWARD') {
                     controller.scrollTo(_this._section3);
-                }                
+                }
             }));
 
         //section3
@@ -174,6 +192,8 @@ class Home extends Component {
             moveLeft(_this._inputCreating),
             moveRight(_this._inputOffering),
         ]);
+        section3.add(hideSlide(this._section3c))
+        section3.add(showSlide(this._section4c))
         section3.set({}, {}, .4);
         section3.add([
             moveToInitial(_this._inputSustaining),
@@ -184,7 +204,7 @@ class Home extends Component {
         scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', offset: 150, duration: "80%" })
             .addTo(controller)
             .setTween(section3)
-            .on("end", function (event) {              
+            .on("end", function (event) {
                 if (event.scrollDirection == 'REVERSE') {
                     controller.scrollTo(_this._section3);
                 }
@@ -194,7 +214,7 @@ class Home extends Component {
             .on("end", function (event) {
                 if (event.scrollDirection == 'FORWARD') {
                     controller.scrollTo(_this._section4);
-                }                
+                }
             }));
     }
 
@@ -221,12 +241,25 @@ class Home extends Component {
 
                 <section className="slide slide-1 content"  ref={(c) => this._section1c = c}>
                     <div className="text-1"><h1 ref={(c) => this._inputSoftware = c}>{'Software Innovators Happily Together'}</h1></div>
-                    <div className="text-2"><h2 ref={(c) => this._inputCreate = c}>{'Create a truly remarkable working environment and deliver high quality innovative software products and services'}</h2></div>
-                    <div className="scroll-hint"><p>{'Find out more'}</p></div>
+                    <div className="text-2">
+                        <h2 ref={(c) => this._inputCreate = c}>
+                            <p>Create a truly remarkable working environment</p>
+                            <p>and deliver high quality innovative software</p>
+                            <p>products and services</p>
+                        </h2>
+                    </div>
+                    <div className="scroll-hint">
+                        <span>dd</span>
+                        <p>{'Find out more'}</p>
+                    </div>
                 </section>
 
                 <section className="slide slide-2 content"  ref={(c) => this._section2c = c}>
-                    <div className="text-1"><h1 ref={(c) => this._inputGrow = c}>Grow an outstanding working environment driven by our culture</h1></div>
+                    <div className="text-1"><h1 ref={(c) => this._inputGrow = c}>
+                        <p>Grow an outstanding</p>
+                        <p>working environment driven</p>
+                        <p>by our culture</p>
+                    </h1></div>
                     <div className="text-2">
                         <div className="text-content" ref={(c) => this._inputValuesLeft = c}>
                             <h2>HAPPINESS</h2>
@@ -247,7 +280,7 @@ class Home extends Component {
 
                 <section className="slide slide-3 content" ref={(c) => this._section3c = c}>
                     <div className="text-1"><h1 ref={(c) => this._inputOffering = c}>Offering highest quality by constantly improving our skills and processes</h1></div>
-                    <div className="text-2"><h1 ref={(c) => this._inputCreating = c}>Creating high impact software solutions that help business succeed</h1></div>
+                    <div className="text-2"><h2 ref={(c) => this._inputCreating = c}>Creating high impact software solutions that help business succeed</h2></div>
                 </section>
 
                 <section className="slide slide-4 content"  ref={(c) => this._section4c = c}>

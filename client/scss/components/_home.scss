@@ -39,15 +39,19 @@
         .text-1, .text-2, .text-3, .scroll-hint {
             overflow: hidden;
             position: absolute;
-            h1{            
-                font-size:38px;
-                font-weight: bold;
+            h1{
+                font-weight: $semibold;       
+                font-size: rem-calc(28pt);         
+                line-height: rem-calc(38pt);                    
                 color: white;
             }
-            h2{
-                font-size:26px;
+            h2{               
                 color: white;            
-            }           
+            }   
+            p{
+                margin:0;
+                padding:0;
+            }       
         }
         
         &.slide-1 {
@@ -60,15 +64,26 @@
             .text-1 {
                 @include grid-column-size(6);
                 @include grid-column-offset(6);
-                top: 30%;
-                text-align: right;                
+                top: 40%;
+                text-align: right;            
+                padding-left:25px;                            
             }
             
             .text-2 {
                 @include grid-column-size(9);
                 @include grid-column-offset(12);
                 top: 50%;
-                
+                h2{
+                    //font-weight: $semibold;                    
+                    font-size: rem-calc(20pt);
+                    line-height: rem-calc(30pt);
+                    
+                    p {
+                        line-height: rem-calc(30pt);
+                        margin: 0;
+                        padding: 0;
+                    }                    
+                }
             }
             
             .scroll-hint {
@@ -76,6 +91,16 @@
                 @include grid-column-offset(10);
                 bottom: 5%;
                 text-align: center;
+                
+                span{
+                    display: inline-block;
+                     -moz-border-radius: 60px/60px;
+                     -webkit-border-radius: 60px 60px;
+                     border-radius: 60px/60px;
+                     border:solid 3px white;
+                     width:60px;
+                     height:60px;                     
+                }
             }
         }
         &.slide-2 {
@@ -93,25 +118,40 @@
             
              .text-1 {
                 @include grid-column-size(7);
-                @include grid-column-offset(6);
-                top: 30%;                
-            }
+                @include grid-column-offset(3);
+                top: 50%;
+                transform: translate(0,-50%); 
+                
+                 h2 {                
+                     color: white;
+                                 
+                 }               
+             }
             
             .text-2 {                
                 @include grid-column-size(3);
                 @include grid-column-offset(15);
                 text-align: right;
-                top: 20%;
+                top: 50%;
+                transform: translate(0,-50%);
                 h2{
-                    margin-bottom: 40%;
+                    margin-bottom: 50%;                                        
+                    font-weight: $semibold;                    
+                    font-size: rem-calc(18pt);
+                    line-height: rem-calc(24pt);                    
                 }
+                
             }
             .text-3 {                
                 @include grid-column-size(3);
                 @include grid-column-offset(18);
-                top: 26%;
+                top: 50%;
+                transform: translate(0, -38%);
                 h2{
-                    margin-bottom: 40%;
+                    margin-bottom: 50%;
+                    font-weight: $semibold;                    
+                    font-size: rem-calc(18pt);
+                    line-height: rem-calc(24pt);
                 }                
             }
         }
@@ -129,13 +169,21 @@
                 @include grid-column-size(6);
                 @include grid-column-offset(3);
                 top: 50%;
+                transform: translate(0,-50%);
                 text-align: right;                
             }
             
             .text-2 {
                 @include grid-column-size(6);
                 @include grid-column-offset(15);
-                top: 50%;                
+                 top: 50%;
+                transform: translate(0,-50%);
+                
+                h2{
+                     font-weight: $semibold;       
+                font-size: rem-calc(28pt);         
+                line-height: rem-calc(38pt);
+                }              
             }
         }
         &.slide-4 {
