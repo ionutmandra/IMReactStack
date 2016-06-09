@@ -8,12 +8,12 @@ class Expertise extends Component {
     render() {
         return (
             <article className="page page-expertise">
-                <Header title={'Scurt text despre expertiza Adaptabi si cum il poate ajuta pe client.'} />
+                <Header title={'We aim to offer more than just working software by constantly improving our skills and processes'} />
                 <section className="content">
                     <div className="row">
                         <div className="large-13 large-offset-3 columns">
                             <h1>Text introductiv pentru cele 5 categorii</h1>
-                            <p>Nunc sit amet tincidunt odio. Praesent quis posuere magna, quis mollis libero. Phasellus quis nibh velit. Curabitur ornare quam non nisi pretium, a euismod tortor blandit. Pellentesque malesuada et tellus et aliquam.</p>
+                            <p>Web and mobile development, server side development and data storage are the top the competencies that help us offer full digitization services.</p>
                         </div>
                     </div>
                     <div className="row technologies">
@@ -35,7 +35,7 @@ class Expertise extends Component {
                         <div className="large-13 large-offset-3 columns">
                             <h2>Procese</h2>
                             <div className="spacer-40"/>
-                            <p>Nunc sit amet tincidunt odio. Praesent quis posuere magna, quis mollis libero. Phasellus quis nibh velit. Curabitur ornare quam non nisi pretium, a euismod tortor blandit. Pellentesque malesuada et tellus et aliquam.</p>
+                            <p>The processes are equally important to us and we believe that only by having adaptable and transparent processes we can meet and also exced client expectations.</p>
                         </div>
                     </div>
                     <div className="spacer-40"/>
@@ -50,14 +50,14 @@ class Expertise extends Component {
                         <div className="large-5 large-offset-1 columns">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/480px-Unofficial_JavaScript_logo_2.svg.png" />
                             <div className="spacer-40"/>
-                            <strong>Quick feedback cycles</strong>
+                            <strong>Continuous delivery</strong>
                             <div className="spacer-20"/>
                             <p>Nunc sit amet tincidunt odio. Praesent quis posuere magna, quis mollis libero.</p>
                         </div>
                         <div className="large-5 large-offset-1 columns">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/480px-Unofficial_JavaScript_logo_2.svg.png" />
                             <div className="spacer-40"/>
-                            <strong>Quick feedback cycles</strong>
+                            <strong>Automated tests</strong>
                             <div className="spacer-20"/>
                             <p>Nunc sit amet tincidunt odio. Praesent quis posuere magna, quis mollis libero.</p>
                         </div>
@@ -67,14 +67,14 @@ class Expertise extends Component {
                         <div className="large-5 large-offset-3 columns">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/480px-Unofficial_JavaScript_logo_2.svg.png" />
                             <div className="spacer-40"/>
-                            <strong>Quick feedback cycles</strong>
+                            <strong>Build and deployment automation</strong>
                             <div className="spacer-20"/>
                             <p>Nunc sit amet tincidunt odio. Praesent quis posuere magna, quis mollis libero.</p>
                         </div>
                         <div className="large-5 large-offset-1 columns">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/480px-Unofficial_JavaScript_logo_2.svg.png" />
                             <div className="spacer-40"/>
-                            <strong>Quick feedback cycles</strong>
+                            <strong>Inspect and adapt on every iteration</strong>
                             <div className="spacer-20"/>
                             <p>Nunc sit amet tincidunt odio. Praesent quis posuere magna, quis mollis libero.</p>
                         </div>
