@@ -47,7 +47,7 @@ class CareerDetails extends Component {
                     <section className="content">
                         <div className="spacer-100"></div>
                         {
-                         this.renderJobDescription()}
+                         this.renderJobDescription()
                         }
                         <div className="spacer-100"></div>
                     </section>
