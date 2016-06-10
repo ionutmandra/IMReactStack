@@ -19,10 +19,14 @@
         p {
             font-family: "Poppins";
             font-weight: $normal;
-            font-size: rem-calc(16pt);
-            line-height: rem-calc(24pt);
+            font-size: rem-calc(20pt);
+            line-height: rem-calc(30pt);
             color: $text-color;
             margin-bottom: 0px;
+            &.text-under-header {
+                font-size: rem-calc(16pt);
+                line-height: rem-calc(24pt);
+            }
             &.memeber-name {
                 padding-bottom: 10px;
                 font-weight: $normal;
@@ -38,10 +42,8 @@
             }
         }
         strong {
-            color: rgba(104, 188, 69, 1);
             text-transform: uppercase;
         }
-        
         .memeber-details-top {
             padding-top: 40px;
         }
