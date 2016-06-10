@@ -42,7 +42,7 @@ class CareerDetails extends Component {
 
     render() {
             return (
-                <article className="page-career-details">
+                <article className="page page-career-details">
                     <Header title={'Careers'} />
                     <section className="content">
                         <div className="spacer-100"></div>

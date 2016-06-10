@@ -47,16 +47,24 @@ class Header extends Component {
         }
         
         function moveLogo(){
-            let t = TweenMax.to(logo, 1, { marginLeft: '50px', color: '#4d4d4d', width: '-=50px', delay: .9 });
+            let t = TweenMax.to(logo, 1, { marginLeft: '50px', width: '-=50px' });
+            timeLines.push(t);
+            return t;
+        }
+        function makeLogoDark() {
+            let t = TweenMax.to(logo, 1, { color: '#4d4d4d' });
             timeLines.push(t);
             return t;
         }
         
         function moveBurger() {
-            let t = [];
-            t.push(TweenMax.to(burger, 1, { marginLeft: 0 }));
-            t.push(TweenMax.to(burger, 1, { color: '#4d4d4d', delay: .99 }));
-            timeLines = timeLines.concat(t);
+            let t = TweenMax.to(burger, 1, { marginLeft: 0 });
+            timeLines.push(t);
+            return t;
+        }
+        function makeBurgerDark() {
+            let t = TweenMax.to(burger, 1, { color: '#4d4d4d' });
+            timeLines.push(t);
             return t;
         }
         
@@ -67,27 +75,58 @@ class Header extends Component {
             return t;
         });
         
-        let tweens = hideMenuLinks();
-        tweens.push(moveLogo(), moveBurger());
-        
-        scenes.push(this.activeScene = new ScrollMagic.Scene({ triggerElement: $container, triggerHook: 'onLeave', duration: 310, offset: 90 }).addTo(controller)
-            .addIndicators({name:'1'})
-            .on('start', event => {
-                if (event.scrollDirection == 'FORWARD') {
+        // scenes.push(new ScrollMagic.Scene({ triggerElement: $container, triggerHook: 'onLeave', duration: 310, offset: 90 }).addTo(controller)
+        //     .addIndicators({name:'1'})
+        //     .on('start', event => {
+        //         if (event.scrollDirection == 'FORWARD') {
+        //             controller.scrollTo(headerBottom);
+        //         }
+        //     })
+        //     .on('end', event => {
+        //         if (event.scrollDirection == 'FORWARD') {
+        //             $container.addClass('fix-header');
+        //         }
+        //         if (event.scrollDirection == 'REVERSE') {
+        //             $container.removeClass('fix-header');
+        //             controller.scrollTo(header);
+        //         }
+        //     })
+        //     .setTween(tweens)
+        // );
+
+        let tweensForScene1 = hideMenuLinks().concat([moveLogo(), moveBurger()]);
+        scenes.push(new ScrollMagic.Scene({ triggerElement: $container, triggerHook: 'onLeave', duration: 90, offset: 0 }).addTo(controller)
+            .addIndicators({name:'Scene 1'})
+            .on('end', event => {
+                if (event.scrollDirection == 'FORWARD') {   
                     controller.scrollTo(headerBottom);
                 }
             })
+            .on('progress', event => {
+                if (event.scrollDirection == 'FORWARD' && event.progress > .3) {
+                    $container.addClass('links-hidden');
+                }
+                if (event.scrollDirection == 'REVERSE' && event.progress <= .3) {
+                    $container.removeClass('links-hidden');
+                }
+            })
+            .setTween(tweensForScene1)
+        );   
+
+        let tweensForScene2 = [ makeLogoDark(), makeBurgerDark() ];
+        scenes.push(new ScrollMagic.Scene({ triggerElement: $container, triggerHook: 'onLeave', duration: 40, offset: 360 }).addTo(controller)
+            .addIndicators({name:'Scene 2'})
             .on('end', event => {
                 if (event.scrollDirection == 'FORWARD') {
                     $container.addClass('fix-header');
                 }
                 if (event.scrollDirection == 'REVERSE') {
                     $container.removeClass('fix-header');
-                    controller.scrollTo(header);
+                    controller.scrollTo(0);
                 }
             })
-            .setTween(tweens)
-        );  
+            .setTween(tweensForScene2)
+        );   
     }
 
     componentWillUnmount() {
@@ -147,6 +186,8 @@ class Header extends Component {
         let el = this.getElements();
         let timeLines = this.timeLines;
         let _this = this;
+
+        this.wasFixedBurger = el.container.hasClass('fix-header');
         
         let animations = _.filter([
             () => { el.text.hide(); },
@@ -157,6 +198,7 @@ class Header extends Component {
         
         timeLines.push(new TimelineLite({ onComplete: () => {
                 _this.resetAnimating(true);
+                el.container.addClass('fix-header');
                 $(el.logo).css('pointer-events', 'all');
             }})
             .add(animations)
@@ -174,12 +216,14 @@ class Header extends Component {
             TweenMax.to(el.logo, .6, { marginLeft: '50px', ease: Power3.easeOut }),
             TweenMax.to(el.logo, .3, { color: '#4d4d4d', delay: .3, ease: Power3.easeOut }), 
             TweenMax.to(el.burger, .3, { color: '#4d4d4d', delay: .3, ease: Power3.easeOut }),
-            TweenMax.to(el.header, .6, { height: '0%', ease: Power3.easeOut }),
+            TweenMax.to(el.header, .6, { height: _this.wasFixedBurger ? '0%' : '400px', ease: Power3.easeOut }),
         ]);
         
         $(el.logo).css('pointer-events', '');
         timeLines.push(new TimelineLite({ onComplete: () => {
                 _this.resetAnimating(false);
+                !_this.wasFixedBurger && el.container.removeClass('fix-header');
+                el.header.css('height', '');
             }})
             .add(el.links.toArray().map(link => { return TweenMax.to(link, .3, { x: '-100%' }); }))
             .add(animations)
@@ -190,9 +234,17 @@ class Header extends Component {
     
     resetAnimating(lock, restoreScroll) {
         this.animating = false;
-        lock && this.activeScene && this.activeScene.enabled(false);
+        lock && this.disableScenes();
         $.scrollLock(lock, restoreScroll);
-        !lock && setTimeout((() => { this.activeScene && this.activeScene.enabled(true); }).bind(this), 100);
+        !lock && setTimeout(this.enableScenes.bind(this), 100);
+    }
+
+    disableScenes() {
+        this.scenes && this.scenes.forEach(scene => { scene.enabled(false); });
+    }
+
+    enableScenes() {
+        this.scenes && this.scenes.forEach(scene => { scene.enabled(true); });
     }
     
     getElements() {
@@ -201,7 +253,7 @@ class Header extends Component {
         return { burger, header,
             links: header.find('nav ul li a'),
             logo: header.find('> .logo'),
-            text: header.find('> .text'),
+            text: header.find('> .text h1'),
             image: header.find('> .image .img'),
             contact: header.find('.contact-container .content'),
             closeContact: header.find('.contact-container .close'),
@@ -221,7 +273,6 @@ class Header extends Component {
 
         if (!burgerIsOpen) {
             animations = _.filter([
-                () => { el.text.hide(); },
                 this.wasFixed && TweenMax.to(el.logo, .6, { color: '#fefefe', marginLeft: '12.5%', ease: Power3.easeOut })
                     || TweenMax.set(el.logo, { color: '#fefefe', marginLeft: '12.5%', ease: Power3.easeOut }),
                 TweenMax.to(el.burger, .3, { color: '#fefefe', ease: Power3.easeOut }),
@@ -245,11 +296,12 @@ class Header extends Component {
         if (!this.wasFixed) {
             middleState = _.filter([
                 el.image && TweenMax.to(el.image, .3, { opacity: 0, scale: 2, ease: Power3.easeIn }),
+                TweenMax.to(el.text, .3, { x: '-100%', ease: Power3.easeIn }),
             ]).concat(el.links.toArray().map(link => { return TweenMax.to(link, .3, { x: '-100%', ease: Power3.easeIn }); }));
         }        
 
+        !burgerIsOpen && _this.resetAnimating(true);
         timeLines.push(new TimelineLite({ onComplete: () => {
-                !burgerIsOpen && _this.resetAnimating(true);
                 el.header.find('.contact-container .contact').css('z-index', '5'); //more than header links
                 $(el.logo).css('pointer-events', 'all');
             }})
@@ -268,8 +320,7 @@ class Header extends Component {
         let timeLines = this.timeLines || (this.timeLines = []);
         let _this = this;
         let initialState = el.contact.toArray().map(text => { return TweenMax.set(text, { x: '0%' }); });
-        el.header.addClass('align-links-top');
-
+        
         if (burgerIsOpen) {
             animations = _.filter([
                     el.burger && TweenMax.to(el.burger, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),            
@@ -277,7 +328,7 @@ class Header extends Component {
                 .concat(el.links.toArray().map(link => { return TweenMax.to(link, .3, { x: '0%', delay: .3, ease: Power3.easeOut }); }))
                 .concat(el.contact.toArray().map(text => { return TweenMax.to(text, .3, { x: '-100%', ease: Power3.easeIn }); }));
         } else {
-            console.warn('close burger closed');
+            el.header.addClass('align-links-top');
             initialState = initialState.concat(_.filter([
                 !this.wasFixed && el.image && TweenMax.set(el.image, { scale: 2, opacity: 0 }),
             ]));
@@ -287,6 +338,7 @@ class Header extends Component {
                 this.wasFixed && TweenMax.to(el.logo, .3, { color: '#4d4d4d', delay: .3, ease: Power3.easeOut }), 
                 TweenMax.to(el.burger, .3, { color: '#4d4d4d', delay: .3, ease: Power3.easeOut }),
                 TweenMax.to(el.header, .6, { height: '400px', ease: Power3.easeOut }),
+                TweenMax.to(el.text, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
                 !this.wasFixed && el.image && TweenMax.to(el.image, .5, { opacity: 1, ease: Power3.easeIn }),
                 !this.wasFixed && el.image && TweenMax.to(el.image, .6, { scale: 1, ease: Power3.easeOut }),
             ])
@@ -298,7 +350,7 @@ class Header extends Component {
                 !_this.wasFixed && el.container.removeClass('fix-header');                
                 el.header.removeClass('align-links-top');
                 el.header.find('.contact-container .contact').css('z-index', ''); //default, less than header links
-                el.header.css('height', '');
+                !burgerIsOpen && el.header.css('height', '');
                 el.logo.css('pointer-events', 'all');
             }})
             .add(initialState)
@@ -351,7 +403,7 @@ class Header extends Component {
             </div>
             <div className="contact btn">
                 <div className="content">
-                    <i className="ncs-chevron-with-circle-right" onClick={this.closeContact} />
+                    <i className="ncs-chevron-with-circle-left" onClick={this.closeContact} />
                 </div>
             </div>
         </div>);
