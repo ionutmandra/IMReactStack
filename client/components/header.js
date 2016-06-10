@@ -277,19 +277,25 @@ class Header extends Component {
                 .concat(el.links.toArray().map(link => { return TweenMax.to(link, .3, { x: '0%', delay: .3, ease: Power3.easeOut }); }))
                 .concat(el.contact.toArray().map(text => { return TweenMax.to(text, .3, { x: '-100%', ease: Power3.easeIn }); }));
         } else {
+            console.warn('close burger closed');
+            initialState = initialState.concat(_.filter([
+                !this.wasFixed && el.image && TweenMax.set(el.image, { scale: 2, opacity: 0 }),
+            ]));
             animations = el.contact.toArray().map(text => { return TweenMax.to(text, .3, { x: '-100%', ease: Power3.easeIn }); });
             postAnimations = _.filter([
                 this.wasFixed && TweenMax.to(el.logo, .6, { marginLeft: '50px', ease: Power3.easeOut }),
                 this.wasFixed && TweenMax.to(el.logo, .3, { color: '#4d4d4d', delay: .3, ease: Power3.easeOut }), 
                 TweenMax.to(el.burger, .3, { color: '#4d4d4d', delay: .3, ease: Power3.easeOut }),
                 TweenMax.to(el.header, .6, { height: '400px', ease: Power3.easeOut }),
+                !this.wasFixed && el.image && TweenMax.to(el.image, .5, { opacity: 1, ease: Power3.easeIn }),
+                !this.wasFixed && el.image && TweenMax.to(el.image, .6, { scale: 1, ease: Power3.easeOut }),
             ])
             .concat(el.links.toArray().map(link => { return TweenMax.to(link, .3, { x: '0%', delay: .3, ease: Power3.easeOut }); }));
         }
         
         timeLines.push(new TimelineLite({ onComplete: () => {
                 !burgerIsOpen && _this.resetAnimating(false);
-                !_this.wasFixed && el.container.removeClass('fix-header');
+                !_this.wasFixed && el.container.removeClass('fix-header');                
                 el.header.removeClass('align-links-top');
                 el.header.find('.contact-container .contact').css('z-index', ''); //default, less than header links
                 el.header.css('height', '');

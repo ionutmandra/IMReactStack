@@ -251,7 +251,7 @@
             }
         }
     }
-    
+
     &.fix-header {
         padding-top: 400px;
         
@@ -281,15 +281,6 @@
                 display: none;
             }
             
-            &.align-links-top nav {
-                position: fixed;
-                top: 0;
-                transform: none;
-
-                ul li a {
-                    padding: rem-calc(46pt 0 10pt);
-                }
-            }
             nav {
                 position: absolute;
                 top: 50%;
@@ -321,6 +312,29 @@
                     &.line.hover:before {
                         height: 100%;
                     }
+                }
+            }
+        }
+    }
+
+    header.main, &.fix-header header.main {
+        &.align-links-top {
+            
+            .image {
+                display: block;
+
+                .img {
+                    opacity: 0;
+                }
+            }
+            
+            nav {
+                position: fixed;
+                top: 0;
+                transform: none;
+                
+                ul li a {
+                    padding: rem-calc(46pt 0 10pt);
                 }
             }
         }
