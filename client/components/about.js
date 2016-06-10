@@ -8,12 +8,21 @@ class About extends Component {
     constructor(props) {
         super(props);
         this.handleSafetybankProjectClick = this.handleSafetybankProjectClick.bind(this);
+        this.handleCallToActionClick = this.handleCallToActionClick.bind(this);
     }
 
     handleSafetybankProjectClick(event) {
           this.props.transition({
               type: 'content',
               column: 5,
+              target: event.target,
+          });        
+    }
+
+    handleCallToActionClick(event) {
+          this.props.transition({
+              type: 'content',
+              column: 6,
               target: event.target,
           });        
     }
@@ -116,7 +125,7 @@ class About extends Component {
                     </div>
                     <div className="large-8 large-offset-3 columns">
                         <p>Everything changes but our passion.</p>
-                        <p className="cta">Want to meet us? <Link to={routePaths.client.careers}>Let's talk</Link></p>
+                        <p className="cta">Want to meet us? <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}>Let's talk</Link></p>
                     </div>
                 </section>
                 <Footer />

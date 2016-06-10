@@ -111,28 +111,19 @@ class Header extends Component {
     ////////////////////////////////////////////////////
 
     handleHomepageClick(event) {
-        let $target = $(event.target);
-        !$target.is('a') && ($target = $target.closest('a'));
-        !this.$article && (this.$article = $target.closest('article.page'));        
-        let burger = this.$article.is('.fix-header');
-        burger && this.resetAnimating.bind(this, false, false);
-        burger && $window.scrollTop(0);
-        this.props.transition({
-            type: burger && 'burger' || 'header',
-            column: 1,
-            target: $target[0],
-        });
+        this.handleClick(event, 1);
     }
     
-    handleClick(event) {
-        !this.$article && (this.$article = $(event.target).closest('article.page'));
-        let burger = this.$article.is('.fix-header');
-        burger && this.resetAnimating.bind(this, false, false);
-        burger && $window.scrollTop(0);    
+    handleClick(event, column) {
+        let el = this.getElements(), burgerIsOpen = el.burger.is('.is-open');        
+        if (burgerIsOpen) {
+            this.resetAnimating.bind(this, false, false);
+            $window.scrollTop(0);
+        }    
         this.props.transition({
-            type: burger && 'burger' || 'header',
-            column: event.target.getAttribute('data-animate-line'),
-            target: event.target,
+            type: burgerIsOpen && 'burger' || 'header',
+            column: column || event.target.getAttribute('data-animate-line'),
+            target: event.currentTarget,
         });
     }
     
