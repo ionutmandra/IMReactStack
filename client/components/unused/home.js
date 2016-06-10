@@ -146,16 +146,16 @@ class Home extends Component {
         return (
             <article className="page-home">
                 <section className="slide slide-1 background">
-                    <div><img src="client/assets/img/photos/temp1.jpg" /></div>
+                    <div><img src="client/dist/img/photos/temp1.jpg" /></div>
                 </section>
                 <section className="slide slide-2 background">
-                    <div><img src="client/assets/img/photos/temp2.jpg" /></div>
+                    <div><img src="client/dist/img/photos/temp2.jpg" /></div>
                 </section>
                 <section className="slide slide-3 background">
-                    <div><img src="client/assets/img/photos/temp3.jpg" /></div>
+                    <div><img src="client/dist/img/photos/temp3.jpg" /></div>
                 </section>
                 <section className="slide slide-4 background">
-                    <div><img src="client/assets/img/photos/temp4.jpg" /></div>
+                    <div><img src="client/dist/img/photos/temp4.jpg" /></div>
                 </section>
 
                 <div className="gradient" />
@@ -192,7 +192,7 @@ class Home extends Component {
                 <div className="section-content" id="sectionContent1">
                     <div className="image-to-back-wrap" id='kk'>
                         <div className="image-to-back">
-                            <img src="client/assets/img/photos/temp1.jpg" data-ref="background"/>
+                            <img src="client/dist/img/photos/temp1.jpg" data-ref="background"/>
                         </div>
                     </div>
 
@@ -230,7 +230,7 @@ class Home extends Component {
 
                     <div className="image-to-back-wrap" id='kk2'>
                         <div className="image-to-back">
-                            <img src="client/assets/img/photos/temp2.jpg" />
+                            <img src="client/dist/img/photos/temp2.jpg" />
                         </div>
                     </div>
 
@@ -277,7 +277,7 @@ class Home extends Component {
 
                     <div className="image-to-back-wrap" id='kk3'>
                         <div className="image-to-back">
-                            <img src="client/assets/img/photos/temp1.jpg" />
+                            <img src="client/dist/img/photos/temp1.jpg" />
                         </div>
                     </div>
 
@@ -308,7 +308,7 @@ class Home extends Component {
 
                     <div className="image-to-back-wrap" id='kk4'>
                         <div className="image-to-back">
-                            <img src="client/assets/img/photos/temp2.jpg" />
+                            <img src="client/dist/img/photos/temp2.jpg" />
                         </div>
                     </div>
 

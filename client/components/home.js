@@ -9,8 +9,14 @@ class Home extends Component {
     }
 
     handleLinkClick(event) {
+        
+        
+    for (var i = 0; i < this.scenes.length; i++) {
+            this.scenes[i].reverse(false);            
+        }
+        
         this.props.transition({
-            type: 'header',
+            type: 'home_content',
             column: event.target.getAttribute('data-animate-line'),
             target: event.target,
         });
@@ -142,9 +148,9 @@ class Home extends Component {
             .addTo(controller)
             .setTween(
             new TimelineMax()
-                .add(TweenMax.to(this._scrollHint, 0.3, {transformOrigin: "50% 50%",y: '+10',ease: Circ.easeOut}))
-                .add(TweenMax.to(this._scrollHint, 0.3, {transformOrigin: "50% 50%",y: '0',ease: Circ.easeIn}))
-        ));
+                .add(TweenMax.to(this._scrollHint, 0.3, { transformOrigin: "50% 50%", y: '+10', ease: Circ.easeOut }))
+                .add(TweenMax.to(this._scrollHint, 0.3, { transformOrigin: "50% 50%", y: '0', ease: Circ.easeIn }))
+            ));
 
         scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '80%', offset: 150 })
             .addTo(controller)
@@ -210,19 +216,19 @@ class Home extends Component {
             }));
 
         //section3
-        var section3 = new TimelineMax();
-        section3.add([
-            moveLeft(_this._inputCreating),
-            moveRight(_this._inputOffering),
-        ]);
-        section3.add(hideSlide(this._section3c))
-        section3.add(showSlide(this._section4c))
-        section3.set({}, {}, .4);
-        section3.add([
-            moveToInitial(_this._inputSustaining),
-        ]);
-        section3.add(hideImg(this._img3));
-        section3.add(showImg(this._img4));
+        var section3 = new TimelineMax()
+            .add([
+                moveLeft(_this._inputCreating),
+                moveRight(_this._inputOffering),
+            ])
+            .add(hideSlide(this._section3c))
+            .add(showSlide(this._section4c))
+            .set({}, {}, .4)
+            .add([
+                moveToInitial(_this._inputSustaining),
+            ])
+            .add(hideImg(this._img3))
+            .add(showImg(this._img4));
 
         scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', offset: 150, duration: "80%" })
             .addTo(controller)

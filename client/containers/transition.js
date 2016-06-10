@@ -5,10 +5,10 @@ import * as animations_generic from './animations/generic';
 import * as animations_homepage from './animations/homepage';
 let $body = window.$('body');
 
-let animations = { 
-    generic: animations_generic, 
-    homepage: animations_homepage, 
- };
+let animations = {
+    generic: animations_generic,
+    homepage: animations_homepage,
+};
 
 const stateToProps = state => ({
     transition: state.transition,
@@ -19,7 +19,7 @@ export default (BaseComponent) => {
         transition: PropTypes.object.isRequired,
     };
 
-    BaseComponent = connect(stateToProps)(BaseComponent); 
+    BaseComponent = connect(stateToProps)(BaseComponent);
 
     class TransitionComponent extends BaseComponent {
         componentWillAppear(callback) {
@@ -27,7 +27,9 @@ export default (BaseComponent) => {
             let animation = 'generic';
             this.props.route.path == routePaths.client.root && (animation = 'homepage');
             this.animation = animations[animation];
-            
+
+            console.log('componentWillAppear', this);
+
             this.animation.appear(this.refs.container, this.callback.bind(this, callback));
         }
         componentWillEnter(callback) {
@@ -39,7 +41,9 @@ export default (BaseComponent) => {
             let animation = 'generic';
             this.props.route.path == routePaths.client.root && (animation = 'homepage');
             this.animation = animations[animation];
-            
+
+            console.log('componentWillEnter', this);
+
             this.animation['enter_' + transition.type](this.refs.container, this.callback.bind(this, callback), transition);
         }
         componentWillLeave(callback) {
@@ -48,7 +52,11 @@ export default (BaseComponent) => {
                 return callback();
             }
             $body.addClass('navigating');
-            this.animation['leave_' + transition.type](this.refs.container, this.callback.bind(this, callback), transition);
+
+            console.log('componentWillLeave', this);
+
+            this.animation['leave_' + transition.type](this.refs.container, this.callback.bind(this, callback), transition);            
+            
         }
         callback(callback) {
             $body.removeClass('navigating');
@@ -56,7 +64,7 @@ export default (BaseComponent) => {
         }
         render() {
             return (this._clone = React.cloneElement(super.render(), { ref: 'container' }));
-        }       
+        }
     }
 
     return TransitionComponent;

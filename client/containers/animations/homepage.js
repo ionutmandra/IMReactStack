@@ -6,7 +6,7 @@ let $ = window.$, $window = $(window), $body = $('body'), TweenMax = window.Twee
 ////
 //    APPEAR - first time load
 //////////////////////////////
-    
+
 export function appear(ref, callback) {
     $body.removeClass('navigating');
     let container = dom.findDOMNode(ref), $container = $(container);
@@ -19,7 +19,7 @@ export function appear(ref, callback) {
             TweenMax.to(container, 1, { opacity: 1, ease: Power3.easeOut }),
         ]));
 }
-    
+
 ////
 //    HEADER
 /////////////////////////////////////////
@@ -28,7 +28,7 @@ export function enter_header(ref, callback, transition) {
     if (!transition.column || !transition.target) {
         return callback();
     }
-    
+
     //Setup
     let container = dom.findDOMNode(ref), $container = $(container).addClass('overlap');
     let elements = {
@@ -46,12 +46,14 @@ export function enter_header(ref, callback, transition) {
     let width = $window.width();
     let position = left * 100 / width;
     var arr1 = [0, 100 - position, 0, position];
-    var arr2 = Object.assign([0, 0, 0, 0], { ease: Power3.easeIn, onUpdate: () => {
-        TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
-    }});
+    var arr2 = Object.assign([0, 0, 0, 0], {
+        ease: Power3.easeIn, onUpdate: () => {
+            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+        }
+    });
     $window.scrollTop(0);
     $body.css('overflow', 'hidden');
-    
+
     //Initial state
     TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
     TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
@@ -60,13 +62,14 @@ export function enter_header(ref, callback, transition) {
     elements.text2 && TweenMax.set(elements.text2, { x: '-100%' });
     elements.textBottom && TweenMax.set(elements.textBottom, { y: '200%' });
     elements.image && TweenMax.set(elements.image, { scale: 1.4 });
-    
+
     //Animation
     new TimelineLite({
-        onComplete: () => { callback(); $body.css('overflow', 'visible'); $container.removeClass('overlap'); }})
+        onComplete: () => { callback(); $body.css('overflow', 'visible'); $container.removeClass('overlap'); }
+    })
         .set({}, {}, .6) //wait for leaving page to hide content
         .add(_.filter([
-            TweenMax.to(line, .6, { height: '100%', ease: Power3.easeIn, onComplete: () => { $target.removeClass('line'); TweenMax.set(line, { opacity: 0 }); }}),
+            TweenMax.to(line, .6, { height: '100%', ease: Power3.easeIn, onComplete: () => { $target.removeClass('line'); TweenMax.set(line, { opacity: 0 }); } }),
         ]))
         .add(_.filter([
             TweenMax.to(arr1, .6, arr2),
@@ -88,19 +91,19 @@ export function leave_header(ref, callback, transition) {
     };
     console.warn('LEAVE HOMEPAGE HEADER', elements.image);
     //Setup
-    
+
     //Initial state
     TweenMax.set(container, { zIndex: 1 });
-    
+
     //Animation
-    new TimelineLite({ onComplete: () => { callback(); $container.removeClass('overlap'); }})
+    new TimelineLite({ onComplete: () => { callback(); $container.removeClass('overlap'); } })
         .add(_.filter([
             elements.image && TweenMax.to(elements.image, 1.65, { scale: 2.4, ease: Power3.easeIn, delay: .15 }),
             elements.text1 && TweenMax.to(elements.text1, .3, { x: '100%' }),
             elements.text2 && TweenMax.to(elements.text2, .3, { x: '-100%' }),
             elements.textBottom && TweenMax.to(elements.textBottom, .3, { y: '200%' }),
         ]));
-}    
+}
 
 ////
 //    BURGER
@@ -110,7 +113,7 @@ export function enter_burger(ref, callback, transition) {
     if (!transition.column || !transition.target) {
         return callback();
     }
-    
+
     //Setup
     let container = dom.findDOMNode(ref), $container = $(container).addClass('overlap');
     console.warn('extractDOMElements', ref, container);
@@ -129,12 +132,14 @@ export function enter_burger(ref, callback, transition) {
     let width = $window.width();
     let position = left * 100 / width;
     var arr1 = [0, 100 - position, 0, position];
-    var arr2 = Object.assign([0, 0, 0, 0], { ease: Power3.easeIn, onUpdate: () => {
-        TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
-    }});
+    var arr2 = Object.assign([0, 0, 0, 0], {
+        ease: Power3.easeIn, onUpdate: () => {
+            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+        }
+    });
     $window.scrollTop(0);
     $body.css('overflow', 'hidden');
-    
+
     //Initial state
     TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
     TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
@@ -143,13 +148,14 @@ export function enter_burger(ref, callback, transition) {
     elements.text2 && TweenMax.set(elements.text2, { x: '-100%' });
     elements.textBottom && TweenMax.set(elements.textBottom, { y: '200%' });
     elements.image && TweenMax.set(elements.image, { scale: 1.4 });
-    
+
     //Animation
     new TimelineLite({
-        onComplete: () => { callback(); $body.css('overflow', 'visible'); $container.removeClass('overlap'); }})
+        onComplete: () => { callback(); $body.css('overflow', 'visible'); $container.removeClass('overlap'); }
+    })
         .set({}, {}, .6) //wait for leaving page to hide content
         .add(_.filter([
-            TweenMax.to(line, .6, { height: '100%', ease: Power3.easeIn, onComplete: () => { $target.removeClass('line'); TweenMax.set(line, { opacity: 0 }); }}),
+            TweenMax.to(line, .6, { height: '100%', ease: Power3.easeIn, onComplete: () => { $target.removeClass('line'); TweenMax.set(line, { opacity: 0 }); } }),
         ]))
         .add(_.filter([
             TweenMax.to(arr1, .6, arr2),
@@ -170,21 +176,51 @@ export function leave_burger(ref, callback, transition) {
         gradient: $container.find('> .gradient')[0],
     };
     console.warn('extractDOMElements', ref, container, height, fullHeight, scroll, slide, elements);
-    
+
     //Setup
-    
+
     //Initial state
     TweenMax.set(container, { zIndex: 1 });
-    
+
     //Animation
-    new TimelineLite({ onComplete: () => { callback(); $container.removeClass('overlap'); }})
+    new TimelineLite({ onComplete: () => { callback(); $container.removeClass('overlap'); } })
         .add(_.filter([
             elements.image && TweenMax.to(elements.image, 1.65, { scale: 1.4, ease: Power3.easeIn, delay: .15 }),
             elements.text1 && TweenMax.to(elements.text1, .3, { x: '100%' }),
             elements.text2 && TweenMax.to(elements.text2, .3, { x: '-100%' }),
             elements.textBottom && TweenMax.to(elements.textBottom, .3, { y: '200%' }),
         ]));
-}    
+}
+
+////
+// CONTENT LINKS
+/////////////////////////////////////////
+export function leave_home_content(ref, callback, transition) {
+
+    let container = dom.findDOMNode(ref), $container = $(container).addClass('overlap'), height = $window.height(), fullHeight = height * 4, scroll = $window.scrollTop();
+    let slide = '.slide-' + Math.round((fullHeight - scroll) / fullHeight);
+    let elements = {        
+        text1: $container.find(slide + '.content .text-1 h1')[0],
+        text2: $container.find(slide + '.content .text-2 h2')[0],
+        text3: $container.find(slide + '.content .text-1 h1')[0],        
+    };
+    console.warn('LEAVE HOMEPAGE HEADER', elements.image);
+    //Setup
+
+    //Initial state
+    TweenMax.set(container, { zIndex: 1 });
+
+    //Animation
+    new TimelineLite({
+        onComplete: () => {
+            callback();                        
+            $container.removeClass('overlap');
+        }
+    })
+    .add(elements.text1 && TweenMax.to(elements.text1, 2, { x: '100%' }))
+    .set({},{},2.4);
+
+}
 
 ////
 //    UTILITIES

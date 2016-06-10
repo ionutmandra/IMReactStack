@@ -21,7 +21,7 @@ class ProjectsList extends Component {
         return (
             <article className="page-portfolio">
                 <header>
-                    <div className="image-container"><img src="client/assets/img/photos/temp3.jpg" /></div>
+                    <div className="image-container"><img src="client/dist/img/photos/temp3.jpg" /></div>
                     <div className="gradient"></div>
                     <div className="text-1"><h1>{'Portfolio'}</h1></div>
                 </header>
@@ -32,7 +32,7 @@ class ProjectsList extends Component {
                 {/*<div className="section section--portfolio">
                 <div className="image-to-back-wrap">
                     <div className="image-to-back">
-                        <img src="client/assets/img/photos/temp1.jpg" data-ref="background"/>
+                        <img src="client/dist/img/photos/temp1.jpg" data-ref="background"/>
                     </div>
                 </div>
                 <div className="gradient" data-ref="gradient"></div>
