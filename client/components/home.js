@@ -272,6 +272,13 @@ class Home extends Component {
                             <p>products and services</p>
                         </h2>
                     </div>
+
+                     <div className="text-3">
+                        <div className="text-content">
+                            Everything changes but our passion.
+                        </div>
+                    </div>
+
                     <div className="scroll-hint">
                         <span ref={(c) => this._scrollHint = c}>
                             <i className="ncs-chevron-thin-down"></i>
