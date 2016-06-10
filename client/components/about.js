@@ -38,7 +38,7 @@ class About extends Component {
                             <p className="text-under-header">Couple of years ago we started working on <Link to="/portfolio/sfb" onClick={this.handleSafetybankProjectClick}>Safetybank</Link> as a startup project and we took it to an enterprise class application with multiple platforms suppor</p>
                         </div>
                         <div className="image large-9 large-offset-1 columns">
-                            <img src="/client/dist/img/photos/3.png" />
+                            <img src="/client/dist/img/photos/color/3.jpg" />
                         </div>
                     </div>
                     <div className="spacer-100" />
@@ -46,23 +46,23 @@ class About extends Component {
                         <h2 className="large-16 large-offset-3 columns">Our culture</h2>
                     </div>
                     <div className="row align-middle">
-                        <div className="image light show-for-medium-up large-6 large-offset-6 columns"><img src="/client/dist/img/photos/4.png" /></div>
+                        <div className="image light show-for-medium-up large-6 large-offset-6 columns"><img src="/client/dist/img/photos/color/4.jpg" /></div>
                         <p className="large-5 large-pull-9 columns">We believe in <strong>happiness</strong> by enjoying what we do and doing what really matters.</p>
                         <p className="large-5 large-pull-2 columns">We believe in energizing ourselves by following our <strong>passion</strong>.</p>
                     </div>
                     <div className="row align-middle">
                         <p className="large-5 large-offset-6 columns">We believe <strong>trust</strong> in each other will allow us to be more autonomous and responsible.</p>
-                        <div className="image light show-for-medium-up large-6 large-push-7 columns"><img src="/client/dist/img/photos/5.png" /></div>
+                        <div className="image light show-for-medium-up large-6 large-push-7 columns"><img src="/client/dist/img/photos/color/5.jpg" /></div>
                         <p className="large-5 large-pull-2 columns">We believe there should be a clear <strong>purpose</strong> in everything we do.</p>
                     </div>
                     <div className="row align-middle">
-                        <div className="image light show-for-medium-up large-6 columns"><img src="/client/dist/img/photos/6.png" /></div>
+                        <div className="image light show-for-medium-up large-6 columns"><img src="/client/dist/img/photos/color/6.jpg" /></div>
                         <p className="large-5 large-pull-3 columns">We believe in delivering high quality by continuous learning and <strong>professionalism</strong>.</p>
                         <p className="large-5 large-offset-1 columns">We believe openness and transparency always leads to meaningful, kind <strong>communication</strong>.</p>
                     </div>
                     <div className="row align-middle">
                         <p className="large-5 large-offset-6 columns">We believe everything changes so <strong>adaptability</strong> and <strong>innovation</strong> are essential.</p>
-                        <div className="image light large-6 large-offset-1 columns"><img src="/client/dist/img/photos/7.png" /></div>
+                        <div className="image light large-6 large-offset-1 columns"><img src="/client/dist/img/photos/color/7.jpg" /></div>
                     </div>
                     <div className="spacer-100"/>
                     <div className="row">
