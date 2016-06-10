@@ -19,7 +19,7 @@ class CareerQualityEngineer extends Component {
 
                     <div className="row">
                         <p className="large-9 large-offset-6 columns"> 
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget lectus at metus mollis fermentum id id tortor. Donec sit amet sapien in quam viverra cursus. Etiam et lobortis arcu. Donec dignissim ipsum nec malesuada placerat. Cras ut hendrerit risus. Quisque eu consectetur enim. Phasellus vulputate id felis quis hendrerit. Curabitur at eleifend eros. Sed dapibus nulla vitae enim ullamcorper posuere. Fusce a diam mauris. Proin et nulla id neque bibendum vulputate.
+                            We are looking for quality engineer to help develop large scale .NET based application.
                         </p>
                     </div>
                     <div className="spacer-60"></div>
@@ -29,10 +29,10 @@ class CareerQualityEngineer extends Component {
                     <div className="spacer-20"></div>
                     <div className="row">
                         <ul className="large-9 large-offset-6 columns">
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                            <li>Ensure the quality of the products delivered</li>
+                            <li>Writing test cases</li>
+                            <li>Writing Selenium based Automated Tests </li>
+                            <li>Good English (writing and speaking)</li>
                         </ul>
                     </div>
                     <div className="spacer-60"></div>
@@ -42,19 +42,9 @@ class CareerQualityEngineer extends Component {
                     <div className="spacer-20"></div>
                     <div className="row">
                         <ul className="large-9 large-offset-6 columns">
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                            <li>1 year experience in manual testing</li>
+                            <li>Experience in writing test cases</li>
+                            <li>Familiar with Selenium based Automated Tests </li>
                         </ul>
                     </div>
                 </div>

@@ -19,7 +19,7 @@ class CareerSeniorDeveloper extends Component {
 
                     <div className="row">
                         <p className="large-9 large-offset-6 columns"> 
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget lectus at metus mollis fermentum id id tortor. Donec sit amet sapien in quam viverra cursus. Etiam et lobortis arcu. Donec dignissim ipsum nec malesuada placerat. Cras ut hendrerit risus. Quisque eu consectetur enim. Phasellus vulputate id felis quis hendrerit. Curabitur at eleifend eros. Sed dapibus nulla vitae enim ullamcorper posuere. Fusce a diam mauris. Proin et nulla id neque bibendum vulputate.
+                            We are looking for a software developer to be a part of the team developing large scale .NET based applications. He will have a real opportunity to be part of the decision making process when it comes to architecture, technologies and finally build our products
                         </p>
                     </div>
                     <div className="spacer-60"></div>
@@ -29,10 +29,10 @@ class CareerSeniorDeveloper extends Component {
                     <div className="spacer-20"></div>
                     <div className="row">
                         <ul className="large-9 large-offset-6 columns">
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                            <li>Develop complex, high-availability, high-scalability systems</li>
+                            <li>Write design documents and best practices</li>
+                            <li>Stay up-to-date and explore new innovative technologies</li>
+                            <li>Able to educate inexperienced developers on best practices of developing a full stack application</li>
                         </ul>
                     </div>
                     <div className="spacer-60"></div>
@@ -42,19 +42,10 @@ class CareerSeniorDeveloper extends Component {
                     <div className="spacer-20"></div>
                     <div className="row">
                         <ul className="large-9 large-offset-6 columns">
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                            <li>5 year experience in .Net C#</li>
+                            <li>5 year experience in Javascript / CSS / HTML</li>
+                            <li>5 year experience with design and development of DB data models</li>
+                            <li>Good English (writing and speaking)</li>
                         </ul>
                     </div>
                 </div>
