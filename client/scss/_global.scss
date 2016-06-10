@@ -39,6 +39,16 @@ svg {
     fill: currentColor;
 }
 
+a {
+    color: $text-color;
+    text-decoration: underline;
+    transition: opacity .2s ease-out;
+
+    &:hover {
+        color: $text-color;
+        opacity: .8;
+    }
+}
 
 #root{
     min-height:100%;

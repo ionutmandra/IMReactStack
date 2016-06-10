@@ -14,6 +14,8 @@ class Header extends Component {
         this.handleHomepageClick = this.handleHomepageClick.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.burgerClick = this.burgerClick.bind(this);
+        this.openContact = this.openContact.bind(this);
+        this.closeContact = this.closeContact.bind(this);
     }
     
     /////
@@ -52,7 +54,7 @@ class Header extends Component {
         
         function moveBurger() {
             let t = [];
-            t.push(TweenMax.to(burger, 1, { marginLeft: 0, scale: 1 }));
+            t.push(TweenMax.to(burger, 1, { marginLeft: 0 }));
             t.push(TweenMax.to(burger, 1, { color: '#4d4d4d', delay: .99 }));
             timeLines = timeLines.concat(t);
             return t;
@@ -188,9 +190,9 @@ class Header extends Component {
     
     resetAnimating(lock, restoreScroll) {
         this.animating = false;
-        lock && this.activeScene.enabled(false);
+        lock && this.activeScene && this.activeScene.enabled(false);
         $.scrollLock(lock, restoreScroll);
-        !lock && setTimeout((() => { this.activeScene.enabled(true); }).bind(this), 100);
+        !lock && setTimeout((() => { this.activeScene && this.activeScene.enabled(true); }).bind(this), 100);
     }
     
     getElements() {
@@ -200,7 +202,79 @@ class Header extends Component {
             links: header.find('nav ul li a'),
             logo: header.find('> .logo'),
             text: header.find('> .text'),
+            contact: header.find('.contact-container .content'),
+            closeContact: header.find('.contact-container .close'),
         };
+    }
+
+    /////
+    //    CONTACT PAGE
+    ////////////////////////////////////////////////////
+
+    openContact(event) {
+        let el = this.getElements(), burgerIsOpen = el.burger.is('.is-open'), animations = [];      
+        let timeLines = this.timeLines || (this.timeLines = []);
+        let _this = this;
+        let initialState = el.contact.toArray().map(text => { return TweenMax.set(text, { x: '-100%' }); });
+
+        if (!burgerIsOpen) {
+            animations = _.filter([
+                () => { el.text.hide(); },
+                TweenMax.to(el.logo, .6, { color: '#fefefe', marginLeft: '12.5%', ease: Power3.easeOut }),
+                TweenMax.to(el.burger, .3, { color: '#fefefe', ease: Power3.easeOut }),
+                TweenMax.to(el.header, .6, { height: '100%', ease: Power3.easeOut }),
+            ]);
+            // animations = _.filter(
+            //     el.links.toArray().map(link => { return TweenMax.to(link, .3, { x: '-100%', ease: Power3.easeIn }); })
+            //     .concat(el.contact.toArray().map(text => { return TweenMax.to(text, .3, { x: '0%', delay: .3, ease: Power3.easeOut }); }))
+            // );
+        } else {
+            animations = _.filter([
+                el.burger && TweenMax.to(el.burger, .3, { x: '-100%', ease: Power3.easeIn }),
+                el.closeContact && TweenMax.to(el.closeContact, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
+            ]);
+        }
+        console.warn('waaaa', el.contact);
+        animations = animations
+            .concat(el.links.toArray().map(link => { return TweenMax.to(link, .3, { x: '-100%', delay: burgerIsOpen ? 0 : .3, ease: Power3.easeIn }); })
+            .concat(el.contact.toArray().map(text => { return TweenMax.to(text, .3, { x: '0%', delay: burgerIsOpen ? .3 : .6, ease: Power3.easeOut }); })));
+        
+        timeLines.push(new TimelineLite({ onComplete: () => {
+                !burgerIsOpen && _this.resetAnimating(true);
+                el.header.find('.contact-container .contact').css('z-index', '5'); //more than header links
+                $(el.logo).css('pointer-events', 'all');
+            }})
+            .add(initialState)
+            .add(animations)
+        );
+
+        event.preventDefault();
+        return false;
+    }
+
+    closeContact(event) {
+        let el = this.getElements(), burgerIsOpen = el.burger.is('.is-open');      
+        let timeLines = this.timeLines || (this.timeLines = []);
+        let _this = this;
+        let initialState = el.contact.toArray().map(text => { return TweenMax.set(text, { x: '0%' }); });
+
+        let animations = _.filter([
+                el.burger && TweenMax.to(el.burger, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),            
+            ])
+            .concat(el.links.toArray().map(link => { return TweenMax.to(link, .3, { x: '0%', delay: .3, ease: Power3.easeOut }); })
+            .concat(el.contact.toArray().map(text => { return TweenMax.to(text, .3, { x: '-100%', ease: Power3.easeIn }); })));
+        
+        timeLines.push(new TimelineLite({ onComplete: () => {
+                !burgerIsOpen && _this.resetAnimating(true);
+                el.header.find('.contact-container .contact').css('z-index', ''); //default, less than header links
+                $(el.logo).css('pointer-events', 'all');
+            }})
+            .add(initialState)
+            .add(animations)
+        );
+
+        event.preventDefault();
+        return false;
     }
 
     /////
@@ -219,15 +293,42 @@ class Header extends Component {
                 <li><Link data-animate-line="4" onClick={this.handleClick} to={routePaths.client.expertise}>{'Expertise'}</Link></li>
                 <li><Link data-animate-line="5" onClick={this.handleClick} to={routePaths.client.portfolio}>{'Portfolio'}</Link></li>
                 <li><Link data-animate-line="6" onClick={this.handleClick} to={routePaths.client.careers}>{'Careers'}</Link></li>
-                <li><Link data-animate-line="7" onClick={this.handleClick} to={routePaths.client.contact}>{'Contact'}</Link></li>
+                <li><Link data-animate-line="7" onClick={this.openContact} to={routePaths.client.contact}>{'Contact'}</Link></li>
             </ul>
         </nav>);
+        const contact = (<div className="contact-container">
+            <div className="contact left">
+                <div className="content">
+                    <p>Everything changes but our passion!</p>
+                    <p>Come and join the <Link data-animate-line="3" onClick={this.handleClick} to={routePaths.client.about} >{'family'}</Link>.</p>
+                </div>
+            </div>
+            <div className="contact right">
+                <ul className="content">
+                    <li>Str. John doe, Nr. 2. Iasi, 123456, Romania</li>
+                    <li>+40123 456 789</li>
+                    <li><a href="mailto:contact@adaptabi.com" target="_blank">contact@adaptabi.com</a></li>
+                    <li className="social-media">
+                        <a target="_blank" href="http://linkedin.com"><i className="ncs-linkedin-square" /></a>
+                        <a target="_blank" href="http://facebook.com"><i className="ncs-facebook-square" /></a>
+                        <a target="_blank" href="http://twitter.com"><i className="ncs-twitter" /></a>
+                        <a target="_blank" href="http://plus.google.com"><i className="ncs-google-plus" /></a>
+                    </li>
+                </ul>
+            </div>
+            <div className="contact btn">
+                <div className="content">
+                    <i className="ncs-chevron-with-circle-right" onClick={this.closeContact} />
+                </div>
+            </div>
+        </div>);
         if (this.props.linksOnly) {
             return (
                 <header className="main" ref="header">
                     {logo}
                     {links}       
-                    <Burger onClick={this.burgerClick} />                                 
+                    <Burger onClick={this.burgerClick} />
+                    {contact}                                 
                 </header>
             );
         } else {
@@ -238,7 +339,8 @@ class Header extends Component {
                     {logo}
                     {links}      
                     <div className="text"><h1>{this.props.title}</h1></div>
-                    <Burger onClick={this.burgerClick} />          
+                    <Burger onClick={this.burgerClick} />    
+                    {contact}      
                 </header>
             );
         }

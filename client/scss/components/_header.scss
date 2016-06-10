@@ -12,6 +12,10 @@
             display: inline-block;
             margin: 0;
         }
+
+        a {
+            text-decoration: none;
+        }
         
         .image {
             position: relative;
@@ -174,7 +178,7 @@
     nav {
         position: fixed;
         top: 0;
-        z-index: 3;
+        z-index: 4;
         @include grid-column;
         @include grid-col-size(15);
         @include grid-col-off(9);
@@ -221,6 +225,8 @@
                     
                     &:hover,
                     &.hover {
+                        color: $white;
+                        opacity: 1;
                         padding-left: rem-calc(10pt);
                         
                         &:before {
@@ -263,7 +269,7 @@
             
             .hamburglar.is-open {
                 margin-left: 0 !important;
-                transform: none !important;
+                //transform: none !important;
             }
             
             .logo {

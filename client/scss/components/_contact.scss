@@ -1,46 +1,129 @@
-#page-container article.page-contact {
-    transform: translate(0, 0);
-    background: linear-gradient(45deg, #c80786 0%, #ed2f2e 100%);
-    
-    .gradient { 
-        background: linear-gradient(45deg, #c80786 0%, #ed2f2e 100%);
-    }
-    
-    .image-container {
-        position: relative;
-        z-index: 1;
-        @include grid-column-size(24);
-        height: 100%;
-        padding: 0;
-        margin: 0;
-        overflow: hidden;
-        display: flex;
-        justify-content: center; 
-        align-items: center; 
-    }
-    
-    .gradient {
+#page-container article header.main div.contact-container {
+    @include grid-row(24);
+    color: $white;
+
+    .contact {
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 2;
-        opacity: 0.8;
-    }
-    
-    .text-1 {
-        @include grid-column-size(9);
-        @include grid-column-offset(3);
-        position: absolute;
-        bottom: rem-calc(60pt);
         z-index: 3;
+        top: 50%;
+        transform: translateY(-50%);
         overflow: hidden;
-        text-align: left;
-        
-        h1 {
-            display: inline-block;
-            color: $white;        
+
+        a {
+            color: $white;
+        }
+
+        &.left {
+            @include grid-col-size(8);
+            @include grid-col-off(3);
+            font-size: rem-calc(28pt);
+            line-height: rem-calc(38pt);
+            font-weight: $semibold;
+
+            p {
+                padding: 0;
+                margin: 0;
+            }
+
+            a {
+                text-decoration: underline;
+            }
+        }
+        &.right {
+            @include grid-row();
+            @include grid-col-size(8);
+            @include grid-col-off(12);
+            font-size: rem-calc(18pt);
+            line-height: rem-calc(26pt);
+
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+
+                li {
+                    padding-bottom: rem-calc(16pt);
+
+                    &.social-media {
+                        padding-top: rem-calc(20pt);
+                        @include grid-row(8);
+                        @include grid-col-size(3);
+                        @include grid-col-off(0);
+
+                        a {
+                            display: inline-block;
+                            @include grid-col-size(2);
+                            font-size: rem-calc(28pt);
+                        }
+                    }
+                }
+            }
+        }
+        &.btn {
+            @include grid-row(24);
+            @include grid-col-size(1);
+            @include grid-col-off(21);
+
+            i {
+                font-size: rem-calc(32pt);
+                transition: opacity .2s ease-out;
+
+                &:hover {
+                    opacity: .8;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .content {
+            transform: translateX(-100%);
         }
     }
 }
+
+// #page-container article.page-contact {
+//     transform: translate(0, 0);
+//     background: linear-gradient(45deg, #c80786 0%, #ed2f2e 100%);
+    
+//     .gradient { 
+//         background: linear-gradient(45deg, #c80786 0%, #ed2f2e 100%);
+//     }
+    
+//     .image-container {
+//         position: relative;
+//         z-index: 1;
+//         @include grid-column-size(24);
+//         height: 100%;
+//         padding: 0;
+//         margin: 0;
+//         overflow: hidden;
+//         display: flex;
+//         justify-content: center; 
+//         align-items: center; 
+//     }
+    
+//     .gradient {
+//         position: absolute;
+//         top: 0;
+//         left: 0;
+//         width: 100%;
+//         height: 100%;
+//         z-index: 2;
+//         opacity: 0.8;
+//     }
+    
+//     .text-1 {
+//         @include grid-column-size(9);
+//         @include grid-column-offset(3);
+//         position: absolute;
+//         bottom: rem-calc(60pt);
+//         z-index: 3;
+//         overflow: hidden;
+//         text-align: left;
+        
+//         h1 {
+//             display: inline-block;
+//             color: $white;        
+//         }
+//     }
+// }
