@@ -29,21 +29,21 @@ export const projects = data.projects = {
             name: 'Adaptabi',
             description: 'New company site',
             website: 'http://adaptabi.com',
-            img: '/client/assets/img/projects/adaptabi.png',
+            img: '/client/dist/img/projects/adaptabi.png',
         },
         {
             key: 'safetybank',
             name: 'Safetybank',
             description: 'Best H&S system for construction companies',
             website: 'http://safetybank.co.uk',
-            img: '/client/assets/img/projects/safetybank.png',
+            img: '/client/dist/img/projects/safetybank.png',
         },
         {
             key: 'squires',
             name: 'Squires Kitchen',
             description: 'Largest kitchen supply store in UK',
             website: 'http://squires-shop.com',
-            img: '/client/assets/img/projects/squires.png',
+            img: '/client/dist/img/projects/squires.png',
         },
     ],
 };
@@ -83,34 +83,34 @@ export const team = data.team = {
         {
             key: 'ionut',
             name: 'Ionut Mandra',
-            img: '/client/assets/img/projects/safetybank.png',
+            img: '/client/dist/img/projects/safetybank.png',
             position: 'Developer',
         },
         {
             key: 'marius',
             name: 'Mihai-Marius Baciu',
-            img: '/client/assets/img/projects/safetybank.png',
+            img: '/client/dist/img/projects/safetybank.png',
             position: 'Developer',
         },
         {
             key: 'teodor',
             name: 'Teodor Sandu',
-            img: '/client/assets/img/projects/safetybank.png',
+            img: '/client/dist/img/projects/safetybank.png',
             position: 'Developer',
         },
     ],
     gallery: [
         {
             key: '1',
-            img: '/client/assets/img/projects/adaptabi.png',
+            img: '/client/dist/img/projects/adaptabi.png',
         },
         {
             key: '2',
-            img: '/client/assets/img/projects/safetybank.png',
+            img: '/client/dist/img/projects/safetybank.png',
         },
         {
             key: '3',
-            img: '/client/assets/img/projects/squires.png',
+            img: '/client/dist/img/projects/squires.png',
         },
     ],
 };

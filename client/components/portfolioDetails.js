@@ -18,22 +18,22 @@ class PortfolioDetails extends Component {
                             </div>
                         </div>
                         <div className="large-9 columns">
-                            <img src="/client/assets/img/photos/prjSfb.png" />
+                            <img src="/client/dist/img/photos/prjSfb.png" />
                         </div>
                     </div>
                     <div className="spacer-100" />
                     <div className="row align-middle">
                         <div className="large-3 large-offset-3 columns project-awards">                            
-                                <img src="/client/assets/img/photos/awards.png" />
-                                <img src="/client/assets/img/photos/awards.png" />                            
+                                <img src="/client/dist/img/photos/awards.png" />
+                                <img src="/client/dist/img/photos/awards.png" />                            
                         </div>
                         <div className="large-3 columns  project-awards">                            
-                                <img src="/client/assets/img/photos/awards.png" />
-                                <img src="/client/assets/img/photos/awards.png" />                            
+                                <img src="/client/dist/img/photos/awards.png" />
+                                <img src="/client/dist/img/photos/awards.png" />                            
                         </div>
                         <div className="large-3 columns  project-awards">                            
-                                <img src="/client/assets/img/photos/awards.png" />
-                                <img src="/client/assets/img/photos/awards.png" />                            
+                                <img src="/client/dist/img/photos/awards.png" />
+                                <img src="/client/dist/img/photos/awards.png" />                            
                         </div>
                         <div className="large-9 columns">
                             <h2>Safetybank is an award winning application in the last couple of years.</h2>
@@ -53,13 +53,13 @@ class PortfolioDetails extends Component {
                             <h2>Custom data collection and reporting via built-in dynamic forms</h2>
                         </div>
                         <div className="large-9 columns">
-                            <img src="/client/assets/img/photos/customData.png" />
+                            <img src="/client/dist/img/photos/customData.png" />
                         </div>
                     </div>
                     <div className="spacer-100" />
                     <div className="row align-middle">
                         <div className="large-9 large-offset-3 columns">
-                            <img src="/client/assets/img/photos/indicators.png" />
+                            <img src="/client/dist/img/photos/indicators.png" />
                         </div>
                         <div className="large-9 columns">
                             <h2>Extensive reporting and notiﬁcation services</h2>
@@ -71,7 +71,7 @@ class PortfolioDetails extends Component {
                             <h2>Signature capture, Geolocation support, Image processing</h2>
                         </div>
                         <div className="large-9 columns">
-                            <img src="/client/assets/img/photos/signatures.png" />
+                            <img src="/client/dist/img/photos/signatures.png" />
                         </div>
                     </div>
                 </section>

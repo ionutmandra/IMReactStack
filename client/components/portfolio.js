@@ -39,7 +39,7 @@ class Portfolio extends Component {
                             </div>
                         </div>
                         <div className="large-9 columns">
-                            <img src="client/assets/img/photos/prjSfb.png" />
+                            <img src="client/dist/img/photos/prjSfb.png" />
                         </div>
                     </div>
                     <div className="spacer-100" />
