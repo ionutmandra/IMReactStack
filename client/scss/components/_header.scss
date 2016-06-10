@@ -281,6 +281,15 @@
                 display: none;
             }
             
+            &.align-links-top nav {
+                position: fixed;
+                top: 0;
+                transform: none;
+
+                ul li a {
+                    padding: rem-calc(46pt 0 10pt);
+                }
+            }
             nav {
                 position: absolute;
                 top: 50%;

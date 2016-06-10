@@ -22,7 +22,7 @@ class Careers extends Component {
 
     render() {
         return (
-            <article className="page-careers">
+            <article className="page page-careers">
                 <Header title={'We treat every member of our team as a part of the family so we work and also have fun together'} />
                 <section className="content">
                     <div className="spacer-100" />
