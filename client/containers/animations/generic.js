@@ -128,7 +128,7 @@ export function enter_burger(ref, callback, transition) {
     }});
     if (elements.links && elements.links.length) {
         elements.links.each((index, link) => {
-            console.warn('each', link);
+            //console.warn('each', link);
             linksAnimation.push(TweenMax.to(link, .3, { x: '0%', ease: Power3.easeOut, delay: .3 }));
         });
     }
@@ -191,12 +191,12 @@ export function leave_burger(ref, callback, transition) {
     //Setup
     if (elements.links && elements.links.length) {
         elements.links.each((index, link) => {
-            console.warn('each', link);
+            //console.warn('each', link);
             linksAnimation.push(TweenMax.to(link, 1, { x: '-100%' }));
         });
     }
     $container.find('.contact-container .contact .content').each((index, contact) => {
-        console.warn('each2', contact);
+        //console.warn('each2', contact);
         linksAnimation.push(TweenMax.to(contact, 1, { x: '-100%' }));
     });
 

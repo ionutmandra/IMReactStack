@@ -28,7 +28,7 @@ export default (BaseComponent) => {
             this.props.route.path == routePaths.client.root && (animation = 'homepage');
             this.animation = animations[animation];
 
-            console.log('componentWillAppear', this);
+            //console.log('componentWillAppear', this);
 
             this.animation.appear(this.refs.container, this.callback.bind(this, callback));
         }
@@ -42,7 +42,7 @@ export default (BaseComponent) => {
             this.props.route.path == routePaths.client.root && (animation = 'homepage');
             this.animation = animations[animation];
 
-            console.log('componentWillEnter', this);
+            //console.log('componentWillEnter', this);
 
             this.animation['enter_' + transition.type](this.refs.container, this.callback.bind(this, callback), transition);
         }
@@ -53,7 +53,7 @@ export default (BaseComponent) => {
             }
             $body.addClass('navigating');
 
-            console.log('componentWillLeave', this);
+            //console.log('componentWillLeave', this);
 
             this.animation['leave_' + transition.type](this.refs.container, this.callback.bind(this, callback), transition);            
             

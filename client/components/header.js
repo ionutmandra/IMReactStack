@@ -96,7 +96,7 @@ class Header extends Component {
 
         let tweensForScene1 = hideMenuLinks().concat([moveLogo(), moveBurger()]);
         scenes.push(new ScrollMagic.Scene({ triggerElement: $container, triggerHook: 'onLeave', duration: 90, offset: 0 }).addTo(controller)
-            .addIndicators({name:'Scene 1'})
+            //.addIndicators({name:'Scene 1'})
             .on('end', event => {
                 if (event.scrollDirection == 'FORWARD') {   
                     controller.scrollTo(headerBottom);
@@ -115,7 +115,7 @@ class Header extends Component {
 
         let tweensForScene2 = [ makeLogoDark(), makeBurgerDark() ];
         scenes.push(new ScrollMagic.Scene({ triggerElement: $container, triggerHook: 'onLeave', duration: 40, offset: 360 }).addTo(controller)
-            .addIndicators({name:'Scene 2'})
+            //.addIndicators({name:'Scene 2'})
             .on('end', event => {
                 if (event.scrollDirection == 'FORWARD') {
                     $container.addClass('fix-header');
