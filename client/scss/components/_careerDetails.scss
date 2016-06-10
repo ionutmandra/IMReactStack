@@ -20,6 +20,7 @@
             font-size: 30px
         }
         a {
+            text-decoration: none;
             &.navigation-link {
                 font-family: "Poppins";
                 font-weight: $semibold;

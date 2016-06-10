@@ -24,13 +24,13 @@ class PortfolioDetails extends Component {
                 <section className="content">
                     <div className="row align-middle">
                         <div className="large-9 large-offset-3 columns">
-                            <h1>Safetybank is an onlie health and safety information system</h1>
+                            <h1>Safetybank is an online health and safety information system</h1>
                             <div className="project-description">
-                                Safetybank is our largest project and we took it from a 50 hours concept to a 50 000 hours enterprise class application.
+                                It revolutionizes the built environment in UK and worldwide.
                             </div>
                         </div>
                         <div className="large-9 columns">
-                            <img src="/client/dist/img/photos/prjSfb.png" />
+                            <img src="/client/dist/img/photos/safetylogo.png" />
                         </div>
                     </div>
                     <div className="spacer-100" />
@@ -59,32 +59,17 @@ class PortfolioDetails extends Component {
                             Hosted on Azure Cloud on a top cluster configuration offers the functionality that a 21st century building company needs to safely manage its projects.
                         </div>
                     </div>
+                    <div className="spacer-40" />
                     <div className="row align-middle">
-                        <div className="large-9 large-offset-3 columns">
-                            <h2>Custom data collection and reporting via built-in dynamic forms</h2>
-                        </div>
-                        <div className="large-9 columns">
-                            <img src="/client/dist/img/photos/customData.png" />
+                        <div className="large-12 large-offset-6 columns">
+                         <ul>
+                            <li>Custom data collection and reporting via built-in dynamic forms</li>
+                            <li>Extensive reporting and notiﬁcation services</li>
+                            <li>Signature capture, Geolocation support, Image processing</li>
+                        </ul>
                         </div>
                     </div>
                     <div className="spacer-100" />
-                    <div className="row align-middle">
-                        <div className="large-9 large-offset-3 columns">
-                            <img src="/client/dist/img/photos/indicators.png" />
-                        </div>
-                        <div className="large-9 columns">
-                            <h2>Extensive reporting and notiﬁcation services</h2>
-                        </div>
-                    </div>
-                    <div className="spacer-100" />
-                    <div className="row align-middle">
-                        <div className="large-9 large-offset-3 columns">
-                            <h2>Signature capture, Geolocation support, Image processing</h2>
-                        </div>
-                        <div className="large-9 columns">
-                            <img src="/client/dist/img/photos/signatures.png" />
-                        </div>
-                    </div>
                 </section>
                  <section className="call-to-action row align-middle">
                     <div className="image large-9 columns">

@@ -39,6 +39,10 @@ class Careers extends Component {
                             <li>Continuously <strong>learn and share</strong> knowledge</li>
                         </ul>
                     </div>
+                    <div className="spacer-20" />
+                     <div className="row">
+                        <div className="large-12 large-offset-3 columns">Also there is a list of benefits if you join our team:</div>                          
+                    </div>
                     <div className="row">
                       <ul className="large-9 large-offset-6 columns">
                             <li>We have <strong>more free days</strong> than the legally specified number</li>
@@ -52,14 +56,14 @@ class Careers extends Component {
                     </div>
                     <div className="row">
                         <div className="large-6 large-offset-3 columns">
-                            <h1>Full stack senior developer</h1>
+                            <h1>Senior software developer</h1>
                             <h3>Full time</h3>
-                            <Link to="/careers/seniorbackend" onClick={this.handleCareerDetailsClick}><i className="ncs-chevron-with-circle-right"></i></Link>
+                            <Link to="/careers/seniorsoftwaredeveloper" onClick={this.handleCareerDetailsClick}><i className="ncs-chevron-with-circle-right"></i></Link>
                         </div>
                         <div className="large-6 columns">
-                            <h1>Full stack senior developer</h1>
+                            <h1>Junior software developer</h1>
                             <h3>Full time</h3>
-                            <Link to="/careers/juniorbackend" onClick={this.handleCareerDetailsClick}><i className="ncs-chevron-with-circle-right"></i></Link>
+                            <Link to="/careers/juniorsoftwaredeveloper" onClick={this.handleCareerDetailsClick}><i className="ncs-chevron-with-circle-right"></i></Link>
                         </div>
                          <div className="large-6 columns">
                             <h1>Quality Engineer</h1>
