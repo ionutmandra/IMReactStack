@@ -167,7 +167,7 @@ class Home extends Component {
 
             ));
 
-        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '10%', offset: 150 })
+        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '5%', offset: 130 })
             .addTo(controller)
             //.addIndicators({name:'2'})
             .on("end", function (event) {
@@ -202,7 +202,7 @@ class Home extends Component {
                 }
             }));
 
-        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', duration: '10%', offset: 150 }).addTo(controller)
+        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', duration: '6%', offset: 130 }).addTo(controller)
             .on("end", function (event) {
                 if (event.scrollDirection == 'FORWARD') {
                     controller.scrollTo(_this._section3);
@@ -234,7 +234,7 @@ class Home extends Component {
                 }
             }));
 
-        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', duration: '10%', offset: 150 }).addTo(controller)
+        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', duration: '5%', offset: 150 }).addTo(controller)
             .on("end", function (event) {
                 if (event.scrollDirection == 'FORWARD') {
                     controller.scrollTo(_this._section4);
@@ -272,6 +272,13 @@ class Home extends Component {
                             <p>products and services</p>
                         </h2>
                     </div>
+
+                     <div className="text-3">
+                        <div className="text-content">
+                            Everything changes but our passion.
+                        </div>
+                    </div>
+
                     <div className="scroll-hint">
                         <span ref={(c) => this._scrollHint = c}>
                             <i className="ncs-chevron-thin-down"></i>

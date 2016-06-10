@@ -25,7 +25,7 @@ class Expertise extends Component {
                 <section className="content">
                     <div className="row">
                         <div className="large-13 large-offset-3 columns">
-                            <h1>Text introductiv pentru cele 5 categorii</h1>
+                            <h1>Skills</h1>
                             <p>Web and mobile development, server side development and data storage are the top the competencies that help us offer full digitization services.</p>
                         </div>
                     </div>
@@ -58,21 +58,18 @@ class Expertise extends Component {
                             <div className="spacer-40"/>
                             <strong>Quick feedback cycles</strong>
                             <div className="spacer-20"/>
-                            <p>Nunc sit amet tincidunt odio. Praesent quis posuere magna, quis mollis libero.</p>
                         </div>
                         <div className="large-5 large-offset-1 columns">
                             <i className="ncs-processes_delivery"></i>
                             <div className="spacer-40"/>
                             <strong>Continuous delivery</strong>
                             <div className="spacer-20"/>
-                            <p>Nunc sit amet tincidunt odio. Praesent quis posuere magna, quis mollis libero.</p>
                         </div>
                         <div className="large-5 large-offset-1 columns">
                             <i className="ncs-processes_tests"></i>
                             <div className="spacer-40"/>
                             <strong>Automated tests</strong>
                             <div className="spacer-20"/>
-                            <p>Nunc sit amet tincidunt odio. Praesent quis posuere magna, quis mollis libero.</p>
                         </div>
                     </div>
                     <div className="spacer-60"/>
@@ -82,14 +79,12 @@ class Expertise extends Component {
                             <div className="spacer-40"/>
                             <strong>Build and deployment automation</strong>
                             <div className="spacer-20"/>
-                            <p>Nunc sit amet tincidunt odio. Praesent quis posuere magna, quis mollis libero.</p>
                         </div>
                         <div className="large-5 large-offset-1 columns">
                             <i className="ncs-processes_adaptaion"></i>
                             <div className="spacer-40"/>
                             <strong>Inspect and adapt on every iteration</strong>
                             <div className="spacer-20"/>
-                            <p>Nunc sit amet tincidunt odio. Praesent quis posuere magna, quis mollis libero.</p>
                         </div>
                     </div>
                     <div className="spacer-100" />
