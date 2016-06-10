@@ -26,7 +26,7 @@ class PortfolioDetails extends Component {
                         <div className="large-9 large-offset-3 columns">
                             <h1>Safetybank is an online health and safety information system</h1>
                             <div className="project-description">
-                                It revolutionizes the built environment in UK and worldwide.
+                                <p>It revolutionizes the built environment in UK and worldwide.</p>
                             </div>
                         </div>
                         <div className="large-9 columns">
@@ -49,7 +49,7 @@ class PortfolioDetails extends Component {
                         </div>
                         <div className="large-9 columns">
                             <h2>Safetybank is an award winning application in the last couple of years.</h2>
-                            Most innovative application in housing industry 2016 
+                            <p> Most innovative application in housing industry 2016 </p>
                         </div>
                     </div>
                     <div className="spacer-100" />
