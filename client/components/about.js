@@ -41,7 +41,7 @@ class About extends Component {
                     </div>
                     <div className="spacer-100" />
                     <div className="row">
-                        <h2 className="large-16 large-offset-3 columns">Core values</h2>
+                        <h2 className="large-16 large-offset-3 columns">Our culture</h2>
                     </div>
                     <div className="row align-middle">
                         <div className="image light show-for-medium-up large-6 large-offset-6 columns"><img src="/client/dist/img/photos/temp1.jpg" /></div>
@@ -49,9 +49,9 @@ class About extends Component {
                         <p className="large-5 large-pull-2 columns">We believe in energizing ourselves by following our <strong>passion</strong>.</p>
                     </div>
                     <div className="row align-middle">
-                        <p className="large-5 large-offset-6 columns">We believe there should be a clear <strong>purpose</strong> in everything we do.</p>
+                        <p className="large-5 large-offset-6 columns">We believe <strong>trust</strong> in each other will allow us to be more autonomous and responsible.</p>
                         <div className="image light show-for-medium-up large-6 large-push-7 columns"><img src="/client/dist/img/photos/temp1.jpg" /></div>
-                        <p className="large-5 large-pull-2 columns">We believe <strong>trust</strong> in each other will allow us to be more autonomous and responsible.</p>
+                        <p className="large-5 large-pull-2 columns">We believe there should be a clear <strong>purpose</strong> in everything we do.</p>
                     </div>
                     <div className="row align-middle">
                         <div className="image light show-for-medium-up large-6 columns"><img src="/client/dist/img/photos/temp1.jpg" /></div>

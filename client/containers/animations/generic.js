@@ -195,6 +195,10 @@ export function leave_burger(ref, callback, transition) {
             linksAnimation.push(TweenMax.to(link, 1, { x: '-100%' }));
         });
     }
+    $container.find('.contact-container .contact .content').each((index, contact) => {
+        console.warn('each2', contact);
+        linksAnimation.push(TweenMax.to(contact, 1, { x: '-100%' }));
+    });
 
     //Initial state
     TweenMax.set(elements.header, { zIndex: 1 });

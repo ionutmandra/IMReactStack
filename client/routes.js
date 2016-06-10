@@ -45,8 +45,8 @@ module.exports = (
             <Route path={routePaths.client.portfolioDetails} component={PortfolioDetails} />
             <Route path={routePaths.client.careers} component={Careers} />
             <Route path={routePaths.client.careerDetails} component={CareerDetails} />
-            <Route path={routePaths.client.contact} component={Home} />
-            {/*<Route path={routePaths.client.root} component={Home} />
+            {/*<Route path={routePaths.client.contact} component={Contact} />
+            <Route path={routePaths.client.root} component={Home} />
             <Route path={routePaths.client.about} component={AboutList}>
                 <Route path={routePaths.client.aboutName} component={AboutDetails} />
             </Route>

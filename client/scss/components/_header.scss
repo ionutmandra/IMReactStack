@@ -12,6 +12,10 @@
             display: inline-block;
             margin: 0;
         }
+
+        a {
+            text-decoration: none;
+        }
         
         .image {
             position: relative;
@@ -134,9 +138,9 @@
     }
 
     &.page-career-details header.main {
-        background: linear-gradient(45deg, #4f2063 0%, #c80786 100%);
+        background: linear-gradient(45deg, #c80786 0%, #ed2f2e 100%);
         .gradient {
-            background: linear-gradient(45deg, #4f2063 0%, #c80786 100%);
+            background: linear-gradient(45deg, #c80786 0%, #ed2f2e 100%);
         }
         
         .image {
@@ -156,7 +160,7 @@
         padding: rem-calc(40pt) 0 0;
         position: fixed;
         top: 0;
-        z-index: 3;
+        z-index: 5;
         color: $white;
         
         @include grid-column;
@@ -174,7 +178,7 @@
     nav {
         position: fixed;
         top: 0;
-        z-index: 3;
+        z-index: 4;
         @include grid-column;
         @include grid-col-size(15);
         @include grid-col-off(9);
@@ -221,6 +225,8 @@
                     
                     &:hover,
                     &.hover {
+                        color: $white;
+                        opacity: 1;
                         padding-left: rem-calc(10pt);
                         
                         &:before {
@@ -245,7 +251,15 @@
             }
         }
     }
-    
+
+    &.links-hidden {
+        header.main {
+            .hamburger {
+                z-index: 5;
+            }
+        }
+    }
+
     &.fix-header {
         padding-top: 400px;
         
@@ -258,12 +272,12 @@
             @include grid-row(24);
             
             .hamburger {
-                z-index: 4;
+                z-index: 5;
             }
             
             .hamburglar.is-open {
                 margin-left: 0 !important;
-                transform: none !important;
+                //transform: none !important;
             }
             
             .logo {
@@ -306,6 +320,29 @@
                     &.line.hover:before {
                         height: 100%;
                     }
+                }
+            }
+        }
+    }
+
+    header.main, &.fix-header header.main {
+        &.align-links-top {
+            
+            .image {
+                display: block;
+
+                .img {
+                    opacity: 0;
+                }
+            }
+            
+            nav {
+                position: fixed;
+                top: 0;
+                transform: none;
+                
+                ul li a {
+                    padding: rem-calc(46pt 0 10pt);
                 }
             }
         }

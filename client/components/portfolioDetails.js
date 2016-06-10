@@ -20,11 +20,11 @@ class PortfolioDetails extends Component {
     render() {
         return (
             <article className="page page-portfolio-details">
-                <Header title={'We create high impact software solutions that help business succeed'} />
+                <Header title={'Safetybank is an enterprise class application with multiple platforms support'} />
                 <section className="content">
                     <div className="row align-middle">
                         <div className="large-9 large-offset-3 columns">
-                            <h1>Safetybank</h1>
+                            <h1>Safetybank is an onlie health and safety information system</h1>
                             <div className="project-description">
                                 Safetybank is our largest project and we took it from a 50 hours concept to a 50 000 hours enterprise class application.
                             </div>

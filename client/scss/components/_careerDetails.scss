@@ -8,7 +8,6 @@
             color: $text-color;
             margin-bottom: 0px;
         }
-
         h2 {
             font-family: "Poppins";
             font-weight: $semibold;
@@ -37,26 +36,22 @@
             &.go-to-apply {}
         }
         p {
-        	font-family: "Poppins";
+            font-family: "Poppins";
             font-weight: $normal;
             font-size: rem-calc(16pt);
             line-height: rem-calc(24pt);
             color: $text-color;
             margin-bottom: 0px;
         }
-
-        ul{
-        	font-family: "Poppins";
+        ul {
+            font-family: "Poppins";
             font-weight: $normal;
             font-size: rem-calc(16pt);
             line-height: rem-calc(24pt);
             color: $text-color;
             margin-bottom: 0px;
-        	padding-left:rem-calc(20pt);
-        	li{
-        	
-        	}
-
+            padding-left: rem-calc(20pt);
+            li {}
         }
     }
 }

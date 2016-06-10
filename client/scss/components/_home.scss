@@ -85,6 +85,13 @@
                     }                    
                 }
             }
+          .text-3 {
+                @include grid-column-size(6);
+                @include grid-column-offset(9);
+                top: 69%;
+                text-align: center;
+                opacity: 0.3;
+            }
             
             .scroll-hint {
                 @include grid-column-size(4);
@@ -236,5 +243,9 @@
         z-index: 2;
         background: linear-gradient(135deg, rgba(214,203,38,1) 0%, rgba(104,188,69,1) 100%);
         opacity: .8;
+    }
+
+    a{
+        color: #FFFFFF;
     }
 }
