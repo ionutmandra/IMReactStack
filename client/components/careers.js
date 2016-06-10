@@ -27,8 +27,11 @@ class Careers extends Component {
                 <section className="content">
                     <div className="spacer-100" />
                     <div className="row">
-                        <div className="large-12 large-offset-3 columns">We are always looking to get more help in our team and we value the following</div>                          
+                        <div className="large-12 large-offset-3 columns">
+                         <p>We are always looking to get more help in our team and we value the following</p>
+                        </div>                          
                     </div>
+                    <div className="spacer-20" />
                     <div className="row">
                       <ul className="large-9 large-offset-6 columns">
                             <li>See <strong>change</strong> as a part of progress</li>
@@ -39,10 +42,15 @@ class Careers extends Component {
                             <li>Continuously <strong>learn and share</strong> knowledge</li>
                         </ul>
                     </div>
-                    <div className="spacer-20" />
+                    <div className="spacer-60" />
                      <div className="row">
-                        <div className="large-12 large-offset-3 columns">Also there is a list of benefits if you join our team:</div>                          
+                        <div className="large-12 large-offset-3 columns">
+                            <p>
+                                Also there is a list of benefits if you join our team:
+                            </p>
+                        </div>                          
                     </div>
+                    <div className="spacer-20" />
                     <div className="row">
                       <ul className="large-9 large-offset-6 columns">
                             <li>We have <strong>more free days</strong> than the legally specified number</li>
