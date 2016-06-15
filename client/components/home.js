@@ -15,7 +15,7 @@ class Home extends Component {
         }
 
         var section = event.target.getAttribute('data-section');
-        var animations;        
+        var animations;
 
         switch (section) {
             case '2':
@@ -36,7 +36,7 @@ class Home extends Component {
                     rightHide: []
                 };
                 break;
-        }                        
+        }
 
         this.props.transition({
             type: 'home_content',
@@ -117,6 +117,14 @@ class Home extends Component {
             timeLines.push(t);
             return t;
         }
+        function hideImgInstant(elem) {
+
+            console.log('hide img instasnt for ', elem);
+
+            var t = TweenMax.set(elem, { opacity: 0 });
+            timeLines.push(t);
+            return t;
+        }
         function showImg(elem) {
             var t = TweenMax.to(elem, 0.8, { opacity: 1 });
             timeLines.push(t);
@@ -139,9 +147,9 @@ class Home extends Component {
         hideSlide(this._section4c);
 
 
-        hideImg(_this._img2);
-        hideImg(_this._img3);
-        hideImg(_this._img4);
+        hideImgInstant(_this._img2);
+        hideImgInstant(_this._img3);
+        hideImgInstant(_this._img4);
 
         hideLeft([this._inputGrow, this._inputValuesRight, this._inputCreating, this._inputSustaining]);
         hideRight([this._inputValuesLeft, this._inputOffering]);
