@@ -198,28 +198,41 @@ export function leave_burger(ref, callback, transition) {
 export function leave_home_content(ref, callback, transition) {
 
     let container = dom.findDOMNode(ref), $container = $(container).addClass('overlap'), height = $window.height(), fullHeight = height * 4, scroll = $window.scrollTop();
+
     let slide = '.slide-' + Math.round((fullHeight - scroll) / fullHeight);
-    let elements = {        
-        text1: $container.find(slide + '.content .text-1 h1')[0],
-        text2: $container.find(slide + '.content .text-2 h2')[0],
-        text3: $container.find(slide + '.content .text-1 h1')[0],        
-    };
-    console.warn('LEAVE HOMEPAGE HEADER', elements.image);
-    //Setup
 
     //Initial state
     TweenMax.set(container, { zIndex: 1 });
 
+    var animations = [];    
+
+    console.log(transition.animations);
+
+    if (transition.animations) {
+
+        transition.animations.leftHide && transition.animations.leftHide.forEach(function (element) {
+            animations.push(TweenMax.to(element, 2, { x: '-100%' }));
+        }, this);
+
+        transition.animations.rightHide && transition.animations.rightHide.forEach(function (element) {
+            animations.push(TweenMax.to(element, 2, { x: '+100%' }));
+        }, this);
+
+    }    
+
     //Animation
     new TimelineLite({
         onComplete: () => {
-            callback();                        
+            callback();
             $container.removeClass('overlap');
         }
     })
-    .add(elements.text1 && TweenMax.to(elements.text1, 2, { x: '100%' }))
-    .set({},{},2.4);
+        .add(animations)     
+        .set({}, {}, 2.4);
 
+}
+export function enter_home_content(ref, callback, transition) {
+    enter_header(ref, callback, transition);
 }
 
 ////

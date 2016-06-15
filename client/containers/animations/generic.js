@@ -365,6 +365,10 @@ export function enter_home_content(ref, callback, transition) {
         ]));
 }
 
+export function leave_home_content(ref, callback, transition) {
+  leave_header(ref, callback, transition);
+}
+
 ////
 //    UTILITIES
 ///////////////////////////////

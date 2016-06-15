@@ -42,9 +42,14 @@ export default (BaseComponent) => {
             this.props.route.path == routePaths.client.root && (animation = 'homepage');
             this.animation = animations[animation];
 
-            console.log('componentWillEnter', this);
+            console.log('componentWillEnter using  ' + animation + ' using transition description ', transition);
 
-            this.animation['enter_' + transition.type](this.refs.container, this.callback.bind(this, callback), transition);
+            if (this.animation['enter_' + transition.type]) {
+                this.animation['enter_' + transition.type](this.refs.container, this.callback.bind(this, callback), transition);
+            }
+            else {
+                console.warn('On enter, ' + animation + 'does not have any animation: ' + transition.type);
+            }
         }
         componentWillLeave(callback) {
             let transition = this._clone.props.transition;
@@ -53,10 +58,15 @@ export default (BaseComponent) => {
             }
             $body.addClass('navigating');
 
-            console.log('componentWillLeave', this);
+            console.log('componentWillLeave using transition description ' , transition);
 
-            this.animation['leave_' + transition.type](this.refs.container, this.callback.bind(this, callback), transition);            
-            
+            if (this.animation['leave_' + transition.type]) {
+                this.animation['leave_' + transition.type](this.refs.container, this.callback.bind(this, callback), transition);
+            }
+            else {
+                console.warn('On leave, does not have any animation: ' + transition.type);
+            }
+
         }
         callback(callback) {
             $body.removeClass('navigating');

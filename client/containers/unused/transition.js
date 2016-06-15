@@ -21,7 +21,6 @@ export default (BaseComponent) => {
 
     class TransitionComponent extends BaseComponent {
         componentWillAppear(callback) {
-            console.warn('will appear');
             //transition is false here, so use default animation
             this._animate_appear(callback);
         }

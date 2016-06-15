@@ -9,16 +9,40 @@ class Home extends Component {
     }
 
     handleLinkClick(event) {
-        
-        
-    for (var i = 0; i < this.scenes.length; i++) {
-            this.scenes[i].reverse(false);            
+
+        for (var i = 0; i < this.scenes.length; i++) {
+            this.scenes[i].reverse(false);
         }
-        
+
+        var section = event.target.getAttribute('data-section');
+        var animations;        
+
+        switch (section) {
+            case '2':
+                animations = {
+                    leftHide: [this._inputGrow, this._inputValuesRight],
+                    rightHide: [this._inputValuesLeft]
+                };
+                break;
+            case '3':
+                animations = {
+                    leftHide: [this._inputCreating],
+                    rightHide: [this._inputOffering]
+                };
+                break;
+            case '4':
+                animations = {
+                    leftHide: [this._inputSustaining],
+                    rightHide: []
+                };
+                break;
+        }                        
+
         this.props.transition({
             type: 'home_content',
             column: event.target.getAttribute('data-animate-line'),
             target: event.target,
+            animations: animations
         });
     }
 
@@ -279,7 +303,7 @@ class Home extends Component {
                         </h2>
                     </div>
 
-                     <div className="text-3">
+                    <div className="text-3">
                         <div className="text-content">
                             Everything changes but our passion.
                         </div>
@@ -298,7 +322,7 @@ class Home extends Component {
                         <h1 ref={(c) => this._inputGrow = c}>
                             <p>Grow an outstanding</p>
                             <p>working environment driven</p>
-                            <p>by <Link to="/about" data-animate-line="3" onClick={this.handleLinkClick}>our culture</Link></p>
+                            <p>by <Link to="/about" data-animate-line="3" data-section="2" onClick={this.handleLinkClick}>our culture</Link></p>
                         </h1>
                     </div>
                     <div className="text-2">
@@ -320,13 +344,13 @@ class Home extends Component {
                 </section>
 
                 <section className="slide slide-3 content" ref={(c) => this._section3c = c}>
-                    <div className="text-1"><h1 ref={(c) => this._inputOffering = c}>Offering highest quality by constantly improving our <Link to="/about" data-animate-line="3" onClick={this.handleLinkClick}>skills and processes</Link></h1></div>
-                    <div className="text-2"><h1 ref={(c) => this._inputCreating = c}>Creating <Link to="/portfolio/sfb" data-animate-line="5" onClick={this.handleLinkClick}>high impact software solutions</Link> that help business succeed
+                    <div className="text-1"><h1 ref={(c) => this._inputOffering = c}>Offering highest quality by constantly improving our <Link to="/about" data-animate-line="3" data-section="3" onClick={this.handleLinkClick}>skills and processes</Link></h1></div>
+                    <div className="text-2"><h1 ref={(c) => this._inputCreating = c}>Creating <Link to="/portfolio/sfb" data-animate-line="5" data-section="3" onClick={this.handleLinkClick}>high impact software solutions</Link> that help business succeed
                     </h1></div>
                 </section>
 
                 <section className="slide slide-4 content"  ref={(c) => this._section4c = c}>
-                    <div className="text-1"><h1 ref={(c) => this._inputSustaining = c}>Sustaining <Link to="/about" data-animate-line="3" onClick={this.handleLinkClick}>learning and innovation</Link> as a part day to day activity.</h1></div>
+                    <div className="text-1"><h1 ref={(c) => this._inputSustaining = c} >Sustaining <Link to="/about" data-animate-line="3" data-section="4" onClick={this.handleLinkClick}>learning and innovation</Link> as a part day to day activity.</h1></div>
                 </section>
 
                 <section className="slide slide-1v" ref={(c) => this._section1 = c}></section>
