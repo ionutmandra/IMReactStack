@@ -16,27 +16,33 @@
             color: $text-color;
         }
         strong {
-            color: rgba(104, 188, 69, 1);
+            color: $text-color;
         }
-
         i {
             font-size: 30px
         }
-
-        a{
+        a {
             color: $text-color;
             text-decoration: none;
         }
-
+        p {
+            font-family: "Poppins";
+            font-weight: $semibold;
+            color: $text-color;
+            margin-bottom: 0px;
+            font-size: rem-calc(16pt);
+            line-height: rem-calc(24pt);
+        }
         ul {
             font-family: "Poppins";
             font-weight: $normal;
-            font-size: rem-calc(16pt);
-            line-height: rem-calc(24pt);
             color: $text-color;
             margin-bottom: 0px;
             padding-left: rem-calc(20pt);
-            li {}
+            li {
+                font-size: rem-calc(16pt);
+                line-height: rem-calc(24pt);
+            }
         }
     }
 }

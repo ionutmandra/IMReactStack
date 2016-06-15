@@ -26,10 +26,10 @@ class CareerDetails extends Component {
 
     renderJobDescription(){
         switch (this.props.params.key){
-            case 'seniorbackend':
+            case 'seniorsoftwaredeveloper':
                     return (<CareerSeniorDeveloper />);
                 break;
-            case 'juniorbackend':
+            case 'juniorsoftwaredeveloper':
                     return (<CareerJuniorDeveloper />);
                 break;
             case 'qualityengineer':

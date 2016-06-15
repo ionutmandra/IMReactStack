@@ -1,0 +1,48 @@
+#page-container article.page-portfolio-details {
+    section.content {
+        h1 {
+            font-family: "Poppins";
+            font-weight: $semibold;
+            font-size: rem-calc(26pt);
+            line-height: rem-calc(36pt);
+            color: $text-color;
+            margin-bottom: 0px;
+        }
+        h2 {
+            font-family: "Poppins";
+            font-weight: $semibold;
+            font-size: rem-calc(24pt);
+            line-height: rem-calc(34pt);
+            color: $text-color;
+            margin-bottom: 0px;
+        }
+        h3 {
+            font-family: "Poppins";
+            font-weight: $normal;
+            font-size: rem-calc(20pt);
+            line-height: rem-calc(30pt);
+            color: $text-color;
+            margin-bottom: 0px;
+        }
+        p {
+            font-family: "Poppins";
+            font-weight: $normal;
+            color: $text-color;
+            margin-bottom: 0px;
+            font-size: rem-calc(16pt);
+            line-height: rem-calc(24pt);
+        }
+        ul {
+            font-family: "Poppins";
+            font-weight: $normal;
+          
+            color: $text-color;
+            margin-bottom: 0px;
+            padding-left: rem-calc(20pt);
+            li {
+                font-size: rem-calc(16pt);
+                line-height: rem-calc(24pt);
+            }
+        }
+    }
+}

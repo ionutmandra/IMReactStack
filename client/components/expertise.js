@@ -54,36 +54,36 @@ class Expertise extends Component {
                     <div className="spacer-40"/>
                     <div className="row processes">
                         <div className="large-5 large-offset-3 columns">
-                        <i className="ncs-processes_feedback"></i>
+                        <i className="ncs-processes_feedback" title="Quick feedback cycles"></i>
                             <div className="spacer-40"/>
-                            <strong>Quick feedback cycles</strong>
+                            Quick feedback cycles
                             <div className="spacer-20"/>
                         </div>
                         <div className="large-5 large-offset-1 columns">
-                            <i className="ncs-processes_delivery"></i>
+                            <i className="ncs-processes_delivery" title="Continuous delivery"></i>
                             <div className="spacer-40"/>
-                            <strong>Continuous delivery</strong>
+                            Continuous delivery
                             <div className="spacer-20"/>
                         </div>
                         <div className="large-5 large-offset-1 columns">
-                            <i className="ncs-processes_tests"></i>
+                            <i className="ncs-processes_tests" title="Automated tests"></i>
                             <div className="spacer-40"/>
-                            <strong>Automated tests</strong>
+                            Automated tests
                             <div className="spacer-20"/>
                         </div>
                     </div>
                     <div className="spacer-60"/>
                     <div className="row processes">
                         <div className="large-5 large-offset-3 columns">
-                            <i className="ncs-processes_automation"></i>
+                            <i className="ncs-processes_automation" title="Build and deployment automation"></i>
                             <div className="spacer-40"/>
-                            <strong>Build and deployment automation</strong>
+                            Build and deployment automation
                             <div className="spacer-20"/>
                         </div>
                         <div className="large-5 large-offset-1 columns">
-                            <i className="ncs-processes_adaptaion"></i>
+                            <i className="ncs-processes_adaptaion" title="Inspect and adapt on every iteration"></i>
                             <div className="spacer-40"/>
-                            <strong>Inspect and adapt on every iteration</strong>
+                            Inspect and adapt on every iteration
                             <div className="spacer-20"/>
                         </div>
                     </div>

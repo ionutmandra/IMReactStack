@@ -90,7 +90,7 @@
                 @include grid-column-offset(9);
                 top: 69%;
                 text-align: center;
-                opacity: 0.3;
+                opacity: 0.5;
             }
             
             .scroll-hint {
@@ -208,7 +208,7 @@
                     @include grid-column-size(12);
                 
                 .img {
-                    background-image: url(../img/photos/temp4.jpg);
+                    background-image: url(../img/photos/5.png);
                 }              
             }
             

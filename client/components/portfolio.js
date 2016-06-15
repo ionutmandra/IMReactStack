@@ -39,7 +39,7 @@ class Portfolio extends Component {
                             </div>
                         </div>
                         <div className="large-9 columns">
-                            <img src="client/dist/img/photos/prjSfb.png" />
+                         <Link ref="projDetails"  to={link} onClick={this.handleProjDetailsClick}><img src="client/dist/img/photos/safetylogo.png" /></Link>
                         </div>
                     </div>
                     <div className="spacer-100" />
