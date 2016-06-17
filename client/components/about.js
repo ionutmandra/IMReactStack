@@ -2,13 +2,21 @@ import React, { PropTypes, Component } from 'react';
 import { Link } from 'react-router';
 import routePaths from '../../common/routePaths';
 import Header from '../containers/headerContainer';
+//import Header from '../components/header';
 import Footer from '../containers/footerContainer';
+import { browserHistory  } from 'react-router';
 
 class About extends Component {
     constructor(props) {
         super(props);
         this.handleSafetybankProjectClick = this.handleSafetybankProjectClick.bind(this);
         this.handleCallToActionClick = this.handleCallToActionClick.bind(this);
+        this.handleClick = this.handleClick.bind(this);        
+        
+        
+        this.state ={
+            cancelScene: 'false'
+        }; 
     }
 
     handleSafetybankProjectClick(event) {
@@ -20,17 +28,31 @@ class About extends Component {
     }
 
     handleCallToActionClick(event) {
+        
+           this.setState({cancelScene: 'true'});
+        
           this.props.transition({
               type: 'content',
               column: 6,
               target: event.target,
           });        
     }
+       
+    
+    
+     handleClick() {
+          this.setState({cancelScene: 'true'});
+          
+         
+     }
 
     render() {
+        
+        console.log('render about js');
+        
         return (
             <article className="page page-about">
-                <Header title={'We are a software development company focused on delivering high quality products and services by sustaining learning and innovation'} />
+                <Header ref={'header'} cancelScene={this.state.cancelScene} title={'We are a software development company focused on delivering high quality products and services by sustaining learning and innovation'} />
                 <section className="content">
                     <div className="row align-middle">
                         <div className="large-8 large-offset-3 columns">
@@ -140,6 +162,9 @@ class About extends Component {
                     <div className="large-8 large-offset-3 columns">
                         <p>Everything changes but our passion.</p>
                         <p className="cta">Want to meet us? <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}>Let's talk</Link></p>
+                         <div onClick={this.handleClick}>
+                            You Click to toggle.
+                        </div>
                     </div>
                 </section>
                 <Footer />
