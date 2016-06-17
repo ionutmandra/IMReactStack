@@ -274,21 +274,23 @@ export function enter_content(ref, callback, transition) {
             $(elements.footer).css('height', '');
         }
     })
-        .set({}, {}, 1.75) //wait for leaving page to hide content
-        .set(elements.header, { height: height })        
-        .add(function () {            
+        .set({}, {}, 2.05) //wait for leaving page to hide content
+        .set(elements.header, { height: height })
+        .add(function () {
             $body.css('overflow', 'hidden');
         })
         .add(_.filter([
-            TweenMax.to(line, 0.6, { height: '100%', ease: Power3.easeIn, onComplete: () => { $target.removeClass('line'); TweenMax.set(line, { opacity: 0 }); } }),
+            TweenMax.to(line, 0.6, { height: '100%', ease: Power3.easeIn, delay: .3, onComplete: () => { $target.removeClass('line'); TweenMax.set(line, { opacity: 0 }); } }),
         ]))
         .add(_.filter([
             TweenMax.to(arr1, 1.6, arr2),
-        ]))
+        ]))        
         .add(_.filter([
-            elements.image && TweenMax.to(elements.image, .6, { scale: 1, ease: Power3.easeOut }),
-            elements.header && TweenMax.to(elements.header, .6, { height: 400, ease: Power3.easeOut }),
-            elements.text && TweenMax.to(elements.text, .3, { x: '0%', ease: Power3.easeOut, delay: .3, onStart: () => { $target.removeClass('hover'); $link.removeClass('hover'); } }),
+            elements.image && TweenMax.to(elements.image, .8, { scale: 1, ease: Power3.easeOut, delay: .2 }),
+            elements.header && TweenMax.to(elements.header, .8, { height: 400, ease: Power3.easeOut,  delay: .2 }),           
+        ]))
+        .add(_.filter([                       
+            elements.text && TweenMax.to(elements.text, .3, { x: '0%', ease: Power3.easeOut, onStart: () => { $target.removeClass('hover'); $link.removeClass('hover'); } }),
         ]))
         .add(_.filter([() => {
             $body.css('overflow', 'visible');
@@ -303,15 +305,11 @@ export function leave_content(ref, callback, transition) {
 
     let elements = extractDOMElements(ref, transition.column),
         $container = $(elements.container).addClass('overlap'),
-        height = $window.height();
-
-
-    //Setup
+        height = $window.height();    
 
     //Initial state
     TweenMax.set(elements.container, { zIndex: 1 });
     elements.footer && TweenMax.set(elements.footer, { height: 0 });
-
 
     //Animation
     new TimelineLite({
@@ -322,13 +320,11 @@ export function leave_content(ref, callback, transition) {
         }
     })
         .add(_.filter([
-            elements.text && TweenMax.to(elements.text, 1.3, { x: '-100%' }),
-            elements.image && TweenMax.to(elements.image, 2.65, { scale: (height - 400) / 400, ease: Power3.easeIn, delay: .15 }),
+            elements.text && TweenMax.to(elements.text, .3, { x: '-100%' })]))
+        .add(_.filter([                        
             elements.header && TweenMax.to(elements.header, 1.6, { height: height, ease: Power3.easeIn, delay: .15 }),
-
         ]))
-        .set({}, {}, 4);
-
+        .set({}, {}, 4.55);
 }
 
 ////
