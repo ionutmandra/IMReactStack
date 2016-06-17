@@ -168,116 +168,361 @@ class Home extends Component {
         scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', duration: '100%' }).addTo(controller).setTween(slide2GrTr));
         scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', duration: '100%' }).addTo(controller).setTween(slide3GrTr));
 
-        // change behaviour of controller to animate scroll instead of jump
-        controller.scrollTo(function (newpos) {
-            var t = TweenMax.to(window, 0.5, { scrollTo: { y: newpos } })
-            timeLines.push(t);
-            return t;
-        });
 
-        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', offset: 10 })
-            //.addIndicators({name:'0'})
-            .addTo(controller)
-            .setTween(
-            new TimelineMax()
-                .add(TweenMax.to(this._scrollHint, 0.3, { transformOrigin: "50% 50%", y: '+10', ease: Circ.easeOut }))
-                .add(TweenMax.to(this._scrollHint, 0.3, { transformOrigin: "50% 50%", y: '0', ease: Circ.easeIn }))
-            ));
+        var animationType = getParameterByName('an', this.props.location.search);
+        switch (animationType) {
+            case '2':
+                console.log(2);
+                animation2.bind(this)();
+                break;
+            case '3':
+                console.log(3);
+                animation3.bind(this)();
+                break;
+            default:
+                console.log(1);
+                animation1.bind(this)();
+                break;
+        }
 
-        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '80%', offset: 150 })
-            .addTo(controller)
-            //.addIndicators({name:'1'})
-            .on("end", function (event) {
-                if (event.scrollDirection == 'REVERSE') {
-                    controller.scrollTo(this);
-                }
-            })
-            .setTween(
-            new TimelineMax()
-                .add([moveLeft(this._inputCreate), moveRight(this._inputSoftware), hideImg(this._img1)])
-                .add(hideSlide(this._section1c))
-                .add(showSlide(this._section2c))
+        function animation1() {
+            // change behaviour of controller to animate scroll instead of jump
+            controller.scrollTo(function (newpos) {
+                var t = TweenMax.to(window, 0.8, { scrollTo: { y: newpos } })
+                timeLines.push(t);
+                return t;
+            });
+
+            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', offset: 10 })
+                //.addIndicators({name:'0'})
+                .addTo(controller)
+                .setTween(
+                new TimelineMax()
+                    .add(TweenMax.to(this._scrollHint, 0.3, { transformOrigin: "50% 50%", y: '+10', ease: Circ.easeOut }))
+                    .add(TweenMax.to(this._scrollHint, 0.3, { transformOrigin: "50% 50%", y: '0', ease: Circ.easeIn }))
+                ));
+
+            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '100%', offset: 150 })
+                .addTo(controller)
+                //.addIndicators({name:'1'})
+                .on("end", function (event) {
+                    if (event.scrollDirection == 'REVERSE') {
+                        controller.scrollTo(this);
+                    }
+                })
+                .setTween(
+                new TimelineMax()
+                    .add([moveLeft(this._inputCreate), moveRight(this._inputSoftware), hideImg(this._img1)])
+                    .add(hideSlide(this._section1c))
+                    .add(showSlide(this._section2c))
+                    .add([
+                        moveToInitial(_this._inputGrow),
+                        moveToInitial(_this._inputValuesLeft),
+                        moveToInitial(_this._inputValuesRight),
+                        showImg(this._img2)])
+
+                ));
+
+            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '5%', offset: 130 })
+                .addTo(controller)
+                //.addIndicators({name:'2'})
+                .on("end", function (event) {
+                    if (event.scrollDirection == 'FORWARD') {
+                        controller.scrollTo(_this._section2);
+                    }
+                }));
+
+            //section2
+            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', offset: 150, duration: '80%' })
+                .addTo(controller)
+                //.addIndicators({name:'2oe'})
+                .setTween(new TimelineMax()
+                    .add([
+                        moveLeft(_this._inputGrow),
+                        moveRight(_this._inputValuesLeft),
+                        moveLeft(_this._inputValuesRight)
+                    ])
+                    .add(hideSlide(this._section2c))
+                    .add(showSlide(this._section3c))
+                    .set({}, {}, .4)
+                    .add([
+                        moveToInitial(_this._inputCreating),
+                        moveToInitial(_this._inputOffering),
+                    ])
+                    .add(hideImg(this._img2))
+                    .add(showImg(this._img3))
+                )
+                .on("end", function (event) {
+                    if (event.scrollDirection == 'REVERSE') {
+                        controller.scrollTo(this);
+                    }
+                }));
+
+            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', duration: '6%', offset: 130 }).addTo(controller)
+                .on("end", function (event) {
+                    if (event.scrollDirection == 'FORWARD') {
+                        controller.scrollTo(_this._section3);
+                    }
+                }));
+
+            //section3
+            var section3 = new TimelineMax()
                 .add([
-                    moveToInitial(_this._inputGrow),
-                    moveToInitial(_this._inputValuesLeft),
-                    moveToInitial(_this._inputValuesRight),
-                    showImg(this._img2)])
-
-            ));
-
-        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '5%', offset: 130 })
-            .addTo(controller)
-            //.addIndicators({name:'2'})
-            .on("end", function (event) {
-                if (event.scrollDirection == 'FORWARD') {
-                    controller.scrollTo(_this._section2);
-                }
-            }));
-
-        //section2
-        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', offset: 150, duration: '80%' })
-            .addTo(controller)
-            //.addIndicators({name:'2oe'})
-            .setTween(new TimelineMax()
-                .add([
-                    moveLeft(_this._inputGrow),
-                    moveRight(_this._inputValuesLeft),
-                    moveLeft(_this._inputValuesRight)
+                    moveLeft(_this._inputCreating),
+                    moveRight(_this._inputOffering),
                 ])
-                .add(hideSlide(this._section2c))
-                .add(showSlide(this._section3c))
+                .add(hideSlide(this._section3c))
+                .add(showSlide(this._section4c))
                 .set({}, {}, .4)
                 .add([
-                    moveToInitial(_this._inputCreating),
-                    moveToInitial(_this._inputOffering),
+                    moveToInitial(_this._inputSustaining),
                 ])
-                .add(hideImg(this._img2))
-                .add(showImg(this._img3))
-            )
-            .on("end", function (event) {
-                if (event.scrollDirection == 'REVERSE') {
-                    controller.scrollTo(this);
-                }
-            }));
+                .add(hideImg(this._img3))
+                .add(showImg(this._img4));
 
-        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', duration: '6%', offset: 130 }).addTo(controller)
-            .on("end", function (event) {
-                if (event.scrollDirection == 'FORWARD') {
-                    controller.scrollTo(_this._section3);
-                }
-            }));
+            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', offset: 150, duration: "80%" })
+                .addTo(controller)
+                //.addIndicators({name:'3oe'})
+                .setTween(section3)
+                .on("end", function (event) {
+                    if (event.scrollDirection == 'REVERSE') {
+                        controller.scrollTo(this);
+                    }
+                }));
 
-        //section3
-        var section3 = new TimelineMax()
-            .add([
-                moveLeft(_this._inputCreating),
-                moveRight(_this._inputOffering),
-            ])
-            .add(hideSlide(this._section3c))
-            .add(showSlide(this._section4c))
-            .set({}, {}, .4)
-            .add([
-                moveToInitial(_this._inputSustaining),
-            ])
-            .add(hideImg(this._img3))
-            .add(showImg(this._img4));
+            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', duration: '5%', offset: 150 }).addTo(controller)
+                .on("end", function (event) {
+                    if (event.scrollDirection == 'FORWARD') {
+                        controller.scrollTo(_this._section4);
+                    }
+                }));
+        }        
+        
+        function animation2() {
+            // change behaviour of controller to animate scroll instead of jump
+            controller.scrollTo(function (newpos) {
+                var t = TweenMax.to(window, 0.5, { scrollTo: { y: newpos } })
+                timeLines.push(t);
+                return t;
+            });
 
-        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', offset: 150, duration: "80%" })
-            .addTo(controller)
-            //.addIndicators({name:'3oe'})
-            .setTween(section3)
-            .on("end", function (event) {
-                if (event.scrollDirection == 'REVERSE') {
-                    controller.scrollTo(this);
-                }
-            }));
+            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', offset: 10 })
+                //.addIndicators({name:'0'})
+                .addTo(controller)
+                .setTween(
+                new TimelineMax()
+                    .add(TweenMax.to(this._scrollHint, 0.3, { transformOrigin: "50% 50%", y: '+10', ease: Circ.easeOut }))
+                    .add(TweenMax.to(this._scrollHint, 0.3, { transformOrigin: "50% 50%", y: '0', ease: Circ.easeIn }))
+                ));
 
-        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', duration: '5%', offset: 150 }).addTo(controller)
-            .on("end", function (event) {
-                if (event.scrollDirection == 'FORWARD') {
-                    controller.scrollTo(_this._section4);
-                }
-            }));
+            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '80%', offset: 150 })
+                .addTo(controller)
+                //.addIndicators({name:'1'})
+                .on("end", function (event) {
+                    if (event.scrollDirection == 'REVERSE') {
+                        //controller.scrollTo(this);
+                    }
+                })
+                .setTween(
+                new TimelineMax()
+                    .add([moveLeft(this._inputCreate), moveRight(this._inputSoftware), hideImg(this._img1)])
+                    .add(hideSlide(this._section1c))
+                    .add(showSlide(this._section2c))
+                    .add([
+                        moveToInitial(_this._inputGrow),
+                        moveToInitial(_this._inputValuesLeft),
+                        moveToInitial(_this._inputValuesRight),
+                        showImg(this._img2)])
+
+                ));
+
+            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '5%', offset: 130 })
+                .addTo(controller)
+                //.addIndicators({name:'2'})
+                .on("end", function (event) {
+                    if (event.scrollDirection == 'FORWARD') {
+                        //controller.scrollTo(_this._section2);
+                    }
+                }));
+
+            //section2
+            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', offset: 150, duration: '80%' })
+                .addTo(controller)
+                //.addIndicators({name:'2oe'})
+                .setTween(new TimelineMax()
+                    .add([
+                        moveLeft(_this._inputGrow),
+                        moveRight(_this._inputValuesLeft),
+                        moveLeft(_this._inputValuesRight)
+                    ])
+                    .add(hideSlide(this._section2c))
+                    .add(showSlide(this._section3c))
+                    .set({}, {}, .4)
+                    .add([
+                        moveToInitial(_this._inputCreating),
+                        moveToInitial(_this._inputOffering),
+                    ])
+                    .add(hideImg(this._img2))
+                    .add(showImg(this._img3))
+                )
+                .on("end", function (event) {
+                    if (event.scrollDirection == 'REVERSE') {
+                       // controller.scrollTo(this);
+                    }
+                }));
+
+            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', duration: '6%', offset: 130 }).addTo(controller)
+                .on("end", function (event) {
+                    if (event.scrollDirection == 'FORWARD') {
+                        //controller.scrollTo(_this._section3);
+                    }
+                }));
+
+            //section3
+            var section3 = new TimelineMax()
+                .add([
+                    moveLeft(_this._inputCreating),
+                    moveRight(_this._inputOffering),
+                ])
+                .add(hideSlide(this._section3c))
+                .add(showSlide(this._section4c))
+                .set({}, {}, .4)
+                .add([
+                    moveToInitial(_this._inputSustaining),
+                ])
+                .add(hideImg(this._img3))
+                .add(showImg(this._img4));
+
+            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', offset: 150, duration: "80%" })
+                .addTo(controller)
+                //.addIndicators({name:'3oe'})
+                .setTween(section3)
+                .on("end", function (event) {
+                    if (event.scrollDirection == 'REVERSE') {
+                       // controller.scrollTo(this);
+                    }
+                }));
+
+            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', duration: '5%', offset: 150 }).addTo(controller)
+                .on("end", function (event) {
+                    if (event.scrollDirection == 'FORWARD') {
+                        //controller.scrollTo(_this._section4);
+                    }
+                }));
+        }
+        
+        function animation3() {
+            // change behaviour of controller to animate scroll instead of jump
+            controller.scrollTo(function (newpos) {
+                var t = TweenMax.to(window, 0.5, { scrollTo: { y: newpos } })
+                timeLines.push(t);
+                return t;
+            });
+
+            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', offset: 10 })
+                //.addIndicators({name:'0'})
+                .addTo(controller)
+                .setTween(
+                new TimelineMax()
+                    .add(TweenMax.to(this._scrollHint, 0.3, { transformOrigin: "50% 50%", y: '+10', ease: Circ.easeOut }))
+                    .add(TweenMax.to(this._scrollHint, 0.3, { transformOrigin: "50% 50%", y: '0', ease: Circ.easeIn }))
+                ));
+
+            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '95%', offset: 150 })
+                .addTo(controller)
+                //.addIndicators({name:'1'})
+                .on("end", function (event) {
+                    if (event.scrollDirection == 'REVERSE') {
+                        controller.scrollTo(this);
+                    }
+                })
+                .setTween(
+                new TimelineMax()
+                    .add([moveLeft(this._inputCreate), moveRight(this._inputSoftware), hideImg(this._img1)])
+                    .add(hideSlide(this._section1c))
+                    .add(showSlide(this._section2c))
+                    .add([
+                        moveToInitial(_this._inputGrow),
+                        moveToInitial(_this._inputValuesLeft),
+                        moveToInitial(_this._inputValuesRight),
+                        showImg(this._img2)])
+
+                ));
+
+            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '20%', offset: 130 })
+                .addTo(controller)
+                //.addIndicators({name:'2'})
+                .on("end", function (event) {
+                    if (event.scrollDirection == 'FORWARD') {
+                        controller.scrollTo(_this._section2);
+                    }
+                }));
+
+            //section2
+            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', offset: 120, duration: '95%' })
+                .addTo(controller)
+                //.addIndicators({name:'2oe'})
+                .setTween(new TimelineMax()
+                    .add([
+                        moveLeft(_this._inputGrow),
+                        moveRight(_this._inputValuesLeft),
+                        moveLeft(_this._inputValuesRight)
+                    ])
+                    .add(hideSlide(this._section2c))
+                    .add(showSlide(this._section3c))
+                    .set({}, {}, .4)
+                    .add([
+                        moveToInitial(_this._inputCreating),
+                        moveToInitial(_this._inputOffering),
+                    ])
+                    .add(hideImg(this._img2))
+                    .add(showImg(this._img3))
+                )
+                .on("end", function (event) {
+                    if (event.scrollDirection == 'REVERSE') {
+                        controller.scrollTo(this);
+                    }
+                }));
+
+            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', duration: '20%', offset: 130 }).addTo(controller)
+                .on("end", function (event) {
+                    if (event.scrollDirection == 'FORWARD') {
+                        controller.scrollTo(_this._section3);
+                    }
+                }));
+
+            //section3
+            var section3 = new TimelineMax()
+                .add([
+                    moveLeft(_this._inputCreating),
+                    moveRight(_this._inputOffering),
+                ])
+                .add(hideSlide(this._section3c))
+                .add(showSlide(this._section4c))
+                .set({}, {}, .4)
+                .add([
+                    moveToInitial(_this._inputSustaining),
+                ])
+                .add(hideImg(this._img3))
+                .add(showImg(this._img4));
+
+            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', offset: 150, duration: "80%" })
+                .addTo(controller)
+                //.addIndicators({name:'3oe'})
+                .setTween(section3)
+                .on("end", function (event) {
+                    if (event.scrollDirection == 'REVERSE') {
+                        controller.scrollTo(this);
+                    }
+                }));
+
+            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', duration: '25%', offset: 150 }).addTo(controller)
+                .on("end", function (event) {
+                    if (event.scrollDirection == 'FORWARD') {
+                       controller.scrollTo(_this._section4);
+                    }
+                }));
+        }
     }
 
     render() {
@@ -375,6 +620,17 @@ Home.defaultProps = {
 };
 
 export default Home;
+
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
 
 function tests() {
     // //section1
