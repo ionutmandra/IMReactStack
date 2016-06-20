@@ -310,7 +310,8 @@
                 ul li a {
                     padding: rem-calc(20pt 0 17pt);
                     vertical-align: middle;
-                    
+                    font-size: rem-calc(16pt);
+
                     &:before {
                         top: 50%;
                         transform: translateY(-50%);

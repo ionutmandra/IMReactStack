@@ -21,7 +21,7 @@ class Logo extends Component {
         this.links = this.header.find('nav ul li a');
         this.text = this.header.find('> .text h1');
 
-        if (this.props.static) return;
+        if (this.props.stationary) return;
 
         scenes.push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
             //.addIndicators({ name: 'Logo 1.' })
@@ -163,6 +163,7 @@ class Logo extends Component {
 }
 
 Logo.propTypes = {
+    stationary: PropTypes.bool,
     transition: PropTypes.func.isRequired,
 };
 

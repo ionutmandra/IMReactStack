@@ -21,7 +21,7 @@ class HeaderLinks extends Component {
             trigger = this.article = $(refs.container).closest('article.page'),
             links = this.links.map(link => dom.findDOMNode(link));
 
-        if (this.props.static) return;
+        if (this.props.stationary) return;
 
         scenes.push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
             //.addIndicators({ name: 'Links 1.__' })
@@ -46,7 +46,7 @@ class HeaderLinks extends Component {
     handleClick(event) {
         let burgerIsOpen = this.article.is('.menu-open');        
         burgerIsOpen && $window.scrollTop(0);
-        console.warn('burger', this.article, burgerIsOpen);
+        //console.warn('burger', this.article, burgerIsOpen);
         this.props.transition({
             type: burgerIsOpen && 'burger' || 'header',
             column: event.currentTarget.getAttribute('data-animate-line'),
@@ -120,6 +120,7 @@ class HeaderLinks extends Component {
 
 HeaderLinks.propTypes = {
     animationType: PropTypes.string,
+    stationary: PropTypes.bool,
     strings: PropTypes.object.isRequired,
     transition: PropTypes.func.isRequired,
 };

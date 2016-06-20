@@ -529,7 +529,7 @@ class Home extends Component {
         //const s = this.props.strings;
         return (
             <article className="page-home">
-                <Header linksOnly={true} />
+                <Header stationary />
 
                 <section className="slide slide-1 background" ref={(c) => this._section1b = c}>
                     <div ref={(c) => this._img1 = c} className="image"><div className="img" /></div>

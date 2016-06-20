@@ -19,9 +19,9 @@ class Header extends Component {
             timeLines = this.timeLines = [],
             scenes = this.scenes = [],
             $header = $(this.refs.header),
-            $container = $header.parent(),
-            headerBottom = $header.position().top + $header.height();
-        if (this.props.linksOnly) return;
+            $container = $header.parent();
+            //headerBottom = $header.position().top + $header.height();
+        if (this.props.stationary) return;
         
         //change behaviour of controller to animate scroll instead of jump
         controller.scrollTo(function (newpos) {
@@ -82,9 +82,7 @@ class Header extends Component {
         // this.setState({
         //     likesIncreasing: nextProps.likeCount > this.props.likeCount
         // });
-        
         if(nextProps.cancelScene == 'true'){
-            
             console.log('this.disableScenes');
             this.setScenes(false);
         }
@@ -94,18 +92,18 @@ class Header extends Component {
 
     setScenes(status) {
         this.scenes && this.scenes.forEach(scene => { scene.enabled(status); });
-        console.warn(this.refs.logo);
+        //console.warn(this.refs.logo);
         this.refs.logo.setScenes && this.refs.logo.setScenes(status);
     }
 
     render() {
-        if (this.props.linksOnly) {
+        if (this.props.stationary) {
             return (
                 <header className="main" ref="header">
-                    <Logo ref="logo" />
-                    <HeaderLinks />     
-                    <Burger setScenes={this.setScenes} />
-                    <Contact renderCloseButton />                                 
+                    <Logo stationary ref="logo" />
+                    <HeaderLinks stationary />     
+                    <Burger stationary setScenes={this.setScenes} />
+                    <Contact stationary renderCloseButton />                                 
                 </header>
             );
         } else {
@@ -125,9 +123,9 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-    linksOnly: PropTypes.bool,
+    cancelScene: PropTypes.string,
+    stationary: PropTypes.bool,
     title: PropTypes.string,
-    cancelScene: PropTypes.string
 };
 
 export default Header;
