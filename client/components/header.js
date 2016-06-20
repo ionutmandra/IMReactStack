@@ -19,7 +19,7 @@ class Header extends Component {
             timeLines = this.timeLines = [],
             scenes = this.scenes = [],
             $header = $(this.refs.header),
-            $container = $header.parent(), 
+            $container = $header.parent(),
             headerBottom = $header.position().top + $header.height();
         if (this.props.linksOnly) return;
         
@@ -29,36 +29,41 @@ class Header extends Component {
             timeLines.push(t);
             return t;
         });
-        
+
         scenes.push(new ScrollMagic.Scene({ triggerElement: $container, triggerHook: 'onLeave', duration: 90, offset: 0 }).addTo(controller)
             //.addIndicators({name:'Scene 1'})
             .on('end', event => {
-                if (event.scrollDirection == 'FORWARD') {   
-                    controller.scrollTo(headerBottom);
+                if (event.scrollDirection == 'FORWARD') {
+                    console.log('header sc1 end forw');
+                    //controller.scrollTo(headerBottom);
                 }
             })
             .on('progress', event => {
                 if (event.scrollDirection == 'FORWARD' && event.progress > .3) {
                     $container.addClass('links-hidden');
+                    console.log('header sc1 pr fw');
                 }
                 if (event.scrollDirection == 'REVERSE' && event.progress <= .3) {
                     $container.removeClass('links-hidden');
+                    console.log('header sc1 pr rev');
                 }
             })
-        );   
+        );
 
         scenes.push(new ScrollMagic.Scene({ triggerElement: $container, triggerHook: 'onLeave', duration: 40, offset: 360 }).addTo(controller)
             //.addIndicators({name:'Scene 2'})
             .on('end', event => {
                 if (event.scrollDirection == 'FORWARD') {
                     $container.addClass('fix-header');
+                    console.log('header sc2 end forw');
                 }
                 if (event.scrollDirection == 'REVERSE') {
                     $container.removeClass('fix-header');
                     controller.scrollTo(0);
+                    console.log('header sc1 pr rev');
                 }
             })
-        );   
+        );
     }
 
     componentWillUnmount() {
@@ -72,13 +77,27 @@ class Header extends Component {
         this.controller.destroy();
         this.controller = null;
     }
-  
+
+    shouldComponentUpdate (nextProps, nextState) {
+        // this.setState({
+        //     likesIncreasing: nextProps.likeCount > this.props.likeCount
+        // });
+        
+        if(nextProps.cancelScene == 'true'){
+            
+            console.log('this.disableScenes');
+            this.disableScenes();
+        }
+        
+        return false;
+    }
+
     setScenes(status) {
         this.scenes && this.scenes.forEach(scene => { scene.enabled(status); });
         console.warn(this.refs.logo);
         this.refs.logo.setScenes(status);
     }
-    
+
     render() {
         if (this.props.linksOnly) {
             return (
@@ -108,6 +127,7 @@ class Header extends Component {
 Header.propTypes = {
     linksOnly: PropTypes.bool,
     title: PropTypes.string,
+    cancelScene: PropTypes.string
 };
 
 export default Header;
