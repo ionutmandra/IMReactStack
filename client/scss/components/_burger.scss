@@ -15,16 +15,30 @@ $scale: .667;			  // icon scale 68/68 default
   @include grid-col-size(3);
   @include grid-col-off(21);
   overflow: hidden;
+
+  > i {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    font-size: rem-calc(36pt);
+    transition: opacity .2s ease-out;
+    transform: translateX(-100%);
+    color: $white;
+    
+    &:hover {
+        opacity: .8;
+        cursor: pointer;
+    }
+  }
 }
 
 .hamburglar {
-  transform: scale($scale);
+  transform: scale($scale) translateX(-100%);
   width: 68px;
   height: 68px;
   -webkit-touch-callout: none;
 	user-select: none;
   color: $white;
-  margin-left: -68px;
   cursor: pointer;
   
   > * {

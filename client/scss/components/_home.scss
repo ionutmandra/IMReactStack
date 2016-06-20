@@ -208,7 +208,7 @@
                     @include grid-column-size(12);
                 
                 .img {
-                    background-image: url(../img/photos/5.png);
+                    background-image: url(../img/photos/5.jpg);
                 }              
             }
             
@@ -241,7 +241,7 @@
         width: 100%;
         height: 100%;
         z-index: 2;
-        background: linear-gradient(135deg, rgba(214,203,38,1) 0%, rgba(104,188,69,1) 100%);
+        background: linear-gradient(45deg, rgba(214,203,38,1) 0%, rgba(104,188,69,1) 100%);
         opacity: .8;
     }
 
