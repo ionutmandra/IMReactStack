@@ -2,11 +2,11 @@
 
 @font-face {
     font-family: 'new-company-site';
-    src:    url('#{$icomoon-font-path}/new-company-site.eot?1o8x46');
-    src:    url('#{$icomoon-font-path}/new-company-site.eot?1o8x46#iefix') format('embedded-opentype'),
-        url('#{$icomoon-font-path}/new-company-site.ttf?1o8x46') format('truetype'),
-        url('#{$icomoon-font-path}/new-company-site.woff?1o8x46') format('woff'),
-        url('#{$icomoon-font-path}/new-company-site.svg?1o8x46#new-company-site') format('svg');
+    src:    url('#{$icomoon-font-path}/new-company-site.eot?qqpce8');
+    src:    url('#{$icomoon-font-path}/new-company-site.eot?qqpce8#iefix') format('embedded-opentype'),
+        url('#{$icomoon-font-path}/new-company-site.ttf?qqpce8') format('truetype'),
+        url('#{$icomoon-font-path}/new-company-site.woff?qqpce8') format('woff'),
+        url('#{$icomoon-font-path}/new-company-site.svg?qqpce8#new-company-site') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -269,6 +269,21 @@ i {
 .ncs-files-o {
     &:before {
         content: $ncs-files-o;
+    }
+}
+.ncs-bars {
+    &:before {
+        content: $ncs-bars;
+    }
+}
+.ncs-navicon {
+    &:before {
+        content: $ncs-navicon;
+    }
+}
+.ncs-reorder {
+    &:before {
+        content: $ncs-reorder;
     }
 }
 .ncs-pinterest {
