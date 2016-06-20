@@ -31,7 +31,7 @@ class Expertise extends Component {
                     </div>
                     <div className="row technologies">
                         <div className="large-3 large-offset-3 columns"><img src="/client/dist/img/icons/angular.png" /></div>
-                        <div className="large-3 columns"><img src="/client/dist/img/icons/cordova.png" /></div>
+                        <div className="large-3 columns"><img src="/client/dist/img/icons/cordova.jpg" /></div>
                         <div className="large-3 columns"><img src="/client/dist/img/icons/nodejs.png" /></div>
                         <div className="large-3 columns"><img src="/client/dist/img/icons/react.png" /></div>
                         <div className="large-3 columns"><img src="/client/dist/img/icons/meteor.svg" /></div>
