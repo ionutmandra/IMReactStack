@@ -25,16 +25,16 @@ class Logo extends Component {
 
         scenes.push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
             //.addIndicators({ name: 'Logo 1.' })
-            .setTween([moveText(), moveImg()])
+            .setTween(moveText())
         );
 
-        scenes.push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 380 }).addTo(controller)
+        scenes.push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 360 }).addTo(controller)
             //.addIndicators({ name: 'Logo 2.' })
             .setTween(darken())
         );
 
         function moveText() { let t = TweenMax.to(refs.text, .3, { x: '-100%' }); timeLines.push(t); return t; }
-        function moveImg() { let t = TweenMax.to(refs.img, .3, { marginLeft: '50px' }); timeLines.push(t); return t; }
+        //function moveImg() { let t = TweenMax.to(refs.img, .3, { marginLeft: '50px' }); timeLines.push(t); return t; }
         function darken() { let t = TweenMax.to(refs.img, .3, { color: '#4d4d4d' }); timeLines.push(t); return t; }
     }
 

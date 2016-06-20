@@ -30,7 +30,7 @@ export default class Burger extends Component {
             .setTween(move())
         );
 
-        scenes.push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 380 }).addTo(controller)
+        scenes.push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 360 }).addTo(controller)
             //.addIndicators({ name: 'Burger 2.' })
             .setTween(darken())
         );

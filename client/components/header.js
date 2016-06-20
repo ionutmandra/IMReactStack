@@ -59,7 +59,7 @@ class Header extends Component {
                 }
                 if (event.scrollDirection == 'REVERSE') {
                     $container.removeClass('fix-header');
-                    controller.scrollTo(0);
+                    //controller.scrollTo(0);
                     console.log('header sc1 pr rev');
                 }
             })
@@ -86,7 +86,7 @@ class Header extends Component {
         if(nextProps.cancelScene == 'true'){
             
             console.log('this.disableScenes');
-            this.disableScenes();
+            this.setScenes(false);
         }
         
         return false;
@@ -95,7 +95,7 @@ class Header extends Component {
     setScenes(status) {
         this.scenes && this.scenes.forEach(scene => { scene.enabled(status); });
         console.warn(this.refs.logo);
-        this.refs.logo.setScenes(status);
+        this.refs.logo.setScenes && this.refs.logo.setScenes(status);
     }
 
     render() {
