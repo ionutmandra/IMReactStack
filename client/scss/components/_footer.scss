@@ -25,6 +25,14 @@
                     padding: 0;
                     margin: 0 15px 0 0;
                     display: inline-block;
+
+                    a{
+                        text-decoration: none;
+
+                        &:visited, &:link, &:hover{
+                            text-decoration: none;                            
+                        }
+                    }
                     
                     i {
                         font-size: 30px;

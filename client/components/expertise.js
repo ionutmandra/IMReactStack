@@ -49,7 +49,7 @@ class Expertise extends Component {
                     <div className="spacer-100" />
                     <div className="row">
                         <div className="large-13 large-offset-3 columns">
-                            <h2>Procese</h2>
+                            <h2>Processes</h2>
                             <div className="spacer-40"/>
                             <p>The processes are equally important to us and we believe that only by having adaptable and transparent processes we can meet and also exced client expectations.</p>
                         </div>
