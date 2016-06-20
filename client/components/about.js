@@ -37,13 +37,9 @@ class About extends Component {
               target: event.target,
           });        
     }
-       
-    
     
      handleClick() {
           this.setState({cancelScene: 'true'});
-          
-         
      }
 
     render() {
@@ -54,6 +50,7 @@ class About extends Component {
             <article className="page page-about">
                 <Header ref={'header'} cancelScene={this.state.cancelScene} title={'We are a software development company focused on delivering high quality products and services by sustaining learning and innovation'} />
                 <section className="content">
+                    <div className="spacer-40"/>
                     <div className="row align-middle">
                         <div className="large-8 large-offset-3 columns">
                             <h1>Located in Iasi, we have  been crafting web and mobile software applications since 2007</h1>

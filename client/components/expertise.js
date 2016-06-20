@@ -23,25 +23,28 @@ class Expertise extends Component {
             <article className="page page-expertise">
                 <Header title={'We aim to offer more than just working software by constantly improving our skills and processes'} />
                 <section className="content">
+                    <div className="spacer-100"/>
                     <div className="row">
-                        <div className="large-13 large-offset-3 columns">
+                        <div className="large-8 large-offset-3 columns">
                             <h1>Skills</h1>
+                            <div className="spacer-40"/>
                             <p>Web and mobile development, server side development and data storage are the top the competencies that help us offer full digitization services.</p>
                         </div>
                     </div>
+                    <div className="spacer-60"/>
                     <div className="row technologies">
-                        <div className="large-3 large-offset-3 columns"><img src="/client/dist/img/icons/angular.png" /></div>
-                        <div className="large-3 columns"><img src="/client/dist/img/icons/cordova.jpg" /></div>
-                        <div className="large-3 columns"><img src="/client/dist/img/icons/nodejs.png" /></div>
-                        <div className="large-3 columns"><img src="/client/dist/img/icons/react.png" /></div>
-                        <div className="large-3 columns"><img src="/client/dist/img/icons/meteor.svg" /></div>
-                        <div className="large-3 columns"><img src="/client/dist/img/icons/dotNet.jpg" /></div>
+                        <div className="large-3 large-offset-3 columns"><img src="/client/dist/img/icons/angular.png" title="Angular Js" /></div>
+                        <div className="large-3 columns"><img src="/client/dist/img/icons/cordova.jpg" title="Apache CORDOVA"/></div>
+                        <div className="large-3 columns"><img src="/client/dist/img/icons/nodejs.png" title="Node Js"/></div>
+                        <div className="large-3 columns"><img src="/client/dist/img/icons/react.png" title="React"/></div>
+                        <div className="large-3 columns"><img src="/client/dist/img/icons/meteor.svg" title="Meteor"/></div>
+                        <div className="large-3 columns"><img src="/client/dist/img/icons/dotNet.jpg" title="Microsoft .NET"/></div>
                     </div>
                     <div className="spacer-40" />
                     <div className="row technologies">
-                        <div className="large-3 large-offset-3 columns"><img src="/client/dist/img/icons/sql-server.png" /></div>
-                        <div className="large-3 columns"><img src="/client/dist/img/icons/javascript.png" /></div>
-                        <div className="large-3 columns"><img src="/client/dist/img/icons/crosswalk.png" /></div>
+                        <div className="large-3 large-offset-3 columns"><img src="/client/dist/img/icons/sql-server.png" title="SQL Server"/></div>
+                        <div className="large-3 columns"><img src="/client/dist/img/icons/javascript.png" title="Javascript"/></div>
+                        <div className="large-3 columns"><img src="/client/dist/img/icons/crosswalk.png" title="Crosswalk Project" /></div>
                     </div>
                     <div className="spacer-100" />
                     <div className="row">
@@ -51,13 +54,12 @@ class Expertise extends Component {
                             <p>The processes are equally important to us and we believe that only by having adaptable and transparent processes we can meet and also exced client expectations.</p>
                         </div>
                     </div>
-                    <div className="spacer-40"/>
+                    <div className="spacer-60"/>
                     <div className="row processes">
                         <div className="large-5 large-offset-3 columns">
                         <i className="ncs-processes_feedback" title="Quick feedback cycles"></i>
                             <div className="spacer-40"/>
                             Quick feedback cycles
-                            <div className="spacer-20"/>
                         </div>
                         <div className="large-5 large-offset-1 columns">
                             <i className="ncs-processes_delivery" title="Continuous delivery"></i>
