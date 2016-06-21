@@ -79,15 +79,68 @@
                 &:first-child {
                     @include grid-column-offset(1);
                 }
-
-                &:nth-child(2n){
-                	display: none;
+                &:nth-child(2n) {
+                    display: none;
                 }
-
-                &:nth-child(7){
-                	border-right: 1px solid fade-out($black, .9);
+                &:nth-child(7) {
+                    border-right: 1px solid fade-out($black, .9);
                 }
-
+                &.navigation-line {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 0;
+                    width: 1px;
+                    border: 0 none transparent;
+                    background: $white;
+                    margin: 0 !important;
+                    padding: 0 !important;
+                    &.burger {
+                        top: 50%;
+                        transform: translateY(-50%);
+                    }
+                }
+            }
+        }
+    }
+    @media screen and #{breakpoint(small only)} {
+        body,
+        html {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        // Vars
+        $grid-line-columns: ( small: 2, medium: 4, large: 8);
+        #page-grid {
+            display: block;
+            margin: 0;
+            padding: 0;
+            position: fixed;
+            z-index: 100;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            list-style-type: none;
+            li {
+                display: block;
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                @include grid-column(11);
+                border-left: 1px solid fade-out($black, .9);
+                &:first-child {
+                    @include grid-column-offset(1);
+                }
+                &:nth-child(n+2) {
+                    display: none;
+                }
+                &:nth-child(3) {
+                	display: block;
+                    border-right: 1px solid fade-out($black, .9);
+                }
                 &.navigation-line {
                     position: absolute;
                     top: 0;
