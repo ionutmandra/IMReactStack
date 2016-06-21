@@ -12,7 +12,7 @@
         section.content {
             background: $body-background;
             min-height: 40%;
-            padding-top: rem-calc(40pt);
+            padding-top: 0;//rem-calc(40pt);
             
             .spacer {
                 clear: both;
@@ -67,6 +67,10 @@
                      background: linear-gradient(45deg, rgba(214,203,38,1) 0%, rgba(104,188,69,1) 100%);
                  }
             }
+        }
+
+        .hide-content{
+            overflow: hidden;
         }
     }
 }

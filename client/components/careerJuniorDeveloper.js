@@ -19,7 +19,7 @@ class CareerJuniorDeveloper extends Component {
 
                     <div className="row">
                         <p className="large-9 large-offset-6 columns"> 
-                            We are looking for a junior developer to help develop large scale .NET based application.
+                            We are looking for a junior developer to help develop large scale .NET based applications.
                         </p>
                     </div>
                     <div className="spacer-60"></div>

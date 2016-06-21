@@ -171,11 +171,11 @@ class HeaderLinks extends Component {
         let links = this.links = [];
         return (<nav className="links" ref="container">
             <ul>
-                <li><Link ref={c => links.push(c) } data-animate-line="3" onClick={this.handleClick} to={routePaths.client.about} >{'About'}</Link></li>
-                <li><Link ref={c => links.push(c) } data-animate-line="4" onClick={this.handleClick} to={routePaths.client.expertise}>{'Expertise'}</Link></li>
-                <li><Link ref={c => links.push(c) } data-animate-line="5" onClick={this.handleClick} to={routePaths.client.portfolio}>{'Portfolio'}</Link></li>
-                <li><Link ref={c => links.push(c) } data-animate-line="6" onClick={this.handleClick} to={routePaths.client.careers}>{'Careers'}</Link></li>
-                <li><Link ref={c => links.push(c) } data-animate-line="7" onClick={this.openContact} to={routePaths.client.contact}>{'Contact'}</Link></li>
+                <li><Link ref={c => links.push(c)} data-animate-line="3" onClick={this.handleClick} to={routePaths.client.about} >{'About'}</Link></li>
+                <li><Link ref={c => links.push(c)} data-animate-line="4" onClick={this.handleClick} to={routePaths.client.expertise}>{'Expertise'}</Link></li>
+                <li><Link ref={c => links.push(c)} data-animate-line="5" onClick={this.handleClick} to={routePaths.client.portfolio}>{'Portfolio'}</Link></li>
+                <li><a ref={c => links.push(c)} data-animate-line="6" onClick={this.handleClick} href="https://blog.adaptabi.com">{'Blog'}</a></li>
+                <li><Link ref={c => links.push(c)} data-animate-line="7" onClick={this.openContact} to={routePaths.client.contact}>{'Contact'}</Link></li>
             </ul>
         </nav>);
     }
