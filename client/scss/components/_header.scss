@@ -281,7 +281,7 @@
             position: fixed;
             top: 0;
             height: 0%;
-            overflow: hidden;
+            //overflow: hidden;
             z-index: 2;
             @include grid-row(24);
             

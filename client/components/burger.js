@@ -39,6 +39,12 @@ export default class Burger extends Component {
         function darken() { let t = TweenMax.to(refs.burger, .3, { color: '#4d4d4d' }); timeLines.push(t); return t; }
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        console.warn('Burger shouldUpdate', nextProps.transition.scrollScenesEnabled);
+        this.scenes && this.scenes.forEach(scene => { scene.enabled(nextProps.transition.scrollScenesEnabled); });
+        return false;
+    }
+
     componentWillUnmount() {
         for (var i = 0; i < this.scenes.length; i++) {
             this.scenes[i].destroy();
@@ -54,8 +60,17 @@ export default class Burger extends Component {
     open() {
         if (this.inProgress) return false;
         this.inProgress = true;
+
+        this.initialHeight = 400 - $window.scrollTop();
+        this.props.disableScenes();
+        $.scrollLock(true);
+
         let color = '#fefefe';
         this.prevColor = $(this.refs.burger).css('color');
+        
+        this.wasFixedBurger = this.article.hasClass('fix-header');
+        this.wasFixedBurger && TweenMax.set(this.text, { x: '-100%' });        
+        this.wasFixedBurger && TweenMax.set(this.image, { scale: 1.1, opacity: 0 });
 
         let timeline = new TimelineLite({
             onComplete: (() => {
@@ -65,24 +80,23 @@ export default class Burger extends Component {
         })
             .add(_.filter([
                 !this.wasFixedBurger && TweenMax.to(this.text, .3, { x: '-100%', ease: Power3.easeOut }),
+                !this.wasFixedBurger && TweenMax.to(this.image, .3, { scale: 1.1, opacity: 0, ease: Power3.easeOut }),
             ]))
             .add((() => {
-                this.wasFixedBurger = this.article.hasClass('fix-header');
                 this.article.addClass('fix-header');
-                this.initialHeight = 400 - $window.scrollTop();
                 !this.wasFixedBurger && this.header.height(this.initialHeight);
-                this.disableScenes();
                 $.scrollLock(true);
             }).bind(this))
             .add(_.filter([
+                TweenMax.to(this.refs.burger, .3, { x: '-100%', ease: Power3.easeOut }),
                 TweenMax.to(this.logoImage, .3, { color: color, ease: Power3.easeOut }),
-                //TweenMax.to(this.logoImage, .3, { marginLeft: '12.5%', delay: .3 }),
-                TweenMax.to(this.logoText, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
-                TweenMax.to(this.refs.burger, .3, { color: color, x: '-100%', ease: Power3.easeOut }),
-                TweenMax.to(this.refs.close, .3, { x: '0%', delay: .3 }),
-                TweenMax.to(this.header, .6, { height: '100%', ease: Power3.easeOut }),
-                TweenMax.to(this.image, .6, { scale: 1.1, opacity: 0, ease: Power3.easeOut }),
-            ]));//.concat(this.links.toArray().map(link => { return TweenMax.to(link, .3, { x: '0%', delay: .3 }); }))));
+                TweenMax.to(this.header, .5, { height: '100%', ease: Power3.easeOut }),
+            ]))
+            .add(_.filter([
+                TweenMax.to(this.logoText, .3, { x: '0%', ease: Power3.easeOut }),
+                TweenMax.to(this.refs.close, .3, { x: '0%', ease: Power3.easeOut }),
+                TweenMax.to(this.links, .3, { x: '0%', ease: Power3.easeOut }),
+            ]));
     }
 
     openComplete() {
@@ -94,6 +108,9 @@ export default class Burger extends Component {
         if (this.inProgress) return false;
         this.inProgress = true;
 
+        this.wasFixedBurger && TweenMax.set(this.text, { x: '-100%' });
+        this.wasFixedBurger && TweenMax.set(this.image, { scale: 1.1, opacity: 0 });
+        console.warn('prev color', this.prevColor);
         let timeline = new TimelineLite({
             onComplete: (() => {
                 this.closeComplete();
@@ -102,39 +119,32 @@ export default class Burger extends Component {
                 timeline = null;
             }).bind(this),
         })
-            .add(this.links.toArray().map(link => { return TweenMax.to(link, .3, { x: '-100%' }); }).concat([
-                TweenMax.to(this.refs.close, .3, { x: '-100%' }),
-                TweenMax.to(this.logoText, .3, { x: '-100%' }), 
+            .add(_.filter([
+                TweenMax.to(this.links, .3, { x: '-100%', ease: Power3.easeOut }),
+                TweenMax.to(this.refs.close, .3, { x: '-100%', ease: Power3.easeOut }),
+                TweenMax.to(this.logoText, .3, { x: '-100%', ease: Power3.easeOut }), 
             ]))
             .add(_.filter([
-                TweenMax.to(this.refs.burger, .6, { color: this.prevColor, x: '0%', ease: Power3.easeOut }),
+                TweenMax.to(this.refs.burger, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
+                TweenMax.to(this.logoImage, .3, { color: this.prevColor, delay: .3, ease: Power3.easeOut }),
                 TweenMax.to(this.header, .6, { height: this.wasFixedBurger ? '0%' : this.initialHeight, ease: Power3.easeOut }),
             ]))
             .add(() => {
                 !this.wasFixedBurger && this.article.removeClass('fix-header');
-                this.article.removeClass('menu-open');
                 this.header.css('height', '');
+                this.article.removeClass('menu-open');
             })
             .add(_.filter([
                 !this.wasFixedBurger && TweenMax.to(this.text, .3, { x: '0%', ease: Power3.easeOut }),
-                !this.wasFixedBurger && TweenMax.to(this.image, .6, { scale: 1, opacity: 1, ease: Power3.easeOut }),
+                !this.wasFixedBurger && TweenMax.to(this.image, .3, { scale: 1, opacity: 1, ease: Power3.easeOut }),
             ]));
     }
 
     closeComplete() {
         this.inProgress = false;
         $.scrollLock(false);
-        setTimeout(this.enableScenes.bind(this), 100);
-    }
-
-    enableScenes() {
-        this.scenes && this.scenes.forEach(scene => { scene.enabled(true); });
-        this.props.setScenes(true);
-    }
-
-    disableScenes() {
-        this.scenes && this.scenes.forEach(scene => { scene.enabled(false); });
-        this.props.setScenes(false);
+        setTimeout((() => { this.props.enableScenes(); }).bind(this), 100);
+        //this.props.enableScenes();
     }
 
     render() {

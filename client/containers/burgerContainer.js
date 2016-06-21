@@ -1,5 +1,4 @@
-import translate from './translate';
-import HeaderLinks from '../components/headerLinks';
+import Burger from '../components/burger';
 import { connect } from 'react-redux';
 import { transition, enableScenes, disableScenes } from '../actions';
 
@@ -9,10 +8,10 @@ const stateToProps = state => ({
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        dispatchTransition: (setup) => {
+        dispatchTransition: function (setup) {
             dispatch(transition(setup));
         },
-		enableScenes: () => {
+        enableScenes: () => {
 			dispatch(enableScenes());
 		},
 		disableScenes: () => {
@@ -21,7 +20,6 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default 
+export default
     connect(stateToProps, mapDispatchToProps)(
-        translate('HeaderLinks')(
-            HeaderLinks));
+        Burger);

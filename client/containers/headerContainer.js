@@ -1,17 +1,25 @@
 import Header from '../components/header';
-// import translate from './translate';
-// import { connect } from 'react-redux';
-// import { transition } from '../actions';
+import { connect } from 'react-redux';
+import { transition, enableScenes, disableScenes } from '../actions';
 
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         transition: function (setup) {
-//             dispatch(transition(setup));
-//         },
-//     };
-// };
+const stateToProps = state => ({
+    transition: state.transition,
+});
 
-export default Header;
-    // connect(null, mapDispatchToProps)(
-    //     translate('Header')(
-    //         Header));
+const mapDispatchToProps = (dispatch) => {
+    return {
+        dispatchTransition: function (setup) {
+            dispatch(transition(setup));
+        },
+        enableScenes: () => {
+			dispatch(enableScenes());
+		},
+		disableScenes: () => {
+			dispatch(disableScenes());
+		},
+    };
+};
+
+export default
+    connect(stateToProps, mapDispatchToProps)(
+        Header);

@@ -1,15 +1,25 @@
 import Logo from '../components/logo';
 import { connect } from 'react-redux';
-import { transition } from '../actions';
+import { transition, enableScenes, disableScenes } from '../actions';
+
+const stateToProps = state => ({
+    transition: state.transition,
+});
 
 const mapDispatchToProps = (dispatch) => {
-	return {
-		transition: function (setup) {
-			dispatch(transition(setup));
+    return {
+        dispatchTransition: function (setup) {
+            dispatch(transition(setup));
+        },
+		enableScenes: () => {
+			dispatch(enableScenes());
 		},
-	};
+		disableScenes: () => {
+			dispatch(disableScenes());
+		},
+    };
 };
 
 export default
-    connect(null, mapDispatchToProps)(
-		Logo);
+    connect(stateToProps, mapDispatchToProps)(
+        Logo);

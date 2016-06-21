@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import Logo from '../containers/logoContainer';
 import HeaderLinks from '../containers/headerLinksContainer';
 import Contact from '../containers/contactContainer';
-import Burger from './burger';
+import Burger from '../containers/burgerContainer';
 import _ from 'lodash';
 import dom from 'react-dom';
 
@@ -82,10 +82,13 @@ class Header extends Component {
         // this.setState({
         //     likesIncreasing: nextProps.likeCount > this.props.likeCount
         // });
-        if(nextProps.cancelScene == 'true'){
-            console.log('this.disableScenes');
-            this.setScenes(false);
-        }
+        console.warn('Header shouldUpdate', nextProps.transition.scrollScenesEnabled);
+        this.scenes && this.scenes.forEach(scene => { scene.enabled(nextProps.transition.scrollScenesEnabled); });
+
+        // if(nextProps.cancelScene == 'true'){
+        //     console.log('this.disableScenes');
+        //     this.setScenes(false);
+        // }
         
         return false;
     }
@@ -123,7 +126,7 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-    cancelScene: PropTypes.string,
+    //cancelScene: PropTypes.string,
     stationary: PropTypes.bool,
     title: PropTypes.string,
 };

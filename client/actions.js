@@ -95,6 +95,16 @@ module.exports = {
             dispatch({ type: C.TRANSITION, payload: setup });
         };
     },
+    enableScenes: () => {
+        return (dispatch) => {
+            dispatch({ type: C.ENABLE_SCENES });
+        };
+    },
+    disableScenes: () => {
+        return (dispatch) => {
+            dispatch({ type: C.DISABLE_SCENES });
+        };
+    },
 };
 
 //AUTH

@@ -31,6 +31,12 @@ class HeaderLinks extends Component {
         function hide() { let t = TweenMax.to(links, .3, { x: '-100%' }); timeLines.push(t); return t; }
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        console.warn('HeaderLinks shouldUpdate', nextProps.transition.scrollScenesEnabled);
+        this.scenes && this.scenes.forEach(scene => { scene.enabled(nextProps.transition.scrollScenesEnabled); });
+        return false;
+    }
+
     componentWillUnmount() {
         for (var i = 0; i < this.scenes.length; i++) {
             this.scenes[i].destroy();
@@ -47,7 +53,7 @@ class HeaderLinks extends Component {
         let burgerIsOpen = this.article.is('.menu-open');        
         burgerIsOpen && $window.scrollTop(0);
         //console.warn('burger', this.article, burgerIsOpen);
-        this.props.transition({
+        this.props.dispatchTransition({
             type: burgerIsOpen && 'burger' || 'header',
             column: event.currentTarget.getAttribute('data-animate-line'),
             target: event.currentTarget,
@@ -120,9 +126,10 @@ class HeaderLinks extends Component {
 
 HeaderLinks.propTypes = {
     animationType: PropTypes.string,
+    dispatchTransition: PropTypes.func.isRequired,
     stationary: PropTypes.bool,
     strings: PropTypes.object.isRequired,
-    transition: PropTypes.func.isRequired,
+    transition: PropTypes.object,
 };
 
 HeaderLinks.defaultProps = {

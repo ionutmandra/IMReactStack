@@ -117,6 +117,7 @@ export const team = data.team = {
 
 export const transition = data.transition = {
     type: false, //no initial transition
+    scrollScenesEnabled: true, //initially all scroll scenes are enabled
 };
 
 export default data;

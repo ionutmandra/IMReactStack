@@ -14,9 +14,9 @@ class About extends Component {
         this.handleClick = this.handleClick.bind(this);        
         
         
-        this.state ={
-            cancelScene: 'false'
-        }; 
+        // this.state ={
+        //     cancelScene: 'false'
+        // }; 
     }
 
     handleSafetybankProjectClick(event) {
@@ -28,8 +28,8 @@ class About extends Component {
     }
 
     handleCallToActionClick(event) {
-        
-           this.setState({cancelScene: 'true'});
+        this.props.disableScenes();
+           //this.setState({cancelScene: 'true'});
         
           this.props.transition({
               type: 'content',
@@ -41,9 +41,8 @@ class About extends Component {
     
     
      handleClick() {
-          this.setState({cancelScene: 'true'});
-          
-         
+          //this.setState({cancelScene: 'true'});
+          this.props.disableScenes();
      }
 
     render() {
@@ -52,7 +51,7 @@ class About extends Component {
         
         return (
             <article className="page page-about">
-                <Header ref={'header'} cancelScene={this.state.cancelScene} title={'We are a software development company focused on delivering high quality products and services by sustaining learning and innovation'} />
+                <Header ref={'header'} title={'We are a software development company focused on delivering high quality products and services by sustaining learning and innovation'} />
                 <section className="content">
                     <div className="row align-middle">
                         <div className="large-8 large-offset-3 columns">

@@ -25,17 +25,29 @@ class Logo extends Component {
 
         scenes.push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
             //.addIndicators({ name: 'Logo 1.' })
+            .on('start', () => {
+                console.warn('STARTED logo scene 1', arguments);
+            })
             .setTween(moveText())
         );
 
         scenes.push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 360 }).addTo(controller)
             //.addIndicators({ name: 'Logo 2.' })
+            .on('start', () => {
+                console.warn('STARTED logo scene 2', arguments);
+            })
             .setTween(darken())
         );
 
         function moveText() { let t = TweenMax.to(refs.text, .3, { x: '-100%' }); timeLines.push(t); return t; }
         //function moveImg() { let t = TweenMax.to(refs.img, .3, { marginLeft: '50px' }); timeLines.push(t); return t; }
         function darken() { let t = TweenMax.to(refs.img, .3, { color: '#4d4d4d' }); timeLines.push(t); return t; }
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        console.warn('Logo shouldUpdate', nextProps.transition.scrollScenesEnabled);
+        this.scenes && this.scenes.forEach(scene => { scene.enabled(nextProps.transition.scrollScenesEnabled); });
+        return false;
     }
 
     componentWillUnmount() {
@@ -163,8 +175,9 @@ class Logo extends Component {
 }
 
 Logo.propTypes = {
+    dispatchTransition: PropTypes.func.isRequired,
     stationary: PropTypes.bool,
-    transition: PropTypes.func.isRequired,
+    transition: PropTypes.object,
 };
 
 export default Logo;
