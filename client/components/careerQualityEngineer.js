@@ -19,7 +19,7 @@ class CareerQualityEngineer extends Component {
 
                     <div className="row">
                         <p className="large-9 large-offset-6 columns">
-                            We are looking for quality engineer to help develop large scale .NET based application.
+                            We are looking for quality engineer to help develop large scale .NET based applications.
                         </p>
                     </div>
                     <div className="spacer-60"></div>
@@ -30,9 +30,8 @@ class CareerQualityEngineer extends Component {
                     <div className="row">
                         <ul className="large-9 large-offset-6 columns">
                             <li>Ensure the quality of the products delivered</li>
-                            <li>Writing test cases</li>
-                            <li>Writing Selenium based Automated Tests </li>
-                            <li>Good English (writing and speaking)</li>
+                            <li>Write test cases</li>
+                            <li>Write Selenium based Automated Tests </li>
                         </ul>
                     </div>
                     <div className="spacer-60"></div>
@@ -45,6 +44,7 @@ class CareerQualityEngineer extends Component {
                             <li>1 year experience in manual testing</li>
                             <li>Experience in writing test cases</li>
                             <li>Familiar with Selenium based Automated Tests </li>
+                            <li>Good English (writing and speaking)</li>
                         </ul>
                     </div>
                 </div>

@@ -32,7 +32,14 @@
             display: block;
         }
     }
-
+    .call-to-action {
+        .image {
+            &:after {
+                 background: linear-gradient(45deg, #68bc45 0%, #1895a3 100%);
+            }
+        }
+    }
+	
     .columns{
         overflow: hidden;
     }
