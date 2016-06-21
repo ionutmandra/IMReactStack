@@ -40,6 +40,9 @@
                 padding-bottom: 20px;
                 color: #c3c3c3;
             }
+            .block {
+              display: inline-block;
+            }
         }
         strong {
             text-transform: uppercase;
@@ -56,5 +59,8 @@
                 width: 100%;
             }
         }
+    }
+    .columns {
+        overflow: hidden;
     }
 }

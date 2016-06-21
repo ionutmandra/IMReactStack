@@ -71,9 +71,17 @@ export function enter_header(ref, callback, transition) {
             TweenMax.to(arr1, .6, arr2),
         ]))
         .add(_.filter([
+          function(){
+            elements.contentItems && TweenMax.set(elements.contentItems, { x: '-110%' });
+          }
+        ]))
+        .add(_.filter([
             elements.image && TweenMax.to(elements.image, .6, { scale: 1, ease: Power3.easeOut }),
             elements.header && TweenMax.to(elements.header, .6, { height: 400, ease: Power3.easeOut }),
             elements.text && TweenMax.to(elements.text, .3, { x: '0%', ease: Power3.easeOut, delay: .3, onStart: () => { $target.removeClass('hover'); $link.removeClass('hover'); } }),
+        ]))
+        .add(_.filter([
+            elements.contentItems && TweenMax.to(elements.contentItems, .3, { x: '0%' }),
         ]))
         .add(_.filter([() => {
             $body.css('overflow', 'visible');
@@ -95,7 +103,6 @@ export function leave_header(ref, callback, transition) {
     TweenMax.set(elements.container, { zIndex: 1 });
     elements.footer && TweenMax.set(elements.footer, { height: 0 });
 
-
     //Animation
     new TimelineLite({
         onComplete: () => {
@@ -105,7 +112,8 @@ export function leave_header(ref, callback, transition) {
         }
     })
         .add(_.filter([
-            elements.text && TweenMax.to(elements.text, .3, { x: '-100%' }),
+            elements.contentItems && TweenMax.to(elements.contentItems, .3, { x: '-110%' }),
+            elements.text && TweenMax.to(elements.text, .2, { x: '-100%' }),
             elements.image && TweenMax.to(elements.image, 1.65, { scale: height / 400, ease: Power3.easeIn, delay: .15 }),
             elements.header && TweenMax.to(elements.header, .6, { height: height, ease: Power3.easeIn, delay: .15 }),
         ]));
@@ -254,7 +262,7 @@ export function enter_content(ref, callback, transition) {
             TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
         }
     });
-    //$window.scrollTop(0);              
+    //$window.scrollTop(0);
     //$body.css('overflow', 'hidden');
 
     //Initial state
@@ -284,12 +292,20 @@ export function enter_content(ref, callback, transition) {
         ]))
         .add(_.filter([
             TweenMax.to(arr1, 1.6, arr2),
-        ]))        
+        ]))
+        .add(_.filter([
+          function(){
+            elements.contentItems && TweenMax.set(elements.contentItems, { x: '-110%' });
+          }
+        ]))
         .add(_.filter([
             elements.image && TweenMax.to(elements.image, .8, { scale: 1, ease: Power3.easeOut, delay: .2 }),
-            elements.header && TweenMax.to(elements.header, .8, { height: 400, ease: Power3.easeOut,  delay: .2 }),           
+            elements.header && TweenMax.to(elements.header, .8, { height: 400, ease: Power3.easeOut,  delay: .2 }),
         ]))
-        .add(_.filter([                       
+        .add(_.filter([
+            elements.contentItems && TweenMax.to(elements.contentItems, .3, { x: '0' }),
+        ]))
+        .add(_.filter([
             elements.text && TweenMax.to(elements.text, .3, { x: '0%', ease: Power3.easeOut, onStart: () => { $target.removeClass('hover'); $link.removeClass('hover'); } }),
         ]))
         .add(_.filter([() => {
@@ -305,11 +321,13 @@ export function leave_content(ref, callback, transition) {
 
     let elements = extractDOMElements(ref, transition.column),
         $container = $(elements.container).addClass('overlap'),
-        height = $window.height();    
+        height = $window.height();
 
     //Initial state
     TweenMax.set(elements.container, { zIndex: 1 });
     elements.footer && TweenMax.set(elements.footer, { height: 0 });
+
+    console.log('items to hide ',elements.contentItems );
 
     //Animation
     new TimelineLite({
@@ -320,8 +338,9 @@ export function leave_content(ref, callback, transition) {
         }
     })
         .add(_.filter([
+            elements.contentItems && TweenMax.to(elements.contentItems, .3, { x: '-110%' }),
             elements.text && TweenMax.to(elements.text, .3, { x: '-100%' })]))
-        .add(_.filter([                        
+        .add(_.filter([
             elements.header && TweenMax.to(elements.header, 1.6, { height: height, ease: Power3.easeIn, delay: .15 }),
         ]))
         .set({}, {}, 4.55);
@@ -373,7 +392,7 @@ export function enter_home_content(ref, callback, transition) {
             $(elements.footer).css('height', '');
         }
     })
-        .set({}, {}, 1) //wait for leaving page to hide content                
+        .set({}, {}, 1) //wait for leaving page to hide content
         .add(_.filter([
             TweenMax.to(line, .6, { height: '100%', ease: Power3.easeIn, onComplete: () => { $target.removeClass('line'); TweenMax.set(line, { opacity: 0 }); } }),
         ]))
@@ -414,8 +433,6 @@ function extractDOMElements(ref, column) {
         image: $container.find('header.main .image .img')[0],
         text: $container.find('header .text h1')[0],
         gradient: $container.find('header .gradient')[0],
+        contentItems:$container.find('.content-item'),
     };
 }
-
-
-

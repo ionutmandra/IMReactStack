@@ -8,82 +8,89 @@ class Expertise extends Component {
      constructor(props) {
         super(props);
         this.handleCallToActionClick = this.handleCallToActionClick.bind(this);
+         this.state ={
+            cancelScene: 'false'
+        };
     }
     handleCallToActionClick(event) {
+
+        this.setState({cancelScene: 'true'});
+
           this.props.transition({
               type: 'content',
               column: 6,
               target: event.target,
-          });        
+          });
     }
 
 
     render() {
         return (
             <article className="page page-expertise">
-                <Header title={'We aim to offer more than just working software by constantly improving our skills and processes'} />
+                <Header ref={'header'} cancelScene={this.state.cancelScene} title={'We aim to offer more than just working software by constantly improving our skills and processes'} />
                 <section className="content">
                     <div className="row">
-                        <div className="large-13 large-offset-3 columns">
-                            <h1>Skills</h1>
-                            <p>Web and mobile development, server side development and data storage are the top the competencies that help us offer full digitization services.</p>
+                        <div className="large-13 large-offset-3 columns ">
+                            <h1 className="content-item">Skills</h1>
+                            <p className="content-item">Web and mobile development, server side development and data storage are the top the competencies that help us offer full digitization services.</p>
                         </div>
                     </div>
                     <div className="row technologies">
-                        <div className="large-3 large-offset-3 columns"><img src="/client/dist/img/icons/angular.png" /></div>
-                        <div className="large-3 columns"><img src="/client/dist/img/icons/cordova.png" /></div>
-                        <div className="large-3 columns"><img src="/client/dist/img/icons/nodejs.png" /></div>
-                        <div className="large-3 columns"><img src="/client/dist/img/icons/react.png" /></div>
-                        <div className="large-3 columns"><img src="/client/dist/img/icons/meteor.svg" /></div>
-                        <div className="large-3 columns"><img src="/client/dist/img/icons/dotNet.jpg" /></div>
+                        <div className="large-3 large-offset-3 columns"><img src="/client/dist/img/icons/angular.png" className="content-item" /></div>
+                        <div className="large-3 columns"><img src="/client/dist/img/icons/cordova.png" className="content-item"/></div>
+                        <div className="large-3 columns"><img src="/client/dist/img/icons/nodejs.png" className="content-item"/></div>
+                        <div className="large-3 columns"><img src="/client/dist/img/icons/react.png" className="content-item"/></div>
+                        <div className="large-3 columns"><img src="/client/dist/img/icons/meteor.svg" className="content-item"/></div>
+                        <div className="large-3 columns"><img src="/client/dist/img/icons/dotNet.jpg" className="content-item"/></div>
                     </div>
                     <div className="spacer-40" />
                     <div className="row technologies">
-                        <div className="large-3 large-offset-3 columns"><img src="/client/dist/img/icons/sql-server.png" /></div>
-                        <div className="large-3 columns"><img src="/client/dist/img/icons/javascript.png" /></div>
-                        <div className="large-3 columns"><img src="/client/dist/img/icons/crosswalk.png" /></div>
+                        <div className="large-3 large-offset-3 columns"><img src="/client/dist/img/icons/sql-server.png" className="content-item"/></div>
+                        <div className="large-3 columns"><img src="/client/dist/img/icons/javascript.png" className="content-item"/></div>
+                        <div className="large-3 columns"><img src="/client/dist/img/icons/crosswalk.png" className="content-item"/></div>
                     </div>
                     <div className="spacer-100" />
                     <div className="row">
                         <div className="large-13 large-offset-3 columns">
-                            <h2>Procese</h2>
+                            <h2 className="content-item">Procese</h2>
                             <div className="spacer-40"/>
-                            <p>The processes are equally important to us and we believe that only by having adaptable and transparent processes we can meet and also exced client expectations.</p>
+                            <p className="content-item">The processes are equally important to us and we believe that only by having adaptable and transparent processes we can meet and also exced client expectations.</p>
                         </div>
                     </div>
                     <div className="spacer-40"/>
+
                     <div className="row processes">
                         <div className="large-5 large-offset-3 columns">
-                        <i className="ncs-processes_feedback" title="Quick feedback cycles"></i>
+                            <i className="ncs-processes_feedback content-item" title="Quick feedback cycles"></i>
                             <div className="spacer-40"/>
-                            Quick feedback cycles
+                            <p className="content-item">  Quick feedback cycles</p>
                             <div className="spacer-20"/>
                         </div>
                         <div className="large-5 large-offset-1 columns">
-                            <i className="ncs-processes_delivery" title="Continuous delivery"></i>
+                            <i className="ncs-processes_delivery content-item" title="Continuous delivery"></i>
                             <div className="spacer-40"/>
-                            Continuous delivery
+                            <p className="content-item">Continuous delivery</p>
                             <div className="spacer-20"/>
                         </div>
                         <div className="large-5 large-offset-1 columns">
-                            <i className="ncs-processes_tests" title="Automated tests"></i>
+                            <i className="ncs-processes_tests content-item" title="Automated tests"></i>
                             <div className="spacer-40"/>
-                            Automated tests
+                            <p className="content-item">Automated tests</p>
                             <div className="spacer-20"/>
                         </div>
                     </div>
                     <div className="spacer-60"/>
                     <div className="row processes">
                         <div className="large-5 large-offset-3 columns">
-                            <i className="ncs-processes_automation" title="Build and deployment automation"></i>
+                            <i className="ncs-processes_automation content-item" title="Build and deployment automation"></i>
                             <div className="spacer-40"/>
-                            Build and deployment automation
+                            <p className="content-item">Build and deployment automation</p>
                             <div className="spacer-20"/>
                         </div>
                         <div className="large-5 large-offset-1 columns">
-                            <i className="ncs-processes_adaptaion" title="Inspect and adapt on every iteration"></i>
+                            <i className="ncs-processes_adaptaion content-item" title="Inspect and adapt on every iteration"></i>
                             <div className="spacer-40"/>
-                            Inspect and adapt on every iteration
+                            <p className="content-item">Inspect and adapt on every iteration</p>
                             <div className="spacer-20"/>
                         </div>
                     </div>
@@ -91,13 +98,15 @@ class Expertise extends Component {
                 </section>
                 <section className="call-to-action row align-middle">
                     <div className="large-9 large-offset-3 columns">
-                        <p>Everything changes but our passion.</p>
-                        <p className="cta">Want to meet us? <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}>Let's talk</Link></p>
+                        <p className="content-item">Everything changes but our passion.</p>
+                        <p className="cta content-item">Want to meet us? <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}>Let's talk</Link></p>
                     </div>
-                    <div className="image large-9 columns">
-                        <img src="/client/dist/img/photos/temp3.jpg" />
+                    <div className="large-9 columns">
+                      <div className="content-item image">
+                        <img src="/client/dist/img/photos/temp3.jpg"/>
+                      </div>
                     </div>
-                    
+
                 </section>
                 <Footer />
             </article>
