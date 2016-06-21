@@ -158,11 +158,11 @@ class About extends Component {
                     <div className="spacer-100" />
                 </section>
                 <section className="call-to-action row align-middle">
-                    <div className="image large-9 large-order-1 medium-11 medium-order-2 columns">
+                    <div className="large-9 large-order-1 medium-11 medium-order-2 columns">
                         <div className="image content-item">
                           <img src="/client/dist/img/photos/temp3.jpg" />
                         </div>
-					</div>
+					          </div>
                     <div className="large-8 large-offset-3 large-order-1 medium-11 medium-offset-1 medium-order-1 columns">
                         <p className="content-item">Everything changes but our passion.</p>
                         <p className="cta content-item">Want to meet us? <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}>Let's talk</Link></p>

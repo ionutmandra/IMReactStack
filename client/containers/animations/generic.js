@@ -23,6 +23,7 @@ export function appear(ref, callback) {
 /////////////////////////////////////////
 
 export function enter_header(ref, callback, transition) {
+
     if (!transition.column || !transition.target) {
         return callback();
     }
@@ -265,6 +266,8 @@ export function enter_content(ref, callback, transition) {
     //$window.scrollTop(0);
     //$body.css('overflow', 'hidden');
 
+    console.log('enter content ', elements.contentItems);
+
     //Initial state
     TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
     TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
@@ -303,7 +306,7 @@ export function enter_content(ref, callback, transition) {
             elements.header && TweenMax.to(elements.header, .8, { height: 400, ease: Power3.easeOut,  delay: .2 }),
         ]))
         .add(_.filter([
-            elements.contentItems && TweenMax.to(elements.contentItems, .3, { x: '0' }),
+            elements.contentItems && TweenMax.to(elements.contentItems, .3, { x: '0%' }),
         ]))
         .add(_.filter([
             elements.text && TweenMax.to(elements.text, .3, { x: '0%', ease: Power3.easeOut, onStart: () => { $target.removeClass('hover'); $link.removeClass('hover'); } }),
@@ -327,7 +330,7 @@ export function leave_content(ref, callback, transition) {
     TweenMax.set(elements.container, { zIndex: 1 });
     elements.footer && TweenMax.set(elements.footer, { height: 0 });
 
-    console.log('items to hide ',elements.contentItems );
+    //console.log('items to hide ',elements.contentItems );
 
     //Animation
     new TimelineLite({
