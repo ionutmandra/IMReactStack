@@ -54,6 +54,7 @@
         }
         &.page-home header.main {
             position: fixed;
+            top: 0;
             z-index: 4;
             height: 80px;
         }
@@ -243,7 +244,7 @@
                 position: fixed;
                 top: 0;
                 height: 0%;
-                overflow: hidden;
+                //overflow: hidden;
                 z-index: 2;
                 @include grid-row(24);
                 .hamburger {
@@ -366,6 +367,7 @@
         }
         &.page-home header.main {
             position: fixed;
+            top: 0;
             z-index: 4;
             height: 80px;
         }
@@ -555,7 +557,7 @@
                 position: fixed;
                 top: 0;
                 height: 0%;
-                overflow: hidden;
+                //overflow: hidden;
                 z-index: 2;
                 @include grid-row(24);
                 .hamburger {

@@ -47,7 +47,7 @@ class Home extends Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        console.warn('Home shouldUpdate', nextProps.transition.scrollScenesEnabled);
+        //console.warn('Home shouldUpdate', nextProps.transition.scrollScenesEnabled);
         this.scenes && this.scenes.forEach(scene => { scene.enabled(nextProps.transition.scrollScenesEnabled); });
         return false;
     }

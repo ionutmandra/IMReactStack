@@ -59,7 +59,7 @@ class HeaderLinks extends Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        console.warn('HeaderLinks shouldUpdate', nextProps.transition.scrollScenesEnabled);
+        //console.warn('HeaderLinks shouldUpdate', nextProps.transition.scrollScenesEnabled);
         this.scenes && this.scenes.forEach(scene => { scene.enabled(nextProps.transition.scrollScenesEnabled); });
         return false;
     }

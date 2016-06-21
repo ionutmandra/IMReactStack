@@ -68,7 +68,7 @@ class Header extends Component {
     }
 
     shouldComponentUpdate (nextProps, nextState) {
-        console.warn('Header shouldUpdate', nextProps.transition.scrollScenesEnabled);
+        //console.warn('Header shouldUpdate', nextProps.transition.scrollScenesEnabled);
         this.scenes && this.scenes.forEach(scene => { scene.enabled(nextProps.transition.scrollScenesEnabled); });
         return false;
     }

@@ -40,7 +40,7 @@ export default class Burger extends Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        console.warn('Burger shouldUpdate', nextProps.transition.scrollScenesEnabled);
+        //console.warn('Burger shouldUpdate', nextProps.transition.scrollScenesEnabled);
         this.scenes && this.scenes.forEach(scene => { scene.enabled(nextProps.transition.scrollScenesEnabled); });
         return false;
     }
@@ -110,7 +110,7 @@ export default class Burger extends Component {
 
         this.wasFixedBurger && TweenMax.set(this.text, { x: '-100%' });
         this.wasFixedBurger && TweenMax.set(this.image, { scale: 1.1, opacity: 0 });
-        console.warn('prev color', this.prevColor);
+        //console.warn('prev color', this.prevColor);
         let timeline = new TimelineLite({
             onComplete: (() => {
                 this.closeComplete();

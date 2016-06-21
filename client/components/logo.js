@@ -44,7 +44,7 @@ class Logo extends Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        console.warn('Logo shouldUpdate', nextProps.transition.scrollScenesEnabled);
+        //console.warn('Logo shouldUpdate', nextProps.transition.scrollScenesEnabled);
         this.scenes && this.scenes.forEach(scene => { scene.enabled(nextProps.transition.scrollScenesEnabled); });
         return false;
     }
