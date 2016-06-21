@@ -19,7 +19,34 @@ class HeaderLinks extends Component {
             scenes = this.scenes = [],
             controller = this.controller = new ScrollMagic.Controller(),
             trigger = this.article = $(refs.container).closest('article.page'),
-            links = this.links.map(link => dom.findDOMNode(link));
+            links = this.links = this.links.map(link => dom.findDOMNode(link));
+        this.header = this.article.find('header.main');
+        this.contactPieces = this.header.find('.contact .content');
+        this.image = this.header.find('> .image .img');
+        this.logoImage = this.header.find('> .logo .img');
+        this.logoText = this.header.find('> .logo .text svg');
+        this.text = this.header.find('> .text h1');
+        this.burgerClose = this.header.find('> .hamburger > .close');
+
+        if (this.article.is('.page-home')) {
+            this.leftTexts = this.article.find(_.filter([
+                '.slide-1.content .text-2 h2',
+                '.slide-2.content .text-1 h1',
+                '.slide-2.content .text-3 .text-content',
+                '.slide-3.content .text-2 h1',
+                '.slide-4.content .text-1 h1',
+            ]).join(', ')).toArray();
+            this.rightTexts = this.article.find(_.filter([
+                '.slide-1.content .text-1 h1',
+                '.slide-2.content .text-2 .text-content',
+                '.slide-3.content .text-1 h1',
+            ]).join(', ')).toArray();
+            this.bottomTexts = this.article.find(_.filter([
+                '.slide-1.content .scroll-hint > span',
+                '.slide-1.content .scroll-hint > p',
+            ]).join(', ')).toArray();
+            this.image = this.article.find('.slide.background .img').toArray();
+        }
 
         if (this.props.stationary) return;
 
@@ -48,11 +75,10 @@ class HeaderLinks extends Component {
         this.controller.destroy();
         this.controller = null;
     }
-    
+
     handleClick(event) {
-        let burgerIsOpen = this.article.is('.menu-open');        
-        burgerIsOpen && $window.scrollTop(0);
-        //console.warn('burger', this.article, burgerIsOpen);
+        let burgerIsOpen = this.article.is('.menu-open');
+        // burgerIsOpen && $window.scrollTop(0);
         this.props.dispatchTransition({
             type: burgerIsOpen && 'burger' || 'header',
             column: event.currentTarget.getAttribute('data-animate-line'),
@@ -61,50 +87,81 @@ class HeaderLinks extends Component {
     }
 
     openContact(event) {
-        let el = this.getElements(), animations = [];      
-        let timeLines = this.timeLines || (this.timeLines = []);
-        let _this = this;
-        this.wasFixed = el.container.hasClass('fix-header');
+        let burgerIsOpen = this.article.is('.menu-open');
+        let animations = [];
 
-        if (!this.burgerIsOpen) {
-            animations = _.filter([
-                this.wasFixed && TweenMax.to(el.logo, .6, { color: '#fefefe', marginLeft: '12.5%', ease: Power3.easeOut })
-                    || TweenMax.set(el.logo, { color: '#fefefe', marginLeft: '12.5%', ease: Power3.easeOut }),
-                TweenMax.to(el.burger, .3, { color: '#fefefe', ease: Power3.easeOut }),
-                TweenMax.to(el.header, .6, { height: '100%', ease: Power3.easeOut }),
-            ]);
+        if (burgerIsOpen) {
+            this.props.dispatchTransition({
+                type: 'contact',
+                burgerIsOpen: true,
+            });
+
+            let timeline = new TimelineLite({
+                onComplete: (() => {
+                    timeline = null;
+                    this.article.addClass('contact-open');
+                }).bind(this)})
+                .add(_.filter([
+                    TweenMax.to(this.links.concat([this.logoText, this.burgerClose]), .3, { x: '-100%', ease: Power3.easeIn }),
+                ]))
+                .add(_.filter([
+                    TweenMax.to(this.contactPieces, .3, { x: '0%', ease: Power3.easeOut }),
+                ]));
+        } else if (this.article.is('.page-home')) {
+            this.props.dispatchTransition({
+                type: 'contact',
+                homePage: true,
+                burgerIsOpen: false,
+            });
+            this.props.disableScenes();
+            $.scrollLock(true);
+            
+            TweenMax.set(this.header, { height: '100%' });
+
+            let timeline = new TimelineLite({
+                onComplete: (() => {
+                    timeline = null;
+                    this.article.addClass('contact-open');
+                }).bind(this)})
+                .add(_.filter([
+                    TweenMax.to(this.links.concat([this.logoText], this.leftTexts), .3, { x: '-100%', ease: Power3.easeIn }),
+                    TweenMax.to(this.rightTexts, .3, { x: '100%', ease: Power3.easeIn }),
+                    TweenMax.to(this.bottomTexts, .3, { y: '200%', ease: Power3.easeIn }),
+                    TweenMax.to(this.image, .6, { scale: 1.1, ease: Power3.easeInOut }),
+                    TweenMax.to(this.contactPieces, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
+                ]));
         } else {
-            animations = _.filter([
-                el.burger && TweenMax.to(el.burger, .3, { x: '-100%', ease: Power3.easeIn }),
-                el.closeContact && TweenMax.to(el.closeContact, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
-            ]);
+            //generic page
+            let initialHeight = 400 - $window.scrollTop();
+            this.props.dispatchTransition({
+                type: 'contact',
+                burgerIsOpen: false,
+                initialHeight,
+            });
+
+            this.props.disableScenes();
+            $.scrollLock(true);
+
+            let timeline = new TimelineLite({
+                onComplete: (() => {
+                    timeline = null;
+                    this.article.addClass('contact-open');
+                }).bind(this)})
+                .add(_.filter([
+                    TweenMax.to(this.links.concat([this.logoText, this.text]), .3, { x: '-100%', ease: Power3.easeOut }),
+                    TweenMax.to(this.image, .3, { scale: 1.1, opacity: 0, ease: Power3.easeOut }),
+                ]))
+                .add((() => {
+                    this.article.addClass('fix-header');
+                    this.header.height(initialHeight);
+                }).bind(this))
+                .add(_.filter([
+                    TweenMax.to(this.header, .5, { height: '100%', ease: Power3.easeOut }),
+                ]))
+                .add(_.filter([
+                    TweenMax.to(this.contactPieces, .3, { x: '0%', ease: Power3.easeOut }),
+                ]));
         }
-        
-        animations = animations
-            .concat(el.links.toArray().map(link => { return TweenMax.to(link, .3, { x: '-100%', delay: _this.burgerIsOpen ? 0 : .3, ease: Power3.easeIn }); })
-            .concat(el.contact.toArray().map(text => { return TweenMax.to(text, .3, { x: '0%', delay: _this.burgerIsOpen ? .3 : .6, ease: Power3.easeOut }); })));
-        
-        
-        let initialState = el.contact.toArray().map(text => { return TweenMax.set(text, { x: '-100%' }); });
-
-        let middleState = [];
-        if (!this.wasFixed) {
-            middleState = _.filter([
-                el.image && TweenMax.to(el.image, .3, { opacity: 0, scale: 2, ease: Power3.easeIn }),
-                TweenMax.to(el.text, .3, { x: '-100%', ease: Power3.easeIn }),
-            ]).concat(el.links.toArray().map(link => { return TweenMax.to(link, .3, { x: '-100%', ease: Power3.easeIn }); }));
-        }        
-
-        !this.burgerIsOpen && _this.resetAnimating(true);
-        timeLines.push(new TimelineLite({ onComplete: () => {
-                el.header.find('.contact-container .contact').css('z-index', '5'); //more than header links
-                $(el.logo).css('pointer-events', 'all');
-            }})
-            .add(initialState)
-            .add(middleState)
-            .add(() => { el.container.addClass('fix-header'); })
-            .add(animations)
-        );
 
         event.preventDefault();
         return false;
@@ -114,11 +171,11 @@ class HeaderLinks extends Component {
         let links = this.links = [];
         return (<nav className="links" ref="container">
             <ul>
-                <li><Link ref={c => links.push(c)} data-animate-line="3" onClick={this.handleClick} to={routePaths.client.about} >{'About'}</Link></li>
-                <li><Link ref={c => links.push(c)} data-animate-line="4" onClick={this.handleClick} to={routePaths.client.expertise}>{'Expertise'}</Link></li>
-                <li><Link ref={c => links.push(c)} data-animate-line="5" onClick={this.handleClick} to={routePaths.client.portfolio}>{'Portfolio'}</Link></li>
-                <li><Link ref={c => links.push(c)} data-animate-line="6" onClick={this.handleClick} to={routePaths.client.careers}>{'Careers'}</Link></li>
-                <li><Link ref={c => links.push(c)} data-animate-line="7" onClick={this.openContact} to={routePaths.client.contact}>{'Contact'}</Link></li>
+                <li><Link ref={c => links.push(c) } data-animate-line="3" onClick={this.handleClick} to={routePaths.client.about} >{'About'}</Link></li>
+                <li><Link ref={c => links.push(c) } data-animate-line="4" onClick={this.handleClick} to={routePaths.client.expertise}>{'Expertise'}</Link></li>
+                <li><Link ref={c => links.push(c) } data-animate-line="5" onClick={this.handleClick} to={routePaths.client.portfolio}>{'Portfolio'}</Link></li>
+                <li><Link ref={c => links.push(c) } data-animate-line="6" onClick={this.handleClick} to={routePaths.client.careers}>{'Careers'}</Link></li>
+                <li><Link ref={c => links.push(c) } data-animate-line="7" onClick={this.openContact} to={routePaths.client.contact}>{'Contact'}</Link></li>
             </ul>
         </nav>);
     }

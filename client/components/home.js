@@ -46,6 +46,12 @@ class Home extends Component {
         });
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        console.warn('Home shouldUpdate', nextProps.transition.scrollScenesEnabled);
+        this.scenes && this.scenes.forEach(scene => { scene.enabled(nextProps.transition.scrollScenesEnabled); });
+        return false;
+    }
+
     componentWillUnmount() {
 
         for (var i = 0; i < this.scenes.length; i++) {
@@ -528,7 +534,7 @@ class Home extends Component {
     render() {
         //const s = this.props.strings;
         return (
-            <article className="page-home">
+            <article className="page page-home">
                 <Header stationary />
 
                 <section className="slide slide-1 background" ref={(c) => this._section1b = c}>

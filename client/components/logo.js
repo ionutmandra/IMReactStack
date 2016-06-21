@@ -40,7 +40,6 @@ class Logo extends Component {
         );
 
         function moveText() { let t = TweenMax.to(refs.text, .3, { x: '-100%' }); timeLines.push(t); return t; }
-        //function moveImg() { let t = TweenMax.to(refs.img, .3, { marginLeft: '50px' }); timeLines.push(t); return t; }
         function darken() { let t = TweenMax.to(refs.img, .3, { color: '#4d4d4d' }); timeLines.push(t); return t; }
     }
 
@@ -62,13 +61,9 @@ class Logo extends Component {
         this.controller = null;
     }
 
-    setScenes(status) {
-        this.scenes && this.scenes.forEach(scene => { scene.enabled(status); });
-    }
-
     handleClick() {
         let burgerIsOpen = this.article.is('.menu-open');                
-        burgerIsOpen && $window.scrollTop(0);    
+        //burgerIsOpen && $window.scrollTop(0);    
         this.props.transition({
             type: burgerIsOpen && 'burger' || 'header',
             column: 1,

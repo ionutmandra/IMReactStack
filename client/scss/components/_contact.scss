@@ -52,7 +52,7 @@
 
                         a {
                             display: inline-block;
-                            @include grid-col-size(2);
+                            @include grid-col-size(2.66);
                             font-size: rem-calc(28pt);
                         }
                     }
@@ -63,6 +63,10 @@
             @include grid-row(24);
             @include grid-col-size(1);
             @include grid-col-off(21);
+
+            top: 40px;
+            transform: none;
+
 
             i {
                 font-size: rem-calc(36pt);
@@ -80,4 +84,13 @@
             transform: translateX(-100%);
         }
     }
+}
+
+#page-container article.contact-open header.main div.contact > div {
+    z-index: 6;
+}
+
+#page-container article.menu-open header.main div.contact > div.btn {
+    top: 50%;
+    transform: translateY(-50%);
 }

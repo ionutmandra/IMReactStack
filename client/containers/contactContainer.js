@@ -1,6 +1,6 @@
-import transition from './transition';
 import { connect } from 'react-redux';
 import Contact from '../components/contact';
+import { transition, enableScenes, disableScenes } from '../actions';
 
 const stateToProps = state => ({
     transition: state.transition,
@@ -11,11 +11,15 @@ const mapDispatchToProps = (dispatch) => {
         dispatchTransition: function (setup) {
             dispatch(transition(setup));
         },
+        enableScenes: () => {
+            dispatch(enableScenes());
+        },
+        disableScenes: () => {
+            dispatch(disableScenes());
+        },
     };
 };
 
-
 export default
-    transition(
-        connect(stateToProps, mapDispatchToProps)(
-            Contact));
+    connect(stateToProps, mapDispatchToProps)(
+        Contact);

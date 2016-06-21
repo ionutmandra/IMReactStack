@@ -9,11 +9,6 @@ import dom from 'react-dom';
 let $ = window.$, $window = $(window), ScrollMagic = window.ScrollMagic, TweenMax = window.TweenMax, Power3 = window.Power3, TimelineLite = window.TimelineLite;
 
 class Header extends Component {
-    constructor(props) {
-        super(props);
-        this.setScenes = this.setScenes.bind(this);
-    }
-
     componentDidMount() {
         let controller = this.controller = new ScrollMagic.Controller(),
             timeLines = this.timeLines = [],
@@ -30,22 +25,16 @@ class Header extends Component {
             return t;
         });
 
-        scenes.push(new ScrollMagic.Scene({ triggerElement: $container, triggerHook: 'onLeave', duration: 90, offset: 0 }).addTo(controller)
+        scenes.push(new ScrollMagic.Scene({ triggerElement: $container, triggerHook: 'onLeave', duration: 1, offset: 0 }).addTo(controller)
             //.addIndicators({name:'Scene 1'})
             .on('end', event => {
                 if (event.scrollDirection == 'FORWARD') {
                     console.log('header sc1 end forw');
                     //controller.scrollTo(headerBottom);
+                    $container.addClass('links-hidden');                    
                 }
-            })
-            .on('progress', event => {
-                if (event.scrollDirection == 'FORWARD' && event.progress > .3) {
-                    $container.addClass('links-hidden');
-                    console.log('header sc1 pr fw');
-                }
-                if (event.scrollDirection == 'REVERSE' && event.progress <= .3) {
+                if (event.scrollDirection == 'REVERSE') {
                     $container.removeClass('links-hidden');
-                    console.log('header sc1 pr rev');
                 }
             })
         );
@@ -79,33 +68,17 @@ class Header extends Component {
     }
 
     shouldComponentUpdate (nextProps, nextState) {
-        // this.setState({
-        //     likesIncreasing: nextProps.likeCount > this.props.likeCount
-        // });
         console.warn('Header shouldUpdate', nextProps.transition.scrollScenesEnabled);
         this.scenes && this.scenes.forEach(scene => { scene.enabled(nextProps.transition.scrollScenesEnabled); });
-
-        // if(nextProps.cancelScene == 'true'){
-        //     console.log('this.disableScenes');
-        //     this.setScenes(false);
-        // }
-        
         return false;
-    }
-
-    setScenes(status) {
-        this.scenes && this.scenes.forEach(scene => { scene.enabled(status); });
-        //console.warn(this.refs.logo);
-        this.refs.logo.setScenes && this.refs.logo.setScenes(status);
     }
 
     render() {
         if (this.props.stationary) {
             return (
                 <header className="main" ref="header">
-                    <Logo stationary ref="logo" />
+                    <Logo stationary />
                     <HeaderLinks stationary />     
-                    <Burger stationary setScenes={this.setScenes} />
                     <Contact stationary renderCloseButton />                                 
                 </header>
             );
@@ -114,10 +87,10 @@ class Header extends Component {
                 <header className="main" ref="header">
                     <div className="image"><div className="img" /></div>
                     <div className="gradient" />
-                    <Logo ref="logo" />
+                    <Logo />
                     <HeaderLinks />      
                     <div className="text"><h1>{this.props.title}</h1></div>
-                    <Burger setScenes={this.setScenes} />    
+                    <Burger />    
                     <Contact renderCloseButton />      
                 </header>
             );
