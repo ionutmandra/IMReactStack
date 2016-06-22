@@ -194,7 +194,7 @@ class Home extends Component {
         function animation1() {
             // change behaviour of controller to animate scroll instead of jump
             controller.scrollTo(function (newpos) {
-                var t = TweenMax.to(window, 0.8, { scrollTo: { y: newpos } })
+                var t = TweenMax.to(window, 0.5, { scrollTo: { y: newpos } })
                 timeLines.push(t);
                 return t;
             });
@@ -208,7 +208,7 @@ class Home extends Component {
                     .add(TweenMax.to(this._scrollHint, 0.3, { transformOrigin: "50% 50%", y: '0', ease: Circ.easeIn }))
                 ));
 
-            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '100%', offset: 150 })
+            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '80%', offset: 150 })
                 .addTo(controller)
                 //.addIndicators({name:'1'})
                 .on("end", function (event) {
@@ -302,8 +302,8 @@ class Home extends Component {
                         controller.scrollTo(_this._section4);
                     }
                 }));
-        }        
-        
+        }
+
         function animation2() {
             // change behaviour of controller to animate scroll instead of jump
             controller.scrollTo(function (newpos) {
@@ -416,7 +416,7 @@ class Home extends Component {
                     }
                 }));
         }
-        
+
         function animation3() {
             // change behaviour of controller to animate scroll instead of jump
             controller.scrollTo(function (newpos) {
