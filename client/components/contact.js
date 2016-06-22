@@ -131,13 +131,13 @@ class Contact extends Component {
             </div>
             <div className="right" ref={c => pieces.push(c) }>
                 <ul className="content">
-                    <li>Str.John doe, Nr.2. Iasi, 123456, Romania</li>
-                    <li>+40123 456 789</li>
+                    <li>Sos. Tudor Neculai nr. 52 D, Iasi, Romania</li>
+                    <li>+40729046526</li>
                     <li><a href="mailto:contact@adaptabi.com">contact @adaptabi.com</a></li>
                     <li className="social-media">
-                        <a target="_blank" href="http://linkedin.com"><i className="ncs-linkedin-square" /></a>
-                        <a target="_blank" href="http://facebook.com"><i className="ncs-facebook-square" /></a>
-                        <a target="_blank" href="http://twitter.com"><i className="ncs-twitter" /></a>
+                        <a target="_blank" href="https://www.linkedin.com/company/adaptabi"><i className="ncs-linkedin-square" /></a>
+                        <a target="_blank" href="https://www.facebook.com/Adaptabi-1562569510739468"><i className="ncs-facebook-square" /></a>
+                        <a target="_blank" href="https://twitter.com/adaptabidev"><i className="ncs-twitter" /></a>
                     </li>
                 </ul>
             </div>
