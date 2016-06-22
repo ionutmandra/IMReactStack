@@ -206,7 +206,9 @@
             .small-text-case {
                 color: #fff;
                 position: absolute;
-                top: 60px;
+                top: 50%;
+                height:80px;
+                margin-top: -40px;
                 left: 0;
                 display: inline-block;
                 z-index: 100000;

@@ -1,8 +1,8 @@
 {
 	"metadata": {
 		"name": "new-company-site",
-		"lastOpened": 1466420879474,
-		"created": 1466420876687
+		"lastOpened": 1466603445213,
+		"created": 1466603443755
 	},
 	"iconSets": [
 		{
@@ -3279,8 +3279,11 @@
 				},
 				{
 					"id": 519,
-					"order": 0,
-					"name": "medium"
+					"order": 144,
+					"name": "medium",
+					"prevSize": 28,
+					"code": 62010,
+					"tempChar": ""
 				},
 				{
 					"id": 520,
@@ -3288,7 +3291,7 @@
 					"name": "y-combinator, yc",
 					"prevSize": 28,
 					"code": 62011,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 521,
@@ -3446,7 +3449,7 @@
 					"name": "trademark",
 					"prevSize": 28,
 					"code": 62044,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 552,
@@ -3454,7 +3457,7 @@
 					"name": "registered",
 					"prevSize": 28,
 					"code": 62045,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 553,
@@ -3462,7 +3465,7 @@
 					"name": "creative-commons",
 					"prevSize": 28,
 					"code": 62046,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 554,
@@ -3480,7 +3483,7 @@
 					"name": "tripadvisor",
 					"prevSize": 28,
 					"code": 62050,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 557,
@@ -3503,7 +3506,7 @@
 					"name": "wikipedia-w",
 					"prevSize": 28,
 					"code": 62054,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 561,
@@ -3511,7 +3514,7 @@
 					"name": "safari",
 					"prevSize": 28,
 					"code": 62055,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 562,
@@ -3519,7 +3522,7 @@
 					"name": "chrome",
 					"prevSize": 28,
 					"code": 62056,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 563,
@@ -3527,7 +3530,7 @@
 					"name": "firefox",
 					"prevSize": 28,
 					"code": 62057,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 564,
@@ -3535,7 +3538,7 @@
 					"name": "opera",
 					"prevSize": 28,
 					"code": 62058,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 565,
@@ -3543,7 +3546,7 @@
 					"name": "internet-explorer",
 					"prevSize": 28,
 					"code": 62059,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 566,
@@ -3551,7 +3554,7 @@
 					"name": "television, tv",
 					"prevSize": 28,
 					"code": 62060,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 567,
@@ -3569,7 +3572,7 @@
 					"name": "amazon",
 					"prevSize": 28,
 					"code": 62064,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 570,
@@ -3637,7 +3640,7 @@
 					"name": "vimeo",
 					"prevSize": 28,
 					"code": 62077,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 583,
@@ -3655,7 +3658,7 @@
 					"name": "reddit-alien",
 					"prevSize": 28,
 					"code": 62081,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 586,
@@ -3663,7 +3666,7 @@
 					"name": "edge",
 					"prevSize": 28,
 					"code": 62082,
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"id": 587,
@@ -23280,7 +23283,7 @@
 			"metadata": {
 				"fontFamily": "new-company-site",
 				"majorVersion": 2,
-				"minorVersion": 1
+				"minorVersion": 2
 			},
 			"metrics": {
 				"emSize": 1024,
