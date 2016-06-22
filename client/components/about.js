@@ -69,7 +69,6 @@ class About extends Component {
                     <div className="spacer-100" />
                     <div className="row">
                         <span className="large-16 large-offset-3 medium-5 medium-offset-1 small-22 small-offset-1 columns"><h2 className="content-item">Our culture</h2></span>
-                        <div className="spacer-40 medium-0 small-24  hide-for-medium"/>
                     </div>
                     <div className="spacer-40 hide-for-large" />
                     <div className="row align-middle">
@@ -105,7 +104,7 @@ class About extends Component {
                     <div className="row">
                       <span className="large-offset-3 medium-offset-1 small-offset-1 "><h2 className="content-item">The team</h2></span>
                     </div>
-                    <div className="spacer-40"/>
+                    <div className="spacer-40 hide-for-small-only"/>
                     <div className="row">
                         <div className="large-6 large-offset-3 medium-11 medium-offset-1 small-22 small-offset-1">
                             <div className="row">
