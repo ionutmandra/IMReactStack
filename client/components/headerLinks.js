@@ -28,6 +28,8 @@ class HeaderLinks extends Component {
         this.text = this.header.find('> .text h1');
         this.burgerClose = this.header.find('> .hamburger > .close');
 
+        console.log('heaer link article is ', this.article );
+
         if (this.article.is('.page-home')) {
             this.leftTexts = this.article.find(_.filter([
                 '.slide-1.content .text-2 h2',
@@ -115,7 +117,7 @@ class HeaderLinks extends Component {
             });
             this.props.disableScenes();
             $.scrollLock(true);
-            
+
             TweenMax.set(this.header, { height: '100%' });
 
             let timeline = new TimelineLite({
@@ -148,6 +150,9 @@ class HeaderLinks extends Component {
                     timeline = null;
                     this.article.addClass('contact-open');
                 }).bind(this)})
+                .add(_.filter([
+                    TweenMax.to(this.article.find('.content-item'), .3, { x: '-110%', ease: Power3.easeOut }),
+                ]))
                 .add(_.filter([
                     TweenMax.to(this.links.concat([this.logoText, this.text]), .3, { x: '-100%', ease: Power3.easeOut }),
                     TweenMax.to(this.image, .3, { scale: 1.1, opacity: 0, ease: Power3.easeOut }),

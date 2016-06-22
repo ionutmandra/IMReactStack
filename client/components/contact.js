@@ -44,7 +44,7 @@ class Contact extends Component {
             this.image = this.article.find('.slide.background .img').toArray();
         }
     }
-    
+
     closeContact(event) {
         let burgerIsOpen = this.props.transition.burgerIsOpen;
 
@@ -65,7 +65,7 @@ class Contact extends Component {
                 onComplete: (() => {
                     timeline = null;
                     this.article.removeClass('contact-open');
-                    TweenMax.set(this.header, { height: '' });                    
+                    TweenMax.set(this.header, { height: '' });
                     $.scrollLock(false);
                     setTimeout((() => { this.props.enableScenes(); }).bind(this), 100);
                 }).bind(this)})
@@ -99,6 +99,7 @@ class Contact extends Component {
                 .add(_.filter([
                     TweenMax.to(this.links.concat([this.logoText, this.text]), .3, { x: '0%', ease: Power3.easeOut }),
                     TweenMax.to(this.image, .3, { scale: 1, opacity: 1, ease: Power3.easeOut }),
+                    TweenMax.to(this.article.find('.content-item'), .3, { x: '0%', ease: Power3.easeOut })
                 ]));
         }
 
