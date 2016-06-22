@@ -64,7 +64,7 @@ class Logo extends Component {
     handleClick() {
         let burgerIsOpen = this.article.is('.menu-open');                
         //burgerIsOpen && $window.scrollTop(0);    
-        this.props.transition({
+        this.props.dispatchTransition({
             type: burgerIsOpen && 'burger' || 'header',
             column: 1,
             target: event.currentTarget,
