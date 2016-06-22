@@ -59,7 +59,7 @@ class About extends Component {
                         <div className="large-8 large-offset-3 medium-9 medium-offset-1 small-22 small-offset-1 columns">
                             <h1 className="content-item">Located in Iasi, we have  been crafting web and mobile software applications since 2007</h1>
                             <div className="spacer-40 medium-0 small-24 hide-for-medium"/>
-							<p className="text-under-header content-item">Couple of years ago we started working on <Link to="/portfolio/sfb" onClick={this.handleSafetybankProjectClick}>Safetybank</Link> as a startup project and we took it to an enterprise class application with multiple platforms suppor</p>                        </div>
+    						<p className="text-under-header content-item">Couple of years ago we started working on <Link to="/portfolio/sfb" onClick={this.handleSafetybankProjectClick}>Safetybank</Link> as a startup project and we took it to an enterprise class application with multiple platforms suppor</p>                        </div>
 
                         <div className="spacer-40 medium-0 small-24  hide-for-medium"/>
                         <div className="image large-9 large-offset-1 medium-11 medium-offset-2 small-24 small-offset-0 columns">
@@ -168,8 +168,10 @@ class About extends Component {
                     <div className="spacer-100" />
                 </section>
                 <section className="call-to-action row align-middle">
-                    <div className="image large-9 large-order-1 medium-11 medium-order-2 small-24 columns">
-                        <img src="/client/dist/img/photos/temp3.jpg" />
+                    <div className="large-9 large-order-1 medium-11 medium-order-2 small-24 columns">
+                        <div className="image content-item">
+                            <img src="/client/dist/img/photos/temp3.jpg" />
+                        </div>
                         <div className="show-for-small-only small-22 small-offset-1 columns small-text-case">
                             <p>Everything changes but our passion.</p>
                             <p className="cta">Interested? <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}>Let's talk.</Link></p>
