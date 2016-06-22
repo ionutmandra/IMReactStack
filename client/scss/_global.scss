@@ -1,4 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Poppins:400,600&subset=latin,latin-ext);
+//@import url(https://fonts.googleapis.com/css?family=Poppins:400,600&subset=latin,latin-ext);
+@import './fonts';
 
 html {
     overflow-y: scroll; //prevents horizontal jumping on transitions due to disabling/enabling scroll on body
@@ -44,7 +45,7 @@ a {
     text-decoration: underline;
     transition: opacity .2s ease-out;
 
-    &:hover {
+    &:hover, &:focus {
         color: $text-color;
         opacity: .8;
     }

@@ -17,6 +17,7 @@ import cleanCSS from 'gulp-clean-css';
 import debug from 'gulp-debug';
 import mocha from 'gulp-mocha';
 import rename from 'gulp-rename';
+import concat from 'gulp-concat';
 //import reload from 'browser-sync';
 
 
@@ -47,6 +48,28 @@ gulp.task('watchify', () => {
       .pipe(duration('rebuilding files'))
       .pipe(gulp.dest('./client/dist/js'));
   }
+});
+
+const vendor_files = [
+  './client/lib/jquery/jquery.min.js', 
+  './client/lib/gsap/ColorPropsPlugin.min.js',
+  './client/lib/gsap/ScrollToPlugin.min.js',
+  './client/lib/gsap/CSSPlugin.min.js',
+  './client/lib/gsap/TweenMax.js',
+  './client/lib/scrollMagic/ScrollMagic.min.js',
+  './client/lib/scrollMagic/animation.gsap.min.js',
+  './client/lib/scrollMagic/debug.addIndicators.min.js',
+];
+
+gulp.task('vendor', () => {
+  var piped = gulp.src(vendor_files)
+    .pipe(concat('vendor.js'));
+  
+  if (process.env.NODE_ENV == 'production') {
+    //piped.pipe(uglify());
+  }
+
+  return piped.pipe(gulp.dest('./client/dist/js'));
 });
 
 gulp.task('icomoon-variables', function () {
@@ -85,16 +108,16 @@ gulp.task('app-sass', function (callback) {
   runSequence('icomoon-variables', 'icomoon-fonts', 'sass', callback);
 });
 
+const fontPaths = ['./client/assets/fonts/**'];
+gulp.task('move-fonts', (callback) => {
+    return gulp.src(fontPaths)
+      .pipe(gulp.dest('./client/dist/fonts'));
+});
+
 const imagePaths = ['./client/assets/img/**'];
 gulp.task('move-image-files', (callback) => {
     return gulp.src(imagePaths)
       .pipe(gulp.dest('./client/dist/img'));
-});
-
-const jsFiles = ['./client/lib/gsap/tweenmax.js'];
-gulp.task('move-js-files', (callback) => {
-    return gulp.src(jsFiles)
-      .pipe(gulp.dest('./client/dist/js'));
 });
 
 // Due to photoswipe css we will add the needed images near the css
@@ -115,9 +138,8 @@ gulp.task('test', (callback) => {
       .pipe(gulp.dest('./client/lib/test'));
 });
 
-
 const scssPathsToWatch  = ['./client/lib/**/*.scss', './client/scss/**/*.scss'];
-gulp.task('default', ['watchify', 'app-sass', 'move-js-files', 'move-image-files', 'move-photoswipe-files'], function() {
+gulp.task('default', ['vendor', 'watchify', 'app-sass', 'move-fonts', 'move-image-files', 'move-photoswipe-files'], function() {
   gulp.watch(scssPathsToWatch, ['app-sass']);
 });
 
@@ -183,5 +205,5 @@ gulp.task('unit-tests', function () {
 });
 
 gulp.task('deploy', function () {
-  return runSequence('apply-prod-environment', 'clean', 'build', 'app-sass', 'move-js-files', 'move-image-files', 'move-photoswipe-files', 'minify-css', 'unit-tests');
+  return runSequence('apply-prod-environment', 'clean', 'vendor', 'build', 'app-sass', 'move-fonts', 'move-image-files', 'move-photoswipe-files', 'minify-css', 'unit-tests');
 });
