@@ -54,5 +54,11 @@
             padding-left: rem-calc(20pt);
             li {}
         }
+        .columns {
+            overflow: hidden;
+        }
+        .block{
+            display: block;
+        }
     }
 }

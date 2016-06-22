@@ -38,11 +38,20 @@
             font-weight: $normal;
             color: $text-color;
             margin-bottom: 0px;
+            margin-left: 0px;
             padding-left: rem-calc(20pt);
             li {
                 font-size: rem-calc(16pt);
                 line-height: rem-calc(24pt);
             }
+        }
+
+        .columns {
+            overflow: hidden;
+        }
+
+        .block{
+            display: block;
         }
     }
 }
