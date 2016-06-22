@@ -66,7 +66,7 @@ class PortfolioDetails extends Component {
                     <div className="spacer-40" />
                     <div className="row align-middle">
                         <div className="large-12 large-offset-6 columns">
-                         <ul>
+                         <ul  className="content-item block">
                             <li>Custom data collection and reporting via built-in dynamic forms</li>
                             <li>Extensive reporting and notiﬁcation services</li>
                             <li>Signature capture, Geolocation support, Image processing</li>
@@ -76,12 +76,12 @@ class PortfolioDetails extends Component {
                     <div className="spacer-100" />
                 </section>
                  <section className="call-to-action row align-middle">
-                    <div className="image large-9 columns">
+                    <div className="image content-item large-9 columns">
                         <img src="/client/dist/img/photos/temp3.jpg" />
                     </div>
                     <div className="large-8 large-offset-3 columns">
-                        <p>Everything changes but our passion.</p>
-                        <p className="cta">Want to meet us? <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}>Let's talk</Link></p>
+                        <p className="content-item">Everything changes but our passion.</p>
+                        <p className="cta content-item">Want to meet us? <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}>Let's talk</Link></p>
                     </div>
                 </section>
                 <Footer />
