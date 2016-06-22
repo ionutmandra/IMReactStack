@@ -9,6 +9,7 @@ class Contact extends Component {
     constructor(props) {
         super(props);
         this.closeContact = this.closeContact.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     componentDidMount() {
@@ -104,6 +105,15 @@ class Contact extends Component {
         event.preventDefault();
         return false;
     }
+
+    handleClick(event) {
+        this.props.dispatchTransition({
+            type: 'burger',
+            column: event.currentTarget.getAttribute('data-animate-line'),
+            target: event.currentTarget,
+        });
+    }
+
     render() {
         let pieces = this.pieces = [], closeButton = null;
         if (this.props.renderCloseButton) {
@@ -115,7 +125,7 @@ class Contact extends Component {
             <div className="left" ref={c => pieces.push(c) }>
                 <div className="content">
                     <p>Everything changes but our passion!</p>
-                    <p>Come and <Link data-animate-line="3" onClick={this.handleClick} to={routePaths.client.careers} >join the family</Link>.</p>
+                    <p>Come and <Link data-animate-line="4" onClick={this.handleClick} to={routePaths.client.careers} >join the family</Link>.</p>
                 </div>
             </div>
             <div className="right" ref={c => pieces.push(c) }>
