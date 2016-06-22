@@ -55,6 +55,9 @@
             padding: 0;
             margin: 0;
         }
+        .medium-5-5{
+            @include flex-grid-column(5.5);
+        }
         // Vars
         $grid-line-columns: ( small: 2, medium: 4, large: 8);
         #page-grid {

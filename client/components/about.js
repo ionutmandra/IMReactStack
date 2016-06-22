@@ -171,15 +171,21 @@ class About extends Component {
                     <div className="large-9 large-order-1 medium-11 medium-order-2 small-24 columns">
                         <div className="image content-item">
                             <img src="/client/dist/img/photos/temp3.jpg" />
-                        </div>
-                        <div className="show-for-small-only small-22 small-offset-1 columns small-text-case">
-                            <p>Everything changes but our passion.</p>
-                            <p className="cta">Interested? <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}>Let's talk.</Link></p>
+                            <div className="show-for-small-only small-22 small-offset-1 columns small-text-case">
+                                <p>Everything changes but our passion.</p>
+                                <p className="cta">
+                                    <span className="hide-for-large">Interested? </span>
+                                    <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}>Let's talk.</Link>
+                                 </p>
+                            </div>
                         </div>
                     </div>
                     <div className="large-8 large-offset-3 large-order-1 medium-11 medium-offset-1 medium-order-1 small-24 show-for-medium columns">
                         <p className="content-item">Everything changes but our passion.</p>
-                        <p className="cta content-item">Want to meet us? <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}>Let's talk</Link></p>
+                        <p className="cta content-item">
+                                <span className="show-for-large">Want to meet us? </span>
+                                <span className="hide-for-large">Interested? </span>
+                                <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}>Let's talk</Link></p>
                     </div>
                 </section>
                 <Footer />
