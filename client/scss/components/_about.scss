@@ -58,7 +58,7 @@
                 }
             }
             .block {
-              display: inline-block;
+                display: inline-block;
             }
         }
         .columns {
@@ -125,6 +125,15 @@
                     max-height: 325px;
                     width: 100%;
                 }
+            }
+        }
+        section.call-to-action {
+            font-size: rem-calc(16pt);
+            p {
+                margin-bottom: 0.4rem;
+            }
+            .cta {
+                font-size: rem-calc(30pt);
             }
         }
         .columns {
@@ -197,7 +206,7 @@
             .small-text-case {
                 color: #fff;
                 position: absolute;
-                top: 140px;
+                top: 89px;
                 left: 0;
                 display: inline-block;
                 z-index: 100000;
