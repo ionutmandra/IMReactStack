@@ -136,6 +136,7 @@ class HeaderLinks extends Component {
             this.props.dispatchTransition({
                 type: 'contact',
                 burgerIsOpen: false,
+                homePage: false,
                 initialHeight,
             });
 
