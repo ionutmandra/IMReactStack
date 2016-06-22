@@ -12,7 +12,7 @@ class Portfolio extends Component {
     }
 
     handleProjDetailsClick(event) {
-          this.props.transition({
+          this.props.dispatchTransition({
               type: 'content',
               column: 5,
               target: event.target,

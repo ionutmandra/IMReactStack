@@ -16,7 +16,7 @@ class CareerDetails extends Component {
     }
 
     handleBackToCareersClick(event) {
-          this.props.transition({
+          this.props.dispatchTransition({
               type: 'content',
               column: 6,
               target: event.target,

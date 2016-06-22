@@ -1,1 +1,5 @@
 //site-specific mixins
+@mixin disable-link {
+    text-decoration: none !important;
+    pointer-events: none !important;
+}

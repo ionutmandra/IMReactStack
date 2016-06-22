@@ -16,7 +16,7 @@ class Expertise extends Component {
 
         this.setState({cancelScene: 'true'});
 
-          this.props.transition({
+          this.props.dispatchTransition({
               type: 'content',
               column: 6,
               target: event.target,

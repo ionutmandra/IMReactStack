@@ -38,7 +38,7 @@ class Home extends Component {
                 break;
         }
 
-        this.props.transition({
+        this.props.dispatchTransition({
             type: 'home_content',
             column: event.target.getAttribute('data-animate-line'),
             target: event.target,

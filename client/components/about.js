@@ -20,7 +20,7 @@ class About extends Component {
   }
 
   handleSafetybankProjectClick(event) {
-    this.props.transition({
+    this.props.dispatchTransition({
       type: 'content',
       column: 5,
       target: event.target,
@@ -31,7 +31,7 @@ class About extends Component {
 
     this.setState({cancelScene: 'true'});
 
-    this.props.transition({
+    this.props.dispatchTransition({
       type: 'content',
       column: 6,
       target: event.target,

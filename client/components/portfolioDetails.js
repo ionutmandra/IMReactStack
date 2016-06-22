@@ -11,7 +11,7 @@ class PortfolioDetails extends Component {
         this.handleCallToActionClick = this.handleCallToActionClick.bind(this);
     }
     handleCallToActionClick(event) {
-          this.props.transition({
+          this.props.dispatchTransition({
               type: 'content',
               column: 6,
               target: event.target,

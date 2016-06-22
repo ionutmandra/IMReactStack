@@ -126,14 +126,14 @@ class Contact extends Component {
             <div className="left" ref={c => pieces.push(c) }>
                 <div className="content">
                     <p>Everything changes but our passion!</p>
-                    <p>Come and <Link data-animate-line="4" onClick={this.handleClick} to={routePaths.client.careers} >join the family</Link>.</p>
+                    <p>Come and <Link data-animate-line="4" onClick={this.handleClick} to={routePaths.client.careers} className="join-the-family">join the family</Link>.</p>
                 </div>
             </div>
             <div className="right" ref={c => pieces.push(c) }>
                 <ul className="content">
                     <li>Sos. Tudor Neculai nr. 52 D, Iasi, Romania</li>
                     <li>+40729046526</li>
-                    <li><a href="mailto:contact@adaptabi.com">contact @adaptabi.com</a></li>
+                    <li><a href="mailto:contact@adaptabi.com">contact@adaptabi.com</a></li>
                     <li className="social-media">
                         <a target="_blank" href="https://www.linkedin.com/company/adaptabi"><i className="ncs-linkedin-square" /></a>
                         <a target="_blank" href="https://www.facebook.com/Adaptabi-1562569510739468"><i className="ncs-facebook-square" /></a>

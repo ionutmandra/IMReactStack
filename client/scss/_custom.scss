@@ -7,86 +7,14 @@
 // If you need to style a component or section/part of the page, 
 // use dedicated files and import them in style.scss.
 // Only use this file for one-off things that are not worthy of
-// a separate file. Cross-browser issue fixes may need a separate file!
+// a separate file. Cross-browser issue fixes should be in a separate file!
 
+////////////////////////
+//
+//  Link style disabling for links that to not navigate
+//
+////////////////////////
 
-// .loginCtainer {
-// 	background-color: black;
-// }
-
-// .simple-list-header{
-//     cursor: pointer;
-// }
-// .simple-list-row {
-//     @extend .clearfix;
-// }
-
-// //Gsap temporary styles
-// .div-ctainer1{    
-//     height: 700px;
-//     background-color: yellow;
-// }
-// .div-ctainer2{
-//     height: 700px;
-//     background-color: orange;
-// }
-// .div-ctainer3{    
-//     height: 700px;
-//     background-color: aqua;
-// }
-// .div-ctainer4{
-//     height: 400px;
-//     width:400px;
-//     background-color: red;
-// }
-// .div12{
-//     background-color: maroon;
-//     height: 100%;
-//     width: 200px;
-//     float: left;
-// }
-// .div13{
-//     margin-top: 300px;
-//     float: left;
-//     width: 300px;
-//     background-color: lightpink;
-// }
-// .div14{
-//     background-color: white;
-//     width: 100px;
-// }
-
-// #divc4{
-//      height: 700px;
-//     background-color: beige;
-// }
-// #div41{
-//     width: 300px;
-//     height: 300px;
-//     background-color: yellow;
-// }
-
-// #divc5{
-//      height: 700px;
-//     background-color: orange;
-// }
-// #div51{
-//     width: 300px;
-//     height: 300px;
-//     background-color: yellow;
-// }
-// #divc6{
-//      height: 700px;
-//     background-color: beige;
-// }
-// #div61{
-//     width: 300px;
-//     height: 300px;
-//     background-color: yellow;
-// }
-
-// .tr1{position: fixed; overflow: visible; white-space: nowrap; pointer-events: none; font-size: 0.85em; z-index: 9999; top: 509.5px; left: 1843px;}
-// .tr2{position: absolute; overflow: visible; border-width: 1px 0px 0px; border-style: solid; color: blue; border-color: blue; right: 0px;}
-// .tr3{position: relative; padding: 0px 8px 3px; transform: translateY(-100%);}
-
-
+article.page-careers .contact .join-the-family {
+    @include disable-link;
+}

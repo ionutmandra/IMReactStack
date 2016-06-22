@@ -6,7 +6,7 @@ import * as actions from '../actions';
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        transition: function (setup) {
+        dispatchTransition: function (setup) {
             dispatch(actions.transition(setup));
         },
     };
