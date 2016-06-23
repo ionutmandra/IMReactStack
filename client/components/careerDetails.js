@@ -45,7 +45,9 @@ class CareerDetails extends Component {
                 <article className="page page-career-details">
                     <Header title={'Careers'} />
                     <section className="content">
-                        <div className="spacer-100"></div>
+                        <div className="spacer-100 show-for-medium"></div>
+                        <div className="spacer-60 show-for-small-only"></div>
+
                         {
                          this.renderJobDescription()
                         }
