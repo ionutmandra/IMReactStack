@@ -30,10 +30,7 @@ export default (BaseComponent) => {
 
             //console.log('componentWillAppear', this);
 
-            this.clean = this.animation.appear(this.refs.container, this.callback.bind(this, callback));
-        }
-        componentDidAppear() {
-            this.performCleanup();
+            this.animation.appear(this.refs.container, this.callback.bind(this, callback));
         }
         componentWillEnter(callback) {
             let transition = this._clone.props.transition;
@@ -48,14 +45,11 @@ export default (BaseComponent) => {
             //console.log('componentWillEnter', this);
 
             if (this.animation['enter_' + transition.type]) {
-                this.clean = this.animation['enter_' + transition.type](this.refs.container, this.callback.bind(this, callback), transition);
+                this.animation['enter_' + transition.type](this.refs.container, this.callback.bind(this, callback), transition);
             }
             else {
                 console.warn('On enter, ' + animation + 'does not have any animation: ' + transition.type);
             }
-        }
-        componentDidEnter() {
-            this.performCleanup();
         }
         componentWillLeave(callback) {
             let transition = this._clone.props.transition;
@@ -64,18 +58,15 @@ export default (BaseComponent) => {
             }
             $body.addClass('navigating');
 
-            console.log('componentWillLeave using transition description ', transition);
+            console.log('componentWillLeave using transition description ' , transition);
 
             if (this.animation['leave_' + transition.type]) {
-                this.clean = this.animation['leave_' + transition.type](this.refs.container, this.callback.bind(this, callback), transition);
+                this.animation['leave_' + transition.type](this.refs.container, this.callback.bind(this, callback), transition);
             }
             else {
                 console.warn('On leave, does not have any animation: ' + transition.type);
             }
 
-        }
-        componentDidLeave() {
-            this.performCleanup();
         }
         callback(callback) {
             $body.removeClass('navigating');
@@ -83,28 +74,6 @@ export default (BaseComponent) => {
         }
         render() {
             return (this._clone = React.cloneElement(super.render(), { ref: 'container' }));
-        }
-        performCleanup() {
-            if (this.clean) {
-                if (this.clean.scenes) {
-                    for (let i = 0; i < this.clean.scenes.length; i++) {
-                        if (this.clean.scenes[i]) {
-                            this.clean.scenes[i].destroy();
-                            this.clean.scenes[i] = null;
-                        }
-                    }
-                }
-                if (this.clean.timeLines) {
-                    for (let i = 0; i < this.clean.timeLines.length; i++) {
-                        this.clean.timeLines[i] = null;
-                    }
-                }
-                if (this.clean.controller) {
-                    this.clean.controller.destroy();
-                    this.clean.controller = null;
-                }
-                this.clean = null;
-            }
         }
     }
 

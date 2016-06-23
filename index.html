@@ -175,7 +175,7 @@
     TweenMax.set('#rightLogo',{x:'-100%'});
     TweenMax.set('#adaptabiTxt', { display:'none' });
 
-    new TimelineLite()
+    let timeline = new TimelineLite({ onComplete: () => { timeline = null; } })
     .add(TweenMax.to('#line', 1, { height: '20%', ease: Power3.easeIn }))
     .add(TweenMax.to('#line', 1, { height: '80%' }))
     .add(TweenMax.to('#line', 1, { height: '100%', ease: Power3.easeOut }))
@@ -207,7 +207,7 @@
 
                 clearInterval(tick);
 
-                new TimelineLite()
+                let timeline = new TimelineLite({ onComplete: () => { timeline = null; }})
                 .add([
                     TweenMax.set('#line',{ 'border-right': 'none'}),
                     TweenMax.to('#line', 1, { x: '-100%', ease: Power3.easeIn }),

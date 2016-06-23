@@ -13,7 +13,7 @@ export function appear(ref, callback) {
     let image = $container.find('.slide-1.background .img')[0];
     image && TweenMax.set(image, { scale: 1.4 });
     TweenMax.set(container, { opacity: 0 });
-    new TimelineLite({ onComplete: callback })
+    let timeline = new TimelineLite({ onComplete: () => { timeline = null; callback();} })
         .add(_.filter([
             image && TweenMax.to(image, 1, { scale: 1, ease: Power3.easeOut }),
             TweenMax.to(container, 1, { opacity: 1, ease: Power3.easeOut }),
@@ -49,7 +49,7 @@ export function enter_header(ref, callback, transition) {
     var arr2 = Object.assign([0, 0, 0, 0], {
         ease: Power3.easeIn, onUpdate: () => {
             TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
-        }
+        },
     });
     $window.scrollTop(0);
     $body.css('overflow', 'hidden');
@@ -64,8 +64,8 @@ export function enter_header(ref, callback, transition) {
     elements.image && TweenMax.set(elements.image, { scale: 1.4 });
 
     //Animation
-    new TimelineLite({
-        onComplete: () => { callback(); $body.css('overflow', 'visible'); $container.removeClass('overlap'); }
+    let timeline = new TimelineLite({
+        onComplete: () => { callback(); $body.css('overflow', 'visible'); $container.removeClass('overlap'); timeline = null; },
     })
         .set({}, {}, .6) //wait for leaving page to hide content
         .add(_.filter([
@@ -96,7 +96,7 @@ export function leave_header(ref, callback, transition) {
     TweenMax.set(container, { zIndex: 1 });
 
     //Animation
-    new TimelineLite({ onComplete: () => { callback(); $container.removeClass('overlap'); } })
+    let timeline = new TimelineLite({ onComplete: () => { callback(); $container.removeClass('overlap'); timeline = null; } })
         .add(_.filter([
             elements.image && TweenMax.to(elements.image, 1.65, { scale: 2.4, ease: Power3.easeIn, delay: .15 }),
             elements.text1 && TweenMax.to(elements.text1, .3, { x: '100%' }),
@@ -135,7 +135,7 @@ export function enter_burger(ref, callback, transition) {
     var arr2 = Object.assign([0, 0, 0, 0], {
         ease: Power3.easeIn, onUpdate: () => {
             TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
-        }
+        },
     });
     $window.scrollTop(0);
     $body.css('overflow', 'hidden');
@@ -150,8 +150,8 @@ export function enter_burger(ref, callback, transition) {
     elements.image && TweenMax.set(elements.image, { scale: 1.4 });
 
     //Animation
-    new TimelineLite({
-        onComplete: () => { callback(); $body.css('overflow', 'visible'); $container.removeClass('overlap'); }
+    let timeline = new TimelineLite({
+        onComplete: () => { callback(); $body.css('overflow', 'visible'); $container.removeClass('overlap'); timeline = null; },
     })
         .set({}, {}, .6) //wait for leaving page to hide content
         .add(_.filter([
@@ -183,7 +183,7 @@ export function leave_burger(ref, callback, transition) {
     TweenMax.set(container, { zIndex: 1 });
 
     //Animation
-    new TimelineLite({ onComplete: () => { callback(); $container.removeClass('overlap'); } })
+    let timeline = new TimelineLite({ onComplete: () => { callback(); $container.removeClass('overlap'); timeline = null; } })
         .add(_.filter([
             elements.image && TweenMax.to(elements.image, 1.65, { scale: 1.4, ease: Power3.easeIn, delay: .15 }),
             elements.text1 && TweenMax.to(elements.text1, .3, { x: '100%' }),
@@ -221,12 +221,7 @@ export function leave_home_content(ref, callback, transition) {
     }    
 
     //Animation
-    new TimelineLite({
-        onComplete: () => {
-            callback();
-            $container.removeClass('overlap');
-        }
-    })
+    let timeline = new TimelineLite({ onComplete: () => { callback(); $container.removeClass('overlap'); timeline = null; } })
         .add(animations)     
         .set({}, {}, 2.4);
 

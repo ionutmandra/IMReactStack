@@ -52,7 +52,7 @@
 
                         a {
                             display: inline-block;
-                            @include grid-col-size(2.66);
+                            @include grid-col-size(2);
                             font-size: rem-calc(28pt);
                         }
                     }
