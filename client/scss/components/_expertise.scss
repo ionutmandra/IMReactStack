@@ -82,12 +82,12 @@
             }
         }
         .call-to-action {
-            font-size: rem-calc(16pt);
+            font-size: rem-calc(14pt);
             p {
                 margin-bottom: 0.4rem;
             }
              .cta {
-                font-size: rem-calc(30pt);
+                font-size: rem-calc(24pt);
             }
             .image {
                 &:after {
@@ -104,6 +104,49 @@
 
 @media screen and #{breakpoint(small only)} {
     #page-container article.page-expertise {
+        section.content {
+            h1 {
+                font-family: "Poppins";
+                font-weight: $semibold;
+                font-size: rem-calc(18pt);
+                line-height: rem-calc(26pt);
+                color: $text-color;
+                margin-bottom: 0px;
+            }
+            h2 {
+                font-family: "Poppins";
+                font-weight: $semibold;
+                font-size: rem-calc(16pt);
+                line-height: rem-calc(24pt);
+                color: $text-color;
+                margin-bottom: 0px;
+            }
+            p {
+                font-family: "Poppins";
+                font-weight: $normal;
+                font-size: rem-calc(14pt);
+                line-height: rem-calc(22pt);
+                color: $text-color;
+                margin-bottom: 0px;
+                &.text-under-header {
+                    font-size: rem-calc(16pt);
+                    line-height: rem-calc(24pt);
+                }
+                &.memeber-name {
+                    padding-bottom: 10px;
+                    font-weight: $normal;
+                    font-size: rem-calc(16pt);
+                    line-height: rem-calc(24pt);
+                }
+                &.memeber-job {
+                    font-weight: $normal;
+                    font-size: rem-calc(14pt);
+                    line-height: rem-calc(22pt);
+                    padding-bottom: 20px;
+                    color: #c3c3c3;
+                }
+            }
+        }
         .technologies {
             img {
                 width: 50%;
@@ -124,7 +167,7 @@
         }
         .processes {
             i {
-                font-size: 118px;
+                font-size: 90px;
                 color: #c3c3c3;
                 transition: color 0.5s ease;
                 display: block;
@@ -149,7 +192,9 @@
             .small-text-case {
                 color: #fff;
                 position: absolute;
-                top: 89px;
+                top: 50%;
+                height:80px;
+                margin-top: -40px;
                 left: 0;
                 display: inline-block;
                 z-index: 100000;
@@ -158,16 +203,16 @@
                 p {
                     color: #fff;
                     &:first-child {
-                        font-size: rem-calc(18pt);
+                        font-size: rem-calc(10pt);
                         opacity: 0.8;
                         margin-bottom: 0;
                     }
                     &:last-child {
-                        font-size: rem-calc(36pt);
+                        font-size: rem-calc(22pt);
                     }
                 }
                 a {
-                    font-size: rem-calc(36pt);
+                    font-size: rem-calc(22pt);
                     color: #fff;
                 }
             }
