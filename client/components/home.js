@@ -565,10 +565,10 @@ class Home extends Component {
                     if (flag) {
                         let t1 = new Date().getTime();
                         if (t1 - t0 < 100) {
-                            console.warn('blocked scroll 1', t1-t0);
+                            // console.warn('blocked scroll 1', t1-t0);
                             return false;
                         } else {
-                            console.warn('released scroll 1');
+                            // console.warn('released scroll 1');
                             flag = false;
                         }
                     }
@@ -625,10 +625,10 @@ class Home extends Component {
                     if (flag) {
                         let t1 = new Date().getTime();
                         if (t1 - t0 < 100) {
-                            console.warn('blocked scroll 2', t1-t0);
+                            // console.warn('blocked scroll 2', t1-t0);
                             return false;
                         } else {
-                            console.warn('released scroll 2');
+                            // console.warn('released scroll 2');
                             flag = false;
                         }
                     }

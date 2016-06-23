@@ -31,23 +31,28 @@ class HeaderLinks extends Component {
         console.log('heaer link article is ', this.article );
 
         if (this.article.is('.page-home')) {
-            this.leftTexts = this.article.find(_.filter([
-                '.slide-1.content .text-2 h2',
-                '.slide-2.content .text-1 h1',
-                '.slide-2.content .text-3 .text-content',
-                '.slide-3.content .text-2 h1',
-                '.slide-4.content .text-1 h1',
-            ]).join(', ')).toArray();
-            this.rightTexts = this.article.find(_.filter([
-                '.slide-1.content .text-1 h1',
-                '.slide-2.content .text-2 .text-content',
-                '.slide-3.content .text-1 h1',
-            ]).join(', ')).toArray();
-            this.bottomTexts = this.article.find(_.filter([
-                '.slide-1.content .scroll-hint > span',
-                '.slide-1.content .scroll-hint > p',
-            ]).join(', ')).toArray();
-            this.image = this.article.find('.slide.background .img').toArray();
+            this.leftTexts = [
+                this.article.find('.slide-1.content .text-2 h2').toArray(),
+                this.article.find('.slide-2.content .text-1 h1, .slide-2.content .text-3 .text-content').toArray(),
+                this.article.find('.slide-3.content .text-2 h1').toArray(),
+                this.article.find('.slide-4.content .text-1 h1').toArray(),
+            ];
+            this.rightTexts = [
+                this.article.find('.slide-1.content .text-1 h1').toArray(),
+                this.article.find('.slide-2.content .text-2 .text-content').toArray(),
+                this.article.find('.slide-3.content .text-1 h1').toArray(),
+                {},
+            ];
+            this.bottomTexts = [
+                this.article.find('.slide-1.content .scroll-hint > *').toArray(),
+                {}, {}, {},
+            ];
+            this.image = [
+                this.article.find('.slide-1.background .img').toArray(),
+                this.article.find('.slide-2.background .img').toArray(),
+                this.article.find('.slide-3.background .img').toArray(),
+                this.article.find('.slide-4.background .img').toArray(),
+            ];
         }
 
         if (this.props.stationary) return;
@@ -110,26 +115,30 @@ class HeaderLinks extends Component {
                     TweenMax.to(this.contactPieces, .3, { x: '0%', ease: Power3.easeOut }),
                 ]));
         } else if (this.article.is('.page-home')) {
+            let currentSlide = Math.floor($window.scrollTop() / $window.height());
             this.props.dispatchTransition({
                 type: 'contact',
                 homePage: true,
                 burgerIsOpen: false,
+                currentSlide,
             });
             this.props.disableScenes();
             $.scrollLock(true);
-
+            
             TweenMax.set(this.header, { height: '100%' });
 
+            console.warn('slide', currentSlide);
+            
             let timeline = new TimelineLite({
                 onComplete: (() => {
                     timeline = null;
                     this.article.addClass('contact-open');
                 }).bind(this)})
                 .add(_.filter([
-                    TweenMax.to(this.links.concat([this.logoText], this.leftTexts), .3, { x: '-100%', ease: Power3.easeIn }),
-                    TweenMax.to(this.rightTexts, .3, { x: '100%', ease: Power3.easeIn }),
-                    TweenMax.to(this.bottomTexts, .3, { y: '200%', ease: Power3.easeIn }),
-                    TweenMax.to(this.image, .6, { scale: 1.1, ease: Power3.easeInOut }),
+                    TweenMax.to(this.links.concat([this.logoText], this.leftTexts[currentSlide]), .3, { x: '-100%', ease: Power3.easeIn }),
+                    TweenMax.to(this.rightTexts[currentSlide], .3, { x: '100%', ease: Power3.easeIn }),
+                    TweenMax.to(this.bottomTexts[currentSlide], .3, { y: '200%', ease: Power3.easeIn }),
+                    TweenMax.to(this.image[currentSlide], .6, { scale: 1.1, opacity: 0, ease: Power3.easeInOut }),
                     TweenMax.to(this.contactPieces, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
                 ]));
         } else {
