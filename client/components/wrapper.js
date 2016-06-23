@@ -140,8 +140,10 @@ $.scrollLock = ( function scrollLockClosure() {
         //         return false;
         //     }
         // });
+        
+        window.ReactLoaded = true;
     }
-    
+
     render() {
         return (<TranslationProvider id="page-wrapper">
             <ReactTransitionGroup component="div" id="page-container">
@@ -152,4 +154,4 @@ $.scrollLock = ( function scrollLockClosure() {
     }
 }
 
-export default Wrapper; 
+export default Wrapper;
