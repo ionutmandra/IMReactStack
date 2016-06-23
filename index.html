@@ -5,7 +5,6 @@
     <link rel="stylesheet" href="/client/dist/css/style.css" type="text/css"></link>
     <!-- <link rel="stylesheet" href="/dist/css/photoswipe.css" type="text/css"></link> -->
     <script type="text/javascript" src="/client/dist/js/vendor.js"></script>
-    <script type="text/javascript" src="/client/dist/js/tweenmax.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
     #preload{
@@ -177,7 +176,7 @@
     .add(function(){
 
         var tick = setInterval(function(){myTimer() }, 200);
-        function myTimer() {            
+        function myTimer() {
 
             if(window.ReactLoaded){
 
@@ -185,6 +184,7 @@
 
                 new TimelineLite()
                 .add([
+                    TweenMax.set('#line',{ 'border-right': 'none'}),
                     TweenMax.to('#line', 1, { x: '-100%', ease: Power3.easeIn }),
                     TweenMax.to('#liner', 1, { x: '+100%', ease: Power3.easeIn }),
                 ])
