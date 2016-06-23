@@ -1,88 +1,269 @@
-#page-container article.page-portfolio-details {
-    section.content {
-        h1 {
-            font-family: "Poppins";
-            font-weight: $semibold;
-            font-size: rem-calc(26pt);
-            line-height: rem-calc(36pt);
-            color: $text-color;
-            margin-bottom: 0px;
-        }
-        h2 {
-            font-family: "Poppins";
-            font-weight: $semibold;
-            font-size: rem-calc(24pt);
-            line-height: rem-calc(34pt);
-            color: $text-color;
-            margin-bottom: 0px;
-        }
-        h3 {
-            font-family: "Poppins";
-            font-weight: $normal;
-            font-size: rem-calc(20pt);
-            line-height: rem-calc(30pt);
-            color: $text-color;
-            margin-bottom: 0px;
-        }
-        p {
-            font-family: "Poppins";
-            font-weight: $normal;
-            color: $text-color;
-            margin-bottom: 0px;
-            font-size: rem-calc(16pt);
-            line-height: rem-calc(24pt);
-        }
-        ul {
-            font-family: "Poppins";
-            font-weight: $normal;
-            color: $text-color;
-            margin-bottom: 0px;
-            padding-left: rem-calc(20pt);
-            li {
+@media screen and #{breakpoint(large)} {
+    #page-container article.page-portfolio-details {
+        section.content {
+            h1 {
+                font-family: "Poppins";
+                font-weight: $semibold;
+                font-size: rem-calc(26pt);
+                line-height: rem-calc(36pt);
+                color: $text-color;
+                margin-bottom: 0px;
+            }
+            h2 {
+                font-family: "Poppins";
+                font-weight: $semibold;
+                font-size: rem-calc(24pt);
+                line-height: rem-calc(34pt);
+                color: $text-color;
+                margin-bottom: 0px;
+            }
+            h3 {
+                font-family: "Poppins";
+                font-weight: $normal;
+                font-size: rem-calc(20pt);
+                line-height: rem-calc(30pt);
+                color: $text-color;
+                margin-bottom: 0px;
+            }
+            p {
+                font-family: "Poppins";
+                font-weight: $normal;
+                color: $text-color;
+                margin-bottom: 0px;
                 font-size: rem-calc(16pt);
                 line-height: rem-calc(24pt);
             }
-        }
-        .awards {
-            .image-container {
-                display: inline-block;
-                width: 150px;
-                height: 150px;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                background-size: contain;
-                background-repeat: no-repeat;
-                background-position: center center;
-                &.award1 {
-                    background-image: url("/client/dist/img/projects/safetybank/award1.png");
+            ul {
+                font-family: "Poppins";
+                font-weight: $normal;
+                color: $text-color;
+                margin-bottom: 0px;
+                padding-left: rem-calc(20pt);
+                li {
+                    font-size: rem-calc(16pt);
+                    line-height: rem-calc(24pt);
                 }
-                &.award2 {
-                    background-image: url("/client/dist/img/projects/safetybank/award2.png");
-                }
-                &.award3 {
-                    background-image: url("/client/dist/img/projects/safetybank/award3.png");
-                }
-                &.award4 {
-                    background-image: url("/client/dist/img/projects/safetybank/award4.png");
-                }
-                &.award5 {
-                    background-image: url("/client/dist/img/projects/safetybank/award5.jpg");
+            }
+            .awards {
+                .image-container {
+                    display: inline-block;
+                    //width: 150px;
+                    height: 150px;
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: left center;
+                    &.award1 {
+                        background-image: url("/client/dist/img/projects/safetybank/award1.png");
+                    }
+                    &.award2 {
+                        background-image: url("/client/dist/img/projects/safetybank/award2.png");
+                    }
+                    &.award3 {
+                        background-image: url("/client/dist/img/projects/safetybank/award3.png");
+                    }
+                    &.award4 {
+                        background-image: url("/client/dist/img/projects/safetybank/award4.png");
+                    }
+                    &.award5 {
+                        background-image: url("/client/dist/img/projects/safetybank/award5.jpg");
+                    }
                 }
             }
         }
-    }
-    section.call-to-action {
-        .image {
-            &:after {
-                background: linear-gradient(45deg, #1895a3 0%, #4f2063 100%);
+        section.call-to-action {
+            .image {
+                &:after {
+                    background: linear-gradient(45deg, #1895a3 0%, #4f2063 100%);
+                }
             }
         }
+        .columns {
+            overflow: hidden;
+        }
+        .block {
+            display: inline-block;
+        }
     }
+}
 
-    .columns{
-        overflow: hidden;
+@media screen and #{breakpoint(medium only)} {
+    #page-container article.page-portfolio-details {
+        section.content {
+            h1 {
+                font-family: "Poppins";
+                font-weight: $semibold;
+                font-size: rem-calc(26pt);
+                line-height: rem-calc(36pt);
+                color: $text-color;
+                margin-bottom: 0px;
+            }
+            h2 {
+                font-family: "Poppins";
+                font-weight: $semibold;
+                font-size: rem-calc(24pt);
+                line-height: rem-calc(34pt);
+                color: $text-color;
+                margin-bottom: 0px;
+            }
+            h3 {
+                font-family: "Poppins";
+                font-weight: $normal;
+                font-size: rem-calc(20pt);
+                line-height: rem-calc(30pt);
+                color: $text-color;
+                margin-bottom: 0px;
+            }
+            p {
+                font-family: "Poppins";
+                font-weight: $normal;
+                color: $text-color;
+                margin-bottom: 0px;
+                font-size: rem-calc(16pt);
+                line-height: rem-calc(24pt);
+            }
+            ul {
+                font-family: "Poppins";
+                font-weight: $normal;
+                color: $text-color;
+                margin-bottom: 0px;
+                padding-left: rem-calc(20pt);
+                li {
+                    font-size: rem-calc(16pt);
+                    line-height: rem-calc(24pt);
+                }
+            }
+            .awards {
+                .image-container {
+                    display: inline-block;
+                    width: 150px;
+                    height: 150px;
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    &.award1 {
+                        background-image: url("/client/dist/img/projects/safetybank/award1.png");
+                    }
+                    &.award2 {
+                        background-image: url("/client/dist/img/projects/safetybank/award2.png");
+                    }
+                    &.award3 {
+                        background-image: url("/client/dist/img/projects/safetybank/award3.png");
+                    }
+                    &.award4 {
+                        background-image: url("/client/dist/img/projects/safetybank/award4.png");
+                    }
+                    &.award5 {
+                        background-image: url("/client/dist/img/projects/safetybank/award5.jpg");
+                    }
+                }
+            }
+        }
+        section.call-to-action {
+            .image {
+                &:after {
+                    background: linear-gradient(45deg, #1895a3 0%, #4f2063 100%);
+                }
+            }
+        }
+        .columns {
+            overflow: hidden;
+        }
+        .block {
+            display: inline-block;
+        }
     }
-    .block{
-      display: inline-block;
+}
+
+@media screen and #{breakpoint(small only)} {
+    #page-container article.page-portfolio-details {
+        section.content {
+            h1 {
+                font-family: "Poppins";
+                font-weight: $semibold;
+                font-size: rem-calc(26pt);
+                line-height: rem-calc(36pt);
+                color: $text-color;
+                margin-bottom: 0px;
+            }
+            h2 {
+                font-family: "Poppins";
+                font-weight: $semibold;
+                font-size: rem-calc(24pt);
+                line-height: rem-calc(34pt);
+                color: $text-color;
+                margin-bottom: 0px;
+            }
+            h3 {
+                font-family: "Poppins";
+                font-weight: $normal;
+                font-size: rem-calc(20pt);
+                line-height: rem-calc(30pt);
+                color: $text-color;
+                margin-bottom: 0px;
+            }
+            p {
+                font-family: "Poppins";
+                font-weight: $normal;
+                color: $text-color;
+                margin-bottom: 0px;
+                font-size: rem-calc(16pt);
+                line-height: rem-calc(24pt);
+            }
+            ul {
+                font-family: "Poppins";
+                font-weight: $normal;
+                color: $text-color;
+                margin-bottom: 0px;
+                padding-left: rem-calc(20pt);
+                li {
+                    font-size: rem-calc(16pt);
+                    line-height: rem-calc(24pt);
+                }
+            }
+            .awards {
+                .image-container {
+                    display: inline-block;
+                    width: 150px;
+                    height: 150px;
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    &.award1 {
+                        background-image: url("/client/dist/img/projects/safetybank/award1.png");
+                    }
+                    &.award2 {
+                        background-image: url("/client/dist/img/projects/safetybank/award2.png");
+                    }
+                    &.award3 {
+                        background-image: url("/client/dist/img/projects/safetybank/award3.png");
+                    }
+                    &.award4 {
+                        background-image: url("/client/dist/img/projects/safetybank/award4.png");
+                    }
+                    &.award5 {
+                        background-image: url("/client/dist/img/projects/safetybank/award5.jpg");
+                    }
+                }
+            }
+        }
+        section.call-to-action {
+            .image {
+                &:after {
+                    background: linear-gradient(45deg, #1895a3 0%, #4f2063 100%);
+                }
+            }
+        }
+        .columns {
+            overflow: hidden;
+        }
+        .block {
+            display: inline-block;
+        }
     }
 }

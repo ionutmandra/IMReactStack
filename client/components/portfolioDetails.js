@@ -24,34 +24,27 @@ class PortfolioDetails extends Component {
                 <section className="content">
                 <div className="spacer-60"/>
                 <div className="row align-middle">
-                        <div className="large-7 large-offset-3 columns">
+                        <div className="large-7 large-offset-3 medium-9 medium-offset-1 small-22 small-offset-1 columns">
                             <h1 className="content-item">Safetybank is an online health and safety information system</h1>
                             <div className="project-description content-item">
                                 <p>It revolutionizes the built environment in UK and worldwide.</p>
                             </div>
                         </div>
-                        <div className="large-9 large-offset-2 columns">
+                        <div className="large-9 large-offset-2  medium-11 medium-offset-2 small-22 small-offset-1 columns">
                             <img src="/client/dist/img/projects/safetybank/blog-sfb.jpg" className="content-item" />
                         </div>
                     </div>
                     <div className="spacer-100" />
                     <div className="row align-middle awards">
-                        <div className="large-3 large-offset-3 columns project-awards">
-                            <span className="image-container award3 content-item"></span>
-                            <div className="spacer-40"/>
-                            <span className="image-container award5 content-item"></span>
+                        <div className="large-9 large-offset-3 medium-22 medium-offset-1 medium-order-2  columns project-awards">
+                            <span className="image-container award3 content-item large-8 large-offset-0 madium-8 medium-offset-0 small-12 small-offset-0"></span>
+                            <span className="image-container award1 content-item large-8 large-offset-0 madium-8 medium-offset-0 small-12 small-offset-0"></span>
+                            <span className="image-container award4 content-item large-8 large-offset-0 madium-8 medium-offset-0 small-12 small-offset-0"></span>
+                            <div className="spacer-40 larfe-24 show-on-large-only"/>
+                            <span className="image-container award2 content-item large-8 large-offset-0 madium-8 medium-offset-0 small-12 small-offset-0"></span>
+                            <span className="image-container award5 content-item large-8 large-offset-0 madium-8 medium-offset-0 small-12 small-offset-0"></span>
                         </div>
-                        <div className="large-3 columns  project-awards">
-                                <span className="image-container award1 content-item"></span>
-                                <div className="spacer-40"/>
-                                <span className="image-container award2 content-item"></span>
-                        </div>
-                        <div className="large-3 columns  project-awards">
-                                <span className="image-container award4 content-item"></span>
-                                <div className="spacer-40"/>
-                                <span className="image-container content-item"></span>
-                        </div>
-                        <div className="large-7 columns">
+                        <div className="large-7 large-offset-0 medium-8 medium-offset-1 medium-order-1 small-22 small-offset-1 columns">
                             <h2 className="content-item">Safetybank is an award winning application in the last couple of years.</h2>
                             <p><span className="content-item block"> Most innovative application in housing industry 2016 </span></p>
                         </div>

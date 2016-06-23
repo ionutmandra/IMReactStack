@@ -31,17 +31,19 @@ class Portfolio extends Component {
                 <section className="content">
                     <div className="spacer-60"/>
                     <div className="row align-middle">
-                        <div className="large-8 large-offset-3 columns">
+                        <div className="large-8 large-offset-3 medium-9 medium-offset-1 small-22 small-offset-1 columns">
                             <h1 className="content-item">
                                 <Link ref="projDetails"   to={link} onClick={this.handleProjDetailsClick}>{'Safetybank'}</Link>
                             </h1>
+                            <div className="spacer-20 large-0 medium-0 small-24  show-for-small-only"/>
                             <div className="project-description" className="content-item">
-                                <span>Safetybank is our largest project and we took it from a 50 hours concept to a 50 000 hours enterprise class application.</span>
+                                <p>Safetybank is our largest project and we took it from a 50 hours concept to a 50 000 hours enterprise class application.</p>
                                 <div className="spacer-20" />
-                                <span>The application was awarded "Most innovative application in housing industry" in 2016</span>
+                                <p>The application was awarded "Most innovative application in housing industry" in 2016</p>
                             </div>
                         </div>
-                        <div className="large-9 large-offset-1 columns">
+                        <div className="spacer-40 large-0 medium-0 small-24  show-for-small-only"/>
+                        <div className="large-9 large-offset-1 medium-11 medium-offset-2 small-24 small-offset-0 columns">
                          <Link ref="projDetails"  to={link} onClick={this.handleProjDetailsClick}><img src="client/dist/img/photos/safetylogo.png" className="content-item"/></Link>
                         </div>
                     </div>
