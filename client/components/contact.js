@@ -105,7 +105,7 @@ class Contact extends Component {
                 .add(_.filter([
                     TweenMax.to(this.links.concat([this.logoText, this.text]), .3, { x: '0%', ease: Power3.easeOut }),
                     TweenMax.to(this.image, .3, { scale: 1, opacity: 1, ease: Power3.easeOut }),
-                    TweenMax.to(this.article.find('.content-item'), .3, { x: '0%', ease: Power3.easeOut })
+                    TweenMax.to(this.article.find('.content-item'), .3, { x: '0%', ease: Power3.easeOut }),
                 ]));
         }
 
@@ -144,6 +144,7 @@ class Contact extends Component {
                         <a target="_blank" href="https://www.linkedin.com/company/adaptabi"><i className="ncs-linkedin-square" /></a>
                         <a target="_blank" href="https://www.facebook.com/Adaptabi-1562569510739468"><i className="ncs-facebook-square" /></a>
                         <a target="_blank" href="https://twitter.com/adaptabidev"><i className="ncs-twitter" /></a>
+                        <a target="_blank" href="https://blog.adaptabi.com"><i className="ncs-medium" /></a>
                     </li>
                 </ul>
             </div>
