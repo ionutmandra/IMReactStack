@@ -74,7 +74,7 @@ class Careers extends Component {
                                     <h3>Full time</h3>
                                 </div>
                                 <div className="large-24 medium-24 small-3 columns go-to-career-details-container">
-                                    <i className="ncs-chevron-with-circle-right float-right"></i>
+                                    <i className="ncs-chevron-with-circle-right"></i>
                                 </div>
                             </Link>
                         </div>
@@ -86,7 +86,7 @@ class Careers extends Component {
                                     <h3>Full time</h3>
                                 </div>
                                 <div className="large-24 medium-24 small-3 columns go-to-career-details-container">
-                                    <i className="ncs-chevron-with-circle-right float-right"></i>
+                                    <i className="ncs-chevron-with-circle-right"></i>
                                 </div>
                             </Link>
                         </div>
@@ -99,7 +99,7 @@ class Careers extends Component {
                                     <h3>Full time</h3>
                                 </div>
                                 <div className="large-24 medium-24 small-3 columns go-to-career-details-container">
-                                    <i className="ncs-chevron-with-circle-right float-right"></i>
+                                    <i className="ncs-chevron-with-circle-right"></i>
                                 </div>
                             </Link>
                         </div>
