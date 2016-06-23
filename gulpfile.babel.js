@@ -114,6 +114,12 @@ gulp.task('move-fonts', (callback) => {
       .pipe(gulp.dest('./client/dist/fonts'));
 });
 
+const faviconPaths = ['./client/assets/favicon/**'];
+gulp.task('move-favicon', (callback) => {
+    return gulp.src(faviconPaths)
+      .pipe(gulp.dest('./client/dist/favicon'));
+});
+
 const imagePaths = ['./client/assets/img/**'];
 gulp.task('move-image-files', (callback) => {
     return gulp.src(imagePaths)
@@ -139,7 +145,7 @@ gulp.task('test', (callback) => {
 });
 
 const scssPathsToWatch  = ['./client/lib/**/*.scss', './client/scss/**/*.scss'];
-gulp.task('default', ['vendor', 'watchify', 'app-sass', 'move-fonts', 'move-image-files', 'move-photoswipe-files'], function() {
+gulp.task('default', ['vendor', 'watchify', 'app-sass', 'move-fonts', 'move-favicon', 'move-image-files', 'move-photoswipe-files'], function() {
   gulp.watch(scssPathsToWatch, ['app-sass']);
 });
 
@@ -205,5 +211,5 @@ gulp.task('unit-tests', function () {
 });
 
 gulp.task('deploy', function () {
-  return runSequence('apply-prod-environment', 'clean', 'vendor', 'build', 'app-sass', 'move-fonts', 'move-image-files', 'move-photoswipe-files', 'minify-css', 'unit-tests');
+  return runSequence('apply-prod-environment', 'clean', 'vendor', 'build', 'app-sass', 'move-fonts', 'move-favicon', 'move-image-files', 'move-photoswipe-files', 'minify-css', 'unit-tests');
 });
