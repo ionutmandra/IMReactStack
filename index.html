@@ -176,7 +176,7 @@
     .add(function(){
 
         var tick = setInterval(function(){myTimer() }, 200);
-        function myTimer() {            
+        function myTimer() {
 
             if(window.ReactLoaded){
 
@@ -184,6 +184,7 @@
 
                 new TimelineLite()
                 .add([
+                    TweenMax.set('#line',{ 'border-right': 'none'}),
                     TweenMax.to('#line', 1, { x: '-100%', ease: Power3.easeIn }),
                     TweenMax.to('#liner', 1, { x: '+100%', ease: Power3.easeIn }),
                 ])
