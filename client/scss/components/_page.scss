@@ -3,6 +3,7 @@
         width: 100%;
         height: 100%;
         z-index: 1;
+        padding-bottom: 58px;
         @include grid-row(24);
         
         &.overlap {
