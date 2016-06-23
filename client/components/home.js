@@ -2,6 +2,8 @@ import React, { PropTypes, Component } from 'react';
 import Header from '../containers/headerContainer';
 import {Link} from 'react-router';
 
+let $ = window.$, ScrollMagic = window.ScrollMagic, TweenMax = window.TweenMax, Circ = window.Circ, Linear = window.Linear, TimelineMax = window.TimelineMax, TweenPlugin = window.TweenPlugin;
+
 class Home extends Component {
     constructor(props) {
         super(props);
@@ -21,19 +23,19 @@ class Home extends Component {
             case '2':
                 animations = {
                     leftHide: [this._inputGrow, this._inputValuesRight],
-                    rightHide: [this._inputValuesLeft]
+                    rightHide: [this._inputValuesLeft],
                 };
                 break;
             case '3':
                 animations = {
                     leftHide: [this._inputCreating],
-                    rightHide: [this._inputOffering]
+                    rightHide: [this._inputOffering],
                 };
                 break;
             case '4':
                 animations = {
                     leftHide: [this._inputSustaining],
-                    rightHide: []
+                    rightHide: [],
                 };
                 break;
         }
@@ -42,24 +44,29 @@ class Home extends Component {
             type: 'home_content',
             column: event.target.getAttribute('data-animate-line'),
             target: event.target,
-            animations: animations
+            animations: animations,
         });
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        //console.warn('Home shouldUpdate', nextProps.transition.scrollScenesEnabled);
-        this.scenes && this.scenes.forEach(scene => { scene.enabled(nextProps.transition.scrollScenesEnabled); });
+        this.setScenes(nextProps.transition.scrollScenesEnabled);
         return false;
+    }
+
+    setScenes(enabled) {
+        this.scenes && this.scenes.forEach(scene => { scene && scene.enabled(enabled); });
     }
 
     componentWillUnmount() {
 
-        for (var i = 0; i < this.scenes.length; i++) {
-            this.scenes[i].destroy();
-            this.scenes[i] = null;
+        for (let i = 0; i < this.scenes.length; i++) {
+            if (this.scenes[i]) {
+                this.scenes[i].destroy();
+                this.scenes[i] = null;
+            }
         }
 
-        for (var i = 0; i < this.timeLines.length; i++) {
+        for (let i = 0; i < this.timeLines.length; i++) {
             this.timeLines[i] = null;
         }
 
@@ -76,7 +83,7 @@ class Home extends Component {
         var timeLines = this.timeLines = [];
         var scenes = this.scenes = [];
 
-        TweenPlugin.activate(["colorProps"]);
+        TweenPlugin.activate(['colorProps']);
 
         function hideLeft(elems) {
             for (var i = 0; i < elems.length; i++) {
@@ -89,7 +96,7 @@ class Home extends Component {
             }
         }
         function updateGradientBackground(gr) {
-            timeLines.push(TweenLite.set('article.page-home > .gradient', { background: "linear-gradient(45deg, " + gr.color0 + " 0%, " + gr.color1 + " 100%)" }));
+            timeLines.push(TweenMax.set('article.page-home > .gradient', { background: 'linear-gradient(45deg, ' + gr.color0 + ' 0%, ' + gr.color1 + ' 100%)' }));
         }
         function animateGradientColors(fromGrad, toGrad) {
             var anim = TweenMax.to(fromGrad, 1, { colorProps: toGrad, ease: Linear.easeNone, onUpdate: updateGradientBackground, onUpdateParams: [fromGrad] });
@@ -98,7 +105,7 @@ class Home extends Component {
         }
         function pinSections(sections) {
             for (var i = 0; i < sections.length; i++) {
-                scenes.push(new ScrollMagic.Scene({ triggerElement: sections[i], triggerHook: 'onLeave', }).setPin(sections[i]).addTo(controller));
+                scenes.push(new ScrollMagic.Scene({ triggerElement: sections[i], triggerHook: 'onLeave' }).setPin(sections[i]).addTo(controller));
             }
         }
         function moveLeft(elem) {
@@ -185,6 +192,10 @@ class Home extends Component {
                 console.log(3);
                 animation3.bind(this)();
                 break;
+            case '4':
+                console.log(4);
+                animation4.bind(this)();
+                break;
             default:
                 console.log(1);
                 animation1.bind(this)();
@@ -194,7 +205,7 @@ class Home extends Component {
         function animation1() {
             // change behaviour of controller to animate scroll instead of jump
             controller.scrollTo(function (newpos) {
-                var t = TweenMax.to(window, 0.5, { scrollTo: { y: newpos } })
+                var t = TweenMax.to(window, 0.5, { scrollTo: { y: newpos } });
                 timeLines.push(t);
                 return t;
             });
@@ -204,14 +215,14 @@ class Home extends Component {
                 .addTo(controller)
                 .setTween(
                 new TimelineMax()
-                    .add(TweenMax.to(this._scrollHint, 0.3, { transformOrigin: "50% 50%", y: '+10', ease: Circ.easeOut }))
-                    .add(TweenMax.to(this._scrollHint, 0.3, { transformOrigin: "50% 50%", y: '0', ease: Circ.easeIn }))
+                    .add(TweenMax.to(this._scrollHint, 0.3, { transformOrigin: '50% 50%', y: '+10', ease: Circ.easeOut }))
+                    .add(TweenMax.to(this._scrollHint, 0.3, { transformOrigin: '50% 50%', y: '0', ease: Circ.easeIn }))
                 ));
 
             scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '80%', offset: 150 })
                 .addTo(controller)
                 //.addIndicators({name:'1'})
-                .on("end", function (event) {
+                .on('end', function (event) {
                     if (event.scrollDirection == 'REVERSE') {
                         controller.scrollTo(this);
                     }
@@ -232,7 +243,7 @@ class Home extends Component {
             scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '5%', offset: 130 })
                 .addTo(controller)
                 //.addIndicators({name:'2'})
-                .on("end", function (event) {
+                .on('end', function (event) {
                     if (event.scrollDirection == 'FORWARD') {
                         controller.scrollTo(_this._section2);
                     }
@@ -246,7 +257,7 @@ class Home extends Component {
                     .add([
                         moveLeft(_this._inputGrow),
                         moveRight(_this._inputValuesLeft),
-                        moveLeft(_this._inputValuesRight)
+                        moveLeft(_this._inputValuesRight),
                     ])
                     .add(hideSlide(this._section2c))
                     .add(showSlide(this._section3c))
@@ -258,14 +269,14 @@ class Home extends Component {
                     .add(hideImg(this._img2))
                     .add(showImg(this._img3))
                 )
-                .on("end", function (event) {
+                .on('end', function (event) {
                     if (event.scrollDirection == 'REVERSE') {
                         controller.scrollTo(this);
                     }
                 }));
 
             scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', duration: '6%', offset: 130 }).addTo(controller)
-                .on("end", function (event) {
+                .on('end', function (event) {
                     if (event.scrollDirection == 'FORWARD') {
                         controller.scrollTo(_this._section3);
                     }
@@ -286,18 +297,18 @@ class Home extends Component {
                 .add(hideImg(this._img3))
                 .add(showImg(this._img4));
 
-            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', offset: 150, duration: "80%" })
+            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', offset: 150, duration: '80%' })
                 .addTo(controller)
                 //.addIndicators({name:'3oe'})
                 .setTween(section3)
-                .on("end", function (event) {
+                .on('end', function (event) {
                     if (event.scrollDirection == 'REVERSE') {
                         controller.scrollTo(this);
                     }
                 }));
 
             scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', duration: '5%', offset: 150 }).addTo(controller)
-                .on("end", function (event) {
+                .on('end', function (event) {
                     if (event.scrollDirection == 'FORWARD') {
                         controller.scrollTo(_this._section4);
                     }
@@ -529,6 +540,137 @@ class Home extends Component {
                     }
                 }));
         }
+
+        function animation4() {
+            // change behaviour of controller to animate scroll instead of jump
+            controller.scrollTo(function (newpos) {
+                var t = TweenMax.to(window, 0.5, { scrollTo: { y: newpos } });
+                timeLines.push(t);
+                return t;
+            });
+
+            let scene1 = new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: 100, offset: -100 })
+                // .addIndicators({name:'0'})
+                .addTo(controller)
+                .setTween(
+                    TweenMax.fromTo(this._scrollHint, .75, { y: '0' }, { y: '+6', ease: Circ.easeInOut, repeat: -1, yoyo: true })
+                );
+            scenes.push(scene1);
+
+            let t0 = new Date().getTime(), flag = true;
+            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '98%', offset: 0 })
+                .addTo(controller)
+                // .addIndicators({name:'1'})
+                .on('start', (event) => {
+                    if (flag) {
+                        let t1 = new Date().getTime();
+                        if (t1 - t0 < 100) {
+                            console.warn('blocked scroll 1', t1-t0);
+                            return false;
+                        } else {
+                            console.warn('released scroll 1');
+                            flag = false;
+                        }
+                    }
+                    if (event.scrollDirection == 'FORWARD') {
+                        controller.scrollTo(_this._section2);
+                        if (scene1) {
+                            scene1.destroy();
+                            scene1 = null;
+                        }
+                    }
+                })
+                .on('end', (event) => {
+                    hideImgInstant(_this._scrollHintContainer);
+                    if (event.scrollDirection == 'REVERSE') {
+                        controller.scrollTo(0);
+                    }
+                })
+                .setTween(new TimelineMax()
+                    .add([
+                        moveLeft(this._inputCreate), 
+                        moveRight(this._inputSoftware), 
+                        hideImg(this._img1),
+                    ])
+                    .add(hideSlide(this._section1c))
+                    .add(showSlide(this._section2c))
+                    .add([
+                        moveToInitial(this._inputGrow),
+                        moveToInitial(this._inputValuesLeft),
+                        moveToInitial(this._inputValuesRight),
+                        showImg(this._img2),
+                    ])
+                ));
+
+            //section2
+            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', offset: 10, duration: '94%' })
+                .addTo(controller)
+                // .addIndicators({name:'2'})
+                .setTween(new TimelineMax()
+                    .add([
+                        moveLeft(this._inputGrow),
+                        moveRight(this._inputValuesLeft),
+                        moveLeft(this._inputValuesRight),
+                        hideImg(this._img2),
+                    ])
+                    .add(hideSlide(this._section2c))
+                    .add(showSlide(this._section3c))
+                    .add([
+                        moveToInitial(this._inputCreating),
+                        moveToInitial(this._inputOffering),
+                        showImg(this._img3),
+                    ])
+                )
+                .on('start', (event) => {
+                    if (flag) {
+                        let t1 = new Date().getTime();
+                        if (t1 - t0 < 100) {
+                            console.warn('blocked scroll 2', t1-t0);
+                            return false;
+                        } else {
+                            console.warn('released scroll 2');
+                            flag = false;
+                        }
+                    }
+                    if (event.scrollDirection == 'FORWARD') {
+                        controller.scrollTo(_this._section3);
+                    }
+                })
+                .on('end', (event) => {
+                    if (event.scrollDirection == 'REVERSE') {
+                        controller.scrollTo(_this._section2);
+                    }
+                }));
+
+            //section3
+            var section3 = new TimelineMax()
+                .add([
+                    moveLeft(this._inputCreating),
+                    moveRight(this._inputOffering),
+                    hideImg(this._img3),
+                ])
+                .add(hideSlide(this._section3c))
+                .add(showSlide(this._section4c))
+                .add([
+                    moveToInitial(this._inputSustaining),
+                    showImg(this._img4),
+                ]);
+
+            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', offset: 10, duration: '97%' })
+                .addTo(controller)
+                //.addIndicators({name:'3oe'})
+                .setTween(section3)
+                .on('start', (event) => {
+                    if (event.scrollDirection == 'FORWARD') {
+                        controller.scrollTo(_this._section4);
+                    }
+                })
+                .on('end', (event) => {
+                    if (event.scrollDirection == 'REVERSE') {
+                        controller.scrollTo(_this._section3);
+                    }
+                }));
+        }
     }
 
     render() {
@@ -562,7 +704,7 @@ class Home extends Component {
                         </h2>
                     </div>
 
-                    <div className="scroll-hint">
+                    <div className="scroll-hint" ref={(c) => this._scrollHintContainer = c}>
                         <span ref={(c) => this._scrollHint = c}>
                             <i className="ncs-chevron-thin-down"></i>
                         </span>
