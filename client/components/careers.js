@@ -69,24 +69,24 @@ class Careers extends Component {
                     <div className="row">
                         <div className="large-6 large-offset-3 medium-11 medium-offset-1 small-22 small-offset-1 columns">
                             <Link to="/careers/seniorsoftwaredeveloper" onClick={this.handleCareerDetailsClick} className="content-item block">
-                            <div className="large-24 medium-24 small-22 columns">
+                            <div className="large-24 medium-24 small-21 columns">
                                     <h1>Senior software developer</h1>
                                     <h3>Full time</h3>
                                 </div>
-                                <div className="large-24 medium-24 small-2 columns go-to-career-details-container">
-                                    <i className="ncs-chevron-with-circle-right"></i>
+                                <div className="large-24 medium-24 small-3 columns go-to-career-details-container">
+                                    <i className="ncs-chevron-with-circle-right float-right"></i>
                                 </div>
                             </Link>
                         </div>
                         <div className="spacer-20 large-0 medium-0 small-24 show-for-small-only"/>
                         <div className="large-6 large-offset-0 medium-11 medium-offset-0 small-22 small-offset-1 columns">
                             <Link to="/careers/juniorsoftwaredeveloper" onClick={this.handleCareerDetailsClick} className="content-item block">
-                                <div className="large-24 medium-24 small-22 columns">
+                                <div className="large-24 medium-24 small-21 columns">
                                     <h1>Junior software developer</h1>
                                     <h3>Full time</h3>
                                 </div>
-                                <div className="large-24 medium-24 small-2 columns go-to-career-details-container">
-                                    <i className="ncs-chevron-with-circle-right"></i>
+                                <div className="large-24 medium-24 small-3 columns go-to-career-details-container">
+                                    <i className="ncs-chevron-with-circle-right float-right"></i>
                                 </div>
                             </Link>
                         </div>
@@ -94,12 +94,12 @@ class Careers extends Component {
                         <div className="spacer-20 large-0 medium-0 small-24 show-for-small-only"/>
                          <div className="large-6 large-offset-0  medium-11 medium-offset-1 small-22 small-offset-1 columns">
                             <Link to="/careers/qualityengineer" onClick={this.handleCareerDetailsClick} className="content-item block">
-                                <div className="large-24 medium-24 small-22 columns">
+                                <div className="large-24 medium-24 small-21 columns">
                                     <h1>Quality Engineer</h1>
                                     <h3>Full time</h3>
                                 </div>
-                                <div className="large-24 medium-24 small-2 columns go-to-career-details-container">
-                                    <i className="ncs-chevron-with-circle-right"></i>
+                                <div className="large-24 medium-24 small-3 columns go-to-career-details-container">
+                                    <i className="ncs-chevron-with-circle-right float-right"></i>
                                 </div>
                             </Link>
                         </div>

@@ -1,92 +1,15 @@
 @media screen and #{breakpoint(large)} {
-    section.content {
-        h1 {
-            font-family: "Poppins";
-            font-weight: $semibold;
-            font-size: rem-calc(24pt);
-            line-height: rem-calc(34pt);
-            color: $text-color;
-            margin-bottom: 0px;
-        }
-        h2 {
-            font-family: "Poppins";
-            font-weight: $semibold;
-            font-size: rem-calc(16pt);
-            line-height: rem-calc(24pt);
-            color: $text-color;
-            margin-bottom: 0px;
-        }
-        i {
-            font-size: 30px
-        }
-        a {
-            text-decoration: none;
-            &.navigation-link {
+    #page-container article.page-career-details {
+        section.content {
+            h1 {
                 font-family: "Poppins";
                 font-weight: $semibold;
-                font-size: rem-calc(16pt);
-                line-height: rem-calc(30pt);
+                font-size: rem-calc(24pt);
+                line-height: rem-calc(34pt);
                 color: $text-color;
                 margin-bottom: 0px;
             }
-            &.back-to-careers {
-                i {
-                    margin-right: 5px;
-                }
-            }
-            &.go-to-apply {}
-        }
-        p {
-            font-family: "Poppins";
-            font-weight: $normal;
-            font-size: rem-calc(16pt);
-            line-height: rem-calc(24pt);
-            color: $text-color;
-            margin-bottom: 0px;
-        }
-        ul {
-            font-family: "Poppins";
-            font-weight: $normal;
-            font-size: rem-calc(16pt);
-            line-height: rem-calc(24pt);
-            color: $text-color;
-            margin-bottom: 0px;
-            padding-left: rem-calc(20pt);
-            li {}
-        }
-        .columns {
-            overflow: hidden;
-        }
-        .block {
-            display: block;
-        }
-    }
-}
-
-@media screen and #{breakpoint(medium only)} {
-    section.content {
-        h1 {
-            font-family: "Poppins";
-            font-weight: $semibold;
-            font-size: rem-calc(20pt);
-            line-height: rem-calc(30pt);
-            color: $text-color;
-            margin-bottom: 0px;
-        }
-        h2 {
-            font-family: "Poppins";
-            font-weight: $semibold;
-            font-size: rem-calc(14pt);
-            line-height: rem-calc(20pt);
-            color: $text-color;
-            margin-bottom: 0px;
-        }
-        i {
-            font-size: 30px
-        }
-        a {
-            text-decoration: none;
-            &.navigation-link {
+            h2 {
                 font-family: "Poppins";
                 font-weight: $semibold;
                 font-size: rem-calc(16pt);
@@ -94,101 +17,184 @@
                 color: $text-color;
                 margin-bottom: 0px;
             }
-            &.back-to-careers {
-                i {
-                    margin-right: 5px;
-                }
+            i {
+                font-size: 30px
             }
-            &.go-to-apply {}
+            a {
+                text-decoration: none;
+                &.navigation-link {
+                    font-family: "Poppins";
+                    font-weight: $semibold;
+                    font-size: rem-calc(16pt);
+                    line-height: rem-calc(30pt);
+                    color: $text-color;
+                    margin-bottom: 0px;
+                }
+                &.back-to-careers {
+                    i {
+                        margin-right: 5px;
+                    }
+                }
+                &.go-to-apply {}
+            }
+            p {
+                font-family: "Poppins";
+                font-weight: $normal;
+                font-size: rem-calc(16pt);
+                line-height: rem-calc(24pt);
+                color: $text-color;
+                margin-bottom: 0px;
+            }
+            ul {
+                font-family: "Poppins";
+                font-weight: $normal;
+                font-size: rem-calc(16pt);
+                line-height: rem-calc(24pt);
+                color: $text-color;
+                margin-bottom: 0px;
+                padding-left: rem-calc(20pt);
+                li {}
+            }
+            .columns {
+                overflow: hidden;
+            }
+            .block {
+                display: block;
+            }
         }
-        p {
-            font-family: "Poppins";
-            font-weight: $normal;
-            font-size: rem-calc(16pt);
-            line-height: rem-calc(24pt);
-            color: $text-color;
-            margin-bottom: 0px;
-        }
-        ul {
-            font-family: "Poppins";
-            font-weight: $normal;
-            font-size: rem-calc(16pt);
-            line-height: rem-calc(24pt);
-            color: $text-color;
-            margin-bottom: 0px;
-            padding-left: rem-calc(20pt);
-            li {}
-        }
-        .columns {
-            overflow: hidden;
-        }
-        .block {
-            display: block;
+    }
+}
+
+@media screen and #{breakpoint(medium only)} {
+    #page-container article.page-career-details {
+        section.content {
+            h1 {
+                font-family: "Poppins";
+                font-weight: $semibold;
+                font-size: rem-calc(20pt);
+                line-height: rem-calc(30pt);
+                color: $text-color;
+                margin-bottom: 0px;
+            }
+            h2 {
+                font-family: "Poppins";
+                font-weight: $semibold;
+                font-size: rem-calc(14pt);
+                line-height: rem-calc(20pt);
+                color: $text-color;
+                margin-bottom: 0px;
+            }
+            i {
+                font-size: 30px
+            }
+            a {
+                text-decoration: none;
+                &.navigation-link {
+                    font-family: "Poppins";
+                    font-weight: $semibold;
+                    font-size: rem-calc(16pt);
+                    line-height: rem-calc(24pt);
+                    color: $text-color;
+                    margin-bottom: 0px;
+                }
+                &.back-to-careers {
+                    i {
+                        margin-right: 5px;
+                    }
+                }
+                &.go-to-apply {}
+            }
+            p {
+                font-family: "Poppins";
+                font-weight: $normal;
+                font-size: rem-calc(16pt);
+                line-height: rem-calc(24pt);
+                color: $text-color;
+                margin-bottom: 0px;
+            }
+            ul {
+                font-family: "Poppins";
+                font-weight: $normal;
+                font-size: rem-calc(16pt);
+                line-height: rem-calc(24pt);
+                color: $text-color;
+                margin-bottom: 0px;
+                padding-left: rem-calc(20pt);
+                li {}
+            }
+            .columns {
+                overflow: hidden;
+            }
+            .block {
+                display: block;
+            }
         }
     }
 }
 
 @media screen and #{breakpoint(small only)} {
-    section.content {
-        h1 {
-            font-family: "Poppins";
-            font-weight: $semibold;
-            font-size: rem-calc(16pt);
-            line-height: rem-calc(24pt);
-            color: $text-color;
-            margin-bottom: 0px;
-        }
-        h2 {
-            font-family: "Poppins";
-            font-weight: $semibold;
-            font-size: rem-calc(14pt);
-            line-height: rem-calc(26pt);
-            color: $text-color;
-            margin-bottom: 0px;
-        }
-        i {
-            font-size: 30px
-        }
-        a {
-            text-decoration: none;
-            &.navigation-link {
+    #page-container article.page-career-details {
+        section.content {
+            h1 {
                 font-family: "Poppins";
                 font-weight: $semibold;
+                font-size: rem-calc(16pt);
+                line-height: rem-calc(24pt);
+                color: $text-color;
+                margin-bottom: 0px;
+            }
+            h2 {
+                font-family: "Poppins";
+                font-weight: $semibold;
+                font-size: rem-calc(14pt);
+                line-height: rem-calc(26pt);
+                color: $text-color;
+                margin-bottom: 0px;
+            }
+            i {
+                font-size: 30px
+            }
+            a {
+                text-decoration: none;
+                &.navigation-link {
+                    font-family: "Poppins";
+                    font-weight: $semibold;
+                    font-size: rem-calc(14pt);
+                    line-height: rem-calc(22pt);
+                    color: $text-color;
+                    margin-bottom: 0px;
+                }
+                &.back-to-careers {
+                    i {
+                        margin-right: 5px;
+                    }
+                }
+                &.go-to-apply {}
+            }
+            p {
+                font-family: "Poppins";
+                font-weight: $normal;
                 font-size: rem-calc(14pt);
                 line-height: rem-calc(22pt);
                 color: $text-color;
                 margin-bottom: 0px;
             }
-            &.back-to-careers {
-                i {
-                    margin-right: 5px;
-                }
+            ul {
+                font-family: "Poppins";
+                font-weight: $normal;
+                font-size: rem-calc(14pt);
+                line-height: rem-calc(22pt);
+                color: $text-color;
+                margin-bottom: 0px;
+                padding-left: rem-calc(20pt);
+                li {}
             }
-            &.go-to-apply {}
-        }
-        p {
-            font-family: "Poppins";
-            font-weight: $normal;
-            font-size: rem-calc(14pt);
-            line-height: rem-calc(22pt);
-            color: $text-color;
-            margin-bottom: 0px;
-        }
-        ul {
-            font-family: "Poppins";
-            font-weight: $normal;
-            font-size: rem-calc(14pt);
-            line-height: rem-calc(22pt);
-            color: $text-color;
-            margin-bottom: 0px;
-            padding-left: rem-calc(20pt);
-            li {}
-        }
-        .columns {
-            overflow: hidden;
-        }
-        .block {
-            display: block;
+            .columns {
+                overflow: hidden;
+            }
+            .block {
+                display: block;
+            }
         }
     }
 }
