@@ -26,39 +26,44 @@ class PortfolioDetails extends Component {
                 <div className="row align-middle">
                         <div className="large-7 large-offset-3 medium-9 medium-offset-1 small-22 small-offset-1 columns">
                             <h1 className="content-item">Safetybank is an online health and safety information system</h1>
+                            <div className="spacer-20 large-0 medium-0 small-24 show-for-small-only"/>
                             <div className="project-description content-item">
                                 <p>It revolutionizes the built environment in UK and worldwide.</p>
                             </div>
+                            <div className="spacer-20 large-0 medium-0 small-24 show-for-small-only"/>
                         </div>
-                        <div className="large-9 large-offset-2  medium-11 medium-offset-2 small-22 small-offset-1 columns">
+                        <div className="large-9 large-offset-2  medium-11 medium-offset-2 small-24 small-offset-0 columns">
                             <img src="/client/dist/img/projects/safetybank/blog-sfb.jpg" className="content-item" />
                         </div>
                     </div>
                     <div className="spacer-100" />
                     <div className="row align-middle awards">
-                        <div className="large-9 large-offset-3 medium-22 medium-offset-1 medium-order-2  columns project-awards">
-                            <span className="image-container award3 content-item large-8 large-offset-0 madium-8 medium-offset-0 small-12 small-offset-0"></span>
-                            <span className="image-container award1 content-item large-8 large-offset-0 madium-8 medium-offset-0 small-12 small-offset-0"></span>
-                            <span className="image-container award4 content-item large-8 large-offset-0 madium-8 medium-offset-0 small-12 small-offset-0"></span>
-                            <div className="spacer-40 larfe-24 show-on-large-only"/>
-                            <span className="image-container award2 content-item large-8 large-offset-0 madium-8 medium-offset-0 small-12 small-offset-0"></span>
-                            <span className="image-container award5 content-item large-8 large-offset-0 madium-8 medium-offset-0 small-12 small-offset-0"></span>
+                        <div className="large-9 large-offset-3 large-order-1 medium-22 medium-offset-1 medium-order-2 small-22 small-offset-1 small-order-2 columns project-awards">
+                            <span className="image-container award3 content-item large-8 large-offset-0 medium-6 medium-offset-0 small-12 small-offset-0"></span>
+                            <span className="image-container award1 content-item large-8 large-offset-0 medium-6 medium-offset-0 small-12 small-offset-0"></span>
+                            <span className="image-container award4 content-item large-8 large-offset-0 medium-6 medium-offset-0 small-12 small-offset-0"></span>
+                            <div className="spacer-40 large-24 show-for-large"/>
+                            <span className="image-container award5 content-item large-8 large-offset-0 medium-6 medium-offset-0 small-12 small-offset-0"></span>
+                            <div className="spacer-40 large-0 medium-24 show-for-medium-only"/>
+                            <span className="image-container award2 content-item large-8 large-offset-0 medium-6 medium-offset-0 small-12 small-offset-0"></span>
                         </div>
-                        <div className="large-7 large-offset-0 medium-8 medium-offset-1 medium-order-1 small-22 small-offset-1 columns">
+                        <div className="large-7 large-offset-0 large-order-2 medium-10 medium-offset-1 medium-order-1 small-22 small-offset-1 columns">
                             <h2 className="content-item">Safetybank is an award winning application in the last couple of years.</h2>
+                            <div className="spacer-20 large-0 medium-0 small-24 show-for-small-only"/>
                             <p><span className="content-item block"> Most innovative application in housing industry 2016 </span></p>
+                            <div className="spacer-40 large-0 medium-24 small-24 show-for-small hide-for-large"/>
                         </div>
                     </div>
                     <div className="spacer-100" />
                     <div className="row align-middle">
-                        <div className="large-12 large-offset-6 columns">
+                        <div className="large-12 large-offset-6 medium-20 medium-offset-1 small-22 small-offset-1 columns">
                             <h1 className="content-item">Serving thousands of companies</h1>
-                            <span className="content-item block">Hosted on Azure Cloud on a top cluster configuration offers the functionality that a 21st century building company needs to safely manage its projects.</span>
+                            <p className="content-item block">Hosted on Azure Cloud on a top cluster configuration offers the functionality that a 21st century building company needs to safely manage its projects.</p>
                         </div>
                     </div>
                     <div className="spacer-40" />
                     <div className="row align-middle">
-                        <div className="large-12 large-offset-6 columns">
+                        <div className="large-12 large-offset-6  medium-20 medium-offset-1 small-22 small-offset-1 columns">
                          <ul  className="content-item block">
                             <li>Custom data collection and reporting via built-in dynamic forms</li>
                             <li>Extensive reporting and notiﬁcation services</li>
@@ -69,12 +74,23 @@ class PortfolioDetails extends Component {
                     <div className="spacer-100" />
                 </section>
                  <section className="call-to-action row align-middle">
-                    <div className="image content-item large-9 columns">
+                    <div className="image content-item large-9 large-order-1 medium-11 medium-order-2 columns">
                         <img src="/client/dist/img/photos/temp3.jpg" />
+                         <div className="show-for-small-only small-22 small-offset-1 columns small-text-case">
+                                <p>Everything changes but our passion.</p>
+                                <p className="cta">
+                                    <span className="hide-for-large">Interested? </span>
+                                    <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}>Let's talk.</Link>
+                                 </p>
+                            </div>
                     </div>
-                    <div className="large-8 large-offset-3 columns">
+                    <div className="large-8 large-offset-3 large-order-2 medium-11 medium-offset-1 medium-order-1 show-for-medium columns">
                         <p className="content-item">Everything changes but our passion.</p>
-                        <p className="cta content-item">Want to meet us? <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}>Let's talk</Link></p>
+                        <p className="cta content-item">
+                            <span className="show-for-large">Want to meet us? </span>
+                            <span className="hide-for-large">Interested? </span>
+                            <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}>Let's talk</Link>
+                        </p>
                     </div>
                 </section>
                 <Footer />
