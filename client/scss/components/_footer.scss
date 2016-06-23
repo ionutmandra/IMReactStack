@@ -90,6 +90,9 @@
                 bottom: 0;
                 left: 0;
                 overflow: hidden;
+                .copy {
+                    text-align: center;
+                }
                 ul {
                     list-style-type: none;
                     padding: rem-calc(12pt 0 10pt);
