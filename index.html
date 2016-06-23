@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         #preload{
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -88,6 +88,8 @@
     </div>
     <script>
 
+        TweenMax.set('body',{overflow:'hidden'});
+
         TweenMax.set('#leftLogo',{x:'+100%'});
         TweenMax.set('#rightLogo',{x:'-100%'});
         TweenMax.set('#adaptabiTxt', { display:'none' });
@@ -113,7 +115,7 @@
         .add([
             TweenMax.to('#leftLogo', 0.5, {  x: '-60px' , delay:0.3 , ease:Power3.easeIn}),
             TweenMax.to('#adaptabiTxt', 0.5, { x: '+100px', delay:0.3 , ease:Power3.easeIn })
-        ])        
+        ])
         .set({},{delay:.7})
         .add(function(){
             if(window.ReactLoaded){
@@ -122,7 +124,8 @@
                     TweenMax.to('#line', 1, { x: '-100%', ease: Power3.easeIn }),
                     TweenMax.to('#liner', 1, { x: '+100%', ease: Power3.easeIn }),
                 ])
-                .add([TweenMax.to('#preload',.1, { 'z-index': 0})]);
+                .add([TweenMax.to('#preload',.1, { 'z-index': 0})])
+                .add(TweenMax.set('body',{overflow:''}));
             }
         });
 
