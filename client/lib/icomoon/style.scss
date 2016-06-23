@@ -2,11 +2,11 @@
 
 @font-face {
     font-family: 'new-company-site';
-    src:    url('#{$icomoon-font-path}/new-company-site.eot?qqpce8');
-    src:    url('#{$icomoon-font-path}/new-company-site.eot?qqpce8#iefix') format('embedded-opentype'),
-        url('#{$icomoon-font-path}/new-company-site.ttf?qqpce8') format('truetype'),
-        url('#{$icomoon-font-path}/new-company-site.woff?qqpce8') format('woff'),
-        url('#{$icomoon-font-path}/new-company-site.svg?qqpce8#new-company-site') format('svg');
+    src:    url('#{$icomoon-font-path}/new-company-site.eot?erghc4');
+    src:    url('#{$icomoon-font-path}/new-company-site.eot?erghc4#iefix') format('embedded-opentype'),
+        url('#{$icomoon-font-path}/new-company-site.ttf?erghc4') format('truetype'),
+        url('#{$icomoon-font-path}/new-company-site.woff?erghc4') format('woff'),
+        url('#{$icomoon-font-path}/new-company-site.svg?erghc4#new-company-site') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -774,6 +774,11 @@ i {
 .ncs-user-times {
     &:before {
         content: $ncs-user-times;
+    }
+}
+.ncs-medium {
+    &:before {
+        content: $ncs-medium;
     }
 }
 .ncs-y-combinator {

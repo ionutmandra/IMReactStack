@@ -1,42 +1,114 @@
-// .site-footer {
-//     padding: 10px;
-//     text-align: center;
-//     border-top: 1px solid $palette-1;
-// }
-#page-container {
-    & > article { 
-        & > footer {
-            font-size: rem-calc(12pt);
-            color: $white;
-            background: $text-color;
-            padding: 0;
-
-            width: 100%;
-            position: absolute;
-            bottom:0;
-            left:0;
-            overflow: hidden;
-
-            ul {
-                list-style-type: none;
-                padding: rem-calc(12pt 0 10pt);
-                margin: 0;
-                li {
-                    padding: 0;
-                    margin: 0 15px 0 0;
-                    display: inline-block;
-
-                    a{
-                        text-decoration: none;
-
-                        &:visited, &:link, &:hover{
-                            text-decoration: none;                            
+@media screen and #{breakpoint(large)} {
+    #page-container {
+        & > article {
+            & > footer {
+                font-size: rem-calc(12pt);
+                color: $white;
+                background: $text-color;
+                padding: 0;
+                width: 100%;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                overflow: hidden;
+                ul {
+                    list-style-type: none;
+                    padding: rem-calc(12pt 0 10pt);
+                    margin: 0;
+                    li {
+                        padding: 0;
+                        margin: 0 15px 0 0;
+                        display: inline-block;
+                        a {
+                            text-decoration: none;
+                            &:visited,
+                            &:link,
+                            &:hover {
+                                text-decoration: none;
+                            }
+                        }
+                        i {
+                            font-size: 30px;
+                            color: #dddddd;
                         }
                     }
-                    
-                    i {
-                        font-size: 30px;
-                        color: #dddddd;
+                }
+            }
+        }
+    }
+}
+
+@media screen and #{breakpoint(medium only)} {
+    #page-container {
+        & > article {
+            & > footer {
+                font-size: rem-calc(12pt);
+                color: $white;
+                background: $text-color;
+                padding: 0;
+                width: 100%;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                overflow: hidden;
+                ul {
+                    list-style-type: none;
+                    padding: rem-calc(12pt 0 10pt);
+                    margin: 0;
+                    li {
+                        padding: 0;
+                        display: inline-block;
+                        a {
+                            text-decoration: none;
+                            &:visited,
+                            &:link,
+                            &:hover {
+                                text-decoration: none;
+                            }
+                        }
+                        i {
+                            font-size: 30px;
+                            color: #dddddd;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and #{breakpoint(small only)} {
+    #page-container {
+        & > article {
+            & > footer {
+                font-size: rem-calc(10pt);
+                color: $white;
+                background: $text-color;
+                padding: 0 0 15px 0;
+                width: 100%;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                overflow: hidden;
+                ul {
+                    list-style-type: none;
+                    padding: rem-calc(12pt 0 10pt);
+                    margin: 0;
+                    li {
+                        padding: 0;
+                        display: inline-block;
+                        a {
+                            text-decoration: none;
+                            &:visited,
+                            &:link,
+                            &:hover {
+                                text-decoration: none;
+                            }
+                        }
+                        i {
+                            font-size: 26px;
+                            color: #dddddd;
+                        }
                     }
                 }
             }
