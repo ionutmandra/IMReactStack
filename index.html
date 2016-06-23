@@ -1,14 +1,137 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  	<meta charset="UTF-8">
-    <link rel="stylesheet" href="/client/dist/css/style.css" type="text/css"></link>    
-  	<!-- <link rel="stylesheet" href="/dist/css/photoswipe.css" type="text/css"></link> -->
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/client/dist/css/style.css" type="text/css"></link>
+    <!-- <link rel="stylesheet" href="/dist/css/photoswipe.css" type="text/css"></link> -->
     <script type="text/javascript" src="/client/dist/js/vendor.js"></script>
+    <script type="text/javascript" src="/client/dist/js/tweenmax.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body>
-  	<div id="root"></div>
+    <style>
+        #preload{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 101;
+            background: linear-gradient(90deg, #C8C829 0%, #7BBF3B 100%);
+            color: white;
+        }
+
+        #preload svg{
+            fill:white;
+        }
+
+        #line{
+            width: 50%;
+            border-right: 1px solid white;
+            float: left;
+            overflow: hidden;
+            background: linear-gradient(90deg, #C8C829 0%, #7BBF3B 100%);
+            background-size: 200% 100%;
+        }
+
+        #liner{
+            width: 50%;
+            float: left;
+            height: 100%;
+            overflow: hidden;
+            background: linear-gradient(90deg, #C8C829 0%, #7BBF3B 100%);
+            background-size: 200% 100%;
+            background-position-x: 100%;
+        }
+
+        #leftLogo{
+            width: 23px;
+            overflow: hidden;
+            float: right;
+            position: relative;
+            top:20%;
+        }
+
+        #rightLogo{
+            width: 23px;
+            overflow: hidden;
+            position: relative;
+            top:70%;
+
+        }
+
+        #rightLogo svg{
+            margin-left: -100%;
+        }
+
+        #adaptabiTxt{
+            position: relative;
+            top:50%;
+            width: 100px;
+            left:-100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="preload">
+        <div id="line">
+            <div id="leftLogo">
+                <svg width="46px" height="46px" viewBox="0 0 36 36" ><path stroke="none" d="M17.378,0.001c3.424,0,7.297,1.784,10.623,4.454c-0.447-0.118-0.917-0.181-1.401-0.181c-3.004,0-5.44,2.416-5.44,5.395c0,2.98,2.436,5.395,5.44,5.395c3.004,0,5.44-2.415,5.44-5.395c0-0.494-0.067-0.973-0.193-1.427c1.886,2.286,3.297,4.82,3.888,7.294c0.112,0.47,0.204,0.973,0.254,1.48c0.117,1.173-0.655,1.178-1.584,0.964c-0.275-0.063-0.547-0.134-0.815-0.212c-0.904-0.264-1.768-0.61-2.583-1.029c-0.392-0.201-0.874-0.049-1.076,0.339c-0.203,0.388-0.05,0.866,0.342,1.068c1.399,0.719,2.436,0.979,3.887,1.394c0.618,0.177,0.87,1.011,0.302,1.427c-0.553,0.405-1.178,0.634-2.097,0.634h-9.845c0.8,0.697,1.644,1.642,2.235,2.588h1.303c0.438,0,0.797,0.356,0.797,0.79l0,0c0,0.435-0.358,0.791-0.797,0.791h-0.603h-1.529l0.611,1.252c0.219,0.376,0.088,0.862-0.292,1.08l0,0c-0.38,0.218-0.869,0.087-1.089-0.289c-1.798-5.15-6.528-6.202-8.584-6.211v0.001L14.519,21.6c-3.007,0-5.444,2.418-5.444,5.4c0,2.982,2.437,5.4,5.444,5.4c1.002,0,1.815-0.806,1.815-1.8c0-0.994-0.812-1.8-1.815-1.8v0c-1.002,0-1.815-0.806-1.815-1.8c0-0.994,0.813-1.8,1.815-1.8c3.007,0,5.444,2.418,5.444,5.4c0,2.965-2.41,5.372-5.393,5.399v0l-0.052,0C6.5,36,0,29.553,0,21.6C0,13.647,6.5,7.2,14.519,7.2l0.052,0.001v0V2.7c0-1.491,1.219-2.7,2.722-2.7C17.322,0,17.35,0.001,17.378,0.001L17.378,0.001z M29.09,9.541c-0.732,0-1.325-0.588-1.325-1.314c0-0.726,0.593-1.314,1.325-1.314c0.731,0,1.325,0.588,1.325,1.314C30.415,8.953,29.822,9.541,29.09,9.541L29.09,9.541z"></path></svg>
+            </div>
+        </div>
+        <div id="liner">
+            <div id="rightLogo">
+                <svg width="46px" height="46px" viewBox="0 0 36 36" ><path stroke="none" d="M17.378,0.001c3.424,0,7.297,1.784,10.623,4.454c-0.447-0.118-0.917-0.181-1.401-0.181c-3.004,0-5.44,2.416-5.44,5.395c0,2.98,2.436,5.395,5.44,5.395c3.004,0,5.44-2.415,5.44-5.395c0-0.494-0.067-0.973-0.193-1.427c1.886,2.286,3.297,4.82,3.888,7.294c0.112,0.47,0.204,0.973,0.254,1.48c0.117,1.173-0.655,1.178-1.584,0.964c-0.275-0.063-0.547-0.134-0.815-0.212c-0.904-0.264-1.768-0.61-2.583-1.029c-0.392-0.201-0.874-0.049-1.076,0.339c-0.203,0.388-0.05,0.866,0.342,1.068c1.399,0.719,2.436,0.979,3.887,1.394c0.618,0.177,0.87,1.011,0.302,1.427c-0.553,0.405-1.178,0.634-2.097,0.634h-9.845c0.8,0.697,1.644,1.642,2.235,2.588h1.303c0.438,0,0.797,0.356,0.797,0.79l0,0c0,0.435-0.358,0.791-0.797,0.791h-0.603h-1.529l0.611,1.252c0.219,0.376,0.088,0.862-0.292,1.08l0,0c-0.38,0.218-0.869,0.087-1.089-0.289c-1.798-5.15-6.528-6.202-8.584-6.211v0.001L14.519,21.6c-3.007,0-5.444,2.418-5.444,5.4c0,2.982,2.437,5.4,5.444,5.4c1.002,0,1.815-0.806,1.815-1.8c0-0.994-0.812-1.8-1.815-1.8v0c-1.002,0-1.815-0.806-1.815-1.8c0-0.994,0.813-1.8,1.815-1.8c3.007,0,5.444,2.418,5.444,5.4c0,2.965-2.41,5.372-5.393,5.399v0l-0.052,0C6.5,36,0,29.553,0,21.6C0,13.647,6.5,7.2,14.519,7.2l0.052,0.001v0V2.7c0-1.491,1.219-2.7,2.722-2.7C17.322,0,17.35,0.001,17.378,0.001L17.378,0.001z M29.09,9.541c-0.732,0-1.325-0.588-1.325-1.314c0-0.726,0.593-1.314,1.325-1.314c0.731,0,1.325,0.588,1.325,1.314C30.415,8.953,29.822,9.541,29.09,9.541L29.09,9.541z"></path></svg>
+            </div>
+            <div id="adaptabiTxt">
+                adaptabi
+            </div>
+        </div>
+    </div>
+    <script>
+
+        TweenMax.set('body',{overflow:'hidden'});
+
+        TweenMax.set('#leftLogo',{x:'+100%'});
+        TweenMax.set('#rightLogo',{x:'-100%'});
+        TweenMax.set('#adaptabiTxt', { display:'none' });
+
+        new TimelineLite()
+        .add(TweenMax.to('#line', 1, { height: '20%', ease: Power3.easeIn }))
+        .add(TweenMax.to('#line', 1, { height: '80%' }))
+        .add(TweenMax.to('#line', 1, { height: '100%', ease: Power3.easeOut }))
+        .add([
+            TweenMax.to('#leftLogo', .2,{x:'0%'}),
+            TweenMax.to('#rightLogo',.2,{x:'0%'})
+        ])
+        .set({},{delay:.2})
+        .add([
+            TweenMax.to('#leftLogo', 1, { top: '50%', ease:Power3.easeIn}),
+            TweenMax.to('#rightLogo', 1, { top: '50%', ease:Power3.easeIn}),
+            TweenMax.to('#preload', .1, { background: 'none'})
+        ])
+        .set('#line', {  overflow:'visible' })
+        .set('#leftLogo', {  overflow:'visible' })
+        .set('#rightLogo',{  display:'none' })
+        .set('#adaptabiTxt', { display:'block' })
+        .add([
+            TweenMax.to('#leftLogo', 0.5, {  x: '-60px' , delay:0.3 , ease:Power3.easeIn}),
+            TweenMax.to('#adaptabiTxt', 0.5, { x: '+100px', delay:0.3 , ease:Power3.easeIn })
+        ])
+        .set({},{delay:.7})
+        .add(function(){
+            if(window.ReactLoaded){
+                new TimelineLite()
+                .add([
+                    TweenMax.to('#line', 1, { x: '-100%', ease: Power3.easeIn }),
+                    TweenMax.to('#liner', 1, { x: '+100%', ease: Power3.easeIn }),
+                ])
+                .add([TweenMax.to('#preload',.1, { 'z-index': 0})])
+                .add(TweenMax.set('body',{overflow:''}));
+            }
+        });
+
+
+    </script>
+    <div id="root"></div>
     <script type="text/javascript" src="/client/dist/js/bundle.js"></script>
-  </body>
+</body>
 </html>
