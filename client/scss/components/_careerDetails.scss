@@ -93,7 +93,7 @@
                     font-family: "Poppins";
                     font-weight: $semibold;
                     font-size: rem-calc(16pt);
-                    line-height: rem-calc(24pt);
+                    line-height: 2;
                     color: $text-color;
                     margin-bottom: 0px;
                 }
@@ -160,7 +160,7 @@
                     font-family: "Poppins";
                     font-weight: $semibold;
                     font-size: rem-calc(14pt);
-                    line-height: rem-calc(22pt);
+                    line-height: 2;
                     color: $text-color;
                     margin-bottom: 0px;
                 }
