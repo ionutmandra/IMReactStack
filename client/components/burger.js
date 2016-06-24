@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
+import { breakpoint } from '../config/constants';
+
 let $ = window.$, $window = $(window), ScrollMagic = window.ScrollMagic, TweenMax = window.TweenMax, Power3 = window.Power3, TimelineLite = window.TimelineLite;
 
 export default class Burger extends Component {
@@ -12,9 +14,12 @@ export default class Burger extends Component {
     componentDidMount() {
         let refs = this.refs,
             timeLines = this.timeLines = [],
-            scenes = this.scenes = [],
+            scenes = this.scenes = {},
             controller = this.controller = new ScrollMagic.Controller(),
             trigger = this.article = $(refs.container).closest('article.page');
+        scenes[breakpoint.names.large] = [];
+        scenes[breakpoint.names.medium] = [];
+        scenes[breakpoint.names.small] = [];
 
         this.header = trigger.find('header.main');
         this.image = this.header.find('> .image .img');
@@ -25,12 +30,44 @@ export default class Burger extends Component {
 
         if (this.props.stationary) return;
 
-        scenes.push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
+        ////
+        // LARGE SCREEN
+        ///////////////////
+
+        scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
             //.addIndicators({ name: 'Burger 1.' })
             .setTween(move())
         );
 
-        scenes.push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 360 }).addTo(controller)
+        scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 360 }).addTo(controller)
+            //.addIndicators({ name: 'Burger 2.' })
+            .setTween(darken())
+        );
+
+        ////
+        // MEDIUM SCREEN
+        ///////////////////
+
+        scenes[breakpoint.names.medium].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
+            //.addIndicators({ name: 'Burger 1.' })
+            .setTween(move())
+        );
+
+        scenes[breakpoint.names.medium].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 360 }).addTo(controller)
+            //.addIndicators({ name: 'Burger 2.' })
+            .setTween(darken())
+        );
+
+        ////
+        // SMALL SCREEN
+        ///////////////////
+
+        scenes[breakpoint.names.small].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
+            //.addIndicators({ name: 'Burger 1.' })
+            .setTween(move())
+        );
+
+        scenes[breakpoint.names.small].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 360 }).addTo(controller)
             //.addIndicators({ name: 'Burger 2.' })
             .setTween(darken())
         );
@@ -39,22 +76,43 @@ export default class Burger extends Component {
         function darken() { let t = TweenMax.to(refs.burger, .3, { color: '#4d4d4d' }); timeLines.push(t); return t; }
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        //console.warn('Burger shouldUpdate', nextProps.transition.scrollScenesEnabled);
-        this.scenes && this.scenes.forEach(scene => { scene.enabled(nextProps.transition.scrollScenesEnabled); });
+    shouldComponentUpdate (nextProps, nextState) {
+        //console.warn('Header shouldUpdate', nextProps.transition.scrollScenesEnabled);
+        this.handleMediaChange.call(this, nextProps.ui.media);
         return false;
     }
 
     componentWillUnmount() {
-        for (var i = 0; i < this.scenes.length; i++) {
-            this.scenes[i].destroy();
-            this.scenes[i] = null;
+        for (let media in breakpoint.names) {
+            if (this.scenes[media] && this.scenes[media].length && this.scenes[media][0].destroy) {
+                for (let i = 0; i < this.scenes[media].length; i++) {
+                    this.scenes[media][i].destroy();
+                    this.scenes[media][i] = null;
+                }
+            }
         }
-        for (i = 0; i < this.timeLines.length; i++) {
+        for (let i = 0; i < this.timeLines.length; i++) {
             this.timeLines[i] = null;
         }
         this.controller.destroy();
         this.controller = null;
+    }
+
+    handleMediaChange(media) {
+        //console.warn('handleMediaChange', media, 'on', this.article.attr('class'), this);
+        if (media.current == media.prev) {
+            for (let name in breakpoint.names) {
+                this.setScenes(name, name == media.current);
+            }
+        } else {
+            this.setScenes(media.prev, false);            
+            this.setScenes(media.current, true);            
+        }
+    }
+
+    setScenes (media, enabled) {
+        //console.warn('logo setting scenes for', media, 'to', enabled,'on', this.article.attr('class'));
+        this.scenes && this.scenes[media] && this.scenes[media].forEach(scene => { scene.enabled(enabled); });
     }
 
     open() {
@@ -150,30 +208,6 @@ export default class Burger extends Component {
     render() {
         return (
             <div className="hamburger" ref="container">
-                {/*<div className="hamburglar is-closed" onClick={this.open} ref="burger">
-                    <div className="burger-icon">
-                        <div className="burger-container">
-                            <span className="burger-bun-top"></span>
-                            <span className="burger-filling"></span>
-                            <span className="burger-bun-bot"></span>
-                        </div>
-                    </div>
-                    <div className="burger-ring">
-                        <svg className="svg-ring">
-                            <path className="path" fill="none" stroke="currentColor" stroke-miterlimit="10" strokeWidth="4" d="M 34 2 C 16.3 2 2 16.3 2 34 s 14.3 32 32 32 s 32 -14.3 32 -32 S 51.7 2 34 2" />
-                        </svg>
-                    </div>
-                    <svg width="0" height="0">
-                        <mask id="mask">
-                            <path xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-miterlimit="10" strokeWidth="4" d="M 34 2 c 11.6 0 21.8 6.2 27.4 15.5 c 2.9 4.8 5 16.5 -9.4 16.5 h -4" />
-                        </mask>
-                    </svg>
-                    <div className="path-burger">
-                        <div className="animate-path">
-                            <div className="path-rotation"></div>
-                        </div>
-                    </div>
-                </div>{/**/}
                 <i className="open ncs-bars"  onClick={this.open} ref="burger" />
                 <i className="close ncs-chevron-with-circle-left" onClick={this.close} ref="close" />
             </div>

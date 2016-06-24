@@ -12,6 +12,7 @@ let animations = {
 
 const stateToProps = state => ({
     transition: state.transition,
+    ui: state.ui,
 });
 
 export default (BaseComponent) => {
@@ -33,7 +34,7 @@ export default (BaseComponent) => {
             this.animation.appear(this.refs.container, this.callback.bind(this, callback));
         }
         componentWillEnter(callback) {
-            let transition = this._clone.props.transition;
+            let transition = this._clone.props.transition, ui = this._clone.props.ui;
             if (!transition || !transition.type) {
                 return callback();
             }
@@ -44,15 +45,15 @@ export default (BaseComponent) => {
 
             //console.log('componentWillEnter', this);
 
-            if (this.animation['enter_' + transition.type]) {
-                this.animation['enter_' + transition.type](this.refs.container, this.callback.bind(this, callback), transition);
+            if (this.animation[ui.media.current + '_enter_' + transition.type]) {
+                this.animation[ui.media.current + '_enter_' + transition.type](this.refs.container, this.callback.bind(this, callback), transition);
             }
             else {
-                console.warn('On enter, ' + animation + 'does not have any animation: ' + transition.type);
+                console.warn('On enter,', animation, 'does not have any animation:', ui.media.current + '_enter_' + transition.type);
             }
         }
         componentWillLeave(callback) {
-            let transition = this._clone.props.transition;
+            let transition = this._clone.props.transition, ui = this._clone.props.ui;
             if (!transition || !transition.type || !this.animation) {
                 return callback();
             }
@@ -60,11 +61,11 @@ export default (BaseComponent) => {
 
             console.log('componentWillLeave using transition description ' , transition);
 
-            if (this.animation['leave_' + transition.type]) {
-                this.animation['leave_' + transition.type](this.refs.container, this.callback.bind(this, callback), transition);
+            if (this.animation[ui.media.current + '_leave_' + transition.type]) {
+                this.animation[ui.media.current + '_leave_' + transition.type](this.refs.container, this.callback.bind(this, callback), transition);
             }
             else {
-                console.warn('On leave, does not have any animation: ' + transition.type);
+                console.warn('On leave, does not have any animation: ', ui.media.current + '_leave_' + transition.type);
             }
 
         }

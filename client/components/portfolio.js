@@ -57,7 +57,6 @@ class Portfolio extends Component {
 
 Portfolio.propTypes = {
     strings: PropTypes.object.isRequired,
-     transition: PropTypes.func.isRequired,
 };
 
 Portfolio.defaultProps = {

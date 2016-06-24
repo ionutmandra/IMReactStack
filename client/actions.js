@@ -105,6 +105,11 @@ module.exports = {
             dispatch({ type: C.DISABLE_SCENES });
         };
     },
+    setMedia: (media) => {
+        return (dispatch) => {
+            dispatch({ type: C.MEDIA, payload: media });
+        };
+    },
 };
 
 //AUTH

@@ -51,7 +51,8 @@ gulp.task('watchify', () => {
 });
 
 const vendor_files = [
-  './client/lib/jquery/jquery.min.js', 
+  './client/lib/jquery/jquery.min.js',
+  './client/lib/jquery/jquery.scrollLock.js', 
   './client/lib/gsap/ColorPropsPlugin.min.js',
   './client/lib/gsap/ScrollToPlugin.min.js',
   './client/lib/gsap/CSSPlugin.min.js',
