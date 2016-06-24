@@ -6,6 +6,7 @@ import * as actions from '../actions';
 
 const stateToProps = state => ({
     transition: state.transition,
+    ui: state.ui,
 });
 
 const mapDispatchToProps = (dispatch) => {
