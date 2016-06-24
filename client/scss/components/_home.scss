@@ -426,7 +426,7 @@
                 }
                 .text-2 {
                     @include grid-column-size(11);
-                    @include grid-column-offset(13);
+                    @include grid-column-offset(12);
                     top: 70%;
                     transform: translate(0, -50%);
                     h2 {
