@@ -120,4 +120,11 @@ export const transition = data.transition = {
     scrollScenesEnabled: true, //initially all scroll scenes are enabled
 };
 
+export const ui = data.ui = {
+    media: { //active media query (large, medium, small)
+        current: 'none',
+        prev: 'none',
+    },
+};
+
 export default data;

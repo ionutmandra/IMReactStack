@@ -2,6 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import routePaths from '../../common/routePaths';
 import { Link } from 'react-router';
 import _ from 'lodash';
+import { breakpoint } from '../config/constants';
+import dom from 'react-dom';
+
 let $ = window.$, $window = $(window), ScrollMagic = window.ScrollMagic, TweenMax = window.TweenMax, Power3 = window.Power3, TimelineLite = window.TimelineLite;
 
 class Logo extends Component {
@@ -13,9 +16,13 @@ class Logo extends Component {
     componentDidMount() {
         let refs = this.refs,
             timeLines = this.timeLines = [],
-            scenes = this.scenes = [],
+            scenes = this.scenes = {},
             controller = this.controller = new ScrollMagic.Controller(),
-            trigger = this.article = $(refs.container).closest('article.page');
+            trigger = this.article = $(dom.findDOMNode(refs.logo)).closest('article.page');
+        scenes[breakpoint.names.large] = [];
+        scenes[breakpoint.names.medium] = [];
+        scenes[breakpoint.names.small] = [];
+        console.warn('logo componentDidMount', this.refs);
 
         this.header = trigger.find('header.main');
         this.links = this.header.find('nav ul li a');
@@ -23,18 +30,62 @@ class Logo extends Component {
 
         if (this.props.stationary) return;
 
-        scenes.push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
+        ////
+        // LARGE SCREEN
+        ///////////////////
+
+        scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
             //.addIndicators({ name: 'Logo 1.' })
             .on('start', () => {
-                console.warn('STARTED logo scene 1', arguments);
+                console.log('large logo sc1 start');
             })
             .setTween(moveText())
         );
 
-        scenes.push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 360 }).addTo(controller)
+        scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 360 }).addTo(controller)
             //.addIndicators({ name: 'Logo 2.' })
             .on('start', () => {
-                console.warn('STARTED logo scene 2', arguments);
+                console.log('large logo sc2 start');
+            })
+            .setTween(darken())
+        );
+
+        ////
+        // MEDIUM SCREEN
+        ///////////////////
+
+        scenes[breakpoint.names.medium].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
+            //.addIndicators({ name: 'Logo 1.' })
+            .on('start', () => {
+                console.log('medium logo sc1 start');
+            })
+            .setTween(moveText())
+        );
+
+        scenes[breakpoint.names.medium].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 360 }).addTo(controller)
+            //.addIndicators({ name: 'Logo 2.' })
+            .on('start', () => {
+                console.log('medium logo sc2 start');
+            })
+            .setTween(darken())
+        );
+
+        ////
+        // SMALL SCREEN
+        ///////////////////
+
+        scenes[breakpoint.names.small].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
+            //.addIndicators({ name: 'Logo 1.' })
+            .on('start', () => {
+                console.log('small logo sc1 start');
+            })
+            .setTween(moveText())
+        );
+
+        scenes[breakpoint.names.small].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 360 }).addTo(controller)
+            //.addIndicators({ name: 'Logo 2.' })
+            .on('start', () => {
+                console.log('small logo sc2 start');
             })
             .setTween(darken())
         );
@@ -43,22 +94,43 @@ class Logo extends Component {
         function darken() { let t = TweenMax.to(refs.img, .3, { color: '#4d4d4d' }); timeLines.push(t); return t; }
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        //console.warn('Logo shouldUpdate', nextProps.transition.scrollScenesEnabled);
-        this.scenes && this.scenes.forEach(scene => { scene.enabled(nextProps.transition.scrollScenesEnabled); });
+    shouldComponentUpdate (nextProps, nextState) {
+        //console.warn('Header shouldUpdate', nextProps.transition.scrollScenesEnabled);
+        this.handleMediaChange.call(this, nextProps.ui.media);
         return false;
     }
 
     componentWillUnmount() {
-        for (var i = 0; i < this.scenes.length; i++) {
-            this.scenes[i].destroy();
-            this.scenes[i] = null;
+        for (let media in breakpoint.names) {
+            if (this.scenes[media] && this.scenes[media].length && this.scenes[media][0].destroy) {
+                for (let i = 0; i < this.scenes[media].length; i++) {
+                    this.scenes[media][i].destroy();
+                    this.scenes[media][i] = null;
+                }
+            }
         }
-        for (i = 0; i < this.timeLines.length; i++) {
+        for (let i = 0; i < this.timeLines.length; i++) {
             this.timeLines[i] = null;
         }
         this.controller.destroy();
         this.controller = null;
+    }
+
+    handleMediaChange(media) {
+        //console.warn('handleMediaChange', media, 'on', this.article.attr('class'), this);
+        if (media.current == media.prev) {
+            for (let name in breakpoint.names) {
+                this.setScenes(name, name == media.current);
+            }
+        } else {
+            this.setScenes(media.prev, false);            
+            this.setScenes(media.current, true);            
+        }
+    }
+
+    setScenes (media, enabled) {
+        //console.warn('logo setting scenes for', media, 'to', enabled,'on', this.article.attr('class'));
+        this.scenes && this.scenes[media] && this.scenes[media].forEach(scene => { scene.enabled(enabled); });
     }
 
     handleClick() {
@@ -73,7 +145,7 @@ class Logo extends Component {
 
     render() {
         return (
-            <Link to={routePaths.client.root} onClick={this.handleClick} className="logo">
+            <Link ref="logo" to={routePaths.client.root} onClick={this.handleClick} className="logo">
                 <div className="img" ref="img">
                     <svg width="36px" height="36px" viewBox="0 0 36 36">
                         <path stroke="none"  fill-rule="evenodd" d="M17.378,0.001c3.424,0,7.297,1.784,10.623,4.454

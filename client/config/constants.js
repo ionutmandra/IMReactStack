@@ -22,4 +22,16 @@ module.exports = {
 	TRANSITION: 'TRANSITION',
 	ENABLE_SCENES: 'ENABLE_SCENES',
 	DISABLE_SCENES: 'DISABLE_SCENES',
+
+	//UI
+	MEDIA: 'MEDIA',
+	breakpoint: {
+		names: {
+			large: 'large',
+			medium: 'medium',
+			small: 'small',
+		},
+		large: 1024,
+		medium: 640,
+	},
 };

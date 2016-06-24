@@ -12,6 +12,7 @@ import * as Redux from 'redux';
 // import teamReducer from './reducers/team';
 import langReducer from './reducers/lang';
 import transitionReducer from './reducers/transition';
+import uiReducer from './reducers/ui';
 
 const rootReducer = Redux.combineReducers({
     // about: aboutReducer,
@@ -21,6 +22,7 @@ const rootReducer = Redux.combineReducers({
     // team: teamReducer,
     lang: langReducer,
     transition: transitionReducer,
+    ui: uiReducer,
     //[authReducer.reducerName]: authReducer.createReducer,
 });
 

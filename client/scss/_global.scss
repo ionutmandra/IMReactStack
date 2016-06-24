@@ -36,6 +36,7 @@
         color: $text-color;
         text-decoration: underline;
         transition: opacity .2s ease-out;
+        will-change: opacity;
         &:hover,&:focus {
             color: $text-color;
             opacity: .8;

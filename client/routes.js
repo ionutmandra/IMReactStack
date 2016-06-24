@@ -9,7 +9,7 @@ import routePaths from '../common/routePaths';
 
 //import requireAuthentication from './containers/authenticatedContainer';
 
-import Wrapper from './components/wrapper';
+import Wrapper from './containers/wrapperContainer';
 import Home from './containers/homeContainer';
 import About from './containers/aboutContainer';
 import Expertise from './containers/expertiseContainer';
