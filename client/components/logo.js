@@ -22,7 +22,6 @@ class Logo extends Component {
         scenes[breakpoint.names.large] = [];
         scenes[breakpoint.names.medium] = [];
         scenes[breakpoint.names.small] = [];
-        console.warn('logo componentDidMount', this.refs);
 
         this.header = trigger.find('header.main');
         this.links = this.header.find('nav ul li a');
