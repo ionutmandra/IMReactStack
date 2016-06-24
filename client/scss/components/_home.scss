@@ -516,7 +516,7 @@
             .text-1,
             .text-2,
             .text-3,
-            .scroll-hint {
+            {
                 overflow: hidden;
                 position: absolute;
                 h1 {
@@ -568,29 +568,7 @@
                     opacity: 0.5;
                 }
                 .scroll-hint {
-                    @include grid-column-size(8);
-                    @include grid-column-offset(8);
-                    bottom: 5%;
-                    text-align: center;
-                    span {
-                        display: inline-block;
-                        -moz-border-radius: 70px/70px;
-                        -webkit-border-radius: 70px 70px;
-                        border-radius: 70px/70px;
-                        border: solid 2px white;
-                        width: 30px;
-                        height: 30px;
-                        i {
-                            position: relative;
-                            top: -1px;
-                            font-size: 15px;
-                            margin-left: 1px;
-                        }
-                    }
-                    p {
-                        font-size: rem-calc(14pt);
-                        line-height: rem-calc(22pt);
-                    }
+                    display: none;
                 }
             }
             &.slide-2 {
@@ -711,11 +689,12 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
+            height: 120%;
             z-index: 2;
             background: linear-gradient(45deg, rgba(214, 203, 38, 1) 0%, rgba(104, 188, 69, 1) 100%);
             opacity: .8;
         }
+
         a {
             color: #FFFFFF;
         }
