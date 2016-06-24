@@ -839,9 +839,9 @@ return;
                     <div className="text-1"><h1 ref={(c) => this._inputSoftware = c}>{'Software Innovators Happily Together'}</h1></div>
                     <div className="text-2">
                         <h2 ref={(c) => this._inputCreate = c}>
-                            <p>Create a truly remarkable working environment</p>
-                            <p>and deliver high quality, innovative software</p>
-                            <p>products and services</p>
+                            Create a truly remarkable working environment
+                            and deliver high quality, innovative software
+                            products and services
                         </h2>
                     </div>
 
@@ -856,9 +856,9 @@ return;
                 <section className="slide slide-2 content"  ref={(c) => this._section2c = c}>
                     <div className="text-1">
                         <h1 ref={(c) => this._inputGrow = c}>
-                            <p>Grow an outstanding</p>
-                            <p>working environment driven</p>
-                            <p>by <Link to="/about" data-animate-line="3" data-section="2" onClick={this.handleLinkClick}>our culture</Link></p>
+                            Grow an outstanding
+                            working environment driven
+                            by <Link to="/about" data-animate-line="3" data-section="2" onClick={this.handleLinkClick}>our culture</Link>
                         </h1>
                     </div>
                     <div className="text-2">
