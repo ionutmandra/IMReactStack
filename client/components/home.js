@@ -154,34 +154,6 @@ class Home extends Component {
             return t;
         }
 
-
-        hideSlide(this._section2c);
-        hideSlide(this._section3c);
-        hideSlide(this._section4c);
-
-
-        hideImgInstant(_this._img2);
-        hideImgInstant(_this._img3);
-        hideImgInstant(_this._img4);
-
-        hideLeft([this._inputGrow, this._inputValuesRight, this._inputCreating, this._inputSustaining]);
-        hideRight([this._inputValuesLeft, this._inputOffering]);
-
-        pinSections([this._section1, this._section2, this._section3, this._section4]);
-        pinSections([this._section1b, this._section2b, this._section3b, this._section4b]);
-        pinSections([this._section1c, this._section2c, this._section3c, this._section4c]);
-
-        //gradient animations
-        var slide1GrTr = animateGradientColors({ color0: gradients[0], color1: gradients[1] }, { color0: gradients[1], color1: gradients[2] });
-        var slide2GrTr = animateGradientColors({ color0: gradients[1], color1: gradients[2] }, { color0: gradients[2], color1: gradients[3] });
-        var slide3GrTr = animateGradientColors({ color0: gradients[2], color1: gradients[3] }, { color0: gradients[3], color1: gradients[4] });
-
-        //scenes
-        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '100%' }).addTo(controller).setTween(slide1GrTr));
-        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', duration: '100%' }).addTo(controller).setTween(slide2GrTr));
-        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', duration: '100%' }).addTo(controller).setTween(slide3GrTr));
-
-
         var animationType = getParameterByName('an', this.props.location.search);
         switch (animationType) {
             case '2':
@@ -205,6 +177,35 @@ class Home extends Component {
                 animation1.bind(this)();
                 break;
         }
+
+        //gradient animations
+        var slide1GrTr = animateGradientColors({ color0: gradients[0], color1: gradients[1] }, { color0: gradients[1], color1: gradients[2] });
+        var slide2GrTr = animateGradientColors({ color0: gradients[1], color1: gradients[2] }, { color0: gradients[2], color1: gradients[3] });
+        var slide3GrTr = animateGradientColors({ color0: gradients[2], color1: gradients[3] }, { color0: gradients[3], color1: gradients[4] });
+
+        //scenes
+        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '100%' }).addTo(controller).setTween(slide1GrTr));
+        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', duration: '100%' }).addTo(controller).setTween(slide2GrTr));
+        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', duration: '100%' }).addTo(controller).setTween(slide3GrTr));
+
+        if(animationType!='5')
+        {
+        hideSlide(this._section2c);
+        hideSlide(this._section3c);
+        hideSlide(this._section4c);
+
+        hideImgInstant(_this._img2);
+        hideImgInstant(_this._img3);
+        hideImgInstant(_this._img4);
+
+        hideLeft([this._inputGrow, this._inputValuesRight, this._inputCreating, this._inputSustaining]);
+        hideRight([this._inputValuesLeft, this._inputOffering]);
+
+        pinSections([this._section1, this._section2, this._section3, this._section4]);
+        pinSections([this._section1b, this._section2b, this._section3b, this._section4b]);
+        pinSections([this._section1c, this._section2c, this._section3c, this._section4c]);
+        }
+
 
         function animation1() {
             // change behaviour of controller to animate scroll instead of jump
@@ -678,7 +679,7 @@ class Home extends Component {
 
         function animation5() {
 
-return;
+            return;
 
             // change behaviour of controller to animate scroll instead of jump
             controller.scrollTo(function (newpos) {
