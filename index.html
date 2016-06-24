@@ -185,7 +185,7 @@
         TweenMax.set('#rightLogo',{x:'-100%'});
         TweenMax.set('#adaptabiTxt', { display:'none' });
 
-        var timeline = new TimelineLite({ onComplete: () => { timeline = null; } })
+        var timeline = new TimelineLite({ onComplete: function () { timeline = null; } })
         .add(TweenMax.to('#line', 1, { height: '20%', ease: Power3.easeIn }))
         .add(TweenMax.to('#line', 1, { height: '80%' }))
         .add(TweenMax.to('#line', 1, { height: '100%', ease: Power3.easeOut }))
@@ -217,7 +217,7 @@
 
                     clearInterval(tick);
 
-                    var timeline = new TimelineLite({ onComplete: () => { timeline = null; }})
+                    var timeline = new TimelineLite({ onComplete: function() { timeline = null; }})
                     .add([
                         TweenMax.set('#line',{ 'border-right': 'none'}),
                         TweenMax.to('#line', 1, { x: '-100%', ease: Power3.easeIn }),
