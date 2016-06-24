@@ -32,8 +32,6 @@ class HeaderLinks extends Component {
         this.text = this.header.find('> .text h1');
         this.burgerClose = this.header.find('> .hamburger > .close');
 
-        console.log('heaer link article is ', this.article );
-
         if (this.article.is('.page-home')) {
             this.leftTexts = [
                 this.article.find('.slide-1.content .text-2 h2').toArray(),
@@ -88,11 +86,17 @@ class HeaderLinks extends Component {
         );
 
         function hide() { let t = TweenMax.to(links, .3, { x: '-100%' }); timeLines.push(t); return t; }
+
+        this.handleMediaChange(this.props.ui.media);
     }
 
-    shouldComponentUpdate (nextProps, nextState) {
-        //console.warn('Header shouldUpdate', nextProps.transition.scrollScenesEnabled);
-        this.handleMediaChange.call(this, nextProps.ui.media);
+    shouldComponentUpdate(nextProps, nextState) {
+        if(this.props.transition.scrollScenesEnabled != nextProps.transition.scrollScenesEnabled){
+            this.setScenes(this.props.ui.media.current, nextProps.transition.scrollScenesEnabled);
+        }
+        if(this.props.ui.media.current != nextProps.ui.media.current){
+            this.handleMediaChange(nextProps.ui.media);
+        }
         return false;
     }
 
@@ -113,15 +117,10 @@ class HeaderLinks extends Component {
     }
 
     handleMediaChange(media) {
-        //console.warn('handleMediaChange', media, 'on', this.article.attr('class'), this);
-        if (media.current == media.prev) {
-            for (let name in breakpoint.names) {
-                this.setScenes(name, name == media.current);
-            }
-        } else {
-            this.setScenes(media.prev, false);            
-            this.setScenes(media.current, true);            
+        for (let name in breakpoint.names) {
+            this.setScenes(name, false);
         }
+        this.setScenes(media.current, true);
     }
 
     setScenes (media, enabled) {
