@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import routePaths from '../../common/routePaths';
 import dom from 'react-dom';
 import _ from 'lodash';
+import { breakpoint } from '../config/constants';
 
 let $ = window.$, $window = $(window), ScrollMagic = window.ScrollMagic, TweenMax = window.TweenMax, Power3 = window.Power3, TimelineLite = window.TimelineLite;
 
@@ -16,10 +17,13 @@ class HeaderLinks extends Component {
     componentDidMount() {
         let refs = this.refs,
             timeLines = this.timeLines = [],
-            scenes = this.scenes = [],
+            scenes = this.scenes = {},
             controller = this.controller = new ScrollMagic.Controller(),
             trigger = this.article = $(refs.container).closest('article.page'),
             links = this.links = this.links.map(link => dom.findDOMNode(link));
+        scenes[breakpoint.names.large] = [];
+        scenes[breakpoint.names.medium] = [];
+        scenes[breakpoint.names.small] = [];
         this.header = this.article.find('header.main');
         this.contactPieces = this.header.find('.contact .content');
         this.image = this.header.find('> .image .img');
@@ -57,7 +61,28 @@ class HeaderLinks extends Component {
 
         if (this.props.stationary) return;
 
-        scenes.push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
+        ////
+        // LARGE SCREEN
+        ///////////////////
+
+        scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
+            //.addIndicators({ name: 'Links 1.__' })
+            .setTween(hide())
+        );
+
+        ////
+        // Medium SCREEN
+        ///////////////////
+
+        scenes[breakpoint.names.medium].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
+            //.addIndicators({ name: 'Links 1.__' })
+            .setTween(hide())
+        );
+
+        ////
+        // SMALL SCREEN
+        ///////////////////
+        scenes[breakpoint.names.small].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
             //.addIndicators({ name: 'Links 1.__' })
             .setTween(hide())
         );
@@ -65,22 +90,43 @@ class HeaderLinks extends Component {
         function hide() { let t = TweenMax.to(links, .3, { x: '-100%' }); timeLines.push(t); return t; }
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        //console.warn('HeaderLinks shouldUpdate', nextProps.transition.scrollScenesEnabled);
-        this.scenes && this.scenes.forEach(scene => { scene.enabled(nextProps.transition.scrollScenesEnabled); });
+    shouldComponentUpdate (nextProps, nextState) {
+        //console.warn('Header shouldUpdate', nextProps.transition.scrollScenesEnabled);
+        this.handleMediaChange.call(this, nextProps.ui.media);
         return false;
     }
 
     componentWillUnmount() {
-        for (var i = 0; i < this.scenes.length; i++) {
-            this.scenes[i].destroy();
-            this.scenes[i] = null;
+        for (let media in breakpoint.names) {
+            if (this.scenes[media] && this.scenes[media].length && this.scenes[media][0].destroy) {
+                for (let i = 0; i < this.scenes[media].length; i++) {
+                    this.scenes[media][i].destroy();
+                    this.scenes[media][i] = null;
+                }
+            }
         }
-        for (i = 0; i < this.timeLines.length; i++) {
+        for (let i = 0; i < this.timeLines.length; i++) {
             this.timeLines[i] = null;
         }
         this.controller.destroy();
         this.controller = null;
+    }
+
+    handleMediaChange(media) {
+        //console.warn('handleMediaChange', media, 'on', this.article.attr('class'), this);
+        if (media.current == media.prev) {
+            for (let name in breakpoint.names) {
+                this.setScenes(name, name == media.current);
+            }
+        } else {
+            this.setScenes(media.prev, false);            
+            this.setScenes(media.current, true);            
+        }
+    }
+
+    setScenes (media, enabled) {
+        //console.warn('logo setting scenes for', media, 'to', enabled,'on', this.article.attr('class'));
+        this.scenes && this.scenes[media] && this.scenes[media].forEach(scene => { scene.enabled(enabled); });
     }
 
     handleClick(event) {
