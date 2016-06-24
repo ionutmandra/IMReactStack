@@ -539,14 +539,14 @@
                     background-image: url(../img/photos/temp1.jpg);
                 }
                 .text-1 {
-                    @include grid-column-size(6);
-                    @include grid-column-offset(6);
+                    @include grid-column-size(11);
+                    @include grid-column-offset(1);
                     top: 40%;
                     text-align: right;
                     padding-left: 25px;
                 }
                 .text-2 {
-                    @include grid-column-size(9);
+                    @include grid-column-size(11);
                     @include grid-column-offset(12);
                     top: 50%;
                     h2 {
@@ -554,22 +554,22 @@
                         font-size: rem-calc(14pt);
                         line-height: rem-calc(22pt);
                         p {
-                            line-height: rem-calc(30pt);
+                            line-height: rem-calc(22pt);
                             margin: 0;
                             padding: 0;
                         }
                     }
                 }
                 .text-3 {
-                    @include grid-column-size(6);
-                    @include grid-column-offset(9);
+                    @include grid-column-size(0);
+                    @include grid-column-offset(0);
                     top: 69%;
                     text-align: center;
                     opacity: 0.5;
                 }
                 .scroll-hint {
-                    @include grid-column-size(4);
-                    @include grid-column-offset(10);
+                    @include grid-column-size(8);
+                    @include grid-column-offset(8);
                     bottom: 5%;
                     text-align: center;
                     span {
@@ -578,14 +578,18 @@
                         -webkit-border-radius: 70px 70px;
                         border-radius: 70px/70px;
                         border: solid 2px white;
-                        width: 70px;
-                        height: 70px;
+                        width: 30px;
+                        height: 30px;
                         i {
                             position: relative;
-                            top: 20px;
-                            font-size: 25px;
+                            top: -1px;
+                            font-size: 15px;
                             margin-left: 1px;
                         }
+                    }
+                    p {
+                        font-size: rem-calc(14pt);
+                        line-height: rem-calc(22pt);
                     }
                 }
             }
@@ -600,8 +604,8 @@
                     }
                 }
                 .text-1 {
-                    @include grid-column-size(7);
-                    @include grid-column-offset(3);
+                    @include grid-column-size(11);
+                    @include grid-column-offset(1);
                     top: 50%;
                     transform: translate(0, -50%);
                     h2 {
@@ -609,28 +613,28 @@
                     }
                 }
                 .text-2 {
-                    @include grid-column-size(3);
-                    @include grid-column-offset(15);
+                    @include grid-column-size(4.5);
+                    @include grid-column-offset(12);
                     text-align: right;
                     top: 50%;
                     transform: translate(0, -50%);
                     h2 {
                         margin-bottom: 50%;
                         font-weight: $semibold;
-                        font-size: rem-calc(18pt);
-                        line-height: rem-calc(24pt);
+                        font-size: rem-calc(8pt);
+                        line-height: rem-calc(16pt);
                     }
                 }
                 .text-3 {
-                    @include grid-column-size(3);
-                    @include grid-column-offset(18);
+                    @include grid-column-size(5.5);
+                    @include grid-column-offset(16.5);
                     top: 50%;
                     transform: translate(0, -38%);
                     h2 {
                         margin-bottom: 50%;
                         font-weight: $semibold;
-                        font-size: rem-calc(18pt);
-                        line-height: rem-calc(24pt);
+                        font-size: rem-calc(8pt);
+                        line-height: rem-calc(16pt);
                     }
                 }
             }
@@ -643,21 +647,21 @@
                     }
                 }
                 .text-1 {
-                    @include grid-column-size(6);
-                    @include grid-column-offset(3);
+                    @include grid-column-size(10);
+                    @include grid-column-offset(1);
                     top: 50%;
                     transform: translate(0, -50%);
                     text-align: right;
                 }
                 .text-2 {
-                    @include grid-column-size(6);
-                    @include grid-column-offset(15);
+                    @include grid-column-size(11);
+                    @include grid-column-offset(13);
                     top: 50%;
                     transform: translate(0, -50%);
                     h2 {
                         font-weight: $semibold;
-                        font-size: rem-calc(28pt);
-                        line-height: rem-calc(38pt);
+                        font-size: rem-calc(14pt);
+                        line-height: rem-calc(22pt);
                     }
                 }
             }
@@ -671,8 +675,8 @@
                     }
                 }
                 .text-1 {
-                    @include grid-column-size(6);
-                    @include grid-column-offset(15);
+                    @include grid-column-size(11);
+                    @include grid-column-offset(12);
                     top: 50%;
                 }
             }
