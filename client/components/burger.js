@@ -74,11 +74,17 @@ export default class Burger extends Component {
 
         function move() { let t = TweenMax.to(refs.burger, .3, { x: '0%' }); timeLines.push(t); return t; }
         function darken() { let t = TweenMax.to(refs.burger, .3, { color: '#4d4d4d' }); timeLines.push(t); return t; }
+
+        this.handleMediaChange(this.props.ui.media);
     }
 
-    shouldComponentUpdate (nextProps, nextState) {
-        //console.warn('Header shouldUpdate', nextProps.transition.scrollScenesEnabled);
-        this.handleMediaChange.call(this, nextProps.ui.media);
+    shouldComponentUpdate(nextProps, nextState) {
+        if(this.props.transition.scrollScenesEnabled != nextProps.transition.scrollScenesEnabled){
+            this.setScenes(this.props.ui.media.current, nextProps.transition.scrollScenesEnabled);
+        }
+        if(this.props.ui.media.current != nextProps.ui.media.current){
+            this.handleMediaChange(nextProps.ui.media);
+        }
         return false;
     }
 
@@ -99,15 +105,10 @@ export default class Burger extends Component {
     }
 
     handleMediaChange(media) {
-        //console.warn('handleMediaChange', media, 'on', this.article.attr('class'), this);
-        if (media.current == media.prev) {
-            for (let name in breakpoint.names) {
-                this.setScenes(name, name == media.current);
-            }
-        } else {
-            this.setScenes(media.prev, false);            
-            this.setScenes(media.current, true);            
+        for (let name in breakpoint.names) {
+            this.setScenes(name, false);
         }
+        this.setScenes(media.current, true);
     }
 
     setScenes (media, enabled) {
