@@ -35,17 +35,11 @@ class Logo extends Component {
 
         scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
             //.addIndicators({ name: 'Logo 1.' })
-            .on('start', () => {
-                console.log('large logo sc1 start');
-            })
             .setTween(moveText())
         );
 
         scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 360 }).addTo(controller)
             //.addIndicators({ name: 'Logo 2.' })
-            .on('start', () => {
-                console.log('large logo sc2 start');
-            })
             .setTween(darken())
         );
 
@@ -55,17 +49,11 @@ class Logo extends Component {
 
         scenes[breakpoint.names.medium].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
             //.addIndicators({ name: 'Logo 1.' })
-            .on('start', () => {
-                console.log('medium logo sc1 start');
-            })
             .setTween(moveText())
         );
 
         scenes[breakpoint.names.medium].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 360 }).addTo(controller)
             //.addIndicators({ name: 'Logo 2.' })
-            .on('start', () => {
-                console.log('medium logo sc2 start');
-            })
             .setTween(darken())
         );
 
@@ -75,27 +63,27 @@ class Logo extends Component {
 
         scenes[breakpoint.names.small].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
             //.addIndicators({ name: 'Logo 1.' })
-            .on('start', () => {
-                console.log('small logo sc1 start');
-            })
             .setTween(moveText())
         );
 
         scenes[breakpoint.names.small].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 360 }).addTo(controller)
             //.addIndicators({ name: 'Logo 2.' })
-            .on('start', () => {
-                console.log('small logo sc2 start');
-            })
             .setTween(darken())
         );
 
         function moveText() { let t = TweenMax.to(refs.text, .3, { x: '-100%' }); timeLines.push(t); return t; }
         function darken() { let t = TweenMax.to(refs.img, .3, { color: '#4d4d4d' }); timeLines.push(t); return t; }
+        
+        this.handleMediaChange(this.props.ui.media);
     }
 
-    shouldComponentUpdate (nextProps, nextState) {
-        //console.warn('Header shouldUpdate', nextProps.transition.scrollScenesEnabled);
-        this.handleMediaChange.call(this, nextProps.ui.media);
+    shouldComponentUpdate(nextProps, nextState) {
+        if(this.props.transition.scrollScenesEnabled != nextProps.transition.scrollScenesEnabled){
+            this.setScenes(this.props.ui.media.current, nextProps.transition.scrollScenesEnabled);
+        }
+        if(this.props.ui.media.current != nextProps.ui.media.current){
+            this.handleMediaChange(nextProps.ui.media);
+        }
         return false;
     }
 
@@ -116,15 +104,10 @@ class Logo extends Component {
     }
 
     handleMediaChange(media) {
-        //console.warn('handleMediaChange', media, 'on', this.article.attr('class'), this);
-        if (media.current == media.prev) {
-            for (let name in breakpoint.names) {
-                this.setScenes(name, name == media.current);
-            }
-        } else {
-            this.setScenes(media.prev, false);            
-            this.setScenes(media.current, true);            
+        for (let name in breakpoint.names) {
+            this.setScenes(name, false);
         }
+        this.setScenes(media.current, true);
     }
 
     setScenes (media, enabled) {

@@ -668,6 +668,15 @@ class Home extends Component {
 
             <div className="gradient" />
 
+                <section className="slide slide-1 content"  ref={(c) => this._section1c = c}>
+                    <div className="text-1"><h1 ref={(c) => this._inputSoftware = c}>{'Software Innovators Happily Together'}</h1></div>
+                    <div className="text-2">
+                        <h2 ref={(c) => this._inputCreate = c}>
+                            Create a truly remarkable working environment
+                            and deliver high quality, innovative software
+                            products and services
+                        </h2>
+                    </div>
 
             <section className="slide slide-1 content"  ref={(c) => this._section1c = c}>
             <div className="text-1"><h1 ref={(c) => this._inputSoftware = c}>{'Software Innovators Happily Together'}</h1></div>
@@ -679,13 +688,31 @@ class Home extends Component {
             </h2>
             </div>
 
-            <div className="scroll-hint" ref={(c) => this._scrollHintContainer = c}>
-            <span ref={(c) => this._scrollHint = c}>
-            <i className="ncs-chevron-thin-down"></i>
-            </span>
-            <p>{'Find out more'}</p>
-            </div>
-            </section>
+                <section className="slide slide-2 content"  ref={(c) => this._section2c = c}>
+                    <div className="text-1">
+                        <h1 ref={(c) => this._inputGrow = c}>
+                            Grow an outstanding
+                            working environment driven
+                            by <Link to="/about" data-animate-line="3" data-section="2" onClick={this.handleLinkClick}>our culture</Link>
+                        </h1>
+                    </div>
+                    <div className="text-2">
+                        <div className="text-content" ref={(c) => this._inputValuesLeft = c}>
+                            <h2>HAPPINESS</h2>
+                            <h2>TRUST</h2>
+                            <h2>PROFESSIONALISM</h2>
+                            <h2>ADAPTABILITY</h2>
+                        </div>
+                    </div>
+                    <div className="text-3">
+                        <div className="text-content" ref={(c) => this._inputValuesRight = c}>
+                            <h2>PASSION</h2>
+                            <h2>PURPOSE</h2>
+                            <h2>COMMUNICATION</h2>
+                            <h2>INNOVATION</h2>
+                        </div>
+                    </div>
+                </section>
 
             <section className="slide slide-2 content"  ref={(c) => this._section2c = c}>
             <div className="text-1">

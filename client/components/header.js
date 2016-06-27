@@ -15,12 +15,12 @@ class Header extends Component {
             scenes = this.scenes = {},
             $header = $(this.refs.header),
             $container = $header.parent();
-            //headerBottom = $header.position().top + $header.height();
+        //headerBottom = $header.position().top + $header.height();
         scenes[breakpoint.names.large] = [];
         scenes[breakpoint.names.medium] = [];
         scenes[breakpoint.names.small] = [];
         if (this.props.stationary) return;
-        
+
         //change behaviour of controller to animate scroll instead of jump
         controller.scrollTo(function (newpos) {
             var t = TweenMax.to(window, .7, { scrollTo: { y: newpos }, ease: Power3.easeOut });
@@ -38,7 +38,7 @@ class Header extends Component {
                 if (event.scrollDirection == 'FORWARD') {
                     console.log('large header sc1 end forw');
                     //controller.scrollTo(headerBottom);
-                    $container.addClass('links-hidden');                    
+                    $container.addClass('links-hidden');
                 }
                 if (event.scrollDirection == 'REVERSE') {
                     console.log('large header sc1 end rev');
@@ -72,7 +72,7 @@ class Header extends Component {
                 if (event.scrollDirection == 'FORWARD') {
                     console.log('medium header sc1 end forw');
                     //controller.scrollTo(headerBottom);
-                    $container.addClass('links-hidden');                    
+                    $container.addClass('links-hidden');
                 }
                 if (event.scrollDirection == 'REVERSE') {
                     console.log('medium header sc1 end rev');
@@ -106,7 +106,7 @@ class Header extends Component {
                 if (event.scrollDirection == 'FORWARD') {
                     console.log('small header sc1 end forw');
                     //controller.scrollTo(headerBottom);
-                    $container.addClass('links-hidden');                    
+                    $container.addClass('links-hidden');
                 }
                 if (event.scrollDirection == 'REVERSE') {
                     console.log('small header sc1 end rev');
@@ -130,12 +130,16 @@ class Header extends Component {
             })
         );
 
-        //this.handleMediaChange({ current: this.props.ui.media.current, prev: this.props.ui.media.current });
+        this.handleMediaChange(this.props.ui.media);
     }
 
-    shouldComponentUpdate (nextProps, nextState) {
-        //console.warn('Header shouldUpdate', nextProps.transition.scrollScenesEnabled);
-        this.handleMediaChange(nextProps.ui.media);
+    shouldComponentUpdate(nextProps, nextState) {
+        if (this.props.transition.scrollScenesEnabled != nextProps.transition.scrollScenesEnabled) {
+            this.setScenes(this.props.ui.media.current, nextProps.transition.scrollScenesEnabled);
+        }
+        if (this.props.ui.media.current != nextProps.ui.media.current) {
+            this.handleMediaChange(nextProps.ui.media);
+        }
         return false;
     }
 
@@ -156,19 +160,14 @@ class Header extends Component {
     }
 
     handleMediaChange(media) {
-        //console.warn('handleMediaChange', media, 'on', $(this.refs.header).closest('article').attr('class'));
-        if (media.current == media.prev) {
-            for (let name in breakpoint.names) {
-                this.setScenes(name, name == media.current);
-            }
-        } else {
-            this.setScenes(media.prev, false);            
-            this.setScenes(media.current, true);            
+        for (let name in breakpoint.names) {
+            this.setScenes(name, false);
         }
+        this.setScenes(media.current, true);
     }
 
-    setScenes (media, enabled) {
-        //console.warn('header setting scenes for', media, 'to', enabled,'on',$(this.refs.header).closest('article').attr('class'));
+    setScenes(media, enabled) {
+        //console.warn('header setting scenes for', media, 'to', enabled, 'on', $(this.refs.header).closest('article').attr('class'));
         this.scenes && this.scenes[media] && this.scenes[media].forEach(scene => { scene.enabled(enabled); });
     }
 
@@ -177,8 +176,8 @@ class Header extends Component {
             return (
                 <header className="main" ref="header">
                     <Logo stationary />
-                    <HeaderLinks stationary />     
-                    <Contact stationary renderCloseButton />                                 
+                    <HeaderLinks stationary />
+                    <Contact stationary renderCloseButton />
                 </header>
             );
         } else {
@@ -187,10 +186,10 @@ class Header extends Component {
                     <div className="image"><div className="img" /></div>
                     <div className="gradient" />
                     <Logo />
-                    <HeaderLinks />      
+                    <HeaderLinks />
                     <div className="text"><h1>{this.props.title}</h1></div>
-                    <Burger />    
-                    <Contact renderCloseButton />      
+                    <Burger />
+                    <Contact renderCloseButton />
                 </header>
             );
         }
