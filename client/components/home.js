@@ -113,19 +113,10 @@ class Home extends Component {
         }
 
         //scenes
-        var slide1GrTr = this.animations.animateGradientColors({ color0: gradients[0], color1: gradients[1] }, { color0: gradients[1], color1: gradients[2] });
-        var slide2GrTr = this.animations.animateGradientColors({ color0: gradients[1], color1: gradients[2] }, { color0: gradients[2], color1: gradients[3] });
-        var slide3GrTr = this.animations.animateGradientColors({ color0: gradients[2], color1: gradients[3] }, { color0: gradients[3], color1: gradients[4] });
+        this.animations.animateGradients(breakpoint.names.large, [ this._section1, this._section2, this._section3], gradients);
+        this.animations.animateGradients(breakpoint.names.medium, [ this._section1, this._section2, this._section3], gradients);
+        this.animations.animateGradients(breakpoint.names.small, [ this._section1, this._section2, this._section3], gradients);
 
-        scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '100%' }).addTo(controller).setTween(slide1GrTr));
-        scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', duration: '100%' }).addTo(controller).setTween(slide2GrTr));
-        scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', duration: '100%' }).addTo(controller).setTween(slide3GrTr));
-        scenes[breakpoint.names.medium].push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '100%' }).addTo(controller).setTween(slide1GrTr));
-        scenes[breakpoint.names.medium].push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', duration: '100%' }).addTo(controller).setTween(slide2GrTr));
-        scenes[breakpoint.names.medium].push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', duration: '100%' }).addTo(controller).setTween(slide3GrTr));
-        scenes[breakpoint.names.small].push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '100%' }).addTo(controller).setTween(slide1GrTr));
-        scenes[breakpoint.names.small].push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', duration: '100%' }).addTo(controller).setTween(slide2GrTr));
-        scenes[breakpoint.names.small].push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', duration: '100%' }).addTo(controller).setTween(slide3GrTr));
 
         this.animations.pinSections([this._section1, this._section2, this._section3, this._section4], breakpoint.names.large);
         this.animations.pinSections([this._section1b, this._section2b, this._section3b, this._section4b], breakpoint.names.large);
@@ -766,9 +757,11 @@ function getAnimationUtils(component, controller, timeLines, scenes){
         }
     }
     ret.updateGradientBackground = function(gr) {
+        //console.log('update grad',gr.color0 , gr.color1 );
         timeLines.push(TweenMax.set('article.page-home > .gradient', { background: 'linear-gradient(45deg, ' + gr.color0 + ' 0%, ' + gr.color1 + ' 100%)' }));
     }
     ret.animateGradientColors = function(fromGrad, toGrad) {
+        //console.log('animateGradientColors  ',fromGrad, toGrad);
         var anim = TweenMax.to(fromGrad, 1, { colorProps: toGrad, ease: Linear.easeNone, onUpdate: ret.updateGradientBackground, onUpdateParams: [fromGrad] });
         timeLines.push(anim);
         return anim;
@@ -825,7 +818,15 @@ function getAnimationUtils(component, controller, timeLines, scenes){
         timeLines.push(t);
         return t;
     }
+    ret.animateGradients = function (mediaBreakpoint, sections, gradients){
+        var slide1GrTr = this.animateGradientColors({ color0: gradients[0], color1: gradients[1] }, { color0: gradients[1], color1: gradients[2] });
+        var slide2GrTr = this.animateGradientColors({ color0: gradients[1], color1: gradients[2] }, { color0: gradients[2], color1: gradients[3] });
+        var slide3GrTr = this.animateGradientColors({ color0: gradients[2], color1: gradients[3] }, { color0: gradients[3], color1: gradients[4] });
 
+        scenes[mediaBreakpoint].push(new ScrollMagic.Scene({ triggerElement: sections[0], triggerHook: 'onLeave', duration: '100%' }).addTo(controller).setTween(slide1GrTr));
+        scenes[mediaBreakpoint].push(new ScrollMagic.Scene({ triggerElement: sections[1], triggerHook: 'onLeave', duration: '100%' }).addTo(controller).setTween(slide2GrTr));
+        scenes[mediaBreakpoint].push(new ScrollMagic.Scene({ triggerElement: sections[2], triggerHook: 'onLeave', duration: '100%' }).addTo(controller).setTween(slide3GrTr));
+    }
     return ret;
 }
 
