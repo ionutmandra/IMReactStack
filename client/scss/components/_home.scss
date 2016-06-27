@@ -66,7 +66,7 @@
                     padding-left: 25px;
                 }
                 .text-2 {
-                    @include grid-column-size(9);
+                    @include grid-column-size(6);
                     @include grid-column-offset(12);
                     top: 50%;
                     h2 {
@@ -193,6 +193,7 @@
                 .text-1 {
                     @include grid-column-size(6);
                     @include grid-column-offset(15);
+                    transform: translate(0, -50%);
                     top: 50%;
                 }
             }

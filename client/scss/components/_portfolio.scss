@@ -17,6 +17,11 @@
                 font-size: rem-calc(16pt);
                 line-height: rem-calc(24pt);
             }
+            span{
+                &.no-break{
+                    white-space: nowrap;
+                }
+            }
         }
         .columns {
             overflow: hidden;
@@ -42,6 +47,11 @@
                 margin-bottom: 0px;
                 font-size: rem-calc(14pt);
                 line-height: rem-calc(22pt);
+            }
+            span{
+                &.no-break{
+                    white-space: nowrap;
+                }
             }
         }
         
@@ -69,6 +79,11 @@
                 margin-bottom: 0px;
                 font-size: rem-calc(14pt);
                 line-height: rem-calc(22pt);
+            }
+            span{
+                &.no-break{
+                    white-space: nowrap;
+                }
             }
         }
         .columns {

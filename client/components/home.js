@@ -663,9 +663,7 @@ class Home extends Component {
                         <div className="text-1"><h1 ref={(c) => this._inputSoftware = c}>{'Software Innovators Happily Together'}</h1></div>
                         <div className="text-2">
                             <h2 ref={(c) => this._inputCreate = c}>
-                                <p>Create a truly remarkable working environment</p>
-                                <p>and deliver high quality, innovative software</p>
-                                <p>products and services</p>
+                                <p>Our vision is to create a truly remarkable working environment and deliver high quality, innovative software</p>
                             </h2>
                         </div>
 
@@ -682,7 +680,7 @@ class Home extends Component {
                             <h1 ref={(c) => this._inputGrow = c}>
                                 <p>Grow an outstanding</p>
                                 <p>working environment driven</p>
-                                <p>by <Link to="/about" data-animate-line="3" data-section="2" onClick={this.handleLinkClick}>our culture</Link></p>
+                                <p>by <Link to="/about#ourculture" data-animate-line="3" data-section="2" onClick={this.handleLinkClick}>our culture</Link></p>
                             </h1>
                         </div>
                         <div className="text-2">
@@ -704,13 +702,13 @@ class Home extends Component {
                     </section>
 
                     <section className="slide slide-3 content" ref={(c) => this._section3c = c}>
-                        <div className="text-1"><h1 ref={(c) => this._inputOffering = c}>Offering highest quality by constantly improving our <Link to="/about" data-animate-line="3" data-section="3" onClick={this.handleLinkClick}>skills and processes</Link></h1></div>
+                        <div className="text-1"><h1 ref={(c) => this._inputOffering = c}>Offering highest quality by constantly improving our <Link to="/expertise" data-animate-line="3" data-section="3" onClick={this.handleLinkClick}>skills and processes</Link></h1></div>
                         <div className="text-2"><h1 ref={(c) => this._inputCreating = c}>Creating <Link to="/portfolio/sfb" data-animate-line="5" data-section="3" onClick={this.handleLinkClick}>high impact software solutions</Link> that help business succeed
                         </h1></div>
                     </section>
 
                     <section className="slide slide-4 content"  ref={(c) => this._section4c = c}>
-                        <div className="text-1"><h1 ref={(c) => this._inputSustaining = c} >Sustaining <Link to="/about" data-animate-line="3" data-section="4" onClick={this.handleLinkClick}>learning and innovation</Link> as a part day to day activity.</h1></div>
+                        <div className="text-1"><h1 ref={(c) => this._inputSustaining = c} >Sustaining <Link to="/about#ourculture" data-animate-line="3" data-section="4" onClick={this.handleLinkClick}>learning and innovation</Link> as a part day to day activity.</h1></div>
                     </section>
 
                     <section className="slide slide-1v" ref={(c) => this._section1 = c}></section>

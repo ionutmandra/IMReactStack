@@ -142,7 +142,7 @@ class Contact extends Component {
                     <li><a href="mailto:contact@adaptabi.com">contact@adaptabi.com</a></li>
                     <li className="social-media">
                         <a target="_blank" href="https://www.linkedin.com/company/adaptabi"><i className="ncs-linkedin-square" /></a>
-                        <a target="_blank" href="https://www.facebook.com/Adaptabi-1562569510739468"><i className="ncs-facebook-square" /></a>
+                        <a target="_blank" href="https://www.facebook.com/adaptabi/"><i className="ncs-facebook-square" /></a>
                         <a target="_blank" href="https://twitter.com/adaptabidev"><i className="ncs-twitter" /></a>
                         <a target="_blank" href="https://blog.adaptabi.com"><i className="ncs-medium" /></a>
                     </li>
