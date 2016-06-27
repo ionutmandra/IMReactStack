@@ -10,14 +10,14 @@ module.exports = {
 	INIT_MEMBERS_LIST: 'INIT_MEMBERS_LIST',
 
 	//AUTH
-	LOGIN_USER_REQUEST: 'LOGIN_USER_REQUEST', 
+	LOGIN_USER_REQUEST: 'LOGIN_USER_REQUEST',
 	LOGIN_USER_SUCCESS:'LOGIN_USER_SUCCESS',
 	LOGIN_USER_FAILURE:'LOGIN_USER_FAILURE',
 	LOGOUT_USER:'LOGOUT_USER',
 
     //LANG
     CHANGE_LANGUAGE: 'CHANGE_LANGUAGE',
-	
+
 	//TRANSITIONS
 	TRANSITION: 'TRANSITION',
 	ENABLE_SCENES: 'ENABLE_SCENES',
@@ -30,6 +30,7 @@ module.exports = {
 			large: 'large',
 			medium: 'medium',
 			small: 'small',
+			none: 'none',
 		},
 		large: 1024,
 		medium: 640,

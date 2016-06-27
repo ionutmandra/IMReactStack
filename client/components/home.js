@@ -139,7 +139,7 @@ class Home extends Component {
 
             // change behaviour of controller to animate scroll instead of jump
             controller.scrollTo(function (newpos) {
-                var t = TweenMax.to(window, 0.5, { scrollTo: { y: newpos } });
+                var t = TweenMax.to(window, .5, { scrollTo: { y: newpos } });
                 timeLines.push(t);
                 return t;
             });
@@ -167,9 +167,9 @@ class Home extends Component {
                 .add(this.animations.hideSlide(this._section1c))
                 .add(this.animations.showSlide(this._section2c))
                 .add([
-                    this.animations.moveToInitial(_this._inputGrow),
-                    this.animations.moveToInitial(_this._inputValuesLeft),
-                    this.animations.moveToInitial(_this._inputValuesRight),
+                    this.animations.moveToInitial(this._inputGrow),
+                    this.animations.moveToInitial(this._inputValuesLeft),
+                    this.animations.moveToInitial(this._inputValuesRight),
                     this.animations.showImg(this._img2)])
 
                 ));
@@ -628,7 +628,8 @@ class Home extends Component {
             this.animations.hideLeft([this._inputGrow, this._inputValuesRight, this._inputCreating, this._inputSustaining]);
             this.animations.hideRight([this._inputValuesLeft, this._inputOffering]);
         }
-        else{
+        if(media.current != breakpoint.names.large && media.current != breakpoint.names.none)
+        {
             this.animations.showSlide(this._section2c);
             this.animations.showSlide(this._section3c);
             this.animations.showSlide(this._section4c);

@@ -373,7 +373,7 @@
                     @include grid-column-offset(6.5);
                     top: 40%;
                     transform: translate(0, -50%);
-            
+
                     h1{
                         font-size: rem-calc(24pt);
                         line-height: rem-calc(34pt);
@@ -584,6 +584,7 @@
                     opacity: 0.5;
                 }
                 .scroll-hint {
+                    display: none;
                     @include grid-column-size(0);
                     @include grid-column-offset(0);
                     bottom: 5%;
