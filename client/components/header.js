@@ -68,32 +68,8 @@ class Header extends Component {
 
         scenes[breakpoint.names.medium].push(new ScrollMagic.Scene({ triggerElement: $container, triggerHook: 'onLeave', duration: 1, offset: 0 }).addTo(controller)
             //.addIndicators({name:'medium Scene 1'})
-            .on('end', event => {
-                if (event.scrollDirection == 'FORWARD') {
-                    console.log('medium header sc1 end forw');
-                    //controller.scrollTo(headerBottom);
-                    $container.addClass('links-hidden');
-                }
-                if (event.scrollDirection == 'REVERSE') {
-                    console.log('medium header sc1 end rev');
-                    $container.removeClass('links-hidden');
-                }
-            })
-        );
-
-        scenes[breakpoint.names.medium].push(new ScrollMagic.Scene({ triggerElement: $container, triggerHook: 'onLeave', duration: 40, offset: 360 }).addTo(controller)
-            //.addIndicators({name:'medium Scene 2'})
-            .on('end', event => {
-                if (event.scrollDirection == 'FORWARD') {
-                    $container.addClass('fix-header');
-                    console.log('medium header sc2 end forw');
-                }
-                if (event.scrollDirection == 'REVERSE') {
-                    $container.removeClass('fix-header');
-                    //controller.scrollTo(0);
-                    console.log('medium header sc1 pr rev');
-                }
-            })
+            .on('enabled', () => { $container.addClass('fix-header'); })
+            .on('disabled', event => { event[0] == breakpoint.names.large && $container.removeClass('links-hidden fix-header'); })
         );
 
         ////
@@ -102,32 +78,8 @@ class Header extends Component {
 
         scenes[breakpoint.names.small].push(new ScrollMagic.Scene({ triggerElement: $container, triggerHook: 'onLeave', duration: 1, offset: 0 }).addTo(controller)
             //.addIndicators({name:'small Scene 1'})
-            .on('end', event => {
-                if (event.scrollDirection == 'FORWARD') {
-                    console.log('small header sc1 end forw');
-                    //controller.scrollTo(headerBottom);
-                    $container.addClass('links-hidden');
-                }
-                if (event.scrollDirection == 'REVERSE') {
-                    console.log('small header sc1 end rev');
-                    $container.removeClass('links-hidden');
-                }
-            })
-        );
-
-        scenes[breakpoint.names.small].push(new ScrollMagic.Scene({ triggerElement: $container, triggerHook: 'onLeave', duration: 40, offset: 360 }).addTo(controller)
-            //.addIndicators({name:'small Scene 2'})
-            .on('end', event => {
-                if (event.scrollDirection == 'FORWARD') {
-                    $container.addClass('fix-header');
-                    console.log('small header sc2 end forw');
-                }
-                if (event.scrollDirection == 'REVERSE') {
-                    $container.removeClass('fix-header');
-                    //controller.scrollTo(0);
-                    console.log('small header sc1 pr rev');
-                }
-            })
+            .on('enabled', () => { $container.addClass('fix-header'); })
+            .on('disabled', event => { event[0] == breakpoint.names.large && $container.removeClass('links-hidden fix-header'); })
         );
 
         this.handleMediaChange(this.props.ui.media);
@@ -161,14 +113,14 @@ class Header extends Component {
 
     handleMediaChange(media) {
         for (let name in breakpoint.names) {
-            this.setScenes(name, false);
+            this.setScenes(name, false, [media.current]);
         }
         this.setScenes(media.current, true);
     }
 
-    setScenes(media, enabled) {
+    setScenes(media, enabled, args = []) {
         //console.warn('header setting scenes for', media, 'to', enabled, 'on', $(this.refs.header).closest('article').attr('class'));
-        this.scenes && this.scenes[media] && this.scenes[media].forEach(scene => { scene.enabled(enabled); });
+        this.scenes && this.scenes[media] && this.scenes[media].forEach(scene => { scene.enabled(enabled); scene.trigger(enabled ? 'enabled' : 'disabled', args); });
     }
 
     render() {

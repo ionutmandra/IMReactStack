@@ -318,7 +318,15 @@
             position: relative;
             width: 100%;
             height: 400px;
-            //transform: translate(0, 0); 
+            //transform: translate(0, 0);
+
+            &:before {
+                width: 100%;
+                height: rem-calc(60pt);
+                background: $black;
+                opacity: .2;
+            }
+
             h1,
             h2 {
                 display: inline-block;
@@ -457,6 +465,7 @@
                     @include grid-col-off(3);
                     svg {
                         margin-left: -46px;
+                        color: $white !important;
                     }
                 }
                 &.text {
@@ -466,6 +475,7 @@
                     position: fixed;
                     height: 80px;
                     width: 100px;
+                    color: $white !important;
                 }
             }
             &:hover {
@@ -544,15 +554,9 @@
                 }
             }
         }
-        &.links-hidden {
-            header.main {
-                .hamburger {
-                    z-index: 5;
-                }
-            }
-        }
         &.fix-header {
-            padding-top: 400px;
+            padding-top: 0;
+
             header.main {
                 position: fixed;
                 top: 0;
