@@ -646,117 +646,88 @@ class Home extends Component {
         //console.warn('header setting scenes for', media, 'to', enabled,'on',$(this.refs.header).closest('article').attr('class'));
         this.scenes && this.scenes[media] && this.scenes[media].forEach(scene => { scene.enabled(enabled); });
     }
-
     render() {
-        //const s = this.props.strings;
-        return (
-            <article className="page page-home">
-            <Header stationary />
+            //const s = this.props.strings;
+            return (
+                <article className="page page-home">
+                    <Header stationary />
 
-            <section className="slide slide-1 background" ref={(c) => this._section1b = c}>
-            <div ref={(c) => this._img1 = c} className="image"><div className="img" /></div>
-            </section>
-            <section className="slide slide-2 background" ref={(c) => this._section2b = c}>
-            <div ref={(c) => this._img2 = c} className="image"><div className="img" /></div>
-            </section>
-            <section className="slide slide-3 background" ref={(c) => this._section3b = c}>
-            <div ref={(c) => this._img3 = c} className="image"><div className="img" /></div>
-            </section>
-            <section className="slide slide-4 background" ref={(c) => this._section4b = c}>
-            <div ref={(c) => this._img4 = c} className="image"><div className="img" /></div>
-            </section>
+                    <section className="slide slide-1 background" ref={(c) => this._section1b = c}>
+                        <div ref={(c) => this._img1 = c} className="image"><div className="img" /></div>
+                    </section>
+                    <section className="slide slide-2 background" ref={(c) => this._section2b = c}>
+                        <div ref={(c) => this._img2 = c} className="image"><div className="img" /></div>
+                    </section>
+                    <section className="slide slide-3 background" ref={(c) => this._section3b = c}>
+                        <div ref={(c) => this._img3 = c} className="image"><div className="img" /></div>
+                    </section>
+                    <section className="slide slide-4 background" ref={(c) => this._section4b = c}>
+                        <div ref={(c) => this._img4 = c} className="image"><div className="img" /></div>
+                    </section>
 
-            <div className="gradient" />
+                    <div className="gradient" />
 
-                <section className="slide slide-1 content"  ref={(c) => this._section1c = c}>
-                    <div className="text-1"><h1 ref={(c) => this._inputSoftware = c}>{'Software Innovators Happily Together'}</h1></div>
-                    <div className="text-2">
-                        <h2 ref={(c) => this._inputCreate = c}>
-                            Create a truly remarkable working environment
-                            and deliver high quality, innovative software
-                            products and services
-                        </h2>
-                    </div>
-
-            <section className="slide slide-1 content"  ref={(c) => this._section1c = c}>
-            <div className="text-1"><h1 ref={(c) => this._inputSoftware = c}>{'Software Innovators Happily Together'}</h1></div>
-            <div className="text-2">
-            <h2 ref={(c) => this._inputCreate = c}>
-            <p>Create a truly remarkable working environment</p>
-            <p>and deliver high quality, innovative software</p>
-            <p>products and services</p>
-            </h2>
-            </div>
-
-                <section className="slide slide-2 content"  ref={(c) => this._section2c = c}>
-                    <div className="text-1">
-                        <h1 ref={(c) => this._inputGrow = c}>
-                            Grow an outstanding
-                            working environment driven
-                            by <Link to="/about" data-animate-line="3" data-section="2" onClick={this.handleLinkClick}>our culture</Link>
-                        </h1>
-                    </div>
-                    <div className="text-2">
-                        <div className="text-content" ref={(c) => this._inputValuesLeft = c}>
-                            <h2>HAPPINESS</h2>
-                            <h2>TRUST</h2>
-                            <h2>PROFESSIONALISM</h2>
-                            <h2>ADAPTABILITY</h2>
+                    <section className="slide slide-1 content"  ref={(c) => this._section1c = c}>
+                        <div className="text-1"><h1 ref={(c) => this._inputSoftware = c}>{'Software Innovators Happily Together'}</h1></div>
+                        <div className="text-2">
+                            <h2 ref={(c) => this._inputCreate = c}>
+                                <p>Create a truly remarkable working environment</p>
+                                <p>and deliver high quality, innovative software</p>
+                                <p>products and services</p>
+                            </h2>
                         </div>
-                    </div>
-                    <div className="text-3">
-                        <div className="text-content" ref={(c) => this._inputValuesRight = c}>
-                            <h2>PASSION</h2>
-                            <h2>PURPOSE</h2>
-                            <h2>COMMUNICATION</h2>
-                            <h2>INNOVATION</h2>
+
+                        <div className="scroll-hint" ref={(c) => this._scrollHintContainer = c}>
+                            <span ref={(c) => this._scrollHint = c}>
+                                <i className="ncs-chevron-thin-down"></i>
+                            </span>
+                            <p>{'Find out more'}</p>
                         </div>
-                    </div>
-                </section>
+                    </section>
 
-            <section className="slide slide-2 content"  ref={(c) => this._section2c = c}>
-            <div className="text-1">
-            <h1 ref={(c) => this._inputGrow = c}>
-            <p>Grow an outstanding</p>
-            <p>working environment driven</p>
-            <p>by <Link to="/about" data-animate-line="3" data-section="2" onClick={this.handleLinkClick}>our culture</Link></p>
-            </h1>
-            </div>
-            <div className="text-2">
-            <div className="text-content" ref={(c) => this._inputValuesLeft = c}>
-            <h2>HAPPINESS</h2>
-            <h2>TRUST</h2>
-            <h2>PROFESSIONALISM</h2>
-            <h2>ADAPTABILITY</h2>
-            </div>
-            </div>
-            <div className="text-3">
-            <div className="text-content" ref={(c) => this._inputValuesRight = c}>
-            <h2>PASSION</h2>
-            <h2>PURPOSE</h2>
-            <h2>COMMUNICATION</h2>
-            <h2>INNOVATION</h2>
-            </div>
-            </div>
-            </section>
+                    <section className="slide slide-2 content"  ref={(c) => this._section2c = c}>
+                        <div className="text-1">
+                            <h1 ref={(c) => this._inputGrow = c}>
+                                <p>Grow an outstanding</p>
+                                <p>working environment driven</p>
+                                <p>by <Link to="/about" data-animate-line="3" data-section="2" onClick={this.handleLinkClick}>our culture</Link></p>
+                            </h1>
+                        </div>
+                        <div className="text-2">
+                            <div className="text-content" ref={(c) => this._inputValuesLeft = c}>
+                                <h2>HAPPINESS</h2>
+                                <h2>TRUST</h2>
+                                <h2>PROFESSIONALISM</h2>
+                                <h2>ADAPTABILITY</h2>
+                            </div>
+                        </div>
+                        <div className="text-3">
+                            <div className="text-content" ref={(c) => this._inputValuesRight = c}>
+                                <h2>PASSION</h2>
+                                <h2>PURPOSE</h2>
+                                <h2>COMMUNICATION</h2>
+                                <h2>INNOVATION</h2>
+                            </div>
+                        </div>
+                    </section>
 
-            <section className="slide slide-3 content" ref={(c) => this._section3c = c}>
-            <div className="text-1"><h1 ref={(c) => this._inputOffering = c}>Offering highest quality by constantly improving our <Link to="/about" data-animate-line="3" data-section="3" onClick={this.handleLinkClick}>skills and processes</Link></h1></div>
-            <div className="text-2"><h1 ref={(c) => this._inputCreating = c}>Creating <Link to="/portfolio/sfb" data-animate-line="5" data-section="3" onClick={this.handleLinkClick}>high impact software solutions</Link> that help business succeed
-            </h1></div>
-            </section>
+                    <section className="slide slide-3 content" ref={(c) => this._section3c = c}>
+                        <div className="text-1"><h1 ref={(c) => this._inputOffering = c}>Offering highest quality by constantly improving our <Link to="/about" data-animate-line="3" data-section="3" onClick={this.handleLinkClick}>skills and processes</Link></h1></div>
+                        <div className="text-2"><h1 ref={(c) => this._inputCreating = c}>Creating <Link to="/portfolio/sfb" data-animate-line="5" data-section="3" onClick={this.handleLinkClick}>high impact software solutions</Link> that help business succeed
+                        </h1></div>
+                    </section>
 
-            <section className="slide slide-4 content"  ref={(c) => this._section4c = c}>
-            <div className="text-1"><h1 ref={(c) => this._inputSustaining = c} >Sustaining <Link to="/about" data-animate-line="3" data-section="4" onClick={this.handleLinkClick}>learning and innovation</Link> as a part day to day activity.</h1></div>
-            </section>
+                    <section className="slide slide-4 content"  ref={(c) => this._section4c = c}>
+                        <div className="text-1"><h1 ref={(c) => this._inputSustaining = c} >Sustaining <Link to="/about" data-animate-line="3" data-section="4" onClick={this.handleLinkClick}>learning and innovation</Link> as a part day to day activity.</h1></div>
+                    </section>
 
-            <section className="slide slide-1v" ref={(c) => this._section1 = c}></section>
-            <section className="slide slide-2v" ref={(c) => this._section2 = c}></section>
-            <section className="slide slide-3v" ref={(c) => this._section3 = c}></section>
-            <section className="slide slide-4v" ref={(c) => this._section4 = c}></section>
-            </article>
-        );
-    }
+                    <section className="slide slide-1v" ref={(c) => this._section1 = c}></section>
+                    <section className="slide slide-2v" ref={(c) => this._section2 = c}></section>
+                    <section className="slide slide-3v" ref={(c) => this._section3 = c}></section>
+                    <section className="slide slide-4v" ref={(c) => this._section4 = c}></section>
+                </article>
+            );
+        }
 }
 
 Home.propTypes = {
