@@ -108,7 +108,9 @@ export default class Burger extends Component {
         for (let name in breakpoint.names) {
             this.setScenes(name, false);
         }
-        this.setScenes(media.current, true);
+        if (this.props.transition.scrollScenesEnabled == true){
+            this.setScenes(media.current, true);
+        }
     }
 
     setScenes (media, enabled) {
@@ -126,9 +128,9 @@ export default class Burger extends Component {
 
         let color = '#fefefe';
         this.prevColor = $(this.refs.burger).css('color');
-        
+
         this.wasFixedBurger = this.article.hasClass('fix-header');
-        this.wasFixedBurger && TweenMax.set(this.text, { x: '-100%' });        
+        this.wasFixedBurger && TweenMax.set(this.text, { x: '-100%' });
         this.wasFixedBurger && TweenMax.set(this.image, { scale: 1.1, opacity: 0 });
 
         let timeline = new TimelineLite({
@@ -159,7 +161,7 @@ export default class Burger extends Component {
     }
 
     openComplete() {
-        this.inProgress = false;        
+        this.inProgress = false;
         this.article.addClass('menu-open');
     }
 
@@ -181,7 +183,7 @@ export default class Burger extends Component {
             .add(_.filter([
                 TweenMax.to(this.links, .3, { x: '-100%', ease: Power3.easeOut }),
                 TweenMax.to(this.refs.close, .3, { x: '-100%', ease: Power3.easeOut }),
-                TweenMax.to(this.logoText, .3, { x: '-100%', ease: Power3.easeOut }), 
+                TweenMax.to(this.logoText, .3, { x: '-100%', ease: Power3.easeOut }),
             ]))
             .add(_.filter([
                 TweenMax.to(this.refs.burger, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),

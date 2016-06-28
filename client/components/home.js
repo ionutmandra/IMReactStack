@@ -27,6 +27,7 @@ class Home extends Component {
         var section = event.target.getAttribute('data-section');
         var animations;
 
+
         switch (section) {
             case '2':
             animations = {
@@ -43,10 +44,31 @@ class Home extends Component {
             case '4':
             animations = {
                 leftHide: [this._inputSustaining],
-                rightHide: [],
+                rightHide: [this._inputOffering],
             };
             break;
         }
+
+        if(this.props.ui.media.current == breakpoint.names.small || this.props.ui.media.current == breakpoint.names.medium)
+        {
+            switch (section) {
+                case '2':
+                    animations.instantHide = [this._inputCreating,this._inputSustaining, this._inputCreate,this._inputOffering, this._inputSoftware];
+                break;
+                case '3':
+                    animations.instantHide = [this._inputGrow, this._inputValuesRight,this._inputSustaining, this._inputCreate,this._inputValuesLeft, this._inputSoftware];
+                break;
+                case '4':
+                    animations.instantHide = [this._inputGrow, this._inputValuesRight,this._inputCreating, this._inputCreate, this._inputOffering,this._inputValuesLeft, this._inputSoftware];
+                break;
+            }
+
+            animations.instantHide.push(this._scrollHintContainer);
+        }
+
+        animations.images = [this._img1, this._img2, this._img3, this._img4 ];
+
+        this.props.disableScenes();
 
         this.props.dispatchTransition({
             type: 'home_content',
@@ -604,7 +626,9 @@ class Home extends Component {
         for (let name in breakpoint.names) {
             this.setScenes(name, false);
         }
-        this.setScenes(media.current, true);
+        if (this.props.transition.scrollScenesEnabled == true){
+            this.setScenes(media.current, true);
+        }
 
         if(media.current == breakpoint.names.large)
         {

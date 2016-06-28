@@ -73,7 +73,7 @@ class Logo extends Component {
 
         function moveText() { let t = TweenMax.to(refs.text, .3, { x: '-100%' }); timeLines.push(t); return t; }
         function darken() { let t = TweenMax.to(refs.img, .3, { color: '#4d4d4d' }); timeLines.push(t); return t; }
-        
+
         this.handleMediaChange(this.props.ui.media);
     }
 
@@ -107,7 +107,9 @@ class Logo extends Component {
         for (let name in breakpoint.names) {
             this.setScenes(name, false);
         }
-        this.setScenes(media.current, true);
+        if (this.props.transition.scrollScenesEnabled == true){
+            this.setScenes(media.current, true);
+        }
     }
 
     setScenes (media, enabled) {
@@ -116,8 +118,8 @@ class Logo extends Component {
     }
 
     handleClick() {
-        let burgerIsOpen = this.article.is('.menu-open');                
-        //burgerIsOpen && $window.scrollTop(0);    
+        let burgerIsOpen = this.article.is('.menu-open');
+        //burgerIsOpen && $window.scrollTop(0);
         this.props.dispatchTransition({
             type: burgerIsOpen && 'burger' || 'header',
             column: 1,

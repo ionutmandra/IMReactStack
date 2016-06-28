@@ -532,7 +532,7 @@ export function large_leave_home_content(ref, callback, transition) {
     //Initial state
     TweenMax.set(container, { zIndex: 1 });
 
-    var animations = [];    
+    var animations = [];
 
     console.log(transition.animations);
 
@@ -546,16 +546,16 @@ export function large_leave_home_content(ref, callback, transition) {
             animations.push(TweenMax.to(element, 2, { x: '+100%' }));
         }, this);
 
-    }    
+    }
 
     //Animation
     let timeline = new TimelineLite({ onComplete: () => { callback(); $container.removeClass('overlap'); timeline = null; } })
-        .add(animations)     
+        .add(animations)
         .set({}, {}, 2.4);
 
 }
 
-export function mediumleave_home_content(ref, callback, transition) {
+export function medium_leave_home_content(ref, callback, transition) {
 
     let container = dom.findDOMNode(ref), $container = $(container).addClass('overlap'), height = $window.height(), fullHeight = height * 4, scroll = $window.scrollTop();
 
@@ -564,11 +564,15 @@ export function mediumleave_home_content(ref, callback, transition) {
     //Initial state
     TweenMax.set(container, { zIndex: 1 });
 
-    var animations = [];    
+    var animations = [];
 
     console.log(transition.animations);
 
     if (transition.animations) {
+
+        transition.animations.instantHide && transition.animations.instantHide.forEach(function (element) {
+            animations.push(TweenMax.set(element, { opacity: 0 }));
+        }, this);
 
         transition.animations.leftHide && transition.animations.leftHide.forEach(function (element) {
             animations.push(TweenMax.to(element, 2, { x: '-100%' }));
@@ -578,11 +582,14 @@ export function mediumleave_home_content(ref, callback, transition) {
             animations.push(TweenMax.to(element, 2, { x: '+100%' }));
         }, this);
 
-    }    
+        transition.animations.images && transition.animations.images.forEach(function (element) {
+            animations.push(TweenMax.to(element, 0.2, { opacity: 0 }));
+        }, this);
+    }
 
     //Animation
     let timeline = new TimelineLite({ onComplete: () => { callback(); $container.removeClass('overlap'); timeline = null; } })
-        .add(animations)     
+        .add(animations)
         .set({}, {}, 2.4);
 
 }
@@ -596,7 +603,7 @@ export function small_leave_home_content(ref, callback, transition) {
     //Initial state
     TweenMax.set(container, { zIndex: 1 });
 
-    var animations = [];    
+    var animations = [];
 
     console.log(transition.animations);
 
@@ -610,11 +617,11 @@ export function small_leave_home_content(ref, callback, transition) {
             animations.push(TweenMax.to(element, 2, { x: '+100%' }));
         }, this);
 
-    }    
+    }
 
     //Animation
     let timeline = new TimelineLite({ onComplete: () => { callback(); $container.removeClass('overlap'); timeline = null; } })
-        .add(animations)     
+        .add(animations)
         .set({}, {}, 2.4);
 
 }

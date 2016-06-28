@@ -120,7 +120,9 @@ class HeaderLinks extends Component {
         for (let name in breakpoint.names) {
             this.setScenes(name, false);
         }
-        this.setScenes(media.current, true);
+        if (this.props.transition.scrollScenesEnabled == true){
+            this.setScenes(media.current, true);
+        }
     }
 
     setScenes (media, enabled) {
@@ -169,11 +171,11 @@ class HeaderLinks extends Component {
             });
             this.props.disableScenes();
             $.scrollLock(true);
-            
+
             TweenMax.set(this.header, { height: '100%' });
 
             console.warn('slide', currentSlide);
-            
+
             let timeline = new TimelineLite({
                 onComplete: (() => {
                     timeline = null;
