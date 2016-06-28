@@ -9,6 +9,8 @@ class PortfolioDetails extends Component {
     constructor(props) {
         super(props);
         this.handleCallToActionClick = this.handleCallToActionClick.bind(this);
+    this.onContactClick = this.onContactClick.bind(this);
+
     }
     handleCallToActionClick(event) {
           this.props.dispatchTransition({
@@ -17,6 +19,11 @@ class PortfolioDetails extends Component {
               target: event.target,
           });
     }
+
+ onContactClick(event){
+        console.log('DORU needs to implement');
+  }
+
     render() {
         return (
             <article className="page page-portfolio-details">
@@ -50,7 +57,7 @@ class PortfolioDetails extends Component {
                         <div className="large-7 large-offset-0 large-order-2 medium-10 medium-offset-1 medium-order-1 small-22 small-offset-1 columns">
                             <h2 className="content-item">Safetybank is an award winning application in the last couple of years.</h2>
                             <div className="spacer-20 large-0 medium-0 small-24 show-for-small-only"/>
-                            <p><span className="content-item block"> Most innovative application in housing industry 2016 </span></p>
+                            <p><span className="content-item block"> Most innovative application in housing industry 2016. </span></p>
                             <div className="spacer-40 large-0 medium-24 small-24 show-for-small hide-for-large"/>
                         </div>
                     </div>
@@ -80,7 +87,10 @@ class PortfolioDetails extends Component {
                                 <p>Everything changes but our passion.</p>
                                 <p className="cta">
                                     <span className="hide-for-large">Interested? </span>
-                                    <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}>Let's talk.</Link>
+                                    <span className="action-links">
+                                        <a onClick={this.onContactClick}>Send a message</a> or
+                                        <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}> join the family.</Link>
+                                    </span>
                                  </p>
                             </div>
                     </div>
@@ -89,7 +99,10 @@ class PortfolioDetails extends Component {
                         <p className="cta content-item">
                             <span className="show-for-large">Want to meet us? </span>
                             <span className="hide-for-large">Interested? </span>
-                            <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}>Let's talk</Link>
+                            <span className="action-links">
+                                <a onClick={this.onContactClick}>Send a message</a> or
+                                <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}> join the family.</Link>
+                            </span>
                         </p>
                     </div>
                 </section>

@@ -5,14 +5,13 @@ import Header from '../containers/headerContainer';
 //import Header from '../components/header';
 import Footer from '../containers/footerContainer';
 import { browserHistory  } from 'react-router';
-
 class About extends Component {
   constructor(props) {
     super(props);
     this.handleSafetybankProjectClick = this.handleSafetybankProjectClick.bind(this);
     this.handleCallToActionClick = this.handleCallToActionClick.bind(this);
     this.handleClick = this.handleClick.bind(this);
-
+    this.onContactClick = this.onContactClick.bind(this);
 
     this.state ={
       cancelScene: 'false'
@@ -42,14 +41,19 @@ class About extends Component {
     this.setState({cancelScene: 'true'});
   }
 
+  componentDidMount(){
+    console.log('component did mount',this);
+
+  }
+
+  onContactClick(event){
+        console.log('DORU needs to implement');
+  }
+
     render() {
         console.log('render about js');
         var divStyle = {display: 'none'};
-
         var inlineBock ={display: 'inline-block'};
-
-
-
         return (
             <article className="page page-about">
                 <Header ref={'header'} title={'We are a software development company focused on delivering high quality products and services by sustaining learning and innovation'} />
@@ -59,7 +63,7 @@ class About extends Component {
                         <div className="large-8 large-offset-3 medium-9 medium-offset-1 small-22 small-offset-1 columns">
                             <h1 className="content-item">Located in Iasi, we have  been crafting web and mobile software applications since 2007</h1>
                             <div className="spacer-40 medium-0 small-24 hide-for-medium"/>
-    						<p className="text-under-header content-item">Couple of years ago we started working on <Link to="/portfolio/sfb" onClick={this.handleSafetybankProjectClick}>Safetybank</Link> as a startup project and we took it to an enterprise class application with multiple platforms suppor</p>                        </div>
+    						<p className="text-under-header content-item">Couple of years ago we started working on <Link to="/portfolio/sfb" onClick={this.handleSafetybankProjectClick}>Safetybank</Link> as a startup project and we took it to an enterprise class application with multiple platforms support.</p>                        </div>
 
                         <div className="spacer-40 medium-0 small-24  hide-for-medium"/>
                         <div className="image large-9 large-offset-1 medium-11 medium-offset-2 small-24 small-offset-0 columns">
@@ -68,7 +72,7 @@ class About extends Component {
                     </div>
                     <div className="spacer-100" />
                     <div className="row">
-                        <span className="large-16 large-offset-3 medium-5 medium-offset-1 small-22 small-offset-1 columns"><h2 className="content-item">Our culture</h2></span>
+                        <span className="large-16 large-offset-3 medium-5 medium-offset-1 small-22 small-offset-1 columns"><h2 id="ourculture" className="content-item">Our culture</h2></span>
                     </div>
                     <div className="spacer-40 hide-for-large" />
                     <div className="row align-middle">
@@ -174,7 +178,11 @@ class About extends Component {
                                 <p>Everything changes but our passion.</p>
                                 <p className="cta">
                                     <span className="hide-for-large">Interested? </span>
-                                    <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}>Let's talk.</Link>
+                                    <span className="action-links">
+                                      <a onClick={this.onContactClick}>Send a message</a> or
+                                      <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}> join the family.</Link>
+                                    </span>
+
                                  </p>
                             </div>
                         </div>
@@ -182,9 +190,13 @@ class About extends Component {
                     <div className="large-8 large-offset-3 large-order-1 medium-11 medium-offset-1 medium-order-1 small-24 show-for-medium columns">
                         <p className="content-item">Everything changes but our passion.</p>
                         <p className="cta content-item">
-                                <span className="show-for-large">Want to meet us? </span>
-                                <span className="hide-for-large">Interested? </span>
-                                <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}>Let's talk</Link></p>
+                            <span className="show-for-large">Want to meet us? </span>
+                            <span className="hide-for-large">Interested? </span>
+                            <span className="action-links">
+                              <a onClick={this.onContactClick}>Send a message</a> or
+                                <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}> join the family.</Link>
+                            </span>
+                        </p>
                     </div>
                 </section>
                 <Footer />

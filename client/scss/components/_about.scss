@@ -61,6 +61,11 @@
                 display: inline-block;
             }
         }
+        section.call-to-action {
+            span.action-links {
+                display: block;
+            }
+        }
         .columns {
             overflow: hidden;
         }
@@ -128,6 +133,9 @@
             }
         }
         section.call-to-action {
+            span.action-links {
+                display: block;
+            }
             font-size: rem-calc(14pt);
             p {
                 margin-bottom: 0.4rem;
@@ -206,8 +214,8 @@
             .small-text-case {
                 color: #fff;
                 position: absolute;
-                top: 50%;
-                height:80px;
+                top: 38%;
+                height: 195px;
                 margin-top: -40px;
                 left: 0;
                 display: inline-block;
@@ -228,6 +236,9 @@
                 a {
                     font-size: rem-calc(22pt);
                     color: #fff;
+                }
+                span.action-links {
+                    display: block;
                 }
             }
         }
