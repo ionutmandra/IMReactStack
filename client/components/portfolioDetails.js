@@ -87,8 +87,10 @@ class PortfolioDetails extends Component {
                                 <p>Everything changes but our passion.</p>
                                 <p className="cta">
                                     <span className="hide-for-large">Interested? </span>
-                                    <a onClick={this.onContactClick}>Send a message</a> or
-                                    <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}> join the family.</Link>
+                                    <span className="action-links">
+                                        <a onClick={this.onContactClick}>Send a message</a> or
+                                        <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}> join the family.</Link>
+                                    </span>
                                  </p>
                             </div>
                     </div>
@@ -97,8 +99,10 @@ class PortfolioDetails extends Component {
                         <p className="cta content-item">
                             <span className="show-for-large">Want to meet us? </span>
                             <span className="hide-for-large">Interested? </span>
-                             <a onClick={this.onContactClick}>Send a message</a> or
-                                    <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}> join the family.</Link>
+                            <span className="action-links">
+                                <a onClick={this.onContactClick}>Send a message</a> or
+                                <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}> join the family.</Link>
+                            </span>
                         </p>
                     </div>
                 </section>

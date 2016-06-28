@@ -178,8 +178,11 @@ class About extends Component {
                                 <p>Everything changes but our passion.</p>
                                 <p className="cta">
                                     <span className="hide-for-large">Interested? </span>
+                                    <span className="action-links">
                                       <a onClick={this.onContactClick}>Send a message</a> or
-                                    <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}> join the family.</Link>
+                                      <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}> join the family.</Link>
+                                    </span>
+
                                  </p>
                             </div>
                         </div>
@@ -187,10 +190,13 @@ class About extends Component {
                     <div className="large-8 large-offset-3 large-order-1 medium-11 medium-offset-1 medium-order-1 small-24 show-for-medium columns">
                         <p className="content-item">Everything changes but our passion.</p>
                         <p className="cta content-item">
-                                <span className="show-for-large">Want to meet us? </span>
-                                <span className="hide-for-large">Interested? </span>
-                                  <a onClick={this.onContactClick}>Send a message</a> or
-                                    <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}> join the family.</Link></p>
+                            <span className="show-for-large">Want to meet us? </span>
+                            <span className="hide-for-large">Interested? </span>
+                            <span className="action-links">
+                              <a onClick={this.onContactClick}>Send a message</a> or
+                                <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}> join the family.</Link>
+                            </span>
+                        </p>
                     </div>
                 </section>
                 <Footer />
