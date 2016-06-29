@@ -1,0 +1,80 @@
+#page-container article header.main {
+    nav {
+        position: fixed;
+        top: 0;
+        z-index: 4;
+        @include grid-column;
+        @include grid-col-size(15);
+        @include grid-col-off(9);
+        @include grid-col-collapse;
+        @include breakpoint(medium up) {
+            @include grid-col-collapse;
+        }
+        ul {
+            @include grid-row($columns: 5);
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+            li {
+                overflow: hidden;
+                @include grid-column(1);
+                @include grid-col-collapse;
+                @include breakpoint(medium up) {
+                    @include grid-col-collapse;
+                }
+                a {
+                    color: $white;
+                    text-decoration: none;
+                    transition: padding-left 0.3s cubic-bezier(0.500, 0.000, 0.000, 0.500);
+                    display: block;
+                    position: relative;
+                    font-size: rem-calc(14pt);
+                    line-height: rem-calc(20pt);
+                    font-weight: $semibold;
+                    padding: rem-calc(46pt 0 10pt);
+                    &:before {
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 1px;
+                        height: 0;
+                        background: $white;
+                        transition: height .35s ease-out;
+                    }
+                    &:hover,
+                    &.hover {
+                        color: $white;
+                        opacity: 1;
+                        padding-left: rem-calc(10pt);
+                        &:before {
+                            height: rem-calc(62pt);
+                        }
+                    }
+                    &.hover:before {
+                        height: 0;
+                        transition: none;
+                    }
+                    &.line.hover:before {
+                        height: rem-calc(62pt);
+                        transition: none;
+                    }
+                    &.line,
+                    &.hover,
+                    &.line.hover {
+                        transition: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and #{breakpoint(medium only)} {
+
+}
+
+@media screen and #{breakpoint(small only)} {
+    
+}

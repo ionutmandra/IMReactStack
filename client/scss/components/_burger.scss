@@ -1,38 +1,51 @@
-.hamburger {
-  position: fixed;
-  top: 25px;
-  z-index: 2;
-  @include grid-col-size(3);
-  @include grid-col-off(21);
-  overflow: hidden;
+#page-container article {
+  @include grid-row(24);
 
-  > i.close {
-    position: absolute;
-    top: 15px;
-    left: 0;
-    font-size: rem-calc(36pt);
-    //transition: opacity .2s ease-out;
-    transform: translateX(-100%);
-    color: $white;
+  header.main .hamburger {
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    @include grid-col-size(3);
+    @include grid-col-off(21);
+    overflow: hidden;
+    height: 80px;
     
-    &:hover {
-        //opacity: .8;
-        cursor: pointer;
+    > i {
+      display: block;
+      position: absolute;
+      padding: 40px 0 0 0;
+      top: 0;
+      left: 0;
+      width: 50%;
+      min-width: 60px;
+      font-size: rem-calc(36pt);
+      color: $white;
+      cursor: pointer;
+      transition: opacity .2s ease-out;
+      will-change: opacity;
+      
+      &.open {
+        font-size: rem-calc(31.5pt);
+        padding-left: 10px;
+      }
+
+      &:hover {
+        opacity: .8;
+      }
     }
   }
 
-  > i.open {
-    display: inline-block;
-    margin-top: 15px;
-    font-size: rem-calc(31.5pt);
-    transition: opacity .2s ease-out;
-    transform: translateX(-100%);
-    color: $white;
-    padding: 0 10px;
-    
-    &:hover {
-        //opacity: .8;
-        cursor: pointer;
+  &.links-hidden {
+    header.main .hamburger {
+      z-index: 5;
     }
   }
+}
+
+@media screen and #{breakpoint(medium only)} {
+    
+}
+
+@media screen and #{breakpoint(small only)} {
+    
 }

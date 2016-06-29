@@ -36,7 +36,16 @@ export default class Burger extends Component {
 
         scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
             //.addIndicators({ name: 'Burger 1.' })
-            .setTween(move())
+            .on('enabled', () => {
+                if (this.menuIsOpen) {
+                    hideBurgerLeft();
+                } else {
+                    hideCloseLeft();
+                    hideBurgerLeft();
+                    $window.scrollTop() && displayInstant();
+                }
+            })
+            .setTween(display())
         );
 
         scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 360 }).addTo(controller)
@@ -50,13 +59,20 @@ export default class Burger extends Component {
 
         scenes[breakpoint.names.medium].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
             //.addIndicators({ name: 'Burger 1.' })
-            .setTween(move())
+            .on('enabled', () => {
+                if (this.menuIsOpen) {
+                    hideBurgerRight();
+                } else {
+                    hideCloseRight();
+                    displayInstant();
+                }
+            })
         );
 
-        scenes[breakpoint.names.medium].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 360 }).addTo(controller)
-            //.addIndicators({ name: 'Burger 2.' })
-            .setTween(darken())
-        );
+        // scenes[breakpoint.names.medium].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 360 }).addTo(controller)
+        //     //.addIndicators({ name: 'Burger 2.' })
+        //     .setTween(darken())
+        // );
 
         ////
         // SMALL SCREEN
@@ -64,25 +80,63 @@ export default class Burger extends Component {
 
         scenes[breakpoint.names.small].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
             //.addIndicators({ name: 'Burger 1.' })
-            .setTween(move())
+            .on('enabled', () => {
+                if (this.menuIsOpen) {
+                    hideBurgerRight();
+                } else {
+                    hideCloseRight();
+                    displayInstant();
+                }
+            })
         );
 
-        scenes[breakpoint.names.small].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 360 }).addTo(controller)
-            //.addIndicators({ name: 'Burger 2.' })
-            .setTween(darken())
-        );
+        // scenes[breakpoint.names.small].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 360 }).addTo(controller)
+        //     //.addIndicators({ name: 'Burger 2.' })
+        //     .setTween(darken())
+        // );
 
-        function move() { let t = TweenMax.to(refs.burger, .3, { x: '0%' }); timeLines.push(t); return t; }
-        function darken() { let t = TweenMax.to(refs.burger, .3, { color: '#4d4d4d' }); timeLines.push(t); return t; }
-
-        this.handleMediaChange(this.props.ui.media);
+        function display() { 
+            let t = [
+                // TweenMax.to(refs.burger, 0, { clearProps: 'all' }),
+                // TweenMax.to(refs.burger, 0, { x: '-100%' }),
+                TweenMax.to(refs.burger, .3, { x: '0%' }),
+            ]; 
+            timeLines = timeLines.concat(t);
+            return t; 
+        }
+        function displayInstant() { 
+            TweenMax.set(refs.burger, { x: '0%' });             
+        }
+        function hideBurgerLeft() { 
+            TweenMax.set(refs.burger, { x: '-100%' }); 
+        }
+        function hideBurgerRight() { 
+            TweenMax.set(refs.burger, { x: '105%' });             
+        }
+        function hideCloseLeft() { 
+            TweenMax.set(refs.close, { x: '-100%' }); 
+        }
+        function hideCloseRight() { 
+            TweenMax.set(refs.close, { x: '105%' });             
+        }
+        function darken() { 
+            let t = [
+                //TweenMax.to(refs.burger, 0, { clearProps: 'color' }),
+                //TweenMax.to(refs.burger, 0, { color: '#fefefe' }),
+                TweenMax.to(refs.burger, .3, { color: '#4d4d4d' }),
+            ]; 
+            timeLines.push(t); 
+            return t; 
+        }
+//console.warn(this.props.transition.scrollScenesEnabled);
+        this.handleMediaChange(this.props.transition.scrollScenesEnabled ? this.props.ui.media : { current: 'none' });
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        if(this.props.transition.scrollScenesEnabled != nextProps.transition.scrollScenesEnabled){
+        if (this.props.transition.scrollScenesEnabled != nextProps.transition.scrollScenesEnabled) {
             this.setScenes(this.props.ui.media.current, nextProps.transition.scrollScenesEnabled);
         }
-        if(this.props.ui.media.current != nextProps.ui.media.current){
+        if (this.props.ui.media.current != nextProps.ui.media.current) {
             this.handleMediaChange(nextProps.ui.media);
         }
         return false;
@@ -111,25 +165,29 @@ export default class Burger extends Component {
         this.setScenes(media.current, true);
     }
 
-    setScenes (media, enabled) {
+    setScenes(media, enabled, args = []) {
         //console.warn('logo setting scenes for', media, 'to', enabled,'on', this.article.attr('class'));
-        this.scenes && this.scenes[media] && this.scenes[media].forEach(scene => { scene.enabled(enabled); });
+        this.scenes && this.scenes[media] && this.scenes[media].forEach(scene => { scene.enabled(enabled); scene.trigger(enabled ? 'enabled' : 'disabled', args); });
     }
 
     open() {
         if (this.inProgress) return false;
         this.inProgress = true;
 
-        this.initialHeight = 400 - $window.scrollTop();
+        this.initialScroll = $window.scrollTop();
+        this.initialHeight = 400 - this.initialScroll;
         this.props.disableScenes();
         $.scrollLock(true);
 
         let color = '#fefefe';
         this.prevColor = $(this.refs.burger).css('color');
-        
+
         this.wasFixedBurger = this.article.hasClass('fix-header');
-        this.wasFixedBurger && TweenMax.set(this.text, { x: '-100%' });        
+        this.wasFixedBurger && TweenMax.set(this.text, { x: '-100%' });
         this.wasFixedBurger && TweenMax.set(this.image, { scale: 1.1, opacity: 0 });
+
+        let isLarge = this.props.ui.media.current == breakpoint.names.large;
+        console.warn('burger isLarge', isLarge);
 
         let timeline = new TimelineLite({
             onComplete: (() => {
@@ -147,7 +205,7 @@ export default class Burger extends Component {
                 $.scrollLock(true);
             }).bind(this))
             .add(_.filter([
-                TweenMax.to(this.refs.burger, .3, { x: '-100%', ease: Power3.easeOut }),
+                TweenMax.to(this.refs.burger, .3, { x: isLarge ? '-100%' : '105%', ease: Power3.easeOut }),
                 TweenMax.to(this.logoImage, .3, { color: color, ease: Power3.easeOut }),
                 TweenMax.to(this.header, .5, { height: '100%', ease: Power3.easeOut }),
             ]))
@@ -159,8 +217,9 @@ export default class Burger extends Component {
     }
 
     openComplete() {
-        this.inProgress = false;        
+        this.inProgress = false;
         this.article.addClass('menu-open');
+        this.menuIsOpen = true;
     }
 
     close() {
@@ -170,21 +229,29 @@ export default class Burger extends Component {
         this.wasFixedBurger && TweenMax.set(this.text, { x: '-100%' });
         this.wasFixedBurger && TweenMax.set(this.image, { scale: 1.1, opacity: 0 });
         //console.warn('prev color', this.prevColor);
+        let isLarge = this.props.ui.media.current == breakpoint.names.large;
+        console.warn('burger isLarge', isLarge);
+
         let timeline = new TimelineLite({
             onComplete: (() => {
                 this.closeComplete();
-                this.wasFixedBurger && TweenMax.set(this.text, { x: '0%' }),
-                this.wasFixedBurger && TweenMax.set(this.image, { scale: 1, opacity: 1 }),
+                this.wasFixedBurger && TweenMax.set(this.text, { x: '0%' });
+                this.wasFixedBurger && TweenMax.set(this.image, { scale: 1, opacity: 1 });
+                this.header.removeClass('align-links-top');
                 timeline = null;
             }).bind(this),
         })
             .add(_.filter([
                 TweenMax.to(this.links, .3, { x: '-100%', ease: Power3.easeOut }),
-                TweenMax.to(this.refs.close, .3, { x: '-100%', ease: Power3.easeOut }),
-                TweenMax.to(this.logoText, .3, { x: '-100%', ease: Power3.easeOut }), 
+                TweenMax.to(this.refs.close, .3, { x: isLarge ? '-100%' : '105%', ease: Power3.easeOut }),
+                TweenMax.to(this.logoText, .3, { x: '-100%', ease: Power3.easeOut }),
             ]))
+            .add(() => {
+                this.header.addClass('align-links-top');
+            })
             .add(_.filter([
-                TweenMax.to(this.refs.burger, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
+                this.initialScroll && TweenMax.to(this.refs.burger, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
+                !this.initialScroll && TweenMax.to(this.links, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
                 TweenMax.to(this.logoImage, .3, { color: this.prevColor, delay: .3, ease: Power3.easeOut }),
                 TweenMax.to(this.header, .6, { height: this.wasFixedBurger ? '0%' : this.initialHeight, ease: Power3.easeOut }),
             ]))
@@ -202,7 +269,10 @@ export default class Burger extends Component {
     closeComplete() {
         this.inProgress = false;
         $.scrollLock(false);
-        setTimeout((() => { this.props.enableScenes(); }).bind(this), 100);
+        setTimeout((() => {  
+            this.menuIsOpen = undefined;
+            this.props.enableScenes();
+        }).bind(this), 100);
         //this.props.enableScenes();
     }
 

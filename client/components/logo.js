@@ -47,29 +47,29 @@ class Logo extends Component {
         // MEDIUM SCREEN
         ///////////////////
 
-        scenes[breakpoint.names.medium].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
-            //.addIndicators({ name: 'Logo 1.' })
-            .setTween(moveText())
-        );
+        // scenes[breakpoint.names.medium].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
+        //     //.addIndicators({ name: 'Logo 1.' })
+        //     .setTween(moveText())
+        // );
 
-        scenes[breakpoint.names.medium].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 360 }).addTo(controller)
-            //.addIndicators({ name: 'Logo 2.' })
-            .setTween(darken())
-        );
+        // scenes[breakpoint.names.medium].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 360 }).addTo(controller)
+        //     //.addIndicators({ name: 'Logo 2.' })
+        //     .setTween(darken())
+        // );
 
         ////
         // SMALL SCREEN
         ///////////////////
 
-        scenes[breakpoint.names.small].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
-            //.addIndicators({ name: 'Logo 1.' })
-            .setTween(moveText())
-        );
+        // scenes[breakpoint.names.small].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
+        //     //.addIndicators({ name: 'Logo 1.' })
+        //     .setTween(moveText())
+        // );
 
-        scenes[breakpoint.names.small].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 360 }).addTo(controller)
-            //.addIndicators({ name: 'Logo 2.' })
-            .setTween(darken())
-        );
+        // scenes[breakpoint.names.small].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 360 }).addTo(controller)
+        //     //.addIndicators({ name: 'Logo 2.' })
+        //     .setTween(darken())
+        // );
 
         function moveText() { let t = TweenMax.to(refs.text, .3, { x: '-100%' }); timeLines.push(t); return t; }
         function darken() { let t = TweenMax.to(refs.img, .3, { color: '#4d4d4d' }); timeLines.push(t); return t; }

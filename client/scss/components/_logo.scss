@@ -1,0 +1,46 @@
+#page-container article {
+    header.main .logo {
+        > div {
+            padding: rem-calc(40pt) 0 0;
+            position: fixed;
+            top: 0;
+            z-index: 5;
+            color: $white;
+            vertical-align: middle;
+            display: inline-block;
+            @include grid-column;
+            transition: opacity .2s linear;
+            width: auto;
+            will-change: opacity;
+            
+            &.img {
+                @include grid-col-off(3);
+                svg {
+                    margin-left: -46px;
+                }
+            }
+            &.text {
+                @include grid-col-off(3);
+                margin-top: 4px;
+                overflow: hidden;
+                position: fixed;
+                height: 80px;
+                width: 100px;
+            }
+        }
+        &:hover {
+            opacity: 1;
+            > div {
+                opacity: .8;
+            }
+        }
+    }
+}
+
+@media screen and #{breakpoint(medium only)} {
+
+}
+
+@media screen and #{breakpoint(small only)} {
+    
+}

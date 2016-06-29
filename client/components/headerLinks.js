@@ -85,7 +85,15 @@ class HeaderLinks extends Component {
             .setTween(hide())
         );
 
-        function hide() { let t = TweenMax.to(links, .3, { x: '-100%' }); timeLines.push(t); return t; }
+        function hide() { 
+            let t = [
+                TweenMax.to(links, 0, { clearProps: 'all' }),
+                TweenMax.to(links, 0, { x: '0%' }),
+                TweenMax.to(links, .3, { x: '-100%' }),
+            ]; 
+            timeLines = timeLines.concat(t); 
+            return t; 
+        }
 
         this.handleMediaChange(this.props.ui.media);
     }
