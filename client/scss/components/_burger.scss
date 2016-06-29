@@ -2,6 +2,7 @@
   @include grid-row(24);
 
   header.main .hamburger {
+    display: none !important;
     position: fixed;
     top: 0;
     z-index: 2;

@@ -15,64 +15,35 @@ class Logo extends Component {
 
     componentDidMount() {
         let refs = this.refs,
-            timeLines = this.timeLines = [],
             scenes = this.scenes = {},
             controller = this.controller = new ScrollMagic.Controller(),
-            trigger = this.article = $(dom.findDOMNode(refs.logo)).closest('article.page');
+            article = this.article = $(dom.findDOMNode(refs.logo)).closest('article.page');
+        
+        this.timeLines = [];
+
         scenes[breakpoint.names.large] = [];
         scenes[breakpoint.names.medium] = [];
         scenes[breakpoint.names.small] = [];
 
-        this.header = trigger.find('header.main');
-        this.links = this.header.find('nav ul li a');
-        this.text = this.header.find('> .text h1');
+        this.img = $(refs.img);
+        this.text = $(refs.text);
 
-        if (this.props.stationary) return;
+        if (this.props.isHomepage) {
+            this.handleMediaChange(this.props.ui.media);            
+            return;
+        }
 
         ////
         // LARGE SCREEN
         ///////////////////
 
-        scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
-            //.addIndicators({ name: 'Logo 1.' })
-            .setTween(moveText())
+        scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: article, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
+            .setTween(this.moveText())
         );
 
-        scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 360 }).addTo(controller)
-            //.addIndicators({ name: 'Logo 2.' })
-            .setTween(darken())
+        scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: article, triggerHook: 'onLeave', offset: 355 }).addTo(controller)
+            .setTween(this.darken())
         );
-
-        ////
-        // MEDIUM SCREEN
-        ///////////////////
-
-        // scenes[breakpoint.names.medium].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
-        //     //.addIndicators({ name: 'Logo 1.' })
-        //     .setTween(moveText())
-        // );
-
-        // scenes[breakpoint.names.medium].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 360 }).addTo(controller)
-        //     //.addIndicators({ name: 'Logo 2.' })
-        //     .setTween(darken())
-        // );
-
-        ////
-        // SMALL SCREEN
-        ///////////////////
-
-        // scenes[breakpoint.names.small].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
-        //     //.addIndicators({ name: 'Logo 1.' })
-        //     .setTween(moveText())
-        // );
-
-        // scenes[breakpoint.names.small].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 360 }).addTo(controller)
-        //     //.addIndicators({ name: 'Logo 2.' })
-        //     .setTween(darken())
-        // );
-
-        function moveText() { let t = TweenMax.to(refs.text, .3, { x: '-100%' }); timeLines.push(t); return t; }
-        function darken() { let t = TweenMax.to(refs.img, .3, { color: '#4d4d4d' }); timeLines.push(t); return t; }
 
         this.handleMediaChange(this.props.ui.media);
     }
@@ -109,6 +80,29 @@ class Logo extends Component {
         }
         if (this.props.transition.scrollScenesEnabled == true){
             this.setScenes(media.current, true);
+        }
+
+        console.warn('logo handleMediaChange', media, this.props.isHomepage, $window.scrollTop());
+        let scrollTop = $window.scrollTop();
+        if(media.current == breakpoint.names.large)
+        {
+            if (this.props.isHomepage) {
+                this.showInstant();
+            } else if (scrollTop == 0) {
+                this.showInstant();
+            } else if (scrollTop < 400) {
+                this.lightInstant();
+                this.hideInstant();
+            } else {
+                this.darkInstant();
+                this.hideInstant();
+            }
+        } else if (media.current == breakpoint.names.medium) {
+            this.showInstant();
+            this.lightInstant();
+        } else if (media.current != breakpoint.names.none) {
+            this.hideInstant();
+            this.lightInstant();
         }
     }
 
@@ -223,11 +217,44 @@ class Logo extends Component {
             </Link>
         );
     }
+
+    hideInstant() { 
+        let t = TweenMax.set(this.text, { x: '-100%' }); 
+        this.timeLines.push(t); 
+        return t; 
+    }
+    showInstant() { 
+        let t = TweenMax.set(this.text, { x: '0%' }); 
+        this.timeLines.push(t); 
+        return t; 
+    }
+
+    lightInstant() { 
+        let t = TweenMax.set(this.img, { color: '#fefefe' }); 
+        this.timeLines.push(t); 
+        return t; 
+    }
+    darkInstant() { 
+        let t = TweenMax.set(this.img, { color: '#4d4d4d' }); 
+        this.timeLines.push(t); 
+        return t; 
+    }
+
+    moveText() { 
+        let t = TweenMax.fromTo(this.text, .35, { x: '0%' }, { x: '-100%' }); 
+        this.timeLines.push(t); 
+        return t; 
+    }
+    darken() { 
+        let t = TweenMax.fromTo(this.img, .35, { color: '#fefefe' }, { color: '#4d4d4d' }); 
+        this.timeLines.push(t); 
+        return t; 
+    }
 }
 
 Logo.propTypes = {
     dispatchTransition: PropTypes.func.isRequired,
-    stationary: PropTypes.bool,
+    isHomepage: PropTypes.bool,
     transition: PropTypes.object,
 };
 

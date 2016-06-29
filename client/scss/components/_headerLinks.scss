@@ -1,15 +1,15 @@
-#page-container article header.main {
-    nav {
+#page-container article {
+    header.main nav {
         position: fixed;
         top: 0;
         z-index: 4;
         @include grid-column;
         @include grid-col-size(15);
         @include grid-col-off(9);
-        @include grid-col-collapse;
-        @include breakpoint(medium up) {
-            @include grid-col-collapse;
-        }
+        // @include grid-col-collapse;
+        // @include breakpoint(medium up) {
+        //     @include grid-col-collapse;
+        // }
         ul {
             @include grid-row($columns: 5);
             padding: 0;
@@ -32,6 +32,8 @@
                     line-height: rem-calc(20pt);
                     font-weight: $semibold;
                     padding: rem-calc(46pt 0 10pt);
+                    will-change: padding-left;
+
                     &:before {
                         content: '';
                         display: block;

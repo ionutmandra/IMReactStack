@@ -1,31 +1,26 @@
 #page-container article {
+    @include grid-row(24);
     header.main .logo {
         > div {
             padding: rem-calc(40pt) 0 0;
             position: fixed;
             top: 0;
+            left: 0;
             z-index: 5;
             color: $white;
-            vertical-align: middle;
-            display: inline-block;
-            @include grid-column;
+            overflow: hidden;            
             transition: opacity .2s linear;
-            width: auto;
             will-change: opacity;
             
+            @include grid-column;
+            width: auto;
+            @include grid-col-off(3);
+            
             &.img {
-                @include grid-col-off(3);
-                svg {
-                    margin-left: -46px;
-                }
+                left: -46px;
             }
             &.text {
-                @include grid-col-off(3);
                 margin-top: 4px;
-                overflow: hidden;
-                position: fixed;
-                height: 80px;
-                width: 100px;
             }
         }
         &:hover {
@@ -37,10 +32,30 @@
     }
 }
 
-@media screen and #{breakpoint(medium only)} {
+@media screen and #{breakpoint(medium down)} {
+    #page-container article {
+        header.main .logo > div {
+            padding: rem-calc(20pt) 0 0;
 
+            &.img, &.text {
+                @include grid-col-off(1);
+            }
+            &.img {
+                left: 0;
+            }
+            &.text {
+                left: 40px;
+            }
+        }
+    }
 }
 
 @media screen and #{breakpoint(small only)} {
-    
+    #page-container article {
+        header.main .logo > div {
+            &.text {
+                //display: none;
+            }
+        }
+    }
 }

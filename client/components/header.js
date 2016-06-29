@@ -14,12 +14,16 @@ class Header extends Component {
             timeLines = this.timeLines = [],
             scenes = this.scenes = {},
             $header = $(this.refs.header),
-            $container = $header.parent();
+            article = this.article = $header.closest('article.page');
         //headerBottom = $header.position().top + $header.height();
         scenes[breakpoint.names.large] = [];
         scenes[breakpoint.names.medium] = [];
         scenes[breakpoint.names.small] = [];
-        if (this.props.stationary) return;
+
+        if (this.props.isHomepage) {
+            this.handleMediaChange(this.props.ui.media);
+            return;
+        }
 
         //change behaviour of controller to animate scroll instead of jump
         controller.scrollTo(function (newpos) {
@@ -28,119 +32,27 @@ class Header extends Component {
             return t;
         });
 
+        let scene = new ScrollMagic.Scene({ triggerElement: article, triggerHook: 'onLeave', offset: 400 }).addTo(controller)
+            //.addIndicators({name:'large Scene 2'})
+            .on('start', event => {
+                if (event.scrollDirection == 'FORWARD') {
+                    article.addClass('fix-header');
+                    console.log('header sc2 end forw');
+                }
+                if (event.scrollDirection == 'REVERSE') {
+                    article.removeClass('fix-header');
+                    console.log('header sc1 pr rev');
+                }
+            });
+
         ////
         // LARGE SCREEN
         ///////////////////
 
-        scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: $container, triggerHook: 'onLeave', duration: 1, offset: 0 }).addTo(controller)
-            //.addIndicators({name:'large Scene 1'})
-            .on('end', event => {
-                if (event.scrollDirection == 'FORWARD') {
-                    console.log('large header sc1 end forw');
-                    //controller.scrollTo(headerBottom);
-                    $container.addClass('links-hidden');
-                }
-                if (event.scrollDirection == 'REVERSE') {
-                    console.log('large header sc1 end rev');
-                    $container.removeClass('links-hidden');
-                }
-            })
-        );
 
-        scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: $container, triggerHook: 'onLeave', duration: 40, offset: 360 }).addTo(controller)
-            //.addIndicators({name:'large Scene 2'})
-            .on('end', event => {
-                if (event.scrollDirection == 'FORWARD') {
-                    $container.addClass('fix-header');
-                    console.log('large header sc2 end forw');
-                }
-                if (event.scrollDirection == 'REVERSE') {
-                    $container.removeClass('fix-header');
-                    //controller.scrollTo(0);
-                    console.log('large header sc1 pr rev');
-                }
-            })
-        );
-
-        ////
-        // MEDIUM SCREEN
-        ///////////////////
-
-        // scenes[breakpoint.names.medium].push(new ScrollMagic.Scene({ triggerElement: $container, triggerHook: 'onLeave', duration: 1, offset: 0 }).addTo(controller)
-        //     //.addIndicators({name:'medium Scene 1'})
-        //     .on('enabled', () => { $container.addClass('fix-header'); })
-        //     .on('disabled', event => { event[0] == breakpoint.names.large && $container.removeClass('links-hidden fix-header'); })
-        // );
-
-        scenes[breakpoint.names.medium].push(new ScrollMagic.Scene({ triggerElement: $container, triggerHook: 'onLeave', duration: 1, offset: 0 }).addTo(controller)
-            //.addIndicators({name:'medium Scene 1'})
-            .on('end', event => {
-                if (event.scrollDirection == 'FORWARD') {
-                    console.log('medium header sc1 end forw');
-                    //controller.scrollTo(headerBottom);
-                    $container.addClass('links-hidden');
-                }
-                if (event.scrollDirection == 'REVERSE') {
-                    console.log('medium header sc1 end rev');
-                    $container.removeClass('links-hidden');
-                }
-            })
-        );
-
-        scenes[breakpoint.names.medium].push(new ScrollMagic.Scene({ triggerElement: $container, triggerHook: 'onLeave', duration: 40, offset: 360 }).addTo(controller)
-            //.addIndicators({name:'medium Scene 2'})
-            .on('end', event => {
-                if (event.scrollDirection == 'FORWARD') {
-                    $container.addClass('fix-header');
-                    console.log('medium header sc2 end forw');
-                }
-                if (event.scrollDirection == 'REVERSE') {
-                    $container.removeClass('fix-header');
-                    //controller.scrollTo(0);
-                    console.log('medium header sc1 pr rev');
-                }
-            })
-        );
-
-        ////
-        // SMALL SCREEN
-        ///////////////////
-
-        // scenes[breakpoint.names.small].push(new ScrollMagic.Scene({ triggerElement: $container, triggerHook: 'onLeave', duration: 1, offset: 0 }).addTo(controller)
-        //     //.addIndicators({name:'small Scene 1'})
-        //     .on('enabled', () => { $container.addClass('fix-header'); })
-        //     .on('disabled', event => { event[0] == breakpoint.names.large && $container.removeClass('links-hidden fix-header'); })
-        // );
-
-        scenes[breakpoint.names.small].push(new ScrollMagic.Scene({ triggerElement: $container, triggerHook: 'onLeave', duration: 1, offset: 0 }).addTo(controller)
-            //.addIndicators({name:'large Scene 1'})
-            .on('end', event => {
-                if (event.scrollDirection == 'FORWARD') {
-                    console.log('small header sc1 end forw');
-                    //controller.scrollTo(headerBottom);
-                    $container.addClass('links-hidden');
-                }
-                if (event.scrollDirection == 'REVERSE') {
-                    console.log('small header sc1 end rev');
-                    $container.removeClass('links-hidden');
-                }
-            })
-        );
-
-        scenes[breakpoint.names.small].push(new ScrollMagic.Scene({ triggerElement: $container, triggerHook: 'onLeave', duration: 40, offset: 360 }).addTo(controller)
-            //.addIndicators({name:'small Scene 2'})
-            .on('end', event => {
-                if (event.scrollDirection == 'FORWARD') {
-                    $container.addClass('fix-header');
-                    console.log('small header sc2 end forw');
-                }
-                if (event.scrollDirection == 'REVERSE') {
-                    $container.removeClass('fix-header');
-                    //controller.scrollTo(0);
-                    console.log('small header sc1 pr rev');
-                }
-            })
-        );
+        scenes[breakpoint.names.large].push(scene);
+        scenes[breakpoint.names.medium].push(scene);
+        scenes[breakpoint.names.small].push(scene);
 
         this.handleMediaChange(this.props.ui.media);
     }
@@ -175,7 +87,18 @@ class Header extends Component {
         for (let name in breakpoint.names) {
             this.setScenes(name, false, [media.current]);
         }
-        this.setScenes(media.current, true);
+        if (this.props.transition.scrollScenesEnabled == true) {
+            this.setScenes(media.current, true);
+        }
+
+        console.warn('header handleMediaChange', media, this.props.isHomepage, $window.scrollTop());
+        if (this.props.isHomepage) {
+            this.article.addClass('fix-header');
+        } else if ($window.scrollTop() < 400) {
+            this.article.removeClass('fix-header');
+        } else {
+            this.article.addClass('fix-header');
+        }
     }
 
     setScenes(media, enabled, args = []) {
@@ -184,13 +107,13 @@ class Header extends Component {
     }
 
     render() {
-        if (this.props.stationary) {
+        if (this.props.isHomepage) {
             return (
                 <header className="main" ref="header">
-                    <Logo stationary />
-                    <HeaderLinks stationary />
-                    <Burger stationary />
-                    <Contact stationary renderCloseButton />
+                    <Logo isHomepage />
+                    <HeaderLinks isHomepage />
+                    <Burger isHomepage />
+                    <Contact isHomepage renderCloseButton />
                 </header>
             );
         } else {
@@ -211,7 +134,7 @@ class Header extends Component {
 
 Header.propTypes = {
     //cancelScene: PropTypes.string,
-    stationary: PropTypes.bool,
+    isHomepage: PropTypes.bool,
     title: PropTypes.string,
 };
 
