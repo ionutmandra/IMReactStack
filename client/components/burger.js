@@ -162,7 +162,9 @@ export default class Burger extends Component {
         for (let name in breakpoint.names) {
             this.setScenes(name, false);
         }
-        this.setScenes(media.current, true);
+        if (this.props.transition.scrollScenesEnabled == true){
+            this.setScenes(media.current, true);
+        }
     }
 
     setScenes(media, enabled, args = []) {

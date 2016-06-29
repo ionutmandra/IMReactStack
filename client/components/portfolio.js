@@ -37,14 +37,16 @@ class Portfolio extends Component {
                             </h1>
                             <div className="spacer-20 large-0 medium-0 small-24  show-for-small-only"/>
                             <div className="project-description" className="content-item">
-                                <p>Safetybank is our largest project and we took it from a 50 hours concept to a 50 000 hours enterprise class application.</p>
+                                <p>Safetybank is our largest project and we took it from a 50 hours concept to a <span className="no-break">50 000</span> hours enterprise class application.</p>
                                 <div className="spacer-20" />
-                                <p>The application was awarded "Most innovative application in housing industry" in 2016</p>
+                                <p>The application was awarded "Most innovative application in housing industry" in 2016.</p>
+                                <div className="spacer-20" />
+                                <p>Safetybank is an online health and safety information system serving thousands of companies and hundreds of thousands of workers.</p>
                             </div>
                         </div>
                         <div className="spacer-40 large-0 medium-0 small-24  show-for-small-only"/>
-                        <div className="large-9 large-offset-1 medium-11 medium-offset-2 small-24 small-offset-0 columns">
-                         <Link ref="projDetails"  to={link} onClick={this.handleProjDetailsClick}><img src="client/dist/img/photos/safetylogo.png" className="content-item"/></Link>
+                        <div className="large-6 large-offset-4 medium-11 medium-offset-2 small-24 small-offset-0 columns">
+                         <Link ref="projDetails" to={link} onClick={this.handleProjDetailsClick}><img src="client/dist/img/photos/safetylogo.png" className="content-item"/></Link>
                         </div>
                     </div>
                     <div className="spacer-100" />

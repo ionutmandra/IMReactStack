@@ -1050,6 +1050,15 @@ export function large_enter_home_content(ref, callback, transition) {
             $(elements.header).css('height', '');
             $(elements.footer).css('height', '');
             timeline = null;
+
+            let urlParts = location.href.split('#');
+            let $elementToScrollTo = urlParts.length === 2 ? $(['#', urlParts[1]].join('')) : '';
+
+            if($elementToScrollTo.length > 0){
+                TweenMax.to(window, .7, { scrollTo: { y: $elementToScrollTo.offset().top }, ease: Power3.easeOut });      
+            }
+
+            
         }
     })
         .set({}, {}, 1) //wait for leaving page to hide content
@@ -1097,8 +1106,8 @@ export function medium_enter_home_content(ref, callback, transition) {
             TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
         }
     });
-    $window.scrollTop(0);
-    $body.css('overflow', 'hidden');
+    //$window.scrollTop(0);
+    //$body.css('overflow', 'hidden');
 
     //Initial state
     TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
@@ -1119,6 +1128,9 @@ export function medium_enter_home_content(ref, callback, transition) {
         }
     })
         .set({}, {}, 1) //wait for leaving page to hide content
+        .add(function () {
+            $body.css('overflow', 'hidden');
+        })
         .add(_.filter([
             TweenMax.to(line, .6, { height: '100%', ease: Power3.easeIn, onComplete: () => { $target.removeClass('line'); TweenMax.set(line, { opacity: 0 }); } }),
         ]))

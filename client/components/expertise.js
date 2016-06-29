@@ -8,6 +8,8 @@ class Expertise extends Component {
      constructor(props) {
         super(props);
         this.handleCallToActionClick = this.handleCallToActionClick.bind(this);
+        this.onContactClick = this.onContactClick.bind(this);
+
          this.state ={
             cancelScene: 'false'
         };
@@ -22,6 +24,10 @@ class Expertise extends Component {
               target: event.target,
           });
     }
+
+     onContactClick(event){
+        console.log('DORU needs to implement');
+  }
 
 
     render() {
@@ -105,7 +111,11 @@ class Expertise extends Component {
                         <p className="cta content-item">
                                 <span className="show-for-large">Want to meet us? </span>
                                 <span className="hide-for-large">Interested? </span>
-                                <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}>Let's talk</Link></p>
+                                <span className="action-links">
+                                    <a onClick={this.onContactClick}>Send a message</a> or
+                                    <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}> join the family.</Link>
+                                </span>
+                        </p>
                     </div>
                     <div className="large-9 large-offset-0 large-order-2 medium-11 medium-offset-0 medium-order-2 columns">
                       <div className="content-item image">
@@ -114,12 +124,14 @@ class Expertise extends Component {
                                 <p>Everything changes but our passion.</p>
                                 <p className="cta">
                                     <span className="hide-for-large">Interested? </span>
-                                    <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}>Let's talk.</Link>
+                                    <span className="action-links">
+                                        <a onClick={this.onContactClick}>Send a message</a> or
+                                        <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}> join the family.</Link>
+                                    </span>
                                  </p>
                             </div>
                       </div>
                     </div>
-
                 </section>
                 <Footer />
             </article>
