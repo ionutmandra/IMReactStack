@@ -70,7 +70,8 @@
         }
     }
 
-    &.fix-header header.main nav {
+    //&.fix-header:not(.page-home) header.main nav {
+    &.menu-open header.main nav {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -103,7 +104,8 @@
 @media screen and #{breakpoint(medium down)} {
     #page-container article{
         @include grid-row(24);
-        &.fix-header header.main nav {
+        //&.fix-header:not(.page-home) header.main nav {
+        &.menu-open header.main nav {
             @include grid-col-size(5.5);
             @include grid-col-off(6.5);
             ul {
@@ -119,7 +121,8 @@
 @media screen and #{breakpoint(small only)} {
     #page-container article{
         @include grid-row(24);
-        &.fix-header header.main nav {
+        //&.fix-header:not(.page-home) header.main nav {
+        &.menu-open header.main nav {
             @include grid-col-size(11);
             @include grid-col-off(12);
         }

@@ -24,7 +24,7 @@ export function appear(ref, callback) {
 //    HEADER
 /////////////////////////////////////////
 
-export function large_enter_header(ref, callback, transition) {
+export function large_enter_header(ref, callback, transition, enableScenes) {
     if (!transition.column || !transition.target) {
         return callback();
     }
@@ -52,7 +52,7 @@ export function large_enter_header(ref, callback, transition) {
         },
     });
     $window.scrollTop(0);
-    $body.css('overflow', 'hidden');
+    $.scrollLock(true);
 
     //Initial state
     TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
@@ -65,7 +65,13 @@ export function large_enter_header(ref, callback, transition) {
 
     //Animation
     let timeline = new TimelineLite({
-        onComplete: () => { callback(); $body.css('overflow', 'visible'); $container.removeClass('overlap'); timeline = null; },
+        onComplete: () => { 
+            callback(); 
+            $.scrollLock(false);
+            setTimeout(enableScenes, 100); 
+            $container.removeClass('overlap'); 
+            timeline = null; 
+        },
     })
         .set({}, {}, .6) //wait for leaving page to hide content
         .add(_.filter([
@@ -79,7 +85,7 @@ export function large_enter_header(ref, callback, transition) {
         ]));
 }
 
-export function medium_enter_header(ref, callback, transition) {
+export function medium_enter_header(ref, callback, transition, enableScenes) {
     if (!transition.column || !transition.target) {
         return callback();
     }
@@ -107,7 +113,7 @@ export function medium_enter_header(ref, callback, transition) {
         },
     });
     $window.scrollTop(0);
-    $body.css('overflow', 'hidden');
+    $.scrollLock(true);
 
     //Initial state
     TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
@@ -120,7 +126,13 @@ export function medium_enter_header(ref, callback, transition) {
 
     //Animation
     let timeline = new TimelineLite({
-        onComplete: () => { callback(); $body.css('overflow', 'visible'); $container.removeClass('overlap'); timeline = null; },
+        onComplete: () => { 
+            callback(); 
+            $.scrollLock(false);
+            setTimeout(enableScenes, 100); 
+            $container.removeClass('overlap'); 
+            timeline = null; 
+        },
     })
         .set({}, {}, .6) //wait for leaving page to hide content
         .add(_.filter([
@@ -134,7 +146,7 @@ export function medium_enter_header(ref, callback, transition) {
         ]));
 }
 
-export function small_enter_header(ref, callback, transition) {
+export function small_enter_header(ref, callback, transition, enableScenes) {
     if (!transition.column || !transition.target) {
         return callback();
     }
@@ -162,7 +174,7 @@ export function small_enter_header(ref, callback, transition) {
         },
     });
     $window.scrollTop(0);
-    $body.css('overflow', 'hidden');
+    $.scrollLock(true);
 
     //Initial state
     TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
@@ -175,7 +187,13 @@ export function small_enter_header(ref, callback, transition) {
 
     //Animation
     let timeline = new TimelineLite({
-        onComplete: () => { callback(); $body.css('overflow', 'visible'); $container.removeClass('overlap'); timeline = null; },
+        onComplete: () => { 
+            callback(); 
+            $.scrollLock(false);
+            setTimeout(enableScenes, 100); 
+            $container.removeClass('overlap'); 
+            timeline = null; 
+        },
     })
         .set({}, {}, .6) //wait for leaving page to hide content
         .add(_.filter([

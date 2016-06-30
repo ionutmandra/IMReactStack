@@ -17,7 +17,7 @@ export default class Burger extends Component {
             controller = this.controller = new ScrollMagic.Controller(),
             hamburger = this.hamburger = $(refs.hamburger),
             trigger = this.article = hamburger.closest('article.page');
-        
+
         this.timeLines = [];
         scenes[breakpoint.names.large] = [];
         scenes[breakpoint.names.medium] = [];
@@ -34,6 +34,35 @@ export default class Burger extends Component {
         this.close = $(refs.close);
 
         if (this.props.isHomepage) {
+            this.homeLeft = [
+                this.article.find('.slide-1.content .text-2 h2').toArray(),
+                this.article.find('.slide-2.content .text-1 h1, .slide-2.content .text-3 .text-content').toArray(),
+                this.article.find('.slide-3.content .text-2 h1').toArray(),
+                this.article.find('.slide-4.content .text-1 h1').toArray(),
+            ];
+            this.homeRight = [
+                this.article.find('.slide-1.content .text-1 h1').toArray(),
+                this.article.find('.slide-2.content .text-2 .text-content').toArray(),
+                this.article.find('.slide-3.content .text-1 h1').toArray(),
+                {},
+            ];
+            this.smallHomeLeft = [
+                this.article.find('.slide-1.content .text-1 h1, .slide-1.content .text-2 h2').toArray(),
+                this.article.find('.slide-2.content .text-1 h1').toArray(),
+                this.article.find('.slide-3.content .text-1 h1, .slide-3.content .text-2 h1').toArray(),
+                this.article.find('.slide-4.content .text-1 h1').toArray(),
+            ];
+            this.homeBottom = [
+                this.article.find('.slide-1.content .scroll-hint > *').toArray(),
+                {}, {}, {},
+            ];
+            this.homeImage = [
+                this.article.find('.slide-1.background .img').toArray(),
+                this.article.find('.slide-2.background .img').toArray(),
+                this.article.find('.slide-3.background .img').toArray(),
+                this.article.find('.slide-4.background .img').toArray(),
+            ];
+
             this.handleMediaChange(this.props.ui.media);
             return;
         }
@@ -99,11 +128,10 @@ export default class Burger extends Component {
         }
 
         let scrollTop = $window.scrollTop(), menuIsOpen = this.article.hasClass('menu-open');
-        if(media.current == breakpoint.names.large)
-        {
+        if (media.current == breakpoint.names.large) {
             if (menuIsOpen) {
                 if (this.props.isHomepage || scrollTop == 0) {
-                    this.hideBurgerLeftInstant();    
+                    this.hideBurgerLeftInstant();
                 } else if (scrollTop < 355) {
                     this.hideBurgerLeftInstant();
                 } else {
@@ -136,7 +164,7 @@ export default class Burger extends Component {
                 this.lightInstant();
                 this.hideCloseRightInstant();
                 this.showBurgerInstant();
-            }            
+            }
         }
     }
 
@@ -157,38 +185,73 @@ export default class Burger extends Component {
         let color = '#fefefe';
         this.prevColor = this.burger.css('color');
         let isLarge = this.props.ui.media.current == breakpoint.names.large;
+        let isSmall = this.props.ui.media.current == breakpoint.names.small;
 
         this.wasFixedBurger = this.article.hasClass('fix-header');
         this.wasFixedBurger && TweenMax.set(this.text, { x: '-100%' });
         this.wasFixedBurger && TweenMax.set(this.image, { scale: 1.1, opacity: 0 });
 
-        console.warn('burger isLarge', isLarge);
-
-        let timeline = new TimelineLite({
-            onComplete: (() => {
-                this.inProgress = false;
-                this.article.addClass('menu-open');
-                timeline = null; //cleanup
-            }).bind(this),
-        })
-            .add(_.filter([
-                !this.wasFixedBurger && TweenMax.to(this.text, .3, { x: '-100%', ease: Power3.easeOut }),
-                !this.wasFixedBurger && TweenMax.to(this.image, .3, { scale: 1.1, opacity: 0, ease: Power3.easeOut }),
-            ]))
-            .add((() => {
-                this.article.addClass('fix-header');
-                !this.wasFixedBurger && this.header.height(this.initialHeight);
-            }).bind(this))
-            .add(_.filter([
-                TweenMax.to(this.burger, .3, { x: isLarge ? '-100%' : '105%', ease: Power3.easeOut }),
-                TweenMax.to(this.logoImage, .3, { color: color, ease: Power3.easeOut }),
-                TweenMax.to(this.header, .5, { height: '100%', ease: Power3.easeOut }),
-            ]))
-            .add(_.filter([
-                TweenMax.to(this.logoText, .3, { x: '0%', ease: Power3.easeOut }),
-                TweenMax.to(this.close, .3, { x: '0%', ease: Power3.easeOut }),
-                TweenMax.to(this.links, .3, { x: '0%', ease: Power3.easeOut }),
-            ]));
+        if (this.props.isHomepage) {
+            let timeline = new TimelineLite({
+                onComplete: (() => {
+                    this.inProgress = false;
+                    timeline = null; //cleanup
+                }).bind(this),
+            })
+                .add(_.filter([
+                    TweenMax.to(this.homeBottom, .3, { y: '150%' }),
+                    TweenMax.to(this.homeImage, .3, { scale: 1.1, opacity: 0 }),
+                    !isSmall && TweenMax.to(this.homeLeft, .3, { x: '-105%' }),
+                    !isSmall && TweenMax.to(this.homeRight, .3, { x: '105%' }),
+                    isSmall && TweenMax.to(this.smallHomeLeft, .3, { x: '-105%' }),
+                    TweenMax.to(this.burger, .3, { x: '105%', ease: Power3.easeOut }),
+                ]))
+                .add((() => {
+                    this.article.addClass('fix-header');
+                    !this.wasFixedBurger && this.header.height(this.initialHeight);
+                    TweenMax.set(this.header, { height: '100%' });
+                }).bind(this))
+                .add(_.filter([
+                    //TweenMax.to(this.logoImage, .3, { color: color, ease: Power3.easeOut }),
+                    //TweenMax.to(this.header, .5, { height: '100%', ease: Power3.easeOut }),
+                ]))
+                .add((() => {
+                    this.article.addClass('menu-open');
+                }).bind(this))
+                .add(_.filter([
+                    TweenMax.to(this.logoText, .3, { x: '0%', ease: Power3.easeOut }),
+                    TweenMax.to(this.close, .3, { x: '0%', ease: Power3.easeOut }),
+                    TweenMax.to(this.links, .3, { x: '0%', ease: Power3.easeOut }),
+                ]));
+        } else {
+            let timeline = new TimelineLite({
+                onComplete: (() => {
+                    this.inProgress = false;
+                    timeline = null; //cleanup
+                }).bind(this),
+            })
+                .add(_.filter([
+                    !this.wasFixedBurger && TweenMax.to(this.text, .3, { x: '-100%', ease: Power3.easeOut }),
+                    !this.wasFixedBurger && TweenMax.to(this.image, .3, { scale: 1.1, opacity: 0, ease: Power3.easeOut }),
+                ]))
+                .add((() => {
+                    this.article.addClass('fix-header');
+                    !this.wasFixedBurger && this.header.height(this.initialHeight);
+                }).bind(this))
+                .add(_.filter([
+                    TweenMax.to(this.burger, .3, { x: isLarge ? '-100%' : '105%', ease: Power3.easeOut }),
+                    TweenMax.to(this.logoImage, .3, { color: color, ease: Power3.easeOut }),
+                    TweenMax.to(this.header, .5, { height: '100%', ease: Power3.easeOut }),
+                ]))
+                .add((() => {
+                    this.article.addClass('menu-open');
+                }).bind(this))
+                .add(_.filter([
+                    TweenMax.to(this.logoText, .3, { x: '0%', ease: Power3.easeOut }),
+                    TweenMax.to(this.close, .3, { x: '0%', ease: Power3.easeOut }),
+                    TweenMax.to(this.links, .3, { x: '0%', ease: Power3.easeOut }),
+                ]));
+        }
     }
 
     close() {
@@ -212,7 +275,7 @@ export default class Burger extends Component {
                 }).bind(this), 100);
                 timeline = null;
             }).bind(this),
-        }) 
+        })
             .add(_.filter([
                 TweenMax.to(this.links, .3, { x: '-100%', ease: Power3.easeIn }),
                 TweenMax.to(this.close, .3, { x: isLarge ? '-100%' : '105%', ease: Power3.easeIn }),

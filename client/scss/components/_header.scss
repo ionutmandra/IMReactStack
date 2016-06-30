@@ -132,7 +132,7 @@
     }
 
     // SCROLL > 400px
-    &.fix-header {
+    &.fix-header:not(.page-home) {
         padding-top: 400px;
         header.main {
             position: fixed;
@@ -145,7 +145,15 @@
                 z-index: 5;
             }
             .logo {
-                pointer-events: none;
+                //pointer-events: none;
+            }
+        }
+
+        &.page-home {
+            header.main {
+                .logo {
+
+                }
             }
         }
     }
