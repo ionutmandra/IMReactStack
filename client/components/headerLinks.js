@@ -69,10 +69,15 @@ class HeaderLinks extends Component {
         ///////////////////
 
         scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
-            .on('start', event => {
-                console.warn('HEADERLINKS SCENE:', event.scrollDirection);
-            })
-            .setTween(this.hide())
+            .on('start', (event => {
+                console.error('STARTED headerLinks scene');
+                if (event.scrollDirection == 'FORWARD') {
+                    this.hide();
+                }
+                if (event.scrollDirection == 'REVERSE') {
+                    this.show();
+                }
+            }).bind(this))
         );
 
         this.handleMediaChange(this.props.ui.media);
@@ -112,7 +117,8 @@ class HeaderLinks extends Component {
             this.setScenes(media.current, true);
         }
 
-        console.warn('headerLinks handleMediaChange', media, this.props.isHomepage, $window.scrollTop());
+        //console.warn('headerLinks handleMediaChange', media, this.props.isHomepage, $window.scrollTop());
+        let scrollTop = $window.scrollTop(), menuIsOpen = this.article.hasClass('menu-open');
         if(media.current == breakpoint.names.large)
         {
             if (this.props.isHomepage) {
@@ -123,7 +129,11 @@ class HeaderLinks extends Component {
                 this.hideInstant();
             }
         } else if (media.current != breakpoint.names.none) {
-            this.hideInstant();
+            if (menuIsOpen) {
+                this.showInstant();
+            } else {
+                this.hideInstant();
+            }
         }
     }
 
@@ -135,9 +145,16 @@ class HeaderLinks extends Component {
     handleClick(event) {
         let burgerIsOpen = this.article.is('.menu-open');
         // burgerIsOpen && $window.scrollTop(0);
+        let isLarge = this.props.ui.media.current == breakpoint.names.large;
+        let isMedium = this.props.ui.media.current == breakpoint.names.medium;
+        
+        let column = 3; //small
+        isMedium && (column = 3);
+        isLarge && (column = event.currentTarget.getAttribute('data-animate-line'));
+
         this.props.dispatchTransition({
             type: burgerIsOpen && 'burger' || 'header',
-            column: event.currentTarget.getAttribute('data-animate-line'),
+            column: column,
             target: event.currentTarget,
         });
     }
@@ -249,7 +266,7 @@ class HeaderLinks extends Component {
 
     hide() {
         console.warn('headerLinks hide');
-        let t = TweenMax.fromTo(this.links, .35, { x: '0%' }, { x: '-105%' });
+        let t = TweenMax.to(this.links, .35, { x: '-105%' });
         this.timeLines.push(t);
         return t;
     }

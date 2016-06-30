@@ -144,77 +144,34 @@
             .hamburger {
                 z-index: 5;
             }
-            // .hamburglar.is-open {
-            //     margin-left: 0 !important;
-            //     //transform: none !important;
-            // }
             .logo {
                 pointer-events: none;
-            }
-            // .image {
-            //     display: none;
-            // }
-            nav {
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                ul li a {
-                    padding: rem-calc(20pt 0 17pt);
-                    vertical-align: middle;
-                    &:before {
-                        top: 50%;
-                        transform: translateY(-50%);
-                    }
-                    &:hover,
-                    &.hover {
-                        padding-left: rem-calc(10pt);
-                        &:before {
-                            height: 100%;
-                        }
-                    }
-                    &.hover:before {
-                        height: 0;
-                        transition: none;
-                    }
-                    &.line.hover:before {
-                        height: 100%;
-                    }
-                }
-            }
-        }
-    }
-    header.main,
-    &.fix-header header.main {
-        &.align-links-top {
-            .image {
-                display: block;
-                .img {
-                    opacity: 0;
-                }
-            }
-            nav {
-                position: fixed;
-                top: 0;
-                ul li a {
-                    padding: rem-calc(46pt 0 10pt);
-                }
             }
         }
     }
 }
 
 @media screen and #{breakpoint(medium down)} {
-    #page-container article header.main:before {
-        content: '';
-        display: block;
-        position: fixed;
-        z-index: 4;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: rem-calc(72pt);
-        background: black;
-        opacity: .35;
+    #page-container article header.main{
+        @include grid-row(24);
+
+        &:before {
+            content: '';
+            display: block;
+            position: fixed;
+            z-index: 4;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: rem-calc(72pt);
+            background: black;
+            opacity: .35;
+        }
+
+        > .text {
+            @include grid-col-size(13);
+            @include grid-col-off(1);
+        }
     }
 }
 

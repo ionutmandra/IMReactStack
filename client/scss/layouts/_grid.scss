@@ -89,6 +89,7 @@
                     border-right: 1px solid fade-out($black, .9);
                 }
                 &.navigation-line {
+                    display: block;
                     position: absolute;
                     top: 0;
                     left: 0;
@@ -145,6 +146,7 @@
                     border-right: 1px solid fade-out($black, .9);
                 }
                 &.navigation-line {
+                    display: block;
                     position: absolute;
                     top: 0;
                     left: 0;

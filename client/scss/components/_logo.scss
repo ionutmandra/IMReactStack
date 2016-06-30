@@ -42,9 +42,11 @@
             }
             &.img {
                 left: 0;
+                height: rem-calc(72pt);
             }
             &.text {
                 left: 40px;
+                height: rem-calc(68pt);
             }
         }
     }

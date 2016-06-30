@@ -1,4 +1,5 @@
 #page-container article {
+    @include grid-row(24);
     header.main nav {
         position: fixed;
         top: 0;
@@ -14,10 +15,10 @@
             li {
                 overflow: hidden;
                 @include grid-column(1);
-                @include grid-col-collapse;
-                @include breakpoint(medium up) {
-                    @include grid-col-collapse;
-                }
+                // @include grid-col-collapse;
+                // @include breakpoint(medium up) {
+                //     @include grid-col-collapse;
+                // }
                 a {
                     color: $white;
                     text-decoration: none;
@@ -28,7 +29,8 @@
                     line-height: rem-calc(20pt);
                     font-weight: $semibold;
                     padding: rem-calc(46pt 0 10pt);
-                    will-change: padding-left;
+                    will-change: padding-left; 
+                    overflow: hidden;
 
                     &:before {
                         content: '';
@@ -67,16 +69,59 @@
             }
         }
     }
+
+    &.fix-header header.main nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        ul li a {
+            padding: rem-calc(20pt 0 17pt);
+            font-size: rem-calc(16pt);
+            vertical-align: middle;
+            &:before {
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            &:hover,
+            &.hover {
+                padding-left: rem-calc(10pt);
+                &:before {
+                    height: 100%;
+                }
+            }
+            &.hover:before {
+                height: 0;
+                transition: none;
+            }
+            &.line.hover:before {
+                height: 100%;
+            }
+        }
+    }
 }
 
 @media screen and #{breakpoint(medium down)} {
-    #page-container article {
-        header.main nav {
-            display: none;
+    #page-container article{
+        @include grid-row(24);
+        &.fix-header header.main nav {
+            @include grid-col-size(5.5);
+            @include grid-col-off(6.5);
+            ul {
+                width: 100%;
+                li {
+                    width: 100%;
+                }
+            }
         }
     }
 }
 
 @media screen and #{breakpoint(small only)} {
-    
+    #page-container article{
+        @include grid-row(24);
+        &.fix-header header.main nav {
+            @include grid-col-size(11);
+            @include grid-col-off(12);
+        }
+    }
 }

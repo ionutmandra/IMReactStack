@@ -38,7 +38,14 @@ class Logo extends Component {
         ///////////////////
 
         scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: article, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
-            .setTween(this.moveText())
+            .on('start', (event => {
+                if (event.scrollDirection == 'FORWARD') {
+                    this.hideText();
+                }
+                if (event.scrollDirection == 'REVERSE') {
+                    this.showText();
+                }
+            }).bind(this))
         );
 
         scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: article, triggerHook: 'onLeave', offset: 355 }).addTo(controller)
@@ -240,8 +247,13 @@ class Logo extends Component {
         return t; 
     }
 
-    moveText() { 
-        let t = TweenMax.fromTo(this.text, .35, { x: '0%' }, { x: '-100%' }); 
+    hideText() { 
+        let t = TweenMax.to(this.text, .35, { x: '-100%' }); 
+        this.timeLines.push(t); 
+        return t; 
+    }
+    showText() { 
+        let t = TweenMax.to(this.text, .35, { x: '0%' }); 
         this.timeLines.push(t); 
         return t; 
     }

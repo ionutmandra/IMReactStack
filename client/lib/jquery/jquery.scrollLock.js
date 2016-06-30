@@ -93,7 +93,8 @@ $.scrollLock = ( function scrollLockClosure() {
         }
 
         // Revert styles
-        restoreScroll !== false && $html.attr( 'style', $( '<x>' ).css( prevStyles ).attr( 'style' ) || '' );
+        //restoreScroll !== false && 
+        $html.attr( 'style', $( '<x>' ).css( prevStyles ).attr( 'style' ) || '' );
 
         // Revert scroll values
         restoreScroll !== false && $( window )

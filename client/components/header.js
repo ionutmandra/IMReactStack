@@ -92,10 +92,11 @@ class Header extends Component {
         }
 
         console.warn('header handleMediaChange', media, this.props.isHomepage, $window.scrollTop());
+        let menuIsOpen = this.article.hasClass('menu-open');
         if (this.props.isHomepage) {
             this.article.addClass('fix-header');
         } else if ($window.scrollTop() < 400) {
-            this.article.removeClass('fix-header');
+            !menuIsOpen && this.article.removeClass('fix-header');
         } else {
             this.article.addClass('fix-header');
         }
