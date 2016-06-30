@@ -90,7 +90,7 @@ class Logo extends Component {
                 this.showInstant();
             } else if (scrollTop == 0) {
                 this.showInstant();
-            } else if (scrollTop < 400) {
+            } else if (scrollTop < 355) {
                 this.lightInstant();
                 this.hideInstant();
             } else {

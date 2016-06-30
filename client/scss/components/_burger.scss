@@ -1,15 +1,17 @@
 #page-container article {
   @include grid-row(24);
-
   header.main .hamburger {
-    display: none !important;
     position: fixed;
     top: 0;
     z-index: 2;
-    @include grid-col-size(3);
+    @include grid-col-size(2);
     @include grid-col-off(21);
     overflow: hidden;
     height: 80px;
+
+    &.active {
+      z-index: 5;
+    }
     
     > i {
       display: block;
@@ -17,8 +19,8 @@
       padding: 40px 0 0 0;
       top: 0;
       left: 0;
-      width: 50%;
-      min-width: 60px;
+      width: auto;
+      min-width: 50px;
       font-size: rem-calc(36pt);
       color: $white;
       cursor: pointer;
@@ -35,18 +37,28 @@
       }
     }
   }
-
-  &.links-hidden {
-    header.main .hamburger {
-      z-index: 5;
-    }
-  }
 }
 
-@media screen and #{breakpoint(medium only)} {
-    
+@media screen and #{breakpoint(medium down)} {
+    #page-container article {
+      header.main .hamburger {
+          @include grid-col-size(2);
+
+          > i {
+            padding-top: rem-calc(20pt);
+            text-align: right;
+            left: auto;
+            right: 0;
+          }
+        }
+    }
 }
 
 @media screen and #{breakpoint(small only)} {
-    
+    #page-container article {
+      header.main .hamburger {
+          @include grid-col-size(3);
+          @include grid-col-off(20);
+        }
+    }
 }
