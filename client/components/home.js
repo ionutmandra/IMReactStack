@@ -517,18 +517,18 @@ class Home extends Component {
             var scenes = _this.scenes[breakpoint.names.large];
             // change behaviour of controller to animate scroll instead of jump
             controller.scrollTo(function (newpos) {
-                var t = TweenMax.to(window, 0.5, { scrollTo: { y: newpos } });
+                var t = TweenMax.to(window, 0.7, { scrollTo: { y: newpos } });
                 timeLines.push(t);
                 return t;
             });
 
-            let scene1 = new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: 100, offset: -100 })
-            // .addIndicators({name:'0'})
-            .addTo(controller)
-            .setTween(
-                TweenMax.fromTo(this._scrollHint, .75, { y: '0' }, { y: '+6', ease: Circ.easeInOut, repeat: -1, yoyo: true })
-            );
-            scenes.push(scene1);
+            // let scene1 = new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: 100, offset: -100 })
+            // // .addIndicators({name:'0'})
+            // .addTo(controller)
+            // .setTween(
+            //     TweenMax.fromTo(this._scrollHint, .75, { y: '0' }, { y: '+6', ease: Circ.easeInOut, repeat: -1, yoyo: true })
+            // );
+            // scenes.push(scene1);
 
             let t0 = new Date().getTime(), flag = true;
             scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '98%', offset: 0 })
@@ -547,14 +547,14 @@ class Home extends Component {
                 }
                 if (event.scrollDirection == 'FORWARD') {
                     controller.scrollTo(_this._section2);
-                    if (scene1) {
-                        scene1.destroy();
-                        scene1 = null;
-                    }
+                    // if (scene1) {
+                    //     scene1.destroy();
+                    //     scene1 = null;
+                    // }
                 }
             })
             .on('end', (event) => {
-                this.animations.hideImgInstant(_this._scrollHintContainer);
+                //this.animations.hideImgInstant(_this._scrollHintContainer);
                 if (event.scrollDirection == 'REVERSE') {
                     controller.scrollTo(0);
                 }
@@ -564,6 +564,7 @@ class Home extends Component {
                 this.animations.moveLeft(this._inputCreate),
                 this.animations.moveRight(this._inputSoftware),
                 this.animations.hideImg(this._img1),
+                TweenMax.to(this._hintBl, .2, { height:'100%' })
             ])
             .add(this.animations.hideSlide(this._section1c))
             .add(this.animations.showSlide(this._section2c))
@@ -584,6 +585,7 @@ class Home extends Component {
                 this.animations.moveRight(this._inputValuesLeft),
                 this.animations.moveLeft(this._inputValuesRight),
                 this.animations.hideImg(this._img2),
+                TweenMax.to(_this._hintBr, .2, { height:'100%' })
             ])
             .add(this.animations.hideSlide(this._section2c))
             .add(this.animations.showSlide(this._section3c))
@@ -619,7 +621,9 @@ class Home extends Component {
                 this.animations.moveLeft(this._inputCreating),
                 this.animations.moveRight(this._inputOffering),
                 this.animations.hideImg(this._img3),
+                TweenMax.to(_this._hintTl, .2, { height:'100%' })
             ])
+            .add(TweenMax.to(_this._scrollArrow, .2, {rotation:'-90deg' }))
             .add(this.animations.hideSlide(this._section3c))
             .add(this.animations.showSlide(this._section4c))
             .add([
