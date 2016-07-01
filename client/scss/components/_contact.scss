@@ -9,6 +9,7 @@
         overflow: hidden;
         a {
             color: $white;
+            will-change: opacity;
         }
         &.left {
             @include grid-row();            
@@ -21,12 +22,9 @@
                 padding: 0;
                 margin: 0;
             }
-            a {
-                text-decoration: underline;
-            }
         }
         &.right {
-            @include grid-row();
+            @include grid-row(24);
             @include grid-col-size(8);
             @include grid-col-off(12);
             font-size: rem-calc(18pt);
@@ -47,7 +45,7 @@
                             @include grid-col-size(2);
                             font-size: rem-calc(28pt);
                             text-decoration: none;
-                            text-align: center;
+                            //text-align: center;
                         }
                     }
                 }
@@ -58,6 +56,7 @@
             @include grid-col-size(1);
             @include grid-col-off(21);
             top: 40px;
+            transform: none;
             text-align: left;
             i {
                 font-size: rem-calc(36pt);
@@ -171,9 +170,6 @@
                 top: rem-calc(20pt);
                 transform: none;
                 text-align: right;
-            }
-            .content {
-                transform: translateX(-100%);
             }
         }
     }

@@ -223,7 +223,7 @@ export default class Burger extends Component {
                 .add(_.filter([
                     TweenMax.to(this.burger, .3, { x: isLarge ? '-100%' : '105%', ease: Power3.easeOut }),
                     TweenMax.to(this.logoImage, .3, { color: color, ease: Power3.easeOut }),
-                    TweenMax.to(this.header, .5, { height: '100%', ease: Power3.easeOut }),
+                    TweenMax.to(this.header, .6, { height: '100%', ease: Power3.easeOut }),
                 ]))
                 .add((() => {
                     this.article.addClass('menu-open');
@@ -269,6 +269,11 @@ export default class Burger extends Component {
                     TweenMax.to(this.burger, .3, { x: '0%', ease: Power3.easeOut }),
                 ]));
         } else {
+            if (typeof(this.initialHeight) === 'undefined') {
+                //we're closing but we weren't opened via burger, but via a directly opened contact then resize
+                this.initialHeight = 400; //can't directly open contact unless scroll is 0
+                this.wasFixedBurger = false; //same logic as above
+            }
             let timeline = new TimelineLite({ onComplete: onComplete.bind(this, timeline) })
                 .add(_.filter([
                     TweenMax.to(this.links, .3, { x: '-100%', ease: Power3.easeIn }),
@@ -278,7 +283,7 @@ export default class Burger extends Component {
                 .add(_.filter([
                     this.wasFixedBurger && TweenMax.to(this.burger, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
                     isLarge && TweenMax.to(this.logoImage, .3, { color: this.prevColor, delay: .3, ease: Power3.easeOut }),
-                    TweenMax.to(this.header, .5, { height: this.wasFixedBurger ? '0%' : this.initialHeight, ease: Power3.easeOut }),
+                    TweenMax.to(this.header, .6, { height: this.wasFixedBurger ? '0%' : this.initialHeight, ease: Power3.easeOut }),
                 ]))
                 .add(() => {
                     !this.wasFixedBurger && this.article.removeClass('fix-header');

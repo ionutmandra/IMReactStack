@@ -25,7 +25,10 @@ class Header extends Component {
         this.links = this.header.find('nav ul li a').toArray();
         this.burgerOpen = this.header.find('> .hamburger > .open');
         this.burgerClose = this.header.find('> .hamburger > .close');
+        this.contactClose = this.header.find('.contact .btn .content');
         this.logoText = this.header.find('> .logo .text svg');
+        this.headerImage = this.header.find('> .image .img');
+        this.headerText = this.header.find('> .text h1');
 
         scenes[breakpoint.names.large] = [];
         scenes[breakpoint.names.medium] = [];
@@ -51,8 +54,10 @@ class Header extends Component {
                 this.article.find('.slide-4.content .text-1 h1').toArray(),
             ];
             this.homeBottom = [
-                this.article.find('.slide-1.content .scroll-hint > *').toArray(),
-                {}, {}, {},
+                this.article.find('.scroll-hint > *').toArray(),
+                this.article.find('.scroll-hint > *').toArray(),
+                this.article.find('.scroll-hint > *').toArray(),
+                this.article.find('.scroll-hint > *').toArray(),
             ];
             this.homeImage = [
                 this.article.find('.slide-1.background .img').toArray(),
@@ -133,12 +138,27 @@ class Header extends Component {
 
         console.warn('header handleMediaChange', media, this.props.isHomepage, $window.scrollTop());
         let menuIsOpen = this.article.hasClass('menu-open');
-        if (this.props.isHomepage) {
-            this.article.addClass('fix-header');
-        } else if ($window.scrollTop() < 400) {
-            !menuIsOpen && this.article.removeClass('fix-header');
-        } else {
-            this.article.addClass('fix-header');
+        let contactIsOpen = this.article.hasClass('contact-open');
+        if (media.current == breakpoint.names.large) {
+            if (this.props.isHomepage) {
+                this.article.addClass('fix-header');
+            } else if ($window.scrollTop() < 400) {
+                !contactIsOpen && !menuIsOpen && this.article.removeClass('fix-header');
+            } else {
+                this.article.addClass('fix-header');
+            }
+            !contactIsOpen && TweenMax.set(this.contactClose, { x: '-100%' });
+        } else if (media.current != breakpoint.names.none) {
+            if ($window.scrollTop() < 400) {
+                !contactIsOpen && !menuIsOpen && this.article.removeClass('fix-header');
+            } else {
+                this.article.addClass('fix-header');
+            }
+            if (contactIsOpen && !menuIsOpen) {
+                this.article.addClass('menu-open');
+                TweenMax.set(this.burgerOpen, { x: '105%' });
+                TweenMax.set(this.burgerClose, { x: '105%' });
+            }
         }
     }
 
@@ -242,27 +262,26 @@ class Header extends Component {
                     TweenMax.fromTo(pieces.right, .3, { x: '105%' }, { x: '0%', delay: .3, ease: Power3.easeOut }),
                 ]));
         } else { //header contact link on Large Generic page when scroll = 0
-            let initialHeight = 400 - $window.scrollTop();
+            this.initialHeight = 400 - $window.scrollTop();
             this.props.disableScenes();
             $.scrollLock(true);
 
             let timeline = new TimelineLite({ onComplete: onComplete.bind(this, timeline) })
                 .add(_.filter([
-                    TweenMax.to(this.article.find('.content-item'), .3, { x: '-110%', ease: Power3.easeOut }),
-                ]))
-                .add(_.filter([
-                    TweenMax.to(this.links.concat([this.logoText, this.text]), .3, { x: '-100%', ease: Power3.easeOut }),
-                    TweenMax.to(this.image, .3, { scale: 1.1, opacity: 0, ease: Power3.easeOut }),
+                    TweenMax.to(this.links, .3, { x: '-100%', ease: Power3.easeOut }),
+                    TweenMax.to(this.logoText, .3, { x: '-100%', ease: Power3.easeOut }),
+                    TweenMax.to(this.headerText, .3, { x: '-100%', ease: Power3.easeOut }),
+                    TweenMax.to(this.headerImage, .3, { scale: 1.1, opacity: 0, ease: Power3.easeOut }),
                 ]))
                 .add((() => {
                     this.article.addClass('fix-header');
-                    this.header.height(initialHeight);
                 }).bind(this))
                 .add(_.filter([
-                    TweenMax.to(this.header, .5, { height: '100%', ease: Power3.easeOut }),
+                    TweenMax.fromTo(this.header, .6, { height: this.initialHeight }, { height: '100%', ease: Power3.easeOut }),
                 ]))
                 .add(_.filter([
-                    TweenMax.to(this.contactPieces, .3, { x: '0%', ease: Power3.easeOut }),
+                    TweenMax.fromTo(pieces.left, .3, { x: '-100%' }, { x: '0%', ease: Power3.easeOut }),
+                    TweenMax.fromTo(pieces.right, .3, { x: '105%' }, { x: '0%', ease: Power3.easeOut }),
                 ]));
         }
 
@@ -331,24 +350,27 @@ class Header extends Component {
                     ]));
             }
         } else { //header contact link on Large Generic page when scroll = 0
-            let timeline = new TimelineLite({ onComplete: onComplete.bind(this, timeline, true) })
-                .add(_.filter([
-                    TweenMax.to(this.contactPieces, .3, { x: '-100%', ease: Power3.easeIn }),
-                ]))
-                .add(_.filter([
-                    TweenMax.to(this.header, .5, { height: this.props.transition.initialHeight, ease: Power3.easeOut }),
-                ]))
-                .add(_.filter([
-                    () => {
+            if (isLarge) { //opened on generic large, closing on generic large
+                let timeline = new TimelineLite({ onComplete: onComplete.bind(this, timeline, true) })
+                    .add(_.filter([
+                        TweenMax.to(pieces.left, .3, { x: '-100%', ease: Power3.easeIn }),
+                        TweenMax.to(pieces.right, .3, { x: '105%', ease: Power3.easeIn }),
+                    ]))
+                    .add(_.filter([
+                        TweenMax.to(this.header, .6, { height: this.initialHeight, ease: Power3.easeOut }),
+                    ]))
+                    .add((() => {
                         this.article.removeClass('fix-header');
-                        this.header.css('height', '');
-                    },
-                ]))
-                .add(_.filter([
-                    TweenMax.to(this.links.concat([this.logoText, this.text]), .3, { x: '0%', ease: Power3.easeOut }),
-                    TweenMax.to(this.image, .3, { scale: 1, opacity: 1, ease: Power3.easeOut }),
-                    TweenMax.to(this.article.find('.content-item'), .3, { x: '0%', ease: Power3.easeOut }),
-                ]));
+                    }).bind(this))
+                    .add(_.filter([
+                        TweenMax.to(this.links, .3, { x: '0%', ease: Power3.easeOut }),
+                        TweenMax.to(this.logoText, .3, { x: '0%', ease: Power3.easeOut }),
+                        TweenMax.to(this.headerText, .3, { x: '0%', ease: Power3.easeOut }),
+                        TweenMax.to(this.headerImage, .3, { scale: 1, opacity: 1, ease: Power3.easeOut }),
+                    ]));
+            } else {//opened on generic large, closing on generic small/medium
+                //when resizing down, we'll go from direct contact open to burger -> contact open, so nothing here
+            }
         }
 
         event.preventDefault();
