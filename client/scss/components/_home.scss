@@ -35,8 +35,7 @@
             }
             .text-1,
             .text-2,
-            .text-3,
-            .scroll-hint {
+            .text-3{
                 overflow: hidden;
                 position: absolute;
                 h1 {
@@ -86,27 +85,6 @@
                     top: 69%;
                     text-align: center;
                     opacity: 0.5;
-                }
-                .scroll-hint {
-                    @include grid-column-size(4);
-                    @include grid-column-offset(10);
-                    bottom: 5%;
-                    text-align: center;
-                    span {
-                        display: inline-block;
-                        -moz-border-radius: 70px/70px;
-                        -webkit-border-radius: 70px 70px;
-                        border-radius: 70px/70px;
-                        border: solid 2px white;
-                        width: 70px;
-                        height: 70px;
-                        i {
-                            position: relative;
-                            top: 20px;
-                            font-size: 25px;
-                            margin-left: 1px;
-                        }
-                    }
                 }
             }
             &.slide-2 {
@@ -235,6 +213,114 @@
         }
         a {
             color: #FFFFFF;
+        }
+
+        .scroll-hint-ctainer{
+            position: relative;
+            height: 100%;
+            padding-top: 3px;
+        }
+        .scroll-hint {
+            height: 100px;
+            z-index: 4;
+            overflow: hidden;
+            position: fixed;
+            @include grid-column-size(4);
+            @include grid-column-offset(10);
+            bottom: 5%;
+            text-align: center;
+            color: white;
+
+            span {
+                position: absolute;
+                display: inline-block;
+                -moz-border-radius: 70px/70px;
+                -webkit-border-radius: 70px 70px;
+                border-radius: 70px/70px;
+                border: solid 2px white;
+                width: 70px;
+                height: 70px;
+                transform: translateX(-50%);
+            }
+            .hint-anim-tl, .hint-anim-tr, .hint-anim-br, .hint-anim-bl{
+                overflow: hidden;
+                width: 35px;
+                height: 35px;
+                position: absolute;
+            }
+            .hint-anim-tl span, .hint-anim-tr span, .hint-anim-br span, .hint-anim-bl span{
+                width: 35px;
+                height: 35px;
+                position: relative;
+                border: solid 5px white;
+            }
+            .hint-anim-tl{
+                left: 50%;
+                transform: translateX(-100%);
+
+                span.tl{
+                    border-radius: 100% 0 0 0;
+                    border-bottom: none;
+                    border-right: none;
+                    transform: translateX(0);
+                }
+            }
+            .hint-anim-tr{
+                left: 50%;
+                transform: translateX(0%);
+
+                span.tr{
+                    border-radius: 0 100% 0 0;
+                    border-bottom: none;
+                    border-left: none;
+                    transform: translateX(0);
+                }
+            }
+            .hint-anim-br{
+                // left: 50%;
+                // transform: translate(-100%, 100%);
+                left: 117px;
+                top: 38px;
+
+                span.br{
+                    transform: translateX(0);
+                    border-top: none;
+                    border-right: none;
+                    border-radius: 0 0 0 100%;
+                }
+            }
+            .hint-anim-bl{
+                left: 50%;
+                top: 37px;
+
+                span.bl{
+                    transform: translateX(0);
+                    border-top: none;
+                    border-left: none;
+                    border-radius: 0 0 100% 0;
+                }
+            }
+
+            i {
+                display: inline-block;
+                position: relative;
+                top: 20px;
+                font-size: 25px;
+                margin-left: 1px;
+            }
+            h1 {
+                font-weight: $semibold;
+                font-size: rem-calc(28pt);
+                line-height: rem-calc(38pt);
+            }
+            p {
+                margin: 0;
+                padding: 0;
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+            }
         }
     }
 }

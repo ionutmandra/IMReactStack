@@ -78,6 +78,17 @@ class Home extends Component {
         });
     }
 
+    handleHintClick(event){
+
+        // var height = $window.height();
+        // var fullHeight = height * 4;
+        // var scroll = $window.scrollTop();
+        //
+        // let container = dom.findDOMNode(ref), $container = $(container).addClass('overlap'), height = $window.height(), fullHeight = height * 4,
+        //
+        // let slide = '.slide-' + Math.round((fullHeight - scroll) / fullHeight);
+    }
+
     shouldComponentUpdate(nextProps, nextState) {
 
         if(this.props.transition.scrollScenesEnabled != nextProps.transition.scrollScenesEnabled){
@@ -144,6 +155,12 @@ class Home extends Component {
         this.animations.pinSections([this._section1b, this._section2b, this._section3b, this._section4b], breakpoint.names.large);
         this.animations.pinSections([this._section1c, this._section2c, this._section3c, this._section4c], breakpoint.names.large);
 
+        //timeLines.push(TweenMax.set(this._hintTr, { height:'0%' }));
+        timeLines.push(TweenMax.set(this._hintTl, { height:'0%' }));
+        timeLines.push(TweenMax.set(this._hintBr, { height:'0%' }));
+        timeLines.push(TweenMax.set(this._hintBl, { height:'0%' }));
+
+
         this.handleMediaChange(this.props.ui.media);
 
         function animation1() {
@@ -162,8 +179,8 @@ class Home extends Component {
             .addTo(controller)
             .setTween(
                 new TimelineMax()
-                .add(TweenMax.to(this._scrollHint, 0.3, { transformOrigin: '50% 50%', y: '+10', ease: Circ.easeOut }))
-                .add(TweenMax.to(this._scrollHint, 0.3, { transformOrigin: '50% 50%', y: '0', ease: Circ.easeIn }))
+                //.add(TweenMax.to(this._scrollHint, 0.3, { transformOrigin: '50% 50%', y: '+10', ease: Circ.easeOut }))
+                //.add(TweenMax.to(this._scrollHint, 0.3, { transformOrigin: '50% 50%', y: '0', ease: Circ.easeIn }))
             ));
 
             scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '80%', offset: 150 })
@@ -176,7 +193,10 @@ class Home extends Component {
             })
             .setTween(
                 new TimelineMax()
-                .add([this.animations.moveLeft(this._inputCreate), this.animations.moveRight(this._inputSoftware), this.animations.hideImg(this._img1)])
+                .add([this.animations.moveLeft(this._inputCreate),
+                    this.animations.moveRight(this._inputSoftware),
+                    this.animations.hideImg(this._img1),
+                    TweenMax.to(this._hintBl, .2, { height:'100%' })])
                 .add(this.animations.hideSlide(this._section1c))
                 .add(this.animations.showSlide(this._section2c))
                 .add([
@@ -205,6 +225,7 @@ class Home extends Component {
                     this.animations.moveLeft(_this._inputGrow),
                     this.animations.moveRight(_this._inputValuesLeft),
                     this.animations.moveLeft(_this._inputValuesRight),
+                    TweenMax.to(_this._hintBr, .2, { height:'100%' })
                 ])
                 .add(this.animations.hideSlide(this._section2c))
                 .add(this.animations.showSlide(this._section3c))
@@ -234,7 +255,9 @@ class Home extends Component {
             .add([
                 this.animations.moveLeft(_this._inputCreating),
                 this.animations.moveRight(_this._inputOffering),
+                TweenMax.to(_this._hintTl, .2, { height:'100%' })
             ])
+            .add(TweenMax.to(_this._scrollArrow, .2, {rotation:'-90deg' }))
             .add(this.animations.hideSlide(this._section3c))
             .add(this.animations.showSlide(this._section4c))
             .set({}, {}, .4)
@@ -690,13 +713,6 @@ class Home extends Component {
                                 <p>Our vision is to create a truly remarkable working environment and deliver high quality, innovative software</p>
                             </h2>
                         </div>
-
-                        <div className="scroll-hint" ref={(c) => this._scrollHintContainer = c}>
-                            <span ref={(c) => this._scrollHint = c}>
-                                <i className="ncs-chevron-thin-down"></i>
-                            </span>
-                            <p>{'Find out more'}</p>
-                        </div>
                     </section>
 
                     <section className="slide slide-2 content"  ref={(c) => this._section2c = c}>
@@ -734,6 +750,17 @@ class Home extends Component {
                     <section className="slide slide-4 content"  ref={(c) => this._section4c = c}>
                         <div className="text-1"><h1 ref={(c) => this._inputSustaining = c} >Sustaining <Link to="/about#ourculture" data-animate-line="3" data-section="4" onClick={this.handleLinkClick}>learning and innovation</Link> as a part day to day activity.</h1></div>
                     </section>
+
+                    <div className="scroll-hint" ref={(c) => this._scrollHintContainer = c}>
+                        <div className="scroll-hint-ctainer">
+                            <span onClick={this.handleHintClick} ref={(c) => this._scrollHint = c}><i className="ncs-chevron-thin-down" ref={(c) => this._scrollArrow = c}></i></span>
+                            <div ref={(c) => this._hintTr = c} className="hint-anim-tr"><span  className="tr"></span></div>
+                            <div ref={(c) => this._hintTl = c} className="hint-anim-tl"><span  className="tl"></span></div>
+                            <div ref={(c) => this._hintBr = c} className="hint-anim-br"><span  className="br"></span></div>
+                            <div ref={(c) => this._hintBl = c} className="hint-anim-bl"><span  className="bl"></span></div>
+                        </div>
+                        <p>{'Find out more'}</p>
+                    </div>
 
                     <section className="slide slide-1v" ref={(c) => this._section1 = c}></section>
                     <section className="slide slide-2v" ref={(c) => this._section2 = c}></section>
