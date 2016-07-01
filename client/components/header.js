@@ -13,6 +13,7 @@ class Header extends Component {
         super(...args);
         this.openContact = this.openContact.bind(this);
         this.closeContact = this.closeContact.bind(this);
+        this.getContactPieces = this.getContactPieces.bind(this);
     }
     componentDidMount() {
         let controller = this.controller = new ScrollMagic.Controller(),
@@ -153,7 +154,7 @@ class Header extends Component {
                     <Logo isHomepage />
                     <HeaderLinks isHomepage openContact={this.openContact} />
                     <Burger isHomepage />
-                    <Contact isHomepage renderCloseButton closeContact={this.closeContact} />
+                    <Contact isHomepage renderCloseButton closeContact={this.closeContact} getContactPieces={this.getContactPieces} />
                 </header>
             );
         } else {
@@ -165,7 +166,7 @@ class Header extends Component {
                     <HeaderLinks openContact={this.openContact} />
                     <div className="text"><h1>{this.props.title}</h1></div>
                     <Burger />
-                    <Contact renderCloseButton closeContact={this.closeContact} />
+                    <Contact renderCloseButton closeContact={this.closeContact} getContactPieces={this.getContactPieces} />
                 </header>
             );
         }
