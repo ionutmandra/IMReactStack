@@ -16,14 +16,16 @@ class HeaderLinks extends Component {
 
     componentDidMount() {
         let refs = this.refs,
-            timeLines = this.timeLines = [],
             scenes = this.scenes = {},
             controller = this.controller = new ScrollMagic.Controller(),
-            trigger = this.article = $(refs.container).closest('article.page'),
-            links = this.links = this.links.map(link => dom.findDOMNode(link));
+            trigger = this.article = $(refs.container).closest('article.page');
+        
+        this.timeLines = [];
+        this.links = this.links.map(link => dom.findDOMNode(link));
         scenes[breakpoint.names.large] = [];
         scenes[breakpoint.names.medium] = [];
         scenes[breakpoint.names.small] = [];
+
         this.header = this.article.find('header.main');
         this.contactPieces = this.header.find('.contact .content');
         this.image = this.header.find('> .image .img');
@@ -57,44 +59,35 @@ class HeaderLinks extends Component {
             ];
         }
 
-        if (this.props.stationary) return;
+        if (this.props.isHomepage) {
+            this.handleMediaChange(this.props.ui.media);
+            return;
+        }
 
         ////
         // LARGE SCREEN
         ///////////////////
 
         scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
-            //.addIndicators({ name: 'Links 1.__' })
-            .setTween(hide())
+            .on('start', (event => {
+                console.error('STARTED headerLinks scene');
+                if (event.scrollDirection == 'FORWARD') {
+                    this.hide();
+                }
+                if (event.scrollDirection == 'REVERSE') {
+                    this.show();
+                }
+            }).bind(this))
         );
-
-        ////
-        // Medium SCREEN
-        ///////////////////
-
-        scenes[breakpoint.names.medium].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
-            //.addIndicators({ name: 'Links 1.__' })
-            .setTween(hide())
-        );
-
-        ////
-        // SMALL SCREEN
-        ///////////////////
-        scenes[breakpoint.names.small].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
-            //.addIndicators({ name: 'Links 1.__' })
-            .setTween(hide())
-        );
-
-        function hide() { let t = TweenMax.to(links, .3, { x: '-100%' }); timeLines.push(t); return t; }
 
         this.handleMediaChange(this.props.ui.media);
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        if(this.props.transition.scrollScenesEnabled != nextProps.transition.scrollScenesEnabled){
+        if (this.props.transition.scrollScenesEnabled != nextProps.transition.scrollScenesEnabled) {
             this.setScenes(this.props.ui.media.current, nextProps.transition.scrollScenesEnabled);
         }
-        if(this.props.ui.media.current != nextProps.ui.media.current){
+        if (this.props.ui.media.current != nextProps.ui.media.current) {
             this.handleMediaChange(nextProps.ui.media);
         }
         return false;
@@ -120,12 +113,31 @@ class HeaderLinks extends Component {
         for (let name in breakpoint.names) {
             this.setScenes(name, false);
         }
-        if (this.props.transition.scrollScenesEnabled == true){
+        if (this.props.transition.scrollScenesEnabled == true) {
             this.setScenes(media.current, true);
+        }
+
+        //console.warn('headerLinks handleMediaChange', media, this.props.isHomepage, $window.scrollTop());
+        let scrollTop = $window.scrollTop(), menuIsOpen = this.article.hasClass('menu-open');
+        if(media.current == breakpoint.names.large)
+        {
+            if (this.props.isHomepage) {
+                this.showInstant();
+            } else if ($window.scrollTop() == 0) {
+                this.showInstant();
+            } else {
+                this.hideInstant();
+            }
+        } else if (media.current != breakpoint.names.none) {
+            if (menuIsOpen) {
+                this.showInstant();
+            } else {
+                this.hideInstant();
+            }
         }
     }
 
-    setScenes (media, enabled) {
+    setScenes(media, enabled) {
         //console.warn('logo setting scenes for', media, 'to', enabled,'on', this.article.attr('class'));
         this.scenes && this.scenes[media] && this.scenes[media].forEach(scene => { scene.enabled(enabled); });
     }
@@ -133,9 +145,16 @@ class HeaderLinks extends Component {
     handleClick(event) {
         let burgerIsOpen = this.article.is('.menu-open');
         // burgerIsOpen && $window.scrollTop(0);
+        let isLarge = this.props.ui.media.current == breakpoint.names.large;
+        let isMedium = this.props.ui.media.current == breakpoint.names.medium;
+        
+        let column = 3; //small
+        isMedium && (column = 3);
+        isLarge && (column = event.currentTarget.getAttribute('data-animate-line'));
+
         this.props.dispatchTransition({
             type: burgerIsOpen && 'burger' || 'header',
-            column: event.currentTarget.getAttribute('data-animate-line'),
+            column: column,
             target: event.currentTarget,
         });
     }
@@ -154,7 +173,8 @@ class HeaderLinks extends Component {
                 onComplete: (() => {
                     timeline = null;
                     this.article.addClass('contact-open');
-                }).bind(this)})
+                }).bind(this)
+            })
                 .add(_.filter([
                     TweenMax.to(this.links.concat([this.logoText, this.burgerClose]), .3, { x: '-100%', ease: Power3.easeIn }),
                 ]))
@@ -180,7 +200,8 @@ class HeaderLinks extends Component {
                 onComplete: (() => {
                     timeline = null;
                     this.article.addClass('contact-open');
-                }).bind(this)})
+                }).bind(this)
+            })
                 .add(_.filter([
                     TweenMax.to(this.links.concat([this.logoText], this.leftTexts[currentSlide]), .3, { x: '-100%', ease: Power3.easeIn }),
                     TweenMax.to(this.rightTexts[currentSlide], .3, { x: '100%', ease: Power3.easeIn }),
@@ -205,7 +226,8 @@ class HeaderLinks extends Component {
                 onComplete: (() => {
                     timeline = null;
                     this.article.addClass('contact-open');
-                }).bind(this)})
+                }).bind(this)
+            })
                 .add(_.filter([
                     TweenMax.to(this.article.find('.content-item'), .3, { x: '-110%', ease: Power3.easeOut }),
                 ]))
@@ -233,20 +255,48 @@ class HeaderLinks extends Component {
         let links = this.links = [];
         return (<nav className="links" ref="container">
             <ul>
-                <li><Link ref={c => links.push(c)} data-animate-line="3" onClick={this.handleClick} to={routePaths.client.about} >{'About'}</Link></li>
-                <li><Link ref={c => links.push(c)} data-animate-line="4" onClick={this.handleClick} to={routePaths.client.expertise}>{'Expertise'}</Link></li>
-                <li><Link ref={c => links.push(c)} data-animate-line="5" onClick={this.handleClick} to={routePaths.client.portfolio}>{'Portfolio'}</Link></li>
-                <li><a ref={c => links.push(c)} data-animate-line="6" onClick={this.handleClick} href="https://blog.adaptabi.com">{'Blog'}</a></li>
-                <li><Link ref={c => links.push(c)} data-animate-line="7" onClick={this.openContact} to={routePaths.client.contact}>{'Contact'}</Link></li>
+                <li><Link ref={c => links.push(c) } data-animate-line="3" onClick={this.handleClick} to={routePaths.client.about} >{'About'}</Link></li>
+                <li><Link ref={c => links.push(c) } data-animate-line="4" onClick={this.handleClick} to={routePaths.client.expertise}>{'Expertise'}</Link></li>
+                <li><Link ref={c => links.push(c) } data-animate-line="5" onClick={this.handleClick} to={routePaths.client.portfolio}>{'Portfolio'}</Link></li>
+                <li><a ref={c => links.push(c) } data-animate-line="6" onClick={this.handleClick} href="https://blog.adaptabi.com">{'Blog'}</a></li>
+                <li><Link ref={c => links.push(c) } data-animate-line="7" onClick={this.openContact} to={routePaths.client.contact}>{'Contact'}</Link></li>
             </ul>
         </nav>);
+    }
+
+    hide() {
+        console.warn('headerLinks hide');
+        let t = TweenMax.to(this.links, .35, { x: '-105%' });
+        this.timeLines.push(t);
+        return t;
+    }
+
+    show() {
+        console.warn('headerLinks show');
+        let t = TweenMax.to(this.links, .35, { x: '0%' });
+        this.timeLines.push(t);
+        return t;
+    }
+
+    hideInstant() {
+        console.warn('headerLinks hideInstant');
+        let t = TweenMax.set(this.links, { x: '-105%' });
+        this.timeLines.push(t);
+        return t;
+    }
+
+    showInstant() {
+        console.warn('headerLinks showInstant');
+        let t = TweenMax.set(this.links, { x: '0%' });
+        this.timeLines.push(t);
+        return t;
     }
 }
 
 HeaderLinks.propTypes = {
     animationType: PropTypes.string,
     dispatchTransition: PropTypes.func.isRequired,
-    stationary: PropTypes.bool,
+    isHomepage: PropTypes.bool,
     strings: PropTypes.object.isRequired,
     transition: PropTypes.object,
 };

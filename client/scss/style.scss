@@ -10,8 +10,10 @@
 //Site layout, globals and components 
 @import "./global";
 @import "./layout";
-@import "components/_burger.scss";
 @import "components/header";
+@import "components/headerLinks";
+@import "components/logo";
+@import "components/burger";
 @import "components/footer";
 @import "components/page";
 @import "components/home";

@@ -13,10 +13,12 @@ export default class Burger extends Component {
 
     componentDidMount() {
         let refs = this.refs,
-            timeLines = this.timeLines = [],
             scenes = this.scenes = {},
             controller = this.controller = new ScrollMagic.Controller(),
-            trigger = this.article = $(refs.container).closest('article.page');
+            hamburger = this.hamburger = $(refs.hamburger),
+            trigger = this.article = hamburger.closest('article.page');
+        
+        this.timeLines = [];
         scenes[breakpoint.names.large] = [];
         scenes[breakpoint.names.medium] = [];
         scenes[breakpoint.names.small] = [];
@@ -28,61 +30,45 @@ export default class Burger extends Component {
         this.links = this.header.find('nav ul li a');
         this.text = this.header.find('> .text h1');
 
-        if (this.props.stationary) return;
+        this.burger = $(refs.burger);
+        this.close = $(refs.close);
+
+        if (this.props.isHomepage) {
+            this.handleMediaChange(this.props.ui.media);
+            return;
+        }
 
         ////
         // LARGE SCREEN
         ///////////////////
 
         scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
-            //.addIndicators({ name: 'Burger 1.' })
-            .setTween(move())
+            .on('start', (event => {
+
+                if (event.scrollDirection == 'FORWARD') {
+                    console.warn('BURGER SCENE SETTING ACTIVE');
+                    hamburger.addClass('active');
+                    this.showBurgerFromLeft();
+                }
+                if (event.scrollDirection == 'REVERSE') {
+                    hamburger.removeClass('active');
+                    this.hideBurgerToLeft();
+                }
+            }).bind(this))
         );
 
-        scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 360 }).addTo(controller)
-            //.addIndicators({ name: 'Burger 2.' })
-            .setTween(darken())
+        scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 355 }).addTo(controller)
+            .setTween(this.darken())
         );
-
-        ////
-        // MEDIUM SCREEN
-        ///////////////////
-
-        scenes[breakpoint.names.medium].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
-            //.addIndicators({ name: 'Burger 1.' })
-            .setTween(move())
-        );
-
-        scenes[breakpoint.names.medium].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 360 }).addTo(controller)
-            //.addIndicators({ name: 'Burger 2.' })
-            .setTween(darken())
-        );
-
-        ////
-        // SMALL SCREEN
-        ///////////////////
-
-        scenes[breakpoint.names.small].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
-            //.addIndicators({ name: 'Burger 1.' })
-            .setTween(move())
-        );
-
-        scenes[breakpoint.names.small].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 360 }).addTo(controller)
-            //.addIndicators({ name: 'Burger 2.' })
-            .setTween(darken())
-        );
-
-        function move() { let t = TweenMax.to(refs.burger, .3, { x: '0%' }); timeLines.push(t); return t; }
-        function darken() { let t = TweenMax.to(refs.burger, .3, { color: '#4d4d4d' }); timeLines.push(t); return t; }
 
         this.handleMediaChange(this.props.ui.media);
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        if(this.props.transition.scrollScenesEnabled != nextProps.transition.scrollScenesEnabled){
+        if (this.props.transition.scrollScenesEnabled != nextProps.transition.scrollScenesEnabled) {
             this.setScenes(this.props.ui.media.current, nextProps.transition.scrollScenesEnabled);
         }
-        if(this.props.ui.media.current != nextProps.ui.media.current){
+        if (this.props.ui.media.current != nextProps.ui.media.current) {
             this.handleMediaChange(nextProps.ui.media);
         }
         return false;
@@ -108,34 +94,80 @@ export default class Burger extends Component {
         for (let name in breakpoint.names) {
             this.setScenes(name, false);
         }
-        if (this.props.transition.scrollScenesEnabled == true){
+        if (this.props.transition.scrollScenesEnabled == true) {
             this.setScenes(media.current, true);
+        }
+
+        let scrollTop = $window.scrollTop(), menuIsOpen = this.article.hasClass('menu-open');
+        if(media.current == breakpoint.names.large)
+        {
+            if (menuIsOpen) {
+                if (this.props.isHomepage || scrollTop == 0) {
+                    this.hideBurgerLeftInstant();    
+                } else if (scrollTop < 355) {
+                    this.hideBurgerLeftInstant();
+                } else {
+                    this.darkInstant();
+                    this.hideBurgerLeftInstant();
+                }
+            } else if (this.props.isHomepage || scrollTop == 0) {
+                this.hamburger.removeClass('active');
+                this.hideBurgerLeftInstant();
+                this.hideCloseLeftInstant();
+            } else if (scrollTop < 355) {
+                this.hamburger.addClass('active');
+                this.lightInstant();
+                this.hideCloseLeftInstant();
+                this.showBurgerInstant();
+            } else {
+                this.hamburger.addClass('active');
+                this.darkInstant();
+                this.hideCloseLeftInstant();
+                this.showBurgerInstant();
+            }
+        } else if (media.current != breakpoint.names.none) {
+            if (menuIsOpen) {
+                this.hamburger.addClass('active');
+                this.lightInstant();
+                this.showCloseInstant();
+                this.hideBurgerRightInstant();
+            } else {
+                this.hamburger.addClass('active');
+                this.lightInstant();
+                this.hideCloseRightInstant();
+                this.showBurgerInstant();
+            }            
         }
     }
 
-    setScenes (media, enabled) {
+    setScenes(media, enabled, args = []) {
         //console.warn('logo setting scenes for', media, 'to', enabled,'on', this.article.attr('class'));
-        this.scenes && this.scenes[media] && this.scenes[media].forEach(scene => { scene.enabled(enabled); });
+        this.scenes && this.scenes[media] && this.scenes[media].forEach(scene => { scene.enabled(enabled); scene.trigger(enabled ? 'enabled' : 'disabled', args); });
     }
 
     open() {
         if (this.inProgress) return false;
         this.inProgress = true;
 
-        this.initialHeight = 400 - $window.scrollTop();
+        this.initialScroll = $window.scrollTop();
+        this.initialHeight = 400 - this.initialScroll;
         this.props.disableScenes();
         $.scrollLock(true);
 
         let color = '#fefefe';
-        this.prevColor = $(this.refs.burger).css('color');
+        this.prevColor = this.burger.css('color');
+        let isLarge = this.props.ui.media.current == breakpoint.names.large;
 
         this.wasFixedBurger = this.article.hasClass('fix-header');
         this.wasFixedBurger && TweenMax.set(this.text, { x: '-100%' });
         this.wasFixedBurger && TweenMax.set(this.image, { scale: 1.1, opacity: 0 });
 
+        console.warn('burger isLarge', isLarge);
+
         let timeline = new TimelineLite({
             onComplete: (() => {
-                this.openComplete();
+                this.inProgress = false;
+                this.article.addClass('menu-open');
                 timeline = null; //cleanup
             }).bind(this),
         })
@@ -146,74 +178,135 @@ export default class Burger extends Component {
             .add((() => {
                 this.article.addClass('fix-header');
                 !this.wasFixedBurger && this.header.height(this.initialHeight);
-                $.scrollLock(true);
             }).bind(this))
             .add(_.filter([
-                TweenMax.to(this.refs.burger, .3, { x: '-100%', ease: Power3.easeOut }),
+                TweenMax.to(this.burger, .3, { x: isLarge ? '-100%' : '105%', ease: Power3.easeOut }),
                 TweenMax.to(this.logoImage, .3, { color: color, ease: Power3.easeOut }),
                 TweenMax.to(this.header, .5, { height: '100%', ease: Power3.easeOut }),
             ]))
             .add(_.filter([
                 TweenMax.to(this.logoText, .3, { x: '0%', ease: Power3.easeOut }),
-                TweenMax.to(this.refs.close, .3, { x: '0%', ease: Power3.easeOut }),
+                TweenMax.to(this.close, .3, { x: '0%', ease: Power3.easeOut }),
                 TweenMax.to(this.links, .3, { x: '0%', ease: Power3.easeOut }),
             ]));
-    }
-
-    openComplete() {
-        this.inProgress = false;
-        this.article.addClass('menu-open');
     }
 
     close() {
         if (this.inProgress) return false;
         this.inProgress = true;
 
-        this.wasFixedBurger && TweenMax.set(this.text, { x: '-100%' });
-        this.wasFixedBurger && TweenMax.set(this.image, { scale: 1.1, opacity: 0 });
-        //console.warn('prev color', this.prevColor);
+        let isLarge = this.props.ui.media.current == breakpoint.names.large;
+        let isMedium = this.props.ui.media.current == breakpoint.names.medium;
+        console.warn('burger isLarge', isLarge);
+
         let timeline = new TimelineLite({
             onComplete: (() => {
-                this.closeComplete();
-                this.wasFixedBurger && TweenMax.set(this.text, { x: '0%' }),
-                this.wasFixedBurger && TweenMax.set(this.image, { scale: 1, opacity: 1 }),
+                $.scrollLock(false);
+                this.article.removeClass('menu-open');
+                if (isLarge && (this.props.isHomepage || !this.initialScroll)) {
+                    this.hamburger.removeClass('active');
+                }
+                setTimeout((() => {
+                    this.props.enableScenes();
+                    this.inProgress = false;
+                }).bind(this), 100);
                 timeline = null;
             }).bind(this),
-        })
+        }) 
             .add(_.filter([
-                TweenMax.to(this.links, .3, { x: '-100%', ease: Power3.easeOut }),
-                TweenMax.to(this.refs.close, .3, { x: '-100%', ease: Power3.easeOut }),
-                TweenMax.to(this.logoText, .3, { x: '-100%', ease: Power3.easeOut }),
+                TweenMax.to(this.links, .3, { x: '-100%', ease: Power3.easeIn }),
+                TweenMax.to(this.close, .3, { x: isLarge ? '-100%' : '105%', ease: Power3.easeIn }),
+                !isMedium && (!isLarge || this.initialScroll > 0) && TweenMax.to(this.logoText, .3, { x: '-100%', ease: Power3.easeIn }),
             ]))
             .add(_.filter([
-                TweenMax.to(this.refs.burger, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
-                TweenMax.to(this.logoImage, .3, { color: this.prevColor, delay: .3, ease: Power3.easeOut }),
-                TweenMax.to(this.header, .6, { height: this.wasFixedBurger ? '0%' : this.initialHeight, ease: Power3.easeOut }),
+                this.wasFixedBurger && TweenMax.to(this.burger, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
+                isLarge && TweenMax.to(this.logoImage, .3, { color: this.prevColor, delay: .3, ease: Power3.easeOut }),
+                TweenMax.to(this.header, .5, { height: this.wasFixedBurger ? '0%' : this.initialHeight, ease: Power3.easeOut }),
             ]))
             .add(() => {
                 !this.wasFixedBurger && this.article.removeClass('fix-header');
-                this.header.css('height', '');
-                this.article.removeClass('menu-open');
+                TweenMax.set(this.header, { clearProps: 'height' });
+                this.wasFixedBurger && TweenMax.set(this.text, { clearProps: 'transform' });
+                this.wasFixedBurger && TweenMax.set(this.image, { clearProps: 'transform,opacity' });
             })
             .add(_.filter([
+                !this.wasFixedBurger && (!isLarge || this.initialScroll > 0) && TweenMax.to(this.burger, .3, { x: '0%', ease: Power3.easeOut }),
+                isLarge && !this.initialScroll && TweenMax.to(this.links, .3, { x: '0%', ease: Power3.easeOut }),
                 !this.wasFixedBurger && TweenMax.to(this.text, .3, { x: '0%', ease: Power3.easeOut }),
                 !this.wasFixedBurger && TweenMax.to(this.image, .3, { scale: 1, opacity: 1, ease: Power3.easeOut }),
             ]));
     }
 
-    closeComplete() {
-        this.inProgress = false;
-        $.scrollLock(false);
-        setTimeout((() => { this.props.enableScenes(); }).bind(this), 100);
-        //this.props.enableScenes();
-    }
-
     render() {
         return (
-            <div className="hamburger" ref="container">
+            <div className="hamburger" ref="hamburger">
                 <i className="open ncs-bars"  onClick={this.open} ref="burger" />
                 <i className="close ncs-chevron-with-circle-left" onClick={this.close} ref="close" />
             </div>
         );
+    }
+
+    showBurgerFromLeft() {
+        let t = TweenMax.to(this.burger, .3, { x: '0%' });
+        this.timeLines.push(t);
+        return t;
+    }
+    hideBurgerToLeft() {
+        let t = TweenMax.to(this.burger, .3, { x: '-100%' });
+        this.timeLines.push(t);
+        return t;
+    }
+    showBurgerFromRight() {
+        let t = TweenMax.fromTo(this.burger, .3, { x: '105%' }, { x: '0%' });
+        this.timeLines.push(t);
+        return t;
+    }
+
+    showBurgerInstant() {
+        let t = TweenMax.set(this.burger, { x: '0%' });
+        this.timeLines.push(t);
+        return t;
+    }
+    hideBurgerLeftInstant() {
+        let t = TweenMax.set(this.burger, { x: '-100%' });
+        this.timeLines.push(t);
+        return t;
+    }
+    hideBurgerRightInstant() {
+        let t = TweenMax.set(this.burger, { x: '105%' });
+        this.timeLines.push(t);
+        return t;
+    }
+
+    showCloseInstant() {
+        let t = TweenMax.set(this.close, { x: '0%' });
+        this.timeLines.push(t);
+        return t;
+    }
+    hideCloseLeftInstant() {
+        let t = TweenMax.set(this.close, { x: '-100%' });
+        this.timeLines.push(t);
+        return t;
+    }
+    hideCloseRightInstant() {
+        let t = TweenMax.set(this.close, { x: '105%' });
+        this.timeLines.push(t);
+        return t;
+    }
+
+    darken() {
+        let t = TweenMax.fromTo(this.burger, .3, { color: '#fefefe' }, { color: '#4d4d4d' });
+        this.timeLines.push(t);
+        return t;
+    }
+    lightInstant() {
+        let t = TweenMax.set(this.burger, { color: '#fefefe' });
+        this.timeLines.push(t);
+        return t;
+    }
+    darkInstant() {
+        let t = TweenMax.set(this.burger, { color: '#4d4d4d' });
+        this.timeLines.push(t);
+        return t;
     }
 }

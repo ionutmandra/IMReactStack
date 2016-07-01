@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import routePaths from '../../common/routePaths';
+import { enableScenes } from '../actions';
 import * as animations_generic from './animations/generic';
 import * as animations_homepage from './animations/homepage';
 let $body = window.$('body');
@@ -15,14 +16,27 @@ const stateToProps = state => ({
     ui: state.ui,
 });
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+		enableScenes: () => {
+			dispatch(enableScenes());
+		},
+    };
+};
+
 export default (BaseComponent) => {
     BaseComponent.propTypes = {
+        enableScenes: PropTypes.func.isRequired,
         transition: PropTypes.object.isRequired,
     };
 
-    BaseComponent = connect(stateToProps)(BaseComponent);
+    BaseComponent = connect(stateToProps, mapDispatchToProps)(BaseComponent);
 
     class TransitionComponent extends BaseComponent {
+        constructor(...args) {
+            super(...args);
+            this.enableScenes = this.enableScenes.bind(this);
+        }
         componentWillAppear(callback) {
             $body.addClass('navigating');
             let animation = 'generic';
@@ -46,7 +60,7 @@ export default (BaseComponent) => {
             //console.log('componentWillEnter', this);
 
             if (this.animation[ui.media.current + '_enter_' + transition.type]) {
-                this.animation[ui.media.current + '_enter_' + transition.type](this.refs.container, this.callback.bind(this, callback), transition);
+                this.animation[ui.media.current + '_enter_' + transition.type](this.refs.container, this.callback.bind(this, callback), transition, this.enableScenes);
             }
             else {
                 console.warn('On enter,', animation, 'does not have any animation:', ui.media.current + '_enter_' + transition.type);
@@ -75,6 +89,10 @@ export default (BaseComponent) => {
         }
         render() {
             return (this._clone = React.cloneElement(super.render(), { ref: 'container' }));
+        }
+
+        enableScenes() {
+            this._clone.props.enableScenes();
         }
     }
 
