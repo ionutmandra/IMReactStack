@@ -225,8 +225,8 @@
             z-index: 4;
             overflow: hidden;
             position: fixed;
-            @include grid-column-size(4);
-            @include grid-column-offset(10);
+            @include grid-column-size(8);
+            @include grid-column-offset(8);
             bottom: 5%;
             text-align: center;
             color: white;
@@ -277,9 +277,8 @@
                 }
             }
             .hint-anim-br{
-                // left: 50%;
-                // transform: translate(-100%, 100%);
-                left: 117px;
+                left: 50%;
+                transform: translateX(-100%);
                 top: 38px;
 
                 span.br{
