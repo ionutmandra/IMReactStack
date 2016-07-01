@@ -3,7 +3,7 @@ import Header from '../containers/headerContainer';
 import {Link} from 'react-router';
 import { breakpoint } from '../config/constants';
 
-let $ = window.$, ScrollMagic = window.ScrollMagic, TweenMax = window.TweenMax, Circ = window.Circ, Linear = window.Linear, TimelineMax = window.TimelineMax, TweenPlugin = window.TweenPlugin;
+let $ = window.$, ScrollMagic = window.ScrollMagic, TweenMax = window.TweenMax, Circ = window.Circ, Linear = window.Linear, TimelineMax = window.TimelineMax, TweenPlugin = window.TweenPlugin,$window=$(window);
 
 class Home extends Component {
     constructor(props) {
@@ -645,6 +645,32 @@ class Home extends Component {
     }
 
     handleMediaChange(media) {
+
+        var height = $window.height();
+        var fullHeight = height * 4;
+        var scroll = $window.scrollTop();
+
+        //var slide = '.slide-' + (currentSlideNr + 1);
+        var sections = [this._section1,this._section2,this._section3,this._section4 ];
+        var sectionsContent = [this._section1c,this._section2c,this._section3c,this._section4c];
+        var images = [this._img1,this._img2,this._img3,this._img4];
+        var texts = [];
+        texts[0] = {
+            allignedLeft : [this._inputCreate],
+            allignedRight : [this._inputSoftware]
+        };
+        texts[1] = {
+            allignedLeft : [this._inputGrow,this._inputValuesRight],
+            allignedRight : [this._inputValuesLeft]
+        };
+        texts[2] = {
+            allignedLeft : [this._inputCreating],
+            allignedRight : [this._inputOffering]
+        };
+        texts[3] = {
+            allignedLeft : [this._inputSustaining],
+            allignedRight : []
+        };
         //console.warn('handleMediaChange', media, 'on', $(this.refs.header).closest('article').attr('class'));
         for (let name in breakpoint.names) {
             this.setScenes(name, false);
@@ -655,29 +681,34 @@ class Home extends Component {
 
         if(media.current == breakpoint.names.large)
         {
-            this.animations.hideSlide(this._section2c);
-            this.animations.hideSlide(this._section3c);
-            this.animations.hideSlide(this._section4c);
+            var currentSlideNr = 0;
+            if(media.prev == breakpoint.names.medium || media.prev == breakpoint.names.small){
+                currentSlideNr = Math.round((scroll) / height);
+                this.controller.scrollTo(sections[currentSlideNr]);
+            }
+            else{
+                currentSlideNr = Math.floor((scroll) / height);
+            }
 
-            this.animations.hideImgInstant(this._img2);
-            this.animations.hideImgInstant(this._img3);
-            this.animations.hideImgInstant(this._img4);
-
-            this.animations.hideLeft([this._inputGrow, this._inputValuesRight, this._inputCreating, this._inputSustaining]);
-            this.animations.hideRight([this._inputValuesLeft, this._inputOffering]);
+            for(var i=0; i<4; i++){
+                if(currentSlideNr!=i){
+                    this.animations.hideSlide(sectionsContent[i]);
+                    this.animations.hideImgInstant(images[i]);
+                    this.animations.hideLeft(texts[i].allignedLeft);
+                    this.animations.hideRight(texts[i].allignedRight);
+                }
+            }
         }
         if(media.current != breakpoint.names.large && media.current != breakpoint.names.none)
         {
-            this.animations.showSlide(this._section2c);
-            this.animations.showSlide(this._section3c);
-            this.animations.showSlide(this._section4c);
+            var currentSlideNr = Math.round((scroll) / height);
 
-            this.animations.showImgInstant(this._img2);
-            this.animations.showImgInstant(this._img3);
-            this.animations.showImgInstant(this._img4);
-
-            this.animations.moveToInitial([this._inputGrow, this._inputValuesRight, this._inputCreating, this._inputSustaining]);
-            this.animations.moveToInitial([this._inputValuesLeft, this._inputOffering]);
+            for(var i=0; i<4; i++){
+                this.animations.showSlide(sectionsContent[i]);
+                this.animations.showImgInstant(images[i]);
+                this.animations.moveToInitial(texts[i].allignedLeft);
+                this.animations.moveToInitial(texts[i].allignedRight);
+            }
         }
     }
 
