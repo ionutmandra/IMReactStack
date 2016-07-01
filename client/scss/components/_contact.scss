@@ -1,133 +1,113 @@
-@media screen and #{breakpoint(large)} {
-    #page-container article header.main div.contact {
-        @include grid-row(24);
-        color: $white;
-        > div {
-            position: absolute;
-            z-index: 3;
-            top: 50%;
-            transform: translateY(-50%);
-            overflow: hidden;
+#page-container article header.main div.contact {
+    @include grid-row(24);
+    color: $white;
+    > div {
+        position: absolute;
+        z-index: 3;
+        top: 50%;
+        transform: translateY(-50%);
+        overflow: hidden;
+        a {
+            color: $white;
+        }
+        &.left {
+            @include grid-col-size(8);
+            @include grid-col-off(3);
+            font-size: rem-calc(28pt);
+            line-height: rem-calc(38pt);
+            font-weight: $semibold;
+            p {
+                padding: 0;
+                margin: 0;
+            }
             a {
-                color: $white;
+                text-decoration: underline;
             }
-            &.left {
-                @include grid-col-size(8);
-                @include grid-col-off(3);
-                font-size: rem-calc(28pt);
-                line-height: rem-calc(38pt);
-                font-weight: $semibold;
-                p {
-                    padding: 0;
-                    margin: 0;
-                }
-                a {
-                    text-decoration: underline;
-                }
-            }
-            &.right {
-                @include grid-row();
-                @include grid-col-size(8);
-                @include grid-col-off(12);
-                font-size: rem-calc(18pt);
-                line-height: rem-calc(26pt);
-                ul {
-                    list-style-type: none;
-                    margin: 0;
-                    padding: 0;
-                    li {
-                        padding-bottom: rem-calc(16pt);
-                        &.social-media {
-                            padding-top: rem-calc(20pt);
-                            @include grid-row(8);
-                            @include grid-col-size(3);
-                            @include grid-col-off(0);
-                            a {
-                                display: inline-block;
-                                @include grid-col-size(2);
-                                font-size: rem-calc(28pt);
-                            }
+        }
+        &.right {
+            @include grid-row();
+            @include grid-col-size(8);
+            @include grid-col-off(12);
+            font-size: rem-calc(18pt);
+            line-height: rem-calc(26pt);
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                li {
+                    padding-bottom: rem-calc(16pt);
+                    &.social-media {
+                        padding-top: rem-calc(20pt);
+                        @include grid-row(8);
+                        @include grid-col-size(3);
+                        @include grid-col-off(0);
+                        a {
+                            display: inline-block;
+                            @include grid-col-size(2);
+                            font-size: rem-calc(28pt);
+                            text-decoration: none;
                         }
                     }
                 }
             }
-            &.btn {
-                @include grid-row(24);
-                @include grid-col-size(1);
-                @include grid-col-off(21);
-                top: 40px;
-                transform: none;
-                i {
-                    font-size: rem-calc(36pt);
-                    transition: opacity .2s ease-out;
-                    display: inline-block; //translate doesn't work on inline elements
-                    &:hover {
-                        opacity: .8;
-                        cursor: pointer;
-                    }
+        }
+        &.btn {
+            @include grid-col-size(1);
+            @include grid-col-off(21);
+            top: 40px;
+            text-align: left;
+            i {
+                font-size: rem-calc(36pt);
+                display: inline-block; //translate doesn't work on inline elements
+                cursor: pointer;
+                transition: opacity .2s ease-out;
+                will-change: opacity;
+
+                &:hover {
+                    opacity: .8;
                 }
             }
-            .content {
-                transform: translateX(-100%);
-            }
+        }
+        .content {
+            transform: translateX(-100%);
         }
     }
-    #page-container article.contact-open header.main div.contact > div {
-        z-index: 6;
-    }
-    #page-container article.menu-open header.main div.contact > div.btn {
-        top: 50%;
-        transform: translateY(-50%);
-    }
+}
+#page-container article.contact-open header.main div.contact > div {
+    z-index: 6;
+}
+#page-container article.menu-open.contact-open header.main div.contact > div.btn {
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 @media screen and #{breakpoint(medium only)} {
     #page-container article header.main div.contact {
         @include grid-row(24);
-        color: $white;
         > div {
-            position: absolute;
-            z-index: 3;
-            transform: translateY(-50%);
-            overflow: hidden;
-            a {
-                color: $white;
-            }
+            display: none;
             &.left {
-                @include grid-col-size(9);
-                @include grid-col-off(3);
-
-            
+                @include grid-col-size(10);
+                @include grid-col-off(2);
                 top: 40%;
-                font-size: rem-calc(28pt);
-                line-height: rem-calc(38pt);
-                font-weight: $semibold;
+                font-size: rem-calc(24pt);
+                line-height: rem-calc(30pt);
                 text-align: right;
-                p {
-                    padding: 0;
-                    margin: 0;
-                }
-                a {
-                    text-decoration: underline;
-                }
             }
             &.right {
                 @include grid-row();
-                @include grid-col-size(8);
+                @include grid-col-size(11);
                 @include grid-col-off(12);
                 top: 70%;
                 font-size: rem-calc(18pt);
-                line-height: rem-calc(26pt);
+                line-height: rem-calc(22pt);
                 ul {
-                    list-style-type: none;
-                    margin: 0;
-                    padding: 0;
                     li {
-                        padding-bottom: rem-calc(16pt);
+                        padding-bottom: rem-calc(12pt);
                         &.social-media {
-                            padding-top: rem-calc(20pt);
+                            padding-top: rem-calc(16pt);
                             @include grid-row(8);
-                            @include grid-col-size(6);
+                            @include grid-col-size(8);
                             @include grid-col-off(0);
                             a {
                                 display: inline-block;
@@ -140,10 +120,11 @@
             }
             &.btn {
                 @include grid-row(24);
-                @include grid-col-size(1);
+                @include grid-col-size(2);
                 @include grid-col-off(21);
-                top: 40px;
+                top: rem-calc(20pt);
                 transform: none;
+                text-align: right;
                 i {
                     font-size: rem-calc(36pt);
                     transition: opacity .2s ease-out;
@@ -159,12 +140,12 @@
             }
         }
     }
-    #page-container article.contact-open header.main div.contact > div {
-        z-index: 6;
+    #page-container article.menu-open.contact-open header.main div.contact > div.btn {
+        top: rem-calc(20pt);
+        transform: none;
     }
-    #page-container article.menu-open header.main div.contact > div.btn {
-        top: 50%;
-        transform: translateY(-50%);
+    #page-container article.contact-open header.main div.contact > div {
+        display: block;
     }
 }
 
@@ -230,15 +211,17 @@
                 @include grid-row(24);
                 @include grid-col-size(1);
                 @include grid-col-off(21);
-                top: 40px;
+                top: rem-calc(20pt);
                 transform: none;
+                text-align: right;
                 i {
                     font-size: rem-calc(36pt);
-                    transition: opacity .2s ease-out;
                     display: inline-block; //translate doesn't work on inline elements
+                    cursor: pointer;
+                    transition: opacity .2s ease-out;
+                    will-change: opacity;
                     &:hover {
                         opacity: .8;
-                        cursor: pointer;
                     }
                 }
             }

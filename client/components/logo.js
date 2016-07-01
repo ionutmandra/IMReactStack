@@ -119,11 +119,18 @@ class Logo extends Component {
     }
 
     handleClick() {
-        let burgerIsOpen = this.article.is('.menu-open');
+        let burgerIsOpen = this.article.hasClass('menu-open');
         //burgerIsOpen && $window.scrollTop(0);
+        let isLarge = this.props.ui.media.current == breakpoint.names.large;
+        let isMedium = this.props.ui.media.current == breakpoint.names.medium;
+
+        let column = 3; //small
+        isMedium && (column = 3);
+        isLarge && (column = 1);
+
         this.props.dispatchTransition({
             type: burgerIsOpen && 'burger' || 'header',
-            column: 1,
+            column: column,
             target: event.currentTarget,
         });
     }

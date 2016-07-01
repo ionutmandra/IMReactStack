@@ -11,7 +11,6 @@ class HeaderLinks extends Component {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
-        this.openContact = this.openContact.bind(this);
     }
 
     componentDidMount() {
@@ -27,7 +26,6 @@ class HeaderLinks extends Component {
         scenes[breakpoint.names.small] = [];
 
         this.header = this.article.find('header.main');
-        this.contactPieces = this.header.find('.contact .content');
         this.image = this.header.find('> .image .img');
         this.logoImage = this.header.find('> .logo .img');
         this.logoText = this.header.find('> .logo .text svg');
@@ -143,7 +141,7 @@ class HeaderLinks extends Component {
     }
 
     handleClick(event) {
-        let burgerIsOpen = this.article.is('.menu-open');
+        let burgerIsOpen = this.article.hasClass('menu-open');
         // burgerIsOpen && $window.scrollTop(0);
         let isLarge = this.props.ui.media.current == breakpoint.names.large;
         let isMedium = this.props.ui.media.current == breakpoint.names.medium;
@@ -159,98 +157,6 @@ class HeaderLinks extends Component {
         });
     }
 
-    openContact(event) {
-        let burgerIsOpen = this.article.is('.menu-open');
-        let animations = [];
-
-        if (burgerIsOpen) {
-            this.props.dispatchTransition({
-                type: 'contact',
-                burgerIsOpen: true,
-            });
-
-            let timeline = new TimelineLite({
-                onComplete: (() => {
-                    timeline = null;
-                    this.article.addClass('contact-open');
-                }).bind(this)
-            })
-                .add(_.filter([
-                    TweenMax.to(this.links.concat([this.logoText, this.burgerClose]), .3, { x: '-100%', ease: Power3.easeIn }),
-                ]))
-                .add(_.filter([
-                    TweenMax.to(this.contactPieces, .3, { x: '0%', ease: Power3.easeOut }),
-                ]));
-        } else if (this.article.is('.page-home')) {
-            let currentSlide = Math.floor($window.scrollTop() / $window.height());
-            this.props.dispatchTransition({
-                type: 'contact',
-                homePage: true,
-                burgerIsOpen: false,
-                currentSlide,
-            });
-            this.props.disableScenes();
-            $.scrollLock(true);
-
-            TweenMax.set(this.header, { height: '100%' });
-
-            console.warn('slide', currentSlide);
-
-            let timeline = new TimelineLite({
-                onComplete: (() => {
-                    timeline = null;
-                    this.article.addClass('contact-open');
-                }).bind(this)
-            })
-                .add(_.filter([
-                    TweenMax.to(this.links.concat([this.logoText], this.leftTexts[currentSlide]), .3, { x: '-100%', ease: Power3.easeIn }),
-                    TweenMax.to(this.rightTexts[currentSlide], .3, { x: '100%', ease: Power3.easeIn }),
-                    TweenMax.to(this.bottomTexts[currentSlide], .3, { y: '200%', ease: Power3.easeIn }),
-                    TweenMax.to(this.image[currentSlide], .6, { scale: 1.1, opacity: 0, ease: Power3.easeInOut }),
-                    TweenMax.to(this.contactPieces, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
-                ]));
-        } else {
-            //generic page
-            let initialHeight = 400 - $window.scrollTop();
-            this.props.dispatchTransition({
-                type: 'contact',
-                burgerIsOpen: false,
-                homePage: false,
-                initialHeight,
-            });
-
-            this.props.disableScenes();
-            $.scrollLock(true);
-
-            let timeline = new TimelineLite({
-                onComplete: (() => {
-                    timeline = null;
-                    this.article.addClass('contact-open');
-                }).bind(this)
-            })
-                .add(_.filter([
-                    TweenMax.to(this.article.find('.content-item'), .3, { x: '-110%', ease: Power3.easeOut }),
-                ]))
-                .add(_.filter([
-                    TweenMax.to(this.links.concat([this.logoText, this.text]), .3, { x: '-100%', ease: Power3.easeOut }),
-                    TweenMax.to(this.image, .3, { scale: 1.1, opacity: 0, ease: Power3.easeOut }),
-                ]))
-                .add((() => {
-                    this.article.addClass('fix-header');
-                    this.header.height(initialHeight);
-                }).bind(this))
-                .add(_.filter([
-                    TweenMax.to(this.header, .5, { height: '100%', ease: Power3.easeOut }),
-                ]))
-                .add(_.filter([
-                    TweenMax.to(this.contactPieces, .3, { x: '0%', ease: Power3.easeOut }),
-                ]));
-        }
-
-        event.preventDefault();
-        return false;
-    }
-
     render() {
         let links = this.links = [];
         return (<nav className="links" ref="container">
@@ -259,7 +165,7 @@ class HeaderLinks extends Component {
                 <li><Link ref={c => links.push(c) } data-animate-line="4" onClick={this.handleClick} to={routePaths.client.expertise}>{'Expertise'}</Link></li>
                 <li><Link ref={c => links.push(c) } data-animate-line="5" onClick={this.handleClick} to={routePaths.client.portfolio}>{'Portfolio'}</Link></li>
                 <li><a ref={c => links.push(c) } data-animate-line="6" onClick={this.handleClick} href="https://blog.adaptabi.com">{'Blog'}</a></li>
-                <li><Link ref={c => links.push(c) } data-animate-line="7" onClick={this.openContact} to={routePaths.client.contact}>{'Contact'}</Link></li>
+                <li><Link ref={c => links.push(c) } data-animate-line="7" onClick={this.props.openContact} to={routePaths.client.contact}>{'Contact'}</Link></li>
             </ul>
         </nav>);
     }
@@ -297,6 +203,7 @@ HeaderLinks.propTypes = {
     animationType: PropTypes.string,
     dispatchTransition: PropTypes.func.isRequired,
     isHomepage: PropTypes.bool,
+    openContact: PropTypes.func.isRequired,
     strings: PropTypes.object.isRequired,
     transition: PropTypes.object,
 };

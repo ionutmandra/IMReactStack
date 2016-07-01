@@ -192,14 +192,9 @@ export default class Burger extends Component {
         this.wasFixedBurger && TweenMax.set(this.image, { scale: 1.1, opacity: 0 });
 
         if (this.props.isHomepage) {
-            let timeline = new TimelineLite({
-                onComplete: (() => {
-                    this.inProgress = false;
-                    timeline = null; //cleanup
-                }).bind(this),
-            })
+            let timeline = new TimelineLite({ onComplete: onComplete.bind(this, timeline) })
                 .add(_.filter([
-                    TweenMax.to(this.homeBottom, .3, { y: '150%' }),
+                    TweenMax.to(this.homeBottom, .3, { y: '200%' }),
                     TweenMax.to(this.homeImage, .3, { scale: 1.1, opacity: 0 }),
                     !isSmall && TweenMax.to(this.homeLeft, .3, { x: '-105%' }),
                     !isSmall && TweenMax.to(this.homeRight, .3, { x: '105%' }),
@@ -207,16 +202,8 @@ export default class Burger extends Component {
                     TweenMax.to(this.burger, .3, { x: '105%', ease: Power3.easeOut }),
                 ]))
                 .add((() => {
-                    this.article.addClass('fix-header');
-                    !this.wasFixedBurger && this.header.height(this.initialHeight);
-                    TweenMax.set(this.header, { height: '100%' });
-                }).bind(this))
-                .add(_.filter([
-                    //TweenMax.to(this.logoImage, .3, { color: color, ease: Power3.easeOut }),
-                    //TweenMax.to(this.header, .5, { height: '100%', ease: Power3.easeOut }),
-                ]))
-                .add((() => {
                     this.article.addClass('menu-open');
+                    TweenMax.set(this.header, { height: '100%' });
                 }).bind(this))
                 .add(_.filter([
                     TweenMax.to(this.logoText, .3, { x: '0%', ease: Power3.easeOut }),
@@ -224,12 +211,7 @@ export default class Burger extends Component {
                     TweenMax.to(this.links, .3, { x: '0%', ease: Power3.easeOut }),
                 ]));
         } else {
-            let timeline = new TimelineLite({
-                onComplete: (() => {
-                    this.inProgress = false;
-                    timeline = null; //cleanup
-                }).bind(this),
-            })
+            let timeline = new TimelineLite({ onComplete: onComplete.bind(this, timeline) })
                 .add(_.filter([
                     !this.wasFixedBurger && TweenMax.to(this.text, .3, { x: '-100%', ease: Power3.easeOut }),
                     !this.wasFixedBurger && TweenMax.to(this.image, .3, { scale: 1.1, opacity: 0, ease: Power3.easeOut }),
@@ -252,6 +234,11 @@ export default class Burger extends Component {
                     TweenMax.to(this.links, .3, { x: '0%', ease: Power3.easeOut }),
                 ]));
         }
+
+        function onComplete(timeline) {
+            this.inProgress = false;
+            timeline = null; //cleanup
+        }
     }
 
     close() {
@@ -260,44 +247,65 @@ export default class Burger extends Component {
 
         let isLarge = this.props.ui.media.current == breakpoint.names.large;
         let isMedium = this.props.ui.media.current == breakpoint.names.medium;
-        console.warn('burger isLarge', isLarge);
+        let isSmall = this.props.ui.media.current == breakpoint.names.small;
 
-        let timeline = new TimelineLite({
-            onComplete: (() => {
-                $.scrollLock(false);
-                this.article.removeClass('menu-open');
-                if (isLarge && (this.props.isHomepage || !this.initialScroll)) {
-                    this.hamburger.removeClass('active');
-                }
-                setTimeout((() => {
-                    this.props.enableScenes();
-                    this.inProgress = false;
-                }).bind(this), 100);
-                timeline = null;
-            }).bind(this),
-        })
-            .add(_.filter([
-                TweenMax.to(this.links, .3, { x: '-100%', ease: Power3.easeIn }),
-                TweenMax.to(this.close, .3, { x: isLarge ? '-100%' : '105%', ease: Power3.easeIn }),
-                !isMedium && (!isLarge || this.initialScroll > 0) && TweenMax.to(this.logoText, .3, { x: '-100%', ease: Power3.easeIn }),
-            ]))
-            .add(_.filter([
-                this.wasFixedBurger && TweenMax.to(this.burger, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
-                isLarge && TweenMax.to(this.logoImage, .3, { color: this.prevColor, delay: .3, ease: Power3.easeOut }),
-                TweenMax.to(this.header, .5, { height: this.wasFixedBurger ? '0%' : this.initialHeight, ease: Power3.easeOut }),
-            ]))
-            .add(() => {
-                !this.wasFixedBurger && this.article.removeClass('fix-header');
-                TweenMax.set(this.header, { clearProps: 'height' });
-                this.wasFixedBurger && TweenMax.set(this.text, { clearProps: 'transform' });
-                this.wasFixedBurger && TweenMax.set(this.image, { clearProps: 'transform,opacity' });
-            })
-            .add(_.filter([
-                !this.wasFixedBurger && (!isLarge || this.initialScroll > 0) && TweenMax.to(this.burger, .3, { x: '0%', ease: Power3.easeOut }),
-                isLarge && !this.initialScroll && TweenMax.to(this.links, .3, { x: '0%', ease: Power3.easeOut }),
-                !this.wasFixedBurger && TweenMax.to(this.text, .3, { x: '0%', ease: Power3.easeOut }),
-                !this.wasFixedBurger && TweenMax.to(this.image, .3, { scale: 1, opacity: 1, ease: Power3.easeOut }),
-            ]));
+        if (this.props.isHomepage) {
+            let timeline = new TimelineLite({ onComplete: onComplete.bind(this, timeline) })
+                .add(_.filter([
+                    !isMedium && TweenMax.to(this.logoText, .3, { x: '-100%', ease: Power3.easeOut }),
+                    TweenMax.to(this.close, .3, { x: '105%', ease: Power3.easeOut }),
+                    TweenMax.to(this.links, .3, { x: '-100%', ease: Power3.easeOut }),
+                ]))
+                .add((() => {
+                    this.article.removeClass('menu-open');
+                    TweenMax.set(this.header, { clearProps: 'height' });
+                }).bind(this))
+                .add(_.filter([
+                    TweenMax.to(this.homeBottom, .3, { y: '0%' }),
+                    TweenMax.to(this.homeImage, .3, { scale: 1, opacity: 1 }),
+                    !isSmall && TweenMax.to(this.homeLeft, .3, { x: '0%' }),
+                    !isSmall && TweenMax.to(this.homeRight, .3, { x: '0%' }),
+                    isSmall && TweenMax.to(this.smallHomeLeft, .3, { x: '0%' }),
+                    TweenMax.to(this.burger, .3, { x: '0%', ease: Power3.easeOut }),
+                ]));
+        } else {
+            let timeline = new TimelineLite({ onComplete: onComplete.bind(this, timeline) })
+                .add(_.filter([
+                    TweenMax.to(this.links, .3, { x: '-100%', ease: Power3.easeIn }),
+                    TweenMax.to(this.close, .3, { x: isLarge ? '-100%' : '105%', ease: Power3.easeIn }),
+                    !isMedium && (!isLarge || this.initialScroll > 0) && TweenMax.to(this.logoText, .3, { x: '-100%', ease: Power3.easeIn }),
+                ]))
+                .add(_.filter([
+                    this.wasFixedBurger && TweenMax.to(this.burger, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
+                    isLarge && TweenMax.to(this.logoImage, .3, { color: this.prevColor, delay: .3, ease: Power3.easeOut }),
+                    TweenMax.to(this.header, .5, { height: this.wasFixedBurger ? '0%' : this.initialHeight, ease: Power3.easeOut }),
+                ]))
+                .add(() => {
+                    !this.wasFixedBurger && this.article.removeClass('fix-header');
+                    TweenMax.set(this.header, { clearProps: 'height' });
+                    this.wasFixedBurger && TweenMax.set(this.text, { clearProps: 'transform' });
+                    this.wasFixedBurger && TweenMax.set(this.image, { clearProps: 'transform,opacity' });
+                })
+                .add(_.filter([
+                    !this.wasFixedBurger && (!isLarge || this.initialScroll > 0) && TweenMax.to(this.burger, .3, { x: '0%', ease: Power3.easeOut }),
+                    isLarge && !this.initialScroll && TweenMax.to(this.links, .3, { x: '0%', ease: Power3.easeOut }),
+                    !this.wasFixedBurger && TweenMax.to(this.text, .3, { x: '0%', ease: Power3.easeOut }),
+                    !this.wasFixedBurger && TweenMax.to(this.image, .3, { scale: 1, opacity: 1, ease: Power3.easeOut }),
+                ]));
+        }
+
+        function onComplete(timeline) {
+            $.scrollLock(false);
+            this.article.removeClass('menu-open');
+            if (isLarge && (this.props.isHomepage || !this.initialScroll)) {
+                this.hamburger.removeClass('active');
+            }
+            setTimeout((() => {
+                this.props.enableScenes();
+                this.inProgress = false;
+            }).bind(this), 100);
+            timeline = null;
+        }
     }
 
     render() {

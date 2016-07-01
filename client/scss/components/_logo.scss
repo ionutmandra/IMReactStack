@@ -34,30 +34,29 @@
 
 @media screen and #{breakpoint(medium down)} {
     #page-container article {
-        header.main .logo > div {
-            padding: rem-calc(20pt) 0 0;
+        header.main .logo {
+            > div {
+                padding: rem-calc(20pt) 0 0;
 
-            &.img, &.text {
-                @include grid-col-off(1);
+                &.img, &.text {
+                    @include grid-col-off(1);
+                }
+                &.img {
+                    left: 0;
+                    height: rem-calc(72pt);
+                }
+                &.text {
+                    left: 40px;
+                    height: rem-calc(68pt);
+                }
             }
-            &.img {
-                left: 0;
-                height: rem-calc(72pt);
-            }
-            &.text {
-                left: 40px;
-                height: rem-calc(68pt);
-            }
+        }
+
+        &.page-home header.main .logo {
+            pointer-events: none;
         }
     }
 }
 
 @media screen and #{breakpoint(small only)} {
-    #page-container article {
-        header.main .logo > div {
-            &.text {
-                //display: none;
-            }
-        }
-    }
 }
