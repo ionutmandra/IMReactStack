@@ -515,47 +515,34 @@ class Home extends Component {
 
         function animation4() {
             var scenes = _this.scenes[breakpoint.names.large];
+
             // change behaviour of controller to animate scroll instead of jump
+            let t0 = new Date().getTime(), flag = true;            
             controller.scrollTo(function (newpos) {
-                var t = TweenMax.to(window, 0.7, { scrollTo: { y: newpos } });
+                let t1 = new Date().getTime(), duration = 0.7;
+                if (t1 - t0 < 250) {
+                    //console.log('INSTANT SCROLL');
+                    duration = 0;
+                } else {
+                    //console.log('ANIMATED SCROLL');
+                }
+                var t = TweenMax.to(window, duration, { scrollTo: { y: newpos } });
                 timeLines.push(t);
                 return t;
             });
 
-            // let scene1 = new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: 100, offset: -100 })
-            // // .addIndicators({name:'0'})
-            // .addTo(controller)
-            // .setTween(
-            //     TweenMax.fromTo(this._scrollHint, .75, { y: '0' }, { y: '+6', ease: Circ.easeInOut, repeat: -1, yoyo: true })
-            // );
-            // scenes.push(scene1);
-
-            let t0 = new Date().getTime(), flag = true;
-            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '98%', offset: 0 })
+            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '99%', offset: 1 })
             .addTo(controller)
             // .addIndicators({name:'1'})
             .on('start', (event) => {
-                if (flag) {
-                    let t1 = new Date().getTime();
-                    if (t1 - t0 < 100) {
-                        // console.warn('blocked scroll 1', t1-t0);
-                        return false;
-                    } else {
-                        // console.warn('released scroll 1');
-                        flag = false;
-                    }
-                }
                 if (event.scrollDirection == 'FORWARD') {
+                    // console.log('scene section 1 forward to section 2');
                     controller.scrollTo(_this._section2);
-                    // if (scene1) {
-                    //     scene1.destroy();
-                    //     scene1 = null;
-                    // }
                 }
             })
             .on('end', (event) => {
-                //this.animations.hideImgInstant(_this._scrollHintContainer);
                 if (event.scrollDirection == 'REVERSE') {
+                    // console.log('scene section 2 reverse to section 1');
                     controller.scrollTo(0);
                 }
             })
@@ -576,9 +563,9 @@ class Home extends Component {
             ])));
 
             //section2
-            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', offset: 10, duration: '94%' })
+            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', offset: 1, duration: '97%' })
             .addTo(controller)
-            // .addIndicators({name:'2'})
+            //.addIndicators({name:'2'})
             .setTween(new TimelineMax()
             .add([
                 this.animations.moveLeft(this._inputGrow),
@@ -595,22 +582,14 @@ class Home extends Component {
                 this.animations.showImg(this._img3),
             ]))
             .on('start', (event) => {
-                if (flag) {
-                    let t1 = new Date().getTime();
-                    if (t1 - t0 < 100) {
-                        // console.warn('blocked scroll 2', t1-t0);
-                        return false;
-                    } else {
-                        // console.warn('released scroll 2');
-                        flag = false;
-                    }
-                }
                 if (event.scrollDirection == 'FORWARD') {
+                   // console.log('scene section 2 forward to section 3');
                     controller.scrollTo(_this._section3);
                 }
             })
             .on('end', (event) => {
                 if (event.scrollDirection == 'REVERSE') {
+                   // console.log('scene section 3 reverse to section 2');
                     controller.scrollTo(_this._section2);
                 }
             }));
@@ -621,7 +600,7 @@ class Home extends Component {
                 this.animations.moveLeft(this._inputCreating),
                 this.animations.moveRight(this._inputOffering),
                 this.animations.hideImg(this._img3),
-                TweenMax.to(_this._hintTl, .2, { height:'100%' })
+                TweenMax.to(_this._hintTl, .2, { height:'100%' }),
             ])
             .add(TweenMax.to(_this._scrollArrow, .2, {rotation:'-90deg' }))
             .add(this.animations.hideSlide(this._section3c))
@@ -631,17 +610,19 @@ class Home extends Component {
                 this.animations.showImg(this._img4),
             ]);
 
-            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', offset: 10, duration: '97%' })
+            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', offset: 1, duration: '94%' })
             .addTo(controller)
-            //.addIndicators({name:'3oe'})
+            //.addIndicators({name:'3'})
             .setTween(section3)
             .on('start', (event) => {
                 if (event.scrollDirection == 'FORWARD') {
+                    //console.log('scene section 3 forward to section 4');
                     controller.scrollTo(_this._section4);
                 }
             })
             .on('end', (event) => {
                 if (event.scrollDirection == 'REVERSE') {
+                    //console.log('scene section 4 reverse to section 3');
                     controller.scrollTo(_this._section3);
                 }
             }));
