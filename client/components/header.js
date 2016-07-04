@@ -14,7 +14,21 @@ class Header extends Component {
         this.openContact = this.openContact.bind(this);
         this.closeContact = this.closeContact.bind(this);
         this.getContactPieces = this.getContactPieces.bind(this);
+        this.setInitialScroll = this.setInitialScroll.bind(this);
+        this.getInitialScroll = this.getInitialScroll.bind(this);
+        // this.props.setInitialScroll = this.setInitialScroll;
+        // this.props.getInitialScroll = this.getInitialScroll;
+        this.initialScroll = 0;
     }
+
+    setInitialScroll(scroll){
+        this.initialScroll = scroll;
+        this.props.setInitialScroll && this.props.setInitialScroll(scroll);
+    }
+    getInitialScroll(){
+        return this.initialScroll;
+    }
+
     componentDidMount() {
         let controller = this.controller = new ScrollMagic.Controller(),
             timeLines = this.timeLines = [],
@@ -137,27 +151,15 @@ class Header extends Component {
         }
 
         console.warn('header handleMediaChange', media, this.props.isHomepage, $window.scrollTop());
+
         let menuIsOpen = this.article.hasClass('menu-open');
         let contactIsOpen = this.article.hasClass('contact-open');
-        if (media.current == breakpoint.names.large) {
-            this.article.removeClass('menu-open');
-            if (this.props.isHomepage) {
-                this.article.addClass('fix-header');
-            } else if ($window.scrollTop() < 400) {
-                !contactIsOpen && !menuIsOpen && this.article.removeClass('fix-header');
-            } else {
-                this.article.addClass('fix-header');
-            }
-        } else if (media.current != breakpoint.names.none) {
+
+        if (!this.props.isHomepage) {
             if ($window.scrollTop() < 400) {
                 !contactIsOpen && !menuIsOpen && this.article.removeClass('fix-header');
             } else {
                 this.article.addClass('fix-header');
-            }
-            if (contactIsOpen && !menuIsOpen) {
-                this.article.addClass('menu-open');
-                TweenMax.set(this.burgerOpen, { x: '105%' });
-                TweenMax.set(this.burgerClose, { x: '105%' });
             }
         }
     }
@@ -171,10 +173,10 @@ class Header extends Component {
         if (this.props.isHomepage) {
             return (
                 <header className="main" ref="header">
-                    <Logo isHomepage />
-                    <HeaderLinks isHomepage openContact={this.openContact} />
-                    <Burger isHomepage />
-                    <Contact isHomepage renderCloseButton closeContact={this.closeContact} getContactPieces={this.getContactPieces} />
+                    <Logo isHomepage getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
+                    <HeaderLinks isHomepage openContact={this.openContact} getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
+                    <Burger isHomepage getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
+                    <Contact isHomepage renderCloseButton closeContact={this.closeContact} getContactPieces={this.getContactPieces} getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
                 </header>
             );
         } else {
@@ -182,11 +184,11 @@ class Header extends Component {
                 <header className="main" ref="header">
                     <div className="image"><div className="img" /></div>
                     <div className="gradient" />
-                    <Logo />
-                    <HeaderLinks openContact={this.openContact} />
+                    <Logo getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
+                    <HeaderLinks openContact={this.openContact} getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
                     <div className="text"><h1>{this.props.title}</h1></div>
-                    <Burger />
-                    <Contact renderCloseButton closeContact={this.closeContact} getContactPieces={this.getContactPieces} />
+                    <Burger getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
+                    <Contact renderCloseButton closeContact={this.closeContact} getContactPieces={this.getContactPieces} getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
                 </header>
             );
         }
@@ -240,6 +242,7 @@ class Header extends Component {
                     TweenMax.fromTo(pieces.right, .3, { x: '105%' }, { x: '0%', ease: Power3.easeOut }),
                 ]));
         } else if (this.props.isHomepage) { //header contact link on Large Homepage
+            this.setInitialScroll($window.scrollTop());
             let currentSlide = this.currentSlide = Math.floor($window.scrollTop() / $window.height());
             this.props.disableScenes();
             $.scrollLock(true);
@@ -250,18 +253,20 @@ class Header extends Component {
 
             let timeline = new TimelineLite({ onComplete: onComplete.bind(this, timeline) })
                 .add(_.filter([
-                    TweenMax.to(this.homeLeft[currentSlide], .3, { x: '-100%', ease: Power3.easeIn }),
+                    //TweenMax.to(this.homeLeft[currentSlide], .3, { x: '-100%', ease: Power3.easeIn }),
+                    TweenMax.to(this.homeLeft, .3, { x: '-100%', ease: Power3.easeIn }),
                     TweenMax.to(this.links, .3, { x: '-100%', ease: Power3.easeIn }),
                     TweenMax.to(this.logoText, .3, { x: '-100%', ease: Power3.easeIn }),
-                    TweenMax.to(this.homeRight[currentSlide], .3, { x: '105%', ease: Power3.easeIn }),
-                    TweenMax.to(this.homeBottom[currentSlide], .3, { y: '200%', ease: Power3.easeIn }),
+                    TweenMax.to(this.homeRight, .3, { x: '105%', ease: Power3.easeIn }),
+                    TweenMax.to(this.homeBottom, .3, { y: '200%', ease: Power3.easeIn }),
 
-                    TweenMax.to(this.homeImage[currentSlide], .6, { scale: 1.1, opacity: 0, ease: Power3.easeInOut }),
+                    TweenMax.to(this.homeImage, .6, { scale: 1.1, opacity: 0, ease: Power3.easeInOut }),
 
                     TweenMax.fromTo(pieces.left, .3, { x: '-100%' }, { x: '0%', delay: .3, ease: Power3.easeOut }),
                     TweenMax.fromTo(pieces.right, .3, { x: '105%' }, { x: '0%', delay: .3, ease: Power3.easeOut }),
                 ]));
         } else { //header contact link on Large Generic page when scroll = 0
+            this.setInitialScroll($window.scrollTop());
             this.initialHeight = 400 - $window.scrollTop();
             this.props.disableScenes();
             $.scrollLock(true);
@@ -306,6 +311,17 @@ class Header extends Component {
         let isMedium = this.props.ui.media.current == breakpoint.names.medium;
 
         if (burgerIsOpen) { //small ALL scenarios, medium ALL scenarios + Large Generic pege when burger open
+
+            if(this.props.isHomepage){
+                for(var i=0;i<4;i++){
+                    if( this.currentSlide != i){
+                        TweenMax.set(this.homeLeft[i], { x: '0%'}),
+                        TweenMax.set(this.homeRight[i], { x: '0%'}),
+                        TweenMax.set(this.homeBottom[i], { y: '0%' });
+                    }
+                }
+            }
+
             let timeline = new TimelineLite({ onComplete: onComplete.bind(this, timeline, false) })
                 .add(_.filter([
                     TweenMax.to(pieces.left, .3, { x: '-100%', ease: Power3.easeIn }),

@@ -18,7 +18,7 @@ class Logo extends Component {
             scenes = this.scenes = {},
             controller = this.controller = new ScrollMagic.Controller(),
             article = this.article = $(dom.findDOMNode(refs.logo)).closest('article.page');
-        
+
         this.timeLines = [];
 
         scenes[breakpoint.names.large] = [];
@@ -29,7 +29,7 @@ class Logo extends Component {
         this.text = $(refs.text);
 
         if (this.props.isHomepage) {
-            this.handleMediaChange(this.props.ui.media);            
+            this.handleMediaChange(this.props.ui.media);
             return;
         }
 
@@ -90,14 +90,14 @@ class Logo extends Component {
         }
 
         console.warn('logo handleMediaChange', media, this.props.isHomepage, $window.scrollTop());
-        let scrollTop = $window.scrollTop();
+        let initialScroll = this.props.getInitialScroll();
         if(media.current == breakpoint.names.large)
         {
             if (this.props.isHomepage) {
                 this.showInstant();
-            } else if (scrollTop == 0) {
+            } else if (initialScroll == 0) {
                 this.showInstant();
-            } else if (scrollTop < 355) {
+            } else if (initialScroll < 355) {
                 this.lightInstant();
                 this.hideInstant();
             } else {
@@ -232,42 +232,42 @@ class Logo extends Component {
         );
     }
 
-    hideInstant() { 
-        let t = TweenMax.set(this.text, { x: '-100%' }); 
-        this.timeLines.push(t); 
-        return t; 
+    hideInstant() {
+        let t = TweenMax.set(this.text, { x: '-100%' });
+        this.timeLines.push(t);
+        return t;
     }
-    showInstant() { 
-        let t = TweenMax.set(this.text, { x: '0%' }); 
-        this.timeLines.push(t); 
-        return t; 
-    }
-
-    lightInstant() { 
-        let t = TweenMax.set(this.img, { color: '#fefefe' }); 
-        this.timeLines.push(t); 
-        return t; 
-    }
-    darkInstant() { 
-        let t = TweenMax.set(this.img, { color: '#4d4d4d' }); 
-        this.timeLines.push(t); 
-        return t; 
+    showInstant() {
+        let t = TweenMax.set(this.text, { x: '0%' });
+        this.timeLines.push(t);
+        return t;
     }
 
-    hideText() { 
-        let t = TweenMax.to(this.text, .35, { x: '-100%' }); 
-        this.timeLines.push(t); 
-        return t; 
+    lightInstant() {
+        let t = TweenMax.set(this.img, { color: '#fefefe' });
+        this.timeLines.push(t);
+        return t;
     }
-    showText() { 
-        let t = TweenMax.to(this.text, .35, { x: '0%' }); 
-        this.timeLines.push(t); 
-        return t; 
+    darkInstant() {
+        let t = TweenMax.set(this.img, { color: '#4d4d4d' });
+        this.timeLines.push(t);
+        return t;
     }
-    darken() { 
-        let t = TweenMax.fromTo(this.img, .35, { color: '#fefefe' }, { color: '#4d4d4d' }); 
-        this.timeLines.push(t); 
-        return t; 
+
+    hideText() {
+        let t = TweenMax.to(this.text, .35, { x: '-100%' });
+        this.timeLines.push(t);
+        return t;
+    }
+    showText() {
+        let t = TweenMax.to(this.text, .35, { x: '0%' });
+        this.timeLines.push(t);
+        return t;
+    }
+    darken() {
+        let t = TweenMax.fromTo(this.img, .35, { color: '#fefefe' }, { color: '#4d4d4d' });
+        this.timeLines.push(t);
+        return t;
     }
 }
 

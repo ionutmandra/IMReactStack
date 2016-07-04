@@ -9,6 +9,9 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.handleLinkClick = this.handleLinkClick.bind(this);
+        this.contactClosed = this.contactClosed.bind(this);
+        this.setInitialScroll = this.setInitialScroll.bind(this);
+        this.initialScroll = 0;
 
         var _this = this;
         var controller = this.controller =  new ScrollMagic.Controller();
@@ -18,6 +21,10 @@ class Home extends Component {
         scenes[breakpoint.names.medium] = [];
         scenes[breakpoint.names.small] = [];
         this.animations = getAnimationUtils(this, controller, timeLines, scenes);
+    }
+
+    setInitialScroll(scroll){
+        this.initialScroll = scroll;
     }
 
     handleLinkClick(event) {
@@ -636,30 +643,37 @@ class Home extends Component {
         var height = $window.height();
         var fullHeight = height * 4;
         var scroll = $window.scrollTop();
+        var initialScroll = this.initialScroll;
 
         //var slide = '.slide-' + (currentSlideNr + 1);
         var sections = [this._section1,this._section2,this._section3,this._section4 ];
         var sectionsContent = [this._section1c,this._section2c,this._section3c,this._section4c];
         var images = [this._img1,this._img2,this._img3,this._img4];
-        var texts = [];
-        texts[0] = {
-            allignedLeft : [this._inputCreate],
-            allignedRight : [this._inputSoftware]
-        };
-        texts[1] = {
-            allignedLeft : [this._inputGrow,this._inputValuesRight],
-            allignedRight : [this._inputValuesLeft]
-        };
-        texts[2] = {
-            allignedLeft : [this._inputCreating],
-            allignedRight : [this._inputOffering]
-        };
-        texts[3] = {
-            allignedLeft : [this._inputSustaining],
-            allignedRight : []
-        };
+        var homeLeft = [
+            this.article.find('.slide-1.content .text-2 h2').toArray(),
+            this.article.find('.slide-2.content .text-1 h1, .slide-2.content .text-3 .text-content').toArray(),
+            this.article.find('.slide-3.content .text-2 h1').toArray(),
+            this.article.find('.slide-4.content .text-1 h1').toArray(),
+        ];
+        var homeRight = [
+            this.article.find('.slide-1.content .text-1 h1').toArray(),
+            this.article.find('.slide-2.content .text-2 .text-content').toArray(),
+            this.article.find('.slide-3.content .text-1 h1').toArray(),
+            {},
+        ];
+        var smallHomeLeft = [
+            this.article.find('.slide-1.content .text-1 h1, .slide-1.content .text-2 h2').toArray(),
+            this.article.find('.slide-2.content .text-1 h1').toArray(),
+            this.article.find('.slide-3.content .text-1 h1, .slide-3.content .text-2 h1').toArray(),
+            this.article.find('.slide-4.content .text-1 h1').toArray(),
+        ];
+        var homeBottom = [
+            this.article.find('.slide-1.content .scroll-hint > *').toArray(),
+            {}, {}, {},
+        ];
 
         var contactIsOpen = this.article.hasClass('contact-open');
+        var menuIsOpen = this.article.hasClass('menu-open');
 
         //console.warn('handleMediaChange', media, 'on', $(this.refs.header).closest('article').attr('class'));
         for (let name in breakpoint.names) {
@@ -672,43 +686,56 @@ class Home extends Component {
         if(media.current == breakpoint.names.large)
         {
             var currentSlideNr = 0;
+
+            var homeScroll = (menuIsOpen || contactIsOpen) ? initialScroll : scroll;
+
             if(media.prev == breakpoint.names.medium || media.prev == breakpoint.names.small){
-                currentSlideNr = Math.round((scroll) / height);
+                currentSlideNr = Math.round((homeScroll) / height);
                 this.controller.scrollTo(sections[currentSlideNr]);
             }
             else{
-                currentSlideNr = Math.floor((scroll) / height);
-            }
-
-            if(contactIsOpen)
-            {
-                 var activeSlide = $("section.content:visible").hasClass('slide-2')
+                currentSlideNr = Math.floor((homeScroll) / height);
             }
 
             for(var i=0; i<4; i++){
                 if(currentSlideNr!=i){
                     this.animations.hideSlide(sectionsContent[i]);
                     this.animations.hideImgInstant(images[i]);
-                    this.animations.hideLeft(texts[i].allignedLeft);
-                    this.animations.hideRight(texts[i].allignedRight);
+                    this.animations.hideLeft(homeLeft[i]);
+                    this.animations.hideRight(homeRight[i]);
                 }
             }
         }
-        if(media.current != breakpoint.names.large && media.current != breakpoint.names.none)
+        else if(media.current != breakpoint.names.none)
         {
-            if(!contactIsOpen){
+            var currentSlideNr = Math.round((scroll) / height);
 
-                var currentSlideNr = Math.round((scroll) / height);
-
+            if(contactIsOpen){
+                for(var i=0; i<4; i++){
+                    this.animations.showSlide(sectionsContent[i]);                                        
+                }
+            }
+            else{
                 for(var i=0; i<4; i++){
                     this.animations.showSlide(sectionsContent[i]);
                     this.animations.showImgInstant(images[i]);
-                    this.animations.moveToInitial(texts[i].allignedLeft);
-                    this.animations.moveToInitial(texts[i].allignedRight);
+                    this.animations.moveToInitial(homeLeft[i]);
+                    this.animations.moveToInitial(homeRight[i]);
                 }
             }
         }
     }
+
+    contactClosed (currentSlide){
+        // for(var i=0; i<4; i++){
+        //     this.animations.showSlide(sectionsContent[i]);
+        //     this.animations.showImgInstant(images[i]);
+        //     this.animations.moveToInitial(texts[i].allignedLeft);
+        //     this.animations.moveToInitial(texts[i].allignedRight);
+        // }
+    }
+
+    // contactClosed = {this.contactClosed}
 
     setScenes (media, enabled) {
         //console.warn('header setting scenes for', media, 'to', enabled,'on',$(this.refs.header).closest('article').attr('class'));
@@ -718,7 +745,7 @@ class Home extends Component {
             //const s = this.props.strings;
             return (
                 <article className="page page-home" ref="article">
-                    <Header isHomepage />
+                    <Header isHomepage setInitialScroll={this.setInitialScroll}  />
 
                     <section className="slide slide-1 background" ref={(c) => this._section1b = c}>
                         <div ref={(c) => this._img1 = c} className="image"><div className="img" /></div>

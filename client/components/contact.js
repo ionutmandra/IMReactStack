@@ -36,7 +36,9 @@ class Contact extends Component {
 
     handleMediaChange(media) {
         console.warn('contact handleMediaChange', media, this.props.isHomepage, $window.scrollTop());
+
         let contactIsOpen = this.article.hasClass('contact-open');
+
         if (contactIsOpen) {
             //nothing? pieces remain to 0% i.e. displayed
         } else {

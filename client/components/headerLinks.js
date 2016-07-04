@@ -119,14 +119,19 @@ class HeaderLinks extends Component {
         let scrollTop = $window.scrollTop(), menuIsOpen = this.article.hasClass('menu-open');
         var contactIsOpen = this.article.hasClass('contact-open');
 
-        if(media.current == breakpoint.names.large)
-        {
+        if(media.current == breakpoint.names.large){
             if (this.props.isHomepage) {
-                !contactIsOpen && this.showInstant();
-            } else if ($window.scrollTop() == 0) {
-                !contactIsOpen && this.showInstant();
-            } else {
-                this.hideInstant();
+                if(!contactIsOpen ){
+                    this.showInstant();
+                }
+            }
+            //generic page
+            else{
+                if(!menuIsOpen){
+                    if(scrollTop == 0){
+                        this.showInstant();
+                    }
+                }
             }
         } else if (media.current != breakpoint.names.none) {
             if (menuIsOpen && !contactIsOpen) {

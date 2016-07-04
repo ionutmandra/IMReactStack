@@ -127,45 +127,88 @@ export default class Burger extends Component {
             this.setScenes(media.current, true);
         }
 
-        let scrollTop = $window.scrollTop(), menuIsOpen = this.article.hasClass('menu-open');
-        var contactIsOpen = this.article.hasClass('contact-open');
+        let initialScroll = this.props.getInitialScroll(),
+            menuIsOpen = this.article.hasClass('menu-open'),
+            contactIsOpen = this.article.hasClass('contact-open');
 
         if (media.current == breakpoint.names.large) {
-            if (menuIsOpen && !this.props.isHomepage) {
-                if (this.props.isHomepage || scrollTop == 0) {
-                    this.hideBurgerLeftInstant();
-                } else if (scrollTop < 355) {
-                    this.hideBurgerLeftInstant();
-                } else {
-                    this.darkInstant();
-                    this.hideBurgerLeftInstant();
+            if (this.props.isHomepage) {
+                if (menuIsOpen) {
+                    if(contactIsOpen){
+                        this.hideBurgerLeftInstant();
+                        this.hideCloseLeftInstant();
+                        this.article.removeClass('menu-open');
+                        this.hamburger.removeClass('active');
+                    }
+                    else{
+                        this.hideBurgerLeftInstant();
+                        this.hideCloseLeftInstant();
+                        this.article.removeClass('menu-open');
+                        this.hamburger.removeClass('active');
+                    }
                 }
-            } else if (this.props.isHomepage || scrollTop == 0) {
-                this.hamburger.removeClass('active');
-                this.hideBurgerLeftInstant();
-                this.hideCloseLeftInstant();
-            } else if (scrollTop < 355) {
-                this.hamburger.addClass('active');
-                this.lightInstant();
-                this.hideCloseLeftInstant();
-                this.showBurgerInstant();
-            } else {
-                this.hamburger.addClass('active');
-                this.darkInstant();
-                this.hideCloseLeftInstant();
-                this.showBurgerInstant();
+                else {
+                    this.hideBurgerLeftInstant();
+                    this.hideCloseLeftInstant();
+                    this.hamburger.removeClass('active');
+                }
+
+            }
+            //generic page
+            else{
+                if (menuIsOpen) {
+                    if(contactIsOpen){
+                        if(initialScroll == 0){
+                            this.hideBurgerLeftInstant();
+                            this.hideCloseLeftInstant();
+                            this.article.removeClass('menu-open');
+                            this.hamburger.removeClass('active');
+                        }
+                        else {
+                            this.hideBurgerLeftInstant();
+                            this.hideCloseLeftInstant();
+                        }
+                    }
+                    else{
+                        this.hideBurgerLeftInstant();
+                    }
+                }
+                else {
+                    if (initialScroll == 0) {
+                        this.hamburger.removeClass('active');
+                        this.hideBurgerLeftInstant();
+                        this.hideCloseLeftInstant();
+                    } else if (initialScroll < 355) {
+                        this.hideCloseLeftInstant();
+                    } else {
+                        this.darkInstant();
+                        this.hideCloseLeftInstant();
+                    }
+                }
             }
         } else if (media.current != breakpoint.names.none) {
             if (menuIsOpen) {
-                this.hamburger.addClass('active');
-                this.lightInstant();
-                this.showCloseInstant();
-                this.hideBurgerRightInstant();
+                if(contactIsOpen){
+                    this.hideBurgerRightInstant();
+                    this.hideCloseRightInstant();
+                    this.lightInstant();
+                }
+                else {
+                    this.hideBurgerRightInstant();
+                    this.lightInstant();
+                }
             } else {
-                this.hamburger.addClass('active');
-                this.lightInstant();
-                this.hideCloseRightInstant();
-                this.showBurgerInstant();
+                if(contactIsOpen){
+                    this.article.addClass('menu-open');
+                    this.hamburger.addClass('active');
+                    this.hideCloseRightInstant();
+                    this.hideBurgerRightInstant();
+                }
+                else{
+                    this.hamburger.addClass('active');
+                    this.showBurgerInstant();
+                    this.hideCloseRightInstant();
+                }
             }
         }
     }
@@ -181,6 +224,7 @@ export default class Burger extends Component {
 
         this.initialScroll = $window.scrollTop();
         this.initialHeight = 400 - this.initialScroll;
+        this.props.setInitialScroll(this.initialScroll);
         this.props.disableScenes();
         $.scrollLock(true);
 
