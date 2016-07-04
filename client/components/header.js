@@ -140,6 +140,7 @@ class Header extends Component {
         let menuIsOpen = this.article.hasClass('menu-open');
         let contactIsOpen = this.article.hasClass('contact-open');
         if (media.current == breakpoint.names.large) {
+            this.article.removeClass('menu-open');
             if (this.props.isHomepage) {
                 this.article.addClass('fix-header');
             } else if ($window.scrollTop() < 400) {

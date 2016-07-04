@@ -128,8 +128,10 @@ export default class Burger extends Component {
         }
 
         let scrollTop = $window.scrollTop(), menuIsOpen = this.article.hasClass('menu-open');
+        var contactIsOpen = this.article.hasClass('contact-open');
+
         if (media.current == breakpoint.names.large) {
-            if (menuIsOpen) {
+            if (menuIsOpen && !this.props.isHomepage) {
                 if (this.props.isHomepage || scrollTop == 0) {
                     this.hideBurgerLeftInstant();
                 } else if (scrollTop < 355) {
