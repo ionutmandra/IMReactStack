@@ -3,6 +3,8 @@ import dom from 'react-dom';
 import routePaths from '../../common/routePaths';
 import { Link } from 'react-router';
 import _ from 'lodash';
+import { breakpoint } from '../config/constants';
+
 let $ = window.$, $window = $(window), ScrollMagic = window.ScrollMagic, TweenMax = window.TweenMax, Power3 = window.Power3, TimelineLite = window.TimelineLite;
 
 class Contact extends Component {
@@ -14,7 +16,7 @@ class Contact extends Component {
     componentDidMount() {
         let $container = $(this.refs.container);
         this.article = $container.closest('article.page');
-        // this.header = this.article.find('header.main');
+        this.header = this.article.find('header.main');
         // this.image = this.header.find('> .image .img');
         // this.logoImage = this.header.find('> .logo .img');
         // this.logoText = this.header.find('> .logo .text svg');
@@ -25,6 +27,7 @@ class Contact extends Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
+        console.log(' contact shouldComponentUpdate ',this.props.ui.media.current, nextProps.ui.media.current, this.props.ui.media.current != nextProps.ui.media.current );
         if (this.props.ui.media.current != nextProps.ui.media.current) {
             this.handleMediaChange(nextProps.ui.media);
         }
@@ -37,7 +40,7 @@ class Contact extends Component {
         if (contactIsOpen) {
             //nothing? pieces remain to 0% i.e. displayed
         } else {
-            let pieces = this.props.getContactPieces();
+            let pieces = this.getContactPieces(media);
             TweenMax.set(pieces.left, { x: '-100%' });
             TweenMax.set(pieces.right, { x: '105%' });
         }
@@ -50,6 +53,27 @@ class Contact extends Component {
             target: event.currentTarget,
         });
     }
+
+    getContactPieces(media) {
+           let isLarge = media.current == breakpoint.names.large;
+           let isMedium = media.current == breakpoint.names.medium;
+           let isSmall = media.current == breakpoint.names.small;
+
+           let contactPieces = { left: [], right: [] };//this.header.find('.contact .content');
+           if (isLarge) {
+               contactPieces.left = this.header.find('.contact .content').toArray();
+           }
+           if (isMedium) {
+               contactPieces.left = this.header.find('.contact .right .content').toArray();
+               contactPieces.right = this.header.find('.contact .left .content, .contact .btn .content').toArray();
+           }
+           if (isSmall) {
+               contactPieces.left = this.header.find('.contact .left .content, .contact .right .content').toArray();
+               contactPieces.right = this.header.find('.contact .btn .content').toArray();
+           }
+
+           return contactPieces;
+       }
 
     render() {
         let closeButton = null;

@@ -147,7 +147,6 @@ class Header extends Component {
             } else {
                 this.article.addClass('fix-header');
             }
-            !contactIsOpen && TweenMax.set(this.contactClose, { x: '-100%' });
         } else if (media.current != breakpoint.names.none) {
             if ($window.scrollTop() < 400) {
                 !contactIsOpen && !menuIsOpen && this.article.removeClass('fix-header');
