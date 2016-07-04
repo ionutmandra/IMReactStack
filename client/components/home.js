@@ -658,6 +658,9 @@ class Home extends Component {
             allignedLeft : [this._inputSustaining],
             allignedRight : []
         };
+
+        var contactIsOpen = this.article.hasClass('contact-open');
+
         //console.warn('handleMediaChange', media, 'on', $(this.refs.header).closest('article').attr('class'));
         for (let name in breakpoint.names) {
             this.setScenes(name, false);
@@ -677,6 +680,11 @@ class Home extends Component {
                 currentSlideNr = Math.floor((scroll) / height);
             }
 
+            if(contactIsOpen)
+            {
+                 var activeSlide = $("section.content:visible").hasClass('slide-2')
+            }
+
             for(var i=0; i<4; i++){
                 if(currentSlideNr!=i){
                     this.animations.hideSlide(sectionsContent[i]);
@@ -688,8 +696,6 @@ class Home extends Component {
         }
         if(media.current != breakpoint.names.large && media.current != breakpoint.names.none)
         {
-            var contactIsOpen = this.article.hasClass('contact-open');
-
             if(!contactIsOpen){
 
                 var currentSlideNr = Math.round((scroll) / height);
