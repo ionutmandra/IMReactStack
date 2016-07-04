@@ -18,7 +18,7 @@ class HeaderLinks extends Component {
             scenes = this.scenes = {},
             controller = this.controller = new ScrollMagic.Controller(),
             trigger = this.article = $(refs.container).closest('article.page');
-        
+
         this.timeLines = [];
         this.links = this.links.map(link => dom.findDOMNode(link));
         scenes[breakpoint.names.large] = [];
@@ -117,17 +117,19 @@ class HeaderLinks extends Component {
 
         //console.warn('headerLinks handleMediaChange', media, this.props.isHomepage, $window.scrollTop());
         let scrollTop = $window.scrollTop(), menuIsOpen = this.article.hasClass('menu-open');
+        var contactIsOpen = this.article.hasClass('contact-open');
+
         if(media.current == breakpoint.names.large)
         {
             if (this.props.isHomepage) {
-                this.showInstant();
+                !contactIsOpen && this.showInstant();
             } else if ($window.scrollTop() == 0) {
-                this.showInstant();
+                !contactIsOpen && this.showInstant();
             } else {
                 this.hideInstant();
             }
         } else if (media.current != breakpoint.names.none) {
-            if (menuIsOpen) {
+            if (menuIsOpen && !contactIsOpen) {
                 this.showInstant();
             } else {
                 this.hideInstant();
@@ -145,7 +147,7 @@ class HeaderLinks extends Component {
         // burgerIsOpen && $window.scrollTop(0);
         let isLarge = this.props.ui.media.current == breakpoint.names.large;
         let isMedium = this.props.ui.media.current == breakpoint.names.medium;
-        
+
         let column = 3; //small
         isMedium && (column = 3);
         isLarge && (column = event.currentTarget.getAttribute('data-animate-line'));
