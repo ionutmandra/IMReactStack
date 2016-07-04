@@ -125,6 +125,8 @@ class Home extends Component {
         var timeLines = this.timeLines;
         var _this = this;
 
+        this.article = $(this.refs.article);
+
         var gradients = ['#d6cb26', '#68bc45', '#1895a3', '#4f2063', '#c80786', '#ed2f2e'];
 
         TweenPlugin.activate(['colorProps']);
@@ -517,7 +519,7 @@ class Home extends Component {
             var scenes = _this.scenes[breakpoint.names.large];
 
             // change behaviour of controller to animate scroll instead of jump
-            let t0 = new Date().getTime(), flag = true;            
+            let t0 = new Date().getTime(), flag = true;
             controller.scrollTo(function (newpos) {
                 let t1 = new Date().getTime(), duration = 0.7;
                 if (t1 - t0 < 250) {
@@ -686,13 +688,18 @@ class Home extends Component {
         }
         if(media.current != breakpoint.names.large && media.current != breakpoint.names.none)
         {
-            var currentSlideNr = Math.round((scroll) / height);
+            var contactIsOpen = this.article.hasClass('contact-open');
 
-            for(var i=0; i<4; i++){
-                this.animations.showSlide(sectionsContent[i]);
-                this.animations.showImgInstant(images[i]);
-                this.animations.moveToInitial(texts[i].allignedLeft);
-                this.animations.moveToInitial(texts[i].allignedRight);
+            if(!contactIsOpen){
+
+                var currentSlideNr = Math.round((scroll) / height);
+
+                for(var i=0; i<4; i++){
+                    this.animations.showSlide(sectionsContent[i]);
+                    this.animations.showImgInstant(images[i]);
+                    this.animations.moveToInitial(texts[i].allignedLeft);
+                    this.animations.moveToInitial(texts[i].allignedRight);
+                }
             }
         }
     }
@@ -704,7 +711,7 @@ class Home extends Component {
     render() {
             //const s = this.props.strings;
             return (
-                <article className="page page-home">
+                <article className="page page-home" ref="article">
                     <Header isHomepage />
 
                     <section className="slide slide-1 background" ref={(c) => this._section1b = c}>
