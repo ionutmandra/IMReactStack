@@ -361,8 +361,7 @@
             }
             .text-1,
             .text-2,
-            .text-3,
-            .scroll-hint {
+            .text-3 {
                 overflow: hidden;
                 position: absolute;
                 h1 {
@@ -575,6 +574,10 @@
         }
         a {
             color: #FFFFFF;
+        }
+
+        .scroll-hint{
+            display: none;
         }
     }
 }
@@ -821,6 +824,10 @@
 
         a {
             color: #FFFFFF;
+        }
+
+        scroll-hint{
+            display: none;
         }
     }
 }
