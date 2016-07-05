@@ -100,11 +100,11 @@ class Header extends Component {
             .on('start', event => {
                 if (event.scrollDirection == 'FORWARD') {
                     article.addClass('fix-header');
-                    console.log('header sc2 end forw');
+                    //console.log('header sc2 end forw');
                 }
                 if (event.scrollDirection == 'REVERSE') {
                     article.removeClass('fix-header');
-                    console.log('header sc1 pr rev');
+                    //console.log('header sc1 pr rev');
                 }
             });
 

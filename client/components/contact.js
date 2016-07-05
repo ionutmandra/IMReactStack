@@ -27,7 +27,7 @@ class Contact extends Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        console.log(' contact shouldComponentUpdate ',this.props.ui.media.current, nextProps.ui.media.current, this.props.ui.media.current != nextProps.ui.media.current );
+        //console.log(' contact shouldComponentUpdate ',this.props.ui.media.current, nextProps.ui.media.current, this.props.ui.media.current != nextProps.ui.media.current );
         if (this.props.ui.media.current != nextProps.ui.media.current) {
             this.handleMediaChange(nextProps.ui.media);
         }

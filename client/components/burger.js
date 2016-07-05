@@ -73,9 +73,8 @@ export default class Burger extends Component {
 
         scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
             .on('start', (event => {
-
                 if (event.scrollDirection == 'FORWARD') {
-                    console.warn('BURGER SCENE SETTING ACTIVE');
+                    //console.warn('BURGER SCENE SETTING ACTIVE');
                     hamburger.addClass('active');
                     this.showBurgerFromLeft();
                 }
