@@ -332,7 +332,7 @@ class Header extends Component {
                 TweenMax.to(pieces.left, .3, { x: '-100%', ease: Power3.easeIn }),
                 TweenMax.to(pieces.right, .3, { x: '105%', ease: Power3.easeIn }),
 
-                TweenMax.to(this.homeImage[currentSlide], .6, { scale: 1, opacity: 1, ease: Power3.easeInOut }),
+                TweenMax.to(this.homeImage, .6, { opacity: 1, ease: Power3.easeInOut }),
 
                 TweenMax.to(this.links, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
                 TweenMax.to(this.logoText, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
