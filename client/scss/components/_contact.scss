@@ -12,7 +12,7 @@
             will-change: opacity;
         }
         &.left {
-            @include grid-row();            
+            @include grid-row();
             @include grid-col-size(8);
             @include grid-col-off(3);
             font-size: rem-calc(28pt);
@@ -52,10 +52,10 @@
             }
         }
         &.btn {
-            @include grid-row(24);            
+            @include grid-row(24);
             @include grid-col-size(1);
             @include grid-col-off(21);
-            top: 40px;
+            top: rem-calc(20pt);
             transform: none;
             text-align: left;
             i {
@@ -74,9 +74,17 @@
 #page-container article.contact-open header.main div.contact > div {
     z-index: 6;
 }
-#page-container article.menu-open.contact-open header.main div.contact > div.btn {
-    top: 50%;
-    transform: translateY(-50%);
+
+@media screen and #{breakpoint(large up)} {
+
+    #page-container article.contact-open header.main div.contact > div.btn {
+        top: 40px;
+    }
+
+    #page-container article.menu-open.contact-open header.main div.contact > div.btn {
+        top: 50%;
+        transform: translateY(-50%);
+    }
 }
 
 @media screen and #{breakpoint(medium only)} {
@@ -84,7 +92,7 @@
         @include grid-row(24);
         > div {
             &.left {
-                @include grid-row();                
+                @include grid-row();
                 @include grid-col-size(10);
                 @include grid-col-off(2);
                 top: 40%;
@@ -115,15 +123,9 @@
                 @include grid-row(24);
                 @include grid-col-size(2);
                 @include grid-col-off(21);
-                top: rem-calc(20pt);
-                transform: none;
                 text-align: right;
             }
         }
-    }
-    #page-container article.menu-open.contact-open header.main div.contact > div.btn {
-        top: rem-calc(20pt);
-        transform: none;
     }
 }
 
@@ -166,15 +168,9 @@
             &.btn {
                 @include grid-row(24);
                 @include grid-col-size(4);
-                @include grid-col-off(19);
-                top: rem-calc(20pt);
-                transform: none;
+                @include grid-col-off(19);                
                 text-align: right;
             }
         }
-    }
-    #page-container article.menu-open.contact-open header.main div.contact > div.btn {
-        top: rem-calc(20pt);
-        transform: none;
     }
 }
