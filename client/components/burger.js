@@ -57,10 +57,10 @@ export default class Burger extends Component {
                 {}, {}, {},
             ];
             this.homeImage = [
-                this.article.find('.slide-1.background .img').toArray(),
-                this.article.find('.slide-2.background .img').toArray(),
-                this.article.find('.slide-3.background .img').toArray(),
-                this.article.find('.slide-4.background .img').toArray(),
+                this.article.find('.slide-1.background .image').toArray(),
+                this.article.find('.slide-2.background .image').toArray(),
+                this.article.find('.slide-3.background .image').toArray(),
+                this.article.find('.slide-4.background .image').toArray(),
             ];
 
             this.handleMediaChange(this.props.ui.media);
@@ -143,8 +143,12 @@ export default class Burger extends Component {
                     else{
                         this.hideBurgerLeftInstant();
                         this.hideCloseLeftInstant();
-                        this.article.removeClass('menu-open');
+                        //this.article.removeClass('menu-open');
                         this.hamburger.removeClass('active');
+
+                        $.scrollLock(false);
+                        setTimeout(this.props.enableScenes, 100);
+                        this.props.setInitialScroll(undefined);
                     }
                 }
                 else {

@@ -11,6 +11,7 @@ class Home extends Component {
         this.handleLinkClick = this.handleLinkClick.bind(this);
         this.contactClosed = this.contactClosed.bind(this);
         this.setInitialScroll = this.setInitialScroll.bind(this);
+        this.getInitialScroll = this.getInitialScroll.bind(this);
         this.initialScroll = undefined;
 
         var _this = this;
@@ -150,7 +151,7 @@ class Home extends Component {
             animation4.bind(this)();
             break;
             default:
-            animation1.bind(this)();
+            animation4.bind(this)();
             break;
         }
 
@@ -215,8 +216,8 @@ class Home extends Component {
 
                 ));
 
-                scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '80%', offset: 150 })
-                .addTo(controller)
+            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '80%', offset: 150 })
+            .addTo(controller)
                 .setTween( TweenMax.to(this._hintBl, .2, { height:'50%' })));
 
                 scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '5%', offset: 130 })
@@ -254,10 +255,9 @@ class Home extends Component {
                 }
             }));
 
-            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', offset: 150, duration: '80%' })
+        scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', offset: 150, duration: '80%' })
             .addTo(controller)
-            .setTween(TweenMax.to(_this._hintBr, .2, { height:'50%' }))
-        );
+            .setTween(TweenMax.to(_this._hintBr, .2, { height:'50%' })));
 
             scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', duration: '6%', offset: 130 }).addTo(controller)
             .on('end', function (event) {
@@ -652,10 +652,8 @@ class Home extends Component {
 
         var height = $window.height();
         var fullHeight = height * 4;
-        var scroll = $window.scrollTop();
-        var initialScroll = typeof(this.initialScroll) === 'undefined' ? $window.scrollTop() : this.initialScroll;
+        var initialScroll = this.getInitialScroll();
 
-        //var slide = '.slide-' + (currentSlideNr + 1);
         var sections = [this._section1,this._section2,this._section3,this._section4 ];
         var sectionsContent = [this._section1c,this._section2c,this._section3c,this._section4c];
         var images = [this._img1,this._img2,this._img3,this._img4];
@@ -695,30 +693,36 @@ class Home extends Component {
 
         if(media.current == breakpoint.names.large)
         {
-            var currentSlideNr = 0;
-
-            var homeScroll = (menuIsOpen || contactIsOpen) ? initialScroll : scroll;
+            var currentSlide = 0;
 
             if(media.prev == breakpoint.names.medium || media.prev == breakpoint.names.small){
-                currentSlideNr = Math.round((homeScroll) / height);
-                this.controller.scrollTo(sections[currentSlideNr]);
+                currentSlide = Math.round((initialScroll) / height);
+                this.controller.scrollTo(sections[currentSlide]);
             }
             else{
-                currentSlideNr = Math.floor((homeScroll) / height);
+                currentSlide = Math.floor((initialScroll) / height);
             }
 
             for(var i=0; i<4; i++){
-                if(currentSlideNr!=i){
+                if(currentSlide != i){
                     this.animations.hideSlide(sectionsContent[i]);
                     this.animations.hideImgInstant(images[i]);
                     this.animations.hideLeft(homeLeft[i]);
                     this.animations.hideRight(homeRight[i]);
                 }
             }
+
+            if(menuIsOpen && !contactIsOpen){
+                this.article.removeClass('menu-open');
+                this.animations.showSlide(sectionsContent[currentSlide]);
+                this.animations.showImgInstant(images[currentSlide]);
+                this.animations.moveToInitialInstant(homeLeft[currentSlide]);
+                this.animations.moveToInitialInstant(homeRight[currentSlide]);
+            }
         }
         else if(media.current != breakpoint.names.none)
         {
-            var currentSlideNr = Math.round((scroll) / height);
+            //var currentSlide = Math.round((initialScroll) / height);
 
             if(contactIsOpen){
                 for(var i=0; i<4; i++){
@@ -729,8 +733,8 @@ class Home extends Component {
                 for(var i=0; i<4; i++){
                     this.animations.showSlide(sectionsContent[i]);
                     this.animations.showImgInstant(images[i]);
-                    this.animations.moveToInitial(homeLeft[i]);
-                    this.animations.moveToInitial(homeRight[i]);
+                    this.animations.moveToInitialInstant(homeLeft[i]);
+                    this.animations.moveToInitialInstant(homeRight[i]);
                 }
             }
         }
@@ -751,11 +755,22 @@ class Home extends Component {
         //console.warn('header setting scenes for', media, 'to', enabled,'on',$(this.refs.header).closest('article').attr('class'));
         this.scenes && this.scenes[media] && this.scenes[media].forEach(scene => { scene.enabled(enabled); });
     }
+
+    getInitialScroll(){
+        if(typeof(this.initialScroll) === 'undefined' )
+        {
+            return $window.scrollTop();
+        }
+        else{
+            return this.initialScroll;
+        }
+    }
+
     render() {
             //const s = this.props.strings;
             return (
                 <article className="page page-home" ref="article">
-                    <Header isHomepage setInitialScroll={this.setInitialScroll}  />
+                    <Header isHomepage setInitialScroll={this.setInitialScroll} />
 
                     <section className="slide slide-1 background" ref={(c) => this._section1b = c}>
                         <div ref={(c) => this._img1 = c} className="image"><div className="img" /></div>
@@ -900,6 +915,11 @@ function getAnimationUtils(component, controller, timeLines, scenes){
     }
     ret.moveToInitial = function(elem) {
         var t = TweenMax.to(elem, 0.8, { x: '0%' });
+        timeLines.push(t);
+        return t;
+    }
+    ret.moveToInitialInstant = function(elem) {
+        var t = TweenMax.set(elem, { x: '0%' });
         timeLines.push(t);
         return t;
     }
