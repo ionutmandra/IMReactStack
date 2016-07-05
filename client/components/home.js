@@ -204,8 +204,7 @@ class Home extends Component {
                 new TimelineMax()
                 .add([this.animations.moveLeft(this._inputCreate),
                     this.animations.moveRight(this._inputSoftware),
-                    this.animations.hideImg(this._img1),
-                    TweenMax.to(this._hintBl, .2, { height:'100%' })])
+                    this.animations.hideImg(this._img1)])
                 .add(this.animations.hideSlide(this._section1c))
                 .add(this.animations.showSlide(this._section2c))
                 .add([
@@ -215,6 +214,10 @@ class Home extends Component {
                     this.animations.showImg(this._img2)])
 
                 ));
+
+                scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '80%', offset: 150 })
+                .addTo(controller)
+                .setTween( TweenMax.to(this._hintBl, .2, { height:'50%' })));
 
                 scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '5%', offset: 130 })
                 .addTo(controller)
@@ -234,7 +237,6 @@ class Home extends Component {
                     this.animations.moveLeft(_this._inputGrow),
                     this.animations.moveRight(_this._inputValuesLeft),
                     this.animations.moveLeft(_this._inputValuesRight),
-                    TweenMax.to(_this._hintBr, .2, { height:'100%' })
                 ])
                 .add(this.animations.hideSlide(this._section2c))
                 .add(this.animations.showSlide(this._section3c))
@@ -252,6 +254,11 @@ class Home extends Component {
                 }
             }));
 
+            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', offset: 150, duration: '80%' })
+            .addTo(controller)
+            .setTween(TweenMax.to(_this._hintBr, .2, { height:'50%' }))
+        );
+
             scenes.push(new ScrollMagic.Scene({ triggerElement: this._section2, triggerHook: 'onLeave', duration: '6%', offset: 130 }).addTo(controller)
             .on('end', function (event) {
                 if (event.scrollDirection == 'FORWARD') {
@@ -263,8 +270,7 @@ class Home extends Component {
             var section3 = new TimelineMax()
             .add([
                 this.animations.moveLeft(_this._inputCreating),
-                this.animations.moveRight(_this._inputOffering),
-                TweenMax.to(_this._hintTl, .2, { height:'100%' })
+                this.animations.moveRight(_this._inputOffering)
             ])
             .add(TweenMax.to(_this._scrollArrow, .2, {rotation:'-90deg' }))
             .add(this.animations.hideSlide(this._section3c))
@@ -285,6 +291,10 @@ class Home extends Component {
                     controller.scrollTo(this);
                 }
             }));
+
+            scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', offset: 150, duration: '80%' })
+            .addTo(controller)
+            .setTween(TweenMax.to(_this._hintTl, .2, { height:'50%' })));
 
             scenes.push(new ScrollMagic.Scene({ triggerElement: this._section3, triggerHook: 'onLeave', duration: '5%', offset: 150 }).addTo(controller)
             .on('end', function (event) {
@@ -712,7 +722,7 @@ class Home extends Component {
 
             if(contactIsOpen){
                 for(var i=0; i<4; i++){
-                    this.animations.showSlide(sectionsContent[i]);                                        
+                    this.animations.showSlide(sectionsContent[i]);
                 }
             }
             else{
