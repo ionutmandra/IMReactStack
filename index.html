@@ -112,7 +112,8 @@
     </div>
     <script>
 
-    var preload = false;
+    var preload = true;
+    var fast = true;
 
     if(preload){
         preloadAnimation();
@@ -186,17 +187,17 @@
         TweenMax.set('#adaptabiTxt', { display:'none' });
 
         var timeline = new TimelineLite({ onComplete: function () { timeline = null; } })
-        .add(TweenMax.to('#line', 1, { height: '20%', ease: Power3.easeIn }))
-        .add(TweenMax.to('#line', 1, { height: '80%' }))
-        .add(TweenMax.to('#line', 1, { height: '100%', ease: Power3.easeOut }))
+        .add(TweenMax.to('#line', fast ? .1 : 1, { height: '20%', ease: Power3.easeIn }))
+        .add(TweenMax.to('#line', fast ? .1 : 1, { height: '80%' }))
+        .add(TweenMax.to('#line', fast ? .1 : 1, { height: '100%', ease: Power3.easeOut }))
         .add([
             TweenMax.to('#leftLogo', .2,{x:'0%'}),
             TweenMax.to('#rightLogo',.2,{x:'0%'})
         ])
         .set({},{delay:.2})
         .add([
-            TweenMax.to('#leftLogo', 1, { top: '50%', ease:Power3.easeIn}),
-            TweenMax.to('#rightLogo', 1, { top: '50%', ease:Power3.easeIn}),
+            TweenMax.to('#leftLogo', fast ? .1 : 1, { top: '50%', ease:Power3.easeIn}),
+            TweenMax.to('#rightLogo', fast ? .1 : 1, { top: '50%', ease:Power3.easeIn}),
             TweenMax.to('#preload', .1, { background: 'none'})
         ])
         .set('#line', {  overflow:'visible' })
@@ -204,13 +205,13 @@
         .set('#rightLogo',{  display:'none' })
         .set('#adaptabiTxt', { display:'block' })
         .add([
-            TweenMax.to('#leftLogo', 0.5, {  x: '-30px' , delay:0.3 , ease:Power3.easeIn}),
-            TweenMax.to('#adaptabiTxt', 0.5, { x: '+100px', delay:0.3 , ease:Power3.easeIn })
+            TweenMax.to('#leftLogo', fast ? .1 : 0.5, {  x: '-30px' , delay: fast ? 0 : 0.3 , ease:Power3.easeIn}),
+            TweenMax.to('#adaptabiTxt', fast ? .1 : 0.5, { x: '+100px', delay: fast ? 0 : 0.3 , ease:Power3.easeIn })
         ])
-        .set({},{delay:.7})
+        .set({},{delay: fast ? .1 : .7 })
         .add(function(){
 
-            var tick = setInterval(function(){myTimer() }, 200);
+            var tick = setInterval(function(){myTimer() }, 100);
             function myTimer() {
 
                 if(window.ReactLoaded){
@@ -220,8 +221,8 @@
                     var timeline = new TimelineLite({ onComplete: function() { timeline = null; }})
                     .add([
                         TweenMax.set('#line',{ 'border-right': 'none'}),
-                        TweenMax.to('#line', 1, { x: '-100%', ease: Power3.easeIn }),
-                        TweenMax.to('#liner', 1, { x: '+100%', ease: Power3.easeIn }),
+                        TweenMax.to('#line', fast ? .4 : 1, { x: '-100%', ease: Power3.easeIn }),
+                        TweenMax.to('#liner', fast ? .4 : 1, { x: '+100%', ease: Power3.easeIn }),
                     ])
                     .add([TweenMax.to('#preload',.1, { 'z-index': 0})])
                     .add(TweenMax.set('body',{overflow:''}));
