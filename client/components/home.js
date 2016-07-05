@@ -11,7 +11,7 @@ class Home extends Component {
         this.handleLinkClick = this.handleLinkClick.bind(this);
         this.contactClosed = this.contactClosed.bind(this);
         this.setInitialScroll = this.setInitialScroll.bind(this);
-        this.initialScroll = 0;
+        this.initialScroll = undefined;
 
         var _this = this;
         var controller = this.controller =  new ScrollMagic.Controller();
@@ -653,7 +653,7 @@ class Home extends Component {
         var height = $window.height();
         var fullHeight = height * 4;
         var scroll = $window.scrollTop();
-        var initialScroll = this.initialScroll;
+        var initialScroll = typeof(this.initialScroll) === 'undefined' ? $window.scrollTop() : this.initialScroll;
 
         //var slide = '.slide-' + (currentSlideNr + 1);
         var sections = [this._section1,this._section2,this._section3,this._section4 ];

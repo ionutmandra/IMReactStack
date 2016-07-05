@@ -16,9 +16,7 @@ class Header extends Component {
         this.getContactPieces = this.getContactPieces.bind(this);
         this.setInitialScroll = this.setInitialScroll.bind(this);
         this.getInitialScroll = this.getInitialScroll.bind(this);
-        // this.props.setInitialScroll = this.setInitialScroll;
-        // this.props.getInitialScroll = this.getInitialScroll;
-        this.initialScroll = 0;
+        this.initialScroll = undefined;
     }
 
     setInitialScroll(scroll){
@@ -26,7 +24,13 @@ class Header extends Component {
         this.props.setInitialScroll && this.props.setInitialScroll(scroll);
     }
     getInitialScroll(){
-        return this.initialScroll;
+        if(typeof(this.initialScroll) === 'undefined' )
+        {
+            return $window.scrollTop();
+        }
+        else{
+            return this.initialScroll;
+        }
     }
 
     componentDidMount() {
@@ -220,14 +224,16 @@ class Header extends Component {
     }
 
     openContact(event) {
+        event.preventDefault();
+
         if (this.inProgress) {
-            event.preventDefault();
             return false;
         }
         this.inProgress = true;
         let burgerIsOpen = this.article.hasClass('menu-open');
         let pieces = this.getContactPieces();
         let isLarge = this.props.ui.media.current == breakpoint.names.large;
+
         this.article.addClass('contact-open');
 
         if (burgerIsOpen) { //small ALL scenarios, medium ALL scenarios + Large Generic pege when burger open
@@ -243,24 +249,20 @@ class Header extends Component {
                 ]));
         } else if (this.props.isHomepage) { //header contact link on Large Homepage
             this.setInitialScroll($window.scrollTop());
-            let currentSlide = this.currentSlide = Math.floor($window.scrollTop() / $window.height());
             this.props.disableScenes();
             $.scrollLock(true);
 
             TweenMax.set(this.header, { height: '100%' });
 
-            console.warn('slide', currentSlide);
-
             let timeline = new TimelineLite({ onComplete: onComplete.bind(this, timeline) })
                 .add(_.filter([
-                    //TweenMax.to(this.homeLeft[currentSlide], .3, { x: '-100%', ease: Power3.easeIn }),
                     TweenMax.to(this.homeLeft, .3, { x: '-100%', ease: Power3.easeIn }),
                     TweenMax.to(this.links, .3, { x: '-100%', ease: Power3.easeIn }),
                     TweenMax.to(this.logoText, .3, { x: '-100%', ease: Power3.easeIn }),
                     TweenMax.to(this.homeRight, .3, { x: '105%', ease: Power3.easeIn }),
                     TweenMax.to(this.homeBottom, .3, { y: '200%', ease: Power3.easeIn }),
 
-                    TweenMax.to(this.homeImage, .6, { scale: 1.1, opacity: 0, ease: Power3.easeInOut }),
+                    TweenMax.to(this.homeImage, .6, { opacity: 0, ease: Power3.easeInOut }),
 
                     TweenMax.fromTo(pieces.left, .3, { x: '-100%' }, { x: '0%', delay: .3, ease: Power3.easeOut }),
                     TweenMax.fromTo(pieces.right, .3, { x: '105%' }, { x: '0%', delay: .3, ease: Power3.easeOut }),
@@ -276,7 +278,7 @@ class Header extends Component {
                     TweenMax.to(this.links, .3, { x: '-100%', ease: Power3.easeOut }),
                     TweenMax.to(this.logoText, .3, { x: '-100%', ease: Power3.easeOut }),
                     TweenMax.to(this.headerText, .3, { x: '-100%', ease: Power3.easeOut }),
-                    TweenMax.to(this.headerImage, .3, { scale: 1.1, opacity: 0, ease: Power3.easeOut }),
+                    TweenMax.to(this.headerImage, .3, { opacity: 0, ease: Power3.easeOut }),
                 ]))
                 .add((() => {
                     this.article.addClass('fix-header');
@@ -290,7 +292,6 @@ class Header extends Component {
                 ]));
         }
 
-        event.preventDefault();
         return false;
 
         function onComplete(timeline) {
@@ -300,8 +301,10 @@ class Header extends Component {
     }
 
     closeContact(event) {
+
+        event.preventDefault();
+
         if (this.inProgress) {
-            event.preventDefault();
             return false;
         }
         this.inProgress = true;
@@ -311,85 +314,53 @@ class Header extends Component {
         let isMedium = this.props.ui.media.current == breakpoint.names.medium;
 
         if (burgerIsOpen) { //small ALL scenarios, medium ALL scenarios + Large Generic pege when burger open
-
-            if(this.props.isHomepage){
-                for(var i=0;i<4;i++){
-                    if( this.currentSlide != i){
-                        TweenMax.set(this.homeLeft[i], { x: '0%'}),
-                        TweenMax.set(this.homeRight[i], { x: '0%'}),
-                        TweenMax.set(this.homeBottom[i], { y: '0%' });
-                    }
-                }
-            }
-
             let timeline = new TimelineLite({ onComplete: onComplete.bind(this, timeline, false) })
-                .add(_.filter([
-                    TweenMax.to(pieces.left, .3, { x: '-100%', ease: Power3.easeIn }),
-                    TweenMax.to(pieces.right, .3, { x: '105%', ease: Power3.easeIn }),
-                ]))
-                .add(_.filter([
-                    TweenMax.to(this.links, .3, { x: '0%', ease: Power3.easeOut }),
-                    TweenMax.to(this.logoText, .3, { x: '0%', ease: Power3.easeOut }),
-                    //TweenMax.fromTo(this.burgerClose, .3, { x: isLarge ? '-100%' : '105%' }, { x: '0%', ease: Power3.easeIn }),
-                    TweenMax.to(this.burgerClose, .3, { x: '0%', ease: Power3.easeOut }),
-                ]));
+            .add(_.filter([
+                TweenMax.to(pieces.left, .3, { x: '-100%', ease: Power3.easeIn }),
+                TweenMax.to(pieces.right, .3, { x: '105%', ease: Power3.easeIn }),
+            ]))
+            .add(_.filter([
+                TweenMax.to(this.links, .3, { x: '0%', ease: Power3.easeOut }),
+                TweenMax.to(this.logoText, .3, { x: '0%', ease: Power3.easeOut }),
+                //TweenMax.fromTo(this.burgerClose, .3, { x: isLarge ? '-100%' : '105%' }, { x: '0%', ease: Power3.easeIn }),
+                TweenMax.to(this.burgerClose, .3, { x: '0%', ease: Power3.easeOut }),
+            ]));
         } else if (this.props.isHomepage) { //header contact link on Large Homepage
-            let currentSlide = this.currentSlide;
+            var currentSlide = Math.floor( this.getInitialScroll() / $window.height());
+            let timeline = new TimelineLite({ onComplete: onComplete.bind(this, timeline, true) })
+            .add(_.filter([
+                TweenMax.to(pieces.left, .3, { x: '-100%', ease: Power3.easeIn }),
+                TweenMax.to(pieces.right, .3, { x: '105%', ease: Power3.easeIn }),
 
-            if (isLarge) { // opened on home large, closing on home large
-                let timeline = new TimelineLite({ onComplete: onComplete.bind(this, timeline, true) })
-                    .add(_.filter([
-                        TweenMax.to(pieces.left, .3, { x: '-100%', ease: Power3.easeIn }),
-                        TweenMax.to(pieces.right, .3, { x: '105%', ease: Power3.easeIn }),
+                TweenMax.to(this.homeImage[currentSlide], .6, { scale: 1, opacity: 1, ease: Power3.easeInOut }),
 
-                        TweenMax.to(this.homeImage[currentSlide], .6, { scale: 1, opacity: 1, ease: Power3.easeInOut }),
+                TweenMax.to(this.links, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
+                TweenMax.to(this.logoText, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
+                TweenMax.to(this.homeLeft[currentSlide], .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
+                TweenMax.to(this.homeRight[currentSlide], .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
+                TweenMax.to(this.homeBottom[currentSlide], .3, { y: '0%', delay: .3, ease: Power3.easeOut }),
+            ]));
 
-                        TweenMax.to(this.links, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
-                        TweenMax.to(this.logoText, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
-                        TweenMax.to(this.homeLeft[currentSlide], .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
-                        TweenMax.to(this.homeRight[currentSlide], .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
-                        TweenMax.to(this.homeBottom[currentSlide], .3, { y: '0%', delay: .3, ease: Power3.easeOut }),
-                    ]));
-            } else { // opened on home large, closing on home small/medium
-                let timeline = new TimelineLite({ onComplete: onComplete.bind(this, timeline, true) })
-                    .add(_.filter([
-                        TweenMax.to(pieces.left, .3, { x: '-100%', ease: Power3.easeIn }),
-                        TweenMax.to(pieces.right, .3, { x: '105%', ease: Power3.easeIn }),
-
-                        TweenMax.to(this.homeImage, .6, { scale: 1, opacity: 1, ease: Power3.easeInOut }),
-
-                        isMedium && TweenMax.to(this.logoText, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
-                        TweenMax.to(this.homeLeft, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
-                        TweenMax.to(this.homeRight, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
-                        TweenMax.to(this.homeBottom, .3, { y: '0%', delay: .3, ease: Power3.easeOut }),
-                        TweenMax.to(this.burgerOpen, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
-                    ]));
-            }
         } else { //header contact link on Large Generic page when scroll = 0
-            if (isLarge) { //opened on generic large, closing on generic large
-                let timeline = new TimelineLite({ onComplete: onComplete.bind(this, timeline, true) })
-                    .add(_.filter([
-                        TweenMax.to(pieces.left, .3, { x: '-100%', ease: Power3.easeIn }),
-                        TweenMax.to(pieces.right, .3, { x: '105%', ease: Power3.easeIn }),
-                    ]))
-                    .add(_.filter([
-                        TweenMax.to(this.header, .6, { height: this.initialHeight, ease: Power3.easeOut }),
-                    ]))
-                    .add((() => {
-                        this.article.removeClass('fix-header');
-                    }).bind(this))
-                    .add(_.filter([
-                        TweenMax.to(this.links, .3, { x: '0%', ease: Power3.easeOut }),
-                        TweenMax.to(this.logoText, .3, { x: '0%', ease: Power3.easeOut }),
-                        TweenMax.to(this.headerText, .3, { x: '0%', ease: Power3.easeOut }),
-                        TweenMax.to(this.headerImage, .3, { scale: 1, opacity: 1, ease: Power3.easeOut }),
-                    ]));
-            } else {//opened on generic large, closing on generic small/medium
-                //when resizing down, we'll go from direct contact open to burger -> contact open, so nothing here
-            }
+            let timeline = new TimelineLite({ onComplete: onComplete.bind(this, timeline, true) })
+            .add(_.filter([
+                TweenMax.to(pieces.left, .3, { x: '-100%', ease: Power3.easeIn }),
+                TweenMax.to(pieces.right, .3, { x: '105%', ease: Power3.easeIn }),
+            ]))
+            .add(_.filter([
+                TweenMax.to(this.header, .6, { height: this.initialHeight, ease: Power3.easeOut }),
+            ]))
+            .add((() => {
+                this.article.removeClass('fix-header');
+            }).bind(this))
+            .add(_.filter([
+                TweenMax.to(this.links, .3, { x: '0%', ease: Power3.easeOut }),
+                TweenMax.to(this.logoText, .3, { x: '0%', ease: Power3.easeOut }),
+                TweenMax.to(this.headerText, .3, { x: '0%', ease: Power3.easeOut }),
+                TweenMax.to(this.headerImage, .3, { scale: 1, opacity: 1, ease: Power3.easeOut }),
+            ]));
         }
 
-        event.preventDefault();
         return false;
 
         function onComplete(timeline, clearScroll) {
@@ -400,6 +371,7 @@ class Header extends Component {
                 TweenMax.set(this.header, { clearProps: 'height' });
                 $.scrollLock(false);
                 setTimeout(this.props.enableScenes, 100);
+                this.setInitialScroll(undefined);
             }
         }
     }

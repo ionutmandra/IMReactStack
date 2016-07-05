@@ -90,25 +90,34 @@ class Logo extends Component {
         }
 
         console.warn('logo handleMediaChange', media, this.props.isHomepage, $window.scrollTop());
-        let initialScroll = this.props.getInitialScroll();
+        let initialScroll = this.props.getInitialScroll(),
+            menuIsOpen = this.article.hasClass('menu-open'),
+            contactIsOpen = this.article.hasClass('contact-open');
+
         if(media.current == breakpoint.names.large)
         {
             if (this.props.isHomepage) {
                 this.showInstant();
-            } else if (initialScroll == 0) {
-                this.showInstant();
-            } else if (initialScroll < 355) {
-                this.lightInstant();
-                this.hideInstant();
-            } else {
-                this.darkInstant();
-                this.hideInstant();
+            } else { //generic page
+                if (initialScroll == 0) {
+                    !contactIsOpen && this.showInstant();
+                } else {
+                    if (!menuIsOpen){
+                        if (initialScroll < 355) {
+                            this.lightInstant();
+                            this.hideInstant();
+                        } else {
+                            this.darkInstant();
+                            this.hideInstant();
+                        }
+                    }
+                }
             }
         } else if (media.current == breakpoint.names.medium) {
-            this.showInstant();
+            !contactIsOpen && this.showInstant();
             this.lightInstant();
         } else if (media.current != breakpoint.names.none) {
-            this.hideInstant();
+            !menuIsOpen && this.hideInstant();
             this.lightInstant();
         }
     }
