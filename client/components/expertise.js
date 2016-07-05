@@ -54,18 +54,23 @@ class Expertise extends Component {
                         <div className="spacer-40 large-0 medium-0 small-24 show-for-small-only" />
                         <div className="large-3 large-offset-0 medium-5-5 medium-offset-1 small-11 small-offset-1 columns"><img src="/client/dist/img/icons/meteor.svg" title="Meteor" className="content-item"/></div>
                         <div className="large-3 large-offset-0 medium-5-5 medium-offset- small-12 small-offset-0 columns"><img src="/client/dist/img/icons/dotNet.jpg" title="Microsoft .NET" className="content-item"/></div>
-                        <div className="spacer-40 large-24 medium-0 small- show-for-large" />
+                        <div className="spacer-40 large-24 medium-0 small-0 show-for-large" />
                         <div className="spacer-40 large-0 medium-0 small-24 show-for-small-only" />
                         <div className="large-3 large-offset-3 medium-5-5 medium-offset-0 small-11 small-offset-1 columns"><img src="/client/dist/img/icons/sql-server.png" title="SQL Server" className="content-item"/></div>
                         <div className="large-3 large-offset-0 medium-5-5 medium-offset-0 small-12 small-offset-0 columns"><img src="/client/dist/img/icons/javascript.png" title="Javascript" className="content-item"/></div>
                         <div className="spacer-40 large-0 medium-24 small-0 show-for-medium-only" />
                         <div className="spacer-40 large-0 medium-0 small-24 show-for-small-only" />
                         <div className="large-3 large-offset-0 medium-5-5 medium-offset-1 small-11 small-offset-1 columns"><img src="/client/dist/img/icons/crosswalk.png" title="Crosswalk Project" className="content-item"/></div>
+                        <div className="large-3 large-offset-0 medium-5-5 medium-offset-0 small-12 small-offset-0 columns"><img src="/client/dist/img/icons/teamcity.jpg" title="Team City" className="content-item"/></div>
+                        <div className="spacer-40 large-0 medium-0 small-0 show-for-large" />
+                        <div className="spacer-40 large-0 medium-0 small-24 show-for-small-only" />
+                        <div className="large-3 large-offset-0 medium-5-5 medium-offset-0 small-11 small-offset-1 columns"><img src="/client/dist/img/icons/octopus.png" title="Octopus Deploy" className="content-item"/></div>
+                        <div className="large-3 large-offset-0 medium-5-5 medium-offset-0 small-12 small-offset-0 columns"><img src="/client/dist/img/icons/selenium.png" title="Selenium - Web Browser Automation" className="content-item"/></div>
                     </div>
                     <div className="spacer-100" />
                     <div className="row">
                         <div className="large-13 large-offset-3 medium-14 medium-offset-1 small-22 small-offset-1  columns">
-                            <h2 className="content-item">Processes</h2>
+                            <h1 className="content-item">Processes</h1>
                             <div className="spacer-40"/>
                             <p className="content-item">The processes are equally important to us and we believe that only by having adaptable and transparent processes we can meet and also exced client expectations.</p>
                         </div>
