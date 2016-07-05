@@ -78,10 +78,10 @@ class Header extends Component {
                 this.article.find('.scroll-hint > *').toArray(),
             ];
             this.homeImage = [
-                this.article.find('.slide-1.background .img').toArray(),
-                this.article.find('.slide-2.background .img').toArray(),
-                this.article.find('.slide-3.background .img').toArray(),
-                this.article.find('.slide-4.background .img').toArray(),
+                this.article.find('.slide-1.background .image').toArray(),
+                this.article.find('.slide-2.background .image').toArray(),
+                this.article.find('.slide-3.background .image').toArray(),
+                this.article.find('.slide-4.background .image').toArray(),
             ];
 
             this.handleMediaChange(this.props.ui.media);
@@ -332,7 +332,8 @@ class Header extends Component {
                 TweenMax.to(pieces.left, .3, { x: '-100%', ease: Power3.easeIn }),
                 TweenMax.to(pieces.right, .3, { x: '105%', ease: Power3.easeIn }),
 
-                TweenMax.to(this.homeImage[currentSlide], .6, { scale: 1, opacity: 1, ease: Power3.easeInOut }),
+                //TweenMax.to(this.homeImage, .6, { opacity: 1, ease: Power3.easeInOut }),
+                TweenMax.to(this.homeImage[currentSlide], .6, { opacity: 1, ease: Power3.easeInOut }),
 
                 TweenMax.to(this.links, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
                 TweenMax.to(this.logoText, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
