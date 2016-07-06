@@ -176,10 +176,10 @@ class Home extends Component {
         this.handleMediaChange(this.props.ui.media);
 
         // change behaviour of controller to animate scroll instead of jump
-        let t0 = new Date().getTime(), flag = true;
+        this.t0 = new Date().getTime();
         controller.scrollTo(function (newpos) {
             let t1 = new Date().getTime(), duration = 0.7;
-            if (t1 - t0 < 250) {
+            if (t1 - this.t0 < 250) {
                 //console.log('INSTANT SCROLL');
                 duration = 0;
             } else {
@@ -341,15 +341,25 @@ class Home extends Component {
         for (let name in breakpoint.names) {
             this.setScenes(name, false);
         }
-        if (this.props.transition.scrollScenesEnabled == true) {
+        if (media.current != breakpoint.names.large && this.props.transition.scrollScenesEnabled == true) {
             this.setScenes(media.current, true);
         }
 
         if (media.current == breakpoint.names.large) {
             //Scrolling to top
-            setTimeout($window.scrollTop.bind($window, 0), 50);
+            $window.scrollTop(0);
+            setTimeout((()=>{
+                this.setScenes(media.current, true);
+            }).bind(this), 150);
 
-            //var currentSlide = 0;
+            for (let i = 1; i < 4; i++) {
+                this.animations.hideSlide(sectionsContent[i]);
+                this.animations.hideImgInstant(images[i]);
+                this.animations.hideLeft(homeLeft[i]);
+                this.animations.hideRight(homeRight[i]);
+            }
+
+            // var currentSlide = 0;
 
             // if (media.prev == breakpoint.names.medium || media.prev == breakpoint.names.small) {
             //     currentSlide = Math.round((initialScroll) / height);
@@ -367,13 +377,6 @@ class Home extends Component {
             //         this.animations.hideRight(homeRight[i]);
             //     }
             // }
-
-            for (let i = 1; i < 4; i++) {
-                this.animations.hideSlide(sectionsContent[i]);
-                this.animations.hideImgInstant(images[i]);
-                this.animations.hideLeft(homeLeft[i]);
-                this.animations.hideRight(homeRight[i]);
-            }
 
             if (menuIsOpen && !contactIsOpen) {
                 this.article.removeClass('menu-open');
