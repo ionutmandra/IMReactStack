@@ -90,7 +90,7 @@ class Expertise extends Component {
                             <h3 className="content-item">Continuous delivery</h3>
                             <div className="spacer-20"/>
                             <p>
-                                We aim to deliver as often and as fast as possible all the features that are implemented by our team. Agile methodologies are at the core of development process and our favorite one would be a hybrid between Scrumban and No Estimates. We are flexible about the methodology and ideally we want to achieve more than <a href="https://en.wikipedia.org/wiki/Continuous_delivery">Continuous Delivery</a>, <a href="https://continuousdelivery.com/">Continuous Deployment</a>.
+                                We aim to deliver as often and as fast as possible all the features that are implemented by our team. Agile methodologies are at the core of development process and our favorite one would be a hybrid between <a href="http://leansoftwareengineering.com/ksse/scrum-ban/">Scrumban</a> and <a href="http://ronjeffries.com/xprog/articles/the-noestimates-movement/">No Estimates</a>. We are flexible about the methodology and ideally we want to achieve <a href="https://en.wikipedia.org/wiki/Continuous_delivery">Continuous Delivery</a>, <a href="https://continuousdelivery.com/">Continuous Deployment</a>.
                             </p>
                         </div>
                         <div className="large-5 large-offset-1 medium-11 medium-offset-1 small-22 small-offset-1 columns">
@@ -111,7 +111,7 @@ class Expertise extends Component {
                             <h3 className="content-item">Build and deployment automation</h3>
                             <div className="spacer-20"/>
                             <p>
-                                We strongly believe that repetitive tasks have to be automated, hence we have been directing our attention on implementing strong build processes and unit test automation on <a href="https://www.jetbrains.com/teamcity/"> TeamCity</a> and <a href="http://www.seleniumhq.org/"> Selenium</a>, and multi platform and environment deployment with <a href="https://octopus.com/">Octopus</a> and <a href="https://cordova.apache.org/">Cordova</a>.
+                                We strongly believe that repetitive tasks have to be automated, hence we have been directing our attention on implementing strong build processes and unit test automation on <a href="https://www.jetbrains.com/teamcity/"> TeamCity</a> and <a href="http://www.seleniumhq.org/"> Selenium</a>, and multi platform, multi environment deployment with <a href="https://octopus.com/">Octopus</a> and <a href="https://cordova.apache.org/">Cordova</a>.
                             </p>
                             <div className="spacer-20"/>
                         </div>
@@ -134,7 +134,7 @@ class Expertise extends Component {
                             <p className="content-item">Being one of our core values, innovation is supported in every aspect of our activity, from frameworks and components to build systems and even communities meetings.</p>
                         </div>
                     </div>
-                    <div className="spacer-60"/>
+                    <div className="spacer-20"/>
                     <div className="row innovation">
                         <div className="large-12 large-offset-3 medium-18 medium-offset-1 small-22 small-offset-1 columns">
                             <div className="spacer-40"/>
