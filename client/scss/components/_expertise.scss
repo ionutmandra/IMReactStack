@@ -303,6 +303,21 @@
                 display: block;
             }
         }
+         .innovation {
+            ul {
+                li {
+                    font-family: "Poppins";
+                    font-weight: $normal;
+                    font-size: rem-calc(14pt);
+                    line-height: rem-calc(22pt);
+                    color: $text-color;
+                }
+            }
+            img {
+                width: 30%;
+                display: block;
+            }
+        }
         .call-to-action {
             p {
                 margin-bottom: 0.4rem;
