@@ -334,6 +334,7 @@ export default class Burger extends Component {
                 .add(_.filter([
                     wasFixedBurger && TweenMax.to(this.burger, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
                     isLarge && initialScroll > 355 && TweenMax.to(this.logoImage, .3, { color: '#4d4d4d', delay: .3, ease: Power3.easeOut }),
+                    isLarge && initialScroll > 355 && TweenMax.to(this.burger, .3, { color: '#4d4d4d', delay: .3, ease: Power3.easeOut }),
                     TweenMax.to(this.header, .6, { height: initialHeight, ease: Power3.easeOut }),
                 ]))
                 .add(() => {
