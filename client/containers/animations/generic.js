@@ -40,7 +40,7 @@ export function large_enter_header(ref, callback, transition) {
     var arr1 = [0, 100 - position, 0, position];
     var arr2 = Object.assign([0, 0, 0, 0], {
         ease: Power3.easeIn, onUpdate: () => {
-            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
         }
     });
     $window.scrollTop(0);
@@ -48,7 +48,7 @@ export function large_enter_header(ref, callback, transition) {
 
     //Initial state
     TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
-    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
     TweenMax.set(line, { left: left, opacity: 1, height: 0 });
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.image && TweenMax.set(elements.image, { scale: height / 400 });
@@ -112,7 +112,7 @@ export function medium_enter_header(ref, callback, transition) {
     var arr1 = [0, 100 - position, 0, position];
     var arr2 = Object.assign([0, 0, 0, 0], {
         ease: Power3.easeIn, onUpdate: () => {
-            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
         }
     });
     $window.scrollTop(0);
@@ -120,7 +120,7 @@ export function medium_enter_header(ref, callback, transition) {
 
     //Initial state
     TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
-    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
     TweenMax.set(line, { left: left, opacity: 1, height: 0 });
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.image && TweenMax.set(elements.image, { scale: height / 400 });
@@ -184,7 +184,7 @@ export function small_enter_header(ref, callback, transition) {
     var arr1 = [0, 100 - position, 0, position];
     var arr2 = Object.assign([0, 0, 0, 0], {
         ease: Power3.easeIn, onUpdate: () => {
-            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
         }
     });
     $window.scrollTop(0);
@@ -192,7 +192,7 @@ export function small_enter_header(ref, callback, transition) {
 
     //Initial state
     TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
-    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
     TweenMax.set(line, { left: left, opacity: 1, height: 0 });
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.image && TweenMax.set(elements.image, { scale: height / 400 });
@@ -343,7 +343,7 @@ export function large_enter_burger(ref, callback, transition, enableScenes) {
     var arr1 = [0, 100 - position, 0, position];
     var arr2 = Object.assign([0, 0, 0, 0], {
         ease: Power3.easeIn, onUpdate: () => {
-            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
         }
     });
     if (elements.links && elements.links.length) {
@@ -363,7 +363,7 @@ export function large_enter_burger(ref, callback, transition, enableScenes) {
 
     //Initial state
     TweenPlugin.activate(['CSSPlugin']);
-    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
     TweenMax.set(line, { left: left, opacity: 1, height: 0 });
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.image && TweenMax.set(elements.image, { scale: height / 400 });
@@ -427,7 +427,7 @@ export function medium_enter_burger(ref, callback, transition, enableScenes) {
     var arr1 = [0, 100 - position, 0, position];
     var arr2 = Object.assign([0, 0, 0, 0], {
         ease: Power3.easeIn, onUpdate: () => {
-            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
         },
     });
     // if (elements.links && elements.links.length) {
@@ -447,7 +447,7 @@ export function medium_enter_burger(ref, callback, transition, enableScenes) {
 
     //Initial state
     TweenPlugin.activate(['CSSPlugin']);
-    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
     TweenMax.set(line, { left: left, opacity: 1, height: 0 });
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.image && TweenMax.set(elements.image, { scale: height / 400 });
@@ -511,7 +511,7 @@ export function small_enter_burger(ref, callback, transition, enableScenes) {
     var arr1 = [0, 100 - position, 0, position];
     var arr2 = Object.assign([0, 0, 0, 0], {
         ease: Power3.easeIn, onUpdate: () => {
-            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
         }
     });
     // if (elements.links && elements.links.length) {
@@ -531,7 +531,7 @@ export function small_enter_burger(ref, callback, transition, enableScenes) {
 
     //Initial state
     TweenPlugin.activate(['CSSPlugin']);
-    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
     TweenMax.set(line, { left: left, opacity: 1, height: 0 });
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.image && TweenMax.set(elements.image, { scale: height / 400 });
@@ -706,7 +706,7 @@ export function large_enter_content(ref, callback, transition) {
     var arr1 = [0, 100 - position, 0, position];
     var arr2 = Object.assign([0, 0, 0, 0], {
         ease: Power3.easeIn, onUpdate: () => {
-            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
         }
     });
     //$window.scrollTop(0);
@@ -716,7 +716,7 @@ export function large_enter_content(ref, callback, transition) {
 
     //Initial state
     TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
-    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
     TweenMax.set(line, { left: left, opacity: 1, height: 0 });
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.image && TweenMax.set(elements.image, { scale: height / 400 });
@@ -786,7 +786,7 @@ export function medium_enter_content(ref, callback, transition) {
     var arr1 = [0, 100 - position, 0, position];
     var arr2 = Object.assign([0, 0, 0, 0], {
         ease: Power3.easeIn, onUpdate: () => {
-            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
         }
     });
     //$window.scrollTop(0);
@@ -796,7 +796,7 @@ export function medium_enter_content(ref, callback, transition) {
 
     //Initial state
     TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
-    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
     TweenMax.set(line, { left: left, opacity: 1, height: 0 });
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.image && TweenMax.set(elements.image, { scale: height / 400 });
@@ -866,7 +866,7 @@ export function small_enter_content(ref, callback, transition) {
     var arr1 = [0, 100 - position, 0, position];
     var arr2 = Object.assign([0, 0, 0, 0], {
         ease: Power3.easeIn, onUpdate: () => {
-            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
         }
     });
     //$window.scrollTop(0);
@@ -876,7 +876,7 @@ export function small_enter_content(ref, callback, transition) {
 
     //Initial state
     TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
-    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
     TweenMax.set(line, { left: left, opacity: 1, height: 0 });
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.image && TweenMax.set(elements.image, { scale: height / 400 });
@@ -1040,7 +1040,7 @@ export function large_enter_home_content(ref, callback, transition) {
     var arr1 = [0, 100 - position, 0, position];
     var arr2 = Object.assign([0, 0, 0, 0], {
         ease: Power3.easeIn, onUpdate: () => {
-            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
         }
     });
     $window.scrollTop(0);
@@ -1048,7 +1048,7 @@ export function large_enter_home_content(ref, callback, transition) {
 
     //Initial state
     TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
-    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
     TweenMax.set(line, { left: left, opacity: 1, height: 0 });
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.image && TweenMax.set(elements.image, { scale: height / 400 });
@@ -1115,7 +1115,7 @@ export function medium_enter_home_content(ref, callback, transition) {
     var arr1 = [0, 100 - position, 0, position];
     var arr2 = Object.assign([0, 0, 0, 0], {
         ease: Power3.easeIn, onUpdate: () => {
-            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
         }
     });
     //$window.scrollTop(0);
@@ -1123,7 +1123,7 @@ export function medium_enter_home_content(ref, callback, transition) {
 
     //Initial state
     TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
-    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
     TweenMax.set(line, { left: left, opacity: 1, height: 0 });
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.image && TweenMax.set(elements.image, { scale: height / 400 });
@@ -1184,7 +1184,7 @@ export function small_enter_home_content(ref, callback, transition) {
     var arr1 = [0, 100 - position, 0, position];
     var arr2 = Object.assign([0, 0, 0, 0], {
         ease: Power3.easeIn, onUpdate: () => {
-            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
         }
     });
     $window.scrollTop(0);
@@ -1192,7 +1192,7 @@ export function small_enter_home_content(ref, callback, transition) {
 
     //Initial state
     TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
-    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
     TweenMax.set(line, { left: left, opacity: 1, height: 0 });
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.image && TweenMax.set(elements.image, { scale: height / 400 });
