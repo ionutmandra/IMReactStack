@@ -36,7 +36,7 @@ class Careers extends Component {
                         <div className="large-9 large-offset-6 medium-22 medium-offset-1 small-22 small-offset-1 columns">
                             <ul className="content-item">
                                 <li>See <strong>change</strong> as a part of progress</li>
-                                <li>Be willing to <strong>communicate clearly</strong> and open</li>
+                                <li>Be willing to <strong>communicate clearly</strong> and openly</li>
                                 <li>Be self driven and <strong>proactive</strong></li>
                                 <li>Understand that work is <strong>fun</strong></li>
                                 <li>See <strong>creativity and innovation</strong> even in the smallest things</li>

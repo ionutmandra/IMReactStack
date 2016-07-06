@@ -74,38 +74,40 @@ class About extends Component {
                         </div>
                     </div>
                     <div className="spacer-100" />
-                    <div className="row">
-                        <span className="large-16 large-offset-3 medium-5 medium-offset-1 small-22 small-offset-1 columns"><h2 id="ourculture" className="content-item">Our culture</h2></span>
-                    </div>
-                    <div className="spacer-40 hide-for-large" />
-                    <div className="row align-middle">
-                        <div className="image light show-for-medium-up large-6 large-offset-6 show-for-large columns"><img src="/client/dist/img/photos/color/4.jpg" className="content-item"/></div>
-                        <p className="large-5 large-pull-9 large-offset-0 medium-9 medium-offset-1 small-22 small-offset-1 columns"><span className="content-item block">We believe in <strong>happiness</strong> by enjoying what we do and doing what really matters.</span></p>
-                        <div className="spacer-40 medium-0 small-24  hide-for-medium"/>
-                        <p className="large-5 large-pull-2 large-offset-0 medium-9 medium-offset-2 small-22 small-offset-1 columns"><span className="content-item block">We believe in energizing ourselves by following our <strong>passion</strong>.</span></p>
-                        <div className="spacer-40 medium-0 small-24  show-for-small-only"/>
-                    </div>
-                    <div className="spacer-60 show-for-medium-only" />
-                    <div className="row align-middle">
-                        <p className="large-5 large-offset-6 medium-9 medium-offset-1 small-22 small-offset-1 columns"><span className="content-item block">We believe <strong>trust</strong> in each other will allow us to be more autonomous and responsible.</span></p>
-                        <div className="spacer-40 medium-0 small-24  hide-for-medium"/>
-                        <div className="image light large-6 large-push-7 show-for-large columns"><img src="/client/dist/img/photos/color/5.jpg" className="content-item block" /></div>
-                        <p className="large-5 large-pull-2 large-offset-0 medium-9 medium-offset-2 small-22 small-offset-1 columns"><span className="content-item block">We believe there should be a clear <strong>purpose</strong> in everything we do.</span></p>
-                        <div className="spacer-40 medium-0 small-24  hide-for-medium"/>
-                    </div>
-                    <div className="spacer-60 show-for-medium-only" />
-                    <div className="row align-middle">
-                        <div className="image light large-6 show-for-large columns"><img src="/client/dist/img/photos/color/6.jpg" className="content-item" /></div>
-                        <p className="large-5 large-pull-3 large-offset-0 medium-9 medium-offset-1 small-22 small-offset-1 columns"><span className="content-item block">We believe in delivering high quality by continuous learning and <strong>professionalism</strong>.</span></p>
-                        <div className="spacer-40 medium-0 small-24  hide-for-medium"/>
-                        <p className="large-5 large-offset-1 medium-10 medium-offset-2 small-22 small-offset-1 columns"><span className="content-item block">We believe openness and transparency always leads to meaningful, kind <strong>communication</strong>.</span></p>
-                        <div className="spacer-40 medium-0 small-24  hide-for-medium"/>
-                    </div>
-                    <div className="spacer-60 show-for-medium-only" />
-                    <div className="row align-middle">
-                        <p className="large-5 large-offset-6 medium-9 small-22 small-offset-1 columns"><span className="content-item block">We believe everything changes so <strong>adaptability</strong> and <strong>innovation</strong> are essential.</span></p>
-                        <div className="spacer-40 medium-0 small-24  hide-for-medium"/>
-                        <div className="image light large-6 large-offset-1 small-24 small-offset-0 hide-for-medium-only columns"><img src="/client/dist/img/photos/color/7.jpg" className="content-item" /></div>
+                    <div className="our-culture">
+                        <div className="row">
+                            <span className="large-16 large-offset-3 medium-5 medium-offset-1 small-22 small-offset-1 columns"><h2 id="ourculture" className="content-item">Our culture</h2></span>
+                        </div>
+                        <div className="spacer-40 hide-for-large" />
+                        <div className="row align-middle">
+                            <div className="image light show-for-medium-up large-6 large-offset-6 show-for-large columns"><img src="/client/dist/img/photos/color/4.jpg" className="content-item"/></div>
+                            <p className="large-5 large-pull-9 large-offset-0 medium-9 medium-offset-1 small-22 small-offset-1 columns"><span className="content-item block">We believe in <strong>happiness</strong> by enjoying what we do and doing what really matters.</span></p>
+                            <div className="spacer-40 medium-0 small-24  hide-for-medium"/>
+                            <p className="large-5 large-pull-2 large-offset-0 medium-9 medium-offset-2 small-22 small-offset-1 columns"><span className="content-item block">We believe in energizing ourselves by following our <strong>passion</strong>.</span></p>
+                            <div className="spacer-40 medium-0 small-24  show-for-small-only"/>
+                        </div>
+                        <div className="spacer-60 show-for-medium-only" />
+                        <div className="row align-middle">
+                            <p className="large-5 large-offset-6 medium-9 medium-offset-1 small-22 small-offset-1 columns"><span className="content-item block">We believe <strong>trust</strong> in each other will allow us to be more autonomous and responsible.</span></p>
+                            <div className="spacer-40 medium-0 small-24  hide-for-medium"/>
+                            <div className="image light large-6 large-push-7 show-for-large columns"><img src="/client/dist/img/photos/color/5.jpg" className="content-item block" /></div>
+                            <p className="large-5 large-pull-2 large-offset-0 medium-9 medium-offset-2 small-22 small-offset-1 columns"><span className="content-item block">We believe there should be a clear <strong>purpose</strong> in everything we do.</span></p>
+                            <div className="spacer-40 medium-0 small-24  hide-for-medium"/>
+                        </div>
+                        <div className="spacer-60 show-for-medium-only" />
+                        <div className="row align-middle">
+                            <div className="image light large-6 show-for-large columns"><img src="/client/dist/img/photos/color/6.jpg" className="content-item" /></div>
+                            <p className="large-5 large-pull-3 large-offset-0 medium-9 medium-offset-1 small-22 small-offset-1 columns"><span className="content-item block">We believe in delivering high quality by continuous learning and <strong>professionalism</strong>.</span></p>
+                            <div className="spacer-40 medium-0 small-24  hide-for-medium"/>
+                            <p className="large-5 large-offset-1 medium-10 medium-offset-2 small-22 small-offset-1 columns"><span className="content-item block">We believe openness and transparency always leads to meaningful, kind <strong>communication</strong>.</span></p>
+                            <div className="spacer-40 medium-0 small-24  hide-for-medium"/>
+                        </div>
+                        <div className="spacer-60 show-for-medium-only" />
+                        <div className="row align-middle">
+                            <p className="large-5 large-offset-6 medium-9 small-22 small-offset-1 columns"><span className="content-item block">We believe everything changes so <strong>adaptability</strong> and <strong>innovation</strong> are essential.</span></p>
+                            <div className="spacer-40 medium-0 small-24  hide-for-medium"/>
+                            <div className="image light large-6 large-offset-1 small-24 small-offset-0 hide-for-medium-only columns"><img src="/client/dist/img/photos/color/7.jpg" className="content-item" /></div>
+                        </div>
                     </div>
                     <div className="spacer-100"/>
                     <div className="row">
@@ -117,7 +119,7 @@ class About extends Component {
                             <div className="row">
                                 <div className="memeber-details-top columns">
                                     <p className="memeber-name content-item">Tudor Dumitriu</p>
-                                    <p className="memeber-job content-item">Founder and Project Manager</p>
+                                    <p className="memeber-job content-item">Co-founder and Project Manager</p>
                                 </div>
                             </div>
                             <div className="row">
@@ -143,7 +145,7 @@ class About extends Component {
                             <div className="row">
                                  <div className="memeber-details-top columns">
                                     <p className="memeber-name content-item">Laurenţiu Macovei</p>
-                                    <p className="memeber-job content-item">Founder and Software Developer</p>
+                                    <p className="memeber-job content-item">Co-founder and Software Developer</p>
                                 </div>
                             </div>
                             <div className="row">
