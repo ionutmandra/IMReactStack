@@ -352,6 +352,8 @@ class Home extends Component {
                 this.setScenes(media.current, true);
             }).bind(this), 150);
 
+            this.timeLines.push(TweenMax.set(this._gradient, { background: 'linear-gradient(45deg, #d6cb26 0%, #68bc45 100%)' }));
+
             for (let i = 1; i < 4; i++) {
                 this.animations.hideSlide(sectionsContent[i]);
                 this.animations.hideImgInstant(images[i]);
@@ -438,7 +440,7 @@ class Home extends Component {
                     <div ref={(c) => this._img4 = c} className="image"><div className="img" /></div>
                 </section>
 
-                <div className="gradient" />
+                <div className="gradient" ref={(c) => this._gradient = c}/>
 
                 <section className="slide slide-1 content"  ref={(c) => this._section1c = c}>
                     <div className="text-1"><h1 ref={(c) => this._inputSoftware = c}>{'Software Innovators Happily Together'}</h1></div>
