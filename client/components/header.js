@@ -309,7 +309,7 @@ class Header extends Component {
                     TweenMax.to(this.links, .3, { x: '-100%', ease: Power3.easeIn }),
                     TweenMax.to(this.logoText, .3, { x: '-100%', ease: Power3.easeIn }),
                     TweenMax.to(this.homeRight, .3, { x: '105%', ease: Power3.easeIn }),
-                    TweenMax.to(this.homeBottom, .3, { y: '200%', ease: Power3.easeIn }),
+                    TweenMax.to(this.homeBottom, .3, { y: '200px', ease: Power3.easeIn }),
 
                     TweenMax.to(this.homeImage, .6, { opacity: 0, ease: Power3.easeInOut }),
 

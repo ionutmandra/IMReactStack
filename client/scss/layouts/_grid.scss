@@ -1,4 +1,6 @@
 @mixin layout-grid {
+    $linesFadeOut: .95;
+
     @media screen and #{breakpoint(large)} {
         body,
         html {
@@ -26,7 +28,7 @@
                 padding: 0;
                 height: 100%;
                 @include grid-column(3);
-                border-left: 1px solid fade-out($black, .9);
+                border-left: 1px solid fade-out($black, $linesFadeOut);
                 &:first-child {
                     @include grid-column-offset(3);
                 }
@@ -78,7 +80,7 @@
                 padding: 0;
                 height: 100%;
                 @include grid-column(5.5);
-                border-left: 1px solid fade-out($black, .9);
+                border-left: 1px solid fade-out($black, $linesFadeOut);
                 &:first-child {
                     @include grid-column-offset(1);
                 }
@@ -86,7 +88,7 @@
                     display: none;
                 }
                 &:nth-child(7) {
-                    border-right: 1px solid fade-out($black, .9);
+                    border-right: 1px solid fade-out($black, $linesFadeOut);
                 }
                 &.navigation-line {
                     display: block;
@@ -134,7 +136,7 @@
                 padding: 0;
                 height: 100%;
                 @include grid-column(11);
-                border-left: 1px solid fade-out($black, .9);
+                border-left: 1px solid fade-out($black, $linesFadeOut);
                 &:first-child {
                     @include grid-column-offset(1);
                 }
@@ -143,7 +145,7 @@
                 }
                 &:nth-child(3) {
                 	display: block;
-                    border-right: 1px solid fade-out($black, .9);
+                    border-right: 1px solid fade-out($black, $linesFadeOut);
                 }
                 &.navigation-line {
                     display: block;

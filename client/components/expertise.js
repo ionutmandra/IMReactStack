@@ -26,7 +26,10 @@ class Expertise extends Component {
     }
 
      onContactClick(event){
-        console.log('DORU needs to implement');
+    //console.log('DORU needs to implement');
+    this.props.dispatchTransition({
+      type: 'openContact',
+    });
   }
 
 
