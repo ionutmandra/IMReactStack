@@ -18,7 +18,8 @@ class Logo extends Component {
         let refs = this.refs,
             scenes = this.scenes = {},
             controller = this.controller = new ScrollMagic.Controller(),
-            article = this.article = $(dom.findDOMNode(refs.logo)).closest('article.page');
+            logo = this.logo = $(dom.findDOMNode(refs.logo)),
+            article = this.article = logo.closest('article.page');
 
         this.timeLines = [];
 
@@ -42,9 +43,11 @@ class Logo extends Component {
             .on('start', (event => {
                 if (event.scrollDirection == 'FORWARD') {
                     this.hideText();
+                    this.logo.addClass('disable-events');
                 }
                 if (event.scrollDirection == 'REVERSE') {
                     this.showText();
+                    this.logo.removeClass('disable-events');
                 }
             }).bind(this))
         );
