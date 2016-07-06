@@ -40,7 +40,7 @@ export function large_enter_header(ref, callback, transition) {
     var arr1 = [0, 100 - position, 0, position];
     var arr2 = Object.assign([0, 0, 0, 0], {
         ease: Power3.easeIn, onUpdate: () => {
-            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
         }
     });
     $window.scrollTop(0);
@@ -48,7 +48,7 @@ export function large_enter_header(ref, callback, transition) {
 
     //Initial state
     TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
-    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
     TweenMax.set(line, { left: left, opacity: 1, height: 0 });
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.image && TweenMax.set(elements.image, { scale: height / 400 });
@@ -112,7 +112,7 @@ export function medium_enter_header(ref, callback, transition) {
     var arr1 = [0, 100 - position, 0, position];
     var arr2 = Object.assign([0, 0, 0, 0], {
         ease: Power3.easeIn, onUpdate: () => {
-            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
         }
     });
     $window.scrollTop(0);
@@ -120,7 +120,7 @@ export function medium_enter_header(ref, callback, transition) {
 
     //Initial state
     TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
-    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
     TweenMax.set(line, { left: left, opacity: 1, height: 0 });
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.image && TweenMax.set(elements.image, { scale: height / 400 });
@@ -184,7 +184,7 @@ export function small_enter_header(ref, callback, transition) {
     var arr1 = [0, 100 - position, 0, position];
     var arr2 = Object.assign([0, 0, 0, 0], {
         ease: Power3.easeIn, onUpdate: () => {
-            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
         }
     });
     $window.scrollTop(0);
@@ -192,7 +192,7 @@ export function small_enter_header(ref, callback, transition) {
 
     //Initial state
     TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
-    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
     TweenMax.set(line, { left: left, opacity: 1, height: 0 });
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.image && TweenMax.set(elements.image, { scale: height / 400 });
@@ -343,7 +343,7 @@ export function large_enter_burger(ref, callback, transition, enableScenes) {
     var arr1 = [0, 100 - position, 0, position];
     var arr2 = Object.assign([0, 0, 0, 0], {
         ease: Power3.easeIn, onUpdate: () => {
-            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
         }
     });
     if (elements.links && elements.links.length) {
@@ -363,7 +363,7 @@ export function large_enter_burger(ref, callback, transition, enableScenes) {
 
     //Initial state
     TweenPlugin.activate(['CSSPlugin']);
-    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
     TweenMax.set(line, { left: left, opacity: 1, height: 0 });
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.image && TweenMax.set(elements.image, { scale: height / 400 });
@@ -427,7 +427,7 @@ export function medium_enter_burger(ref, callback, transition, enableScenes) {
     var arr1 = [0, 100 - position, 0, position];
     var arr2 = Object.assign([0, 0, 0, 0], {
         ease: Power3.easeIn, onUpdate: () => {
-            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
         },
     });
     // if (elements.links && elements.links.length) {
@@ -438,7 +438,7 @@ export function medium_enter_burger(ref, callback, transition, enableScenes) {
     // }
     // $body.css('overflow', 'visible');
     // $window.scrollTop(0);
-    $.scrollLock(false, false); 
+    $.scrollLock(false, false);
     $.scrollLock(true);
     //$body.css('overflow', 'hidden');
     $line.addClass('burger');
@@ -447,7 +447,7 @@ export function medium_enter_burger(ref, callback, transition, enableScenes) {
 
     //Initial state
     TweenPlugin.activate(['CSSPlugin']);
-    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
     TweenMax.set(line, { left: left, opacity: 1, height: 0 });
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.image && TweenMax.set(elements.image, { scale: height / 400 });
@@ -511,7 +511,7 @@ export function small_enter_burger(ref, callback, transition, enableScenes) {
     var arr1 = [0, 100 - position, 0, position];
     var arr2 = Object.assign([0, 0, 0, 0], {
         ease: Power3.easeIn, onUpdate: () => {
-            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
         }
     });
     // if (elements.links && elements.links.length) {
@@ -531,7 +531,7 @@ export function small_enter_burger(ref, callback, transition, enableScenes) {
 
     //Initial state
     TweenPlugin.activate(['CSSPlugin']);
-    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
     TweenMax.set(line, { left: left, opacity: 1, height: 0 });
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.image && TweenMax.set(elements.image, { scale: height / 400 });
@@ -706,7 +706,7 @@ export function large_enter_content(ref, callback, transition) {
     var arr1 = [0, 100 - position, 0, position];
     var arr2 = Object.assign([0, 0, 0, 0], {
         ease: Power3.easeIn, onUpdate: () => {
-            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
         }
     });
     //$window.scrollTop(0);
@@ -716,7 +716,7 @@ export function large_enter_content(ref, callback, transition) {
 
     //Initial state
     TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
-    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
     TweenMax.set(line, { left: left, opacity: 1, height: 0 });
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.image && TweenMax.set(elements.image, { scale: height / 400 });
@@ -786,7 +786,7 @@ export function medium_enter_content(ref, callback, transition) {
     var arr1 = [0, 100 - position, 0, position];
     var arr2 = Object.assign([0, 0, 0, 0], {
         ease: Power3.easeIn, onUpdate: () => {
-            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
         }
     });
     //$window.scrollTop(0);
@@ -796,7 +796,7 @@ export function medium_enter_content(ref, callback, transition) {
 
     //Initial state
     TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
-    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
     TweenMax.set(line, { left: left, opacity: 1, height: 0 });
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.image && TweenMax.set(elements.image, { scale: height / 400 });
@@ -866,7 +866,7 @@ export function small_enter_content(ref, callback, transition) {
     var arr1 = [0, 100 - position, 0, position];
     var arr2 = Object.assign([0, 0, 0, 0], {
         ease: Power3.easeIn, onUpdate: () => {
-            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
         }
     });
     //$window.scrollTop(0);
@@ -876,7 +876,7 @@ export function small_enter_content(ref, callback, transition) {
 
     //Initial state
     TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
-    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
     TweenMax.set(line, { left: left, opacity: 1, height: 0 });
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.image && TweenMax.set(elements.image, { scale: height / 400 });
@@ -1020,7 +1020,7 @@ export function small_leave_content(ref, callback, transition) {
 ////
 // HOME CONTENT
 /////////////////////////////////////////
-export function large_enter_home_content(ref, callback, transition) {
+export function large_enter_home_content(ref, callback, transition, enableScenes) {
 
     if (!transition.column || !transition.target) {
         return callback();
@@ -1040,15 +1040,17 @@ export function large_enter_home_content(ref, callback, transition) {
     var arr1 = [0, 100 - position, 0, position];
     var arr2 = Object.assign([0, 0, 0, 0], {
         ease: Power3.easeIn, onUpdate: () => {
-            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
         }
     });
-    $window.scrollTop(0);
+    //$window.scrollTop(0);
     $body.css('overflow', 'hidden');
+
+    $container.removeClass('fix-header');
 
     //Initial state
     TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
-    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
     TweenMax.set(line, { left: left, opacity: 1, height: 0 });
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.image && TweenMax.set(elements.image, { scale: height / 400 });
@@ -1067,10 +1069,10 @@ export function large_enter_home_content(ref, callback, transition) {
             let $elementToScrollTo = urlParts.length === 2 ? $(['#', urlParts[1]].join('')) : '';
 
             if($elementToScrollTo.length > 0){
-                TweenMax.to(window, .7, { scrollTo: { y: $elementToScrollTo.offset().top }, ease: Power3.easeOut });      
+                TweenMax.to(window, .7, { scrollTo: { y: $elementToScrollTo.offset().top }, ease: Power3.easeOut });
             }
 
-            
+
         }
     })
         .set({}, {}, 1) //wait for leaving page to hide content
@@ -1078,6 +1080,7 @@ export function large_enter_home_content(ref, callback, transition) {
             TweenMax.to(line, .6, { height: '100%', ease: Power3.easeIn, onComplete: () => { $target.removeClass('line'); TweenMax.set(line, { opacity: 0 }); } }),
         ]))
         // .set({}, {}, 6)
+        //.set(elements.header, { height: height });
         .add(_.filter([
             TweenMax.to(arr1, .6, arr2),
         ]))
@@ -1088,6 +1091,7 @@ export function large_enter_home_content(ref, callback, transition) {
         ]))
         .add(_.filter([() => {
             $body.css('overflow', 'visible');
+            setTimeout(enableScenes, 100);
             $container.removeClass('overlap');
         }]))
         .add(_.filter([
@@ -1115,7 +1119,7 @@ export function medium_enter_home_content(ref, callback, transition) {
     var arr1 = [0, 100 - position, 0, position];
     var arr2 = Object.assign([0, 0, 0, 0], {
         ease: Power3.easeIn, onUpdate: () => {
-            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
         }
     });
     //$window.scrollTop(0);
@@ -1123,7 +1127,7 @@ export function medium_enter_home_content(ref, callback, transition) {
 
     //Initial state
     TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
-    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
     TweenMax.set(line, { left: left, opacity: 1, height: 0 });
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.image && TweenMax.set(elements.image, { scale: height / 400 });
@@ -1184,7 +1188,7 @@ export function small_enter_home_content(ref, callback, transition) {
     var arr1 = [0, 100 - position, 0, position];
     var arr2 = Object.assign([0, 0, 0, 0], {
         ease: Power3.easeIn, onUpdate: () => {
-            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+            TweenMax.set(elements.container, { webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
         }
     });
     $window.scrollTop(0);
@@ -1192,7 +1196,7 @@ export function small_enter_home_content(ref, callback, transition) {
 
     //Initial state
     TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
-    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
+    TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
     TweenMax.set(line, { left: left, opacity: 1, height: 0 });
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.image && TweenMax.set(elements.image, { scale: height / 400 });

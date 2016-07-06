@@ -18,3 +18,7 @@
 article.page-careers .contact .join-the-family {
     @include disable-link;
 }
+
+.disable-events {
+    pointer-events: none;
+}

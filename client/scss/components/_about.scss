@@ -230,7 +230,7 @@
                 margin-top: -40px;
                 left: 0;
                 display: inline-block;
-                z-index: 2;
+                z-index: 100000;
                 font-weight: $semibold;
                 font-size: rem-calc(12pt);
                 p {

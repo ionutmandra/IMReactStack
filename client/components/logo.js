@@ -11,13 +11,15 @@ class Logo extends Component {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
+        this.setScenes = this.setScenes.bind(this);
     }
 
     componentDidMount() {
         let refs = this.refs,
             scenes = this.scenes = {},
             controller = this.controller = new ScrollMagic.Controller(),
-            article = this.article = $(dom.findDOMNode(refs.logo)).closest('article.page');
+            logo = this.logo = $(dom.findDOMNode(refs.logo)),
+            article = this.article = logo.closest('article.page');
 
         this.timeLines = [];
 
@@ -41,16 +43,18 @@ class Logo extends Component {
             .on('start', (event => {
                 if (event.scrollDirection == 'FORWARD') {
                     this.hideText();
+                    this.logo.addClass('disable-events');
                 }
                 if (event.scrollDirection == 'REVERSE') {
                     this.showText();
+                    this.logo.removeClass('disable-events');
                 }
             }).bind(this))
         );
 
-        scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: article, triggerHook: 'onLeave', offset: 355 }).addTo(controller)
-            .setTween(this.darken())
-        );
+        scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: article, triggerHook: 'onLeave', offset: 355 } )
+            .addTo(controller)    
+            .setTween(this.darken()));
 
         this.handleMediaChange(this.props.ui.media);
     }
@@ -107,7 +111,9 @@ class Logo extends Component {
                             this.lightInstant();
                             this.hideInstant();
                         } else {
-                            this.darkInstant();
+                            if(this.props.transition.scrollScenesEnabled){
+                                this.darkInstant();
+                            }
                             this.hideInstant();
                         }
                     }
@@ -274,7 +280,13 @@ class Logo extends Component {
         return t;
     }
     darken() {
+        console.log('this is darken');
         let t = TweenMax.fromTo(this.img, .35, { color: '#fefefe' }, { color: '#4d4d4d' });
+        this.timeLines.push(t);
+        return t;
+    }
+    lighten() {
+        let t = TweenMax.fromTo(this.img, .35, { color: '#4d4d4d' }, { color: '#fefefe' });
         this.timeLines.push(t);
         return t;
     }

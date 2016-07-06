@@ -184,7 +184,11 @@ export default class Burger extends Component {
                     } else if (initialScroll < 355) {
                         this.hideCloseLeftInstant();
                     } else {
-                        this.darkInstant();
+                        if(this.props.transition.scrollScenesEnabled){
+                            this.darkInstant();
+                        }else {
+                            this.hideBurgerLeftInstant();
+                        }
                         this.hideCloseLeftInstant();
                     }
                 }
