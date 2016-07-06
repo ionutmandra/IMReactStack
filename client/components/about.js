@@ -14,7 +14,7 @@ class About extends Component {
     this.onContactClick = this.onContactClick.bind(this);
 
     this.state ={
-      cancelScene: 'false'
+      cancelScene: 'false',
     };
   }
 
@@ -47,7 +47,10 @@ class About extends Component {
   }
 
   onContactClick(event){
-        console.log('DORU needs to implement');
+    //console.log('DORU needs to implement');
+    this.props.dispatchTransition({
+      type: 'openContact',
+    });
   }
 
     render() {
@@ -195,7 +198,7 @@ class About extends Component {
                             <span className="hide-for-large">Interested? </span>
                             <span className="action-links">
                               <a onClick={this.onContactClick}>Send a message</a> or
-                                <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}> join the family.</Link>
+                              <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}> join the family.</Link>
                             </span>
                         </p>
                     </div>
