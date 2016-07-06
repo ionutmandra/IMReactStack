@@ -60,6 +60,12 @@
             .block {
                 display: inline-block;
             }
+            .team-images {
+                img {
+                    max-height: 350px;
+                    width: 100%
+                }
+            }
         }
         section.call-to-action {
             span.action-links {
