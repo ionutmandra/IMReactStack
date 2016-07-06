@@ -485,9 +485,9 @@ class Home extends Component {
                     </h1></div>
                 </section>
 
-                <section className="slide slide-4 content"  ref={(c) => this._section4c = c}>
-                    <div className="text-1"><h1 ref={(c) => this._inputSustaining = c} >Sustaining <Link to="/about#ourculture" data-animate-line="3" data-section="4" onClick={this.handleLinkClick}>learning and innovation</Link> as a part day to day activity.</h1></div>
-                </section>
+                    <section className="slide slide-4 content"  ref={(c) => this._section4c = c}>
+                        <div className="text-1"><h1 ref={(c) => this._inputSustaining = c} >Sustaining <Link to="/expertise#innovation" data-animate-line="3" data-section="4" onClick={this.handleLinkClick}>learning and innovation</Link> as a part of our day to day activity.</h1></div>
+                    </section>
 
                 <div className="scroll-hint" ref={(c) => this._scrollHintContainer = c}>
                     <svg onClick={this.handleHintClick} ref={(c) => this._scrollHint = c} width="70" height="70" version="1.1" xmlns="http://www.w3.org/2000/svg">

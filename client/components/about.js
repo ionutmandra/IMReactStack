@@ -14,7 +14,7 @@ class About extends Component {
     this.onContactClick = this.onContactClick.bind(this);
 
     this.state ={
-      cancelScene: 'false'
+      cancelScene: 'false',
     };
   }
 
@@ -47,7 +47,10 @@ class About extends Component {
   }
 
   onContactClick(event){
-        console.log('DORU needs to implement');
+    //console.log('DORU needs to implement');
+    this.props.dispatchTransition({
+      type: 'openContact',
+    });
   }
 
     render() {
@@ -61,7 +64,7 @@ class About extends Component {
                     <div className="spacer-40"/>
                     <div className="row align-middle">
                         <div className="large-8 large-offset-3 medium-9 medium-offset-1 small-22 small-offset-1 columns">
-                            <h1 className="content-item">Located in Iasi, we have  been crafting web and mobile software applications since 2007</h1>
+                            <h1 className="content-item">With offices in Romania and lately opened in United Kingdom, we have  been crafting web and mobile software applications since 2007</h1>
                             <div className="spacer-40 medium-0 small-24 hide-for-medium"/>
     						<p className="text-under-header content-item">Couple of years ago we started working on <Link to="/portfolio/sfb" onClick={this.handleSafetybankProjectClick}>Safetybank</Link> as a startup project and we took it to an enterprise class application with multiple platforms support.</p>                        </div>
 
@@ -162,9 +165,10 @@ class About extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="large-9 hide show-for-large">
+                        <div className="large-9 large-pull-3 show-for-large team-images">
                             <div className="row">
-                                <div className="image show-for-medium-up light large-9 columns "><img src="/client/dist/img/photos/temp1.jpg" /></div>
+                                <div className="image show-for-medium-up light large-24 large-offset-8 columns "><img src="/client/dist/img/photos/8.jpg" /></div>
+                                  <div className="image show-for-medium-up light large-24 columns "><img src="/client/dist/img/photos/9.jpg" /></div>
                             </div>
                         </div>
                     </div>
@@ -194,7 +198,7 @@ class About extends Component {
                             <span className="hide-for-large">Interested? </span>
                             <span className="action-links">
                               <a onClick={this.onContactClick}>Send a message</a> or
-                                <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}> join the family.</Link>
+                              <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}> join the family.</Link>
                             </span>
                         </p>
                     </div>

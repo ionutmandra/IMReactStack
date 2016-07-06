@@ -45,6 +45,7 @@ class Header extends Component {
         this.burgerClose = this.header.find('> .hamburger > .close');
         this.contactClose = this.header.find('.contact .btn .content');
         this.logoText = this.header.find('> .logo .text svg');
+        this.logoImage = this.header.find('> .logo .img');
         this.headerImage = this.header.find('> .image .img');
         this.headerText = this.header.find('> .text h1');
 
@@ -126,6 +127,10 @@ class Header extends Component {
         }
         if (this.props.ui.media.current != nextProps.ui.media.current) {
             this.handleMediaChange(nextProps.ui.media);
+        }
+        if (this.props.transition.type != nextProps.transition.type
+            && nextProps.transition.type == 'openContact') {
+            this.openContact(nextProps.transition.type);
         }
         return false;
     }
@@ -224,7 +229,9 @@ class Header extends Component {
     }
 
     openContact(event) {
-        event.preventDefault();
+        if (event != 'openContact') {
+            event.preventDefault();
+        }
 
         if (this.inProgress) {
             return false;
@@ -236,7 +243,49 @@ class Header extends Component {
 
         this.article.addClass('contact-open');
 
-        if (burgerIsOpen) { //small ALL scenarios, medium ALL scenarios + Large Generic pege when burger open
+        if (event == 'openContact') { //a content link opens contact, we may be scrolled
+            let scrollTop = $window.scrollTop();
+            this.setInitialScroll(scrollTop);
+            this.props.disableScenes();
+            $.scrollLock(true);
+
+            this.initialHeight = 400 - scrollTop;
+            this.initialHeight < 0 && (this.initialHeight = 0);
+            this.article.addClass('menu-open'); 
+
+            let scrollIsTop = scrollTop == 0;
+            let scrollIsHeaderTop = 0 < scrollTop <= 355;
+            let scrollIsHeaderBottom = 355 < scrollTop <= 400;
+            let scrollIsUnderHeaderBottom = 355 < scrollTop;
+            let scrollIsUnderHeader = 400 < scrollTop;
+
+            scrollIsUnderHeader && TweenMax.set(this.headerText, { x: '-100%', ease: Power3.easeOut });
+            scrollIsUnderHeader && TweenMax.set(this.headerImage, { opacity: 0, ease: Power3.easeOut });
+
+            let timeline = new TimelineLite({ onComplete: onComplete.bind(this, timeline) })
+                .add(_.filter([
+                    scrollIsTop && TweenMax.to(this.links, .3, { x: '-100%', ease: Power3.easeOut }),
+                    scrollIsTop && TweenMax.to(this.logoText, .3, { x: '-100%', ease: Power3.easeOut }),
+                    !scrollIsTop && TweenMax.to(this.burgerOpen, .3, { x: isLarge ? '-100%' : '105%', ease: Power3.easeOut }),
+                    scrollIsUnderHeaderBottom && TweenMax.to(this.logoImage, .3, { color: '#fefefe', ease: Power3.easeOut }),
+                    scrollIsUnderHeaderBottom && TweenMax.to(this.burgerOpen, .3, { color: '#fefefe', ease: Power3.easeOut }),
+                    !scrollIsUnderHeader && TweenMax.to(this.headerText, .3, { x: '-100%', ease: Power3.easeOut }),
+                    !scrollIsUnderHeader && TweenMax.to(this.headerImage, .3, { opacity: 0, ease: Power3.easeOut }),
+                ]))
+                .add((() => {
+                    this.article.addClass('fix-header');
+                }).bind(this))
+                .add(_.filter([
+                    TweenMax.fromTo(this.header, .6, { height: this.initialHeight }, { height: '100%', ease: Power3.easeOut }),
+                ]))
+                .add(_.filter([
+                    TweenMax.fromTo(pieces.left, .3, { x: '-100%' }, { x: '0%', ease: Power3.easeOut }),
+                    TweenMax.fromTo(pieces.right, .3, { x: '105%' }, { x: '0%', ease: Power3.easeOut }),
+                ]));    
+            this.props.dispatchTransition({
+                type: '',
+            });        
+        } else if (burgerIsOpen) { //small ALL scenarios, medium ALL scenarios + Large Generic pege when burger open
             let timeline = new TimelineLite({ onComplete: onComplete.bind(this, timeline) })
                 .add(_.filter([
                     TweenMax.to(this.links, .3, { x: '-100%', ease: Power3.easeIn }),
@@ -260,7 +309,7 @@ class Header extends Component {
                     TweenMax.to(this.links, .3, { x: '-100%', ease: Power3.easeIn }),
                     TweenMax.to(this.logoText, .3, { x: '-100%', ease: Power3.easeIn }),
                     TweenMax.to(this.homeRight, .3, { x: '105%', ease: Power3.easeIn }),
-                    TweenMax.to(this.homeBottom, .3, { y: '200%', ease: Power3.easeIn }),
+                    TweenMax.to(this.homeBottom, .3, { y: '200px', ease: Power3.easeIn }),
 
                     TweenMax.to(this.homeImage, .6, { opacity: 0, ease: Power3.easeInOut }),
 

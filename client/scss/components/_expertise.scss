@@ -1,5 +1,65 @@
 @media screen and #{breakpoint(large)} {
     #page-container article.page-expertise {
+        section.content {
+            h1 {
+                font-family: "Poppins";
+                font-weight: $semibold;
+                font-size: rem-calc(26pt);
+                line-height: rem-calc(36pt);
+                color: $text-color;
+                margin-bottom: 0px;
+            }
+            h2 {
+                font-family: "Poppins";
+                font-weight: $semibold;
+                font-size: rem-calc(24pt);
+                line-height: rem-calc(34pt);
+                color: $text-color;
+                margin-bottom: 0px;
+            }
+            h3 {
+                font-family: "Poppins";
+                font-weight: $semibold;
+                font-size: rem-calc(18pt);
+                line-height: rem-calc(26pt);
+                color: $text-color;
+                margin-bottom: 0px;
+            }
+            p {
+                font-family: "Poppins";
+                font-weight: $normal;
+                font-size: rem-calc(16pt);
+                line-height: rem-calc(24pt);
+                color: $text-color;
+                margin-bottom: 0px;
+                &.text-under-header {
+                    font-size: rem-calc(16pt);
+                    line-height: rem-calc(24pt);
+                }
+                &.memeber-name {
+                    padding-bottom: 10px;
+                    font-weight: $normal;
+                    font-size: rem-calc(16pt);
+                    line-height: rem-calc(24pt);
+                }
+                &.memeber-job {
+                    font-weight: $normal;
+                    font-size: rem-calc(14pt);
+                    line-height: rem-calc(22pt);
+                    padding-bottom: 20px;
+                    color: #c3c3c3;
+                }
+            }
+            ul {
+                li {
+                    font-family: "Poppins";
+                    font-weight: $normal;
+                    font-size: rem-calc(16pt);
+                    line-height: rem-calc(24pt);
+                    color: $text-color;
+                }
+            }
+        }
         .technologies {
             img {
                 width: 50%;
@@ -39,10 +99,9 @@
                     background: linear-gradient(45deg, #68bc45 0%, #1895a3 100%);
                 }
             }
-
-             span.action-links {
-                    display: block;
-                }
+            span.action-links {
+                display: block;
+            }
         }
         .columns {
             overflow: hidden;
@@ -128,6 +187,21 @@
                 display: block;
             }
         }
+        .innovation {
+            ul {
+                li {
+                    font-family: "Poppins";
+                    font-weight: $normal;
+                    font-size: rem-calc(14pt);
+                    line-height: rem-calc(22pt);
+                    color: $text-color;
+                }
+            }
+            img {
+                width: 30%;
+                display: block;
+            }
+        }
         .call-to-action {
             font-size: rem-calc(14pt);
             p {
@@ -141,9 +215,9 @@
                     background: linear-gradient(45deg, #68bc45 0%, #1895a3 100%);
                 }
             }
-             span.action-links {
-                    display: block;
-                }
+            span.action-links {
+                display: block;
+            }
         }
         .columns {
             overflow: hidden;
@@ -229,6 +303,21 @@
                 display: block;
             }
         }
+         .innovation {
+            ul {
+                li {
+                    font-family: "Poppins";
+                    font-weight: $normal;
+                    font-size: rem-calc(14pt);
+                    line-height: rem-calc(22pt);
+                    color: $text-color;
+                }
+            }
+            img {
+                width: 30%;
+                display: block;
+            }
+        }
         .call-to-action {
             p {
                 margin-bottom: 0.4rem;
@@ -264,7 +353,7 @@
                     font-size: rem-calc(22pt);
                     color: #fff;
                 }
-                 span.action-links {
+                span.action-links {
                     display: block;
                 }
             }

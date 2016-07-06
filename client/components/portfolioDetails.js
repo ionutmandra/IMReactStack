@@ -21,7 +21,10 @@ class PortfolioDetails extends Component {
     }
 
  onContactClick(event){
-        console.log('DORU needs to implement');
+    //console.log('DORU needs to implement');
+    this.props.dispatchTransition({
+      type: 'openContact',
+    });
   }
 
     render() {
@@ -68,16 +71,40 @@ class PortfolioDetails extends Component {
                             <p className="content-item block">Hosted on Azure Cloud on a top cluster configuration offers the functionality that a 21st century building company needs to safely manage its projects.</p>
                         </div>
                     </div>
+
                     <div className="spacer-40" />
                     <div className="row align-middle">
-                        <div className="large-12 large-offset-6  medium-20 medium-offset-1 small-22 small-offset-1 columns">
-                         <ul  className="content-item block">
-                            <li>Custom data collection and reporting via built-in dynamic forms</li>
-                            <li>Extensive reporting and notiﬁcation services</li>
-                            <li>Signature capture, Geolocation support, Image processing</li>
-                        </ul>
+                        <div className="large-9 large-offset-3  medium-11 medium-offset-1 small-22 small-offset-1 columns">
+                            <h2>Custom data collection and reporting via built-in dynamic forms</h2>
                         </div>
+                        <div className="spacer-20 small-24 show-for-small-only"/>
+                        <div className="large-9 large-offset-0  medium-11 medium-offset-0 small-22 small-offset-1 columns">
+                             <img src="/client/dist/img/projects/safetybank/CustomDataCollection.png" />
+                        </div> 
                     </div>
+                
+                    <div className="spacer-40" />
+                    <div className="row align-middle">
+                        <div className="large-9 large-offset-3  large-order-1 medium-11 medium-offset-1 small-22 small-offset-1 small-order-3 columns">
+                             <img src="/client/dist/img/projects/safetybank/ExtensiveReporting.png" />
+                        </div> 
+                        <div className="large-9 large-offset-0 large-order-2  medium-11 medium-offset-0 small-22 small-offset-1 small-order-1 columns">
+                            <h2>Extensive reporting and notiﬁcation services</h2>
+                        </div>
+                        <div className="spacer-20 small-24 small-order-2 show-for-small-only"/>
+                    </div>
+
+                    <div className="spacer-40" />
+                    <div className="row align-middle">
+                        <div className="large-9 large-offset-3  medium-11 medium-offset-1 small-22 small-offset-1 columns">
+                            <h2>Signature capture, Geolocation support, Image processing</h2>
+                        </div>
+                        <div className="spacer-20 small-24 show-for-small-only"/>
+                        <div className="large-9 large-offset-0  medium-11 medium-offset-0 small-22 small-offset-1 columns">
+                             <img src="/client/dist/img/projects/safetybank/SignatureCapture.png" />
+                        </div> 
+                    </div>
+
                     <div className="spacer-100" />
                 </section>
                  <section className="call-to-action row align-middle">
