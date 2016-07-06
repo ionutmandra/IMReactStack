@@ -93,7 +93,7 @@ class Expertise extends Component {
                             <h3 className="content-item">Continuous delivery</h3>
                             <div className="spacer-20"/>
                             <p>
-                                We aim to deliver as often and as fast as possible all the features that are implemented by our team. Agile methodologies are at the core of development process and our favorite one would be a hybrid between <a href="http://leansoftwareengineering.com/ksse/scrum-ban/">Scrumban</a> and <a href="http://ronjeffries.com/xprog/articles/the-noestimates-movement/">No Estimates</a>. We are flexible about the methodology and ideally we want to achieve <a href="https://en.wikipedia.org/wiki/Continuous_delivery">Continuous Delivery</a>, <a href="https://continuousdelivery.com/">Continuous Deployment</a>.
+                                We aim to deliver as often and as fast as possible all the features that are implemented by our team. Agile methodologies are at the core of development process and our favorite one would be a hybrid between <a href="http://leansoftwareengineering.com/ksse/scrum-ban/">Scrumban</a> and <a href="http://ronjeffries.com/xprog/articles/the-noestimates-movement/">No Estimates</a>. We are flexible about the methodology and ideally we want to achieve <a href="https://continuousdelivery.com/">Continuous Deployment</a>.
                             </p>
                         </div>
                         <div className="large-5 large-offset-1 medium-11 medium-offset-1 small-22 small-offset-1 columns">
