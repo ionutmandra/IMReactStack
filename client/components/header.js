@@ -100,11 +100,11 @@ class Header extends Component {
             .on('start', event => {
                 if (event.scrollDirection == 'FORWARD') {
                     article.addClass('fix-header');
-                    console.log('header sc2 end forw');
+                    //console.log('header sc2 end forw');
                 }
                 if (event.scrollDirection == 'REVERSE') {
                     article.removeClass('fix-header');
-                    console.log('header sc1 pr rev');
+                    //console.log('header sc1 pr rev');
                 }
             });
 
@@ -332,7 +332,8 @@ class Header extends Component {
                 TweenMax.to(pieces.left, .3, { x: '-100%', ease: Power3.easeIn }),
                 TweenMax.to(pieces.right, .3, { x: '105%', ease: Power3.easeIn }),
 
-                TweenMax.to(this.homeImage, .6, { opacity: 1, ease: Power3.easeInOut }),
+                //TweenMax.to(this.homeImage, .6, { opacity: 1, ease: Power3.easeInOut }),
+                TweenMax.to(this.homeImage[currentSlide], .6, { opacity: 1, ease: Power3.easeInOut }),
 
                 TweenMax.to(this.links, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
                 TweenMax.to(this.logoText, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),

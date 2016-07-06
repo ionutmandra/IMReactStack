@@ -68,7 +68,7 @@ class HeaderLinks extends Component {
 
         scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 1 }).addTo(controller)
             .on('start', (event => {
-                console.error('STARTED headerLinks scene');
+                //console.error('STARTED headerLinks scene');
                 if (event.scrollDirection == 'FORWARD') {
                     this.hide();
                 }
@@ -178,28 +178,28 @@ class HeaderLinks extends Component {
     }
 
     hide() {
-        console.warn('headerLinks hide');
+        //console.warn('headerLinks hide');
         let t = TweenMax.to(this.links, .35, { x: '-105%' });
         this.timeLines.push(t);
         return t;
     }
 
     show() {
-        console.warn('headerLinks show');
+        //console.warn('headerLinks show');
         let t = TweenMax.to(this.links, .35, { x: '0%' });
         this.timeLines.push(t);
         return t;
     }
 
     hideInstant() {
-        console.warn('headerLinks hideInstant');
+        //console.warn('headerLinks hideInstant');
         let t = TweenMax.set(this.links, { x: '-105%' });
         this.timeLines.push(t);
         return t;
     }
 
     showInstant() {
-        console.warn('headerLinks showInstant');
+        //console.warn('headerLinks showInstant');
         let t = TweenMax.set(this.links, { x: '0%' });
         this.timeLines.push(t);
         return t;

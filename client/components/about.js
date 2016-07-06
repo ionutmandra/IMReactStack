@@ -42,7 +42,7 @@ class About extends Component {
   }
 
   componentDidMount(){
-    console.log('component did mount',this);
+    //console.log('component did mount',this);
 
   }
 
@@ -51,7 +51,7 @@ class About extends Component {
   }
 
     render() {
-        console.log('render about js');
+        //console.log('render about js');
         var divStyle = {display: 'none'};
         var inlineBock ={display: 'inline-block'};
         return (
