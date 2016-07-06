@@ -1082,12 +1082,20 @@ export function large_enter_home_content(ref, callback, transition, enableScenes
         // .set({}, {}, 6)
         //.set(elements.header, { height: height });
         .add(_.filter([
+          function(){
+            elements.contentItems && TweenMax.set(elements.contentItems, { x: '-110%' });
+          }
+        ]))
+        .add(_.filter([
             TweenMax.to(arr1, .6, arr2),
         ]))
         .add(_.filter([
             elements.image && TweenMax.to(elements.image, .6, { scale: 1, ease: Power3.easeOut }),
             elements.header && TweenMax.to(elements.header, .6, { height: 400, ease: Power3.easeOut }),
             elements.text && TweenMax.to(elements.text, .3, { x: '0%', ease: Power3.easeOut, delay: .3, onStart: () => { $target.removeClass('hover'); $link.removeClass('hover'); } }),
+        ]))
+        .add(_.filter([
+            elements.contentItems && TweenMax.to(elements.contentItems, .3, { x: '0%' }),
         ]))
         .add(_.filter([() => {
             $body.css('overflow', 'visible');
