@@ -1,6 +1,9 @@
 #page-container article {
     @include grid-row(24);
     header.main .logo {
+        position: relative;
+        z-index: 5;
+        
         > div {
             padding: rem-calc(40pt) 0 0;
             position: fixed;
