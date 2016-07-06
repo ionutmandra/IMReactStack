@@ -143,7 +143,7 @@ class Expertise extends Component {
                                 <li>SPA framework for mobile applications</li>
                                 <li>Javascript high performance inheritance mechanism - <a href="https://github.com/adaptabi/Javascript-FastClass">Fast-Class</a></li>
                                 <li>Custom components for Cordova / Crosswalk mobile applications (Smooth signature, Image editor, GPS component)</li>
-                                <li>Initiators and main supporters of Meteor Group Iasi</li>
+                                <li>Initiators and main supporters of <a href="http://www.meetup.com/Meteor-Iasi/">Meteor Group Iasi</a></li>
                             </ul>
                         </div>
                     </div>
