@@ -65,12 +65,12 @@ export function large_enter_header(ref, callback, transition, enableScenes) {
 
     //Animation
     let timeline = new TimelineLite({
-        onComplete: () => { 
-            callback(); 
+        onComplete: () => {
+            callback();
             $.scrollLock(false);
-            setTimeout(enableScenes, 100); 
-            $container.removeClass('overlap'); 
-            timeline = null; 
+            setTimeout(enableScenes, 100);
+            $container.removeClass('overlap');
+            timeline = null;
         },
     })
         .set({}, {}, .6) //wait for leaving page to hide content
@@ -126,12 +126,12 @@ export function medium_enter_header(ref, callback, transition, enableScenes) {
 
     //Animation
     let timeline = new TimelineLite({
-        onComplete: () => { 
-            callback(); 
+        onComplete: () => {
+            callback();
             $.scrollLock(false);
-            setTimeout(enableScenes, 100); 
-            $container.removeClass('overlap'); 
-            timeline = null; 
+            setTimeout(enableScenes, 100);
+            $container.removeClass('overlap');
+            timeline = null;
         },
     })
         .set({}, {}, .6) //wait for leaving page to hide content
@@ -187,12 +187,12 @@ export function small_enter_header(ref, callback, transition, enableScenes) {
 
     //Animation
     let timeline = new TimelineLite({
-        onComplete: () => { 
-            callback(); 
+        onComplete: () => {
+            callback();
             $.scrollLock(false);
-            setTimeout(enableScenes, 100); 
-            $container.removeClass('overlap'); 
-            timeline = null; 
+            setTimeout(enableScenes, 100);
+            $container.removeClass('overlap');
+            timeline = null;
         },
     })
         .set({}, {}, .6) //wait for leaving page to hide content
@@ -557,19 +557,22 @@ export function large_leave_home_content(ref, callback, transition) {
     if (transition.animations) {
 
         transition.animations.leftHide && transition.animations.leftHide.forEach(function (element) {
-            animations.push(TweenMax.to(element, 2, { x: '-100%' }));
+            animations.push(TweenMax.to(element, 1, { x: '-100%' }));
         }, this);
 
         transition.animations.rightHide && transition.animations.rightHide.forEach(function (element) {
-            animations.push(TweenMax.to(element, 2, { x: '+100%' }));
+            animations.push(TweenMax.to(element, 1, { x: '+100%' }));
         }, this);
 
+        transition.animations.bottomHide && transition.animations.bottomHide.forEach(function (element) {
+            animations.push(TweenMax.to(element, 1, { y: '+200%' }));
+        }, this);
     }
 
     //Animation
     let timeline = new TimelineLite({ onComplete: () => { callback(); $container.removeClass('overlap'); timeline = null; } })
         .add(animations)
-        .set({}, {}, 2.4);
+        .set({}, {}, 2.2);
 
 }
 

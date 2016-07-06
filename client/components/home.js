@@ -71,6 +71,8 @@ class Home extends Component {
 
         animations.images = [this._img1, this._img2, this._img3, this._img4];
 
+        animations.bottomHide = [this._scrollHintContainer];
+
         return animations;
     }
 
