@@ -107,6 +107,7 @@ function setClientRoutes(router, routes) {
 function setFileRoutes(app) {
 	app.use('/client/dist', express.static(path.join(rootPath + '/client/dist')));
 	app.use('/client/assets', express.static(path.join(rootPath + '/client/assets')));
+	app.use('/favicon.ico', express.static(path.join(rootPath + '/favicon.ico')));
 }
 
 function setAdminRoutes(router) {
