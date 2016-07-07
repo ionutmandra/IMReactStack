@@ -1,10 +1,24 @@
 #page-container article {
     header.main {
-        position: relative;
-        width: 100%;
+        position: absolute;
+        width: auto;
         height: 400px;
+        top: 0;
+        left: 0;
+        right: 0;
+        overflow: hidden;
+        opacity: 1;
+        will-change: left, right;
         @include grid-row(24);
         
+        > .container {
+            position: relative;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            will-change: left, width;
+        }
+
         h1,
         h2 {
             display: inline-block;
@@ -61,9 +75,9 @@
     }
 
     &.page-about header.main {
-        background: linear-gradient(45deg, #d6cb26 0%, #68bc45 100%);
+        background: $white linear-gradient(45deg, #d6cb26 0%, #68bc45 100%);
         .gradient {
-            background: linear-gradient(45deg, #d6cb26 0%, #68bc45 100%);
+            background: $white linear-gradient(45deg, #d6cb26 0%, #68bc45 100%);
         }
         .image {
             @include grid-column-size(12);
@@ -74,9 +88,9 @@
         }
     }
     &.page-expertise header.main {
-        background: linear-gradient(45deg, #68bc45 0%, #1895a3 100%);
+        background: $white linear-gradient(45deg, #68bc45 0%, #1895a3 100%);
         .gradient {
-            background: linear-gradient(45deg, #68bc45 0%, #1895a3 100%);
+            background: $white linear-gradient(45deg, #68bc45 0%, #1895a3 100%);
         }
         .image {
             @include grid-column-size(18);
@@ -86,9 +100,9 @@
         }
     }
     &.page-portfolio header.main {
-        background: linear-gradient(45deg, #1895a3 0%, #4f2063 100%);
+        background: $white linear-gradient(45deg, #1895a3 0%, #4f2063 100%);
         .gradient {
-            background: linear-gradient(45deg, #1895a3 0%, #4f2063 100%);
+            background: $white linear-gradient(45deg, #1895a3 0%, #4f2063 100%);
         }
         .image {
             .img {
@@ -97,9 +111,9 @@
         }
     }
     &.page-portfolio-details header.main {
-        background: linear-gradient(45deg, #1895a3 0%, #4f2063 100%);
+        background: $white linear-gradient(45deg, #1895a3 0%, #4f2063 100%);
         .gradient {
-            background: linear-gradient(45deg, #1895a3 0%, #4f2063 100%);
+            background: $white linear-gradient(45deg, #1895a3 0%, #4f2063 100%);
         }
         .image {
             .img {
@@ -108,9 +122,9 @@
         }
     }
     &.page-careers header.main {
-        background: linear-gradient(45deg, #4f2063 0%, #c80786 100%);
+        background: $white linear-gradient(45deg, #4f2063 0%, #c80786 100%);
         .gradient {
-            background: linear-gradient(45deg, #4f2063 0%, #c80786 100%);
+            background: $white linear-gradient(45deg, #4f2063 0%, #c80786 100%);
         }
         .image {
             @include grid-column-size(18);
@@ -121,9 +135,9 @@
         }
     }
     &.page-career-details header.main {
-        background: linear-gradient(45deg, #c80786 0%, #ed2f2e 100%);
+        background: $white linear-gradient(45deg, #c80786 0%, #ed2f2e 100%);
         .gradient {
-            background: linear-gradient(45deg, #c80786 0%, #ed2f2e 100%);
+            background: $white linear-gradient(45deg, #c80786 0%, #ed2f2e 100%);
         }
         .image {
             @include grid-column-size(18);
@@ -133,10 +147,11 @@
 
     // SCROLL > 400px
     &.fix-header:not(.page-home) {
-        padding-top: 400px;
         header.main {
             position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             height: 0%;
             //overflow: hidden;
             z-index: 2;

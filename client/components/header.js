@@ -182,22 +182,26 @@ class Header extends Component {
         if (this.props.isHomepage) {
             return (
                 <header className="main" ref="header">
-                    <Logo isHomepage getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
-                    <HeaderLinks isHomepage openContact={this.openContact} getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
-                    <Burger isHomepage getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
-                    <Contact isHomepage renderCloseButton closeContact={this.closeContact} getContactPieces={this.getContactPieces} getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
+                    <div className="container">
+                        <Logo isHomepage getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
+                        <HeaderLinks isHomepage openContact={this.openContact} getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
+                        <Burger isHomepage getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
+                        <Contact isHomepage renderCloseButton closeContact={this.closeContact} getContactPieces={this.getContactPieces} getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
+                    </div>
                 </header>
             );
         } else {
             return (
                 <header className="main" ref="header">
-                    <div className="image"><div className="img" /></div>
-                    <div className="gradient" />
-                    <Logo getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
-                    <HeaderLinks openContact={this.openContact} getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
-                    <div className="text"><h1>{this.props.title}</h1></div>
-                    <Burger getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
-                    <Contact renderCloseButton closeContact={this.closeContact} getContactPieces={this.getContactPieces} getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
+                    <div className="container">
+                        <div className="image"><div className="img" /></div>
+                        <div className="gradient" />
+                        <Logo getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
+                        <HeaderLinks openContact={this.openContact} getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
+                        <div className="text"><h1>{this.props.title}</h1></div>
+                        <Burger getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
+                        <Contact renderCloseButton closeContact={this.closeContact} getContactPieces={this.getContactPieces} getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
+                    </div>
                 </header>
             );
         }
