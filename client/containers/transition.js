@@ -33,6 +33,7 @@ export default (BaseComponent) => {
     BaseComponent = connect(stateToProps, mapDispatchToProps)(BaseComponent);
 
     class TransitionComponent extends BaseComponent {
+        //spread op works only because of plugins in babelrc (on IE10)
         constructor(...args) {
             super(...args);
             this.enableScenes = this.enableScenes.bind(this);
