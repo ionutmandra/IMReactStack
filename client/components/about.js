@@ -169,8 +169,12 @@ class About extends Component {
                         </div>
                         <div className="large-9 large-pull-3 show-for-large team-images">
                             <div className="row">
-                                <div className="image show-for-medium-up light large-24 large-offset-8 columns "><img src="/client/dist/img/photos/8.jpg" /></div>
-                                  <div className="image show-for-medium-up light large-24 columns "><img src="/client/dist/img/photos/9.jpg" /></div>
+                                <div className="image show-for-medium-up light large-24 large-offset-8 columns ">
+                                    <img src="/client/dist/img/photos/8.jpg" className="content-item"/>
+                                </div>
+                                <div className="image show-for-medium-up light large-24 columns ">
+                                    <img src="/client/dist/img/photos/9.jpg" className="content-item" />
+                                </div>
                             </div>
                         </div>
                     </div>
