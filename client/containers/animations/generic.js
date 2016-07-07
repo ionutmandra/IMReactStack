@@ -687,7 +687,7 @@ export function small_leave_burger(ref, callback, transition) {
 //    CONTENT
 /////////////////////////////////////////
 
-export function large_enter_content(ref, callback, transition) {
+export function large_enter_content(ref, callback, transition, enableScenes) {
 
     if (!transition.column || !transition.target) {
         return callback();
@@ -709,6 +709,8 @@ export function large_enter_content(ref, callback, transition) {
         }
     });
 
+    $container.removeClass('fix-header');
+
     //Initial state
     TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
     TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
@@ -716,7 +718,7 @@ export function large_enter_content(ref, callback, transition) {
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.image && TweenMax.set(elements.image, { scale: height / 400 });
     elements.footer && TweenMax.set(elements.footer, { height: 0 });
-    elements.header && TweenMax.set(elements.header, { height: height });
+    elements.header && TweenMax.set(elements.header, { height: height, display:'none' });
 
     //Animation
     let timeline = new TimelineLite({
@@ -733,6 +735,7 @@ export function large_enter_content(ref, callback, transition) {
             TweenMax.to(line, 0.6, { height: '100%', ease: Power3.easeIn, delay: .3,
             onComplete: () => { $target.removeClass('line'); TweenMax.set(line, { opacity: 0 }); } }),
         ]))
+        .add(TweenMax.set(elements.header, {display:'block'}))
         .add(TweenMax.to(arr1, 1.6, arr2))
         .add(_.filter([
           function(){
@@ -749,6 +752,7 @@ export function large_enter_content(ref, callback, transition) {
         ]))
         .add(_.filter([() => {
             $body.css('overflow', 'visible');
+            setTimeout(enableScenes, 100);
             $container.removeClass('overlap');
         }]))
         .add(_.filter([

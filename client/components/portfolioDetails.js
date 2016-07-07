@@ -13,19 +13,22 @@ class PortfolioDetails extends Component {
 
     }
     handleCallToActionClick(event) {
-          this.props.dispatchTransition({
-              type: 'content',
-              column: 6,
-              target: event.target,
-          });
+
+        this.props.disableScenes();
+
+        this.props.dispatchTransition({
+            type: 'content',
+            column: 6,
+            target: event.target,
+        });
     }
 
- onContactClick(event){
-    //console.log('DORU needs to implement');
-    this.props.dispatchTransition({
-      type: 'openContact',
-    });
-  }
+    onContactClick(event){
+        //console.log('DORU needs to implement');
+        this.props.dispatchTransition({
+            type: 'openContact',
+        });
+    }
 
     render() {
         return (
@@ -80,14 +83,14 @@ class PortfolioDetails extends Component {
                         <div className="spacer-20 small-24 show-for-small-only"/>
                         <div className="large-9 large-offset-0  medium-11 medium-offset-0 small-22 small-offset-1 columns">
                              <img src="/client/dist/img/projects/safetybank/CustomDataCollection.png" />
-                        </div> 
+                        </div>
                     </div>
-                
+
                     <div className="spacer-40" />
                     <div className="row align-middle">
                         <div className="large-9 large-offset-3  large-order-1 medium-11 medium-offset-1 small-22 small-offset-1 small-order-3 columns">
                              <img src="/client/dist/img/projects/safetybank/ExtensiveReporting.png" />
-                        </div> 
+                        </div>
                         <div className="large-9 large-offset-0 large-order-2  medium-11 medium-offset-0 small-22 small-offset-1 small-order-1 columns">
                             <h2>Extensive reporting and notiﬁcation services</h2>
                         </div>
@@ -102,7 +105,7 @@ class PortfolioDetails extends Component {
                         <div className="spacer-20 small-24 show-for-small-only"/>
                         <div className="large-9 large-offset-0  medium-11 medium-offset-0 small-22 small-offset-1 columns">
                              <img src="/client/dist/img/projects/safetybank/SignatureCapture.png" />
-                        </div> 
+                        </div>
                     </div>
 
                     <div className="spacer-100" />

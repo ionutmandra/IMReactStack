@@ -10,12 +10,7 @@ class About extends Component {
     super(props);
     this.handleSafetybankProjectClick = this.handleSafetybankProjectClick.bind(this);
     this.handleCallToActionClick = this.handleCallToActionClick.bind(this);
-    this.handleClick = this.handleClick.bind(this);
     this.onContactClick = this.onContactClick.bind(this);
-
-    this.state ={
-      cancelScene: 'false',
-    };
   }
 
   handleSafetybankProjectClick(event) {
@@ -28,17 +23,13 @@ class About extends Component {
 
   handleCallToActionClick(event) {
 
-    this.setState({cancelScene: 'true'});
+    this.props.disableScenes();
 
     this.props.dispatchTransition({
       type: 'content',
       column: 6,
       target: event.target,
     });
-  }
-
-  handleClick() {
-    this.setState({cancelScene: 'true'});
   }
 
   componentDidMount(){
