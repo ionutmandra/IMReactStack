@@ -10,12 +10,7 @@ class About extends Component {
     super(props);
     this.handleSafetybankProjectClick = this.handleSafetybankProjectClick.bind(this);
     this.handleCallToActionClick = this.handleCallToActionClick.bind(this);
-    this.handleClick = this.handleClick.bind(this);
     this.onContactClick = this.onContactClick.bind(this);
-
-    this.state ={
-      cancelScene: 'false',
-    };
   }
 
   handleSafetybankProjectClick(event) {
@@ -28,17 +23,13 @@ class About extends Component {
 
   handleCallToActionClick(event) {
 
-    this.setState({cancelScene: 'true'});
+    this.props.disableScenes();
 
     this.props.dispatchTransition({
       type: 'content',
       column: 6,
       target: event.target,
     });
-  }
-
-  handleClick() {
-    this.setState({cancelScene: 'true'});
   }
 
   componentDidMount(){
@@ -169,8 +160,12 @@ class About extends Component {
                         </div>
                         <div className="large-9 large-pull-3 show-for-large team-images">
                             <div className="row">
-                                <div className="image show-for-medium-up light large-24 large-offset-8 columns "><img src="/client/dist/img/photos/8.jpg" /></div>
-                                  <div className="image show-for-medium-up light large-24 columns "><img src="/client/dist/img/photos/9.jpg" /></div>
+                                <div className="image show-for-medium-up light large-24 large-offset-8 columns ">
+                                    <img src="/client/dist/img/photos/8.jpg" className="content-item"/>
+                                </div>
+                                <div className="image show-for-medium-up light large-24 columns ">
+                                    <img src="/client/dist/img/photos/9.jpg" className="content-item" />
+                                </div>
                             </div>
                         </div>
                     </div>

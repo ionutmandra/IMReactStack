@@ -255,7 +255,7 @@ class Header extends Component {
 
             this.initialHeight = 400 - scrollTop;
             this.initialHeight < 0 && (this.initialHeight = 0);
-            this.article.addClass('menu-open'); 
+            this.article.addClass('menu-open');
 
             let scrollIsTop = scrollTop == 0;
             let scrollIsHeaderTop = 0 < scrollTop <= 355;
@@ -285,10 +285,10 @@ class Header extends Component {
                 .add(_.filter([
                     TweenMax.fromTo(pieces.left, .3, { x: '-100%' }, { x: '0%', ease: Power3.easeOut }),
                     TweenMax.fromTo(pieces.right, .3, { x: '105%' }, { x: '0%', ease: Power3.easeOut }),
-                ]));    
+                ]));
             this.props.dispatchTransition({
                 type: '',
-            });        
+            });
         } else if (burgerIsOpen) { //small ALL scenarios, medium ALL scenarios + Large Generic pege when burger open
             let timeline = new TimelineLite({ onComplete: onComplete.bind(this, timeline) })
                 .add(_.filter([
@@ -432,7 +432,6 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-    //cancelScene: PropTypes.string,
     isHomepage: PropTypes.bool,
     title: PropTypes.string,
 };
