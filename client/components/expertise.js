@@ -9,20 +9,16 @@ class Expertise extends Component {
         super(props);
         this.handleCallToActionClick = this.handleCallToActionClick.bind(this);
         this.onContactClick = this.onContactClick.bind(this);
-
-         this.state ={
-            cancelScene: 'false'
-        };
     }
     handleCallToActionClick(event) {
 
-        this.setState({cancelScene: 'true'});
+        this.props.disableScenes();
 
-          this.props.dispatchTransition({
-              type: 'content',
-              column: 6,
-              target: event.target,
-          });
+        this.props.dispatchTransition({
+            type: 'content',
+            column: 6,
+            target: event.target,
+        });
     }
 
      onContactClick(event){
@@ -44,7 +40,7 @@ class Expertise extends Component {
     render() {
         return (
             <article className="page page-expertise">
-                <Header ref={'header'} cancelScene={this.state.cancelScene} title={'We aim to offer more than just working software by constantly improving our skills and processes'} />
+                <Header ref={'header'} title={'We aim to offer more than just working software by constantly improving our skills and processes'} />
                 <section className="content">
                     <div className="spacer-100"/>
                     <div className="row">
@@ -111,7 +107,7 @@ class Expertise extends Component {
                             <div className="spacer-20"/>
 
                             <p>
-                                From unit tests to integration tests and from smoke tests to system tests we aim to automate them completely to ensure nothing gets missed. Also we believe that tests should be effective and the <a href="http://martinfowler.com/bliki/TestPyramid.html">Testing Pyramid</a> distribution is taken always into account.    
+                                From unit tests to integration tests and from smoke tests to system tests we aim to automate them completely to ensure nothing gets missed. Also we believe that tests should be effective and the <a href="http://martinfowler.com/bliki/TestPyramid.html">Testing Pyramid</a> distribution is taken always into account.
                             </p>
                             <div className="spacer-20"/>
                         </div>

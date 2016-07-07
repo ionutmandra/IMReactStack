@@ -480,13 +480,13 @@ class Home extends Component {
                 </section>
 
                 <section className="slide slide-3 content" ref={(c) => this._section3c = c}>
-                    <div className="text-1"><h1 ref={(c) => this._inputOffering = c}>Offering highest quality by constantly improving our <Link to="/expertise" data-animate-line="3" data-section="3" onClick={this.handleLinkClick}>skills and processes</Link></h1></div>
+                    <div className="text-1"><h1 ref={(c) => this._inputOffering = c}>Offering highest quality by constantly improving our <Link to="/expertise" data-animate-line="4" data-section="3" onClick={this.handleLinkClick}>skills and processes</Link></h1></div>
                     <div className="text-2"><h1 ref={(c) => this._inputCreating = c}>Creating <Link to="/portfolio/sfb" data-animate-line="5" data-section="3" onClick={this.handleLinkClick}>high impact software solutions</Link> that help business succeed
                     </h1></div>
                 </section>
 
                     <section className="slide slide-4 content"  ref={(c) => this._section4c = c}>
-                        <div className="text-1"><h1 ref={(c) => this._inputSustaining = c} >Sustaining <Link to="/expertise#innovation" data-animate-line="3" data-section="4" onClick={this.handleLinkClick}>learning and innovation</Link> as a part of our day to day activity.</h1></div>
+                        <div className="text-1"><h1 ref={(c) => this._inputSustaining = c} >Sustaining <Link to="/expertise#innovation" data-animate-line="4" data-section="4" onClick={this.handleLinkClick}>learning and innovation</Link> as a part of our day to day activity.</h1></div>
                     </section>
 
                 <div className="scroll-hint" ref={(c) => this._scrollHintContainer = c}>
