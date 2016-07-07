@@ -15,6 +15,7 @@
             li {
                 overflow: hidden;
                 @include grid-column(1);
+                margin-left: -1px;
                 // @include grid-col-collapse;
                 // @include breakpoint(medium up) {
                 //     @include grid-col-collapse;
@@ -25,6 +26,7 @@
                     transition: padding-left 0.3s cubic-bezier(0.500, 0.000, 0.000, 0.500);
                     display: block;
                     position: relative;
+                    left: 1px;
                     font-size: rem-calc(14pt);
                     line-height: rem-calc(20pt);
                     font-weight: $semibold;
