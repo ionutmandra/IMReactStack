@@ -53,8 +53,10 @@ export default class Burger extends Component {
                 this.article.find('.slide-4.content .text-1 h1').toArray(),
             ];
             this.homeBottom = [
-                this.article.find('.slide-1.content .scroll-hint > *').toArray(),
-                {}, {}, {},
+                this.article.find('.scroll-hint > *').toArray(),
+                this.article.find('.scroll-hint > *').toArray(),
+                this.article.find('.scroll-hint > *').toArray(),
+                this.article.find('.scroll-hint > *').toArray(),
             ];
             this.homeImage = [
                 this.article.find('.slide-1.background .image').toArray(),

@@ -76,7 +76,7 @@ export default (BaseComponent) => {
 
             $body.addClass('navigating');
             if (this.animation[ui.media.current + '_enter_' + transition.type]) {
-                this.animation[ui.media.current + '_enter_' + transition.type](this.refs.container, this.willEnterCallback.bind(this, callback), transition, this.enableScenes);
+                this.animation[ui.media.current + '_enter_' + transition.type](this.refs.container, this.willEnterCallback.bind(this, callback), transition);
             }
             else {
                 console.warn('On enter,', animationName, 'does not have any animation:', ui.media.current + '_enter_' + transition.type);
@@ -89,7 +89,7 @@ export default (BaseComponent) => {
                 // console.log('componentWillLeave HAS NO TYPE OR ANIMATION', transition, this.animation);
                 return this.willLeaveCallback(callback);
             }
-            console.log('componentWillLeave using function', this.animationName, ui.media.current + '_leave_' + transition.type);
+            console.log('componentWillLeave', this.animationName, ui.media.current + '_leave_' + transition.type);
 
             $body.addClass('navigating');
             if (this.animation[ui.media.current + '_leave_' + transition.type]) {
@@ -115,11 +115,6 @@ export default (BaseComponent) => {
         }
         willLeaveCallback(callback) {
             //console.warn('willLeaveCallback');
-            // $body.removeClass('navigating');
-            // $(dom.findDOMNode(this.refs.container)).removeClass('fix-header contact-open menu-open');
-            // this.cleanTransition();
-            // $.scrollLock(false, false);
-            // setTimeout(this.enableScenes, 100);    
             callback();
         }
         render() {

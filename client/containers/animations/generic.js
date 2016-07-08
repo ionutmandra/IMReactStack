@@ -22,7 +22,7 @@ export function appear(ref, callback) {
 //    HEADER
 /////////////////////////////////////////
 
-export function large_enter_header(ref, callback, transition, enableScenes) {
+export function large_enter_header(ref, callback, transition) {
     if (!transition.column || !transition.target) { return callback(); }
     //Setup vars
     let elements = extractDOMElements(ref, transition.column),
@@ -80,8 +80,6 @@ export function large_enter_header(ref, callback, transition, enableScenes) {
         ]));
 
     function onComplete() {
-        $.scrollLock(false, false);
-        setTimeout(enableScenes, 100);
         TweenMax.set(elements.container, { clearProps: 'width,left' });
         TweenMax.set(elements.header, { clearProps: 'height' });
         TweenMax.set(elements.footer, { clearProps: 'height' });
@@ -90,12 +88,12 @@ export function large_enter_header(ref, callback, transition, enableScenes) {
     }
 }
 
-export function medium_enter_header(ref, callback, transition, enableScenes) {
+export function medium_enter_header(ref, callback, transition) {
     console.error('medium_enter_header should NEVER be called');
     callback();
 }
 
-export function small_enter_header(ref, callback, transition, enableScenes) {
+export function small_enter_header(ref, callback, transition) {
     console.error('small_enter_header should NEVER be called');
     callback();
 }
@@ -131,7 +129,7 @@ export function small_leave_header(ref, callback, transition, initialScroll) {
 //    BURGER
 /////////////////////////////////////////
 
-export function large_enter_burger(ref, callback, transition, enableScenes) {
+export function large_enter_burger(ref, callback, transition) {
     if (!transition.column || !transition.target) { return callback(); }
     //Setup vars
     let elements = extractDOMElements(ref, transition.column),
@@ -192,8 +190,6 @@ export function large_enter_burger(ref, callback, transition, enableScenes) {
         ]));
 
     function onComplete() {
-        $.scrollLock(false, false);
-        setTimeout(enableScenes, 100);
         TweenMax.set(elements.container, { clearProps: 'width,left' });
         TweenMax.set(elements.header, { clearProps: 'height' });
         TweenMax.set(elements.footer, { clearProps: 'height' });
@@ -203,12 +199,12 @@ export function large_enter_burger(ref, callback, transition, enableScenes) {
     }
 }
 
-export function medium_enter_burger(ref, callback, transition, enableScenes) {
+export function medium_enter_burger(ref, callback, transition) {
     console.warn('TO BE IMPLEMENTED');
     callback();
 }
 
-export function small_enter_burger(ref, callback, transition, enableScenes) {
+export function small_enter_burger(ref, callback, transition) {
     console.warn('TO BE IMPLEMENTED');
     callback();
 }
@@ -241,7 +237,7 @@ export function small_leave_burger(ref, callback, transition, initialScroll) {
 //    CONTENT
 /////////////////////////////////////////
 
-export function large_enter_content(ref, callback, transition, enableScenes) {
+export function large_enter_content(ref, callback, transition) {
     if (!transition.column || !transition.target) { return callback(); }
     //Setup vars
     let elements = extractDOMElements(ref, transition.column),
@@ -297,8 +293,6 @@ export function large_enter_content(ref, callback, transition, enableScenes) {
         ]));
 
     function onComplete() {
-        $.scrollLock(false, false);
-        setTimeout(enableScenes, 100);
         TweenMax.set(elements.container, { clearProps: 'width,left' });
         TweenMax.set(elements.header, { clearProps: 'height' });
         TweenMax.set(elements.footer, { clearProps: 'height' });
@@ -307,23 +301,13 @@ export function large_enter_content(ref, callback, transition, enableScenes) {
     }
 }
 
-export function medium_enter_content(ref, callback, transition, enableScenes) {
-    console.warn('TO BE IMPLEMENDTED by Doru');
-    // let elements = extractDOMElements(ref, transition.column);
-    // elements.$article.removeClass('fix-header');
-    // $.scrollLock(true);
-    // $.scrollLock(false, false);
-    // setTimeout(enableScenes, 100);
+export function medium_enter_content(ref, callback, transition) {
+    console.warn('TO BE IMPLEMENDTED');
     callback();
 }
 
-export function small_enter_content(ref, callback, transition, enableScenes) {
-    console.warn('TO BE IMPLEMENDTED by Doru');
-    // let elements = extractDOMElements(ref, transition.column);    
-    // elements.$article.removeClass('fix-header');
-    // $.scrollLock(true);
-    // $.scrollLock(false, false);
-    // setTimeout(enableScenes, 100);
+export function small_enter_content(ref, callback, transition) {
+    console.warn('TO BE IMPLEMENDTED');
     callback();
 }
 
@@ -366,7 +350,7 @@ export function small_leave_content(ref, callback, transition, initialScroll) {
 /////////////////////////////////////////
 
 //called when user left from homepage via a content link (and comes to generic page)
-export function large_enter_home_content(ref, callback, transition, enableScenes) {
+export function large_enter_home_content(ref, callback, transition) {
 
     if (!transition.column || !transition.target) {
         return callback();
@@ -390,7 +374,7 @@ export function large_enter_home_content(ref, callback, transition, enableScenes
         }
     });
     //$window.scrollTop(0);
-    $body.css('overflow', 'hidden');
+    //$body.css('overflow', 'hidden');
 
     $container.removeClass('fix-header');
 
@@ -443,8 +427,6 @@ export function large_enter_home_content(ref, callback, transition, enableScenes
             elements.contentItems && TweenMax.to(elements.contentItems, .3, { x: '0%' }),
         ]))
         .add(_.filter([() => {
-            $body.css('overflow', 'visible');
-            setTimeout(enableScenes, 100);
             $container.removeClass('overlap');
         }]))
         .add(_.filter([

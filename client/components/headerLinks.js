@@ -46,8 +46,10 @@ class HeaderLinks extends Component {
                 {},
             ];
             this.bottomTexts = [
-                this.article.find('.slide-1.content .scroll-hint > *').toArray(),
-                {}, {}, {},
+                this.article.find('.scroll-hint > *').toArray(),
+                this.article.find('.scroll-hint > *').toArray(),
+                this.article.find('.scroll-hint > *').toArray(),
+                this.article.find('.scroll-hint > *').toArray(),
             ];
             this.image = [
                 this.article.find('.slide-1.background .img').toArray(),

@@ -13,7 +13,7 @@ export function appear(ref, callback) {
     let image = $container.find('.slide-1.background .img')[0];
     image && TweenMax.set(image, { scale: 1.4 });
     TweenMax.set(container, { opacity: 0 });
-    let timeline = new TimelineLite({ onComplete: () => { timeline = null; callback();} })
+    let timeline = new TimelineLite({ onComplete: () => { timeline = null; callback(); } })
         .add(_.filter([
             image && TweenMax.to(image, 1, { scale: 1, ease: Power3.easeOut }),
             TweenMax.to(container, 1, { opacity: 1, ease: Power3.easeOut }),
@@ -24,8 +24,8 @@ export function appear(ref, callback) {
 //    HEADER
 /////////////////////////////////////////
 
-//user clicked on homepage in header
-export function large_enter_header(ref, callback, transition, enableScenes) {
+//user clicked on homepage in header of a generic page
+export function large_enter_header(ref, callback, transition) {
     if (!transition.column || !transition.target) {
         return callback();
     }
@@ -67,8 +67,6 @@ export function large_enter_header(ref, callback, transition, enableScenes) {
     let timeline = new TimelineLite({
         onComplete: () => {
             callback();
-            $.scrollLock(false);
-            setTimeout(enableScenes, 100);
             $container.removeClass('overlap');
             timeline = null;
         },
@@ -85,19 +83,23 @@ export function large_enter_header(ref, callback, transition, enableScenes) {
         ]));
 }
 
-export function medium_enter_header(ref, callback, transition, enableScenes) {
+export function medium_enter_header(ref, callback, transition) {
     console.warn('TO BE IMPLEMENTED');
-    callback();    
+    callback();
 }
 
-export function small_enter_header(ref, callback, transition, enableScenes) {
+export function small_enter_header(ref, callback, transition) {
     console.warn('TO BE IMPLEMENTED');
-    callback(); 
+    callback();
 }
 
-//user clicked
-export function large_leave_header(ref, callback, transition) {
-    let container = dom.findDOMNode(ref), $container = $(container).addClass('overlap'), height = $window.height(), fullHeight = height * 4, scroll = $window.scrollTop();
+//user clicked on link in homepage header links
+export function large_leave_header(ref, callback, transition, initialScroll) {
+    let container = dom.findDOMNode(ref),
+        $container = $(container),
+        height = $window.height(),
+        fullHeight = height * 4,
+        scroll = $window.scrollTop();
     let slide = '.slide-' + Math.round((fullHeight - scroll) / fullHeight);
     let elements = {
         image: $container.find(slide + '.background .img')[0],
@@ -122,12 +124,12 @@ export function large_leave_header(ref, callback, transition) {
         ]));
 }
 
-export function medium_leave_header(ref, callback, transition) {
+export function medium_leave_header(ref, callback, transition, initialScroll) {
     console.error('should never be called');
     callback();
 }
 
-export function small_leave_header(ref, callback, transition) {
+export function small_leave_header(ref, callback, transition, initialScroll) {
     console.error('should never be called');
     callback();
 }
@@ -194,12 +196,12 @@ export function large_enter_burger(ref, callback, transition) {
 
 export function medium_enter_burger(ref, callback, transition) {
     console.warn('TO BE IMPLEMENTED');
-    callback(); 
+    callback();
 }
 
 export function small_enter_burger(ref, callback, transition) {
     console.warn('TO BE IMPLEMENTED');
-    callback(); 
+    callback();
 }
 
 export function large_leave_burger(ref, callback, transition) {
@@ -231,12 +233,12 @@ export function large_leave_burger(ref, callback, transition) {
 
 export function medium_leave_burger(ref, callback, transition) {
     console.warn('TO BE IMPLEMENTED');
-    callback(); 
+    callback();
 }
 
 export function small_leave_burger(ref, callback, transition) {
     console.warn('TO BE IMPLEMENTED');
-    callback(); 
+    callback();
 }
 
 ////
@@ -293,12 +295,12 @@ export function large_leave_home_content(ref, callback, transition) {
 
 export function medium_leave_home_content(ref, callback, transition) {
     console.warn('TO BE IMPLEMENTED');
-    callback(); 
+    callback();
 }
 
 export function small_leave_home_content(ref, callback, transition) {
     console.warn('TO BE IMPLEMENTED');
-    callback(); 
+    callback();
 }
 
 ////
@@ -314,5 +316,43 @@ function extractDOMElements(ref) {
         text2: $container.find('.slide-1.content .text-2 h2')[0],
         textBottom: $container.find('.slide-1.content .scroll-hint p')[0],
         gradient: $container.find('> .gradient')[0],
+    };
+}
+
+function extractLargeDOMElements(ref) {
+    let article = dom.findDOMNode(ref), $article = $(article);
+
+    return {
+        article, $article,
+        left: [
+            $article.find('.slide-1.content .text-2 h2').toArray(),
+            $article.find('.slide-2.content .text-1 h1, .slide-2.content .text-3 .text-content').toArray(),
+            $article.find('.slide-3.content .text-2 h1').toArray(),
+            $article.find('.slide-4.content .text-1 h1').toArray(),
+        ],
+        right: [
+            $article.find('.slide-1.content .text-1 h1').toArray(),
+            $article.find('.slide-2.content .text-2 .text-content').toArray(),
+            $article.find('.slide-3.content .text-1 h1').toArray(),
+            {},
+        ],
+        smallLeft: [
+            $article.find('.slide-1.content .text-1 h1, .slide-1.content .text-2 h2').toArray(),
+            $article.find('.slide-2.content .text-1 h1').toArray(),
+            $article.find('.slide-3.content .text-1 h1, .slide-3.content .text-2 h1').toArray(),
+            $article.find('.slide-4.content .text-1 h1').toArray(),
+        ],
+        bottom: [
+            $article.find('.scroll-hint > *').toArray(),
+            $article.find('.scroll-hint > *').toArray(),
+            $article.find('.scroll-hint > *').toArray(),
+            $article.find('.scroll-hint > *').toArray(),
+        ],
+        image: [
+            $article.find('.slide-1.background .image').toArray(),
+            $article.find('.slide-2.background .image').toArray(),
+            $article.find('.slide-3.background .image').toArray(),
+            $article.find('.slide-4.background .image').toArray(),
+        ]
     };
 }

@@ -77,6 +77,7 @@ class Home extends Component {
     }
 
     handleLinkClick(event) {
+        if (this.scrolling) { event.preventDefault(); return; }
         this.props.dispatchTransition({
             type: 'home_content',
             column: event.target.getAttribute('data-animate-line'),
@@ -86,16 +87,10 @@ class Home extends Component {
     }
 
     handleHintClick(event) {
-        // let height = $window.height();
-        // var fullHeight = height * 4;
-        // var scroll = $window.scrollTop();
-        // let container = dom.findDOMNode(ref), $container = $(container).addClass('overlap'), height = $window.height(), fullHeight = height * 4;
-        // let slide = '.slide-' + Math.round((fullHeight - scroll) / fullHeight);
-        if (this.scrolling) return;
+        if (this.scrolling) { event.preventDefault(); return; }
         let height = $window.height(),
             scroll = $window.scrollTop() + 1,
             slide = Math.ceil(scroll / height);
-
         if (slide > 3) {
             //navigate to About Page
             this.props.dispatchTransition({
@@ -324,8 +319,10 @@ class Home extends Component {
             this.article.find('.slide-4.content .text-1 h1').toArray(),
         ];
         var homeBottom = [
-            this.article.find('.slide-1.content .scroll-hint > *').toArray(),
-            {}, {}, {},
+            this.article.find('.scroll-hint > *').toArray(),
+            this.article.find('.scroll-hint > *').toArray(),
+            this.article.find('.scroll-hint > *').toArray(),
+            this.article.find('.scroll-hint > *').toArray(),
         ];
 
         var contactIsOpen = this.article.hasClass('contact-open');
@@ -342,7 +339,7 @@ class Home extends Component {
         if (media.current == breakpoint.names.large) {
             //Scrolling to top
             $window.scrollTop(0);
-            setTimeout((()=>{
+            setTimeout((() => {
                 this.setScenes(media.current, true);
             }).bind(this), 150);
 
@@ -477,9 +474,9 @@ class Home extends Component {
                     </h1></div>
                 </section>
 
-                    <section className="slide slide-4 content"  ref={(c) => this._section4c = c}>
-                        <div className="text-1"><h1 ref={(c) => this._inputSustaining = c} >Sustaining <Link to="/expertise#innovation" data-animate-line="4" data-section="4" onClick={this.handleLinkClick}>learning and innovation</Link> as a part of our day to day activity.</h1></div>
-                    </section>
+                <section className="slide slide-4 content"  ref={(c) => this._section4c = c}>
+                    <div className="text-1"><h1 ref={(c) => this._inputSustaining = c} >Sustaining <Link to="/expertise#innovation" data-animate-line="4" data-section="4" onClick={this.handleLinkClick}>learning and innovation</Link> as a part of our day to day activity.</h1></div>
+                </section>
 
                 <div className="scroll-hint" ref={(c) => this._scrollHintContainer = c}>
                     <svg onClick={this.handleHintClick} ref={(c) => this._scrollHint = c} width="70" height="70" version="1.1" xmlns="http://www.w3.org/2000/svg">
