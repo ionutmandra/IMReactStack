@@ -178,7 +178,7 @@ class Header extends Component {
         this.scenes && this.scenes[media] && this.scenes[media].forEach(scene => { scene.enabled(enabled); scene.trigger(enabled ? 'enabled' : 'disabled', args); });
     }
 
-    render() { 
+    render() {
         if (this.props.isHomepage) {
             return (
                 <header className="main" ref="header">
@@ -285,10 +285,7 @@ class Header extends Component {
                 .add(_.filter([
                     TweenMax.fromTo(pieces.left, .3, { x: '-100%' }, { x: '0%', ease: Power3.easeOut }),
                     TweenMax.fromTo(pieces.right, .3, { x: '105%' }, { x: '0%', ease: Power3.easeOut }),
-                ]));
-            this.props.dispatchTransition({
-                type: '',
-            });
+                ]));            
         } else if (burgerIsOpen) { //small ALL scenarios, medium ALL scenarios + Large Generic pege when burger open
             let timeline = new TimelineLite({ onComplete: onComplete.bind(this, timeline) })
                 .add(_.filter([
