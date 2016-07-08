@@ -7,8 +7,8 @@ let $ = window.$, $window = $(window), ScrollMagic = window.ScrollMagic, TweenMa
 export default class Burger extends Component {
     constructor(props) {
         super(props);
-        this.open = this.open.bind(this);
-        this.close = this.close.bind(this);
+        this.openBurger = this.openBurger.bind(this);
+        this.closeBurger = this.closeBurger.bind(this);
     }
 
     componentDidMount() {
@@ -98,6 +98,9 @@ export default class Burger extends Component {
         }
         if (this.props.ui.media.current != nextProps.ui.media.current) {
             this.handleMediaChange(nextProps.ui.media);
+        }
+        if (this.props.transition.type != nextProps.transition.type && nextProps.transition.type == 'burgerClose') {
+            this.closeBurger();
         }
         return false;
     }
@@ -226,7 +229,7 @@ export default class Burger extends Component {
         this.scenes && this.scenes[media] && this.scenes[media].forEach(scene => { scene.enabled(enabled); scene.trigger(enabled ? 'enabled' : 'disabled', args); });
     }
 
-    open() {
+    openBurger() {
         if (this.inProgress) return false;
         this.inProgress = true;
 
@@ -294,7 +297,7 @@ export default class Burger extends Component {
         }
     }
 
-    close() {
+    closeBurger() {
         if (this.inProgress) return false;
         this.inProgress = true;
 
@@ -372,8 +375,8 @@ export default class Burger extends Component {
     render() {
         return (
             <div className="hamburger" ref="hamburger">
-                <i className="open ncs-bars"  onClick={this.open} ref="burger" />
-                <i className="close ncs-chevron-with-circle-left" onClick={this.close} ref="close" />
+                <i className="open ncs-bars"  onClick={this.openBurger} ref="burger" />
+                <i className="close ncs-chevron-with-circle-left" onClick={this.closeBurger} ref="close" />
             </div>
         );
     }

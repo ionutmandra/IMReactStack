@@ -149,29 +149,34 @@ class HeaderLinks extends Component {
 
     handleClick(event) {
         let burgerIsOpen = this.article.hasClass('menu-open');
-        // burgerIsOpen && $window.scrollTop(0);
-        let isLarge = this.props.ui.media.current == breakpoint.names.large;
-        let isMedium = this.props.ui.media.current == breakpoint.names.medium;
+        if (burgerIsOpen && this.context.router.isActive(event.currentTarget.href)) {
+            this.props.dispatchTransition({ type: 'burgerClose' });
+            setTimeout((() => { this.props.dispatchTransition({ type: '' }); }).bind(this), 0);
+        } else {
+            let isLarge = this.props.ui.media.current == breakpoint.names.large;
+            let isMedium = this.props.ui.media.current == breakpoint.names.medium;
 
-        let column = 3; //small
-        isMedium && (column = 3);
-        isLarge && (column = event.currentTarget.getAttribute('data-animate-line'));
+            let column = 3; //small
+            isMedium && (column = 3);
+            isLarge && (column = event.currentTarget.getAttribute('data-animate-line'));
 
-        this.props.dispatchTransition({
-            type: burgerIsOpen && 'burger' || 'header',
-            column: column,
-            target: event.currentTarget,
-        });
+            this.props.dispatchTransition({
+                type: burgerIsOpen && 'burger' || 'header',
+                column: column,
+                target: event.currentTarget,
+            });
+        }
     }
 
     render() {
+        //console.warn('headerLINKS CONTEXT', this.context.router.isActive(routePaths.client.about));
         let links = this.links = [];
         return (<nav className="links" ref="container">
             <ul>
                 <li><Link ref={c => links.push(c) } data-animate-line="3" onClick={this.handleClick} to={routePaths.client.about} >{'About'}</Link></li>
                 <li><Link ref={c => links.push(c) } data-animate-line="4" onClick={this.handleClick} to={routePaths.client.expertise}>{'Expertise'}</Link></li>
                 <li><Link ref={c => links.push(c) } data-animate-line="5" onClick={this.handleClick} to={routePaths.client.portfolio}>{'Portfolio'}</Link></li>
-                <li><a ref={c => links.push(c) } data-animate-line="6" onClick={this.handleClick} href="https://blog.adaptabi.com">{'Blog'}</a></li>
+                <li><a ref={c => links.push(c) } data-animate-line="6" onClick={this.handleClick} href="https://blog.adaptabi.com" target="_blank">{'Blog'}</a></li>
                 <li><Link ref={c => links.push(c) } data-animate-line="7" onClick={this.props.openContact} to={routePaths.client.contact}>{'Contact'}</Link></li>
             </ul>
         </nav>);

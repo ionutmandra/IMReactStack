@@ -1,3 +1,4 @@
+import { PropTypes } from 'react';
 import translate from './translate';
 import HeaderLinks from '../components/headerLinks';
 import { connect } from 'react-redux';
@@ -20,6 +21,10 @@ const mapDispatchToProps = (dispatch) => {
 			dispatch(disableScenes());
 		},
     };
+};
+
+HeaderLinks.contextTypes = {
+  router: PropTypes.object,
 };
 
 export default 
