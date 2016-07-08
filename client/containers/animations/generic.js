@@ -146,29 +146,23 @@ export function large_enter_burger(ref, callback, transition, enableScenes) {
                 TweenMax.set(elements.container, { left: -arr1[0] });
             },
         });
+
     //Setup
-    $.scrollLock(false, false);
-    $window.scrollTop(0);
+    $.scrollLock(false, false); //scroll goes top
     $.scrollLock(true);
     elements.$gridLine.addClass('burger');
     elements.$article.addClass('overlap');
-    $('html').attr({ style: '' });
 
     //Initial state
     TweenMax.set(elements.header, { left: arr1[0], right: arr1[1], height: height });
     TweenMax.set(elements.container, { left: -arr1[0], width: width });
     TweenMax.set(elements.gridLine, { left: left, opacity: 1, height: 0 });
-    // TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
-    // TweenMax.set(line, { left: left, opacity: 1, height: 0 });
+
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.image && TweenMax.set(elements.image, { scale: height / 400 });
     elements.footer && TweenMax.set(elements.footer, { height: 0 });
-    // if (elements.$links && elements.$links.length) {
-    //     elements.$links.each((index, link) => {
-    //         TweenMax.set(link, { x: '-100%' });
-    //     });
-    // }
-
+    elements.contentItems && TweenMax.set(elements.contentItems, { x: '-105%' });
+    
     //Animation
     let timeline = new TimelineLite({ onComplete })
         //wait for burger links to hide
@@ -379,33 +373,13 @@ export function small_enter_burger(ref, callback, transition, enableScenes) {
 }
 
 export function large_leave_burger(ref, callback, transition) {
-    let elements = extractDOMElements(ref, transition.column),
-        height = $window.height(), linksAnimation = [];
+    let elements = extractDOMElements(ref, transition.column);
 
-    //Setup
-    
-    // if (elements.links && elements.links.length) {
-    //     elements.links.each((index, link) => {
-    //         //console.warn('each', link);
-    //         linksAnimation.push(TweenMax.to(link, 1, { x: '-100%' }));
-    //     });
-    // }
-    // $container.find('.contact-container .contact .content').each((index, contact) => {
-    //     //console.warn('each2', contact);
-    //     linksAnimation.push(TweenMax.to(contact, 1, { x: '-100%' }));
-    // });
-    //elements.$article.find('.contact-container .contact .content'))
-
-    //Initial state
-    //TweenMax.set(elements.header, { zIndex: 1 });
-    //elements.footer && TweenMax.set(elements.footer, { height: 0 });
-
-    //Animation
     let timeline = new TimelineLite({ onComplete: () => { callback(); timeline = null; } })
         .add(_.filter([
             TweenMax.to(elements.links, .6, { x: '-100%', ease: Power3.easeIn }),
         ]))
-        .set({}, {}, transition.column ? 1.6 : 2.2);
+        .set({}, {}, 1.5);
 }
 
 export function medium_leave_burger(ref, callback, transition) {
