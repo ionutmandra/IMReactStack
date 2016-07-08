@@ -4,7 +4,8 @@ import routePaths from '../../common/routePaths';
 import { enableScenes } from '../actions';
 import * as animations_generic from './animations/generic';
 import * as animations_homepage from './animations/homepage';
-let $body = window.$('body');
+
+let $ = window.$, $body = $('body'), $window = $(window);
 
 let animations = {
     generic: animations_generic,
@@ -77,7 +78,9 @@ export default (BaseComponent) => {
             console.log('componentWillLeave using function', this.animation[ui.media.current + '_leave_' + transition.type],'and transition description' , transition);
 
             if (this.animation[ui.media.current + '_leave_' + transition.type]) {
-                this.animation[ui.media.current + '_leave_' + transition.type](this.refs.container, this.callback.bind(this, callback), transition);
+                let initialScroll = $window.scrollTop();
+                $.scrollLock(true);
+                this.animation[ui.media.current + '_leave_' + transition.type](this.refs.container, this.callback.bind(this, callback), transition, initialScroll);
             }
             else {
                 console.warn('On leave, does not have any animation: ', ui.media.current + '_leave_' + transition.type);

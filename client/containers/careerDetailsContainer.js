@@ -9,6 +9,9 @@ const mapDispatchToProps = (dispatch) => {
         dispatchTransition: function (setup) {
             dispatch(actions.transition(setup));
         },
+		disableScenes: () => {
+			dispatch(actions.disableScenes());
+		},
     };
 };
 

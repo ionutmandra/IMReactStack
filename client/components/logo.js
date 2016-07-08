@@ -280,7 +280,6 @@ class Logo extends Component {
         return t;
     }
     darken() {
-        console.log('this is darken');
         let t = TweenMax.fromTo(this.img, .35, { color: '#fefefe' }, { color: '#4d4d4d' });
         this.timeLines.push(t);
         return t;

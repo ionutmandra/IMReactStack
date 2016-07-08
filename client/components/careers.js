@@ -5,19 +5,18 @@ import Footer from '../containers/footerContainer';
 import { Link } from 'react-router';
 
 class Careers extends Component {
-
-
      constructor(props) {
         super(props);
         this.handleCareerDetailsClick = this.handleCareerDetailsClick.bind(this);
     }
 
     handleCareerDetailsClick(event) {
-          this.props.dispatchTransition({
-              type: 'content',
-              column: 6,
-              target: event.target,
-          });
+        this.props.disableScenes();
+        this.props.dispatchTransition({
+            type: 'content',
+            column: 6,
+            target: event.target,
+        });
     }
 
     render() {

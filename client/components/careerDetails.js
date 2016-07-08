@@ -16,6 +16,7 @@ class CareerDetails extends Component {
     }
 
     handleBackToCareersClick(event) {
+        this.props.disableScenes();
           this.props.dispatchTransition({
               type: 'content',
               column: 6,
@@ -27,10 +28,10 @@ class CareerDetails extends Component {
     renderJobDescription(){
         switch (this.props.params.key){
             case 'seniorsoftwaredeveloper':
-                    return (<CareerSeniorDeveloper />);
+                    return (<CareerSeniorDeveloper onBackClick={this.handleBackToCareersClick} />);
                 break;
             case 'juniorsoftwaredeveloper':
-                    return (<CareerJuniorDeveloper />);
+                    return (<CareerJuniorDeveloper onBackClick={this.handleBackToCareersClick} />);
                 break;
             case 'qualityengineer':
                     return (<CareerQualityEngineer onBackClick={this.handleBackToCareersClick}/>);
