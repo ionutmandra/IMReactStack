@@ -51,11 +51,12 @@ export default (BaseComponent) => {
         }
         componentWillAppear(callback) {
             $body.addClass('navigating');
-            let animation = 'generic';
-            this.props.route.path == routePaths.client.root && (animation = 'homepage');
-            this.animation = animations[animation];
+            let animationName = 'generic';
+            this.props.route.path == routePaths.client.root && (animationName = 'homepage');
+            this.animation = animations[animationName];
+            this.animationName = animationName; //only for console.log in the Leave function below
 
-            //console.log('componentWillAppear', this);
+            console.log('componentWillAppear', animationName, 'appear');
 
             this.animation.appear(this.refs.container, this.willEnterCallback.bind(this, callback));
         }
@@ -65,12 +66,13 @@ export default (BaseComponent) => {
             let animationName = 'generic';
             this.props.route.path == routePaths.client.root && (animationName = 'homepage');
             this.animation = animations[animationName];
+            this.animationName = animationName; //only for console.log in the Leave function below
 
             if (!transition || !transition.type) {
                 // console.warn('componentWillEnter HAS NO TYPE');
                 return this.willEnterCallback(callback);
             }
-            // console.log('componentWillEnter', animationName, ui.media.current + '_enter_' + transition.type);
+            console.log('componentWillEnter', animationName, ui.media.current + '_enter_' + transition.type);
 
             $body.addClass('navigating');
             if (this.animation[ui.media.current + '_enter_' + transition.type]) {
@@ -87,7 +89,7 @@ export default (BaseComponent) => {
                 // console.log('componentWillLeave HAS NO TYPE OR ANIMATION', transition, this.animation);
                 return this.willLeaveCallback(callback);
             }
-            // console.log('componentWillLeave using function', ui.media.current + '_leave_' + transition.type);
+            console.log('componentWillLeave using function', this.animationName, ui.media.current + '_leave_' + transition.type);
 
             $body.addClass('navigating');
             if (this.animation[ui.media.current + '_leave_' + transition.type]) {

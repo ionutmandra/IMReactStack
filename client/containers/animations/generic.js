@@ -157,6 +157,7 @@ export function large_enter_burger(ref, callback, transition, enableScenes) {
     TweenMax.set(elements.gridLine, { left: left, opacity: 1, height: 0 });
 
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
+    elements.logoImg && TweenMax.set(elements.logoImg, { color: '#fefefe' });    
     elements.footer && TweenMax.set(elements.footer, { height: 0 });
     elements.contentItems && TweenMax.set(elements.contentItems, { x: '-105%' });
     
@@ -203,16 +204,12 @@ export function large_enter_burger(ref, callback, transition, enableScenes) {
 }
 
 export function medium_enter_burger(ref, callback, transition, enableScenes) {
-    console.warn('TO BE IMPLEMENDTED by Doru');
-    $.scrollLock(false, false);
-    setTimeout(enableScenes, 100);
+    console.warn('TO BE IMPLEMENTED');
     callback();
 }
 
 export function small_enter_burger(ref, callback, transition, enableScenes) {
-    console.warn('TO BE IMPLEMENDTED by Doru');
-    $.scrollLock(false, false);
-    setTimeout(enableScenes, 100);
+    console.warn('TO BE IMPLEMENTED');
     callback();
 }
 
@@ -231,12 +228,12 @@ export function large_leave_burger(ref, callback, transition, initialScroll) {
 }
 
 export function medium_leave_burger(ref, callback, transition, initialScroll) {
-    console.warn('TO BE IMPLEMENDTED by Doru');
+    console.warn('TO BE IMPLEMENTED');
     callback();
 }
 
 export function small_leave_burger(ref, callback, transition, initialScroll) {
-    console.warn('TO BE IMPLEMENDTED by Doru');
+    console.warn('TO BE IMPLEMENTED');
     callback();
 }
 
@@ -250,7 +247,6 @@ export function large_enter_content(ref, callback, transition, enableScenes) {
     let elements = extractDOMElements(ref, transition.column),
         width = $window.width(),
         height = $window.height(),
-        $target = $(transition.target),
         left = elements.left,
         arr1 = [left, width - left],
         arr2 = Object.assign([0, 0], {
@@ -267,6 +263,7 @@ export function large_enter_content(ref, callback, transition, enableScenes) {
     TweenMax.set(elements.gridLine, { left: left, opacity: 1, height: 0 });
 
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
+    elements.logoImg && TweenMax.set(elements.logoImg, { color: '#fefefe' });
     elements.burger && TweenMax.set(elements.burger, { x: '-100%' });
     elements.footer && TweenMax.set(elements.footer, { height: 0 });
     elements.contentItems && TweenMax.set(elements.contentItems, { x: '-110%' });
