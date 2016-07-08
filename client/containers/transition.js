@@ -95,12 +95,13 @@ export default (BaseComponent) => {
 
         }
         willLeaveCallback(callback) {
+            $body.removeClass('navigating');
+            $.scrollLock(false, false);
+            setTimeout(this.enableScenes, 100);
+
             let article = $(dom.findDOMNode(this.refs.container));
             if (article.hasClass('contact-open')) {
-                article.removeClass('fix-header contact-open menu-open');
-                $body.removeClass('navigating');
-                $.scrollLock(false, false);
-                setTimeout(this.enableScenes, 100);
+                article.removeClass('fix-header contact-open menu-open');                
             }
             callback();
         }
