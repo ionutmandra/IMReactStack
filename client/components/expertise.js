@@ -11,9 +11,7 @@ class Expertise extends Component {
         this.onContactClick = this.onContactClick.bind(this);
     }
     handleCallToActionClick(event) {
-
         this.props.disableScenes();
-
         this.props.dispatchTransition({
             type: 'content',
             column: 6,
