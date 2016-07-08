@@ -12,7 +12,6 @@ class Portfolio extends Component {
     }
 
     handleProjDetailsClick(event) {
-        this.props.disableScenes();
         this.props.dispatchTransition({
               type: 'content',
               column: 5,

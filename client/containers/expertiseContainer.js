@@ -9,14 +9,11 @@ const mapDispatchToProps = (dispatch) => {
         dispatchTransition: function (setup) {
             dispatch(actions.transition(setup));
         },
-        enableScenes: () => {
-			dispatch(actions.enableScenes());
-		},
-		disableScenes: () => {
-			dispatch(actions.disableScenes());
-		},
     };
 };
 
 export default
-    transition(connect(null, mapDispatchToProps)(translate('Expertise')(Expertise)));
+    transition(
+        connect(null, mapDispatchToProps)(
+            translate('Expertise')(
+                Expertise)));

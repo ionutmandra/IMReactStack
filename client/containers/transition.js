@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import routePaths from '../../common/routePaths';
-import actions, { enableScenes} from '../actions';
+import actions, { enableScenes, disableScenes } from '../actions';
 import * as animations_generic from './animations/generic';
 import * as animations_homepage from './animations/homepage';
 import dom from 'react-dom';
@@ -24,6 +24,9 @@ const mapDispatchToProps = (dispatch) => {
 		enableScenes: () => {
 			dispatch(enableScenes());
 		},
+        disableScenes: () => {
+			dispatch(disableScenes());
+		},
         dispatchTransition: (setup) => {
             dispatch(actions.transition(setup));
         },
@@ -43,6 +46,8 @@ export default (BaseComponent) => {
         constructor(...args) {
             super(...args);
             this.enableScenes = this.enableScenes.bind(this);
+            this.disableScenes = this.disableScenes.bind(this);
+            this.cleanTransition = this.cleanTransition.bind(this);
         }
         componentWillAppear(callback) {
             $body.addClass('navigating');
@@ -56,35 +61,38 @@ export default (BaseComponent) => {
         }
         componentWillEnter(callback) {
             let transition = this._clone.props.transition, ui = this._clone.props.ui;
+            
+            let animationName = 'generic';
+            this.props.route.path == routePaths.client.root && (animationName = 'homepage');
+            this.animation = animations[animationName];
+
             if (!transition || !transition.type) {
+                // console.warn('componentWillEnter HAS NO TYPE');
                 return this.willEnterCallback(callback);
             }
+            // console.log('componentWillEnter', animationName, ui.media.current + '_enter_' + transition.type);
+
             $body.addClass('navigating');
-            let animation = 'generic';
-            this.props.route.path == routePaths.client.root && (animation = 'homepage');
-            this.animation = animations[animation];
-
-            //console.log('componentWillEnter', this.animation[ui.media.current + '_enter_' + transition.type]);
-
             if (this.animation[ui.media.current + '_enter_' + transition.type]) {
                 this.animation[ui.media.current + '_enter_' + transition.type](this.refs.container, this.willEnterCallback.bind(this, callback), transition, this.enableScenes);
             }
             else {
-                console.warn('On enter,', animation, 'does not have any animation:', ui.media.current + '_enter_' + transition.type);
+                console.warn('On enter,', animationName, 'does not have any animation:', ui.media.current + '_enter_' + transition.type);
                 return this.willEnterCallback(callback);
             }
         }
         componentWillLeave(callback) {
             let transition = this._clone.props.transition, ui = this._clone.props.ui;
             if (!transition || !transition.type || !this.animation) {
+                // console.log('componentWillLeave HAS NO TYPE OR ANIMATION', transition, this.animation);
                 return this.willLeaveCallback(callback);
             }
+            // console.log('componentWillLeave using function', ui.media.current + '_leave_' + transition.type);
+
             $body.addClass('navigating');
-
-            //console.log('componentWillLeave using function', this.animation[ui.media.current + '_leave_' + transition.type],'and transition description' , transition);
-
             if (this.animation[ui.media.current + '_leave_' + transition.type]) {
                 let initialScroll = $window.scrollTop();
+                this.disableScenes();
                 $.scrollLock(true);
                 this.animation[ui.media.current + '_leave_' + transition.type](this.refs.container, this.willLeaveCallback.bind(this, callback), transition, initialScroll);
             }
@@ -94,20 +102,22 @@ export default (BaseComponent) => {
             }
 
         }
-        willLeaveCallback(callback) {
+        willEnterCallback(callback) {
+            //console.warn('willEnterCallback');
             $body.removeClass('navigating');
+            $(dom.findDOMNode(this.refs.container)).removeClass('fix-header contact-open menu-open');
+            this.cleanTransition();
             $.scrollLock(false, false);
             setTimeout(this.enableScenes, 100);
-
-            let article = $(dom.findDOMNode(this.refs.container));
-            if (article.hasClass('contact-open')) {
-                article.removeClass('fix-header contact-open menu-open');                
-            }
             callback();
         }
-        willEnterCallback(callback) {
-            $body.removeClass('navigating');
-            this._clone.props.dispatchTransition({type: ''});
+        willLeaveCallback(callback) {
+            //console.warn('willLeaveCallback');
+            // $body.removeClass('navigating');
+            // $(dom.findDOMNode(this.refs.container)).removeClass('fix-header contact-open menu-open');
+            // this.cleanTransition();
+            // $.scrollLock(false, false);
+            // setTimeout(this.enableScenes, 100);    
             callback();
         }
         render() {
@@ -116,6 +126,12 @@ export default (BaseComponent) => {
 
         enableScenes() {
             this._clone.props.enableScenes();
+        }
+        disableScenes() {
+            this._clone.props.disableScenes();
+        }
+        cleanTransition() {
+            this._clone.props.dispatchTransition({type: ''});
         }
     }
 

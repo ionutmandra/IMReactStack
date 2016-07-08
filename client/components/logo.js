@@ -93,7 +93,7 @@ class Logo extends Component {
             this.setScenes(media.current, true);
         }
 
-        console.warn('logo handleMediaChange', media, this.props.isHomepage, $window.scrollTop());
+        // console.warn('logo handleMediaChange', media, this.props.isHomepage, $window.scrollTop());
         let initialScroll = this.props.getInitialScroll(),
             menuIsOpen = this.article.hasClass('menu-open'),
             contactIsOpen = this.article.hasClass('contact-open');

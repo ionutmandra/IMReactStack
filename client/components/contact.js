@@ -30,7 +30,7 @@ class Contact extends Component {
     }
 
     handleMediaChange(media) {
-        console.warn('contact handleMediaChange', media, this.props.isHomepage, $window.scrollTop());
+        // console.warn('contact handleMediaChange', media, this.props.isHomepage, $window.scrollTop());
 
         let contactIsOpen = this.article.hasClass('contact-open');
 

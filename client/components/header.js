@@ -159,7 +159,7 @@ class Header extends Component {
             this.setScenes(media.current, true);
         }
 
-        console.warn('header handleMediaChange', media, this.props.isHomepage, $window.scrollTop());
+        // console.warn('header handleMediaChange', media, this.props.isHomepage, $window.scrollTop());
 
         let menuIsOpen = this.article.hasClass('menu-open');
         let contactIsOpen = this.article.hasClass('contact-open');

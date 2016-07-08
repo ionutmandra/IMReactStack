@@ -14,7 +14,6 @@ class About extends Component {
   }
 
   handleSafetybankProjectClick(event) {
-      this.props.disableScenes();
     this.props.dispatchTransition({
       type: 'content',
       column: 5,
@@ -23,9 +22,6 @@ class About extends Component {
   }
 
   handleCallToActionClick(event) {
-
-    this.props.disableScenes();
-
     this.props.dispatchTransition({
       type: 'content',
       column: 6,
@@ -39,10 +35,9 @@ class About extends Component {
   }
 
   onContactClick(event){
-    //console.log('DORU needs to implement');
-    this.props.dispatchTransition({
-      type: 'openContact',
-    });
+    this.props.dispatchTransition({ type: 'openContact' });
+    //this cleanup is needed because user may close contact instead, then this won't work the 2nd time (no store update)
+    setTimeout((() => { this.props.dispatchTransition({ type: '' }); }).bind(this), 0);
   }
 
     render() {

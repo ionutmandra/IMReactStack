@@ -151,6 +151,7 @@ class HeaderLinks extends Component {
         let burgerIsOpen = this.article.hasClass('menu-open');
         if (burgerIsOpen && this.context.router.isActive(event.currentTarget.href)) {
             this.props.dispatchTransition({ type: 'burgerClose' });
+            //this cleanup is needed because user may close burger instead, then this won't work the 2nd time (no store update)
             setTimeout((() => { this.props.dispatchTransition({ type: '' }); }).bind(this), 0);
         } else {
             let isLarge = this.props.ui.media.current == breakpoint.names.large;

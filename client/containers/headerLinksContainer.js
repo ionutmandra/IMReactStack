@@ -2,7 +2,7 @@ import { PropTypes } from 'react';
 import translate from './translate';
 import HeaderLinks from '../components/headerLinks';
 import { connect } from 'react-redux';
-import { transition, enableScenes, disableScenes } from '../actions';
+import { transition } from '../actions';
 
 const stateToProps = state => ({
     transition: state.transition,
@@ -14,12 +14,6 @@ const mapDispatchToProps = (dispatch) => {
         dispatchTransition: (setup) => {
             dispatch(transition(setup));
         },
-		enableScenes: () => {
-			dispatch(enableScenes());
-		},
-		disableScenes: () => {
-			dispatch(disableScenes());
-		},
     };
 };
 

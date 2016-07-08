@@ -12,12 +12,6 @@ const mapDispatchToProps = (dispatch) => {
         dispatchTransition: function (setup) {
             dispatch(transition(setup));
         },
-		enableScenes: () => {
-			dispatch(enableScenes());
-		},
-		disableScenes: () => {
-			dispatch(disableScenes());
-		},
     };
 };
 

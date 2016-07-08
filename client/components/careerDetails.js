@@ -16,7 +16,6 @@ class CareerDetails extends Component {
     }
 
     handleBackToCareersClick(event) {
-        this.props.disableScenes();
           this.props.dispatchTransition({
               type: 'content',
               column: 6,

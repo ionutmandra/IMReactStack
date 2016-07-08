@@ -77,11 +77,6 @@ class Home extends Component {
     }
 
     handleLinkClick(event) {
-
-        this.setScenes(this.props.ui.media.current, false);
-
-        this.props.disableScenes();
-
         this.props.dispatchTransition({
             type: 'home_content',
             column: event.target.getAttribute('data-animate-line'),
@@ -109,12 +104,11 @@ class Home extends Component {
                 target: event.target,
                 animations: this.getAnimations('4'),
             });
-
             browserHistory.push(routePaths.client.about);
         } else {
             this.scrolling = true;
             this.controller.scrollTo(slide * height);
-            setTimeout((() => { this.scrolling = false; }).bind(this), 800);
+            setTimeout((() => { this.scrolling = false; }).bind(this), 750);
         }
     }
 
