@@ -24,6 +24,7 @@ export function appear(ref, callback) {
 //    HEADER
 /////////////////////////////////////////
 
+//user clicked on homepage in header
 export function large_enter_header(ref, callback, transition, enableScenes) {
     if (!transition.column || !transition.target) {
         return callback();
@@ -204,6 +205,7 @@ export function small_enter_header(ref, callback, transition, enableScenes) {
         ]));
 }
 
+//user clicked
 export function large_leave_header(ref, callback, transition) {
     let container = dom.findDOMNode(ref), $container = $(container).addClass('overlap'), height = $window.height(), fullHeight = height * 4, scroll = $window.scrollTop();
     let slide = '.slide-' + Math.round((fullHeight - scroll) / fullHeight);
@@ -286,6 +288,7 @@ export function small_leave_header(ref, callback, transition) {
 //    BURGER
 /////////////////////////////////////////
 
+//user clicked on homepage in header
 export function large_enter_burger(ref, callback, transition) {
     if (!transition.column || !transition.target) {
         return callback();

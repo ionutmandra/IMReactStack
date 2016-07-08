@@ -19,20 +19,19 @@ class Expertise extends Component {
         });
     }
 
-     onContactClick(event){
-    //console.log('DORU needs to implement');
-    this.props.dispatchTransition({
-      type: 'openContact',
-    });
-  }
+    onContactClick(event){
+        this.props.dispatchTransition({
+        type: 'openContact',
+        });
+    }
 
-  componentDidMount(){
-    //   $('.grayscale-container').on('mouseenter mouseleave', function (e){
-    //     console.log('mouseleave/mouseenter');
-    //     $('.grayscale', this).toggleClass('hover grayscale-off');
-    //     $(this).find('.post-link').toggle();
-    // });
-  }
+    componentDidMount(){
+        //   $('.grayscale-container').on('mouseenter mouseleave', function (e){
+        //     console.log('mouseleave/mouseenter');
+        //     $('.grayscale', this).toggleClass('hover grayscale-off');
+        //     $(this).find('.post-link').toggle();
+        // });
+    }
 
 
     render() {

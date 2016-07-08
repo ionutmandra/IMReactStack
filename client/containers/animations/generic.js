@@ -90,17 +90,17 @@ export function large_enter_header(ref, callback, transition, enableScenes) {
     }
 }
 
-export function medium_enter_header(ref, callback, transition) {
+export function medium_enter_header(ref, callback, transition, enableScenes) {
     console.error('medium_enter_header should NEVER be called');
     callback();
 }
 
-export function small_enter_header(ref, callback, transition) {
+export function small_enter_header(ref, callback, transition, enableScenes) {
     console.error('small_enter_header should NEVER be called');
     callback();
 }
 
-export function large_leave_header(ref, callback, transition) {
+export function large_leave_header(ref, callback, transition, initialScroll) {
     let elements = extractDOMElements(ref, transition.column), height = $window.height();
 
     let timeline = new TimelineLite({ onComplete: () => { setTimeout(callback, 0); timeline = null; } })
@@ -117,12 +117,12 @@ export function large_leave_header(ref, callback, transition) {
         ]));
 }
 
-export function medium_leave_header(ref, callback, transition) {
+export function medium_leave_header(ref, callback, transition, initialScroll) {
     console.error('medium_leave_header should NEVER be called');
     callback();
 }
 
-export function small_leave_header(ref, callback, transition) {
+export function small_leave_header(ref, callback, transition, initialScroll) {
     console.error('small_leave_header should NEVER be called');
     callback();
 }
@@ -216,7 +216,7 @@ export function small_enter_burger(ref, callback, transition, enableScenes) {
     callback();
 }
 
-export function large_leave_burger(ref, callback, transition) {
+export function large_leave_burger(ref, callback, transition, initialScroll) {
     let elements = extractDOMElements(ref, transition.column);
 
     let timeline = new TimelineLite({ onComplete: () => { callback(); timeline = null; }})
@@ -230,12 +230,12 @@ export function large_leave_burger(ref, callback, transition) {
         .set({}, {}, 1.5);
 }
 
-export function medium_leave_burger(ref, callback, transition) {
+export function medium_leave_burger(ref, callback, transition, initialScroll) {
     console.warn('TO BE IMPLEMENDTED by Doru');
     callback();
 }
 
-export function small_leave_burger(ref, callback, transition) {
+export function small_leave_burger(ref, callback, transition, initialScroll) {
     console.warn('TO BE IMPLEMENDTED by Doru');
     callback();
 }
@@ -261,8 +261,6 @@ export function large_enter_content(ref, callback, transition, enableScenes) {
         });
     //Initial state
     elements.$article.removeClass('fix-header').addClass('overlap');
-    //elements.$link && elements.$link.addClass('hover');
-    //$target.addClass('hover line');
 
     TweenMax.set(elements.header, { left: arr1[0], right: arr1[1], height: height });
     TweenMax.set(elements.container, { left: -arr1[0], width: width });
@@ -281,7 +279,6 @@ export function large_enter_content(ref, callback, transition, enableScenes) {
         .add(TweenMax.to(elements.gridLine, .6, { height: '100%', ease: Power3.easeOut }))
         //hide line
         .add(() => {
-            //$target.removeClass('line');
             TweenMax.set(elements.gridLine, { opacity: 0 });
         })
         //reveal new header
@@ -293,8 +290,6 @@ export function large_enter_content(ref, callback, transition, enableScenes) {
             elements.text && TweenMax.to(elements.text, .3, {
                 x: '0%', ease: Power3.easeOut, delay: .3,
                 onStart: () => {
-                    //$target.removeClass('hover');
-                    //elements.$link && elements.$link.removeClass('hover');
                     elements.$article.removeClass('overlap');
                 },
             }),
@@ -317,21 +312,21 @@ export function large_enter_content(ref, callback, transition, enableScenes) {
 
 export function medium_enter_content(ref, callback, transition, enableScenes) {
     console.warn('TO BE IMPLEMENDTED by Doru');
-    let elements = extractDOMElements(ref, transition.column);
-    elements.$article.removeClass('fix-header');
-    $.scrollLock(true);
-    $.scrollLock(false, false);
-    setTimeout(enableScenes, 100);
+    // let elements = extractDOMElements(ref, transition.column);
+    // elements.$article.removeClass('fix-header');
+    // $.scrollLock(true);
+    // $.scrollLock(false, false);
+    // setTimeout(enableScenes, 100);
     callback();
 }
 
 export function small_enter_content(ref, callback, transition, enableScenes) {
     console.warn('TO BE IMPLEMENDTED by Doru');
-    let elements = extractDOMElements(ref, transition.column);    
-    elements.$article.removeClass('fix-header');
-    $.scrollLock(true);
-    $.scrollLock(false, false);
-    setTimeout(enableScenes, 100);
+    // let elements = extractDOMElements(ref, transition.column);    
+    // elements.$article.removeClass('fix-header');
+    // $.scrollLock(true);
+    // $.scrollLock(false, false);
+    // setTimeout(enableScenes, 100);
     callback();
 }
 
@@ -372,6 +367,8 @@ export function small_leave_content(ref, callback, transition, initialScroll) {
 ////
 // HOME CONTENT
 /////////////////////////////////////////
+
+//called when user left from homepage via a content link (and comes to generic page)
 export function large_enter_home_content(ref, callback, transition, enableScenes) {
 
     if (!transition.column || !transition.target) {
@@ -589,16 +586,6 @@ export function small_enter_home_content(ref, callback, transition) {
         .add(_.filter([
             elements.footer && TweenMax.to(elements.footer, .3, { height: 58 }),
         ]));
-}
-
-export function large_leave_home_content(ref, callback, transition) {
-    large_leave_header(ref, callback, transition);
-}
-export function medium_leave_home_content(ref, callback, transition) {
-    medium_leave_header(ref, callback, transition);
-}
-export function small_leave_home_content(ref, callback, transition) {
-    small_leave_header(ref, callback, transition);
 }
 
 ////

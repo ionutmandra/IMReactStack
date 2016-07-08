@@ -8,9 +8,12 @@
         @include grid-row(24);
         
         &.overlap {
-            padding-top: 100%;
             position: absolute;
             z-index: 2;
+
+            section.content {
+                display: none; 
+            }
         }
         
         section.content {
