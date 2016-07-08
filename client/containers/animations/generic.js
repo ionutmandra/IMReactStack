@@ -151,7 +151,7 @@ export function large_enter_burger(ref, callback, transition, enableScenes) {
     $window.scrollTop(0);
     $.scrollLock(true);
     elements.$gridLine.addClass('burger');
-    elements.$article.removeClass('fix-header');
+    elements.$article.addClass('overlap');
     $('html').attr({ style: '' });
 
     //Initial state

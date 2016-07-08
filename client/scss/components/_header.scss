@@ -1,4 +1,8 @@
 #page-container article {
+    &.overlap header.main {
+        overflow: hidden;
+    }
+
     header.main {
         position: absolute;
         z-index: 2;
@@ -7,7 +11,6 @@
         top: 0;
         left: 0;
         right: 0;
-        overflow: hidden;
         opacity: 1;
         will-change: left, right;
         @include grid-row(24);
