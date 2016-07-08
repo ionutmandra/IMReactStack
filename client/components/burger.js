@@ -24,11 +24,11 @@ export default class Burger extends Component {
         scenes[breakpoint.names.small] = [];
 
         this.header = trigger.find('header.main');
-        this.image = this.header.find('> .image .img');
-        this.logoImage = this.header.find('> .logo .img');
-        this.logoText = this.header.find('> .logo .text svg');
+        this.image = this.header.find('.image .img');
+        this.logoImage = this.header.find('.logo .img');
+        this.logoText = this.header.find('.logo .text svg');
         this.links = this.header.find('nav ul li a');
-        this.text = this.header.find('> .text h1');
+        this.text = this.header.find('.text h1');
 
         this.burger = $(refs.burger);
         this.close = $(refs.close);

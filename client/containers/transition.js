@@ -58,7 +58,7 @@ export default (BaseComponent) => {
             this.props.route.path == routePaths.client.root && (animation = 'homepage');
             this.animation = animations[animation];
 
-            //console.log('componentWillEnter', this);
+            console.log('componentWillEnter', this.animation[ui.media.current + '_enter_' + transition.type]);
 
             if (this.animation[ui.media.current + '_enter_' + transition.type]) {
                 this.animation[ui.media.current + '_enter_' + transition.type](this.refs.container, this.callback.bind(this, callback), transition, this.enableScenes);
@@ -74,7 +74,7 @@ export default (BaseComponent) => {
             }
             $body.addClass('navigating');
 
-            console.log('componentWillLeave using transition description ' , transition);
+            console.log('componentWillLeave using function', this.animation[ui.media.current + '_leave_' + transition.type],'and transition description' , transition);
 
             if (this.animation[ui.media.current + '_leave_' + transition.type]) {
                 this.animation[ui.media.current + '_leave_' + transition.type](this.refs.container, this.callback.bind(this, callback), transition);

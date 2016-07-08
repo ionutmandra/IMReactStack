@@ -41,13 +41,13 @@ class Header extends Component {
             article = this.article = header.closest('article.page');
         //headerBottom = header.position().top + header.height();
         this.links = this.header.find('nav ul li a').toArray();
-        this.burgerOpen = this.header.find('> .hamburger > .open');
-        this.burgerClose = this.header.find('> .hamburger > .close');
+        this.burgerOpen = this.header.find('.hamburger > .open');
+        this.burgerClose = this.header.find('.hamburger > .close');
         this.contactClose = this.header.find('.contact .btn .content');
-        this.logoText = this.header.find('> .logo .text svg');
-        this.logoImage = this.header.find('> .logo .img');
-        this.headerImage = this.header.find('> .image .img');
-        this.headerText = this.header.find('> .text h1');
+        this.logoText = this.header.find('.logo .text svg');
+        this.logoImage = this.header.find('.logo .img');
+        this.headerImage = this.header.find('.image .img');
+        this.headerText = this.header.find('.text h1');
 
         scenes[breakpoint.names.large] = [];
         scenes[breakpoint.names.medium] = [];
@@ -178,7 +178,7 @@ class Header extends Component {
         this.scenes && this.scenes[media] && this.scenes[media].forEach(scene => { scene.enabled(enabled); scene.trigger(enabled ? 'enabled' : 'disabled', args); });
     }
 
-    render() {
+    render() { 
         if (this.props.isHomepage) {
             return (
                 <header className="main" ref="header">
@@ -186,7 +186,7 @@ class Header extends Component {
                         <Logo isHomepage getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
                         <HeaderLinks isHomepage openContact={this.openContact} getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
                         <Burger isHomepage getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
-                        <Contact isHomepage renderCloseButton closeContact={this.closeContact} getContactPieces={this.getContactPieces} getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
+                        <Contact isHomepage renderCloseButton closeContact={this.closeContact} getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
                     </div>
                 </header>
             );
@@ -196,11 +196,11 @@ class Header extends Component {
                     <div className="container">
                         <div className="image"><div className="img" /></div>
                         <div className="gradient" />
+                        <div className="text"><h1>{this.props.title}</h1></div>
                         <Logo getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
                         <HeaderLinks openContact={this.openContact} getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
-                        <div className="text"><h1>{this.props.title}</h1></div>
                         <Burger getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
-                        <Contact renderCloseButton closeContact={this.closeContact} getContactPieces={this.getContactPieces} getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
+                        <Contact renderCloseButton closeContact={this.closeContact} getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
                     </div>
                 </header>
             );

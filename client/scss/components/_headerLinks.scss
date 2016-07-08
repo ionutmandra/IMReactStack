@@ -15,11 +15,7 @@
             li {
                 overflow: hidden;
                 @include grid-column(1);
-                margin-left: -1px;
-                // @include grid-col-collapse;
-                // @include breakpoint(medium up) {
-                //     @include grid-col-collapse;
-                // }
+                margin: 0 1px 0 -1px;
                 a {
                     color: $white;
                     text-decoration: none;

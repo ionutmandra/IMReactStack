@@ -158,8 +158,6 @@ class Home extends Component {
 
         var gradients = ['#d6cb26', '#68bc45', '#1895a3', '#4f2063', '#c80786', '#ed2f2e'];
 
-        TweenPlugin.activate(['colorProps']);
-
         //scenes
         this.animations.animateGradients(breakpoint.names.large, [this._section1, this._section2, this._section3], gradients);
         this.animations.animateGradients(breakpoint.names.medium, [this._section1, this._section2, this._section3], gradients);

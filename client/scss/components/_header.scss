@@ -1,6 +1,7 @@
 #page-container article {
     header.main {
         position: absolute;
+        z-index: 2;
         width: auto;
         height: 400px;
         top: 0;

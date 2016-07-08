@@ -55,7 +55,6 @@ export function large_enter_header(ref, callback, transition, enableScenes) {
     $.scrollLock(true);
 
     //Initial state
-    TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
     TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
     TweenMax.set(line, { left: left, opacity: 1, height: 0 });
     elements.text1 && TweenMax.set(elements.text1, { x: '100%' });
@@ -116,7 +115,6 @@ export function medium_enter_header(ref, callback, transition, enableScenes) {
     $.scrollLock(true);
 
     //Initial state
-    TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
     TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
     TweenMax.set(line, { left: left, opacity: 1, height: 0 });
     elements.text1 && TweenMax.set(elements.text1, { x: '100%' });
@@ -177,7 +175,6 @@ export function small_enter_header(ref, callback, transition, enableScenes) {
     $.scrollLock(true);
 
     //Initial state
-    TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
     TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
     TweenMax.set(line, { left: left, opacity: 1, height: 0 });
     elements.text1 && TweenMax.set(elements.text1, { x: '100%' });
@@ -321,7 +318,6 @@ export function large_enter_burger(ref, callback, transition) {
     $body.css('overflow', 'hidden');
 
     //Initial state
-    TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
     TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
     TweenMax.set(line, { left: left, opacity: 1, height: 0 });
     elements.text1 && TweenMax.set(elements.text1, { x: '100%' });
@@ -377,7 +373,6 @@ export function medium_enter_burger(ref, callback, transition) {
     $body.css('overflow', 'hidden');
 
     //Initial state
-    TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
     TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
     TweenMax.set(line, { left: left, opacity: 1, height: 0 });
     elements.text1 && TweenMax.set(elements.text1, { x: '100%' });
@@ -433,7 +428,6 @@ export function small_enter_burger(ref, callback, transition) {
     $body.css('overflow', 'hidden');
 
     //Initial state
-    TweenPlugin.activate(['scrollTo', 'CSSPlugin']);
     TweenMax.set(elements.container, { zIndex: 2, opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)', clipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
     TweenMax.set(line, { left: left, opacity: 1, height: 0 });
     elements.text1 && TweenMax.set(elements.text1, { x: '100%' });

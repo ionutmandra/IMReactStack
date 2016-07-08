@@ -11,10 +11,9 @@ import { Router } from 'react-router';
 import { Provider } from 'react-redux';
 import store from './store';
 import routes from './routes';
-import bowser from 'bowser';
+//import bowser from 'bowser';
 
-
-
+window.TweenPlugin.activate(['scrollTo', 'CSSPlugin', 'colorProps']);
 
 ReactDOM.render(
 	// The top-level Provider is what allows us to `connect` components to the store using ReactRedux.connect

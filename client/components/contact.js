@@ -17,12 +17,7 @@ class Contact extends Component {
         let $container = $(this.refs.container);
         this.article = $container.closest('article.page');
         this.header = this.article.find('header.main');
-        // this.image = this.header.find('> .image .img');
-        // this.logoImage = this.header.find('> .logo .img');
-        // this.logoText = this.header.find('> .logo .text svg');
-        // this.text = this.header.find('> .text h1');
-        // this.burgerClose = this.header.find('> .hamburger > .close');
-        // this.links = this.header.find('nav ul li a').toArray();
+        
         this.handleMediaChange(this.props.ui.media);
     }
 

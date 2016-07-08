@@ -136,7 +136,6 @@ export default (BaseComponent) => {
             !tweenScroll && $('body').css('overflow', 'hidden');
 
             //Initial state
-            TweenPlugin.activate(['scrollTo']);
             TweenMax.set(elements.container, { zIndex: 2 });
             TweenMax.set(elements.header, { opacity: 1, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
             TweenMax.set(line, { left: left, opacity: 1, height: 0 });
@@ -226,7 +225,6 @@ export default (BaseComponent) => {
             !tweenScroll && $('body').css('overflow', 'hidden');
 
             //Initial state
-            TweenPlugin.activate(['scrollTo']);
             TweenMax.set(elements.container, { zIndex: 2, webkitClipPath: 'inset(' + arr1[0] + '% ' + arr1[1] + '% ' + arr1[2] + '% ' + arr1[3] + '%)' });
             TweenMax.set(line, { left: left, opacity: 1, height: 0 });
             elements.text1 && TweenMax.set(elements.text1, { x: '100%' });
