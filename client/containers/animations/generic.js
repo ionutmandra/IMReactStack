@@ -161,6 +161,7 @@ export function large_enter_burger(ref, callback, transition) {
 
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.logoImg && TweenMax.set(elements.logoImg, { color: '#fefefe' });
+    elements.links && TweenMax.set(elements.links, { x: '-100%' });
     elements.logoText && TweenMax.set(elements.logoText, { x: '0%' });
     elements.burger && TweenMax.set(elements.burger, { x: '-100%', color: '#fefefe' });
     elements.footer && TweenMax.set(elements.footer, { height: 0 });
@@ -191,7 +192,7 @@ export function large_enter_burger(ref, callback, transition) {
                     elements.$article.removeClass('overlap');
                 },
             }),
-            TweenMax.to(elements.links, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
+            elements.links && TweenMax.to(elements.links, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
             elements.contentItems && TweenMax.to(elements.contentItems, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
             elements.footer && TweenMax.to(elements.footer, .3, { height: 58, delay: .3, ease: Power3.easeOut }),
         ]));
@@ -269,7 +270,7 @@ export function large_enter_content(ref, callback, transition) {
 
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.logoImg && TweenMax.set(elements.logoImg, { color: '#fefefe' });
-    elements.burger && TweenMax.set(elements.burger, { x: '-100%' });
+    elements.burger && TweenMax.set(elements.burger, { x: '-100%', color: '#fefefe' });
     elements.footer && TweenMax.set(elements.footer, { height: 0 });
     elements.contentItems && TweenMax.set(elements.contentItems, { x: '-110%' });
 
@@ -385,7 +386,7 @@ export function large_enter_home_content(ref, callback, transition) {
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.logoImg && TweenMax.set(elements.logoImg, { color: '#fefefe' });
     elements.logoText && TweenMax.set(elements.logoText, { x: '0%' });
-    elements.burger && TweenMax.set(elements.burger, { x: '-100%' });
+    elements.burger && TweenMax.set(elements.burger, { x: '-100%', color: '#fefefe' });
     elements.footer && TweenMax.set(elements.footer, { height: 0 });
     elements.contentItems && TweenMax.set(elements.contentItems, { x: '-110%' });
 
