@@ -34,6 +34,10 @@
             }
         }
     }
+
+    &.page-home header.main .logo {
+        pointer-events: none;
+    }
 }
 
 @media screen and #{breakpoint(medium down)} {
@@ -54,10 +58,6 @@
                     height: rem-calc(68pt);
                 }
             }
-        }
-
-        &.page-home header.main .logo {
-            pointer-events: none;
         }
     }
 }

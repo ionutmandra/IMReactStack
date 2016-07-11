@@ -416,80 +416,82 @@ class Home extends Component {
         //const s = this.props.strings;
         return (
             <article className="page page-home" ref="article">
-                <Header isHomepage setInitialScroll={this.setInitialScroll}  />
+                <div className="container">
+                    <Header isHomepage setInitialScroll={this.setInitialScroll}  />
 
-                <section className="slide slide-1 background" ref={(c) => this._section1b = c}>
-                    <div ref={(c) => this._img1 = c} className="image"><div className="img" /></div>
-                </section>
-                <section className="slide slide-2 background" ref={(c) => this._section2b = c}>
-                    <div ref={(c) => this._img2 = c} className="image"><div className="img" /></div>
-                </section>
-                <section className="slide slide-3 background" ref={(c) => this._section3b = c}>
-                    <div ref={(c) => this._img3 = c} className="image"><div className="img" /></div>
-                </section>
-                <section className="slide slide-4 background" ref={(c) => this._section4b = c}>
-                    <div ref={(c) => this._img4 = c} className="image"><div className="img" /></div>
-                </section>
+                    <section className="slide slide-1 background" ref={(c) => this._section1b = c}>
+                        <div ref={(c) => this._img1 = c} className="image"><div className="img" /></div>
+                    </section>
+                    <section className="slide slide-2 background" ref={(c) => this._section2b = c}>
+                        <div ref={(c) => this._img2 = c} className="image"><div className="img" /></div>
+                    </section>
+                    <section className="slide slide-3 background" ref={(c) => this._section3b = c}>
+                        <div ref={(c) => this._img3 = c} className="image"><div className="img" /></div>
+                    </section>
+                    <section className="slide slide-4 background" ref={(c) => this._section4b = c}>
+                        <div ref={(c) => this._img4 = c} className="image"><div className="img" /></div>
+                    </section>
 
-                <div className="gradient" ref={(c) => this._gradient = c}/>
+                    <div className="gradient" ref={(c) => this._gradient = c}/>
 
-                <section className="slide slide-1 content"  ref={(c) => this._section1c = c}>
-                    <div className="text-1"><h1 ref={(c) => this._inputSoftware = c}>{'Software Innovators Happily Together'}</h1></div>
-                    <div className="text-2">
-                        <h2 ref={(c) => this._inputCreate = c}>
-                            <p>Our vision is to create a truly remarkable working environment and deliver high quality, innovative software</p>
-                        </h2>
-                    </div>
-                </section>
-
-                <section className="slide slide-2 content"  ref={(c) => this._section2c = c}>
-                    <div className="text-1">
-                        <h1 ref={(c) => this._inputGrow = c}>
-                            <p>Grow an outstanding</p>
-                            <p>working environment driven</p>
-                            <p>by <Link to="/about#ourculture" data-animate-line="3" data-section="2" onClick={this.handleLinkClick}>our culture</Link></p>
-                        </h1>
-                    </div>
-                    <div className="text-2">
-                        <div className="text-content" ref={(c) => this._inputValuesLeft = c}>
-                            <h2>HAPPINESS</h2>
-                            <h2>TRUST</h2>
-                            <h2>PROFESSIONALISM</h2>
-                            <h2>ADAPTABILITY</h2>
+                    <section className="slide slide-1 content"  ref={(c) => this._section1c = c}>
+                        <div className="text-1"><h1 ref={(c) => this._inputSoftware = c}>{'Software Innovators Happily Together'}</h1></div>
+                        <div className="text-2">
+                            <h2 ref={(c) => this._inputCreate = c}>
+                                <p>Our vision is to create a truly remarkable working environment and deliver high quality, innovative software</p>
+                            </h2>
                         </div>
-                    </div>
-                    <div className="text-3">
-                        <div className="text-content" ref={(c) => this._inputValuesRight = c}>
-                            <h2>PASSION</h2>
-                            <h2>PURPOSE</h2>
-                            <h2>COMMUNICATION</h2>
-                            <h2>INNOVATION</h2>
+                    </section>
+
+                    <section className="slide slide-2 content"  ref={(c) => this._section2c = c}>
+                        <div className="text-1">
+                            <h1 ref={(c) => this._inputGrow = c}>
+                                <p>Grow an outstanding</p>
+                                <p>working environment driven</p>
+                                <p>by <Link to="/about#ourculture" data-animate-line="3" data-section="2" onClick={this.handleLinkClick}>our culture</Link></p>
+                            </h1>
                         </div>
+                        <div className="text-2">
+                            <div className="text-content" ref={(c) => this._inputValuesLeft = c}>
+                                <h2>HAPPINESS</h2>
+                                <h2>TRUST</h2>
+                                <h2>PROFESSIONALISM</h2>
+                                <h2>ADAPTABILITY</h2>
+                            </div>
+                        </div>
+                        <div className="text-3">
+                            <div className="text-content" ref={(c) => this._inputValuesRight = c}>
+                                <h2>PASSION</h2>
+                                <h2>PURPOSE</h2>
+                                <h2>COMMUNICATION</h2>
+                                <h2>INNOVATION</h2>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className="slide slide-3 content" ref={(c) => this._section3c = c}>
+                        <div className="text-1"><h1 ref={(c) => this._inputOffering = c}>Offering highest quality by constantly improving our <Link to="/expertise" data-animate-line="4" data-section="3" onClick={this.handleLinkClick}>skills and processes</Link></h1></div>
+                        <div className="text-2"><h1 ref={(c) => this._inputCreating = c}>Creating <Link to="/portfolio/sfb" data-animate-line="5" data-section="3" onClick={this.handleLinkClick}>high impact software solutions</Link> that help business succeed
+                        </h1></div>
+                    </section>
+
+                    <section className="slide slide-4 content"  ref={(c) => this._section4c = c}>
+                        <div className="text-1"><h1 ref={(c) => this._inputSustaining = c} >Sustaining <Link to="/expertise#innovation" data-animate-line="4" data-section="4" onClick={this.handleLinkClick}>learning and innovation</Link> as a part of our day to day activity.</h1></div>
+                    </section>
+
+                    <div className="scroll-hint" ref={(c) => this._scrollHintContainer = c}>
+                        <svg onClick={this.handleHintClick} ref={(c) => this._scrollHint = c} width="70" height="70" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                            <circle id="bar" ref={(c) => this._scrollHintBar = c} r="32" cx="34" cy="34" fill="transparent" strokeDasharray="201.056" strokeDashoffset="0"></circle>
+                        </svg>
+                        <i onClick={this.handleHintClick} className="ncs-chevron-thin-down" ref={(c) => this._scrollArrow = c}></i>
+                        <p onClick={this.handleHintClick}>{'Find out more'}</p>
                     </div>
-                </section>
 
-                <section className="slide slide-3 content" ref={(c) => this._section3c = c}>
-                    <div className="text-1"><h1 ref={(c) => this._inputOffering = c}>Offering highest quality by constantly improving our <Link to="/expertise" data-animate-line="4" data-section="3" onClick={this.handleLinkClick}>skills and processes</Link></h1></div>
-                    <div className="text-2"><h1 ref={(c) => this._inputCreating = c}>Creating <Link to="/portfolio/sfb" data-animate-line="5" data-section="3" onClick={this.handleLinkClick}>high impact software solutions</Link> that help business succeed
-                    </h1></div>
-                </section>
-
-                <section className="slide slide-4 content"  ref={(c) => this._section4c = c}>
-                    <div className="text-1"><h1 ref={(c) => this._inputSustaining = c} >Sustaining <Link to="/expertise#innovation" data-animate-line="4" data-section="4" onClick={this.handleLinkClick}>learning and innovation</Link> as a part of our day to day activity.</h1></div>
-                </section>
-
-                <div className="scroll-hint" ref={(c) => this._scrollHintContainer = c}>
-                    <svg onClick={this.handleHintClick} ref={(c) => this._scrollHint = c} width="70" height="70" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                        <circle id="bar" ref={(c) => this._scrollHintBar = c} r="32" cx="34" cy="34" fill="transparent" strokeDasharray="201.056" strokeDashoffset="0"></circle>
-                    </svg>
-                    <i onClick={this.handleHintClick} className="ncs-chevron-thin-down" ref={(c) => this._scrollArrow = c}></i>
-                    <p onClick={this.handleHintClick}>{'Find out more'}</p>
+                    <section className="slide slide-1v" ref={(c) => this._section1 = c}></section>
+                    <section className="slide slide-2v" ref={(c) => this._section2 = c}></section>
+                    <section className="slide slide-3v" ref={(c) => this._section3 = c}></section>
+                    <section className="slide slide-4v" ref={(c) => this._section4 = c}></section>
                 </div>
-
-                <section className="slide slide-1v" ref={(c) => this._section1 = c}></section>
-                <section className="slide slide-2v" ref={(c) => this._section2 = c}></section>
-                <section className="slide slide-3v" ref={(c) => this._section3 = c}></section>
-                <section className="slide slide-4v" ref={(c) => this._section4 = c}></section>
             </article>
         );
     }
@@ -531,7 +533,7 @@ function getAnimationUtils(component, controller, timeLines, scenes) {
     };
     ret.updateGradientBackground = function (gr) {
         //console.log('update grad',gr.color0 , gr.color1 );
-        timeLines.push(TweenMax.set('article.page-home > .gradient', { background: 'linear-gradient(45deg, ' + gr.color0 + ' 0%, ' + gr.color1 + ' 100%)' }));
+        timeLines.push(TweenMax.set('article.page-home .gradient', { background: 'linear-gradient(45deg, ' + gr.color0 + ' 0%, ' + gr.color1 + ' 100%)' }));
     };
     ret.animateGradientColors = function (fromGrad, toGrad) {
         //console.log('animateGradientColors  ',fromGrad, toGrad);
