@@ -118,12 +118,13 @@
 
     //ie 11 fix flickering when scrolling (position fixed elements)
     //https://connect.microsoft.com/IE/feedback/details/819518/fixed-background-image-scrolling-issue
-    if(navigator.userAgent.match(/Trident\/7\./)) {
+    if(navigator.userAgent.match(/Trident\/7\./) || navigator.userAgent.indexOf('Edge') >= 0) {            
             $('body').on("mousewheel", function () {
-                event.preventDefault();
+                event.preventDefault && event.preventDefault();
                 var wd = event.wheelDelta;
                 var csp = window.pageYOffset;
                 window.scrollTo(0, csp - wd);
+                return false;
             });
     }
 
