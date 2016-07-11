@@ -67,7 +67,7 @@
         overflow: hidden;
         background: linear-gradient(90deg, #C8C829 0%, #7BBF3B 100%);
         background-size: 200% 100%;
-        background-position-x: 100%;
+        background-position: 100% 0;
     }
 
     #leftLogo{
@@ -76,6 +76,7 @@
         float: right;
         position: relative;
         top:20%;
+        visibility: hidden;
     }
 
     #rightLogo{
@@ -83,7 +84,7 @@
         overflow: hidden;
         position: relative;
         top:70%;
-
+        visibility: hidden;
     }
 
     #rightLogo svg{
@@ -95,6 +96,7 @@
         top:50%;
         width: 100px;
         left:-100px;
+        display: none;
     }
     </style>
 </head>
@@ -118,12 +120,13 @@
 
     //ie 11 fix flickering when scrolling (position fixed elements)
     //https://connect.microsoft.com/IE/feedback/details/819518/fixed-background-image-scrolling-issue
-    if(navigator.userAgent.match(/Trident\/7\./)) {
+    if(navigator.userAgent.match(/Trident\/7\./) || navigator.userAgent.indexOf('Edge') >= 0) {
             $('body').on("mousewheel", function () {
-                event.preventDefault();
+                event.preventDefault && event.preventDefault();
                 var wd = event.wheelDelta;
                 var csp = window.pageYOffset;
                 window.scrollTo(0, csp - wd);
+                return false;
             });
     }
 
@@ -196,10 +199,10 @@
 
 
         TweenMax.set('body',{overflow:'hidden'});
-
         TweenMax.set('#leftLogo',{x:'+100%'});
         TweenMax.set('#rightLogo',{x:'-100%'});
-        TweenMax.set('#adaptabiTxt', { display:'none' });
+        TweenMax.set('#leftLogo',{visibility:'visible'});
+        TweenMax.set('#rightLogo',{visibility:'visible'});
 
         var timeline = new TimelineLite({ onComplete: function () { timeline = null; } })
         .add(TweenMax.to('#line', fast ? .1 : 1, { height: '20%', ease: Power3.easeIn }))
