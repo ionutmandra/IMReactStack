@@ -36,68 +36,87 @@
     <meta name="theme-color" content="#ffffff">
 
     <style>
-    #preload{
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 101;
-        background: linear-gradient(90deg, #C8C829 0%, #7BBF3B 100%);
-        color: white;
-    }
+        #preload{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 101;
+            background: linear-gradient(90deg, #C8C829 0%, #7BBF3B 100%);
+            color: white;
+        }
 
-    #preload svg{
-        fill:white;
-    }
+        #preload svg{
+            fill:white;
+        }
 
-    #line{
-        width: 50%;
-        border-right: 1px solid white;
-        float: left;
-        overflow: hidden;
-        background: linear-gradient(90deg, #C8C829 0%, #7BBF3B 100%);
-        background-size: 200% 100%;
-    }
+        #line{
+            width: 50%;
+            border-right: 1px solid white;
+            float: left;
+            overflow: hidden;
+            background: linear-gradient(90deg, #C8C829 0%, #7BBF3B 100%);
+            background-size: 200% 100%;
+        }
 
-    #liner{
-        width: 50%;
-        float: left;
-        height: 100%;
-        overflow: hidden;
-        background: linear-gradient(90deg, #C8C829 0%, #7BBF3B 100%);
-        background-size: 200% 100%;
-        background-position: 100% 0;
-    }
+        #liner{
+            width: 50%;
+            float: left;
+            height: 100%;
+            overflow: hidden;
+            background: linear-gradient(90deg, #C8C829 0%, #7BBF3B 100%);
+            background-size: 200% 100%;
+            background-position: 100% 0;
+        }
 
-    #leftLogo{
-        width: 23px;
-        overflow: hidden;
-        float: right;
-        position: relative;
-        top:20%;
-        visibility: hidden;
-    }
+        #leftLogo{
+            width: 23px;
+            overflow: hidden;
+            float: right;
+            position: relative;
+            top:20%;
+            visibility: hidden;
+        }
 
-    #rightLogo{
-        width: 23px;
-        overflow: hidden;
-        position: relative;
-        top:70%;
-        visibility: hidden;
-    }
+        #rightLogo{
+            width: 23px;
+            overflow: hidden;
+            position: relative;
+            top:70%;
+            visibility: hidden;
+        }
 
-    #rightLogo svg{
-        margin-left: -100%;
-    }
+        #rightLogo svg{
+            margin-left: -100%;
+        }
 
-    #adaptabiTxt{
-        position: relative;
-        top:50%;
-        width: 100px;
-        left:-100px;
-        display: none;
-    }
+        #adaptabiTxt{
+            position: relative;
+            top:50%;
+            width: 100px;
+            left:-100px;
+            display: none;
+        }
+
+        #ie-splash{
+            display: none;
+            position: fixed;
+            top:0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #d6cb26;
+        }
+        #ie-splash span{
+            display: inline-block;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-left: -100px;
+            font-size: bold;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -116,11 +135,25 @@
             </div>
         </div>
     </div>
+
+    <div id="ie-splash">
+        <span>Please use IE 10 or later</span>
+    </div>
+
+    <div id="root"></div>
+
     <script>
 
-    //ie 11 fix flickering when scrolling (position fixed elements)
-    //https://connect.microsoft.com/IE/feedback/details/819518/fixed-background-image-scrolling-issue
-    if(navigator.userAgent.match(/Trident\/7\./) || navigator.userAgent.indexOf('Edge') >= 0) {
+    var iev = GetIEVersion();
+    if(iev > 0 && iev < 10){
+        console.log('IE version detected: ', iev);
+    }
+
+    if(iev == 0 || iev >= 10){
+
+        if(iev >= 10){
+            //ie 11 fix flickering when scrolling (position fixed elements)
+            //https://connect.microsoft.com/IE/feedback/details/819518/fixed-background-image-scrolling-issue
             $('body').on("mousewheel", function () {
                 event.preventDefault && event.preventDefault();
                 var wd = event.wheelDelta;
@@ -128,17 +161,29 @@
                 window.scrollTo(0, csp - wd);
                 return false;
             });
+        }
+
+        var preload = true;
+        var fast = true;
+
+        if(preload){
+            preloadAnimation();
+        }
+        else{
+            document.getElementById('preload').style.display = 'none';
+        }
+    }
+    else {
+        var el = document.getElementById('preload');
+        el.parentNode.removeChild(el);
+
+        var el = document.getElementById('root');
+        el.parentNode.removeChild(el);
+
+        document.getElementById('ie-splash').style.display = 'block';
+        
     }
 
-    var preload = true;
-    var fast = true;
-
-    if(preload){
-        preloadAnimation();
-    }
-    else{
-        document.getElementById('preload').style.display = 'none';
-    }
 
     function preloadAnimation (){
         var images = new Array();
@@ -249,8 +294,27 @@
         });
     }
 
+    function GetIEVersion() {
+        var sAgent = window.navigator.userAgent;
+        var Idx = sAgent.indexOf("MSIE");
+
+        // If IE, return version number.
+        if (Idx > 0)
+            return parseInt(sAgent.substring(Idx+ 5, sAgent.indexOf(".", Idx)));
+
+        // If IE 11 then look for Updated user agent string.
+        else if (!!navigator.userAgent.match(/Trident\/7\./))
+            return 11;
+
+        else if(navigator.userAgent.indexOf('Edge') >= 0)
+            return 12;
+
+        else
+        return 0; //It is not IE
+    }
+
     </script>
-    <div id="root"></div>
+
     <script type="text/javascript" src="/client/dist/js/bundle.js"></script>
 
 	<!-- GA tracking -->
