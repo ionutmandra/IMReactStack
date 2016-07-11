@@ -133,7 +133,7 @@ class Logo extends Component {
         this.scenes && this.scenes[media] && this.scenes[media].forEach(scene => { scene.enabled(enabled); });
     }
 
-    handleClick() {
+    handleClick(event) {
         let burgerIsOpen = this.article.hasClass('menu-open');
         //burgerIsOpen && $window.scrollTop(0);
         let isLarge = this.props.ui.media.current == breakpoint.names.large;
