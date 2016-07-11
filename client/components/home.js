@@ -446,7 +446,7 @@ class Home extends Component {
                     <section className="slide slide-2 content"  ref={(c) => this._section2c = c}>
                         <div className="text-1">
                             <h1 ref={(c) => this._inputGrow = c}>
-                                <p>Grow an outstanding</p>
+                                <p>Growing an outstanding</p>
                                 <p>working environment driven</p>
                                 <p>by <Link to="/about#ourculture" data-animate-line="3" data-section="2" onClick={this.handleLinkClick}>our culture</Link></p>
                             </h1>
