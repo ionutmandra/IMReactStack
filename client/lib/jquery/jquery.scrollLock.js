@@ -93,13 +93,15 @@ $.scrollLock = ( function scrollLockClosure() {
         }
 
         // Revert styles
-        //restoreScroll !== false && 
         $html.attr( 'style', $( '<x>' ).css( prevStyles ).attr( 'style' ) || '' );
 
         // Revert scroll values
-        restoreScroll !== false && $( window )
-            .scrollLeft( prevScroll.scrollLeft )
-            .scrollTop(  prevScroll.scrollTop );
+        var left = restoreScroll === false ? 0 : prevScroll.scrollLeft;
+        var top = restoreScroll === false ? 0 : prevScroll.scrollTop;
+        
+        $(window)
+            .scrollLeft(left)
+            .scrollTop(top);
 
         locked = false;
     }
