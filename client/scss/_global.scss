@@ -46,10 +46,10 @@
             outline: 0;
         }
     }
-    #root {
-        min-height: 100%;
-        position: relative;
-    }
+    // #root {
+    //     // min-height: 100%;
+    //     // position: relative;
+    // }
 }
 
 @media screen and #{breakpoint(medium only)} {
@@ -93,10 +93,10 @@
             opacity: .8;
         }
     }
-    #root {
-        min-height: 100%;
-        position: relative;
-    }
+    // #root {
+    //     min-height: 100%;
+    //     position: relative;
+    // }
 }
 
 @media screen and #{breakpoint(small only)} {
@@ -140,8 +140,8 @@
             opacity: .8;
         }
     }
-    #root {
-        min-height: 100%;
-        position: relative;
-    }
+    // #root {
+    //     min-height: 100%;
+    //     position: relative;
+    // }
 }
