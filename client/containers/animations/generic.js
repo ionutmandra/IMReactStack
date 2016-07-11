@@ -425,7 +425,9 @@ export function large_enter_home_content(ref, callback, transition) {
         let urlParts = location.href.split('#');
         let $elementToScrollTo = urlParts.length === 2 ? $(['#', urlParts[1]].join('')) : '';
         if ($elementToScrollTo.length > 0) {
-            TweenMax.to(window, .7, { scrollTo: { y: $elementToScrollTo.offset().top }, ease: Power3.easeOut });
+            setTimeout(() => {
+                TweenMax.to(window, .7, { scrollTo: { y: $elementToScrollTo.offset().top }, ease: Power3.easeOut });
+            }, 150);
         }
     }
 }
