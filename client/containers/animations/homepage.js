@@ -154,21 +154,28 @@ export function small_leave_burger(ref, callback, transition, initialScroll) {
 }
 
 ////
-// CONTENT LINKS
+//    CONTENT - entering homepage from a generic page content link
 /////////////////////////////////////////
 
-export function large_enter_home_content(ref, callback, transition) {
-    console.error('should never be called');
+//user clicked on homepage in generic page when scrolled; 
+//the only difference is on the leaving page side, here it's the same as header navigation
+export function large_enter_content(ref, callback, transition) {
+    large_enter_header(ref, callback, transition);
+}
+
+export function medium_enter_content(ref, callback, transition) {
+    console.warn('TO BE IMPLEMENTED');
     callback();
 }
-export function medium_enter_home_content(ref, callback, transition) {
-    console.error('should never be called');
+
+export function small_enter_content(ref, callback, transition) {
+    console.warn('TO BE IMPLEMENTED');
     callback();
 }
-export function small_enter_home_content(ref, callback, transition) {
-    console.error('should never be called');
-    callback();
-}
+
+////
+// CONTENT LINKS - when leaving homepage
+/////////////////////////////////////////
 
 export function large_leave_home_content(ref, callback, transition, initialScroll) {
     let elements = extractDOMElements(ref);
@@ -230,10 +237,10 @@ function extractDOMElements(ref) {
             $article.find('.scroll-hint > *').toArray(),
         ],
         image: [
-            $article.find('.slide-1.background .image').toArray(),
-            $article.find('.slide-2.background .image').toArray(),
-            $article.find('.slide-3.background .image').toArray(),
-            $article.find('.slide-4.background .image').toArray(),
+            $article.find('.slide-1.background .img').toArray(),
+            $article.find('.slide-2.background .img').toArray(),
+            $article.find('.slide-3.background .img').toArray(),
+            $article.find('.slide-4.background .img').toArray(),
         ],
 
         gridLine: $('#page-grid .navigation-line')[0],

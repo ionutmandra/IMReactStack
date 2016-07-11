@@ -4,7 +4,7 @@ import { Link, browserHistory } from 'react-router';
 import { breakpoint } from '../config/constants';
 import routePaths from '../../common/routePaths';
 
-let $ = window.$, ScrollMagic = window.ScrollMagic, TweenMax = window.TweenMax, Circ = window.Circ, Linear = window.Linear, TimelineMax = window.TimelineMax, TweenPlugin = window.TweenPlugin, $window = $(window);
+let $ = window.$, $body = $('body'), ScrollMagic = window.ScrollMagic, TweenMax = window.TweenMax, Circ = window.Circ, Linear = window.Linear, TimelineMax = window.TimelineMax, TweenPlugin = window.TweenPlugin, $window = $(window);
 
 class Home extends Component {
     constructor(props) {
@@ -114,7 +114,7 @@ class Home extends Component {
         }
 
         if (this.props.ui.media.current != nextProps.ui.media.current) {
-            this.handleMediaChange(nextProps.ui.media);
+            this.handleMediaChange(nextProps.ui.media, nextProps.transition);
         }
 
         return false;
@@ -162,7 +162,7 @@ class Home extends Component {
         // timeLines.push(TweenMax.set(this._hintBr, { height:'0%' }));
         // timeLines.push(TweenMax.set(this._hintBl, { height:'0%' }));
 
-        this.handleMediaChange(this.props.ui.media);
+        this.handleMediaChange(this.props.ui.media, this.props.transition);
 
         // change behaviour of controller to animate scroll instead of jump
         this.t0 = new Date().getTime();
@@ -291,7 +291,7 @@ class Home extends Component {
         );
     }
 
-    handleMediaChange(media) {
+    handleMediaChange(media, transition) {
 
         var height = $window.height();
         var fullHeight = height * 4;
@@ -332,16 +332,18 @@ class Home extends Component {
         for (let name in breakpoint.names) {
             this.setScenes(name, false);
         }
-        if (media.current != breakpoint.names.large && this.props.transition.scrollScenesEnabled == true) {
+        if (media.current != breakpoint.names.large && transition.scrollScenesEnabled == true) {
             this.setScenes(media.current, true);
         }
 
         if (media.current == breakpoint.names.large) {
             //Scrolling to top
-            $window.scrollTop(0);
-            setTimeout((() => {
-                this.setScenes(media.current, true);
-            }).bind(this), 150);
+            if (!$body.is('.navigating')) {
+                $window.scrollTop(0);
+                setTimeout((() => {
+                    this.setScenes(media.current, true);
+                }).bind(this), 150);
+            }
 
             this.timeLines.push(TweenMax.set(this._gradient, { background: 'linear-gradient(45deg, #d6cb26 0%, #68bc45 100%)' }));
 
