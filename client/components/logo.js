@@ -53,7 +53,7 @@ class Logo extends Component {
         );
 
         scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: article, triggerHook: 'onLeave', offset: 355 } )
-            .addTo(controller)    
+            .addTo(controller)
             .setTween(this.darken()));
 
         this.handleMediaChange(this.props.ui.media);
@@ -171,7 +171,7 @@ class Logo extends Component {
                     </svg>
                 </div>
                 <div className="text">
-                    <svg ref="text" height="20px" viewBox="0 0 106.337 22">
+                    <svg ref="text" height="20px" width="96.65px" viewBox="0 0 106.337 22">
                         <path stroke="none"  fill-rule="evenodd" d="M25.837,6.106l-0.006-5.711c0-0.107,0.04-0.203,0.115-0.278
                             c0.076-0.075,0.172-0.115,0.278-0.115l1.8,0.004c0.216,0.001,0.392,0.177,0.392,0.393l0,16.492c0,0.108-0.041,0.205-0.118,0.28
                             c-0.077,0.075-0.175,0.114-0.283,0.112l-1.793-0.035c-0.214-0.004-0.385-0.179-0.385-0.393v-0.751
