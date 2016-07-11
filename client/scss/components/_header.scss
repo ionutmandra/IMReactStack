@@ -75,7 +75,7 @@
         position: fixed; //for contact open b/c there are no scenes to make it fixed from js
         top: 0;
         z-index: 4;
-        height: 0;
+        height: 80px;
     }
 
     &.page-about header.main {

@@ -2,6 +2,23 @@
     #page-container article.page-home {
         transform: none !important;
         position: absolute;
+        width: auto;
+        left: 0;
+        right: 0;
+        padding: 0;
+
+        &.overlap {
+            overflow: hidden;
+        }
+
+        > .container {
+            position: relative;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            will-change: left, width;
+        }
+
         section.slide {
             display: block;
             position: fixed;
@@ -203,7 +220,7 @@
                 // z-index: 20;
             }
         }
-        > .gradient {
+        .gradient {
             display: block;
             position: fixed;
             top: 0;
@@ -515,7 +532,7 @@
                 // z-index: 20;
             }
         }
-        > .gradient {
+        .gradient {
             display: block;
             position: fixed;
             top: 0;
@@ -764,7 +781,7 @@
                 // z-index: 20;
             }
         }
-        > .gradient {
+        .gradient {
             display: block;
             position: fixed;
             top: 0;

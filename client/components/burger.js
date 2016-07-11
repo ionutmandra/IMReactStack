@@ -252,7 +252,7 @@ export default class Burger extends Component {
         if (this.props.isHomepage) { // Home medium/small
             let timeline = new TimelineLite({ onComplete: onComplete.bind(this, timeline) })
                 .add(_.filter([
-                    TweenMax.to(this.homeBottom, .3, { y: '200%' }),
+                    TweenMax.to(this.homeBottom, .3, { y: '200px' }),
                     TweenMax.to(this.homeImage, .3, { opacity: 0 }),
                     !isSmall && TweenMax.to(this.homeLeft, .3, { x: '-105%' }),
                     !isSmall && TweenMax.to(this.homeRight, .3, { x: '105%' }),

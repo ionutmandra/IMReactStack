@@ -69,7 +69,7 @@ export default (BaseComponent) => {
             this.animationName = animationName; //only for console.log in the Leave function below
 
             if (!transition || !transition.type) {
-                // console.warn('componentWillEnter HAS NO TYPE');
+                //console.warn('componentWillEnter HAS NO TYPE');
                 return this.willEnterCallback(callback);
             }
             console.log('componentWillEnter', animationName, ui.media.current + '_enter_' + transition.type);
@@ -106,15 +106,24 @@ export default (BaseComponent) => {
         }
         willEnterCallback(callback) {
             //console.warn('willEnterCallback');
-            $body.removeClass('navigating');
             $(dom.findDOMNode(this.refs.container)).removeClass('fix-header contact-open menu-open');
             this.cleanTransition();
             $.scrollLock(false, false);
-            setTimeout(this.enableScenes, 100);
+            setTimeout((() => {
+                this.enableScenes();
+                $body.removeClass('navigating');
+            }).bind(this), 100);
             callback();
         }
         willLeaveCallback(callback) {
             //console.warn('willLeaveCallback');
+            $(dom.findDOMNode(this.refs.container)).removeClass('fix-header contact-open menu-open');
+            this.cleanTransition();
+            $.scrollLock(false, false);
+            setTimeout((() => {
+                this.enableScenes();
+                $body.removeClass('navigating');
+            }).bind(this), 100);
             callback();
         }
         render() {
