@@ -74,7 +74,6 @@ export default (BaseComponent) => {
             }
             console.log('componentWillEnter', animationName, ui.media.current + '_enter_' + transition.type);
 
-            $body.addClass('navigating');
             if (this.animation[ui.media.current + '_enter_' + transition.type]) {
                 this.animation[ui.media.current + '_enter_' + transition.type](this.refs.container, this.willEnterCallback.bind(this, callback), transition);
             }
@@ -91,7 +90,6 @@ export default (BaseComponent) => {
             }
             console.log('componentWillLeave', this.animationName, ui.media.current + '_leave_' + transition.type);
 
-            $body.addClass('navigating');
             if (this.animation[ui.media.current + '_leave_' + transition.type]) {
                 let initialScroll = $window.scrollTop();
                 this.disableScenes();
@@ -105,24 +103,24 @@ export default (BaseComponent) => {
 
         }
         willEnterCallback(callback) {
-            // console.warn('willEnterCallback');
+            //console.warn('willEnterCallback');
+            $body.removeClass('navigating');
             $(dom.findDOMNode(this.refs.container)).removeClass('fix-header contact-open menu-open');
             this.cleanTransition();
             $.scrollLock(false, false);
             setTimeout((() => {
                 this.enableScenes();
-                $body.removeClass('navigating');
             }).bind(this), 100);
             callback();
         }
         willLeaveCallback(callback) {
-            // console.warn('willLeaveCallback');
+            //console.warn('willLeaveCallback');
+            $body.removeClass('navigating');
             $(dom.findDOMNode(this.refs.container)).removeClass('fix-header contact-open menu-open');
             this.cleanTransition();
             $.scrollLock(false, false);
             setTimeout((() => {
                 this.enableScenes();
-                $body.removeClass('navigating');
             }).bind(this), 100);
             callback();
         }

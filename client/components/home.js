@@ -354,25 +354,6 @@ class Home extends Component {
                 this.animations.hideRight(homeRight[i]);
             }
 
-            // var currentSlide = 0;
-
-            // if (media.prev == breakpoint.names.medium || media.prev == breakpoint.names.small) {
-            //     currentSlide = Math.round((initialScroll) / height);
-            //     this.controller.scrollTo(sections[currentSlide]);
-            // }
-            // else {
-            //     currentSlide = Math.floor((initialScroll) / height);
-            // }
-
-            // for (let i = 0; i < 4; i++) {
-            //     if (currentSlide != i) {
-            //         this.animations.hideSlide(sectionsContent[i]);
-            //         this.animations.hideImgInstant(images[i]);
-            //         this.animations.hideLeft(homeLeft[i]);
-            //         this.animations.hideRight(homeRight[i]);
-            //     }
-            // }
-
             if (menuIsOpen && !contactIsOpen) {
                 this.article.removeClass('menu-open');
                 this.animations.showSlide(sectionsContent[0]);
@@ -382,8 +363,6 @@ class Home extends Component {
             }
         }
         else if (media.current != breakpoint.names.none) {
-            //var currentSlide = Math.round((initialScroll) / height);
-
             if (contactIsOpen) {
                 for (let i = 0; i < 4; i++) {
                     this.animations.showSlide(sectionsContent[i]);
