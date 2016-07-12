@@ -16,7 +16,7 @@ export function appear(ref, callback) {
 /////////////////////////////////////////
 
 //user clicked on homepage in header of a generic page
-export function large_enter_header(ref, callback, transition) {
+export function large_enter_header(ref, callback, transition, burgerIsOpen) {
     //Setup vars
     let elements = extractDOMElements(ref),
         currentSlide = 0,
@@ -47,7 +47,7 @@ export function large_enter_header(ref, callback, transition) {
     //Animation
     let timeline = new TimelineLite({ onComplete })
         //wait for leaving page to hide content
-        .set({}, {}, .6)
+        .set({}, {}, burgerIsOpen ? .3 : .6)
         //animate line
         .add(TweenMax.to(elements.gridLine, .6, { height: '100%', ease: Power3.easeOut }))
         //hide line
@@ -116,8 +116,9 @@ export function small_leave_header(ref, callback, transition, initialScroll) {
 
 //user clicked on homepage in burger, now the homepage link in generic burger is disabled
 export function large_enter_burger(ref, callback, transition) {
-    console.warn('TO BE IMPLEMENTED');
-    callback();
+    // console.warn('TO BE IMPLEMENTED');
+    // callback();
+    large_enter_header(ref, callback, transition, true);
 }
 
 export function medium_enter_burger(ref, callback, transition) {

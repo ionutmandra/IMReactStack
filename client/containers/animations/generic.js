@@ -218,11 +218,19 @@ export function small_enter_burger(ref, callback, transition) {
 }
 
 export function large_leave_burger(ref, callback, transition, initialScroll) {
-    let elements = extractDOMElements(ref, transition.column);
+    let elements = extractDOMElements(ref, transition.column), 
+        contactIsOpen = elements.$article.hasClass('contact-open');
 
     let timeline = new TimelineLite({ onComplete: () => { callback(); timeline = null; } })
         .add(_.filter([
-            TweenMax.to(elements.links, .6, {
+            !contactIsOpen && TweenMax.to(elements.links, .6, {
+                x: '-100%', ease: Power3.easeIn,
+                onComplete: () => {
+                    $.scrollLock(false, false); //scroll goes top
+                    $.scrollLock(true);
+                },
+            }),
+            contactIsOpen && TweenMax.to(elements.contactPieces.large, .6, {
                 x: '-100%', ease: Power3.easeIn,
                 onComplete: () => {
                     $.scrollLock(false, false); //scroll goes top
@@ -342,7 +350,7 @@ export function large_leave_content(ref, callback, transition, initialScroll) {
                 onComplete: () => {
                     $.scrollLock(false, false); //scroll goes top
                     $.scrollLock(true);
-                }
+                },
             }),
         ]));
 }
@@ -484,5 +492,9 @@ function extractDOMElements(ref, column) {
         text: $article.find('header.main .text h1')[0],
         contentItems: $article.find('.content-item'),
         footer: $article.find('footer')[0],
+
+        contactPieces: {
+            large: $article.find('header.main .contact .content').toArray(),
+        },
     };
 }
