@@ -135,6 +135,7 @@ class Logo extends Component {
 
     handleClick(event) {
         let burgerIsOpen = this.article.hasClass('menu-open');
+        let contactIsOpen = this.article.hasClass('contact-open');
         let isLarge = this.props.ui.media.current == breakpoint.names.large;
         let isMedium = this.props.ui.media.current == breakpoint.names.medium;
 
@@ -144,7 +145,7 @@ class Logo extends Component {
 
         let type = 'header';
         $window.scrollTop() && (type = 'content');
-        burgerIsOpen && (type = 'burger');
+        (burgerIsOpen || contactIsOpen) && (type = 'burger');
 
         this.props.dispatchTransition({
             type: type,
