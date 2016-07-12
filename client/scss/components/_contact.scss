@@ -5,6 +5,7 @@
         position: absolute;
         z-index: 1;
         top: 50%;
+        -webkit-transform: translateY(-50%);
         transform: translateY(-50%);
         overflow: hidden;
         a {
@@ -56,6 +57,7 @@
             @include grid-col-size(1);
             @include grid-col-off(21);
             top: rem-calc(20pt);
+            -webkit-transform: none;
             transform: none;
             text-align: left;
             i {
@@ -83,6 +85,7 @@
 
     #page-container article.menu-open.contact-open header.main div.contact > div.btn {
         top: 50%;
+        -webkit-transform: translateY(-50%);
         transform: translateY(-50%);
     }
 }

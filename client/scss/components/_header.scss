@@ -17,6 +17,7 @@
 
         > .container {
             position: relative;
+            z-index: 1;
             top: 0;
             height: 100%;
             width: 100%;
@@ -178,8 +179,8 @@
 @media screen and #{breakpoint(medium down)} {
     #page-container article header.main{
         @include grid-row(24);
-
-        &:before {
+    
+        > .container:before {
             content: '';
             display: block;
             position: fixed;
@@ -190,6 +191,8 @@
             height: rem-calc(72pt);
             background: black;
             opacity: .35;
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
         }
 
         .text {
@@ -203,7 +206,7 @@
     #page-container article header.main{
         @include grid-row(24);
 
-        &:before {
+        > .container:before {
             content: '';
             display: block;
             position: fixed;
@@ -214,6 +217,8 @@
             height: rem-calc(72pt);
             background: black;
             opacity: .35;
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
         }
 
         .text {

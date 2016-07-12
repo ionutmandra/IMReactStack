@@ -1,4 +1,5 @@
 #page-container article.page-home {
+    -webkit-transform: none !important;
     transform: none !important;
     position: absolute;
     width: auto;
@@ -120,7 +121,8 @@
                 @include grid-column-size(7);
                 @include grid-column-offset(3);
                 top: 50%;
-                transform: translate(0, -50%);
+                -webkit-transform: translateY(-50%);
+                transform: translateY(-50%);
                 h2 {
                     color: white;
                 }
@@ -130,7 +132,8 @@
                 @include grid-column-offset(15);
                 text-align: right;
                 top: 50%;
-                transform: translate(0, -50%);
+                -webkit-transform: translateY(-50%);
+                transform: translateY(-50%);
                 h2 {
                     margin-bottom: 50%;
                     font-weight: $semibold;
@@ -142,7 +145,8 @@
                 @include grid-column-size(3);
                 @include grid-column-offset(18);
                 top: 50%;
-                transform: translate(0, -38%);
+                -webkit-transform: translateY(-38%);
+                transform: translateY(-38%);
                 h2 {
                     margin-bottom: 50%;
                     font-weight: $semibold;
@@ -161,14 +165,16 @@
                 @include grid-column-size(6);
                 @include grid-column-offset(3);
                 top: 50%;
-                transform: translate(0, -50%);
+                -webkit-transform: translateY(-50%);
+                transform: translateY(-50%);
                 text-align: right;
             }
             .text-2 {
                 @include grid-column-size(6);
                 @include grid-column-offset(15);
                 top: 50%;
-                transform: translate(0, -50%);
+                -webkit-transform: translateY(-50%);
+                transform: translateY(-50%);
                 h2 {
                     font-weight: $semibold;
                     font-size: rem-calc(28pt);
@@ -186,8 +192,9 @@
             .text-1 {
                 @include grid-column-size(6);
                 @include grid-column-offset(15);
-                transform: translate(0, -50%);
                 top: 50%;
+                -webkit-transform: translateY(-50%);
+                transform: translateY(-50%);
             }
         }
         &.slide-1v {
@@ -242,6 +249,7 @@
             border-radius: 35px;
             border: 1px solid $white;
             overflow: visible;
+            -webkit-transform: rotate(-90deg);
             transform: rotate(-90deg);
             position: relative;
             top: 1px;
@@ -265,6 +273,7 @@
             font-size: 25px;
             margin-left: -12px;
             will-change: transform;
+            -webkit-transform-origin: 50% 45%;
             transform-origin: 50% 45%;
             cursor: pointer;
         }
@@ -317,7 +326,8 @@
                     @include grid-column-size(11);
                     @include grid-column-offset(6.5);
                     top: 40%;
-                    transform: translate(0, -50%);
+                    -webkit-transform: translateY(-50%);
+                    transform: translateY(-50%);
                     h1{
                         font-size: rem-calc(24pt);
                         line-height: rem-calc(34pt);
@@ -331,7 +341,8 @@
                     @include grid-column-offset(6.5);
                     text-align: right;
                     top: 70%;
-                    transform: translate(0, -50%);
+                    -webkit-transform: translateY(-50%);
+                    transform: translateY(-50%);
                     h2 {
                         margin-bottom: 35px;
                         font-size: rem-calc(18pt);
@@ -342,7 +353,8 @@
                     @include grid-column-size(5.6);
                     @include grid-column-offset(12);
                     top:70%;
-                    transform: translate(0, -38%);
+                    -webkit-transform: translateY(-38%);
+                    transform: translateY(-38%);
                     h2 {
                         margin-bottom: 35px;
                         font-size: rem-calc(18pt);
@@ -356,14 +368,16 @@
                     @include grid-column-size(11);
                     @include grid-column-offset(1);
                     top: 50%;
-                    transform: translate(0, -50%);
+                    -webkit-transform: translateY(-50%);
+                    transform: translateY(-50%);
                     text-align: right;
                 }
                 .text-2 {
                     @include grid-column-size(11);
                     @include grid-column-offset(12);
                     top: 70%;
-                    transform: translate(0, -50%);
+                    -webkit-transform: translateY(-50%);
+                    transform: translateY(-50%);
                     h2 {
                         font-size: rem-calc(28pt);
                         line-height: rem-calc(38pt);
@@ -400,16 +414,6 @@
             background: -ms-linear-gradient(45deg, rgba(237,47,46,1) 0%, rgba(200,7,134,1) 20%, rgba(79,32,99,1) 40%, rgba(24,149,163,1) 60%, rgba(104,188,69,1) 80%, rgba(214,203,38,1) 100%); 
             background: linear-gradient(45deg, rgba(237,47,46,1) 0%, rgba(200,7,134,1) 20%, rgba(79,32,99,1) 40%, rgba(24,149,163,1) 60%, rgba(104,188,69,1) 80%, rgba(214,203,38,1) 100%);
             filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6cb26', endColorstr='#ed2f2e',GradientType=1 ); 
-            /**/
-            /*
-            background: -moz-linear-gradient(-45deg, rgba(237,47,46,1) 0%, rgba(200,7,134,1) 20%, rgba(79,32,99,1) 40%, rgba(24,149,163,1) 60%, rgba(104,188,69,1) 80%, rgba(214,203,38,1) 100%); 
-            background: -webkit-gradient(linear, right bottom, left top, color-stop(0%, rgba(237,47,46,1)), color-stop(20%, rgba(200,7,134,1)), color-stop(40%, rgba(79,32,99,1)), color-stop(60%, rgba(24,149,163,1)), color-stop(80%, rgba(104,188,69,1)), color-stop(100%, rgba(214,203,38,1))); 
-            background: -webkit-linear-gradient(-45deg, rgba(237,47,46,1) 0%, rgba(200,7,134,1) 20%, rgba(79,32,99,1) 40%, rgba(24,149,163,1) 60%, rgba(104,188,69,1) 80%, rgba(214,203,38,1) 100%);
-            background: -o-linear-gradient(-45deg, rgba(237,47,46,1) 0%, rgba(200,7,134,1) 20%, rgba(79,32,99,1) 40%, rgba(24,149,163,1) 60%, rgba(104,188,69,1) 80%, rgba(214,203,38,1) 100%); 
-            background: -ms-linear-gradient(-45deg, rgba(237,47,46,1) 0%, rgba(200,7,134,1) 20%, rgba(79,32,99,1) 40%, rgba(24,149,163,1) 60%, rgba(104,188,69,1) 80%, rgba(214,203,38,1) 100%);
-            background: linear-gradient(-45deg, rgba(237,47,46,1) 0%, rgba(200,7,134,1) 20%, rgba(79,32,99,1) 40%, rgba(24,149,163,1) 60%, rgba(104,188,69,1) 80%, rgba(214,203,38,1) 100%);
-            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6cb26', endColorstr='#ed2f2e',GradientType=1 );
-            /**/
         }
         .scroll-hint{
             display: none;
@@ -454,7 +458,8 @@
                     @include grid-column-size(22);
                     @include grid-column-offset(1);
                     top: 50%;
-                    transform: translate(0, -50%);
+                    -webkit-transform: translateY(-50%);
+                    transform: translateY(-50%);
                     h1 {
                         font-size: rem-calc(24pt);
                         line-height: rem-calc(36pt);
@@ -465,7 +470,8 @@
                     @include grid-column-offset(0);
                     text-align: right;
                     top: 50%;
-                    transform: translate(0, -50%);
+                    -webkit-transform: translateY(-50%);
+                    transform: translateY(-50%);
                     h2 {
                         margin-bottom: 50%;
                         font-size: rem-calc(8pt);
@@ -476,7 +482,8 @@
                     @include grid-column-size(0);
                     @include grid-column-offset(0);
                     top: 50%;
-                    transform: translate(0, -38%);
+                    -webkit-transform: translateY(-38%);
+                    transform: translateY(-38%);
                     h2 {
                         margin-bottom: 50%;
                         font-size: rem-calc(8pt);
@@ -489,13 +496,15 @@
                     @include grid-column-size(22);
                     @include grid-column-offset(1);
                     top: 40%;
-                    transform: translate(0, -50%);
+                    -webkit-transform: translateY(-50%);
+                    transform: translateY(-50%);
                 }
                 .text-2 {
                     @include grid-column-size(22);
                     @include grid-column-offset(1);
                     top: 70%;
-                    transform: translate(0, -50%);
+                    -webkit-transform: translateY(-50%);
+                    transform: translateY(-50%);
                 }
             }
             &.slide-4 {

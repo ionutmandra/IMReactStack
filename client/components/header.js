@@ -89,34 +89,22 @@ class Header extends Component {
             return;
         }
 
-        //change behaviour of controller to animate scroll instead of jump
-        controller.scrollTo(function (newpos) {
-            var t = TweenMax.to(window, .7, { scrollTo: { y: newpos }, ease: Power3.easeOut });
-            timeLines.push(t);
-            return t;
-        });
+        // let scene = new ScrollMagic.Scene({ triggerElement: article, triggerHook: 'onLeave', offset: 400 }).addTo(controller)
+        //     //.addIndicators({name:'large Scene 2'})
+        //     .on('start', event => {
+        //         if (event.scrollDirection == 'FORWARD') {
+        //             article.addClass('fix-header');
+        //             //console.log('header sc2 end forw');
+        //         }
+        //         if (event.scrollDirection == 'REVERSE') {
+        //             article.removeClass('fix-header');
+        //             //console.log('header sc1 pr rev');
+        //         }
+        //     });
 
-        let scene = new ScrollMagic.Scene({ triggerElement: article, triggerHook: 'onLeave', offset: 400 }).addTo(controller)
-            //.addIndicators({name:'large Scene 2'})
-            .on('start', event => {
-                if (event.scrollDirection == 'FORWARD') {
-                    article.addClass('fix-header');
-                    //console.log('header sc2 end forw');
-                }
-                if (event.scrollDirection == 'REVERSE') {
-                    article.removeClass('fix-header');
-                    //console.log('header sc1 pr rev');
-                }
-            });
-
-        ////
-        // LARGE SCREEN
-        ///////////////////
-
-
-        scenes[breakpoint.names.large].push(scene);
-        scenes[breakpoint.names.medium].push(scene);
-        scenes[breakpoint.names.small].push(scene);
+        // scenes[breakpoint.names.large].push(scene);
+        // scenes[breakpoint.names.medium].push(scene);
+        // scenes[breakpoint.names.small].push(scene);
 
         this.handleMediaChange(this.props.ui.media);
     }
@@ -165,11 +153,12 @@ class Header extends Component {
         let contactIsOpen = this.article.hasClass('contact-open');
 
         if (!this.props.isHomepage) {
-            if ($window.scrollTop() < 400) {
-                !contactIsOpen && !menuIsOpen && this.article.removeClass('fix-header');
-            } else {
-                this.article.addClass('fix-header');
-            }
+            !contactIsOpen && !menuIsOpen && this.article.removeClass('fix-header');
+            // if ($window.scrollTop() < 400) {
+            //     !contactIsOpen && !menuIsOpen && this.article.removeClass('fix-header');
+            // } else {
+            //     this.article.addClass('fix-header');
+            // }
         }
     }
 

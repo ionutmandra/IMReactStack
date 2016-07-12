@@ -6,12 +6,17 @@
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-tap-highlight-color: transparent;
 }
+html, body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
 html {
     overflow-y: scroll; //prevents horizontal jumping on transitions due to disabling/enabling scroll on body
     font-size: 16pt;
     font-family: 'Poppins', sans-serif;
     color: $text-color;
-    -webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling: auto;
     -ms-overflow-style: none;
 }
 // ::-webkit-scrollbar {
@@ -20,7 +25,7 @@ html {
 body {
     position: relative;
     fill: currentColor; //for SVG
-    -webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling: auto;
     -ms-overflow-style: none;
     &.navigating a {
         pointer-events: none;

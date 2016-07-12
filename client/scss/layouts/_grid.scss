@@ -1,13 +1,7 @@
 @mixin layout-grid {
     $linesFadeOut: .95;
 
-    @media screen and #{breakpoint(large)} {
-        body,
-        html {
-            height: 100%;
-            padding: 0;
-            margin: 0;
-        }
+    @media screen and #{breakpoint(large up)} {
         // Vars
         $grid-line-columns: ( small: 2, medium: 4, large: 8);
         #page-grid {
@@ -44,6 +38,7 @@
                     padding: 0 !important;
                     &.burger {
                         top: 50%;
+                        -webkit-transform: translateY(-50%);
                         transform: translateY(-50%);
                     }
                 }
@@ -51,12 +46,6 @@
         }
     }
     @media screen and #{breakpoint(medium only)} {
-        body,
-        html {
-            height: 100%;
-            padding: 0;
-            margin: 0;
-        }
         .medium-5-5{
             @include flex-grid-column(5.5);
         }
@@ -103,6 +92,7 @@
                     padding: 0 !important;
                     &.burger {
                         top: 50%;
+                        -webkit-transform: translateY(-50%);
                         transform: translateY(-50%);
                     }
                 }
@@ -110,12 +100,6 @@
         }
     }
     @media screen and #{breakpoint(small only)} {
-        body,
-        html {
-            height: 100%;
-            padding: 0;
-            margin: 0;
-        }
         // Vars
         $grid-line-columns: ( small: 2, medium: 4, large: 8);
         #page-grid {
@@ -160,6 +144,7 @@
                     padding: 0 !important;
                     &.burger {
                         top: 50%;
+                        -webkit-transform: translateY(-50%);
                         transform: translateY(-50%);
                     }
                 }
