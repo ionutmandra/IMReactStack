@@ -35,6 +35,7 @@ export function large_enter_header(ref, callback, transition, burgerIsOpen) {
     TweenMax.set(elements.article, { left: arr1[0], right: arr1[1] });
     TweenMax.set(elements.container, { left: -arr1[0], width: width });
     TweenMax.set(elements.gridLine, { left: left, opacity: 1, height: 0 });
+    TweenMax.set(elements.links, { x: '-100%' });
     TweenMax.set(elements.left[currentSlide], { x: '-100%' });
     TweenMax.set(elements.right[currentSlide], { x: '100%' });
     TweenMax.set(elements.bottom[currentSlide], { y: '200px' });
@@ -58,6 +59,7 @@ export function large_enter_header(ref, callback, transition, burgerIsOpen) {
         .add(TweenMax.to(arr1, .6, arr2))
         //reveal new content
         .add(_.filter([
+            TweenMax.to(elements.links, .6, { x: '0%', ease: Power3.easeOut }),
             TweenMax.to(elements.left[currentSlide], .6, { x: '0%', ease: Power3.easeOut }),
             TweenMax.to(elements.right[currentSlide], .6, { x: '0%', ease: Power3.easeOut }),
             TweenMax.to(elements.bottom[currentSlide], .6, { y: '0%', ease: Power3.easeOut }),

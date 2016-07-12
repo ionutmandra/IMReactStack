@@ -232,6 +232,7 @@ export function large_leave_burger(ref, callback, transition, initialScroll) {
                     $.scrollLock(true);
                 },
             }),
+            !contactIsOpen && TweenMax.to(elements.burgerClose, .6, { x: '-100%', ease: Power3.easeIn }),
             contactIsOpen && TweenMax.to(elements.contactPieces.large, .6, {
                 x: '-100%', ease: Power3.easeIn,
                 onComplete: () => {
@@ -465,6 +466,7 @@ function extractDOMElements(ref, column) {
         $links = $article.find('header.main nav ul li a'),
         $gridLine = $('#page-grid .navigation-line'),
         $burger = $article.find('header.main .hamburger .open'),
+        $burgerClose = $article.find('header.main .hamburger .close'),
         $logoText = $article.find('header.main a.logo .text svg'),
         $logoImg = $article.find('header.main a.logo .img');
 
@@ -480,6 +482,8 @@ function extractDOMElements(ref, column) {
         link: $link[0],
         $burger: $burger,
         burger: $burger[0],
+        $burgerClose: $burgerClose,
+        burgerClose: $burgerClose[0],
         $logoText: $logoText,
         logoText: $logoText[0],
         $logoImg: $logoImg,
