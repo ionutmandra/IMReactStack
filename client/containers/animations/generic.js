@@ -161,6 +161,7 @@ export function large_enter_burger(ref, callback, transition) {
 
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.logoImg && TweenMax.set(elements.logoImg, { color: '#fefefe' });
+    elements.links && TweenMax.set(elements.links, { x: '-100%' });
     elements.logoText && TweenMax.set(elements.logoText, { x: '0%' });
     elements.burger && TweenMax.set(elements.burger, { x: '-100%', color: '#fefefe' });
     elements.footer && TweenMax.set(elements.footer, { height: 0 });
@@ -191,7 +192,7 @@ export function large_enter_burger(ref, callback, transition) {
                     elements.$article.removeClass('overlap');
                 },
             }),
-            TweenMax.to(elements.links, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
+            elements.links && TweenMax.to(elements.links, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
             elements.contentItems && TweenMax.to(elements.contentItems, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
             elements.footer && TweenMax.to(elements.footer, .3, { height: 58, delay: .3, ease: Power3.easeOut }),
         ]));
@@ -217,11 +218,19 @@ export function small_enter_burger(ref, callback, transition) {
 }
 
 export function large_leave_burger(ref, callback, transition, initialScroll) {
-    let elements = extractDOMElements(ref, transition.column);
+    let elements = extractDOMElements(ref, transition.column), 
+        contactIsOpen = elements.$article.hasClass('contact-open');
 
     let timeline = new TimelineLite({ onComplete: () => { callback(); timeline = null; } })
         .add(_.filter([
-            TweenMax.to(elements.links, .6, {
+            !contactIsOpen && TweenMax.to(elements.links, .6, {
+                x: '-100%', ease: Power3.easeIn,
+                onComplete: () => {
+                    $.scrollLock(false, false); //scroll goes top
+                    $.scrollLock(true);
+                },
+            }),
+            contactIsOpen && TweenMax.to(elements.contactPieces.large, .6, {
                 x: '-100%', ease: Power3.easeIn,
                 onComplete: () => {
                     $.scrollLock(false, false); //scroll goes top
@@ -269,7 +278,7 @@ export function large_enter_content(ref, callback, transition) {
 
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.logoImg && TweenMax.set(elements.logoImg, { color: '#fefefe' });
-    elements.burger && TweenMax.set(elements.burger, { x: '-100%' });
+    elements.burger && TweenMax.set(elements.burger, { x: '-100%', color: '#fefefe' });
     elements.footer && TweenMax.set(elements.footer, { height: 0 });
     elements.contentItems && TweenMax.set(elements.contentItems, { x: '-110%' });
 
@@ -341,7 +350,7 @@ export function large_leave_content(ref, callback, transition, initialScroll) {
                 onComplete: () => {
                     $.scrollLock(false, false); //scroll goes top
                     $.scrollLock(true);
-                }
+                },
             }),
         ]));
 }
@@ -385,7 +394,7 @@ export function large_enter_home_content(ref, callback, transition) {
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.logoImg && TweenMax.set(elements.logoImg, { color: '#fefefe' });
     elements.logoText && TweenMax.set(elements.logoText, { x: '0%' });
-    elements.burger && TweenMax.set(elements.burger, { x: '-100%' });
+    elements.burger && TweenMax.set(elements.burger, { x: '-100%', color: '#fefefe' });
     elements.footer && TweenMax.set(elements.footer, { height: 0 });
     elements.contentItems && TweenMax.set(elements.contentItems, { x: '-110%' });
 
@@ -483,5 +492,9 @@ function extractDOMElements(ref, column) {
         text: $article.find('header.main .text h1')[0],
         contentItems: $article.find('.content-item'),
         footer: $article.find('footer')[0],
+
+        contactPieces: {
+            large: $article.find('header.main .contact .content').toArray(),
+        },
     };
 }

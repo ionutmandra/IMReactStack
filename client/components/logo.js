@@ -43,11 +43,11 @@ class Logo extends Component {
             .on('start', (event => {
                 if (event.scrollDirection == 'FORWARD') {
                     this.hideText();
-                    this.logo.addClass('disable-events');
+                    //this.logo.addClass('disable-events');
                 }
                 if (event.scrollDirection == 'REVERSE') {
                     this.showText();
-                    this.logo.removeClass('disable-events');
+                    //this.logo.removeClass('disable-events');
                 }
             }).bind(this))
         );
@@ -135,7 +135,6 @@ class Logo extends Component {
 
     handleClick(event) {
         let burgerIsOpen = this.article.hasClass('menu-open');
-        //burgerIsOpen && $window.scrollTop(0);
         let isLarge = this.props.ui.media.current == breakpoint.names.large;
         let isMedium = this.props.ui.media.current == breakpoint.names.medium;
 
@@ -143,8 +142,12 @@ class Logo extends Component {
         isMedium && (column = 3);
         isLarge && (column = 1);
 
+        let type = 'header';
+        $window.scrollTop() && (type = 'content');
+        burgerIsOpen && (type = 'burger');
+
         this.props.dispatchTransition({
-            type: burgerIsOpen && 'burger' || 'header',
+            type: type,
             column: column,
             target: event.currentTarget,
         });

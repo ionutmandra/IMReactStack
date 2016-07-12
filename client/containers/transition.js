@@ -105,7 +105,7 @@ export default (BaseComponent) => {
 
         }
         willEnterCallback(callback) {
-            //console.warn('willEnterCallback');
+            // console.warn('willEnterCallback');
             $(dom.findDOMNode(this.refs.container)).removeClass('fix-header contact-open menu-open');
             this.cleanTransition();
             $.scrollLock(false, false);
@@ -116,7 +116,7 @@ export default (BaseComponent) => {
             callback();
         }
         willLeaveCallback(callback) {
-            //console.warn('willLeaveCallback');
+            // console.warn('willLeaveCallback');
             $(dom.findDOMNode(this.refs.container)).removeClass('fix-header contact-open menu-open');
             this.cleanTransition();
             $.scrollLock(false, false);
@@ -127,6 +127,12 @@ export default (BaseComponent) => {
             callback();
         }
         render() {
+            if (!this.firstRenderDone) {
+                //this happens earlier than handleMediaChange in components, which can use it to fix things 
+                //e.g. home won't scrollTop 0 earlier than us recording scroll position in componentWillLeave
+                $body.addClass('navigating');
+                this.firstRenderDone = true; //subsequent store updates shouldn't set the class, obviously
+            }
             return (this._clone = React.cloneElement(super.render(), { ref: 'container' }));
         }
 

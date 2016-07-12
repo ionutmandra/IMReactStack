@@ -26,11 +26,6 @@ class HeaderLinks extends Component {
         scenes[breakpoint.names.small] = [];
 
         this.header = this.article.find('header.main');
-        this.image = this.header.find('> .image .img');
-        this.logoImage = this.header.find('> .logo .img');
-        this.logoText = this.header.find('> .logo .text svg');
-        this.text = this.header.find('> .text h1');
-        this.burgerClose = this.header.find('> .hamburger > .close');
 
         if (this.article.is('.page-home')) {
             this.leftTexts = [
