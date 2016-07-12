@@ -14,7 +14,7 @@
         opacity: 1;
         will-change: left, right;
         @include grid-row(24);
-        
+
         > .container {
             position: relative;
             top: 0;
@@ -159,7 +159,7 @@
             height: 0%;
             //overflow: hidden;
             z-index: 2;
-            
+
             .hamburger {
                 z-index: 5;
             }
@@ -192,7 +192,7 @@
             opacity: .35;
         }
 
-        > .text {
+        .text {
             @include grid-col-size(13);
             @include grid-col-off(1);
         }
@@ -200,5 +200,5 @@
 }
 
 @media screen and #{breakpoint(small only)} {
-    
+
 }
