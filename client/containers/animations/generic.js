@@ -120,13 +120,15 @@ export function large_leave_header(ref, callback, transition, initialScroll) {
         ]));
 }
 
+//called when leaving a generic page by tapping homepage in header
 export function medium_leave_header(ref, callback, transition, initialScroll) {
-    console.error('medium_leave_header should NEVER be called');
+    console.warn('TO BE IMPLEMENTED');
     callback();
 }
 
+//called when leaving a generic page by tapping homepage in header
 export function small_leave_header(ref, callback, transition, initialScroll) {
-    console.error('small_leave_header should NEVER be called');
+    console.warn('TO BE IMPLEMENTED');
     callback();
 }
 

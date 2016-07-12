@@ -156,8 +156,6 @@ class Home extends Component {
         // this.animations.pinSections([this._section1b, this._section2b, this._section3b, this._section4b], breakpoint.names.large);
         // this.animations.pinSections([this._section1c, this._section2c, this._section3c, this._section4c], breakpoint.names.large);
 
-        this.handleMediaChange(this.props.ui.media, this.props.transition);
-
         // change behaviour of controller to animate scroll instead of jump
         this.t0 = new Date().getTime();
         controller.scrollTo(function (newpos) {
@@ -184,13 +182,13 @@ class Home extends Component {
             // .addIndicators({name:'1'})
             .on('start', (event) => {
                 if (event.scrollDirection == 'FORWARD') {
-                    // console.log('scene section 1 forward to section 2');
+                    //console.log('scene section 1 forward to section 2');
                     controller.scrollTo(_this._section2);
                 }
             })
             .on('end', (event) => {
                 if (event.scrollDirection == 'REVERSE') {
-                    // console.log('scene section 2 reverse to section 1');
+                    //console.log('scene section 2 reverse to section 1');
                     controller.scrollTo(0);
                 }
             })
@@ -219,13 +217,13 @@ class Home extends Component {
             //.addIndicators({name:'2'})
             .on('start', (event) => {
                 if (event.scrollDirection == 'FORWARD') {
-                    // console.log('scene section 2 forward to section 3');
+                    //console.log('scene section 2 forward to section 3');
                     controller.scrollTo(_this._section3);
                 }
             })
             .on('end', (event) => {
                 if (event.scrollDirection == 'REVERSE') {
-                    // console.log('scene section 3 reverse to section 2');
+                    //console.log('scene section 3 reverse to section 2');
                     controller.scrollTo(_this._section2);
                 }
             })
@@ -283,6 +281,8 @@ class Home extends Component {
                     this.animations.showImg(this._img4),
                 ]))
         );
+
+        this.handleMediaChange(this.props.ui.media, this.props.transition);
     }
 
     handleMediaChange(media, transition) {
@@ -377,7 +377,7 @@ class Home extends Component {
     }
 
     setScenes(media, enabled) {
-        //console.warn('header setting scenes for', media, 'to', enabled,'on',$(this.refs.header).closest('article').attr('class'));
+        //media == 'large' && console.error('header setting scenes for', media, 'to', enabled, this.scenes && [].concat(this.scenes[media]));
         this.scenes && this.scenes[media] && this.scenes[media].forEach(scene => { scene.enabled(enabled); });
     }
 
