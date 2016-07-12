@@ -149,18 +149,12 @@ class Home extends Component {
 
         //scenes
         this.animations.animateGradients(breakpoint.names.large, [this._section1, this._section2, this._section3], gradients);
-        this.animations.animateGradients(breakpoint.names.medium, [this._section1, this._section2, this._section3], gradients);
-        this.animations.animateGradients(breakpoint.names.small, [this._section1, this._section2, this._section3], gradients);
+        //this.animations.animateGradients(breakpoint.names.medium, [this._section1, this._section2, this._section3], gradients);
+        //this.animations.animateGradients(breakpoint.names.small, [this._section1, this._section2, this._section3], gradients);
 
-
-        this.animations.pinSections([this._section1, this._section2, this._section3, this._section4], breakpoint.names.large);
-        this.animations.pinSections([this._section1b, this._section2b, this._section3b, this._section4b], breakpoint.names.large);
-        this.animations.pinSections([this._section1c, this._section2c, this._section3c, this._section4c], breakpoint.names.large);
-
-        //timeLines.push(TweenMax.set(this._hintTr, { height:'0%' }));
-        // timeLines.push(TweenMax.set(this._hintTl, { height:'0%' }));
-        // timeLines.push(TweenMax.set(this._hintBr, { height:'0%' }));
-        // timeLines.push(TweenMax.set(this._hintBl, { height:'0%' }));
+        // this.animations.pinSections([this._section1, this._section2, this._section3, this._section4], breakpoint.names.large);
+        // this.animations.pinSections([this._section1b, this._section2b, this._section3b, this._section4b], breakpoint.names.large);
+        // this.animations.pinSections([this._section1c, this._section2c, this._section3c, this._section4c], breakpoint.names.large);
 
         this.handleMediaChange(this.props.ui.media, this.props.transition);
 
@@ -339,10 +333,11 @@ class Home extends Component {
         if (media.current == breakpoint.names.large) {
             //Scrolling to top
             if (!$body.is('.navigating')) {
+
                 $window.scrollTop(0);
                 setTimeout((() => {
                     this.setScenes(media.current, true);
-                }).bind(this), 150);
+                }).bind(this), 250);
             }
 
             this.timeLines.push(TweenMax.set(this._gradient, { background: 'linear-gradient(45deg, #d6cb26 0%, #68bc45 100%)' }));
@@ -363,6 +358,8 @@ class Home extends Component {
             }
         }
         else if (media.current != breakpoint.names.none) {
+            this.animations.clearGradient();
+
             if (contactIsOpen) {
                 for (let i = 0; i < 4; i++) {
                     this.animations.showSlide(sectionsContent[i]);
@@ -587,6 +584,11 @@ function getAnimationUtils(component, controller, timeLines, scenes) {
         scenes[mediaBreakpoint].push(new ScrollMagic.Scene({ triggerElement: sections[0], triggerHook: 'onLeave', duration: '100%' }).addTo(controller).setTween(slide1GrTr));
         scenes[mediaBreakpoint].push(new ScrollMagic.Scene({ triggerElement: sections[1], triggerHook: 'onLeave', duration: '100%' }).addTo(controller).setTween(slide2GrTr));
         scenes[mediaBreakpoint].push(new ScrollMagic.Scene({ triggerElement: sections[2], triggerHook: 'onLeave', duration: '100%' }).addTo(controller).setTween(slide3GrTr));
+    };
+    ret.clearGradient = function () {
+        var t = TweenMax.set('article.page-home .gradient', { clearProps: 'background' });
+        timeLines.push(t);
+        return t;
     };
     ret.setHintProgressInstant = function (hintBar, scrollHint) {
         if (!hintBar || !hintBar.attr) return;
