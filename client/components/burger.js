@@ -336,7 +336,7 @@ export default class Burger extends Component {
         } else {//generic page
             let timeline = new TimelineLite({ onComplete: onComplete.bind(this, timeline) })
                 .add(_.filter([
-                    TweenMax.to(this.links, .3, { x: '-100%', ease: Power3.easeIn }),
+                    TweenMax.to(this.links, .3, { x: '-105%', ease: Power3.easeIn }),
                     TweenMax.to(this.close, .3, { x: isLarge ? '-100%' : '105%', ease: Power3.easeIn }),
                     (isSmall || (isLarge && initialScroll > 0)) && TweenMax.to(this.logoText, .3, { x: '-100%', ease: Power3.easeIn }),
                 ]))
