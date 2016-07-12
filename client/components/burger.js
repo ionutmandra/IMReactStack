@@ -319,7 +319,7 @@ export default class Burger extends Component {
                 .add(_.filter([
                     isSmall && TweenMax.to(this.logoText, .3, { x: '-100%', ease: Power3.easeOut }),
                     TweenMax.to(this.close, .3, { x: '105%', ease: Power3.easeOut }),
-                    TweenMax.to(this.links, .3, { x: '-100%', ease: Power3.easeOut }),
+                    TweenMax.to(this.links, .3, { x: '-105%', ease: Power3.easeOut }),
                 ]))
                 .add((() => {
                     this.article.removeClass('menu-open');
