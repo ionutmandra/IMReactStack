@@ -149,20 +149,12 @@ class Home extends Component {
 
         //scenes
         this.animations.animateGradients(breakpoint.names.large, [this._section1, this._section2, this._section3], gradients);
-        this.animations.animateGradients(breakpoint.names.medium, [this._section1, this._section2, this._section3], gradients);
-        this.animations.animateGradients(breakpoint.names.small, [this._section1, this._section2, this._section3], gradients);
+        //this.animations.animateGradients(breakpoint.names.medium, [this._section1, this._section2, this._section3], gradients);
+        //this.animations.animateGradients(breakpoint.names.small, [this._section1, this._section2, this._section3], gradients);
 
-
-        this.animations.pinSections([this._section1, this._section2, this._section3, this._section4], breakpoint.names.large);
-        this.animations.pinSections([this._section1b, this._section2b, this._section3b, this._section4b], breakpoint.names.large);
-        this.animations.pinSections([this._section1c, this._section2c, this._section3c, this._section4c], breakpoint.names.large);
-
-        //timeLines.push(TweenMax.set(this._hintTr, { height:'0%' }));
-        // timeLines.push(TweenMax.set(this._hintTl, { height:'0%' }));
-        // timeLines.push(TweenMax.set(this._hintBr, { height:'0%' }));
-        // timeLines.push(TweenMax.set(this._hintBl, { height:'0%' }));
-
-        this.handleMediaChange(this.props.ui.media, this.props.transition);
+        // this.animations.pinSections([this._section1, this._section2, this._section3, this._section4], breakpoint.names.large);
+        // this.animations.pinSections([this._section1b, this._section2b, this._section3b, this._section4b], breakpoint.names.large);
+        // this.animations.pinSections([this._section1c, this._section2c, this._section3c, this._section4c], breakpoint.names.large);
 
         // change behaviour of controller to animate scroll instead of jump
         this.t0 = new Date().getTime();
@@ -190,13 +182,13 @@ class Home extends Component {
             // .addIndicators({name:'1'})
             .on('start', (event) => {
                 if (event.scrollDirection == 'FORWARD') {
-                    // console.log('scene section 1 forward to section 2');
+                    //console.log('scene section 1 forward to section 2');
                     controller.scrollTo(_this._section2);
                 }
             })
             .on('end', (event) => {
                 if (event.scrollDirection == 'REVERSE') {
-                    // console.log('scene section 2 reverse to section 1');
+                    //console.log('scene section 2 reverse to section 1');
                     controller.scrollTo(0);
                 }
             })
@@ -225,13 +217,13 @@ class Home extends Component {
             //.addIndicators({name:'2'})
             .on('start', (event) => {
                 if (event.scrollDirection == 'FORWARD') {
-                    // console.log('scene section 2 forward to section 3');
+                    //console.log('scene section 2 forward to section 3');
                     controller.scrollTo(_this._section3);
                 }
             })
             .on('end', (event) => {
                 if (event.scrollDirection == 'REVERSE') {
-                    // console.log('scene section 3 reverse to section 2');
+                    //console.log('scene section 3 reverse to section 2');
                     controller.scrollTo(_this._section2);
                 }
             })
@@ -289,6 +281,8 @@ class Home extends Component {
                     this.animations.showImg(this._img4),
                 ]))
         );
+
+        this.handleMediaChange(this.props.ui.media, this.props.transition);
     }
 
     handleMediaChange(media, transition) {
@@ -339,10 +333,11 @@ class Home extends Component {
         if (media.current == breakpoint.names.large) {
             //Scrolling to top
             if (!$body.is('.navigating')) {
+
                 $window.scrollTop(0);
                 setTimeout((() => {
                     this.setScenes(media.current, true);
-                }).bind(this), 150);
+                }).bind(this), 250);
             }
 
             this.timeLines.push(TweenMax.set(this._gradient, { background: 'linear-gradient(45deg, #d6cb26 0%, #68bc45 100%)' }));
@@ -363,6 +358,8 @@ class Home extends Component {
             }
         }
         else if (media.current != breakpoint.names.none) {
+            this.animations.clearGradient();
+
             if (contactIsOpen) {
                 for (let i = 0; i < 4; i++) {
                     this.animations.showSlide(sectionsContent[i]);
@@ -380,7 +377,7 @@ class Home extends Component {
     }
 
     setScenes(media, enabled) {
-        //console.warn('header setting scenes for', media, 'to', enabled,'on',$(this.refs.header).closest('article').attr('class'));
+        //media == 'large' && console.error('header setting scenes for', media, 'to', enabled, this.scenes && [].concat(this.scenes[media]));
         this.scenes && this.scenes[media] && this.scenes[media].forEach(scene => { scene.enabled(enabled); });
     }
 
@@ -587,6 +584,11 @@ function getAnimationUtils(component, controller, timeLines, scenes) {
         scenes[mediaBreakpoint].push(new ScrollMagic.Scene({ triggerElement: sections[0], triggerHook: 'onLeave', duration: '100%' }).addTo(controller).setTween(slide1GrTr));
         scenes[mediaBreakpoint].push(new ScrollMagic.Scene({ triggerElement: sections[1], triggerHook: 'onLeave', duration: '100%' }).addTo(controller).setTween(slide2GrTr));
         scenes[mediaBreakpoint].push(new ScrollMagic.Scene({ triggerElement: sections[2], triggerHook: 'onLeave', duration: '100%' }).addTo(controller).setTween(slide3GrTr));
+    };
+    ret.clearGradient = function () {
+        var t = TweenMax.set('article.page-home .gradient', { clearProps: 'background' });
+        timeLines.push(t);
+        return t;
     };
     ret.setHintProgressInstant = function (hintBar, scrollHint) {
         if (!hintBar || !hintBar.attr) return;
