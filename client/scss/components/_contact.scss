@@ -132,6 +132,34 @@
     }
 }
 
+//covers iPhone6 landscape which is 325px tall but 667px wide, falling in medium instead of small on other phones
+@media screen and #{breakpoint(medium only)} and (orientation: landscape) and (max-height: 340px) {
+    #page-container article header.main div.contact {
+        @include grid-row(24);
+        > div {
+            &.left {
+                @include grid-row();
+                @include grid-col-size(10);
+                @include grid-col-off(1);
+                top: 60%;
+                text-align: left;
+            }
+            &.right {
+                top: 60%;
+                line-height: rem-calc(20pt);
+                ul {
+                    li {
+                        padding-bottom: rem-calc(8pt);
+                        &.social-media {
+                            padding-top: rem-calc(8pt);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 @media screen and #{breakpoint(small only)} {
     #page-container article header.main div.contact {
         @include grid-row(24);
