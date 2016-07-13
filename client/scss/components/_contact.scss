@@ -199,8 +199,32 @@
             &.btn {
                 @include grid-row(24);
                 @include grid-col-size(4);
-                @include grid-col-off(19);                
+                @include grid-col-off(19);
                 text-align: right;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 0px) and (max-width: 350px) {
+    #page-container article header.main div.contact {
+        @include grid-row(24);
+        > div {
+            &.left {
+                @include grid-row();
+                @include grid-col-size(22);
+                @include grid-col-off(1);
+                top: 30%;
+                font-size: rem-calc(20pt);
+                line-height: rem-calc(24pt);
+            }
+            &.right {
+                @include grid-row();
+                @include grid-col-size(20);
+                @include grid-col-off(1);
+                top: 70%;
+                font-size: rem-calc(14pt);
+                line-height: rem-calc(18pt);
             }
         }
     }
