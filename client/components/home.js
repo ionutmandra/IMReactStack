@@ -361,9 +361,12 @@ class Home extends Component {
         else if (media.current != breakpoint.names.none) {
             this.animations.clearGradient();
 
-            if (contactIsOpen) {
+            if (menuIsOpen || contactIsOpen) {
                 for (let i = 0; i < 4; i++) {
                     this.animations.showSlide(sectionsContent[i]);
+                    this.animations.hideImgInstant(images[i]);
+                    this.animations.hideLeft(homeLeft[i]);
+                    this.animations.hideRight(homeRight[i]);
                 }
             }
             else {
