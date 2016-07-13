@@ -93,7 +93,7 @@ class Expertise extends Component {
                             <h3 className="content-item">Continuous delivery</h3>
                             <div className="spacer-20"/>
                             <p>
-                                We aim to deliver as often and as fast as possible all the features that are implemented by our team. Agile methodologies are at the core of development process and our favorite one would be a hybrid between <a href="http://leansoftwareengineering.com/ksse/scrum-ban/">Scrumban</a> and <a href="http://ronjeffries.com/xprog/articles/the-noestimates-movement/">No Estimates</a>. We are flexible about the methodology and ideally we want to achieve <a href="https://continuousdelivery.com/">Continuous Deployment</a>.
+                                We aim to deliver as often and as fast as possible all the features that are implemented by our team. Agile methodologies are at the core of development process and our favorite one would be a hybrid between <a target="_blank" href="http://leansoftwareengineering.com/ksse/scrum-ban/">Scrumban</a> and <a target="_blank" href="http://ronjeffries.com/xprog/articles/the-noestimates-movement/">No Estimates</a>. We are flexible about the methodology and ideally we want to achieve <a target="_blank" href="https://continuousdelivery.com/">Continuous Deployment</a>.
                             </p>
                         </div>
                         <div className="large-5 large-offset-1 medium-11 medium-offset-1 small-22 small-offset-1 columns">
@@ -103,7 +103,7 @@ class Expertise extends Component {
                             <div className="spacer-20"/>
 
                             <p>
-                                From unit tests to integration tests and from smoke tests to system tests we aim to automate them completely to ensure nothing gets missed. Also we believe that tests should be effective and the <a href="http://martinfowler.com/bliki/TestPyramid.html">Testing Pyramid</a> distribution is taken always into account.
+                                From unit tests to integration tests and from smoke tests to system tests we aim to automate them completely to ensure nothing gets missed. Also we believe that tests should be effective and the <a target="_blank" href="http://martinfowler.com/bliki/TestPyramid.html">Testing Pyramid</a> distribution is taken always into account.
                             </p>
                             <div className="spacer-20"/>
                         </div>
@@ -114,7 +114,7 @@ class Expertise extends Component {
                             <h3 className="content-item">Build and deployment automation</h3>
                             <div className="spacer-20"/>
                             <p>
-                                We strongly believe that repetitive tasks have to be automated, hence we have been directing our attention on implementing strong build processes and unit test automation on <a href="https://www.jetbrains.com/teamcity/"> TeamCity</a> and <a href="http://www.seleniumhq.org/"> Selenium</a>, and multi platform, multi environment deployment with <a href="https://octopus.com/">Octopus</a> and <a href="https://cordova.apache.org/">Cordova</a>.
+                                We strongly believe that repetitive tasks have to be automated, hence we have been directing our attention on implementing strong build processes and unit test automation on <a target="_blank" href="https://www.jetbrains.com/teamcity/"> TeamCity</a> and <a target="_blank" href="http://www.seleniumhq.org/"> Selenium</a>, and multi platform, multi environment deployment with <a target="_blank" href="https://octopus.com/">Octopus</a> and <a target="_blank" href="https://cordova.apache.org/">Cordova</a>.
                             </p>
                             <div className="spacer-20"/>
                         </div>
@@ -144,9 +144,9 @@ class Expertise extends Component {
                             <ul className="content-item">
                                 <li>Unified build and deployment system for Cordova / Crosswalk mobile applications (instant deployment on all platforms)</li>
                                 <li>SPA framework for mobile applications</li>
-                                <li>Javascript high performance inheritance mechanism - <a href="https://github.com/adaptabi/Javascript-FastClass">Fast-Class</a></li>
+                                <li>Javascript high performance inheritance mechanism - <a  target="_blank" href="https://github.com/adaptabi/Javascript-FastClass">Fast-Class</a></li>
                                 <li>Custom components for Cordova / Crosswalk mobile applications (Smooth signature, Image editor, GPS component)</li>
-                                <li>Initiators and main supporters of <a href="http://www.meetup.com/Meteor-Iasi/">Meteor Group Iasi</a></li>
+                                <li>Initiators and main supporters of <a target="_blank" href="http://www.meetup.com/Meteor-Iasi/">Meteor Group Iasi</a></li>
                             </ul>
                         </div>
                     </div>

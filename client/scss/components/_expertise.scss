@@ -128,6 +128,9 @@
                 color: $text-color;
                 margin-bottom: 0px;
             }
+            h3{
+                font-weight: $semibold;
+            }
             p {
                 font-family: "Poppins";
                 font-weight: $normal;
@@ -243,6 +246,9 @@
                 line-height: rem-calc(24pt);
                 color: $text-color;
                 margin-bottom: 0px;
+            }
+            h3{
+                font-weight: $semibold;
             }
             p {
                 font-family: "Poppins";

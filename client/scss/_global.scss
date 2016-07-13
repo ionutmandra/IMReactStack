@@ -66,6 +66,10 @@ a {
         font-size: rem-calc(22pt);
         line-height: rem-calc(32pt);
     }
+
+    h3{
+        font-size: rem-calc(14pt);        
+    }
 }
 
 @media screen and #{breakpoint(small only)} {
