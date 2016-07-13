@@ -15,7 +15,7 @@
     
     > i {
       display: block;
-      position: absolute;
+      position: relative;
       padding: 40px 0 0 0;
       top: 0;
       left: 0;
@@ -25,11 +25,15 @@
       color: $white;
       cursor: pointer;
       transition: opacity .2s ease-out;
-      will-change: opacity;
+      will-change: opacity, transform;
       
       &.open {
         font-size: rem-calc(31.5pt);
         padding-left: 10px;
+      }
+
+      &.close {
+        top: -76px;
       }
 
       &:hover {
@@ -49,6 +53,10 @@
             text-align: right;
             left: auto;
             right: 0;
+
+            &.close {
+              top: -58px;
+            }
           }
         }
     }
@@ -57,8 +65,8 @@
 @media screen and #{breakpoint(small only)} {
     #page-container article {
       header.main .hamburger {
-          @include grid-col-size(3);
-          @include grid-col-off(20);
+          @include grid-col-size(5);
+          @include grid-col-off(18);
         }
     }
 }

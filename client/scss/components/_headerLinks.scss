@@ -37,8 +37,8 @@
                         top: 0;
                         left: 0;
                         width: 1px;
-                        height: 0;
-                        background: $white;
+                        height: 1px;
+                        background: transparent;
                         transition: height .35s ease-out;
                     }
                     &:hover,
@@ -47,15 +47,17 @@
                         opacity: 1;
                         padding-left: rem-calc(10pt);
                         &:before {
+                            background: $white;
                             height: rem-calc(62pt);
                         }
                     }
                     &.hover:before {
-                        height: 0;
+                        height: 1px;
                         transition: none;
                     }
                     &.line.hover:before {
                         height: rem-calc(62pt);
+                        background: $white;
                         transition: none;
                     }
                     &.line,
@@ -68,10 +70,10 @@
         }
     }
 
-    //&.fix-header:not(.page-home) header.main nav {
     &.menu-open header.main nav {
         position: absolute;
         top: 50%;
+        -webkit-transform: translateY(-50%);
         transform: translateY(-50%);
         ul li a {
             padding: rem-calc(20pt 0 17pt);
@@ -79,6 +81,7 @@
             vertical-align: middle;
             &:before {
                 top: 50%;
+                -webkit-transform: translateY(-50%);
                 transform: translateY(-50%);
             }
             &:hover,
@@ -102,7 +105,6 @@
 @media screen and #{breakpoint(medium down)} {
     #page-container article{
         @include grid-row(24);
-        //&.fix-header:not(.page-home) header.main nav {
         &.menu-open header.main nav {
             @include grid-col-size(5.5);
             @include grid-col-off(6.5);
@@ -119,7 +121,6 @@
 @media screen and #{breakpoint(small only)} {
     #page-container article{
         @include grid-row(24);
-        //&.fix-header:not(.page-home) header.main nav {
         &.menu-open header.main nav {
             @include grid-col-size(11);
             @include grid-col-off(12);

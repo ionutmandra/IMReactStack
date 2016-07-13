@@ -32,7 +32,7 @@ module.exports = {
 			small: 'small',
 			none: 'none',
 		},
-		large: 1024,
+		large: 1025,
 		medium: 640,
 	},
 };
