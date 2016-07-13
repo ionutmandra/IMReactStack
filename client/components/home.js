@@ -109,7 +109,8 @@ class Home extends Component {
 
     shouldComponentUpdate(nextProps, nextState) {
 
-        if (this.props.transition.scrollScenesEnabled != nextProps.transition.scrollScenesEnabled) {
+        // if (this.props.transition.scrollScenesEnabled != nextProps.transition.scrollScenesEnabled) {
+        if (nextProps.transition.scrollScenesEnabled) {
             this.setScenes(this.props.ui.media.current, nextProps.transition.scrollScenesEnabled);
         }
 
@@ -332,7 +333,7 @@ class Home extends Component {
 
         if (media.current == breakpoint.names.large) {
             //Scrolling to top
-            if (!$body.is('.navigating')) {
+            if (!$body.is('.navigating')) {//else transition.js handles enabling scenes and setting scroll
 
                 $window.scrollTop(0);
                 setTimeout((() => {
