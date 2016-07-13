@@ -421,6 +421,30 @@
     }
 }
 
+@media screen and #{breakpoint(medium down)} and (orientation: landscape) {
+    #page-container article.page-home {
+        section.slide {
+            &.slide-2 {
+                .text-1 {
+                    @include grid-column-size(11);
+                    @include grid-column-offset(1);
+                    top: 50%;
+                }
+                .text-2 {
+                    @include grid-column-size(5.5);
+                    @include grid-column-offset(12);
+                    top: 50%;
+                }
+                .text-3 {
+                    @include grid-column-size(5.5);
+                    @include grid-column-offset(17.5);
+                    top: 50%;
+                }
+            }
+        }
+    }
+}
+
 @media screen and #{breakpoint(small only)} {
     #page-container article.page-home {
         section.slide {
