@@ -445,6 +445,73 @@
     }
 }
 
+//covers iPhone6 landscape which is 325px tall but 667px wide, falling in medium instead of small on other phones
+@media screen and #{breakpoint(medium only)} and (orientation: landscape) and (max-height: 340px) {
+    #page-container article.page-home {
+        section.slide {
+            .text-1, .text-2, .text-3 {
+                h1 {
+                    font-size: rem-calc(18pt);
+                    line-height: rem-calc(30pt);
+                }
+            }
+            &.slide-1 {
+                .text-1, .text-2 {
+                    top: 60%;
+                    text-align: left;
+                    -webkit-transform: translateY(-50%);
+                    transform: translateY(-50%);
+                }
+                .text-1 {
+                    @include grid-column-size(10);
+                    @include grid-column-offset(1);
+                    padding-left: 0;
+                }
+                .text-2 {
+                    h2 {
+                        font-size: rem-calc(18pt);
+                        line-height: rem-calc(30pt);
+                        p {
+                            line-height: rem-calc(22pt);
+                        }
+                    }
+                }
+            }
+            &.slide-2 {
+                .text-1, .text-2, .text-3 {
+                    top: 60%;
+                    text-align: left;
+                }
+                .text-2 {
+                    text-align: right;
+                    h2 {
+                        font-size: rem-calc(12pt);
+                        line-height: rem-calc(14pt);
+                    }
+                }
+                .text-3 {
+                    h2 {
+                        font-size: rem-calc(12pt);
+                        line-height: rem-calc(14pt);
+                    }
+                }
+            }
+            &.slide-3 {
+                .text-1, .text-2, .text-3 {
+                    top: 60%;
+                    text-align: left;
+                }
+            }
+            &.slide-4 {
+                .text-1, .text-2, .text-3 {
+                    top: 60%;
+                    text-align: left;
+                }
+            }
+        }
+    }
+}
+
 @media screen and #{breakpoint(small only)} {
     #page-container article.page-home {
         section.slide {
