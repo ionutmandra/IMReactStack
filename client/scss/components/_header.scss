@@ -227,3 +227,14 @@
         }
     }
 }
+
+@media screen and  #{breakpoint(large only)} {
+    #page-container article.page-about header.main{
+        @include grid-row(24);
+
+        .text {
+            @include grid-col-size(12);
+            @include grid-col-off(3);
+        }
+    }
+}
