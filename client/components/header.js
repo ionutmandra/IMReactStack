@@ -17,6 +17,7 @@ class Header extends Component {
         this.setInitialScroll = this.setInitialScroll.bind(this);
         this.getInitialScroll = this.getInitialScroll.bind(this);
         this.initialScroll = undefined;
+        this.timeLines = [];
     }
 
     setInitialScroll(scroll){
@@ -34,12 +35,8 @@ class Header extends Component {
     }
 
     componentDidMount() {
-        let controller = this.controller = new ScrollMagic.Controller(),
-            timeLines = this.timeLines = [],
-            scenes = this.scenes = {},
-            header = this.header = $(this.refs.header),
-            article = this.article = header.closest('article.page');
-        //headerBottom = header.position().top + header.height();
+        let header = this.header = $(this.refs.header);
+        this.article = header.closest('article.page');
         this.links = this.header.find('nav ul li a').toArray();
         this.burgerOpen = this.header.find('.hamburger > .open');
         this.burgerClose = this.header.find('.hamburger > .close');
@@ -48,10 +45,6 @@ class Header extends Component {
         this.logoImage = this.header.find('.logo .img');
         this.headerImage = this.header.find('.image .img');
         this.headerText = this.header.find('.text h1');
-
-        scenes[breakpoint.names.large] = [];
-        scenes[breakpoint.names.medium] = [];
-        scenes[breakpoint.names.small] = [];
 
         if (this.props.isHomepage) {
             this.homeLeft = [
@@ -84,35 +77,12 @@ class Header extends Component {
                 this.article.find('.slide-3.background .img').toArray(),
                 this.article.find('.slide-4.background .img').toArray(),
             ];
-
-            this.handleMediaChange(this.props.ui.media);
-            return;
         }
-
-        // let scene = new ScrollMagic.Scene({ triggerElement: article, triggerHook: 'onLeave', offset: 400 }).addTo(controller)
-        //     //.addIndicators({name:'large Scene 2'})
-        //     .on('start', event => {
-        //         if (event.scrollDirection == 'FORWARD') {
-        //             article.addClass('fix-header');
-        //             //console.log('header sc2 end forw');
-        //         }
-        //         if (event.scrollDirection == 'REVERSE') {
-        //             article.removeClass('fix-header');
-        //             //console.log('header sc1 pr rev');
-        //         }
-        //     });
-
-        // scenes[breakpoint.names.large].push(scene);
-        // scenes[breakpoint.names.medium].push(scene);
-        // scenes[breakpoint.names.small].push(scene);
 
         this.handleMediaChange(this.props.ui.media);
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        if (this.props.transition.scrollScenesEnabled != nextProps.transition.scrollScenesEnabled) {
-            this.setScenes(this.props.ui.media.current, nextProps.transition.scrollScenesEnabled);
-        }
         if (this.props.ui.media.current != nextProps.ui.media.current) {
             this.handleMediaChange(nextProps.ui.media);
         }
@@ -124,29 +94,12 @@ class Header extends Component {
     }
 
     componentWillUnmount() {
-        for (let media in breakpoint.names) {
-            if (this.scenes[media] && this.scenes[media].length && this.scenes[media][0].destroy) {
-                for (let i = 0; i < this.scenes[media].length; i++) {
-                    this.scenes[media][i].destroy();
-                    this.scenes[media][i] = null;
-                }
-            }
-        }
         for (let i = 0; i < this.timeLines.length; i++) {
             this.timeLines[i] = null;
         }
-        this.controller.destroy();
-        this.controller = null;
     }
 
     handleMediaChange(media) {
-        for (let name in breakpoint.names) {
-            this.setScenes(name, false, [media.current]);
-        }
-        if (this.props.transition.scrollScenesEnabled == true) {
-            this.setScenes(media.current, true);
-        }
-
         // console.warn('header handleMediaChange', media, this.props.isHomepage, $window.scrollTop());
 
         let menuIsOpen = this.article.hasClass('menu-open');
@@ -160,11 +113,6 @@ class Header extends Component {
             //     this.article.addClass('fix-header');
             // }
         }
-    }
-
-    setScenes(media, enabled, args = []) {
-        //console.warn('header setting scenes for', media, 'to', enabled, 'on', $(this.refs.header).closest('article').attr('class'));
-        this.scenes && this.scenes[media] && this.scenes[media].forEach(scene => { scene.enabled(enabled); scene.trigger(enabled ? 'enabled' : 'disabled', args); });
     }
 
     render() {
@@ -349,8 +297,6 @@ class Header extends Component {
         this.inProgress = true;
         let burgerIsOpen = this.article.hasClass('menu-open');
         let pieces = this.getContactPieces();
-        let isLarge = this.props.ui.media.current == breakpoint.names.large;
-        let isMedium = this.props.ui.media.current == breakpoint.names.medium;
 
         if (burgerIsOpen) { //small ALL scenarios, medium ALL scenarios + Large Generic pege when burger open
             let timeline = new TimelineLite({ onComplete: onComplete.bind(this, timeline, false) })
@@ -361,7 +307,6 @@ class Header extends Component {
             .add(_.filter([
                 TweenMax.to(this.links, .3, { x: '0%', ease: Power3.easeOut }),
                 TweenMax.to(this.logoText, .3, { x: '0%', ease: Power3.easeOut }),
-                //TweenMax.fromTo(this.burgerClose, .3, { x: isLarge ? '-100%' : '105%' }, { x: '0%', ease: Power3.easeIn }),
                 TweenMax.to(this.burgerClose, .3, { x: '0%', ease: Power3.easeOut }),
             ]));
         } else if (this.props.isHomepage) { //header contact link on Large Homepage
@@ -371,7 +316,6 @@ class Header extends Component {
                 TweenMax.to(pieces.left, .3, { x: '-100%', ease: Power3.easeIn }),
                 TweenMax.to(pieces.right, .3, { x: '105%', ease: Power3.easeIn }),
 
-                //TweenMax.to(this.homeImage, .6, { opacity: 1, ease: Power3.easeInOut }),
                 TweenMax.to(this.homeImage[currentSlide], .6, { opacity: 1, ease: Power3.easeInOut }),
 
                 TweenMax.to(this.links, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
