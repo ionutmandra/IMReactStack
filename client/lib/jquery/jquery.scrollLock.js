@@ -6,21 +6,35 @@ $.scrollLock = ( function scrollLockClosure() {
     var $html      = $( 'html' ),
         // State: unlocked by default
         locked     = false,
+        $window = $(window),
         // State: scroll to revert to
         prevScroll = {
-            scrollLeft : $( window ).scrollLeft(),
-            scrollTop  : $( window ).scrollTop()
+            scrollLeft : $window.scrollLeft(),
+            scrollTop  : $window.scrollTop(),
         },
+        prevHeight = $window.outerHeight(),
         // State: styles to revert to
         prevStyles = {},
         lockStyles = {
             'overflow-y' : 'scroll',
             'position'   : 'fixed',
-            'width'      : '100%'
+            'width'      : '100%',
         };
 
     // Instantiate cache in case someone tries to unlock before locking
     saveStyles();
+
+    $window.on('resize', function() {
+        if (!locked) { return; }
+        var currentHeight = $window.outerHeight();
+        if (currentHeight != prevHeight) {
+            var newScroll = Math.round(prevScroll.scrollTop * currentHeight / prevHeight);
+            newScroll < 0 && (newScroll = 0);
+            $html.css('top', - newScroll  + 'px');
+            prevScroll.scrollTop = newScroll;
+            prevHeight = currentHeight;
+        }
+    });
 
     // Save context's inline styles in cache
     function saveStyles() {
@@ -61,8 +75,8 @@ $.scrollLock = ( function scrollLockClosure() {
 
         // Save scroll state...
         prevScroll = {
-            scrollLeft : $( window ).scrollLeft(),
-            scrollTop  : $( window ).scrollTop()
+            scrollLeft : $window.scrollLeft(),
+            scrollTop  : $window.scrollTop(),
         };
 
         // ...and styles
@@ -72,16 +86,16 @@ $.scrollLock = ( function scrollLockClosure() {
         $.extend( appliedLock, lockStyles, {
             // And apply scroll state as styles
             'left' : - prevScroll.scrollLeft + 'px',
-            'top'  : - prevScroll.scrollTop  + 'px'
+            'top'  : - prevScroll.scrollTop  + 'px',
         } );
 
         // Then lock styles...
         $html.css( appliedLock );
 
         // ...and scroll state
-        $( window )
-            .scrollLeft( 0 )
-            .scrollTop( 0 );
+        $window
+            .scrollLeft(0)
+            .scrollTop(0);
 
         locked = true;
     }
@@ -99,7 +113,7 @@ $.scrollLock = ( function scrollLockClosure() {
         var left = restoreScroll === false ? 0 : prevScroll.scrollLeft;
         var top = restoreScroll === false ? 0 : prevScroll.scrollTop;
         
-        $(window)
+        $window
             .scrollLeft(left)
             .scrollTop(top);
 
