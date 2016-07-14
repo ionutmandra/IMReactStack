@@ -18,6 +18,7 @@ import debug from 'gulp-debug';
 import mocha from 'gulp-mocha';
 import rename from 'gulp-rename';
 import concat from 'gulp-concat';
+import autoprefixer from 'gulp-autoprefixer';
 //import reload from 'browser-sync';
 
 
@@ -89,6 +90,7 @@ gulp.task('icomoon-fonts', function () {
 });
 
 const scssPaths = ['./client/lib/**/*.scss', './client/scss/**/*.scss'];
+const autoprefixerOptions = { browsers: ['last 2 versions', '> 0.1%', 'Firefox ESR'] };
 gulp.task('sass', function () {
   var piped = gulp.src(scssPaths);
 
@@ -96,7 +98,10 @@ gulp.task('sass', function () {
     piped = piped.pipe(sourcemaps.init());
   }
 
-  piped = piped.pipe(sass().on('error', notify.onError()));
+  piped = piped
+    .pipe(sass().on('error', notify.onError()))
+    .pipe(autoprefixer(autoprefixerOptions))
+    ;
 
   if (process.env.NODE_ENV !== 'production') {
     piped = piped.pipe(sourcemaps.write());

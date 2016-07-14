@@ -56,10 +56,10 @@ class PortfolioDetails extends Component {
                             <div className="spacer-40 large-0 medium-24 show-for-medium-only"/>
                             <span className="image-container award2 content-item large-8 large-offset-0 medium-6 medium-offset-0 small-12 small-offset-0"></span>
                         </div>
-                        <div className="large-7 large-offset-0 large-order-2 medium-10 medium-offset-1 medium-order-1 small-22 small-offset-1 columns">
+                        <div className="large-7 large-offset-0 large-order-2 medium-10 medium-offset-1 medium-order-1 small-22 small-offset-1 small-order-1 columns">
                             <h2 className="content-item">Safetybank is an award winning application in the last couple of years.</h2>
                             <div className="spacer-20 large-0 medium-0 small-24 show-for-small-only"/>
-                            <p><span className="content-item block"> Most innovative application in housing industry 2016. </span></p>
+                            <p><span className="content-item block">Most innovative application in housing industry 2016.</span></p>
                             <div className="spacer-40 large-0 medium-24 small-24 show-for-small hide-for-large"/>
                         </div>
                     </div>
