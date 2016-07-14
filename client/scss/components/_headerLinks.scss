@@ -108,6 +108,7 @@
         &.menu-open header.main nav {
             @include grid-col-size(5.5);
             @include grid-col-off(6.5);
+            top: 60%;
             ul {
                 width: 100%;
                 li {
