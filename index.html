@@ -148,6 +148,12 @@
            $(window).scrollTop(0);
        });
 
+       window.onpopstate = function (event){
+           console.log('pop state');
+           event.preventDefault && event.preventDefault();
+           return false;
+       }
+
     var iev = GetIEVersion();
     if(iev > 0 && iev < 10){
         console.log('IE version detected: ', iev);

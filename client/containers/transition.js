@@ -48,6 +48,8 @@ export default (BaseComponent) => {
             this.enableScenes = this.enableScenes.bind(this);
             this.disableScenes = this.disableScenes.bind(this);
             this.cleanTransition = this.cleanTransition.bind(this);
+            this.guid = Math.random();
+            console.log('ctor guid',this.guid);
         }
         componentWillAppear(callback) {
             $body.addClass('navigating');
@@ -63,40 +65,51 @@ export default (BaseComponent) => {
         componentWillEnter(callback) {
             let transition = this._clone.props.transition, ui = this._clone.props.ui;
 
+
+            console.log('enter guid', this.guid);
+
             let animationName = 'generic';
             this.props.route.path == routePaths.client.root && (animationName = 'homepage');
             this.animation = animations[animationName];
             this.animationName = animationName; //only for console.log in the Leave function below
+            this.cleanTransition();
 
             if (!transition || !transition.type) {
                 //console.warn('componentWillEnter HAS NO TYPE');
 				// make sure callback always is called after willLeaveCallback
                 return setTimeout((() => {
-                    this.willEnterCallback(callback);
+                    this.willEnterCallback(callback, true);
                 }).bind(this), 200);
             }
-            console.log('componentWillEnter', animationName, ui.media.current + '_enter_' + transition.type);
+            console.log('componentWillEnter', animationName, ui.media.current + '_enter_' + transition.type, this.guid);
 
             if (this.animation[ui.media.current + '_enter_' + transition.type]) {
                 this.animation[ui.media.current + '_enter_' + transition.type](this.refs.container, this.willEnterCallback.bind(this, callback), transition);
             }
             else {
-                console.warn('On enter,', animationName, 'does not have any animation:', ui.media.current + '_enter_' + transition.type);
+                console.warn('On enter,', animationName, 'does not have any animation:', ui.media.current + '_enter_' + transition.type, this.guid);
                 return this.willEnterCallback(callback);
             }
         }
         componentWillLeave(callback) {
+
+            console.log('leave guid', this.guid);
+
             let transition = this._clone.props.transition, ui = this._clone.props.ui;
             if (!transition || !transition.type || !this.animation) {
                 // console.log('componentWillLeave HAS NO TYPE OR ANIMATION', transition, this.animation);
-				
+
 				// on clicking Back, leaving page makes sure no scroll on page, so new page will not get automaitc browser scroll
                 this.disableScenes();
                 $.scrollLock(true);
-
+                var $article  = $(dom.findDOMNode(this.refs.container));
+                if (!$article.is('.contact-open') && !$article.is('.menu-open')){
+                    $.scrollLock(false, false);
+                }
+                
                 return this.willLeaveCallback(callback);
             }
-            console.log('componentWillLeave', this.animationName, ui.media.current + '_leave_' + transition.type);
+            console.log('componentWillLeave', this.animationName, ui.media.current + '_leave_' + transition.type, this.guid);
 
             if (this.animation[ui.media.current + '_leave_' + transition.type]) {
                 let initialScroll = $window.scrollTop();
@@ -105,24 +118,33 @@ export default (BaseComponent) => {
                 this.animation[ui.media.current + '_leave_' + transition.type](this.refs.container, this.willLeaveCallback.bind(this, callback), transition, initialScroll);
             }
             else {
-                console.warn('On leave, does not have any animation: ', ui.media.current + '_leave_' + transition.type);
+                console.warn('On leave, does not have any animation: ', ui.media.current + '_leave_' + transition.type, this.guid);
                 return this.willLeaveCallback(callback);
             }
 
         }
-        willEnterCallback(callback) {
-            console.log('willEnterCallback ',this.animationName);
+        willEnterCallback(callback, cleanup) {
+            console.log('willEnterCallback ',this.animationName, this.guid, cleanup);
+            var $article  = $(dom.findDOMNode(this.refs.container));
             $body.removeClass('navigating');
-            $(dom.findDOMNode(this.refs.container)).removeClass('fix-header contact-open menu-open');
             this.cleanTransition();
-            $.scrollLock(false, false);
-            setTimeout((() => {
-                this.enableScenes();
-            }).bind(this), 100);
+
+            //$article.removeClass('fix-header contact-open menu-open');
+            if (!$article.is('.contact-open') && !$article.is('.menu-open')){
+                $.scrollLock(false, false);
+                setTimeout((() => {
+                    this.enableScenes();
+                }).bind(this), 100);
+            }
+
+            if(cleanup){
+
+            }
+
             callback();
         }
         willLeaveCallback(callback) {
-            console.log('willLeaveCallback', this.animationName);
+            console.log('willLeaveCallback ',this.animationName, this.guid);
             callback();
         }
         render() {
