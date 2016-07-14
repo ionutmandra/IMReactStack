@@ -100,15 +100,9 @@ export default (BaseComponent) => {
             let transition = this._clone.props.transition, ui = this._clone.props.ui;
             if (!transition || !transition.type || !this.animation) {
                 // console.log('componentWillLeave HAS NO TYPE OR ANIMATION', transition, this.animation);
-
 				// on clicking Back, leaving page makes sure no scroll on page, so new page will not get automaitc browser scroll
                 this.disableScenes();
-                $.scrollLock(true);
-                var $article  = $(dom.findDOMNode(this.refs.container));
-                if (!$article.is('.contact-open') && !$article.is('.menu-open')){
-                    $.scrollLock(false, false);
-                }
-                
+                $.scrollLock(true);                
                 return this.willLeaveCallback(callback);
             }
             console.log('componentWillLeave', this.animationName, ui.media.current + '_leave_' + transition.type, this.guid);
@@ -130,19 +124,10 @@ export default (BaseComponent) => {
             var $article  = $(dom.findDOMNode(this.refs.container));
             $body.removeClass('navigating');
             this.cleanTransition();
-
-            //$article.removeClass('fix-header contact-open menu-open');
-            if (!$article.is('.contact-open') && !$article.is('.menu-open')){
-                $.scrollLock(false, false);
-                setTimeout((() => {
-                    this.enableScenes();
-                }).bind(this), 100);
-            }
-
-            if(cleanup){
-
-            }
-
+            $.scrollLock(false, false);
+            setTimeout((() => {
+                this.enableScenes();
+            }).bind(this), 100);
             callback();
         }
         willLeaveCallback(callback) {
