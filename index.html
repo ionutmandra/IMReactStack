@@ -148,11 +148,13 @@
            $(window).scrollTop(0);
        });
 
-       window.onpopstate = function (event){
-           console.log('pop state');
-           event.preventDefault && event.preventDefault();
-           return false;
-       }
+    window.onpopstate = function (event){
+        console.log('back clicked');
+        if($('body').hasClass('navigating')){
+            console.log('not allowing back during navigation');
+            window.history.forward();
+        }
+    }
 
     var iev = GetIEVersion();
     if(iev > 0 && iev < 10){

@@ -88,7 +88,9 @@ export default (BaseComponent) => {
             }
             else {
                 console.warn('On enter,', animationName, 'does not have any animation:', ui.media.current + '_enter_' + transition.type, this.guid);
-                return this.willEnterCallback(callback);
+                return setTimeout((() => {
+                    this.willEnterCallback(callback);
+                }).bind(this), 200);
             }
         }
         componentWillLeave(callback) {
