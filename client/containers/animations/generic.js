@@ -92,15 +92,15 @@ export function large_enter_header(ref, callback, transition) {
     }
 }
 
-export function medium_enter_header(ref, callback, transition) {
-    console.error('medium_enter_header should NEVER be called');
-    callback();
-}
+// export function medium_enter_header(ref, callback, transition) {
+//     console.error('medium_enter_header should NEVER be called');
+//     callback();
+// }
 
-export function small_enter_header(ref, callback, transition) {
-    console.error('small_enter_header should NEVER be called');
-    callback();
-}
+// export function small_enter_header(ref, callback, transition) {
+//     console.error('small_enter_header should NEVER be called');
+//     callback();
+// }
 
 export function large_leave_header(ref, callback, transition, initialScroll) {
     let elements = extractDOMElements(ref, transition.column), height = $window.height();
@@ -210,15 +210,15 @@ export function large_enter_burger(ref, callback, transition) {
     }
 }
 
-export function medium_enter_burger(ref, callback, transition) {
-    console.warn('TO BE IMPLEMENTED');
-    callback();
-}
+// export function medium_enter_burger(ref, callback, transition) {
+//     console.warn('TO BE IMPLEMENTED');
+//     callback();
+// }
 
-export function small_enter_burger(ref, callback, transition) {
-    console.warn('TO BE IMPLEMENTED');
-    callback();
-}
+// export function small_enter_burger(ref, callback, transition) {
+//     console.warn('TO BE IMPLEMENTED');
+//     callback();
+// }
 
 export function large_leave_burger(ref, callback, transition, initialScroll) {
     let elements = extractDOMElements(ref, transition.column),
@@ -323,15 +323,15 @@ export function large_enter_content(ref, callback, transition) {
     }
 }
 
-export function medium_enter_content(ref, callback, transition) {
-    console.warn('TO BE IMPLEMENDTED');
-    callback();
-}
+// export function medium_enter_content(ref, callback, transition) {
+//     console.warn('TO BE IMPLEMENDTED');
+//     callback();
+// }
 
-export function small_enter_content(ref, callback, transition) {
-    console.warn('TO BE IMPLEMENDTED');
-    callback();
-}
+// export function small_enter_content(ref, callback, transition) {
+//     console.warn('TO BE IMPLEMENDTED');
+//     callback();
+// }
 
 export function large_leave_content(ref, callback, transition, initialScroll) {
     let elements = extractDOMElements(ref, transition.column);
@@ -445,15 +445,15 @@ export function large_enter_home_content(ref, callback, transition) {
     }
 }
 
-export function medium_enter_home_content(ref, callback, transition) {
-    console.warn('TO BE IMPLEMENDTED');
-    callback();
-}
+// export function medium_enter_home_content(ref, callback, transition) {
+//     console.warn('TO BE IMPLEMENDTED');
+//     callback();
+// }
 
-export function small_enter_home_content(ref, callback, transition) {
-    console.warn('TO BE IMPLEMENDTED');
-    callback();
-}
+// export function small_enter_home_content(ref, callback, transition) {
+//     console.warn('TO BE IMPLEMENDTED');
+//     callback();
+// }
 
 ////
 //    UTILITIES

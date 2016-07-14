@@ -75,15 +75,15 @@ export function large_enter_header(ref, callback, transition, burgerIsOpen) {
     }
 }
 
-export function medium_enter_header(ref, callback, transition) {
-    console.warn('TO BE IMPLEMENTED');
-    callback();
-}
+// export function medium_enter_header(ref, callback, transition) {
+//     console.warn('TO BE IMPLEMENTED');
+//     callback();
+// }
 
-export function small_enter_header(ref, callback, transition) {
-    console.warn('TO BE IMPLEMENTED');
-    callback();
-}
+// export function small_enter_header(ref, callback, transition) {
+//     console.warn('TO BE IMPLEMENTED');
+//     callback();
+// }
 
 //user clicked on link in homepage header links
 export function large_leave_header(ref, callback, transition, initialScroll) {
@@ -123,15 +123,15 @@ export function large_enter_burger(ref, callback, transition) {
     large_enter_header(ref, callback, transition, true);
 }
 
-export function medium_enter_burger(ref, callback, transition) {
-    console.warn('TO BE IMPLEMENTED');
-    callback();
-}
+// export function medium_enter_burger(ref, callback, transition) {
+//     console.warn('TO BE IMPLEMENTED');
+//     callback();
+// }
 
-export function small_enter_burger(ref, callback, transition) {
-    console.warn('TO BE IMPLEMENTED');
-    callback();
-}
+// export function small_enter_burger(ref, callback, transition) {
+//     console.warn('TO BE IMPLEMENTED');
+//     callback();
+// }
 
 export function large_leave_burger(ref, callback, transition, initialScroll) {
     //this happens when navigating from Contact page
@@ -160,21 +160,21 @@ export function small_leave_burger(ref, callback, transition, initialScroll) {
 //    CONTENT - entering homepage from a generic page content link
 /////////////////////////////////////////
 
-//user clicked on homepage in generic page when scrolled; 
+//user clicked on homepage in generic page when scrolled;
 //the only difference is on the leaving page side, here it's the same as header navigation
 export function large_enter_content(ref, callback, transition) {
     large_enter_header(ref, callback, transition);
 }
 
-export function medium_enter_content(ref, callback, transition) {
-    console.warn('TO BE IMPLEMENTED');
-    callback();
-}
+// export function medium_enter_content(ref, callback, transition) {
+//     console.warn('TO BE IMPLEMENTED');
+//     callback();
+// }
 
-export function small_enter_content(ref, callback, transition) {
-    console.warn('TO BE IMPLEMENTED');
-    callback();
-}
+// export function small_enter_content(ref, callback, transition) {
+//     console.warn('TO BE IMPLEMENTED');
+//     callback();
+// }
 
 ////
 // CONTENT LINKS - when leaving homepage

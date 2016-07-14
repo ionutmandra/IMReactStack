@@ -82,14 +82,16 @@ export default (BaseComponent) => {
             }
             else {
                 console.warn('On enter,', animationName, 'does not have any animation:', ui.media.current + '_enter_' + transition.type);
-                return this.willEnterCallback(callback);
+                return setTimeout((() => {
+                    this.willEnterCallback(callback);
+                }).bind(this), 200);
             }
         }
         componentWillLeave(callback) {
             let transition = this._clone.props.transition, ui = this._clone.props.ui;
             if (!transition || !transition.type || !this.animation) {
                 // console.log('componentWillLeave HAS NO TYPE OR ANIMATION', transition, this.animation);
-				
+
 				// on clicking Back, leaving page makes sure no scroll on page, so new page will not get automaitc browser scroll
                 this.disableScenes();
                 $.scrollLock(true);
