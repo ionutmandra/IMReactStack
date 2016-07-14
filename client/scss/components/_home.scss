@@ -445,8 +445,8 @@
     }
 }
 
-//covers iPhone6 landscape which is 325px tall but 667px wide, falling in medium instead of small on other phones
-@media screen and #{breakpoint(medium only)} and (orientation: landscape) and (max-height: 340px) {
+//covers iPhone6 plus landscape which is 414px tall but >640px wide, falling in medium instead of small on other phones
+@media screen and #{breakpoint(medium only)} and (orientation: landscape) and (max-height: 415px) {
     #page-container article.page-home {
         section.slide {
             .text-1, .text-2, .text-3 {

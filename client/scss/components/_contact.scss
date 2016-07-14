@@ -132,8 +132,8 @@
     }
 }
 
-//covers iPhone6 landscape which is 325px tall but 667px wide, falling in medium instead of small on other phones
-@media screen and #{breakpoint(medium only)} and (orientation: landscape) and (max-height: 340px) {
+//covers iPhone6 plus landscape and tablets which fall in medium but texts come too near to eachother
+@media screen and #{breakpoint(medium only)} and (orientation: landscape) and (max-height: 700px) {
     #page-container article header.main div.contact {
         @include grid-row(24);
         > div {
@@ -225,6 +225,19 @@
                 top: 70%;
                 font-size: rem-calc(14pt);
                 line-height: rem-calc(18pt);
+            }
+        }
+    }
+}
+
+@media screen and #{breakpoint(small only)} and (orientation: landscape) and (max-height: 480px) {
+    #page-container article header.main div.contact {
+        > div {
+            &.left {
+                display: none;
+            }
+            &.right {
+                top: 60%;
             }
         }
     }
