@@ -105,7 +105,12 @@ export function small_enter_header(ref, callback, transition) {
 export function large_leave_header(ref, callback, transition, initialScroll) {
     let elements = extractDOMElements(ref, transition.column), height = $window.height();
 
-    let timeline = new TimelineLite({ onComplete: () => { setTimeout(callback, 0); timeline = null; } })
+    let timeline = new TimelineLite({ onComplete: () => {
+        TweenMax.set([elements.contentItems, elements.text, elements.image], { clearProps: 'transform' });
+        TweenMax.set([elements.header, elements.footer], { clearProps: 'height' });
+        setTimeout(callback, 0);
+        timeline = null;
+    }})
         .add(_.filter([
             elements.contentItems && TweenMax.to(elements.contentItems, .3, { x: '-110%', ease: Power3.easeIn }),
             elements.footer && TweenMax.set(elements.footer, { height: 0, ease: Power3.easeIn }),
@@ -224,7 +229,12 @@ export function large_leave_burger(ref, callback, transition, initialScroll) {
     let elements = extractDOMElements(ref, transition.column),
         contactIsOpen = elements.$article.hasClass('contact-open');
 
-    let timeline = new TimelineLite({ onComplete: () => { callback(); timeline = null; } })
+    let timeline = new TimelineLite({ onComplete: () => {
+        !contactIsOpen && TweenMax.set([elements.links, elements.burgerClose], { clearProps: 'transform'});
+        contactIsOpen && TweenMax.set(elements.contactPieces.large, { clearProps: 'transform'});
+        callback();
+        timeline = null;
+    }})
         .add(_.filter([
             !contactIsOpen && TweenMax.to(elements.links, .6, {
                 x: '-100%', ease: Power3.easeIn,

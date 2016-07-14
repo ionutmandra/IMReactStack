@@ -139,7 +139,11 @@ export function large_leave_burger(ref, callback, transition, initialScroll) {
     $.scrollLock(false, false); //scroll goes top
     $.scrollLock(true);
 
-    let timeline = new TimelineLite({ onComplete: () => { callback(); timeline = null; }})
+    let timeline = new TimelineLite({ onComplete: () => {
+        TweenMax.set(elements.contactPieces.large, { clearProps: 'transform' });
+        callback();
+        timeline = null;
+    }})
         .add(_.filter([
             TweenMax.to(elements.contactPieces.large, .3, { x: '-100%', ease: Power3.easeIn }),
         ]))
@@ -160,7 +164,7 @@ export function small_leave_burger(ref, callback, transition, initialScroll) {
 //    CONTENT - entering homepage from a generic page content link
 /////////////////////////////////////////
 
-//user clicked on homepage in generic page when scrolled; 
+//user clicked on homepage in generic page when scrolled;
 //the only difference is on the leaving page side, here it's the same as header navigation
 export function large_enter_content(ref, callback, transition) {
     large_enter_header(ref, callback, transition);
