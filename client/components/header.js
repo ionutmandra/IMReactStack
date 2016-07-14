@@ -106,7 +106,7 @@ class Header extends Component {
         let contactIsOpen = this.article.hasClass('contact-open');
 
         if (!this.props.isHomepage) {
-            !contactIsOpen && !menuIsOpen && this.article.removeClass('fix-header');
+            //!contactIsOpen && !menuIsOpen && this.article.removeClass('fix-header');
             // if ($window.scrollTop() < 400) {
             //     !contactIsOpen && !menuIsOpen && this.article.removeClass('fix-header');
             // } else {
@@ -222,7 +222,7 @@ class Header extends Component {
                 .add(_.filter([
                     TweenMax.fromTo(pieces.left, .3, { x: '-100%' }, { x: '0%', ease: Power3.easeOut }),
                     TweenMax.fromTo(pieces.right, .3, { x: '105%' }, { x: '0%', ease: Power3.easeOut }),
-                ]));            
+                ]));
         } else if (burgerIsOpen) { //small ALL scenarios, medium ALL scenarios + Large Generic pege when burger open
             let timeline = new TimelineLite({ onComplete: onComplete.bind(this, timeline) })
                 .add(_.filter([
@@ -310,7 +310,8 @@ class Header extends Component {
                 TweenMax.to(this.burgerClose, .3, { x: '0%', ease: Power3.easeOut }),
             ]));
         } else if (this.props.isHomepage) { //header contact link on Large Homepage
-            var currentSlide = Math.floor( this.getInitialScroll() / $window.height());
+            var currentSlide = Math.ceil( (this.getInitialScroll() - 10 ) / $window.height());
+            console.log('closeContact with slide', currentSlide);
             let timeline = new TimelineLite({ onComplete: onComplete.bind(this, timeline, true) })
             .add(_.filter([
                 TweenMax.to(pieces.left, .3, { x: '-100%', ease: Power3.easeIn }),
