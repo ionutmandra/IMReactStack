@@ -80,7 +80,7 @@
   // Last column alignment
   @if $grid-column-align-edge {
     &:last-child:not(:first-child) {
-      float: $global-right;
+      //float: $global-right; //commenting this fixes iOS columns collapse (CS-147 and probably more layout issues) 
     }
   }
 }
