@@ -249,8 +249,6 @@
             border-radius: 35px;
             border: 1px solid $white;
             overflow: visible;
-            -webkit-transform: rotate(-90deg);
-            transform: rotate(-90deg);
             position: relative;
             top: 1px;
             left: 1px;
@@ -258,7 +256,10 @@
 
             circle {
                 stroke-dashoffset: 0;
-                //transition: stroke-dashoffset 1s linear;
+                -webkit-transform: rotate(-90deg);
+                transform: rotate(-90deg);
+                -webkit-transform-origin: center;
+                transform-origin: center;
             }
             circle#bar {
                 stroke: $white;

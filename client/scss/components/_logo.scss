@@ -25,6 +25,7 @@
             &.text {
                 margin-top: 4px;
                 max-height: 80px;
+                bottom: auto;//prevents sticky bug on mobiles
             }
         }
         &:hover {
