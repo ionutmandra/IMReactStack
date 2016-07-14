@@ -62,7 +62,7 @@ export default (BaseComponent) => {
         }
         componentWillEnter(callback) {
             let transition = this._clone.props.transition, ui = this._clone.props.ui;
-            
+
             let animationName = 'generic';
             this.props.route.path == routePaths.client.root && (animationName = 'homepage');
             this.animation = animations[animationName];
@@ -103,7 +103,7 @@ export default (BaseComponent) => {
 
         }
         willEnterCallback(callback) {
-            //console.warn('willEnterCallback');
+            console.log('willEnterCallback ',this.animationName);
             $body.removeClass('navigating');
             $(dom.findDOMNode(this.refs.container)).removeClass('fix-header contact-open menu-open');
             this.cleanTransition();
@@ -114,7 +114,7 @@ export default (BaseComponent) => {
             callback();
         }
         willLeaveCallback(callback) {
-            //console.warn('willLeaveCallback');
+            console.log('willLeaveCallback', this.animationName);
             $body.removeClass('navigating');
             $(dom.findDOMNode(this.refs.container)).removeClass('fix-header contact-open menu-open');
             this.cleanTransition();
@@ -126,7 +126,7 @@ export default (BaseComponent) => {
         }
         render() {
             if (!this.firstRenderDone) {
-                //this happens earlier than handleMediaChange in components, which can use it to fix things 
+                //this happens earlier than handleMediaChange in components, which can use it to fix things
                 //e.g. home won't scrollTop 0 earlier than us recording scroll position in componentWillLeave
                 $body.addClass('navigating');
                 this.firstRenderDone = true; //subsequent store updates shouldn't set the class, obviously
