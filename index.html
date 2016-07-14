@@ -143,6 +143,10 @@
     <div id="root"></div>
 
     <script>
+	//on F5, ctrl+F5 always scroll top before leaving so on new page no broswer autoscroll happens
+    $(window).on('beforeunload',function(){
+           $(window).scrollTop(0);
+       });
 
     var iev = GetIEVersion();
     if(iev > 0 && iev < 10){
@@ -242,8 +246,6 @@
             "/client/dist/img/projects/safetybank/safetybank.png"
         );
 
-
-        TweenMax.set('body',{overflow:'hidden'});
         TweenMax.set('#leftLogo',{x:'+100%'});
         TweenMax.set('#rightLogo',{x:'-100%'});
         TweenMax.set('#leftLogo',{visibility:'visible'});
@@ -287,8 +289,7 @@
                         TweenMax.to('#line', fast ? .4 : 1, { x: '-100%', ease: Power3.easeIn }),
                         TweenMax.to('#liner', fast ? .4 : 1, { x: '+100%', ease: Power3.easeIn }),
                     ])
-                    .add([TweenMax.to('#preload',.1, { 'z-index': 0})])
-                    .add(TweenMax.set('body',{overflow:''}));
+                    .add([TweenMax.to('#preload',.1, { 'z-index': 0})]);
                 }
             }
         });

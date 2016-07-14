@@ -70,7 +70,10 @@ export default (BaseComponent) => {
 
             if (!transition || !transition.type) {
                 //console.warn('componentWillEnter HAS NO TYPE');
-                return this.willEnterCallback(callback);
+				// make sure callback always is called after willLeaveCallback
+                return setTimeout((() => {
+                    this.willEnterCallback(callback);
+                }).bind(this), 200);
             }
             console.log('componentWillEnter', animationName, ui.media.current + '_enter_' + transition.type);
 
@@ -86,6 +89,11 @@ export default (BaseComponent) => {
             let transition = this._clone.props.transition, ui = this._clone.props.ui;
             if (!transition || !transition.type || !this.animation) {
                 // console.log('componentWillLeave HAS NO TYPE OR ANIMATION', transition, this.animation);
+				
+				// on clicking Back, leaving page makes sure no scroll on page, so new page will not get automaitc browser scroll
+                this.disableScenes();
+                $.scrollLock(true);
+
                 return this.willLeaveCallback(callback);
             }
             console.log('componentWillLeave', this.animationName, ui.media.current + '_leave_' + transition.type);
@@ -115,13 +123,6 @@ export default (BaseComponent) => {
         }
         willLeaveCallback(callback) {
             console.log('willLeaveCallback', this.animationName);
-            $body.removeClass('navigating');
-            $(dom.findDOMNode(this.refs.container)).removeClass('fix-header contact-open menu-open');
-            this.cleanTransition();
-            $.scrollLock(false, false);
-            setTimeout((() => {
-                this.enableScenes();
-            }).bind(this), 100);
             callback();
         }
         render() {

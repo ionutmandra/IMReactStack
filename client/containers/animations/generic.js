@@ -8,14 +8,15 @@ let $ = window.$, $window = $(window), $body = $('body'), TweenMax = window.Twee
 //////////////////////////////
 
 export function appear(ref, callback) {
-    let elements = extractDOMElements(ref);
-    elements.image && TweenMax.set(elements.image, { scale: 1.2 });
-    TweenMax.set(elements.container, { opacity: 0 });
-    let timeline = new TimelineLite({ onComplete: () => { callback(); timeline = null; } })
-        .add(_.filter([
-            elements.image && TweenMax.to(elements.image, 1, { scale: 1, ease: Power3.easeOut }),
-            TweenMax.to(elements.container, 1, { opacity: 1, ease: Power3.easeOut }),
-        ]));
+    callback();
+    // let elements = extractDOMElements(ref);
+    // elements.image && TweenMax.set(elements.image, { scale: 1.2 });
+    // TweenMax.set(elements.container, { opacity: 0 });
+    // let timeline = new TimelineLite({ onComplete: () => { callback(); timeline = null; } })
+    //     .add(_.filter([
+    //         elements.image && TweenMax.to(elements.image, 1, { scale: 1, ease: Power3.easeOut }),
+    //         TweenMax.to(elements.container, 1, { opacity: 1, ease: Power3.easeOut }),
+    //     ]));
 }
 
 ////
@@ -48,7 +49,7 @@ export function large_enter_header(ref, callback, transition) {
 
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.logoImg && TweenMax.set(elements.logoImg, { color: '#fefefe' });
-    elements.logoText && TweenMax.set(elements.logoText, { x: '0%' }),    
+    elements.logoText && TweenMax.set(elements.logoText, { x: '0%' }),
     elements.burger && TweenMax.set(elements.burger, { x: '-100%', color: '#fefefe' });
     elements.footer && TweenMax.set(elements.footer, { height: 0 });
     elements.contentItems && TweenMax.set(elements.contentItems, { x: '-110%' });
@@ -220,7 +221,7 @@ export function small_enter_burger(ref, callback, transition) {
 }
 
 export function large_leave_burger(ref, callback, transition, initialScroll) {
-    let elements = extractDOMElements(ref, transition.column), 
+    let elements = extractDOMElements(ref, transition.column),
         contactIsOpen = elements.$article.hasClass('contact-open');
 
     let timeline = new TimelineLite({ onComplete: () => { callback(); timeline = null; } })
@@ -459,7 +460,7 @@ export function small_enter_home_content(ref, callback, transition) {
 ///////////////////////////////
 
 function extractDOMElements(ref, column) {
-    column = column && column > 2 ? column - 2 : (column === 1 ? 1 : 4); 
+    column = column && column > 2 ? column - 2 : (column === 1 ? 1 : 4);
     let $article = $(dom.findDOMNode(ref)),
         $li = $article.find('header nav ul li:nth-child(' + column + ')'),
         $link = $li.find('a'),

@@ -109,8 +109,7 @@ class Home extends Component {
 
     shouldComponentUpdate(nextProps, nextState) {
 
-        // if (this.props.transition.scrollScenesEnabled != nextProps.transition.scrollScenesEnabled) {
-        if (nextProps.transition.scrollScenesEnabled) {
+        if (this.props.transition.scrollScenesEnabled != nextProps.transition.scrollScenesEnabled) {
             this.setScenes(this.props.ui.media.current, nextProps.transition.scrollScenesEnabled);
         }
 
@@ -146,7 +145,7 @@ class Home extends Component {
 
         this.article = $(this.refs.article);
 
-        var gradients = ['#d6cb26', '#68bc45', '#1895a3', '#4f2063', '#c80786', '#ed2f2e'];
+        var gradients = this.gradients = ['#d6cb26', '#68bc45', '#1895a3', '#4f2063', '#c80786', '#ed2f2e'];
 
         //scenes
         this.animations.animateGradients(breakpoint.names.large, [this._section1, this._section2, this._section3], gradients);
@@ -283,15 +282,44 @@ class Home extends Component {
                 ]))
         );
 
-        this.handleMediaChange(this.props.ui.media, this.props.transition);
+		//when navigating back to page media.current is not changing => shouldComponentUpdate not called => handleMediaChange not called
+        var notFirstPageLoad = this.props.ui.media.current != 'none' && this.props.ui.media.prev != 'none';
+        if(notFirstPageLoad){
+            this.handleMediaChange(this.props.ui.media, this.props.transition);
+        }
+    }
+
+    disableAllScenesButCurrent(media, transition){
+        for (let name in breakpoint.names) {
+            this.setScenes(name, false);
+        }
+        if (transition.scrollScenesEnabled == true) {
+            this.setScenes(media.current, true);
+        }
+    }
+
+    showSlideAndContent(slide,images,leftContent,rightContent){
+        this.animations.showSlide(slide);
+        this.animations.showImgInstant(images);
+        this.animations.moveToInitialInstant(leftContent);
+        this.animations.moveToInitialInstant(rightContent);
+    }
+
+    hideSlideContent(images,leftContent,rightContent){
+        this.animations.hideImgInstant(images);
+        this.animations.hideLeft(leftContent);
+        this.animations.hideRight(rightContent);
     }
 
     handleMediaChange(media, transition) {
 
+        //1. on first page load comming from shouldComponentUpdate
+        //2. on back comming from didmount
+        //3. on resize, comming from shouldComponentUpdate
+
         var height = $window.height();
         var fullHeight = height * 4;
         var initialScroll = this.getInitialScroll();
-
         var sections = [this._section1, this._section2, this._section3, this._section4];
         var sectionsContent = [this._section1c, this._section2c, this._section3c, this._section4c];
         var images = [this._img1, this._img2, this._img3, this._img4];
@@ -319,62 +347,60 @@ class Home extends Component {
             this.article.find('.scroll-hint > *').toArray(),
             this.article.find('.scroll-hint > *').toArray(),
         ];
-
         var contactIsOpen = this.article.hasClass('contact-open');
         var menuIsOpen = this.article.hasClass('menu-open');
 
-        //console.warn('handleMediaChange', media, 'on', $(this.refs.header).closest('article').attr('class'));
-        for (let name in breakpoint.names) {
-            this.setScenes(name, false);
-        }
-        if (media.current != breakpoint.names.large && transition.scrollScenesEnabled == true) {
-            this.setScenes(media.current, true);
-        }
+        this.disableAllScenesButCurrent(media,transition);
 
-        if (media.current == breakpoint.names.large) {
-            //Scrolling to top
-            if (!$body.is('.navigating')) {//else transition.js handles enabling scenes and setting scroll
-
-                $window.scrollTop(0);
-                setTimeout((() => {
-                    this.setScenes(media.current, true);
-                }).bind(this), 250);
-            }
-
-            this.timeLines.push(TweenMax.set(this._gradient, { background: 'linear-gradient(45deg, #d6cb26 0%, #68bc45 100%)' }));
-
+        if (media.current == breakpoint.names.large){
             for (let i = 1; i < 4; i++) {
                 this.animations.hideSlide(sectionsContent[i]);
-                this.animations.hideImgInstant(images[i]);
-                this.animations.hideLeft(homeLeft[i]);
-                this.animations.hideRight(homeRight[i]);
+                this.hideSlideContent(images[i],homeLeft[i],homeRight[i]);
             }
 
-            if (menuIsOpen && !contactIsOpen) {
-                this.article.removeClass('menu-open');
-                this.animations.showSlide(sectionsContent[0]);
-                this.animations.showImgInstant(images[0]);
-                this.animations.moveToInitialInstant(homeLeft[0]);
-                this.animations.moveToInitialInstant(homeRight[0]);
+            //resizing
+            if(media.current != media.prev){
+                if(contactIsOpen){
+                    var currentSlide = Math.ceil(( initialScroll - 10) / height);
+                    console.log('home with slide', currentSlide);
+                    this.timeLines.push(TweenMax.set(this._gradient, { background: 'linear-gradient(45deg, '
+                        + this.gradients[currentSlide] +' 0%,'
+                        + this.gradients[currentSlide+1] + ' 100%)' }));
+
+                    for (let i = 0; i < 4; i++) {
+                        if(currentSlide == i ){
+                            this.animations.showSlide(sectionsContent[i]);
+                        }
+                        else {
+                            this.animations.hideSlide(sectionsContent[i]);
+                        }
+                        this.hideSlideContent(images[i],homeLeft[i],homeRight[i]);
+                    }
+                }
+                else{
+                    $window.scrollTop(0);
+                    this.animations.clearGradient();
+
+                    if (menuIsOpen) {
+                        this.article.removeClass('menu-open');
+                        this.showSlideAndContent(sectionsContent[0],images[0],homeLeft[0],homeRight[0]);
+                    }
+                }
             }
         }
-        else if (media.current != breakpoint.names.none) {
+
+        if (media.current != breakpoint.names.none && media.current != breakpoint.names.large) {
             this.animations.clearGradient();
 
             if (menuIsOpen || contactIsOpen) {
                 for (let i = 0; i < 4; i++) {
                     this.animations.showSlide(sectionsContent[i]);
-                    this.animations.hideImgInstant(images[i]);
-                    this.animations.hideLeft(homeLeft[i]);
-                    this.animations.hideRight(homeRight[i]);
+                    this.hideSlideContent(images[i],homeLeft[i],homeRight[i]);
                 }
             }
             else {
                 for (let i = 0; i < 4; i++) {
-                    this.animations.showSlide(sectionsContent[i]);
-                    this.animations.showImgInstant(images[i]);
-                    this.animations.moveToInitialInstant(homeLeft[i]);
-                    this.animations.moveToInitialInstant(homeRight[i]);
+                    this.showSlideAndContent(sectionsContent[i],images[i],homeLeft[i],homeRight[i]);
                 }
             }
         }
@@ -402,16 +428,16 @@ class Home extends Component {
                     <Header isHomepage setInitialScroll={this.setInitialScroll}  />
 
                     <section className="slide slide-1 background" ref={(c) => this._section1b = c}>
-                        <div ref={(c) => this._img1 = c} className="image"><div className="img" /></div>
+                        <div  className="image"><div ref={(c) => this._img1 = c} className="img" /></div>
                     </section>
                     <section className="slide slide-2 background" ref={(c) => this._section2b = c}>
-                        <div ref={(c) => this._img2 = c} className="image"><div className="img" /></div>
+                        <div  className="image"><div ref={(c) => this._img2 = c} className="img" /></div>
                     </section>
                     <section className="slide slide-3 background" ref={(c) => this._section3b = c}>
-                        <div ref={(c) => this._img3 = c} className="image"><div className="img" /></div>
+                        <div className="image"><div ref={(c) => this._img3 = c} className="img" /></div>
                     </section>
                     <section className="slide slide-4 background" ref={(c) => this._section4b = c}>
-                        <div ref={(c) => this._img4 = c} className="image"><div className="img" /></div>
+                        <div className="image"><div ref={(c) => this._img4 = c} className="img" /></div>
                     </section>
 
                     <div className="gradient" ref={(c) => this._gradient = c}/>

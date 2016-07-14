@@ -88,7 +88,7 @@ class PortfolioDetails extends Component {
                              <img src="/client/dist/img/projects/safetybank/ExtensiveReporting.png" />
                         </div>
                         <div className="large-9 large-offset-0 large-order-2  medium-10 medium-offset-1 small-22 small-offset-1 small-order-1 columns">
-                            <h2>Extensive reporting and notiﬁcation services</h2>
+                            <h2>Extensive reporting and notification services</h2>
                         </div>
                         <div className="spacer-20 small-24 small-order-2 show-for-small-only"/>
                     </div>
