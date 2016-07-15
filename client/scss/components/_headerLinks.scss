@@ -27,7 +27,7 @@
                     line-height: rem-calc(20pt);
                     font-weight: $semibold;
                     padding: rem-calc(46pt 0 10pt);
-                    will-change: padding-left; 
+                    will-change: padding-left, transform; 
                     overflow: hidden;
 
                     &:before {
