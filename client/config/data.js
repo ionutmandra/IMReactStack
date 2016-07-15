@@ -24,27 +24,27 @@ export const lang = data.lang = {
 
 export const projects = data.projects = {
     items: [
-        {
-            key: 'adaptabi',
-            name: 'Adaptabi',
-            description: 'New company site',
-            website: 'http://adaptabi.com',
-            img: '/client/dist/img/projects/adaptabi.png',
-        },
-        {
-            key: 'safetybank',
-            name: 'Safetybank',
-            description: 'Best H&S system for construction companies',
-            website: 'http://safetybank.co.uk',
-            img: '/client/dist/img/projects/safetybank.png',
-        },
-        {
-            key: 'squires',
-            name: 'Squires Kitchen',
-            description: 'Largest kitchen supply store in UK',
-            website: 'http://squires-shop.com',
-            img: '/client/dist/img/projects/squires.png',
-        },
+        // {
+        //     key: 'adaptabi',
+        //     name: 'Adaptabi',
+        //     description: 'New company site',
+        //     website: 'http://adaptabi.com',
+        //     img: '/client/dist/img/projects/adaptabi.png',
+        // },
+        // {
+        //     key: 'safetybank',
+        //     name: 'Safetybank',
+        //     description: 'Best H&S system for construction companies',
+        //     website: 'http://safetybank.co.uk',
+        //     img: '/client/dist/img/projects/safetybank.png',
+        // },
+        // {
+        //     key: 'squires',
+        //     name: 'Squires Kitchen',
+        //     description: 'Largest kitchen supply store in UK',
+        //     website: 'http://squires-shop.com',
+        //     img: '/client/dist/img/projects/squires.png',
+        // },
     ],
 };
 
@@ -80,38 +80,38 @@ export const services = data.services = {
 export const team = data.team = {
     culture: 'Lorem ipsum organizational culture text',
     members: [
-        {
-            key: 'ionut',
-            name: 'Ionut Mandra',
-            img: '/client/dist/img/projects/safetybank.png',
-            position: 'Developer',
-        },
-        {
-            key: 'marius',
-            name: 'Mihai-Marius Baciu',
-            img: '/client/dist/img/projects/safetybank.png',
-            position: 'Developer',
-        },
-        {
-            key: 'teodor',
-            name: 'Teodor Sandu',
-            img: '/client/dist/img/projects/safetybank.png',
-            position: 'Developer',
-        },
+        // {
+        //     key: 'ionut',
+        //     name: 'Ionut Mandra',
+        //     img: '/client/dist/img/projects/safetybank.png',
+        //     position: 'Developer',
+        // },
+        // {
+        //     key: 'marius',
+        //     name: 'Mihai-Marius Baciu',
+        //     img: '/client/dist/img/projects/safetybank.png',
+        //     position: 'Developer',
+        // },
+        // {
+        //     key: 'teodor',
+        //     name: 'Teodor Sandu',
+        //     img: '/client/dist/img/projects/safetybank.png',
+        //     position: 'Developer',
+        // },
     ],
     gallery: [
-        {
-            key: '1',
-            img: '/client/dist/img/projects/adaptabi.png',
-        },
-        {
-            key: '2',
-            img: '/client/dist/img/projects/safetybank.png',
-        },
-        {
-            key: '3',
-            img: '/client/dist/img/projects/squires.png',
-        },
+        // {
+        //     key: '1',
+        //     img: '/client/dist/img/projects/adaptabi.png',
+        // },
+        // {
+        //     key: '2',
+        //     img: '/client/dist/img/projects/safetybank.png',
+        // },
+        // {
+        //     key: '3',
+        //     img: '/client/dist/img/projects/squires.png',
+        // },
     ],
 };
 
