@@ -1,209 +1,135 @@
-@media screen and #{breakpoint(large)} {
-    #page-container article.page-expertise {
-        section.content {
-            h1 {
-                font-family: "Poppins";
-                font-weight: $semibold;
-                font-size: rem-calc(26pt);
-                line-height: rem-calc(36pt);
-                color: $text-color;
-                margin-bottom: 0px;
+#page-container article.page-expertise {
+    section.content {
+        h1 {
+            font-family: "Poppins";
+            font-weight: $semibold;
+            font-size: rem-calc(26pt);
+            line-height: rem-calc(36pt);
+            color: $text-color;
+            margin-bottom: 0px;
+        }
+        h2 {
+            font-family: "Poppins";
+            font-weight: $semibold;
+            font-size: rem-calc(24pt);
+            line-height: rem-calc(34pt);
+            color: $text-color;
+            margin-bottom: 0px;
+        }
+        h3 {
+            font-family: "Poppins";
+            font-weight: $semibold;
+            font-size: rem-calc(18pt);
+            line-height: rem-calc(26pt);
+            color: $text-color;
+            margin-bottom: 0px;
+        }
+        p {
+            font-family: "Poppins";
+            font-weight: $normal;
+            font-size: rem-calc(16pt);
+            line-height: rem-calc(24pt);
+            color: $text-color;
+            margin-bottom: 0px;
+            &.text-under-header {
+                font-size: rem-calc(16pt);
+                line-height: rem-calc(24pt);
             }
-            h2 {
-                font-family: "Poppins";
-                font-weight: $semibold;
-                font-size: rem-calc(24pt);
-                line-height: rem-calc(34pt);
-                color: $text-color;
-                margin-bottom: 0px;
-            }
-            h3 {
-                font-family: "Poppins";
-                font-weight: $semibold;
-                font-size: rem-calc(18pt);
-                line-height: rem-calc(26pt);
-                color: $text-color;
-                margin-bottom: 0px;
-            }
-            p {
-                font-family: "Poppins";
+            &.memeber-name {
+                padding-bottom: 10px;
                 font-weight: $normal;
                 font-size: rem-calc(16pt);
                 line-height: rem-calc(24pt);
-                color: $text-color;
-                margin-bottom: 0px;
-                &.text-under-header {
-                    font-size: rem-calc(16pt);
-                    line-height: rem-calc(24pt);
-                }
-                &.memeber-name {
-                    padding-bottom: 10px;
-                    font-weight: $normal;
-                    font-size: rem-calc(16pt);
-                    line-height: rem-calc(24pt);
-                }
-                &.memeber-job {
-                    font-weight: $normal;
-                    font-size: rem-calc(14pt);
-                    line-height: rem-calc(22pt);
-                    padding-bottom: 20px;
-                    color: #c3c3c3;
-                }
             }
-            ul {
-                li {
-                    font-family: "Poppins";
-                    font-weight: $normal;
-                    font-size: rem-calc(16pt);
-                    line-height: rem-calc(24pt);
-                    color: $text-color;
-                }
-            }
-        }
-        .technologies {
-            img {
-                width: 50%;
-                border: 2px solid rgba(0, 0, 0, .15);
-                border-radius: 50%;
-                padding: 20px;
-                filter: grayscale(100%);
-                -webkit-filter: grayscale(100%);
-                transition: filter .35s linear, -webkit-filter .35s linear;
-                &:hover {
-                    filter: grayscale(0%);
-                    -webkit-filter: grayscale(0%);
-                }
-            }
-            + .technologies {
-                margin-top: rem-calc(20pt);
-            }
-        }
-        .processes {
-            i {
-                font-size: 118px;
-                color: #c3c3c3;
-                transition: color 0.5s ease;
-                display: block;
-                &:hover {
-                    color: rgba(104, 188, 69, 0.7);
-                }
-            }
-            img {
-                width: 30%;
-                display: block;
-            }
-        }
-        .call-to-action {
-            .image {
-                &:after {
-                    background: linear-gradient(45deg, #68bc45 0%, #1895a3 100%);
-                }
-            }
-            span.action-links {
-                display: block;
-            }
-        }
-        .columns {
-            overflow: hidden;
-        }
-    }
-}
-
-@media screen and #{breakpoint(medium only)} {
-    #page-container article.page-expertise {
-        section.content {
-            h1 {
-                font-family: "Poppins";
-                font-weight: $semibold;
-                font-size: rem-calc(18pt);
-                line-height: rem-calc(26pt);
-                color: $text-color;
-                margin-bottom: 0px;
-            }
-            h2 {
-                font-family: "Poppins";
-                font-weight: $semibold;
-                font-size: rem-calc(16pt);
-                line-height: rem-calc(24pt);
-                color: $text-color;
-                margin-bottom: 0px;
-            }
-            h3{
-                font-weight: $semibold;
-            }
-            p {
-                font-family: "Poppins";
+            &.memeber-job {
                 font-weight: $normal;
                 font-size: rem-calc(14pt);
                 line-height: rem-calc(22pt);
-                color: $text-color;
-                margin-bottom: 0px;
-                &.text-under-header {
-                    font-size: rem-calc(16pt);
-                    line-height: rem-calc(24pt);
-                }
-                &.memeber-name {
-                    padding-bottom: 10px;
-                    font-weight: $normal;
-                    font-size: rem-calc(16pt);
-                    line-height: rem-calc(24pt);
-                }
-                &.memeber-job {
-                    font-weight: $normal;
-                    font-size: rem-calc(14pt);
-                    line-height: rem-calc(22pt);
-                    padding-bottom: 20px;
-                    color: #c3c3c3;
-                }
-            }
-        }
-        .technologies {
-            img {
-                width: 50%;
-                border: 2px solid rgba(0, 0, 0, .15);
-                border-radius: 50%;
-                padding: 20px;
-                filter: grayscale(100%);
-                -webkit-filter: grayscale(100%);
-                transition: filter .35s linear, -webkit-filter .35s linear;
-                &:hover {
-                    filter: grayscale(0%);
-                    -webkit-filter: grayscale(0%);
-                }
-            }
-            + .technologies {
-                margin-top: rem-calc(20pt);
-            }
-        }
-        .processes {
-            i {
-                font-size: 118px;
+                padding-bottom: 20px;
                 color: #c3c3c3;
-                transition: color 0.5s ease;
-                display: block;
-                &:hover {
-                    color: rgba(104, 188, 69, 0.7);
-                }
-            }
-            img {
-                width: 30%;
-                display: block;
             }
         }
-        .innovation {
-            ul {
-                li {
-                    font-family: "Poppins";
-                    font-weight: $normal;
+        ul {
+            li {
+                font-family: "Poppins";
+                font-weight: $normal;
+                font-size: rem-calc(16pt);
+                line-height: rem-calc(24pt);
+                color: $text-color;
+            }
+        }
+    }
+    .technologies {
+        img {
+            width: 50%;
+            border: 2px solid rgba(0, 0, 0, .15);
+            border-radius: 50%;
+            padding: 20px;
+            filter: grayscale(100%);
+            -webkit-filter: grayscale(100%);
+            transition: filter .35s linear, -webkit-filter .35s linear;                
+            &.hover { 
+                filter: grayscale(0%);
+                -webkit-filter: grayscale(0%);
+            }
+        }
+        + .technologies {
+            margin-top: rem-calc(20pt);
+        }
+    }
+    .processes {
+        i {
+            font-size: 118px;
+            color: #c3c3c3;
+            transition: color 0.5s ease;
+            display: block;
+            &.hover {
+                color: rgba(104, 188, 69, 0.7);
+            }
+        }
+        img {
+            width: 30%;
+            display: block;
+        }
+    }
+    .call-to-action {
+        .image {
+            &:after {
+                background: linear-gradient(45deg, #68bc45 0%, #1895a3 100%);
+            }
+        }
+        span.action-links {
+            display: block;
+        }
+    }
+    .columns {
+        overflow: hidden;
+    }
+}
+
+@media screen and #{breakpoint(medium down)} {
+    #page-container article.page-expertise {
+        section.content {
+            h1 {
+                font-size: rem-calc(18pt);
+                line-height: rem-calc(26pt);
+            }
+            h2 {
+                font-size: rem-calc(16pt);
+                line-height: rem-calc(24pt);
+            }
+            p {
+                font-size: rem-calc(14pt);
+                line-height: rem-calc(22pt); 
+                &.memeber-job {
                     font-size: rem-calc(14pt);
                     line-height: rem-calc(22pt);
-                    color: $text-color;
                 }
             }
-            img {
-                width: 30%;
-                display: block;
-            }
+        }
+        .innovation ul li {
+            font-size: rem-calc(14pt);
+            line-height: rem-calc(22pt);
         }
         .call-to-action {
             font-size: rem-calc(14pt);
@@ -213,128 +139,18 @@
             .cta {
                 font-size: rem-calc(24pt);
             }
-            .image {
-                &:after {
-                    background: linear-gradient(45deg, #68bc45 0%, #1895a3 100%);
-                }
-            }
-            span.action-links {
-                display: block;
-            }
-        }
-        .columns {
-            overflow: hidden;
         }
     }
 }
 
 @media screen and #{breakpoint(small only)} {
     #page-container article.page-expertise {
-        section.content {
-            h1 {
-                font-family: "Poppins";
-                font-weight: $semibold;
-                font-size: rem-calc(18pt);
-                line-height: rem-calc(26pt);
-                color: $text-color;
-                margin-bottom: 0px;
-            }
-            h2 {
-                font-family: "Poppins";
-                font-weight: $semibold;
-                font-size: rem-calc(16pt);
-                line-height: rem-calc(24pt);
-                color: $text-color;
-                margin-bottom: 0px;
-            }
-            h3{
-                font-weight: $semibold;
-            }
-            p {
-                font-family: "Poppins";
-                font-weight: $normal;
-                font-size: rem-calc(14pt);
-                line-height: rem-calc(22pt);
-                color: $text-color;
-                margin-bottom: 0px;
-                &.text-under-header {
-                    font-size: rem-calc(16pt);
-                    line-height: rem-calc(24pt);
-                }
-                &.memeber-name {
-                    padding-bottom: 10px;
-                    font-weight: $normal;
-                    font-size: rem-calc(16pt);
-                    line-height: rem-calc(24pt);
-                }
-                &.memeber-job {
-                    font-weight: $normal;
-                    font-size: rem-calc(14pt);
-                    line-height: rem-calc(22pt);
-                    padding-bottom: 20px;
-                    color: #c3c3c3;
-                }
-            }
-        }
-        .technologies {
-            img {
-                width: 50%;
-                border: 2px solid rgba(0, 0, 0, .15);
-                border-radius: 50%;
-                padding: 20px;
-                filter: grayscale(100%);
-                -webkit-filter: grayscale(100%);
-                transition: filter .35s linear, -webkit-filter .35s linear;
-                &:hover {
-                    filter: grayscale(0%);
-                    -webkit-filter: grayscale(0%);
-                }
-            }
-            + .technologies {
-                margin-top: rem-calc(20pt);
-            }
-        }
-        .processes {
-            i {
-                font-size: 90px;
-                color: #c3c3c3;
-                transition: color 0.5s ease;
-                display: block;
-                &:hover {
-                    color: rgba(104, 188, 69, 0.7);
-                }
-            }
-            img {
-                width: 30%;
-                display: block;
-            }
-        }
-         .innovation {
-            ul {
-                li {
-                    font-family: "Poppins";
-                    font-weight: $normal;
-                    font-size: rem-calc(14pt);
-                    line-height: rem-calc(22pt);
-                    color: $text-color;
-                }
-            }
-            img {
-                width: 30%;
-                display: block;
-            }
+        .processes i {
+            font-size: 90px;
         }
         .call-to-action {
-            p {
-                margin-bottom: 0.4rem;
-            }
-            .image {
-                &:after {
-                    background: linear-gradient(45deg, #68bc45 0%, #1895a3 100%);
-                }
-            }
             .small-text-case {
-                color: #fff;
+                color: $white;
                 position: absolute;
                 top: 38%;
                 height: 195px;
@@ -345,7 +161,7 @@
                 font-weight: $semibold;
                 font-size: rem-calc(12pt);
                 p {
-                    color: #fff;
+                    color: $white;
                     &:first-child {
                         font-size: rem-calc(10pt);
                         opacity: 0.8;
@@ -357,15 +173,15 @@
                 }
                 a {
                     font-size: rem-calc(22pt);
-                    color: #fff;
-                }
-                span.action-links {
-                    display: block;
+                    color: $white;
                 }
             }
         }
-        .columns {
-            overflow: hidden;
-        }
+    }
+}
+
+@media screen and (max-width: 420px) {
+    #page-container article.page-expertise .technologies img {
+        width: 75%;
     }
 }

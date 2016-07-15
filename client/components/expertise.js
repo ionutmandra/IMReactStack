@@ -4,12 +4,17 @@ import routePaths from '../../common/routePaths';
 import Header from '../containers/headerContainer';
 import Footer from '../containers/footerContainer';
 
+let $ = window.$;
+
 class Expertise extends Component {
-     constructor(props) {
+    constructor(props) {
         super(props);
         this.handleCallToActionClick = this.handleCallToActionClick.bind(this);
         this.onContactClick = this.onContactClick.bind(this);
+        this.touchStart = this.touchStart.bind(this); 
+        this.touchEnd = this.touchEnd.bind(this); 
     }
+
     handleCallToActionClick(event) {
         this.props.dispatchTransition({
             type: 'content',
@@ -18,57 +23,74 @@ class Expertise extends Component {
         });
     }
 
-    onContactClick(event){
+    onContactClick(event) {
         this.props.dispatchTransition({ type: 'openContact' });
         //this cleanup is needed because user may close contact instead, then this won't work the 2nd time (no store update)
         setTimeout((() => { this.props.dispatchTransition({ type: '' }); }).bind(this), 0);
     }
 
-    componentDidMount(){
+    componentDidMount() {
         //   $('.grayscale-container').on('mouseenter mouseleave', function (e){
         //     console.log('mouseleave/mouseenter');
         //     $('.grayscale', this).toggleClass('hover grayscale-off');
         //     $(this).find('.post-link').toggle();
         // });
+        this.$icons = $(this.refs.article).find('.grayscale-container img, .processes i')
+            .on('touchstart mouseenter', this.touchStart).on('touchend mouseleave', this.touchEnd);
+    } 
+
+    componentWillUnmount() {
+        this.$icons.off('touchstart mouseenter', this.touchStart).off('touchend mouseleave', this.touchEnd);
     }
 
+    touchStart(event) {
+        $(event.target).addClass('hover');
+    }
+
+    touchEnd(event) { 
+        setTimeout(() => { $(event.target).removeClass('hover'); }, 250);
+    }
 
     render() {
         return (
-            <article className="page page-expertise">
+            <article className="page page-expertise" ref="article">
                 <Header ref={'header'} title={'We aim to offer more than just working software by constantly improving our skills and processes'} />
                 <section className="content">
                     <div className="spacer-100"/>
                     <div className="row">
                         <div className="large-8 large-offset-3 medium-18 medium-offset-1 small-22 small-offset-1 columns">
                             <h1 className="content-item">Skills</h1>
-							<div className="spacer-40"/>
+                            <div className="spacer-40"/>
                             <p className="content-item">Web and mobile development, server side development and data storage are the top competencies that help us offer full digitization services.</p>
                         </div>
                     </div>
                     <div className="spacer-60"/>
                     <div className="row technologies">
-                        <div className="large-3 large-offset-3 medium-5-5 medium-offset-1 small-11 small-offset-1 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/angular.png" title="Angular Js" className="content-item grayscale"/></span></div>
-                        <div className="large-3 large-offset-0 medium-5-5 medium-offset-0 small-12 small-offset-0 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/cordova.png" title="Apache CORDOVA" className="content-item grayscale"/></span></div>
+                        <div className="large-3 large-offset-3 medium-5-5 medium-offset-1 small-11 small-offset-1 columns"><span className="grayscale-container">
+                            <img src="/client/dist/img/icons/angular.png" title="Angular Js" className="content-item grayscale" />
+                        </span></div>
+                        <div className="large-3 large-offset-0 medium-5-5 medium-offset-0 small-12 small-offset-0 columns"><span className="grayscale-container">
+                            <img src="/client/dist/img/icons/cordova.png" title="Apache CORDOVA" className="content-item grayscale" />
+                        </span></div>
                         <div className="spacer-40 large-0 medium-0 small-24 show-for-small-only" />
-                        <div className="large-3 large-offset-0 medium-5-5 medium-offset-0 small-11 small-offset-1 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/nodejs.png" title="Node Js" className="content-item grayscale"/></span></div>
-                        <div className="large-3 large-offset-0 medium-5-5 medium-offset-0 small-12 small-offset-0 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/react.png" title="React" className="content-item grayscale"/></span></div>
+                        <div className="large-3 large-offset-0 medium-5-5 medium-offset-0 small-11 small-offset-1 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/nodejs.png" title="Node Js" className="content-item grayscale" /></span></div>
+                        <div className="large-3 large-offset-0 medium-5-5 medium-offset-0 small-12 small-offset-0 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/react.png" title="React" className="content-item grayscale" /></span></div>
                         <div className="spacer-40 large-0 medium-24 small-0 show-for-medium-only" />
                         <div className="spacer-40 large-0 medium-0 small-24 show-for-small-only" />
-                        <div className="large-3 large-offset-0 medium-5-5 medium-offset-1 small-11 small-offset-1 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/meteor.png" title="Meteor" className="content-item grayscale"/></span></div>
-                        <div className="large-3 large-offset-0 medium-5-5 medium-offset- small-12 small-offset-0 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/dotNet.png" title="Microsoft .NET" className="content-item grayscale"/></span></div>
+                        <div className="large-3 large-offset-0 medium-5-5 medium-offset-1 small-11 small-offset-1 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/meteor.png" title="Meteor" className="content-item grayscale" /></span></div>
+                        <div className="large-3 large-offset-0 medium-5-5 medium-offset- small-12 small-offset-0 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/dotNet.png" title="Microsoft .NET" className="content-item grayscale" /></span></div>
                         <div className="spacer-40 large-24 medium-0 small-0 show-for-large" />
                         <div className="spacer-40 large-0 medium-0 small-24 show-for-small-only" />
-                        <div className="large-3 large-offset-3 medium-5-5 medium-offset-0 small-11 small-offset-1 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/sql-server.png" title="SQL Server" className="content-item grayscale"/></span></div>
-                        <div className="large-3 large-offset-0 medium-5-5 medium-offset-0 small-12 small-offset-0 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/javascript.png" title="Javascript" className="content-item grayscale"/></span></div>
+                        <div className="large-3 large-offset-3 medium-5-5 medium-offset-0 small-11 small-offset-1 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/sql-server.png" title="SQL Server" className="content-item grayscale" /></span></div>
+                        <div className="large-3 large-offset-0 medium-5-5 medium-offset-0 small-12 small-offset-0 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/javascript.png" title="Javascript" className="content-item grayscale" /></span></div>
                         <div className="spacer-40 large-0 medium-24 small-0 show-for-medium-only" />
                         <div className="spacer-40 large-0 medium-0 small-24 show-for-small-only" />
                         <div className="large-3 large-offset-0 medium-5-5 medium-offset-1 small-11 small-offset-1 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/crosswalk.png" title="Crosswalk Project" className="content-item grayscale"/></span></div>
-                        <div className="large-3 large-offset-0 medium-5-5 medium-offset-0 small-12 small-offset-0 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/teamcity.png" title="Team City" className="content-item grayscale"/></span></div>
+                        <div className="large-3 large-offset-0 medium-5-5 medium-offset-0 small-12 small-offset-0 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/teamcity.png" title="Team City" className="content-item grayscale" /></span></div>
                         <div className="spacer-40 large-0 medium-0 small-0 show-for-large" />
                         <div className="spacer-40 large-0 medium-0 small-24 show-for-small-only" />
                         <div className="large-3 large-offset-0 medium-5-5 medium-offset-0 small-11 small-offset-1 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/octopus.png" title="Octopus Deploy" className="content-item grayscale"/></span></div>
-                        <div className="large-3 large-offset-0 medium-5-5 medium-offset-0 small-12 small-offset-0 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/selenium.png" title="Selenium - Web Browser Automation" className="content-item grayscale"/></span></div>
+                        <div className="large-3 large-offset-0 medium-5-5 medium-offset-0 small-12 small-offset-0 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/selenium.png" title="Selenium - Web Browser Automation" className="content-item grayscale" /></span></div>
                     </div>
                     <div className="spacer-100" />
                     <div className="row">
@@ -93,7 +115,7 @@ class Expertise extends Component {
                             <h3 className="content-item">Continuous delivery</h3>
                             <div className="spacer-20"/>
                             <p>
-                                We aim to deliver as often and as fast as possible all the features that are implemented by our team. Agile methodologies are at the core of development process and our favorite one would be a hybrid between <a target="_blank" href="http://leansoftwareengineering.com/ksse/scrum-ban/">Scrumban</a> and <a target="_blank" href="http://ronjeffries.com/xprog/articles/the-noestimates-movement/">No Estimates</a>. We are flexible about the methodology and ideally we want to achieve <a target="_blank" href="https://continuousdelivery.com/">Continuous Deployment</a>.
+                                We aim to deliver as often and as fast as possible all the features that are implemented by our team.Agile methodologies are at the core of development process and our favorite one would be a hybrid between <a target="_blank" href="http://leansoftwareengineering.com/ksse/scrum-ban/">Scrumban</a> and <a target="_blank" href="http://ronjeffries.com/xprog/articles/the-noestimates-movement/">No Estimates</a>.We are flexible about the methodology and ideally we want to achieve <a target="_blank" href="https://continuousdelivery.com/">Continuous Deployment</a>.
                             </p>
                         </div>
                         <div className="large-5 large-offset-1 medium-11 medium-offset-1 small-22 small-offset-1 columns">
@@ -103,7 +125,7 @@ class Expertise extends Component {
                             <div className="spacer-20"/>
 
                             <p>
-                                From unit tests to integration tests and from smoke tests to system tests we aim to automate them completely to ensure nothing gets missed. Also we believe that tests should be effective and the <a target="_blank" href="http://martinfowler.com/bliki/TestPyramid.html">Testing Pyramid</a> distribution is taken always into account.
+                                From unit tests to integration tests and from smoke tests to system tests we aim to automate them completely to ensure nothing gets missed.Also we believe that tests should be effective and the <a target="_blank" href="http://martinfowler.com/bliki/TestPyramid.html">Testing Pyramid</a> distribution is taken always into account.
                             </p>
                             <div className="spacer-20"/>
                         </div>
@@ -124,7 +146,7 @@ class Expertise extends Component {
                             <h3 className="content-item">Inspect and adapt on every iteration</h3>
                             <div className="spacer-20"/>
                             <p>
-                                At the end of each sprint we analyze our work, identify what can be improved and we always finish with an AMO (Action Moment Owner) list of items. The retrospective meetings are the main trigger of our constant Innovation process.
+                                At the end of each sprint we analyze our work, identify what can be improved and we always finish with an AMO (Action Moment Owner) list of items.The retrospective meetings are the main trigger of our constant Innovation process.
                             </p>
                             <div className="spacer-20"/>
                         </div>
@@ -142,10 +164,10 @@ class Expertise extends Component {
                         <div className="large-12 large-offset-3 medium-18 medium-offset-1 small-22 small-offset-1 columns">
                             <div className="spacer-40"/>
                             <ul className="content-item">
-                                <li>Unified build and deployment system for Cordova / Crosswalk mobile applications (instant deployment on all platforms)</li>
+                                <li>Unified build and deployment system for Cordova / Crosswalk mobile applications (instant deployment on all platforms) </li>
                                 <li>SPA framework for mobile applications</li>
                                 <li>Javascript high performance inheritance mechanism - <a  target="_blank" href="https://github.com/adaptabi/Javascript-FastClass">Fast-Class</a></li>
-                                <li>Custom components for Cordova / Crosswalk mobile applications (Smooth signature, Image editor, GPS component)</li>
+                                <li>Custom components for Cordova / Crosswalk mobile applications (Smooth signature, Image editor, GPS component) </li>
                                 <li>Initiators and main supporters of <a target="_blank" href="http://www.meetup.com/Meteor-Iasi/">Meteor Group Iasi</a></li>
                             </ul>
                         </div>
@@ -156,28 +178,26 @@ class Expertise extends Component {
                     <div className="large-9 large-offset-3 large-order-1 medium-11 medium-offset-1 medium-order-1 small-24 show-for-medium columns">
                         <p className="content-item">Everything changes but our passion.</p>
                         <p className="cta content-item">
-                                <span className="show-for-large">Want to meet us? </span>
-                                <span className="hide-for-large">Interested? </span>
-                                <span className="action-links">
-                                    <a onClick={this.onContactClick}>Send a message</a> or
-                                    <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}> join the family.</Link>
-                                </span>
+                            <span className="show-for-large">Want to meet us?</span>
+                            <span className="hide-for-large">Interested?</span>
+                            <span className="action-links">
+                                <a onClick={this.onContactClick}>Send a message</a> or <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}>join the family.</Link>
+                            </span>
                         </p>
                     </div>
                     <div className="large-9 large-offset-0 large-order-2 medium-11 medium-offset-0 medium-order-2 columns">
-                      <div className="content-item image">
-                        <img src="/client/dist/img/photos/temp3.jpg"/>
-                         <div className="show-for-small-only small-22 small-offset-1 columns small-text-case">
+                        <div className="content-item image">
+                            <img src="/client/dist/img/photos/temp3.jpg"/>
+                            <div className="show-for-small-only small-22 small-offset-1 columns small-text-case">
                                 <p>Everything changes but our passion.</p>
                                 <p className="cta">
-                                    <span className="hide-for-large">Interested? </span>
+                                    <span className="hide-for-large">Interested?</span>
                                     <span className="action-links">
-                                        <a onClick={this.onContactClick}>Send a message</a> or
-                                        <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}> join the family.</Link>
+                                        <a onClick={this.onContactClick}>Send a message</a> or <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}>join the family.</Link>
                                     </span>
-                                 </p>
+                                </p>
                             </div>
-                      </div>
+                        </div>
                     </div>
                 </section>
                 <Footer />
