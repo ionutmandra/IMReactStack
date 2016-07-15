@@ -455,15 +455,33 @@ export function large_enter_home_content(ref, callback, transition) {
     }
 }
 
-// export function medium_enter_home_content(ref, callback, transition) {
-//     console.warn('TO BE IMPLEMENDTED');
-//     callback();
-// }
+export function medium_enter_home_content(ref, callback, transition) {
 
-// export function small_enter_home_content(ref, callback, transition) {
-//     console.warn('TO BE IMPLEMENDTED');
-//     callback();
-// }
+
+    return setTimeout((() => {
+        let urlParts = location.href.split('#');
+        let $elementToScrollTo = urlParts.length === 2 ? $(['#', urlParts[1]].join('')) : '';
+        if ($elementToScrollTo.length > 0) {
+            setTimeout(() => {
+                TweenMax.to(window, .7, { scrollTo: { y: $elementToScrollTo.offset().top }, ease: Power3.easeOut });
+            }, 150);
+        }
+        callback();
+    }).bind(this), 200);
+}
+
+export function small_enter_home_content(ref, callback, transition) {
+    return setTimeout((() => {
+        let urlParts = location.href.split('#');
+        let $elementToScrollTo = urlParts.length === 2 ? $(['#', urlParts[1]].join('')) : '';
+        if ($elementToScrollTo.length > 0) {
+            setTimeout(() => {
+                TweenMax.to(window, .7, { scrollTo: { y: $elementToScrollTo.offset().top }, ease: Power3.easeOut });
+            }, 150);
+        }
+        callback();
+    }).bind(this), 200);
+}
 
 ////
 //    UTILITIES
