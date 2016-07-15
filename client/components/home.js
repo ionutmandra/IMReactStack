@@ -317,11 +317,12 @@ class Home extends Component {
         //2. on back comming from didmount
         //3. on resize, comming from shouldComponentUpdate
 
-        var height = $window.height();
+        var height = $window.outerHeight();
         var fullHeight = height * 4;
         var initialScroll = this.getInitialScroll();
         var sections = [this._section1, this._section2, this._section3, this._section4];
         var sectionsContent = [this._section1c, this._section2c, this._section3c, this._section4c];
+        var sectionsBg = [this._section1b, this._section2b, this._section3b, this._section4b];
         var images = [this._img1, this._img2, this._img3, this._img4];
         var homeLeft = [
             this.article.find('.slide-1.content .text-2 h2').toArray(),
@@ -360,6 +361,8 @@ class Home extends Component {
 
             //resizing
             if(media.current != media.prev){
+                TweenMax.set([sectionsContent, sectionsBg], { clearProps: 'height,top' });
+                TweenMax.set(this._gradient, { clearProps: 'height' });
                 if(contactIsOpen){
                     var currentSlide = Math.ceil(( initialScroll - 10) / height);
                     console.log('home with slide', currentSlide);
@@ -391,6 +394,12 @@ class Home extends Component {
 
         if (media.current != breakpoint.names.none && media.current != breakpoint.names.large) {
             this.animations.clearGradient();
+            var h = height * 1.09;
+            TweenMax.set(this._gradient, { height: 4 * h });
+            for (var i = 0; i < 4; i++) {
+                TweenMax.set(sectionsContent[i], { height: h, top: i * h });
+                TweenMax.set(sectionsBg[i], { height: h, top: i * h });
+            }
 
             if (menuIsOpen || contactIsOpen) {
                 for (let i = 0; i < 4; i++) {
