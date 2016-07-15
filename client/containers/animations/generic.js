@@ -457,6 +457,7 @@ export function large_enter_home_content(ref, callback, transition) {
 
 export function medium_enter_home_content(ref, callback, transition) {
 
+
     return setTimeout((() => {
         let urlParts = location.href.split('#');
         let $elementToScrollTo = urlParts.length === 2 ? $(['#', urlParts[1]].join('')) : '';
