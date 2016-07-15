@@ -26,7 +26,7 @@ class Careers extends Component {
                     <div className="spacer-60" />
                     <div className="row">
                         <div className="large-12 large-offset-3 medium-22 medium-offset-1 small-22 small-offset-1 columns">
-                         <p className="content-item">We are always looking to get more help in our team and we value the following</p>
+                         <p className="content-item">We are always looking to get more help in our team and we value the following:</p>
                         </div>
                     </div>
                     <div className="spacer-20" />
