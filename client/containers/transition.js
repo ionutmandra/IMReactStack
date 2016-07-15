@@ -72,7 +72,7 @@ export default (BaseComponent) => {
             this.props.route.path == routePaths.client.root && (animationName = 'homepage');
             this.animation = animations[animationName];
             this.animationName = animationName; //only for console.log in the Leave function below
-            this.cleanTransition();
+            //this.cleanTransition();
 
             if (!transition || !transition.type) {
                 //console.warn('componentWillEnter HAS NO TYPE');
@@ -102,7 +102,7 @@ export default (BaseComponent) => {
                 // console.log('componentWillLeave HAS NO TYPE OR ANIMATION', transition, this.animation);
 				// on clicking Back, leaving page makes sure no scroll on page, so new page will not get automaitc browser scroll
                 this.disableScenes();
-                $.scrollLock(true);                
+                $.scrollLock(true);
                 return this.willLeaveCallback(callback);
             }
             console.log('componentWillLeave', this.animationName, ui.media.current + '_leave_' + transition.type, this.guid);
@@ -123,8 +123,18 @@ export default (BaseComponent) => {
             console.log('willEnterCallback ',this.animationName, this.guid, cleanup);
             var $article  = $(dom.findDOMNode(this.refs.container));
             $body.removeClass('navigating');
+
+            if(this._clone.props.transition
+                && this._clone.props.transition.type == "home_content"
+                && ( this._clone.props.ui.media.current == "medium" || this._clone.props.ui.media.current == "small")
+                && location.href.split('#').length === 2){
+                    $.scrollLock(false);
+            }
+            else {
+                $.scrollLock(false, false);
+            }
+
             this.cleanTransition();
-            $.scrollLock(false, false);
             setTimeout((() => {
                 this.enableScenes();
             }).bind(this), 100);
