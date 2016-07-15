@@ -100,8 +100,7 @@ gulp.task('sass', function () {
 
   piped = piped
     .pipe(sass().on('error', notify.onError()))
-    .pipe(autoprefixer(autoprefixerOptions))
-    ;
+    .pipe(autoprefixer(autoprefixerOptions));
 
   if (process.env.NODE_ENV !== 'production') {
     piped = piped.pipe(sourcemaps.write());

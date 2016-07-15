@@ -49,14 +49,14 @@ class Expertise extends Component {
                     <div className="spacer-60"/>
                     <div className="row technologies">
                         <div className="large-3 large-offset-3 medium-5-5 medium-offset-1 small-11 small-offset-1 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/angular.png" title="Angular Js" className="content-item grayscale"/></span></div>
-                        <div className="large-3 large-offset-0 medium-5-5 medium-offset-0 small-12 small-offset-0 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/cordova.jpg" title="Apache CORDOVA" className="content-item grayscale"/></span></div>
+                        <div className="large-3 large-offset-0 medium-5-5 medium-offset-0 small-12 small-offset-0 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/cordova.png" title="Apache CORDOVA" className="content-item grayscale"/></span></div>
                         <div className="spacer-40 large-0 medium-0 small-24 show-for-small-only" />
                         <div className="large-3 large-offset-0 medium-5-5 medium-offset-0 small-11 small-offset-1 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/nodejs.png" title="Node Js" className="content-item grayscale"/></span></div>
                         <div className="large-3 large-offset-0 medium-5-5 medium-offset-0 small-12 small-offset-0 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/react.png" title="React" className="content-item grayscale"/></span></div>
                         <div className="spacer-40 large-0 medium-24 small-0 show-for-medium-only" />
                         <div className="spacer-40 large-0 medium-0 small-24 show-for-small-only" />
-                        <div className="large-3 large-offset-0 medium-5-5 medium-offset-1 small-11 small-offset-1 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/meteor.svg" title="Meteor" className="content-item grayscale"/></span></div>
-                        <div className="large-3 large-offset-0 medium-5-5 medium-offset- small-12 small-offset-0 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/dotNet.jpg" title="Microsoft .NET" className="content-item grayscale"/></span></div>
+                        <div className="large-3 large-offset-0 medium-5-5 medium-offset-1 small-11 small-offset-1 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/meteor.png" title="Meteor" className="content-item grayscale"/></span></div>
+                        <div className="large-3 large-offset-0 medium-5-5 medium-offset- small-12 small-offset-0 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/dotNet.png" title="Microsoft .NET" className="content-item grayscale"/></span></div>
                         <div className="spacer-40 large-24 medium-0 small-0 show-for-large" />
                         <div className="spacer-40 large-0 medium-0 small-24 show-for-small-only" />
                         <div className="large-3 large-offset-3 medium-5-5 medium-offset-0 small-11 small-offset-1 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/sql-server.png" title="SQL Server" className="content-item grayscale"/></span></div>
@@ -64,7 +64,7 @@ class Expertise extends Component {
                         <div className="spacer-40 large-0 medium-24 small-0 show-for-medium-only" />
                         <div className="spacer-40 large-0 medium-0 small-24 show-for-small-only" />
                         <div className="large-3 large-offset-0 medium-5-5 medium-offset-1 small-11 small-offset-1 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/crosswalk.png" title="Crosswalk Project" className="content-item grayscale"/></span></div>
-                        <div className="large-3 large-offset-0 medium-5-5 medium-offset-0 small-12 small-offset-0 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/teamcity.jpg" title="Team City" className="content-item grayscale"/></span></div>
+                        <div className="large-3 large-offset-0 medium-5-5 medium-offset-0 small-12 small-offset-0 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/teamcity.png" title="Team City" className="content-item grayscale"/></span></div>
                         <div className="spacer-40 large-0 medium-0 small-0 show-for-large" />
                         <div className="spacer-40 large-0 medium-0 small-24 show-for-small-only" />
                         <div className="large-3 large-offset-0 medium-5-5 medium-offset-0 small-11 small-offset-1 columns"><span className="grayscale-container"><img src="/client/dist/img/icons/octopus.png" title="Octopus Deploy" className="content-item grayscale"/></span></div>
