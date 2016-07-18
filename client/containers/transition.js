@@ -132,6 +132,8 @@ export default (BaseComponent) => {
             }
             else {
                 $.scrollLock(false, false);
+                $article.find('.logo .img, .logo .text svg').css({ color: '', transform: ''});
+                $article.find('.hamburger .open').css({ color: '', transform: 'translateX(-100%)'});
             }
 
             this.cleanTransition();
