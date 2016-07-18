@@ -455,7 +455,8 @@ class Home extends Component {
                         <div className="text-1"><h1 ref={(c) => this._inputSoftware = c}>{'Software Innovators Happily Together'}</h1></div>
                         <div className="text-2">
                             <h2 ref={(c) => this._inputCreate = c}>
-                                <p>Our vision is to create a truly remarkable working environment and deliver high quality, innovative software</p>
+                                {/*<p>Our vision is to create a truly remarkable working environment and deliver high quality, innovative software</p>*/}
+                                <p>Our vision is to deliver high quality, innovative software by creating a truly remarkable working environment</p>
                             </h2>
                         </div>
                     </section>
