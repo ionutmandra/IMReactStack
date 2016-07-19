@@ -4,6 +4,7 @@
     > div {
         position: absolute;
         z-index: 1;
+        pointer-events: none;
         top: 50%;
         -webkit-transform: translateY(-50%);
         transform: translateY(-50%);
@@ -94,6 +95,7 @@
 }
 #page-container article.contact-open header.main div.contact > div {
     z-index: 6;
+    pointer-events: all;
 }
 
 @media (min-height: 1px) and #{breakpoint(large up)} {
