@@ -9,14 +9,6 @@ let $ = window.$, $window = $(window), $body = $('body'), TweenMax = window.Twee
 
 export function appear(ref, callback) {
     callback();
-    // let elements = extractDOMElements(ref);
-    // elements.image && TweenMax.set(elements.image, { scale: 1.2 });
-    // TweenMax.set(elements.container, { opacity: 0 });
-    // let timeline = new TimelineLite({ onComplete: () => { callback(); timeline = null; } })
-    //     .add(_.filter([
-    //         elements.image && TweenMax.to(elements.image, 1, { scale: 1, ease: Power3.easeOut }),
-    //         TweenMax.to(elements.container, 1, { opacity: 1, ease: Power3.easeOut }),
-    //     ]));
 }
 
 ////
@@ -334,12 +326,12 @@ export function large_enter_content(ref, callback, transition) {
 }
 
 // export function medium_enter_content(ref, callback, transition) {
-//     console.warn('TO BE IMPLEMENDTED');
+//     console.warn('TO BE IMPLEMENTED');
 //     callback();
 // }
 
 // export function small_enter_content(ref, callback, transition) {
-//     console.warn('TO BE IMPLEMENDTED');
+//     console.warn('TO BE IMPLEMENTED');
 //     callback();
 // }
 
@@ -369,15 +361,15 @@ export function large_leave_content(ref, callback, transition, initialScroll) {
         ]));
 }
 
-export function medium_leave_content(ref, callback, transition, initialScroll) {
-    console.warn('TO BE IMPLEMENDTED');
-    callback();
-}
+// export function medium_leave_content(ref, callback, transition, initialScroll) {
+//     console.warn('TO BE IMPLEMENTED');
+//     callback();
+// }
 
-export function small_leave_content(ref, callback, transition, initialScroll) {
-    console.warn('TO BE IMPLEMENDTED');
-    callback();
-}
+// export function small_leave_content(ref, callback, transition, initialScroll) {
+//     console.warn('TO BE IMPLEMENTED');
+//     callback();
+// }
 
 ////
 // HOME CONTENT

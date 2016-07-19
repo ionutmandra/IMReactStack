@@ -66,22 +66,23 @@ export default (BaseComponent) => {
             let transition = this._clone.props.transition, ui = this._clone.props.ui;
 
 
-            console.log('enter guid', this.guid);
+            //console.log('enter guid', this.guid);
 
             let animationName = 'generic';
             this.props.route.path == routePaths.client.root && (animationName = 'homepage');
-            this.animation = animations[animationName];
+            this.animation = animations[animationName]; 
             this.animationName = animationName; //only for console.log in the Leave function below
             //this.cleanTransition();
 
+            console.log('componentWillEnter', animationName, ui.media.current + '_enter_' + transition.type, this.guid);
+            
             if (!transition || !transition.type) {
-                //console.warn('componentWillEnter HAS NO TYPE');
+                console.warn('componentWillEnter HAS NO TYPE');
 				// make sure callback always is called after willLeaveCallback
                 return setTimeout((() => {
                     this.willEnterCallback(callback, true);
                 }).bind(this), 200);
             }
-            console.log('componentWillEnter', animationName, ui.media.current + '_enter_' + transition.type, this.guid);
 
             if (this.animation[ui.media.current + '_enter_' + transition.type]) {
                 this.animation[ui.media.current + '_enter_' + transition.type](this.refs.container, this.willEnterCallback.bind(this, callback), transition);
@@ -99,7 +100,7 @@ export default (BaseComponent) => {
 
             let transition = this._clone.props.transition, ui = this._clone.props.ui;
             if (!transition || !transition.type || !this.animation) {
-                // console.log('componentWillLeave HAS NO TYPE OR ANIMATION', transition, this.animation);
+                console.log('componentWillLeave HAS NO TYPE OR ANIMATION', transition, this.animation);
 				// on clicking Back, leaving page makes sure no scroll on page, so new page will not get automaitc browser scroll
                 this.disableScenes();
                 $.scrollLock(true);

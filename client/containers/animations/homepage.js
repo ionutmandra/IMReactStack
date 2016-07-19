@@ -118,8 +118,6 @@ export function small_leave_header(ref, callback, transition, initialScroll) {
 
 //user clicked on homepage in burger, now the homepage link in generic burger is disabled
 export function large_enter_burger(ref, callback, transition) {
-    // console.warn('TO BE IMPLEMENTED');
-    // callback();
     large_enter_header(ref, callback, transition, true);
 }
 
