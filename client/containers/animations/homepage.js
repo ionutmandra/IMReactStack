@@ -150,15 +150,15 @@ export function large_leave_burger(ref, callback, transition, initialScroll) {
         .set({}, {}, 1.5);
 }
 
-export function medium_leave_burger(ref, callback, transition, initialScroll) {
-    console.warn('TO BE IMPLEMENTED');
-    callback();
-}
+// export function medium_leave_burger(ref, callback, transition, initialScroll) {
+//     console.warn('TO BE IMPLEMENTED');
+//     callback();
+// }
 
-export function small_leave_burger(ref, callback, transition, initialScroll) {
-    console.warn('TO BE IMPLEMENTED');
-    callback();
-}
+// export function small_leave_burger(ref, callback, transition, initialScroll) {
+//     console.warn('TO BE IMPLEMENTED');
+//     callback();
+// }
 
 ////
 //    CONTENT - entering homepage from a generic page content link
@@ -200,15 +200,15 @@ export function large_leave_home_content(ref, callback, transition, initialScrol
         ]));
 }
 
-export function medium_leave_home_content(ref, callback, transition, initialScroll) {
-    console.warn('TO BE IMPLEMENTED');
-    callback();
-}
+// export function medium_leave_home_content(ref, callback, transition, initialScroll) {
+//     console.warn('TO BE IMPLEMENTED');
+//     callback();
+// }
 
-export function small_leave_home_content(ref, callback, transition, initialScroll) {
-    console.warn('TO BE IMPLEMENTED');
-    callback();
-}
+// export function small_leave_home_content(ref, callback, transition, initialScroll) {
+//     console.warn('TO BE IMPLEMENTED');
+//     callback();
+// }
 
 ////
 //    UTILITIES

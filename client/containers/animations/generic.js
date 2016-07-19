@@ -127,16 +127,16 @@ export function large_leave_header(ref, callback, transition, initialScroll) {
 }
 
 //called when leaving a generic page by tapping homepage in header
-export function medium_leave_header(ref, callback, transition, initialScroll) {
-    console.warn('TO BE IMPLEMENTED');
-    callback();
-}
+// export function medium_leave_header(ref, callback, transition, initialScroll) {
+//     console.warn('TO BE IMPLEMENTED');
+//     callback();
+// }
 
 //called when leaving a generic page by tapping homepage in header
-export function small_leave_header(ref, callback, transition, initialScroll) {
-    console.warn('TO BE IMPLEMENTED');
-    callback();
-}
+// export function small_leave_header(ref, callback, transition, initialScroll) {
+//     console.warn('TO BE IMPLEMENTED');
+//     callback();
+// }
 
 ////
 //    BURGER
@@ -255,15 +255,15 @@ export function large_leave_burger(ref, callback, transition, initialScroll) {
         .set({}, {}, 1.5);
 }
 
-export function medium_leave_burger(ref, callback, transition, initialScroll) {
-    console.warn('TO BE IMPLEMENTED');
-    callback();
-}
+// export function medium_leave_burger(ref, callback, transition, initialScroll) {
+//     console.warn('TO BE IMPLEMENTED');
+//     callback();
+// }
 
-export function small_leave_burger(ref, callback, transition, initialScroll) {
-    console.warn('TO BE IMPLEMENTED');
-    callback();
-}
+// export function small_leave_burger(ref, callback, transition, initialScroll) {
+//     console.warn('TO BE IMPLEMENTED');
+//     callback();
+// }
 
 ////
 //    CONTENT
