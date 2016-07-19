@@ -394,12 +394,12 @@ class Home extends Component {
 
         if (media.current != breakpoint.names.none && media.current != breakpoint.names.large) {
             this.animations.clearGradient();
-            // var h = height * 1.09;
-            // TweenMax.set(this._gradient, { height: 4 * h });
-            // for (var i = 0; i < 4; i++) {
-            //     TweenMax.set(sectionsContent[i], { height: h, top: i * h });
-            //     TweenMax.set(sectionsBg[i], { height: h, top: i * h });
-            // }
+            var h = height * 1.09;
+            TweenMax.set(this._gradient, { height: 4 * h });
+            for (var i = 0; i < 4; i++) {
+                TweenMax.set(sectionsContent[i], { height: h, top: i * h });
+                TweenMax.set(sectionsBg[i], { height: h, top: i * h });
+            }
 
             if (menuIsOpen || contactIsOpen) {
                 for (let i = 0; i < 4; i++) {
