@@ -112,28 +112,8 @@ class About extends Component {
                             </div>
                             <div className="row">
                                 <div className="memeber-details-top columns">
-                                    <p className="memeber-name content-item">Marius Baciu</p>
-                                    <p className="memeber-job content-item">Software Developer</p>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="memeber-details-top columns">
-                                    <p className="memeber-name content-item">Bogdan Gherman</p>
-                                    <p className="memeber-job content-item">Software Developer</p>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="memeber-details-top columns">
-                                    <p className="memeber-name content-item">Dragoş Radu</p>
-                                    <p className="memeber-job content-item">Quality Engineer</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="large-6 large-offset-0 medium-11 medium-offset-0 small-22 small-offset-1">
-                            <div className="row">
-                                 <div className="memeber-details-top columns">
-                                    <p className="memeber-name content-item">Laurenţiu Macovei</p>
-                                    <p className="memeber-job content-item">Co-founder and Software Developer</p>
+                                    <p className="memeber-name content-item">Mario Theodorou</p>
+                                    <p className="memeber-job content-item">Account Manager</p>
                                 </div>
                             </div>
                             <div className="row">
@@ -152,6 +132,32 @@ class About extends Component {
                                  <div className="memeber-details-top columns">
                                     <p className="memeber-name content-item">Teodor Sandu</p>
                                     <p className="memeber-job content-item">Software Developer</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="large-6 large-offset-0 medium-11 medium-offset-0 small-22 small-offset-1">
+                            <div className="row">
+                                 <div className="memeber-details-top columns">
+                                    <p className="memeber-name content-item">Laurenţiu Macovei</p>
+                                    <p className="memeber-job content-item">Co-founder and Software Developer</p>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="memeber-details-top columns">
+                                    <p className="memeber-name content-item">Marius Baciu</p>
+                                    <p className="memeber-job content-item">Software Developer</p>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="memeber-details-top columns">
+                                    <p className="memeber-name content-item">Bogdan Gherman</p>
+                                    <p className="memeber-job content-item">Software Developer</p>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="memeber-details-top columns">
+                                    <p className="memeber-name content-item">Dragoş Radu</p>
+                                    <p className="memeber-job content-item">Quality Engineer</p>
                                 </div>
                             </div>
                         </div>

@@ -35,9 +35,28 @@
                 margin: 0;
                 padding: 0;
                 li {
-                    padding-bottom: rem-calc(16pt);
+                    padding-top: rem-calc(18pt);
+                    &:first-child {
+                        padding-top: 0;
+                    }
+                    &.expanded {
+                        display: block;
+                        &.indent {
+                            padding-left: 5%;
+                            padding-top: rem-calc(6pt);
+                        }
+                    }
+                    &.condensed {
+                        display: none;
+                        padding-top: 0;
+                        padding-left: 5%;
+                        text-indent: -5%;
+                        + li.condensed {
+                            padding-top: rem-calc(16pt);
+                        }
+                    }
                     &.social-media {
-                        padding-top: rem-calc(20pt);
+                        padding-top: rem-calc(22pt);
                         @include grid-row(8);
                         @include grid-col-size(6);
                         @include grid-col-off(0);
@@ -77,7 +96,7 @@
     z-index: 6;
 }
 
-@media screen and #{breakpoint(large up)} {
+@media (min-height: 1px) and #{breakpoint(large up)} {
 
     #page-container article.contact-open header.main div.contact > div.btn {
         top: 40px;
@@ -90,7 +109,7 @@
     }
 }
 
-@media screen and #{breakpoint(medium only)} {
+@media (min-height: 2px) and #{breakpoint(medium only)} {
     #page-container article header.main div.contact {
         @include grid-row(24);
         > div {
@@ -98,7 +117,7 @@
                 @include grid-row();
                 @include grid-col-size(10);
                 @include grid-col-off(2);
-                top: 40%;
+                top: 30%;
                 font-size: rem-calc(24pt);
                 line-height: rem-calc(30pt);
                 text-align: right;
@@ -107,12 +126,11 @@
                 @include grid-row();
                 @include grid-col-size(11);
                 @include grid-col-off(12);
-                top: 70%;
+                top: 65%;
                 font-size: rem-calc(18pt);
                 line-height: rem-calc(22pt);
                 ul {
                     li {
-                        padding-bottom: rem-calc(12pt);
                         &.social-media {
                             padding-top: rem-calc(16pt);
                             @include grid-row(8);
@@ -133,7 +151,7 @@
 }
 
 //covers iPhone6 plus landscape and tablets which fall in medium but texts come too near to eachother
-@media screen and #{breakpoint(medium only)} and (orientation: landscape) and (max-height: 700px) {
+@media (min-height: 3px) and #{breakpoint(medium only)} and (orientation: landscape) and (max-height: 700px)  {
     #page-container article header.main div.contact {
         @include grid-row(24);
         > div {
@@ -149,9 +167,14 @@
                 line-height: rem-calc(20pt);
                 ul {
                     li {
-                        padding-bottom: rem-calc(8pt);
                         &.social-media {
                             padding-top: rem-calc(8pt);
+                        }
+                        &.expanded {
+                            display: none;
+                        }
+                        &.condensed {
+                            display: block;
                         }
                     }
                 }
@@ -160,7 +183,37 @@
     }
 }
 
-@media screen and #{breakpoint(small only)} {
+@media (min-height: 3.2px) and #{breakpoint(medium only)} and (orientation: landscape) and (max-height: 400px)  {
+    #page-container article header.main div.contact {
+        @include grid-row(24);
+        > div {
+            &.left {
+                display: none;
+            }
+            &.right {
+                @include grid-row();
+                @include grid-col-size(20);
+                @include grid-col-off(1);
+                top: 62%;
+            }
+        }
+    }
+}
+
+@media (min-height: 3.5px) and #{breakpoint(medium only)} and (orientation: portrait) and (max-height: 900px)  {
+    #page-container article header.main div.contact {
+        > div {
+            &.left {
+                top: 25%;
+            }
+            &.right {
+                top: 67%;
+            }
+        }
+    }
+}
+
+@media (min-height: 4px) and #{breakpoint(small only)} and (orientation: portrait) {
     #page-container article header.main div.contact {
         @include grid-row(24);
         > div {
@@ -168,7 +221,7 @@
                 @include grid-row();
                 @include grid-col-size(22);
                 @include grid-col-off(1);
-                top: 40%;
+                top: 30%;
                 font-size: rem-calc(22pt);
                 line-height: rem-calc(28pt);
             }
@@ -181,7 +234,6 @@
                 line-height: rem-calc(20pt);
                 ul {
                     li {
-                        padding-bottom: rem-calc(12pt);
                         &.social-media {
                             padding-top: rem-calc(16pt);
                             @include grid-row(8);
@@ -206,7 +258,7 @@
     }
 }
 
-@media screen and (min-width: 0px) and (max-width: 350px) {
+@media (min-height: 5px) and (min-width: 0px) and (max-width: 350px) and (orientation: portrait) {
     #page-container article header.main div.contact {
         @include grid-row(24);
         > div {
@@ -226,18 +278,76 @@
                 font-size: rem-calc(14pt);
                 line-height: rem-calc(18pt);
             }
+            &.btn {
+                @include grid-row(24);
+                @include grid-col-size(4);
+                @include grid-col-off(19);
+                text-align: right;
+            }
         }
     }
 }
 
-@media screen and #{breakpoint(small only)} and (orientation: landscape) and (max-height: 480px) {
+@media (min-height: 5.5px) and (min-width: 0px) and (max-width: 350px) and (max-height: 570px) and (orientation: portrait) {
     #page-container article header.main div.contact {
+        @include grid-row(24);
         > div {
             &.left {
                 display: none;
             }
             &.right {
                 top: 60%;
+                ul {
+                    li {
+                        padding-top: rem-calc(14pt);
+                        &:first-child {
+                            padding-top: 0;
+                        }
+                        &.expanded {
+                            &.indent {
+                                padding-top: rem-calc(6pt);
+                            }
+                        }
+                        &.social-media {
+                            padding-top: rem-calc(20pt);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-height: 6px) and #{breakpoint(small only)} and (orientation: landscape) {
+    #page-container article header.main div.contact {
+        @include grid-row(24);
+        > div {
+            &.left {
+                display: none;
+            }
+            &.right {
+                @include grid-row();
+                @include grid-col-size(20);
+                @include grid-col-off(1);
+                top: 62%;
+                font-size: rem-calc(14pt);
+                line-height: rem-calc(18pt);
+                ul {
+                    li {
+                        &.expanded {
+                            display: none;
+                        }
+                        &.condensed {
+                            display: block;
+                        }
+                    }
+                }
+            }
+            &.btn {
+                @include grid-row(24);
+                @include grid-col-size(4);
+                @include grid-col-off(19);
+                text-align: right;
             }
         }
     }
