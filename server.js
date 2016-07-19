@@ -4,6 +4,8 @@
 //node modules
 var express = require('express');
 var bodyParser = require('body-parser');
+var fs = require('fs');
+var path = require('path');
 
 //cust modules
 var config = require('./server/config');
@@ -19,6 +21,16 @@ app.set('superSecret', config.secret);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.use(function (req, res, next) {    
+    if (app.settings.env === 'production' && '/robots.txt' == req.url) {
+        fs.readFile('../robots.txt', 'utf-8', function (error, data) {
+			res.sendFile(path.join(__dirname + '/robots.txt'));
+		});
+    } else {
+        next();
+    }
+});
 
 login.setLoginRoutes(app, router);
 
