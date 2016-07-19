@@ -88,11 +88,18 @@ class Contact extends Component {
             </div>
             <div className="right">
                 <ul className="content">
-                    <li>Romania: Sos. Tudor Neculai nr. 52 D, Iasi</li>
-                    <li>Tudor Dumitriu: +40729046526</li>
-                    <li>UK: Sos. Tudor Neculai nr. 52 D, Iasi</li>
-                    <li>Mario Theodorou: +40729046526</li>
-                    <li><a href="mailto:contact@adaptabi.com">contact@adaptabi.com</a></li>
+                    <li className="expanded">Romania:</li>
+                    <li className="expanded indent"><span className="no-break">Sos. Tudor Neculai</span> <span className="no-break">nr. 52 D,</span> <span className="no-break">Iasi,</span> 700732</li>
+                    <li className="expanded indent"><a href="tel:+40729046526">+40 (729) 046 526</a></li>
+                    <li className="expanded">United Kingdom:</li>
+                    <li className="expanded indent"><span className="no-break">Prospect House,</span> <span className="no-break">2 Athenaeum Rd,</span> <span className="no-break">London,</span> <span className="no-break">N20 9AE</span></li>
+                    <li className="expanded indent"><a href="tel:+447956809631">+44 (795) 680 9631</a></li>
+                    
+                    <li className="condensed">Romania: <span className="no-break">Sos. Tudor Neculai</span> <span className="no-break">nr. 52 D,</span> <span className="no-break">Iasi,</span> 700732, <a href="tel:+40729046526">+40729046526</a></li>
+                    <li className="condensed">UK: <span className="no-break">Prospect House,</span> <span className="no-break">2 Athenaeum Rd,</span> <span className="no-break">London,</span> <span className="no-break">N20 9AE,</span> <a href="tel:+447956809631">+447956809631</a></li>
+                    
+                    <li className="e-mail"><span className="tag">E-mail:</span> <a href="mailto:contact@adaptabi.com">contact@adaptabi.com</a></li>
+                    
                     <li className="social-media">
                         <a target="_blank" href="https://www.linkedin.com/company/adaptabi"><i className="ncs-linkedin-square" /></a>
                         <a target="_blank" href="https://www.facebook.com/adaptabi/"><i className="ncs-facebook-square" /></a>

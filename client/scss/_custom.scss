@@ -22,3 +22,9 @@ article.page-careers .contact .join-the-family {
 .disable-events {
     pointer-events: none;
 }
+
+span{
+    &.no-break{
+        white-space: nowrap;
+    }
+}

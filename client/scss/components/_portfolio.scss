@@ -17,11 +17,6 @@
                 font-size: rem-calc(16pt);
                 line-height: rem-calc(24pt);
             }
-            span{
-                &.no-break{
-                    white-space: nowrap;
-                }
-            }
         }
         .columns {
             overflow: hidden;
