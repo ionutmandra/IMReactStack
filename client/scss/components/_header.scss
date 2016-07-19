@@ -84,12 +84,8 @@
         .gradient {
             background: $white linear-gradient(45deg, #d6cb26 0%, #68bc45 100%);
         }
-        .image {
-            @include grid-column-size(12);
-            @include grid-column-offset(12);
-            .img {
-                background-image: url(../img/photos/temp1.jpg);
-            }
+        .image .img {
+            background-image: url(../img/photos/temp1.jpg);
         }
     }
     &.page-expertise header.main {
@@ -97,11 +93,8 @@
         .gradient {
             background: $white linear-gradient(45deg, #68bc45 0%, #1895a3 100%);
         }
-        .image {
-            @include grid-column-size(18);
-            .img {
-                background-image: url(../img/photos/temp2.jpg);
-            }
+        .image .img {
+            background-image: url(../img/photos/temp2.jpg);
         }
     }
     &.page-portfolio header.main {
@@ -109,10 +102,8 @@
         .gradient {
             background: $white linear-gradient(45deg, #1895a3 0%, #4f2063 100%);
         }
-        .image {
-            .img {
-                background-image: url(../img/photos/temp3.jpg);
-            }
+        .image .img {
+            background-image: url(../img/photos/temp3.jpg);
         }
     }
     &.page-portfolio-details header.main {
@@ -120,10 +111,8 @@
         .gradient {
             background: $white linear-gradient(45deg, #1895a3 0%, #4f2063 100%);
         }
-        .image {
-            .img {
-                background-image: url(../img/photos/temp1.jpg);
-            }
+        .image .img {
+            background-image: url(../img/photos/6.jpg);
         }
     }
     &.page-careers header.main {
@@ -131,12 +120,8 @@
         .gradient {
             background: $white linear-gradient(45deg, #4f2063 0%, #c80786 100%);
         }
-        .image {
-            @include grid-column-size(18);
-            @include grid-column-offset(6);
-            .img {
-                background-image: url(../img/photos/5.jpg);
-            }
+        .image .img {
+            background-image: url(../img/photos/5.jpg);
         }
     }
     &.page-career-details header.main {
@@ -144,9 +129,8 @@
         .gradient {
             background: $white linear-gradient(45deg, #c80786 0%, #ed2f2e 100%);
         }
-        .image {
-            @include grid-column-size(18);
-            @include grid-column-offset(6);
+        .image .img {
+            background-image: url(../img/photos/7.jpg);
         }
     }
 

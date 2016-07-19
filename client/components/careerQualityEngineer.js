@@ -28,7 +28,7 @@ class CareerQualityEngineer extends Component {
                         <div className=" medium-5-5 medium-offset-1 show-for-medium-only columns"></div>
                         <div className="large-9 large-offset-6 medium-11 medium-offset-0 small-22 small-offset-1 columns">
                             <p className="content-item">
-                                We are looking for quality engineer to help develop large scale .NET based applications.
+                                We are looking for a quality engineer to help develop full stack applications.
                             </p>
                         </div>
                     </div>
@@ -44,9 +44,9 @@ class CareerQualityEngineer extends Component {
                         <div className=" medium-5-5 medium-offset-1 show-for-medium-only columns"></div>
                         <div className="large-9 large-offset-6 medium-11 medium-offset-0 small-22 small-offset-1 columns">
                             <ul className="content-item">
-                                <li>Ensure the quality of the products delivered</li>
+                                <li>Ensure the quality of the delivered products</li>
                                 <li>Write test cases</li>
-                                <li>Write Selenium based Automated Tests </li>
+                                <li>Write Selenium based Automated Tests</li>
                             </ul>
                         </div>
                     </div>

@@ -27,7 +27,7 @@ class CareerSeniorDeveloper extends Component {
                         <div className=" medium-5-5 medium-offset-1 show-for-medium-only columns"></div>
                         <div className="large-9 large-offset-6 medium-11 medium-offset-0 small-22 small-offset-1 columns">
                             <p className="content-item">
-                                We are looking for a software developer to be a part of the team developing large scale .NET based applications. He will have a real opportunity to be part of the decision making process when it comes to architecture, technologies and finally build our products
+                                We are looking for a full stack software developer to be a part of our team. He will have a real opportunity to be part of the decision making process when it comes to architecture, technologies and process.
                             </p>
                         </div>
                     </div>
@@ -65,6 +65,7 @@ class CareerSeniorDeveloper extends Component {
                                 <li>5 year experience in .Net C#</li>
                                 <li>5 year experience in Javascript / CSS / HTML</li>
                                 <li>5 year experience with design and development of DB data models</li>
+                                <li>Strong understanding of javascript frameworks (Node.js, Angular, React, etc.)</li>
                                 <li>Good English (writing and speaking)</li>
                             </ul>
                         </div>

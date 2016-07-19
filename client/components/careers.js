@@ -21,7 +21,7 @@ class Careers extends Component {
     render() {
         return (
             <article className="page page-careers">
-                <Header title={'We treat every member of our team as a part of the family so we work and also have fun together'} />
+                <Header title={'We treat every member of our team as a part of the family. We work and have fun together'} />
                 <section className="content">
                     <div className="spacer-60" />
                     <div className="row">
@@ -45,14 +45,14 @@ class Careers extends Component {
                     <div className="spacer-60" />
                     <div className="row">
                         <div className="large-12 large-offset-3 medium-22 medium-offset-1 small-22 small-offset-1 columns">
-                            <p className="content-item">Also there is a list of benefits if you join our team:</p>
+                            <p className="content-item">Here is a list of benefits if you join our team:</p>
                         </div>
                     </div>
                     <div className="spacer-20" />
                     <div className="row">
                     <div className="large-9 large-offset-6 medium-22 medium-offset-1 small-22 small-offset-1 columns">
                         <ul className="content-item">
-                          <li>We have <strong>more free days</strong> than the standard</li>
+                          <li>We have <strong>more free days</strong> than standard</li>
                           <li>We allocate <strong> research days every month </strong></li>
                           <li>We understand and support <strong>schedule flexibility</strong></li>
                       </ul>
@@ -67,8 +67,8 @@ class Careers extends Component {
                     <div className="row">
                         <div className="large-6 large-offset-3 medium-11 medium-offset-1 small-22 small-offset-1 columns">
                             <Link to="/careers/seniorsoftwaredeveloper" onClick={this.handleCareerDetailsClick} className="content-item block">
-                            <div className="large-24 medium-24 small-21 columns">
-                                    <h1>Senior software developer</h1>
+                                <div className="large-24 medium-24 small-21 columns">
+                                    <h1>Senior developer</h1>
                                     <h3>Full time</h3>
                                 </div>
                                 <div className="large-24 medium-24 small-3 columns go-to-career-details-container">
@@ -80,7 +80,7 @@ class Careers extends Component {
                         <div className="large-6 large-offset-0 medium-11 medium-offset-0 small-22 small-offset-1 columns">
                             <Link to="/careers/juniorsoftwaredeveloper" onClick={this.handleCareerDetailsClick} className="content-item block">
                                 <div className="large-24 medium-24 small-21 columns">
-                                    <h1>Junior software developer</h1>
+                                    <h1>Junior developer</h1>
                                     <h3>Full time</h3>
                                 </div>
                                 <div className="large-24 medium-24 small-3 columns go-to-career-details-container">

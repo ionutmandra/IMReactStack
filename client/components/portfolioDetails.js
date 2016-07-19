@@ -59,7 +59,7 @@ class PortfolioDetails extends Component {
                         <div className="large-7 large-offset-0 large-order-2 medium-10 medium-offset-1 medium-order-1 small-22 small-offset-1 small-order-1 columns">
                             <h2 className="content-item">Safetybank is an award winning application in the last couple of years.</h2>
                             <div className="spacer-20 large-0 medium-0 small-24 show-for-small-only"/>
-                            <p><span className="content-item block">Most innovative application in housing industry 2016.</span></p>
+                            <p><span className="content-item block">"Most innovative application" is one of the most prestigious awards in the housing industry.</span></p>
                             <div className="spacer-40 large-0 medium-24 small-24 show-for-small hide-for-large"/>
                         </div>
                     </div>
@@ -67,7 +67,7 @@ class PortfolioDetails extends Component {
                     <div className="row align-middle">
                         <div className="large-12 large-offset-6 medium-20 medium-offset-1 small-22 small-offset-1 columns">
                             <h1 className="content-item">Serving thousands of companies</h1>
-                            <p className="content-item block">Hosted on Azure Cloud on a top cluster configuration offers the functionality that a 21st century building company needs to safely manage its projects.</p>
+                            <p className="content-item block">Hosted on Azure Cloud on a top cluster configuration, it offers the functionality that a 21st century building company needs to safely manage its projects.</p>
                         </div>
                     </div>
 
@@ -114,8 +114,8 @@ class PortfolioDetails extends Component {
                                 <p className="cta">
                                     <span className="hide-for-large">Interested? </span>
                                     <span className="action-links">
-                                        <a onClick={this.onContactClick}>Send a message</a> or
-                                        <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}> join the family.</Link>
+                                        <a onClick={this.onContactClick}>Send a message</a> or&nbsp;
+                                        <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}>join the family</Link>.
                                     </span>
                                  </p>
                             </div>
@@ -126,8 +126,8 @@ class PortfolioDetails extends Component {
                             <span className="show-for-large">Want to meet us? </span>
                             <span className="hide-for-large">Interested? </span>
                             <span className="action-links">
-                                <a onClick={this.onContactClick}>Send a message</a> or
-                                <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}> join the family.</Link>
+                                <a onClick={this.onContactClick}>Send a message</a> or&nbsp;
+                                <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}>join the family</Link>.
                             </span>
                         </p>
                     </div>

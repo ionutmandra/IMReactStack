@@ -28,7 +28,7 @@ class CareerJuniorDeveloper extends Component {
                         <div className=" medium-5-5 medium-offset-1 show-for-medium-only columns"></div>
                         <div className="large-9 large-offset-6 medium-11 medium-offset-0 small-22 small-offset-1 columns">
                             <p className="content-item">
-                                We are looking for a junior developer to help develop large scale .NET based applications.
+                                We are looking for a junior developer to help develop full stack applications.
                             </p>
                         </div>
                     </div>
@@ -44,7 +44,7 @@ class CareerJuniorDeveloper extends Component {
                         <div className=" medium-5-5 medium-offset-1 show-for-medium-only columns"></div>
                         <div className="large-9 large-offset-6 medium-11 medium-offset-0 small-22 small-offset-1 columns">
                             <ul className="content-item">
-                                <li>Develop complex, high-availability, high-scalability systems</li>
+                                <li>Develop complex systems</li>
                                 <li>Getting familiar with the product and technologies that the team uses</li>
                                 <li>Improve programming skills and increase the area of expertise</li>
                             </ul>

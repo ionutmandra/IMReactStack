@@ -20,9 +20,6 @@ class Portfolio extends Component {
     }
 
     render() {
-        //var p = this.props, s = p.strings;
-        //let columns = this.props.children ? 6 : 12;
-
         let link = routePaths.client.portfolioDetails.replace(':key', 'sfb');
 
         return (
@@ -35,9 +32,9 @@ class Portfolio extends Component {
                             <h1 className="content-item">
                                 <Link ref="projDetails"   to={link} onClick={this.handleProjDetailsClick}>{'Safetybank'}</Link>
                             </h1>
-                            <div className="spacer-20 large-0 medium-0 small-24  show-for-small-only"/>
-                            <div className="project-description" className="content-item">
-                                <p>Safetybank is our largest project and we took it from a 50 hours concept to a <span className="no-break">50 000</span> hours enterprise class application.</p>
+                            <div className="spacer-20 large-0 medium-0 small-24"/>
+                            <div className="content-item">
+                                <p>This is our largest project and we took it from a 50 hours concept to a <span className="no-break">50 000</span> hours enterprise class application.</p>
                                 <div className="spacer-20" />
                                 <p>The application was awarded "Most innovative application in housing industry" in 2016.</p>
                                 <div className="spacer-20" />

@@ -88,8 +88,10 @@ class Contact extends Component {
             </div>
             <div className="right">
                 <ul className="content">
-                    <li>Sos. Tudor Neculai nr. 52 D, Iasi, Romania</li>
-                    <li>+40729046526</li>
+                    <li>Romania: Sos. Tudor Neculai nr. 52 D, Iasi</li>
+                    <li>Tudor Dumitriu: +40729046526</li>
+                    <li>UK: Sos. Tudor Neculai nr. 52 D, Iasi</li>
+                    <li>Mario Theodorou: +40729046526</li>
                     <li><a href="mailto:contact@adaptabi.com">contact@adaptabi.com</a></li>
                     <li className="social-media">
                         <a target="_blank" href="https://www.linkedin.com/company/adaptabi"><i className="ncs-linkedin-square" /></a>
