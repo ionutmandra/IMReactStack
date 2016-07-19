@@ -132,8 +132,12 @@ export default (BaseComponent) => {
             }
             else {
                 $.scrollLock(false, false);
-                $article.find('.logo .img, .logo .text svg').css({ color: '', transform: ''});
-                $article.find('.hamburger .open').css({ color: '', transform: 'translateX(-100%)'});
+                // about / scroll / (burger black) / join the family / back -> burger remained black
+                if(this._clone.props.ui.media.current == "large")
+                {
+                    $article.find('.logo .img, .logo .text svg').css({ color: '', transform: ''});
+                    $article.find('.hamburger .open').css({ color: '', transform: 'translateX(-100%)'});
+                }
             }
 
             this.cleanTransition();
