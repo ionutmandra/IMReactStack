@@ -32,6 +32,7 @@
 
         .image {
             position: relative;
+            -webkit-transform: translate3d(0, 0, 0);
             z-index: 1;
             @include grid-col-size(24);
             height: 100%;
