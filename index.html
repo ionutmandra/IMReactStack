@@ -27,6 +27,8 @@
     <link rel="icon" type="image/png" href="/client/dist/favicon/favicon-16x16.png" sizes="16x16">
     <link rel="manifest" href="/client/dist/favicon/manifest.json">
     <link rel="mask-icon" href="/client/dist/favicon/safari-pinned-tab.svg" color="#68bc45">
+    <link rel="alternate" href="https://adaptabi.com/" hreflang="en-us" />
+    <link rel="alternate" href="https://www.adaptabi.com/" hreflang="en-us" />
 
     <meta name="apple-mobile-web-app-title" content="Adaptabi">
     <meta name="application-name" content="Adaptabi">
@@ -253,7 +255,7 @@
         TweenMax.set('#rightLogo',{visibility:'visible'});
 
         var timeline = new TimelineLite({ onComplete: function () { timeline = null; } })
-        .add(TweenMax.to('#line', fast ? .1 : .7,{ height: '100%', ease: Power3.easeIn }))        
+        .add(TweenMax.to('#line', fast ? .1 : .7,{ height: '100%', ease: Power3.easeIn }))
         .add([
             TweenMax.to('#leftLogo', .2,{x:'0%', delay: .1}),
             TweenMax.to('#rightLogo',.2,{x:'0%', delay: .1})
