@@ -1,7 +1,13 @@
 import dom from 'react-dom';
 import _ from 'lodash';
+import { breakpoint } from '../../config/constants';
 
 let $ = window.$, $window = $(window), $body = $('body'), TweenMax = window.TweenMax, TimelineLite = window.TimelineLite, Power3 = window.Power3, TweenPlugin = window.TweenPlugin;
+
+//after navigation to a hashed location, the auto scroll will be offset by this much:
+let autoscrollLargeOffset = 42,
+    autoscrollMediumOffset = 87,
+    autoscrollSmallOffset = 87;
 
 ////
 //    APPEAR - first time load
@@ -9,6 +15,24 @@ let $ = window.$, $window = $(window), $body = $('body'), TweenMax = window.Twee
 
 export function appear(ref, callback) {
     callback();
+    setTimeout(() => {
+        let urlParts = location.href.split('#');
+        let $elementToScrollTo = urlParts.length === 2 ? $(['#', urlParts[1]].join('')) : '';
+        if ($elementToScrollTo.length > 0) {
+            let media = breakpoint.names.large, width = $window.outerWidth();
+            width < breakpoint.large && (media = breakpoint.names.medium);
+            width < breakpoint.medium && (media = breakpoint.names.small);
+            console.log($elementToScrollTo, media);
+            let scrollPos = $elementToScrollTo.offset().top;
+            switch (media) {
+                case 'large': scrollPos -= autoscrollLargeOffset; break;
+                case 'medium': scrollPos -= autoscrollMediumOffset; break;
+                case 'small': scrollPos -= autoscrollSmallOffset; break;
+            }
+            console.warn('scrolling', scrollPos, media);
+            $window.scrollTop(scrollPos);
+        }
+    }, 2700);
 }
 
 ////
@@ -42,7 +66,7 @@ export function large_enter_header(ref, callback, transition) {
     elements.text && TweenMax.set(elements.text, { x: '-100%' });
     elements.logoImg && TweenMax.set(elements.logoImg, { color: '#fefefe' });
     elements.logoText && TweenMax.set(elements.logoText, { x: '0%' }),
-    elements.burger && TweenMax.set(elements.burger, { x: '-100%', color: '#fefefe' });
+        elements.burger && TweenMax.set(elements.burger, { x: '-100%', color: '#fefefe' });
     elements.footer && TweenMax.set(elements.footer, { height: 0 });
     elements.contentItems && TweenMax.set(elements.contentItems, { x: '-110%' });
 
@@ -97,12 +121,14 @@ export function large_enter_header(ref, callback, transition) {
 export function large_leave_header(ref, callback, transition, initialScroll) {
     let elements = extractDOMElements(ref, transition.column), height = $window.height();
 
-    let timeline = new TimelineLite({ onComplete: () => {
-        TweenMax.set([elements.contentItems, elements.text, elements.image], { clearProps: 'transform' });
-        TweenMax.set([elements.header, elements.footer], { clearProps: 'height' });
-        setTimeout(callback, 0);
-        timeline = null;
-    }})
+    let timeline = new TimelineLite({
+        onComplete: () => {
+            TweenMax.set([elements.contentItems, elements.text, elements.image], { clearProps: 'transform' });
+            TweenMax.set([elements.header, elements.footer], { clearProps: 'height' });
+            setTimeout(callback, 0);
+            timeline = null;
+        }
+    })
         .add(_.filter([
             elements.contentItems && TweenMax.to(elements.contentItems, .3, { x: '-110%', ease: Power3.easeIn }),
             elements.footer && TweenMax.set(elements.footer, { height: 0, ease: Power3.easeIn }),
@@ -221,12 +247,14 @@ export function large_leave_burger(ref, callback, transition, initialScroll) {
     let elements = extractDOMElements(ref, transition.column),
         contactIsOpen = elements.$article.hasClass('contact-open');
 
-    let timeline = new TimelineLite({ onComplete: () => {
-        !contactIsOpen && TweenMax.set([elements.links, elements.burgerClose], { clearProps: 'transform'});
-        contactIsOpen && TweenMax.set(elements.contactPieces.large, { clearProps: 'transform'});
-        callback();
-        timeline = null;
-    }})
+    let timeline = new TimelineLite({
+        onComplete: () => {
+            !contactIsOpen && TweenMax.set([elements.links, elements.burgerClose], { clearProps: 'transform' });
+            contactIsOpen && TweenMax.set(elements.contactPieces.large, { clearProps: 'transform' });
+            callback();
+            timeline = null;
+        }
+    })
         .add(_.filter([
             !contactIsOpen && TweenMax.to(elements.links, .6, {
                 x: '-100%', ease: Power3.easeIn,
@@ -441,7 +469,7 @@ export function large_enter_home_content(ref, callback, transition) {
         let $elementToScrollTo = urlParts.length === 2 ? $(['#', urlParts[1]].join('')) : '';
         if ($elementToScrollTo.length > 0) {
             setTimeout(() => {
-                TweenMax.to(window, .7, { scrollTo: { y: $elementToScrollTo.offset().top }, ease: Power3.easeOut });
+                TweenMax.to(window, .7, { scrollTo: { y: $elementToScrollTo.offset().top - autoscrollLargeOffset }, ease: Power3.easeOut });
             }, 150);
         }
     }
@@ -455,7 +483,7 @@ export function medium_enter_home_content(ref, callback, transition) {
         let $elementToScrollTo = urlParts.length === 2 ? $(['#', urlParts[1]].join('')) : '';
         if ($elementToScrollTo.length > 0) {
             setTimeout(() => {
-                TweenMax.to(window, .7, { scrollTo: { y: $elementToScrollTo.offset().top }, ease: Power3.easeOut });
+                TweenMax.to(window, .7, { scrollTo: { y: $elementToScrollTo.offset().top - autoscrollMediumOffset }, ease: Power3.easeOut });
             }, 150);
         }
         callback();
@@ -468,7 +496,7 @@ export function small_enter_home_content(ref, callback, transition) {
         let $elementToScrollTo = urlParts.length === 2 ? $(['#', urlParts[1]].join('')) : '';
         if ($elementToScrollTo.length > 0) {
             setTimeout(() => {
-                TweenMax.to(window, .7, { scrollTo: { y: $elementToScrollTo.offset().top }, ease: Power3.easeOut });
+                TweenMax.to(window, .7, { scrollTo: { y: $elementToScrollTo.offset().top - autoscrollSmallOffset }, ease: Power3.easeOut });
             }, 150);
         }
         callback();
