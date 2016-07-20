@@ -464,7 +464,7 @@
                     transform: translateY(-50%);
                 }
                 .text-1 {
-                    @include grid-column-size(10);
+                    @include grid-column-size(10.5);
                     @include grid-column-offset(1);
                     padding-left: 0;
                 }
@@ -501,6 +501,11 @@
                 .text-1, .text-2, .text-3 {
                     top: 60%;
                     text-align: left;
+                }
+                .text-1 {
+                    @include grid-column-size(10.5);
+                    @include grid-column-offset(1);
+                    padding-left: 0;
                 }
             }
             &.slide-4 {
