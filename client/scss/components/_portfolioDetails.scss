@@ -74,7 +74,8 @@
         section.call-to-action {
             .image {
                 &:after {
-                    background: linear-gradient(45deg, #1895a3 0%, #4f2063 100%);
+                    //background: linear-gradient(45deg, #1895a3 0%, #4f2063 100%);
+                    background: linear-gradient(45deg, #c80786 0%, #ed2f2e 100%);
                 }
             }
              span.action-links {
