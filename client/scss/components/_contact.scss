@@ -290,7 +290,7 @@
     }
 }
 
-@media (min-height: 5.5px) and (min-width: 0px) and (max-width: 350px) and (max-height: 570px) and (orientation: portrait) {
+@media (min-height: 5.5px) and (min-width: 0px) and (max-width: 350px) and (max-height: 610px) and (orientation: portrait) {
     #page-container article header.main div.contact {
         @include grid-row(24);
         > div {
@@ -298,7 +298,7 @@
                 display: none;
             }
             &.right {
-                top: 60%;
+                top: 55%;
                 ul {
                     li {
                         padding-top: rem-calc(14pt);
