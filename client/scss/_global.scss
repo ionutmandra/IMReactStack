@@ -17,7 +17,7 @@ html {
     font-family: 'Poppins', sans-serif;
     color: $text-color;
     -webkit-overflow-scrolling: auto;
-    -ms-overflow-style: none;
+    //-ms-overflow-style: none;
 }
 // ::-webkit-scrollbar {
 //     display: none;
@@ -26,7 +26,7 @@ body {
     position: relative;
     fill: currentColor; //for SVG
     -webkit-overflow-scrolling: auto;
-    -ms-overflow-style: none;
+    //-ms-overflow-style: none;
     &.navigating a {
         pointer-events: none;
     }
