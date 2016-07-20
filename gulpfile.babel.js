@@ -54,8 +54,8 @@ gulp.task('watchify', () => {
 const vendor_files = [
   './client/lib/polyfill/*.js',
   './client/lib/jquery/jquery.min.js',
-  './client/lib/jquery/jquery.scrollLock.js',   
-  //'./client/lib/jquery/jquery.gray.js', 
+  './client/lib/jquery/jquery.scrollLock.js',
+  //'./client/lib/jquery/jquery.gray.js',
   './client/lib/gsap/ColorPropsPlugin.min.js',
   './client/lib/gsap/ScrollToPlugin.min.js',
   './client/lib/gsap/CSSPlugin.min.js',
@@ -68,7 +68,7 @@ const vendor_files = [
 gulp.task('vendor', () => {
   var piped = gulp.src(vendor_files)
     .pipe(concat('vendor.js'));
-  
+
   if (process.env.NODE_ENV == 'production') {
     //piped.pipe(uglify());
   }
@@ -131,6 +131,11 @@ const imagePaths = ['./client/assets/img/**'];
 gulp.task('move-image-files', (callback) => {
     return gulp.src(imagePaths)
       .pipe(gulp.dest('./client/dist/img'));
+});
+
+gulp.task('move-site-maps', (callback) => {
+    return gulp.src(['./siteMap.xml', './siteMapWww.xml'])
+      .pipe(gulp.dest('./client/dist'));
 });
 
 // Due to photoswipe css we will add the needed images near the css
@@ -218,5 +223,5 @@ gulp.task('unit-tests', function () {
 });
 
 gulp.task('deploy', function () {
-  return runSequence('apply-prod-environment', 'clean', 'vendor', 'build', 'app-sass', 'move-fonts', 'move-favicon', 'move-image-files', 'move-photoswipe-files', 'minify-css', 'unit-tests');
+  return runSequence('apply-prod-environment', 'clean', 'vendor', 'build', 'app-sass', 'move-fonts', 'move-favicon', 'move-image-files', 'move-photoswipe-files', 'move-site-maps', 'minify-css', 'unit-tests');
 });
