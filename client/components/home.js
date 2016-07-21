@@ -138,6 +138,8 @@ class Home extends Component {
 
     componentDidMount() {
 
+        document.title = "Adaptabi - Software Innovators Happily Together";
+
         var controller = this.controller;
         var scenes = this.scenes[breakpoint.names.large];
         var timeLines = this.timeLines;

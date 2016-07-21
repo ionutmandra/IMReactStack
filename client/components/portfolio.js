@@ -11,6 +11,10 @@ class Portfolio extends Component {
         this.handleProjDetailsClick = this.handleProjDetailsClick.bind(this);
     }
 
+    componentDidMount(){
+      document.title = "Adaptabi - Our projects";
+    }
+
     handleProjDetailsClick(event) {
         this.props.dispatchTransition({
               type: 'content',

@@ -35,6 +35,9 @@ class Expertise extends Component {
         //     $('.grayscale', this).toggleClass('hover grayscale-off');
         //     $(this).find('.post-link').toggle();
         // });
+
+        document.title = "Adaptabi - Skills, processes and innovation";
+
         this.$icons = $(this.refs.article).find('.grayscale-container img, .processes i')
             .on('touchstart mouseenter', this.touchStart).on('touchend mouseleave', this.touchEnd);
     }

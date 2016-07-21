@@ -31,7 +31,7 @@ class About extends Component {
 
   componentDidMount(){
     //console.log('component did mount',this);
-
+    document.title = "Adaptabi - Team and culture";
   }
 
   onContactClick(event){

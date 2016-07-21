@@ -20,9 +20,12 @@ class CareerDetails extends Component {
               type: 'content',
               column: 6,
               target: event.target,
-          });        
+          });
     }
-    
+
+    componentDidMount(){
+        document.title = "Adaptabi - Job details";
+    }
 
     renderJobDescription(){
         switch (this.props.params.key){
@@ -34,10 +37,10 @@ class CareerDetails extends Component {
                 break;
             case 'qualityengineer':
                     return (<CareerQualityEngineer onBackClick={this.handleBackToCareersClick}/>);
-                break; 
+                break;
             default:
                 return (<div></div>);
-        }     
+        }
     }
 
     render() {

@@ -12,6 +12,11 @@ class PortfolioDetails extends Component {
     this.onContactClick = this.onContactClick.bind(this);
 
     }
+
+    componentDidMount(){
+      document.title = "Adaptabi - Safetybank";
+    }
+
     handleCallToActionClick(event) {
         this.props.dispatchTransition({
             type: 'content',

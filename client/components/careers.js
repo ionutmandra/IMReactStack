@@ -18,6 +18,10 @@ class Careers extends Component {
         });
     }
 
+    componentDidMount(){
+        document.title = "Adaptabi - Careers";
+    }
+
     render() {
         return (
             <article className="page page-careers">
