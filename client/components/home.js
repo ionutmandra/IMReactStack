@@ -329,7 +329,7 @@ class Home extends Component {
         var homeLeft = [
             this.article.find('.slide-1.content .text-2 h2').toArray(),
             this.article.find('.slide-2.content .text-1 h1, .slide-2.content .text-3 .text-content').toArray(),
-            this.article.find('.slide-3.content .text-2 h1').toArray(),
+            this.article.find('.slide-3.content .text-2 h2').toArray(),
             this.article.find('.slide-4.content .text-1 h1').toArray(),
         ];
         var homeRight = [
@@ -341,7 +341,7 @@ class Home extends Component {
         var smallHomeLeft = [
             this.article.find('.slide-1.content .text-1 h1, .slide-1.content .text-2 h2').toArray(),
             this.article.find('.slide-2.content .text-1 h1').toArray(),
-            this.article.find('.slide-3.content .text-1 h1, .slide-3.content .text-2 h1').toArray(),
+            this.article.find('.slide-3.content .text-1 h1, .slide-3.content .text-2 h2').toArray(),
             this.article.find('.slide-4.content .text-1 h1').toArray(),
         ];
         var homeBottom = [
@@ -491,8 +491,8 @@ class Home extends Component {
 
                     <section className="slide slide-3 content" ref={(c) => this._section3c = c}>
                         <div className="text-1"><h1 ref={(c) => this._inputOffering = c}>Offering highest quality by constantly improving our <Link to="/expertise" data-animate-line="4" data-section="3" onClick={this.handleLinkClick}>skills and processes</Link></h1></div>
-                        <div className="text-2"><h1 ref={(c) => this._inputCreating = c}>Creating <Link to="/portfolio/sfb" data-animate-line="5" data-section="3" onClick={this.handleLinkClick}>high impact software solutions</Link> that help business succeed
-                        </h1></div>
+                        <div className="text-2"><h2 ref={(c) => this._inputCreating = c}>Creating <Link to="/portfolio/sfb" data-animate-line="5" data-section="3" onClick={this.handleLinkClick}>high impact software solutions</Link> that help business succeed
+                        </h2></div>
                     </section>
 
                     <section className="slide slide-4 content"  ref={(c) => this._section4c = c}>
