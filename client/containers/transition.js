@@ -63,6 +63,14 @@ export default (BaseComponent) => {
             this.animation.appear(this.refs.container, this.willEnterCallback.bind(this, callback));
         }
         componentWillEnter(callback) {
+
+            if(this._clone.props.transition
+                        && ( this._clone.props.transition.type == "home_content" || this._clone.props.transition.type == "content")
+                        && ( this._clone.props.ui.media.current == "medium" || this._clone.props.ui.media.current == "small")
+                        && location.href.split('#').length != 2){
+                            $window.scrollTop(0);
+                    }
+
             let transition = this._clone.props.transition, ui = this._clone.props.ui;
 
 
@@ -70,12 +78,12 @@ export default (BaseComponent) => {
 
             let animationName = 'generic';
             this.props.route.path == routePaths.client.root && (animationName = 'homepage');
-            this.animation = animations[animationName]; 
+            this.animation = animations[animationName];
             this.animationName = animationName; //only for console.log in the Leave function below
             //this.cleanTransition();
 
             console.log('componentWillEnter', animationName, ui.media.current + '_enter_' + transition.type, this.guid);
-            
+
             if (!transition || !transition.type) {
                 console.warn('componentWillEnter HAS NO TYPE');
 				// make sure callback always is called after willLeaveCallback

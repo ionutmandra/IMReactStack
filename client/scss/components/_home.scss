@@ -371,7 +371,7 @@
                     top: 50%;
                     -webkit-transform: translateY(-50%);
                     transform: translateY(-50%);
-                    text-align: right;
+                    text-align: left;
                 }
                 .text-2 {
                     @include grid-column-size(11);
@@ -603,7 +603,7 @@
                     -webkit-transform: translateY(-50%);
                     transform: translateY(-50%);
                     h2 {
-                        font-size: rem-calc(24pt);                        
+                        font-size: rem-calc(24pt);
                     }
                 }
             }

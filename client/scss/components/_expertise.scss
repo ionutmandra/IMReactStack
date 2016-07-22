@@ -67,8 +67,8 @@
             padding: 20px;
             filter: grayscale(100%);
             -webkit-filter: grayscale(100%);
-            transition: filter .35s linear, -webkit-filter .35s linear;                
-            &.hover { 
+            transition: filter .35s linear, -webkit-filter .35s linear;
+            &.hover {
                 filter: grayscale(0%);
                 -webkit-filter: grayscale(0%);
             }
@@ -120,16 +120,16 @@
             }
             p {
                 font-size: rem-calc(14pt);
-                line-height: rem-calc(22pt); 
+                line-height: rem-calc(22pt);
                 &.memeber-job {
                     font-size: rem-calc(14pt);
                     line-height: rem-calc(22pt);
                 }
             }
-        }
-        .innovation ul li {
-            font-size: rem-calc(14pt);
-            line-height: rem-calc(22pt);
+            ul li {
+                font-size: rem-calc(14pt);
+                line-height: rem-calc(22pt);
+            }
         }
         .call-to-action {
             font-size: rem-calc(14pt);
