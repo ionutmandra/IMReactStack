@@ -380,7 +380,7 @@
                     -webkit-transform: translateY(-50%);
                     transform: translateY(-50%);
                     h2 {
-                        font-size: rem-calc(28pt);
+                        font-size: rem-calc(24pt);
                         line-height: rem-calc(38pt);
                     }
                 }
@@ -467,6 +467,9 @@
                     @include grid-column-size(10.5);
                     @include grid-column-offset(1);
                     padding-left: 0;
+                    h1{
+                        font-size: rem-calc(18pt);
+                    }
                 }
                 .text-2 {
                     h2 {
@@ -482,6 +485,9 @@
                 .text-1, .text-2, .text-3 {
                     top: 60%;
                     text-align: left;
+                }
+                .text-1 h1{
+                    font-size: rem-calc(18pt);                    
                 }
                 .text-2 {
                     text-align: right;
@@ -506,6 +512,9 @@
                     @include grid-column-size(10.5);
                     @include grid-column-offset(1);
                     padding-left: 0;
+                }
+                .text-2 h2{
+                    font-size: rem-calc(18pt);
                 }
             }
             &.slide-4 {
