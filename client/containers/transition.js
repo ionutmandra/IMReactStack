@@ -64,6 +64,7 @@ export default (BaseComponent) => {
         }
         componentWillEnter(callback) {
 
+            //ON DEVICES when navigating from content scroll top because new page is by default visible on top of old
             if(this._clone.props.transition
                         && ( this._clone.props.transition.type == "home_content" || this._clone.props.transition.type == "content")
                         && ( this._clone.props.ui.media.current == "medium" || this._clone.props.ui.media.current == "small")
