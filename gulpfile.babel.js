@@ -51,6 +51,7 @@ gulp.task('watchify', () => {
   }
 });
 
+const skip_logs_js = './client/skipLogs.js';
 const vendor_files = [
   './client/lib/polyfill/*.js',
   './client/lib/jquery/jquery.min.js',
@@ -66,6 +67,12 @@ const vendor_files = [
 ];
 
 gulp.task('vendor', () => {
+  let files = vendor_files;
+  
+  if (process.env.NODE_ENV == 'production') {
+    files.unshift(skip_logs_js);
+  }
+
   var piped = gulp.src(vendor_files)
     .pipe(concat('vendor.js'));
 
