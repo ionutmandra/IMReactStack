@@ -87,7 +87,7 @@ export function large_enter_header(ref, callback, transition) {
         .add(_.filter([
             elements.header && TweenMax.to(elements.header, .6, { height: 400, ease: Power3.easeOut }),
             //these start in the middle (see delay)
-            elements.text && TweenMax.to(elements.text, .3, {
+            elements.text && TweenMax.to(elements.text, .5, {
                 x: '0%', ease: Power3.easeOut, delay: .3,
                 onStart: () => {
                     $target.removeClass('hover');
@@ -95,7 +95,7 @@ export function large_enter_header(ref, callback, transition) {
                     elements.$article.removeClass('overlap');
                 },
             }),
-            elements.contentItems && TweenMax.to(elements.contentItems, .3, { x: '0%', delay: .3, ease: Power3.easeOut }),
+            elements.contentItems && TweenMax.to(elements.contentItems, .5, { x: '0%', delay: .3, ease: Power3.easeOut }),
             elements.footer && TweenMax.to(elements.footer, .3, { height: 58, delay: .3, ease: Power3.easeOut }),
         ]));
 
