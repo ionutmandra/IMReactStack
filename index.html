@@ -102,9 +102,9 @@
         #adaptabiTxt{
             position: relative;
             top:50%;
-            width: 100px;
-            left:-100px;
-            display: none;
+            width: 0px;
+            left: 20px;
+            overflow: hidden;
         }
 
         #ie-splash{
@@ -269,12 +269,11 @@
         .set('#line', {  overflow:'visible' })
         .set('#leftLogo', {  overflow:'visible' })
         .set('#rightLogo',{  display:'none' })
-        .set('#adaptabiTxt', { display:'block' })
         .add([
             TweenMax.to('#leftLogo', fast ? .1 : 0.5, {  x: '-30px' , delay: fast ? 0 : 0.1 , ease:Power3.easeIn}),
-            TweenMax.to('#adaptabiTxt', fast ? .1 : 0.5, { x: '+105px', delay: fast ? 0 : 0.1 , ease:Power3.easeIn })
+            TweenMax.to('#adaptabiTxt', fast ? .1 : 0.5, { left: '5px', width: '100px', delay: fast ? 0 : 0.1 , ease:Power3.easeIn })
         ])
-        .set({},{delay: fast ? .1 : .5 })
+        .set({},{delay: fast ? .1 : .4 })
         .add(function(){
 
             var tick = setInterval(function(){myTimer() }, 100);
@@ -286,9 +285,9 @@
 
                     var timeline = new TimelineLite({ onComplete: function() { timeline = null; }})
                     .add([
-                        TweenMax.set('#line',{ 'border-right': 'none'}),
-                        TweenMax.to('#line', fast ? .4 : 0.6, { x: '-100%', ease: Power3.easeIn }),
-                        TweenMax.to('#liner', fast ? .4 : 0.6, { x: '+100%', ease: Power3.easeIn }),
+                        TweenMax.to('#line', 0.3, { borderRightColor: 'transparent', ease: Power3.easeOut }),
+                        TweenMax.to('#line', fast ? .4 : 0.6, { x: '-100%', delay: 0.2, ease: Power3.easeIn }),
+                        TweenMax.to('#liner', fast ? .4 : 0.6, { x: '+100%', delay: 0.2, ease: Power3.easeIn }),
                     ])
                     .add([TweenMax.to('#preload',.1, { 'z-index': 0})]);
                 }
