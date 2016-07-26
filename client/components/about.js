@@ -48,15 +48,20 @@ class About extends Component {
             <article className="page page-about">
                 <Header ref={'header'} title={'We are a software development company focused on delivering high quality products and services by sustaining learning and innovation'} />
                 <section className="content">
-                    <div className="spacer-40"/>
-                    <div className="row align-middle">
-                        <div className="large-8 large-offset-3 medium-9 medium-offset-1 small-22 small-offset-1 columns">
-                            {/*<h1 className="content-item">With offices in Romania and lately opened in United Kingdom, we have  been crafting web and mobile software applications since 2007</h1>*/}
-                            <h1 className="content-item">We have  been crafting web and mobile software applications since 2007</h1>
-                            <div className="spacer-40 medium-0 small-24 hide-for-medium"/>
-    						<p className="text-under-header content-item">A couple of years ago we started working on <Link to="/portfolio/sfb" onClick={this.handleSafetybankProjectClick}>Safetybank</Link> as a startup project and we took it to an enterprise class application with multiple platforms support.</p>                        </div>
-
-                        <div className="spacer-40 medium-0 small-24  hide-for-medium"/>
+                    <div className="spacer-100"/>
+                    <div className="row">
+                        <div className="large-8 large-offset-3 medium-14 medium-offset-1 small-22 small-offset-1 columns">
+                            <h1 className="content-item">We are crafting web and mobile software applications</h1>
+                            <div className="spacer-40 medium-0 small-24 hide-for-medium-only hide-for-small-only"></div>
+                            <div className="text-under-header content-item">
+                                <p>The story begins in 2007 when two friends who loved good code and had big dreams decided to start a software company.</p>
+                                <p>As time passed the team grew up and all of us were working on various technologies, projects and customers but most of the time separately.</p>
+                                <p>At some point, with help from a good friend and partner in UK, we started working in partnership on a startup project that gradually involved all of us.</p>
+                                <p>The project got from a simple application to an enterprise class, multi platform application, serving thousands of users and recognized with the most prestigious awards in the industry.</p>
+                                <p>Now, our journey continues and both application and team are constantly growing. But more than that we are a big happy family that is ready to take on new projects, challenges and ideas because the innovation process never stops.</p>
+                            </div>                        
+                        </div>
+                        <div className="spacer-40 medium-0 small-24 hide-for-large"/>
                         <div className="image large-9 large-offset-1 medium-11 medium-offset-2 small-24 small-offset-0 columns">
                             <img src="/client/dist/img/photos/color/3.jpg" className="content-item" />
                         </div>
@@ -66,7 +71,7 @@ class About extends Component {
                         <div className="row">
                             <span className="large-16 large-offset-3 medium-5 medium-offset-1 small-22 small-offset-1 columns"><h2 id="ourculture" className="content-item">Our culture</h2></span>
                         </div>
-                        <div className="spacer-40 hide-for-large" />
+                        <div className="spacer-40" />
                         <div className="row align-middle">
                             <div className="image light show-for-medium-up large-6 large-offset-6 show-for-large columns"><img src="/client/dist/img/photos/color/4.jpg" className="content-item"/></div>
                             <p className="large-5 large-pull-9 large-offset-0 medium-9 medium-offset-1 small-22 small-offset-1 columns"><span className="content-item block">We believe in <strong>happiness</strong> by enjoying what we do and doing what really matters.</span></p>

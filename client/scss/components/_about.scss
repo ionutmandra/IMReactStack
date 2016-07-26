@@ -66,6 +66,13 @@
                     width: 100%
                 }
             }
+            .text-under-header p {
+                padding-top: 20px;
+
+                &:first-child {
+                    padding-top: 0;
+                }
+            }
         }
         section.call-to-action {
             span.action-links {

@@ -53,6 +53,13 @@
                     background-size: contain;
                     background-repeat: no-repeat;
                     background-position: left center;
+                    filter: grayscale(100%);
+                    -webkit-filter: grayscale(100%);
+                    transition: filter .35s linear, -webkit-filter .35s linear;
+                    &.hover {
+                        filter: grayscale(0%);
+                        -webkit-filter: grayscale(0%);
+                    }
                     &.award1 {
                         background-image: url("/client/dist/img/projects/safetybank/award1.jpg");
                     }

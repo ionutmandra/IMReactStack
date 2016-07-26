@@ -30,13 +30,13 @@ class Portfolio extends Component {
             <article className="page page-portfolio">
                 <Header title={'We create high impact software solutions that help business succeed'} />
                 <section className="content">
-                    <div className="spacer-60"/>
-                    <div className="row align-middle">
+                    <div className="spacer-100"/>
+                    <div className="row">
                         <div className="large-8 large-offset-3 medium-9 medium-offset-1 small-22 small-offset-1 columns">
                             <h1 className="content-item">
                                 <Link ref="projDetails"   to={link} onClick={this.handleProjDetailsClick}>{'Safetybank'}</Link>
                             </h1>
-                            <div className="spacer-20 large-0 medium-0 small-24"/>
+                            <div className="spacer-40 large-0 medium-0 small-24"/>
                             <div className="content-item">
                                 <p>This is our largest project and we took it from a 50 hours concept to a <span className="no-break">50 000</span> hours enterprise class application.</p>
                                 <div className="spacer-20" />
