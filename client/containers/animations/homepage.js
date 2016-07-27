@@ -98,6 +98,7 @@ export function large_leave_header(ref, callback, transition, initialScroll) {
             TweenMax.to(elements.left[currentSlide], .3, { x: '-100%', ease: Power3.easeIn }),
             TweenMax.to(elements.right[currentSlide], .3, { x: '100%', ease: Power3.easeIn }),
             TweenMax.to(elements.bottom[currentSlide], .3, { y: '200px', ease: Power3.easeIn }),
+            TweenMax.to(elements.bottomP[currentSlide], .3, { y: '200px', ease: Power3.easeIn }),
             TweenMax.to(elements.image[currentSlide], 1.8, { scale: '1.2', ease: Power3.easeIn }),
         ]));
 }
@@ -194,6 +195,7 @@ export function large_leave_home_content(ref, callback, transition, initialScrol
             TweenMax.to(elements.left[currentSlide], .3, { x: '-100%', ease: Power3.easeIn }),
             TweenMax.to(elements.right[currentSlide], .3, { x: '100%', ease: Power3.easeIn }),
             TweenMax.to(elements.bottom[currentSlide], .3, { y: '200px', ease: Power3.easeIn }),
+            TweenMax.to(elements.bottomP[currentSlide], .3, { y: '200px', ease: Power3.easeIn }),
             TweenMax.to(elements.image[currentSlide], 1.5, { scale: '1.2', ease: Power3.easeIn }),
         ]));
 }
@@ -236,10 +238,16 @@ function extractDOMElements(ref) {
             $article.find('.slide-4.content .text-1 h1').toArray(),
         ],
         bottom: [
-            $article.find('.scroll-hint > *').toArray(),
-            $article.find('.scroll-hint > *').toArray(),
-            $article.find('.scroll-hint > *').toArray(),
-            $article.find('.scroll-hint > *').toArray(),
+            $article.find('.scroll-hint > svg, .scroll-hint > i').toArray(),
+            $article.find('.scroll-hint > svg, .scroll-hint > i').toArray(),
+            $article.find('.scroll-hint > svg, .scroll-hint > i').toArray(),
+            $article.find('.scroll-hint > svg, .scroll-hint > i').toArray(),
+        ],
+        bottomP: [
+            $article.find('.scroll-hint > p').toArray(),
+            $article.find('.scroll-hint > p').toArray(),
+            $article.find('.scroll-hint > p').toArray(),
+            $article.find('.scroll-hint > p').toArray(),
         ],
         image: [
             $article.find('.slide-1.background .img').toArray(),

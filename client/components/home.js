@@ -340,18 +340,6 @@ class Home extends Component {
             this.article.find('.slide-3.content .text-1 h1').toArray(),
             {},
         ];
-        var smallHomeLeft = [
-            this.article.find('.slide-1.content .text-1 h1, .slide-1.content .text-2 h2').toArray(),
-            this.article.find('.slide-2.content .text-1 h1').toArray(),
-            this.article.find('.slide-3.content .text-1 h1, .slide-3.content .text-2 h2').toArray(),
-            this.article.find('.slide-4.content .text-1 h1').toArray(),
-        ];
-        var homeBottom = [
-            this.article.find('.scroll-hint > *').toArray(),
-            this.article.find('.scroll-hint > *').toArray(),
-            this.article.find('.scroll-hint > *').toArray(),
-            this.article.find('.scroll-hint > *').toArray(),
-        ];
         var contactIsOpen = this.article.hasClass('contact-open');
         var menuIsOpen = this.article.hasClass('menu-open');
 
@@ -501,12 +489,12 @@ class Home extends Component {
                         <div className="text-1"><h1 ref={(c) => this._inputSustaining = c} >Sustaining <Link to="/expertise#innovation" data-animate-line="4" data-section="4" onClick={this.handleLinkClick}><span>learning</span> <span>and</span> <span>innovation</span></Link> as a part of our day to day activity.</h1></div>
                     </section>
 
-                    <div className="scroll-hint" ref={(c) => this._scrollHintContainer = c}>
-                        <svg onClick={this.handleHintClick} ref={(c) => this._scrollHint = c} width="70" height="70" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <div className="scroll-hint" ref={(c) => this._scrollHintContainer = c} onClick={this.handleHintClick}>
+                        <svg ref={(c) => this._scrollHint = c} width="70" height="70" version="1.1" xmlns="http://www.w3.org/2000/svg">
                             <circle id="bar" ref={(c) => this._scrollHintBar = c} r="33" cx="34" cy="34" fill="transparent" strokeDasharray="207" strokeDashoffset="0"></circle>
                         </svg>
-                        <i onClick={this.handleHintClick} className="ncs-chevron-thin-down" ref={(c) => this._scrollArrow = c}></i>
-                        <p onClick={this.handleHintClick} ref={(c) => this._scrollArrowText = c}>{'Find out more'}</p>
+                        <i className="ncs-chevron-thin-down" ref={(c) => this._scrollArrow = c}></i>
+                        <p ref={(c) => this._scrollArrowText = c}>{'Find out more'}</p>
                     </div>
 
                     <section className="slide slide-1v" ref={(c) => this._section1 = c}></section>
