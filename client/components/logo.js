@@ -54,7 +54,7 @@ class Logo extends Component {
 
         scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: article, triggerHook: 'onLeave', offset: 355 } )
             .addTo(controller)
-            .setTween(this.darken()));
+            .setTween(this.darkInstant()));
 
         this.handleMediaChange(this.props.ui.media);
     }

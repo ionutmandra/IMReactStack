@@ -88,7 +88,7 @@ export default class Burger extends Component {
         );
 
         scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 355 }).addTo(controller)
-            .setTween(this.darken())
+            .setTween(this.darkInstant())
         );
 
         this.handleMediaChange(this.props.ui.media);
