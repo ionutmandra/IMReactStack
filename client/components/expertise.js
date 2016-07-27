@@ -183,7 +183,7 @@ class Expertise extends Component {
                             <span className="show-for-large">Want to meet us?</span>
                             <span className="hide-for-large">Interested?</span>
                             <span className="action-links">
-                                <a onClick={this.onContactClick}><span>Send</span> <span>a</span> <span>message</span></a> or <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}><span>join</span> <span>the</span> <span>family</span></Link>.
+                                <a href="mailto:contact@adaptabi.com?subject=Inquiry"><span>Send</span> <span>a</span> <span>message</span></a> or <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}><span>join</span> <span>the</span> <span>family</span></Link>.
                             </span>
                         </p>
                     </div>
@@ -195,7 +195,7 @@ class Expertise extends Component {
                                 <p className="cta">
                                     <span className="hide-for-large">Interested?</span>
                                     <span className="action-links">
-                                        <a onClick={this.onContactClick}><span>Send</span> <span>a</span> <span>message</span></a> or <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}><span>join</span> <span>the</span> <span>family</span></Link>.
+                                        <a href="mailto:contact@adaptabi.com?subject=Inquiry"><span>Send</span> <span>a</span> <span>message</span></a> or <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}><span>join</span> <span>the</span> <span>family</span></Link>.
                                     </span>
                                 </p>
                             </div>
