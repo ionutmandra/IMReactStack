@@ -46,7 +46,7 @@ class About extends Component {
         var inlineBock ={display: 'inline-block'};
         return (
             <article className="page page-about">
-                <Header ref={'header'} title={'We are a software development company focused on delivering high quality products and services by sustaining learning and innovation'} />
+                <Header ref={'header'} title={'We deliver high quality software by sustaining learning and innovation'} />
                 <section className="content">
                     <div className="spacer-100"/>
                     <div className="row">
@@ -54,11 +54,10 @@ class About extends Component {
                             <h1 className="content-item">We are crafting web and mobile software applications</h1>
                             <div className="spacer-40 medium-0 small-24 hide-for-medium-only hide-for-small-only"></div>
                             <div className="text-under-header content-item">
-                                <p>The story begins in 2007 when two friends who loved good code and had big dreams decided to start a software company.</p>
-                                <p>As time passed the team grew up and all of us were working on various technologies, projects and customers but most of the time separately.</p>
-                                <p>At some point, with help from a good friend and partner in UK, we started working in partnership on a startup project that gradually involved all of us.</p>
-                                <p>The project got from a simple application to an enterprise class, multi platform application, serving thousands of users and recognized with the most prestigious awards in the industry.</p>
-                                <p>Now, our journey continues and both application and team are constantly growing. But more than that we are a big happy family that is ready to take on new projects, challenges and ideas because the innovation process never stops.</p>
+                                <p>The story begins in 2007 when two friends who loved <b>good code</b> and had <b>big dreams</b> decided to start a software company.</p>
+                                <p>As time passed the team grew up and with help from a good partner in the UK, we started working on a <b>startup project</b>.</p>
+                                <p>The project got from a simple app to an enterprise class application recognized with the most <b>prestigious awards</b> in the industry.</p>
+                                <p>Our journey continues with a growing family being ready to take on challenges because the <b>learning and innovation</b> process never stops.</p>
                             </div>                        
                         </div>
                         <div className="spacer-40 medium-0 small-24 hide-for-large"/>
