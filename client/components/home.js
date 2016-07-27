@@ -175,6 +175,7 @@ class Home extends Component {
 
         this._scrollHintBar = $(this._scrollHintBar);
         this.animations.setHintProgressInstant(this._scrollHintBar, { val: 25 });
+        this.animations.hideScrollArrowTextInstant(this._scrollArrowText);
 
         scenes.push(new ScrollMagic.Scene({ triggerElement: this._section1, triggerHook: 'onLeave', duration: '99%', offset: 1 })
             .addTo(controller)
@@ -252,6 +253,7 @@ class Home extends Component {
                 .add([
                     this.animations.setHintProgress(this._scrollHintBar, 75, 100),
                     TweenMax.to(_this._scrollArrow, 1, { rotation: '-90deg' }),
+                    this.animations.showScrollArrowText(this._scrollArrowText),
                 ]))
         );
 
@@ -501,10 +503,10 @@ class Home extends Component {
 
                     <div className="scroll-hint" ref={(c) => this._scrollHintContainer = c}>
                         <svg onClick={this.handleHintClick} ref={(c) => this._scrollHint = c} width="70" height="70" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                            <circle id="bar" ref={(c) => this._scrollHintBar = c} r="32" cx="34" cy="34" fill="transparent" strokeDasharray="201.056" strokeDashoffset="0"></circle>
+                            <circle id="bar" ref={(c) => this._scrollHintBar = c} r="33" cx="34" cy="34" fill="transparent" strokeDasharray="207" strokeDashoffset="0"></circle>
                         </svg>
                         <i onClick={this.handleHintClick} className="ncs-chevron-thin-down" ref={(c) => this._scrollArrow = c}></i>
-                        <p onClick={this.handleHintClick}>{'Find out more'}</p>
+                        <p onClick={this.handleHintClick} ref={(c) => this._scrollArrowText = c}>{'Find out more'}</p>
                     </div>
 
                     <section className="slide slide-1v" ref={(c) => this._section1 = c}></section>
@@ -655,6 +657,16 @@ function getAnimationUtils(component, controller, timeLines, scenes) {
         var t = TweenMax.to(scrollHint, 1, { val: toVal, onUpdate: ret.setHintProgressInstant.bind(this, hintBar, scrollHint) });
         timeLines.push(t);
         window.setHintProgressInstant = ret.setHintProgressInstant.bind(this, hintBar);
+        return t;
+    };
+    ret.hideScrollArrowTextInstant = function (elem) {
+        var t = TweenMax.set(elem, { y: '100%' });
+        timeLines.push(t);
+        return t;
+    };
+    ret.showScrollArrowText = function (elem) {
+        var t = TweenMax.to(elem, 0.7, { y: '0%' });
+        timeLines.push(t);
         return t;
     };
     return ret;

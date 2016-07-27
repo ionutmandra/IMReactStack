@@ -250,8 +250,8 @@
             border: 1px solid $white;
             overflow: visible;
             position: relative;
-            top: 1px;
-            left: 1px;
+            // top: 1px;
+            // left: 1px;
             cursor: pointer;
 
             circle {
@@ -263,7 +263,7 @@
             }
             circle#bar {
                 stroke: $white;
-                stroke-width: 6px;
+                stroke-width: 4px;
             }
         }
         i {
