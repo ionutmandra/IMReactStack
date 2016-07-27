@@ -38,15 +38,15 @@
                 margin: 0;
                 padding: 0;
                 li {
-                    padding-top: rem-calc(18pt);
-                    &:first-child {
-                        padding-top: 0;
-                    }
+                    padding-top: rem-calc(6pt);
                     &.expanded {
                         display: block;
-                        &.indent {
-                            padding-left: 5%;
-                            padding-top: rem-calc(6pt);
+                        &.bold {
+                            font-weight: $semibold;
+                            padding-top: rem-calc(18pt);
+                            &:first-child {
+                                padding-top: 0;
+                            }
                         }
                     }
                     &.condensed {
@@ -303,13 +303,13 @@
                 top: 55%;
                 ul {
                     li {
-                        padding-top: rem-calc(14pt);
-                        &:first-child {
-                            padding-top: 0;
-                        }
+                        padding-top: rem-calc(6pt);
                         &.expanded {
-                            &.indent {
-                                padding-top: rem-calc(6pt);
+                            &.bold {
+                                padding-top: rem-calc(14pt);
+                                &:first-child {
+                                    padding-top: 0;
+                                }
                             }
                         }
                         &.social-media {
