@@ -69,10 +69,10 @@
                 font-weight: $semibold;
                 font-size: rem-calc(28pt);
                 line-height: rem-calc(38pt);
-                color: white;
+                color: $white;
             }
             h2 {
-                color: white;
+                color: $white;
             }
             p {
                 margin: 0;
@@ -124,7 +124,7 @@
                 -webkit-transform: translateY(-50%);
                 transform: translateY(-50%);
                 h2 {
-                    color: white;
+                    color: $white;
                 }
             }
             .text-2 {
@@ -226,7 +226,10 @@
         opacity: .8;
     }
     a {
-        color: #FFFFFF;
+        color: $white;
+        span:after {
+            border-color: $white;
+        }
     }
 
     .scroll-hint {
@@ -238,7 +241,7 @@
         @include grid-column-offset(9);
         bottom: 5%;
         text-align: center;
-        color: white;
+        color: $white;
 
         > * {
             will-change: transform;
@@ -334,7 +337,7 @@
                         line-height: rem-calc(34pt);
                     }
                     h2 {
-                        color: white;
+                        color: $white;
                     }
                 }
                 .text-2 {

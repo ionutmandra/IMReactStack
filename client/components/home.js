@@ -253,7 +253,6 @@ class Home extends Component {
                 .add([
                     this.animations.setHintProgress(this._scrollHintBar, 75, 100),
                     TweenMax.to(_this._scrollArrow, 1, { rotation: '-90deg' }),
-                    this.animations.showScrollArrowText(this._scrollArrowText),
                 ]))
         );
 
@@ -283,6 +282,7 @@ class Home extends Component {
                 .add([
                     this.animations.moveToInitial(this._inputSustaining),
                     this.animations.showImg(this._img4),
+                    this.animations.showScrollArrowText(this._scrollArrowText),
                 ]))
         );
 
@@ -470,7 +470,7 @@ class Home extends Component {
                             <h1 ref={(c) => this._inputGrow = c}>
                                 <p>Growing an outstanding</p>
                                 <p>working environment driven</p>
-                                <p>by <Link to="/about#ourculture" data-animate-line="3" data-section="2" onClick={this.handleLinkClick}>our culture</Link></p>
+                                <p>by <Link to="/about#ourculture" data-animate-line="3" data-section="2" onClick={this.handleLinkClick}><span>our</span> <span>culture</span></Link></p>
                             </h1>
                         </div>
                         <div className="text-2">
@@ -492,13 +492,13 @@ class Home extends Component {
                     </section>
 
                     <section className="slide slide-3 content" ref={(c) => this._section3c = c}>
-                        <div className="text-1"><h1 ref={(c) => this._inputOffering = c}>Offering highest quality by constantly improving our <Link to="/expertise" data-animate-line="4" data-section="3" onClick={this.handleLinkClick}>skills and processes</Link></h1></div>
-                        <div className="text-2"><h2 ref={(c) => this._inputCreating = c}>Creating <Link to="/portfolio/sfb" data-animate-line="5" data-section="3" onClick={this.handleLinkClick}>high impact software solutions</Link> that help business succeed
+                        <div className="text-1"><h1 ref={(c) => this._inputOffering = c}>Offering highest quality by constantly improving our <Link to="/expertise" data-animate-line="4" data-section="3" onClick={this.handleLinkClick}><span>skills</span> <span>and</span> <span>processes</span></Link></h1></div>
+                        <div className="text-2"><h2 ref={(c) => this._inputCreating = c}>Creating <Link to="/portfolio/sfb" data-animate-line="5" data-section="3" onClick={this.handleLinkClick}><span>high</span> <span>impact</span> <span>software</span> <span>solutions</span></Link> that help business succeed
                         </h2></div>
                     </section>
 
                     <section className="slide slide-4 content"  ref={(c) => this._section4c = c}>
-                        <div className="text-1"><h1 ref={(c) => this._inputSustaining = c} >Sustaining <Link to="/expertise#innovation" data-animate-line="4" data-section="4" onClick={this.handleLinkClick}>learning and innovation</Link> as a part of our day to day activity.</h1></div>
+                        <div className="text-1"><h1 ref={(c) => this._inputSustaining = c} >Sustaining <Link to="/expertise#innovation" data-animate-line="4" data-section="4" onClick={this.handleLinkClick}><span>learning</span> <span>and</span> <span>innovation</span></Link> as a part of our day to day activity.</h1></div>
                     </section>
 
                     <div className="scroll-hint" ref={(c) => this._scrollHintContainer = c}>

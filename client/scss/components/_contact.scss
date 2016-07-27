@@ -11,7 +11,9 @@
         overflow: hidden;
         a {
             color: $white;
-            will-change: opacity;
+            span:after {
+                border-color: $white;
+            }
         }
         &.left {
             @include grid-row();

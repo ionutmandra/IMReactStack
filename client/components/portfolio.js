@@ -34,7 +34,7 @@ class Portfolio extends Component {
                     <div className="row">
                         <div className="large-8 large-offset-3 medium-9 medium-offset-1 small-22 small-offset-1 columns">
                             <h1 className="content-item">
-                                <Link ref="projDetails"   to={link} onClick={this.handleProjDetailsClick}>{'Safetybank'}</Link>
+                                <Link ref="projDetails"   to={link} onClick={this.handleProjDetailsClick}><span>Safetybank</span></Link>
                             </h1>
                             <div className="spacer-40 large-0 medium-0 small-24"/>
                             <div className="content-item">

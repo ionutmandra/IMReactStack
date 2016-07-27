@@ -72,7 +72,7 @@ class Careers extends Component {
                         <div className="large-6 large-offset-3 medium-11 medium-offset-1 small-22 small-offset-1 columns">
                             <Link to="/careers/seniorsoftwaredeveloper" onClick={this.handleCareerDetailsClick} className="content-item block">
                                 <div className="large-24 medium-24 small-21 columns">
-                                    <h1>Senior developer</h1>
+                                    <h1><span>Senior</span> <span>developer</span></h1>
                                     <h3>Full time</h3>
                                 </div>
                                 <div className="large-24 medium-24 small-3 columns go-to-career-details-container">
@@ -84,7 +84,7 @@ class Careers extends Component {
                         <div className="large-6 large-offset-0 medium-11 medium-offset-0 small-22 small-offset-1 columns">
                             <Link to="/careers/juniorsoftwaredeveloper" onClick={this.handleCareerDetailsClick} className="content-item block">
                                 <div className="large-24 medium-24 small-21 columns">
-                                    <h1>Junior developer</h1>
+                                    <h1><span>Junior</span> <span>developer</span></h1>
                                     <h3>Full time</h3>
                                 </div>
                                 <div className="large-24 medium-24 small-3 columns go-to-career-details-container">
@@ -97,7 +97,7 @@ class Careers extends Component {
                          <div className="large-6 large-offset-0  medium-11 medium-offset-1 small-22 small-offset-1 columns">
                             <Link to="/careers/qualityengineer" onClick={this.handleCareerDetailsClick} className="content-item block">
                                 <div className="large-24 medium-24 small-21 columns">
-                                    <h1>Quality Engineer</h1>
+                                    <h1><span>Quality</span> <span>Engineer</span></h1>
                                     <h3>Full time</h3>
                                 </div>
                                 <div className="large-24 medium-24 small-3 columns go-to-career-details-container">

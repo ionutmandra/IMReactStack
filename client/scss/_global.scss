@@ -46,15 +46,49 @@ h2 {
 svg {
     fill: currentColor;
 }
+// a {
+//     color: $text-color;
+//     text-decoration: underline;
+//     transition: opacity .2s ease-out;
+//     will-change: opacity;
+//     &:hover,&:focus {
+//         color: $text-color;
+//         opacity: .8;
+//         outline: 0 none;
+//     }
+//     &:active{
+//         outline: 0 none;
+//     }
+// }
 a {
     color: $text-color;
-    text-decoration: underline;
-    transition: opacity .2s ease-out;
-    will-change: opacity;
+    text-decoration: none;
+    
+    span {
+        overflow: visible;
+        position: relative;
+        transform: translate3d(0, 0, 0);
+        
+        &:after {
+            display: block;
+            content: '';
+            position: absolute;
+            bottom: 21%;
+            left: 0;
+            right: 0;
+            height: 0;
+            border-bottom: 1px solid $text-color;
+            will-change: bottom;
+            transition: bottom .2s ease-in;
+        }
+    }
+
     &:hover,&:focus {
         color: $text-color;
-        opacity: .8;
         outline: 0 none;
+        span:after {
+            bottom: 8%;
+        }
     }
     &:active{
         outline: 0 none;

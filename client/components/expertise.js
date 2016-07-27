@@ -118,7 +118,7 @@ class Expertise extends Component {
                             <h3 className="content-item">Continuous delivery</h3>
                             <div className="spacer-20"/>
                             <p>
-                                We aim to deliver as often and as fast as possible. Agile methodologies are at the core of our development process, mainly <a target="_blank" href="http://leansoftwareengineering.com/ksse/scrum-ban/">Scrumban</a> and <a target="_blank" href="http://ronjeffries.com/xprog/articles/the-noestimates-movement/">No Estimates</a>. We are flexible about the methodology and want to achieve <a target="_blank" href="https://continuousdelivery.com/">Continuous Deployment</a>.
+                                We aim to deliver as often and as fast as possible. Agile methodologies are at the core of our development process, mainly <a target="_blank" href="http://leansoftwareengineering.com/ksse/scrum-ban/"><span>Scrumban</span></a> and <a target="_blank" href="http://ronjeffries.com/xprog/articles/the-noestimates-movement/"><span>No</span> <span>Estimates</span></a>. We are flexible about the methodology and want to achieve <a target="_blank" href="https://continuousdelivery.com/"><span>Continuous</span> <span>Deployment</span></a>.
                             </p>
                         </div>
                         <div className="large-5 large-offset-1 medium-11 medium-offset-1 small-22 small-offset-1 columns">
@@ -128,7 +128,7 @@ class Expertise extends Component {
                             <div className="spacer-20"/>
 
                             <p>
-                                From unit tests to integration tests and from smoke tests to system tests we aim to automate them completely to ensure nothing gets missed. Also we believe that tests should be effective and the <a target="_blank" href="http://martinfowler.com/bliki/TestPyramid.html">Testing Pyramid</a> distribution is always taken into account.
+                                From unit tests to integration tests and from smoke tests to system tests we aim to automate them completely to ensure nothing gets missed. Also we believe that tests should be effective and the <a target="_blank" href="http://martinfowler.com/bliki/TestPyramid.html"><span>Testing</span> <span>Pyramid</span></a> distribution is always taken into account.
                             </p>
                             <div className="spacer-20"/>
                         </div>
@@ -139,7 +139,7 @@ class Expertise extends Component {
                             <h3 className="content-item">Build and deployment automation</h3>
                             <div className="spacer-20"/>
                             <p>
-                                We believe that repetitive tasks have to be automated. We achieve strong build processes and unit test automation with <a target="_blank" href="https://www.jetbrains.com/teamcity/"> TeamCity</a> and <a target="_blank" href="http://www.seleniumhq.org/"> Selenium</a>, and multi platform, multi environment deployment with <a target="_blank" href="https://octopus.com/">Octopus</a> and <a target="_blank" href="https://cordova.apache.org/">Cordova</a>.
+                                We believe that repetitive tasks have to be automated. We achieve strong build processes and unit test automation with <a target="_blank" href="https://www.jetbrains.com/teamcity/"><span>TeamCity</span></a> and <a target="_blank" href="http://www.seleniumhq.org/"><span>Selenium</span></a>, and multi platform, multi environment deployment with <a target="_blank" href="https://octopus.com/"><span>Octopus</span></a> and <a target="_blank" href="https://cordova.apache.org/"><span>Cordova</span></a>.
                             </p>
                             <div className="spacer-20"/>
                         </div>
@@ -168,9 +168,9 @@ class Expertise extends Component {
                             <ul className="content-item">
                                 <li>Unified build and deployment system for Cordova / Crosswalk mobile applications (instant deployment on all platforms) </li>
                                 <li>SPA framework for mobile applications</li>
-                                <li>Javascript high performance inheritance mechanism: <a  target="_blank" href="https://github.com/adaptabi/Javascript-FastClass">Fast-Class</a></li>
+                                <li>Javascript high performance inheritance mechanism: <a  target="_blank" href="https://github.com/adaptabi/Javascript-FastClass"><span>Fast</span><span>-</span><span>Class</span></a></li>
                                 <li>Custom components for Cordova / Crosswalk mobile applications (Smooth signature, Image editor, GPS component, etc.) </li>
-                                <li>Initiators and main supporters of <a target="_blank" href="http://www.meetup.com/Meteor-Iasi/">Meteor Group Iasi</a></li>
+                                <li>Initiators and main supporters of <a target="_blank" href="http://www.meetup.com/Meteor-Iasi/"><span>Meteor</span> <span>Group</span> <span>Iasi</span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -183,7 +183,7 @@ class Expertise extends Component {
                             <span className="show-for-large">Want to meet us?</span>
                             <span className="hide-for-large">Interested?</span>
                             <span className="action-links">
-                                <a onClick={this.onContactClick}>Send a message</a> or <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}>join the family.</Link>
+                                <a onClick={this.onContactClick}><span>Send</span> <span>a</span> <span>message</span></a> or <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}><span>join</span> <span>the</span> <span>family</span></Link>.
                             </span>
                         </p>
                     </div>
@@ -195,7 +195,7 @@ class Expertise extends Component {
                                 <p className="cta">
                                     <span className="hide-for-large">Interested?</span>
                                     <span className="action-links">
-                                        <a onClick={this.onContactClick}>Send a message</a> or <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}>join the family.</Link>
+                                        <a onClick={this.onContactClick}><span>Send</span> <span>a</span> <span>message</span></a> or <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}><span>join</span> <span>the</span> <span>family</span></Link>.
                                     </span>
                                 </p>
                             </div>
