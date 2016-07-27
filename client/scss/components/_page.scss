@@ -86,3 +86,11 @@
         }
     }
 }
+
+@media screen and #{breakpoint(small only)} {
+    #page-container {
+        article {
+            padding-bottom: 83px;
+        }
+    }
+}

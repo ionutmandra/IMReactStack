@@ -28,3 +28,31 @@ span{
         white-space: nowrap;
     }
 }
+
+.columns.bullets {
+    position: relative;
+    left: rem-calc(-5pt);
+    padding-left: rem-calc(5pt);
+    ul {
+        padding-left: rem-calc(15pt);
+        li:before {
+            content: '∙';
+            display: inline-block;
+            vertical-align: middle;
+            padding: 0;
+            font-size: rem-calc(48pt);
+            position: relative;
+            left: rem-calc(-15pt);
+            top: rem-calc(2pt);
+            transform: translateX(-45%);
+        }
+    }
+}
+
+@media screen and #{breakpoint(small only)} {
+    .columns.bullets ul li:before {
+        font-size: rem-calc(40pt);
+        top: rem-calc(1pt);
+        transform: translateX(-40%);
+    }
+}

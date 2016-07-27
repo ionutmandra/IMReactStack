@@ -42,7 +42,7 @@ class CareerQualityEngineer extends Component {
                     <div className="spacer-20"></div>
                     <div className="row">
                         <div className=" medium-5-5 medium-offset-1 show-for-medium-only columns"></div>
-                        <div className="large-9 large-offset-6 medium-11 medium-offset-0 small-22 small-offset-1 columns">
+                        <div className="large-9 large-offset-6 medium-11 medium-offset-0 small-22 small-offset-1 columns bullets">
                             <ul className="content-item">
                                 <li>Ensure the quality of the delivered products</li>
                                 <li>Write test cases</li>
@@ -60,7 +60,7 @@ class CareerQualityEngineer extends Component {
                     <div className="spacer-20"></div>
                     <div className="row">
                         <div className=" medium-5-5 medium-offset-1 show-for-medium-only columns"></div>
-                        <div className="large-9 large-offset-6 medium-11 medium-offset-0 small-22 small-offset-1 columns">
+                        <div className="large-9 large-offset-6 medium-11 medium-offset-0 small-22 small-offset-1 columns bullets">
                             <ul className="content-item">
                                 <li>1 year experience in manual testing</li>
                                 <li>Experience in writing test cases</li>

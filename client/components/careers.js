@@ -27,7 +27,7 @@ class Careers extends Component {
             <article className="page page-careers">
                 <Header title={'We treat every member of our team as a part of the family. We work and have fun together'} />
                 <section className="content">
-                    <div className="spacer-60" />
+                    <div className="spacer-100" />
                     <div className="row">
                         <div className="large-12 large-offset-3 medium-22 medium-offset-1 small-22 small-offset-1 columns">
                          <p className="content-item">We are always looking to get more help in our team and we value the following:</p>
@@ -35,7 +35,7 @@ class Careers extends Component {
                     </div>
                     <div className="spacer-20" />
                     <div className="row">
-                        <div className="large-9 large-offset-6 medium-22 medium-offset-1 small-22 small-offset-1 columns">
+                        <div className="large-9 large-offset-6 medium-22 medium-offset-1 small-22 small-offset-1 columns bullets">
                             <ul className="content-item">
                                 <li>See <strong>change</strong> as a part of progress</li>
                                 <li>Be willing to <strong>communicate clearly</strong> and openly</li>
@@ -54,7 +54,7 @@ class Careers extends Component {
                     </div>
                     <div className="spacer-20" />
                     <div className="row">
-                    <div className="large-9 large-offset-6 medium-22 medium-offset-1 small-22 small-offset-1 columns">
+                    <div className="large-9 large-offset-6 medium-22 medium-offset-1 small-22 small-offset-1 columns bullets">
                         <ul className="content-item">
                           <li>We have <strong>more free days</strong> than standard</li>
                           <li>We allocate <strong> research days every month </strong></li>
@@ -108,7 +108,7 @@ class Careers extends Component {
                     </div>
                     <div className="spacer-60" />
                     <div className="row"></div>
-                    <div className="spacer-100 show-for-large" />
+                    <div className="spacer-40 show-for-large" />
                 </section>
                 <Footer />
             </article>

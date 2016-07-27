@@ -42,7 +42,7 @@ class CareerJuniorDeveloper extends Component {
                     <div className="spacer-20"></div>
                     <div className="row">
                         <div className=" medium-5-5 medium-offset-1 show-for-medium-only columns"></div>
-                        <div className="large-9 large-offset-6 medium-11 medium-offset-0 small-22 small-offset-1 columns">
+                        <div className="large-9 large-offset-6 medium-11 medium-offset-0 small-22 small-offset-1 columns bullets">
                             <ul className="content-item">
                                 <li>Develop complex systems</li>
                                 <li>Getting familiar with the product and technologies that the team uses</li>
@@ -60,7 +60,7 @@ class CareerJuniorDeveloper extends Component {
                     <div className="spacer-20"></div>
                     <div className="row">
                         <div className=" medium-5-5 medium-offset-1 show-for-medium-only columns"></div>
-                        <div className="large-9 large-offset-6 medium-11 medium-offset-0 small-22 small-offset-1 columns">
+                        <div className="large-9 large-offset-6 medium-11 medium-offset-0 small-22 small-offset-1 columns bullets">
                             <ul className="content-item">
                                 <li>1 year experience in .Net C#</li>
                                 <li>1 year experience in Javascript / CSS / HTML</li>
