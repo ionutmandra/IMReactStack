@@ -83,7 +83,7 @@ class About extends Component {
                     </div>
                     <div className="spacer-100"/>
                     <div className="row">
-                        <span className="large-offset-3 medium-offset-1 small-offset-1 "><h2 className="content-item">The team</h2></span>
+                        <span className="large-offset-3 medium-offset-1 small-offset-1 columns"><h2 className="content-item">The team</h2></span>
                     </div>
                     <div className="spacer-40 hide-for-small-only"/>
                     <div className="row">
