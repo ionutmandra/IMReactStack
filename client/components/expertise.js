@@ -146,7 +146,7 @@ class Expertise extends Component {
                     </div>
                     <div className="spacer-20"/>
                     <div className="row innovation">
-                        <div className="large-12 large-offset-3 medium-18 medium-offset-1 small-22 small-offset-1 columns">
+                        <div className="large-12 large-offset-3 medium-18 medium-offset-1 small-22 small-offset-1 columns bullets">
                             <ul className="content-item">
                                 <li>Unified build and deployment system for Cordova / Crosswalk mobile applications (instant deployment on all platforms) </li>
                                 <li>SPA framework for mobile applications</li>
