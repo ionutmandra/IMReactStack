@@ -176,9 +176,9 @@ class HeaderLinks extends Component {
         };
         return (<nav className="links" ref="container">
             <ul>
-                <li><Link className={activeClass.about} ref={c => links.push(c) } data-animate-line="3" onClick={this.handleClick} to={routePaths.client.about} >{'About'}</Link></li>
-                <li><Link className={activeClass.expertise} ref={c => links.push(c) } data-animate-line="4" onClick={this.handleClick} to={routePaths.client.expertise}>{'Expertise'}</Link></li>
-                <li><Link className={activeClass.portfolio} ref={c => links.push(c) } data-animate-line="5" onClick={this.handleClick} to={routePaths.client.portfolio}>{'Portfolio'}</Link></li>
+                <li><Link className={activeClass.about} ref={c => links.push(c)} data-animate-line="3" onClick={this.handleClick} to={routePaths.client.about} >{'About'}</Link></li>
+                <li><Link className={activeClass.expertise} ref={c => links.push(c)} data-animate-line="4" onClick={this.handleClick} to={routePaths.client.expertise}>{'Expertise'}</Link></li>
+                <li><Link className={activeClass.portfolio} ref={c => links.push(c)} data-animate-line="5" onClick={this.handleClick} to={routePaths.client.portfolio}>{'Portfolio'}</Link></li>
                 <li><a ref={c => links.push(c) } data-animate-line="6" onClick={this.handleClick} href="https://blog.adaptabi.com" target="_blank">{'Blog'}</a></li>
                 <li><Link ref={c => links.push(c) } data-animate-line="7" onClick={this.props.openContact} to={routePaths.client.contact}>{'Contact'}</Link></li>
             </ul>
