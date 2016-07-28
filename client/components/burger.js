@@ -31,6 +31,7 @@ export default class Burger extends Component {
         this.text = this.header.find('.text h1');
 
         this.burger = $(refs.burger);
+        this.burgerIcon = $(refs.burgerIcon);
         this.close = $(refs.close);
 
         if (this.props.isHomepage) {
@@ -88,7 +89,15 @@ export default class Burger extends Component {
         );
 
         scenes[breakpoint.names.large].push(new ScrollMagic.Scene({ triggerElement: trigger, triggerHook: 'onLeave', offset: 355 }).addTo(controller)
-            .setTween(this.darkInstant())
+            //.setTween(this.darkInstant())
+            .on('start', (event => {
+                if (event.scrollDirection == 'FORWARD') {
+                    this.burgerIcon.addClass('dark');
+                }
+                if (event.scrollDirection == 'REVERSE') {
+                    this.burgerIcon.removeClass('dark');
+                }
+            }).bind(this))
         );
 
         this.handleMediaChange(this.props.ui.media);
@@ -396,7 +405,7 @@ export default class Burger extends Component {
     render() {
         return (
             <div className="hamburger" ref="hamburger">
-                <i className="open ncs-bars"  onClick={this.openBurger} ref="burger" />
+                <div className="open"  onClick={this.openBurger} ref="burger"><div className="burger" ref="burgerIcon" /></div>
                 <i className="close ncs-chevron-with-circle-left" onClick={this.closeBurger} ref="close" />
             </div>
         );
@@ -450,19 +459,10 @@ export default class Burger extends Component {
         return t;
     }
 
-    darken() {
-        let t = TweenMax.fromTo(this.burger, .3, { color: '#fefefe' }, { color: '#4d4d4d' });
-        this.timeLines.push(t);
-        return t;
-    }
     lightInstant() {
-        let t = TweenMax.set(this.burger, { color: '#fefefe' });
-        this.timeLines.push(t);
-        return t;
+        this.burgerIcon.removeClass('dark');
     }
     darkInstant() {
-        let t = TweenMax.set(this.burger, { color: '#4d4d4d' });
-        this.timeLines.push(t);
-        return t;
+        this.burgerIcon.addClass('dark');
     }
 }

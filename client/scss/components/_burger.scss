@@ -13,7 +13,7 @@
       z-index: 5;
     }
     
-    > i {
+    > i, > div {
       display: block;
       position: relative;
       padding: 40px 0 0 0;
@@ -28,8 +28,39 @@
       will-change: opacity, transform;
       
       &.open {
-        font-size: rem-calc(31.5pt);
         padding-left: 10px;
+        height: 78px;
+        .burger {
+          display: inline-block;
+          vertical-align: top;
+          width: 33px;
+          height: 0;
+          overflow: visible;
+          position: relative;
+          top: 3px;
+          border-radius: 6px;
+          border: 2px solid $white;
+          &:before, &:after {
+            content: '';
+            display: block;
+            border-radius: 6px;
+            position: absolute;
+            left: -2px;
+            right: -2px;
+            top: 10px;
+            height: 0;
+            border: 2px solid $white;
+          }
+          &:after {
+            top: 22px;
+          }
+          &.dark {
+            border-color: $text-color;
+            &:before, &:after {
+              border-color: $text-color;
+            }
+          }
+        }
       }
 
       &.close {
@@ -48,14 +79,14 @@
       header.main .hamburger {
           @include grid-col-size(2);
 
-          > i {
+          > i, > div {
             padding-top: rem-calc(20pt);
             text-align: right;
             left: auto;
             right: 0;
 
             &.close {
-              top: -58px;
+              top: -78px;
             }
           }
         }
