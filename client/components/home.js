@@ -414,7 +414,9 @@ class Home extends Component {
         let orientation = $window.outerHeight() > $window.outerWidth() ? 'portrait' : 'landscape';
         if (this.orientation != orientation) {
             this.orientation = orientation;
-            this.setSlidesHeight();
+            if (this.props.ui.media.current != 'none' && this.props.ui.media.current != breakpoint.names.large) {
+                this.setSlidesHeight();
+            }
         }
     }
 
