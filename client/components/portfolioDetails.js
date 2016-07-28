@@ -1,15 +1,11 @@
 import React, { PropTypes, Component } from 'react';
 import Header from '../containers/headerContainer';
 import Footer from '../containers/footerContainer';
-import { Link } from 'react-router';
-import routePaths from '../../common/routePaths';
 
 class PortfolioDetails extends Component {
 
     constructor(props) {
         super(props);
-        this.handleCallToActionClick = this.handleCallToActionClick.bind(this);
-        this.onContactClick = this.onContactClick.bind(this);
         this.touchStart = this.touchStart.bind(this);
         this.touchEnd = this.touchEnd.bind(this);
     }
@@ -37,20 +33,6 @@ class PortfolioDetails extends Component {
 
     touchEnd(event) {
         setTimeout(() => { $(event.target).removeClass('hover'); }, 250);
-    }
-
-    handleCallToActionClick(event) {
-        this.props.dispatchTransition({
-            type: 'content',
-            column: 6,
-            target: event.target,
-        });
-    }
-
-    onContactClick(event){
-        this.props.dispatchTransition({ type: 'openContact' });
-        //this cleanup is needed because user may close contact instead, then this won't work the 2nd time (no store update)
-        setTimeout((() => { this.props.dispatchTransition({ type: '' }); }).bind(this), 0);
     }
 
     render() {
@@ -141,8 +123,7 @@ class PortfolioDetails extends Component {
                                 <p className="cta">
                                     <span className="hide-for-large">Interested? </span>
                                     <span className="action-links">
-                                        <a href="mailto:contact@adaptabi.com?subject=Inquiry"><span>Send</span> <span>a</span> <span>message</span></a> or&nbsp;
-                                        <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}><span>join</span> <span>the</span> <span>family</span></Link>.
+                                        <a href="mailto:contact@adaptabi.com?subject=Inquiry"><span>Send</span> <span>a</span> <span>message</span></a>
                                     </span>
                                  </p>
                             </div>
@@ -153,8 +134,7 @@ class PortfolioDetails extends Component {
                             <span className="show-for-large">Want to meet us? </span>
                             <span className="hide-for-large">Interested? </span>
                             <span className="action-links">
-                                <a href="mailto:contact@adaptabi.com?subject=Inquiry"><span>Send</span> <span>a</span> <span>message</span></a> or&nbsp;
-                                <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}><span>join</span> <span>the</span> <span>family</span></Link>.
+                                <a href="mailto:contact@adaptabi.com?subject=Inquiry"><span>Send</span> <span>a</span> <span>message</span></a>
                             </span>
                         </p>
                     </div>

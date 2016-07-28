@@ -1,75 +1,88 @@
-@media screen and #{breakpoint(large)} {
-    #page-container {
-        & > article {
-            & > footer {
-                font-size: rem-calc(12pt);
-                color: $white;
-                background: $text-color;
-                padding: 0;
-                width: 100%;
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                overflow: hidden;
-                ul {
-                    list-style-type: none;
-                    padding: rem-calc(12pt 0 10pt);
-                    margin: 0;
-                    li {
-                        padding: 0;
-                        margin: 0 15px 0 0;
-                        display: inline-block;
-                        a {
+#page-container {
+    & > article {
+        & > footer {
+            font-size: rem-calc(12pt);
+            color: $white;
+            background: $text-color;
+            padding: 0;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            overflow: hidden;
+            ul {
+                list-style-type: none;
+                padding: rem-calc(12pt 0 10pt);
+                margin-bottom: 0;
+                li {
+                    padding: 0;
+                    margin-right: 15px;
+                    display: inline-block;
+                    a {
+                        text-decoration: none;
+                        opacity: .8;
+                        transition: opacity .2s ease-in;
+                        will-change: opacity;
+                        &:visited,
+                        &:link,
+                        &:hover {
                             text-decoration: none;
-                            &:visited,
-                            &:link,
-                            &:hover {
-                                text-decoration: none;
-                            }
                         }
-                        i {
-                            font-size: 30px;
-                            color: #dddddd;
+                        &:hover {
+                            opacity: 1;
                         }
                     }
+                    i {
+                        font-size: 30px;
+                        color: $white;
+                    }
+                }
+            }
+            .copy a {
+                display: inline-block;
+                padding: 7px 15px 8px;
+                margin-left: 7px;
+                color: $white;
+                vertical-align: middle;
+                background: $white linear-gradient(45deg, #d6cb26 0%, #68bc45 100%);
+                span:after {
+                    border-color: $white;
+                }
+                &.disable {
+                    display: none;
                 }
             }
         }
     }
 }
 
-@media screen and #{breakpoint(medium only)} {
+#page-container > article {
+    &.page-about > footer .copy a {
+        background: $white linear-gradient(45deg, #d6cb26 0%, #68bc45 100%);
+    }
+    &.page-expertise > footer .copy a {
+        background: $white linear-gradient(45deg, #68bc45 0%, #1895a3 100%);
+    }
+    &.page-portfolio > footer .copy a {
+        background: $white linear-gradient(45deg, #1895a3 0%, #4f2063 100%);
+    }
+    &.page-portfolio-details > footer .copy a {
+        background: $white linear-gradient(45deg, #c80786 0%, #ed2f2e 100%);
+    }
+    &.page-career-details > footer .copy a {
+        background: $white linear-gradient(45deg, #c80786 0%, #ed2f2e 100%);
+    }
+}
+
+@media screen and #{breakpoint(medium down)} {
     #page-container {
         & > article {
             & > footer {
-                font-size: rem-calc(12pt);
-                color: $white;
-                background: $text-color;
-                padding: 0;
-                width: 100%;
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                overflow: hidden;
                 ul {
-                    list-style-type: none;
-                    padding: rem-calc(12pt 0 10pt);
-                    margin: 0;
                     li {
                         padding: 0;
+                        margin-right: 0;
                         display: inline-block;
-                        a {
-                            text-decoration: none;
-                            &:visited,
-                            &:link,
-                            &:hover {
-                                text-decoration: none;
-                            }
-                        }
-                        i {
-                            font-size: 30px;
-                            color: #dddddd;
-                        }
                     }
                 }
             }
@@ -82,35 +95,17 @@
         & > article {
             & > footer {
                 font-size: rem-calc(10pt);
-                color: $white;
-                background: $text-color;
                 padding: 0 0 15px 0;
-                width: 100%;
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                overflow: hidden;
                 .copy {
                     text-align: center;
                 }
                 ul {
-                    list-style-type: none;
-                    padding: rem-calc(12pt 0 10pt);
-                    margin: 0;
                     li {
                         padding: 0;
+                        margin-right: 0;
                         display: inline-block;
-                        a {
-                            text-decoration: none;
-                            &:visited,
-                            &:link,
-                            &:hover {
-                                text-decoration: none;
-                            }
-                        }
                         i {
                             font-size: 26px;
-                            color: #dddddd;
                         }
                     }
                 }

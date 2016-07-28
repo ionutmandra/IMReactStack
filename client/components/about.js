@@ -1,49 +1,29 @@
 import React, { PropTypes, Component } from 'react';
-import { Link } from 'react-router';
-import routePaths from '../../common/routePaths';
 import Header from '../containers/headerContainer';
-//import Header from '../components/header';
 import Footer from '../containers/footerContainer';
-import { browserHistory  } from 'react-router';
+
 class About extends Component {
-  constructor(props) {
-    super(props);
-    this.handleSafetybankProjectClick = this.handleSafetybankProjectClick.bind(this);
-    this.handleCallToActionClick = this.handleCallToActionClick.bind(this);
-    this.onContactClick = this.onContactClick.bind(this);
-  }
+    constructor(props) {
+        super(props);
+        //this.handleSafetybankProjectClick = this.handleSafetybankProjectClick.bind(this);
+    }
 
-  handleSafetybankProjectClick(event) {
-    this.props.dispatchTransition({
-      type: 'content',
-      column: 5,
-      target: event.target,
-    });
-  }
+    //   handleSafetybankProjectClick(event) {
+    //     this.props.dispatchTransition({
+    //       type: 'content',
+    //       column: 5,
+    //       target: event.target,
+    //     });
+    //   }
 
-  handleCallToActionClick(event) {
-    this.props.dispatchTransition({
-      type: 'content',
-      column: 6,
-      target: event.target,
-    });
-  }
-
-  componentDidMount(){
-    //console.log('component did mount',this);
-    document.title = "Adaptabi - Team and culture";
-  }
-
-  onContactClick(event){
-    this.props.dispatchTransition({ type: 'openContact' });
-    //this cleanup is needed because user may close contact instead, then this won't work the 2nd time (no store update)
-    setTimeout((() => { this.props.dispatchTransition({ type: '' }); }).bind(this), 0);
-  }
+    componentDidMount() {
+        document.title = 'Adaptabi - Team and culture';
+    }
 
     render() {
         //console.log('render about js');
-        var divStyle = {display: 'none'};
-        var inlineBock ={display: 'inline-block'};
+        var divStyle = { display: 'none' };
+        var inlineBock = { display: 'inline-block' };
         return (
             <article className="page page-about">
                 <Header ref={'header'} title={'We deliver high quality software by sustaining learning and innovation'} />
@@ -58,7 +38,7 @@ class About extends Component {
                                 <p>As time passed the team grew up and with help from a good partner in the UK, we started working on a <b>startup project</b>.</p>
                                 <p>The project got from a simple app to an enterprise class application recognized with the most <b>prestigious awards</b> in the industry.</p>
                                 <p>Our journey continues with a growing family being ready to take on challenges because the <b>learning and innovation</b> process never stops.</p>
-                            </div>                        
+                            </div>
                         </div>
                         <div className="spacer-40 medium-0 small-24 hide-for-large"/>
                         <div className="image large-9 large-offset-1 medium-11 medium-offset-2 small-24 small-offset-0 columns">
@@ -103,7 +83,7 @@ class About extends Component {
                     </div>
                     <div className="spacer-100"/>
                     <div className="row">
-                      <span className="large-offset-3 medium-offset-1 small-offset-1 "><h2 className="content-item">The team</h2></span>
+                        <span className="large-offset-3 medium-offset-1 small-offset-1 "><h2 className="content-item">The team</h2></span>
                     </div>
                     <div className="spacer-40 hide-for-small-only"/>
                     <div className="row">
@@ -121,7 +101,7 @@ class About extends Component {
                                 </div>
                             </div>
                             <div className="row">
-                                 <div className="memeber-details-top columns">
+                                <div className="memeber-details-top columns">
                                     <p className="memeber-name content-item">Mădălina Dumitriu</p>
                                     <p className="memeber-job content-item">Quality Engineer</p>
                                 </div>
@@ -133,7 +113,7 @@ class About extends Component {
                                 </div>
                             </div>
                             <div className="row">
-                                 <div className="memeber-details-top columns">
+                                <div className="memeber-details-top columns">
                                     <p className="memeber-name content-item">Teodor Sandu</p>
                                     <p className="memeber-job content-item">Software Developer</p>
                                 </div>
@@ -141,7 +121,7 @@ class About extends Component {
                         </div>
                         <div className="large-6 large-offset-0 medium-11 medium-offset-0 small-22 small-offset-1">
                             <div className="row">
-                                 <div className="memeber-details-top columns">
+                                <div className="memeber-details-top columns">
                                     <p className="memeber-name content-item">Laurenţiu Macovei</p>
                                     <p className="memeber-job content-item">Co-founder and Software Developer</p>
                                 </div>
@@ -185,23 +165,21 @@ class About extends Component {
                             <div className="show-for-small-only small-22 small-offset-1 columns small-text-case">
                                 <p>Everything changes but our passion.</p>
                                 <p className="cta">
-                                    <span className="hide-for-large">Interested? </span>
+                                    <span className="hide-for-large">Interested?</span>
                                     <span className="action-links">
-                                      <a href="mailto:contact@adaptabi.com?subject=Inquiry"><span>Send</span> <span>a</span> <span>message</span></a> or&nbsp;
-                                      <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}><span>join</span> <span>the</span> <span>family</span></Link>.
+                                        <a href="mailto:contact@adaptabi.com?subject=Inquiry"><span>Send</span> <span>a</span> <span>message</span></a>
                                     </span>
-                                 </p>
+                                </p>
                             </div>
                         </div>
                     </div>
                     <div className="large-8 large-offset-3 large-order-1 medium-11 medium-offset-1 medium-order-1 small-24 show-for-medium columns">
                         <p className="content-item">Everything changes but our passion.</p>
                         <p className="cta content-item">
-                            <span className="show-for-large">Want to meet us? </span>
-                            <span className="hide-for-large">Interested? </span>
+                            <span className="show-for-large">Want to meet us?</span>
+                            <span className="hide-for-large">Interested?</span>
                             <span className="action-links">
-                              <a href="mailto:contact@adaptabi.com?subject=Inquiry"><span>Send</span> <span>a</span> <span>message</span></a> or&nbsp;
-                              <Link to={routePaths.client.careers} onClick={this.handleCallToActionClick}><span>join</span> <span>the</span> <span>family</span></Link>.
+                                <a href="mailto:contact@adaptabi.com?subject=Inquiry"><span>Send</span> <span>a</span> <span>message</span></a>
                             </span>
                         </p>
                     </div>

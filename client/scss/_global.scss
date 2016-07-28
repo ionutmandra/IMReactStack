@@ -21,6 +21,7 @@ html {
 body {
     position: relative;
     fill: currentColor; //for SVG
+    color: $text-color;
     -webkit-overflow-scrolling: auto;
     &.navigating a {
         pointer-events: none;
