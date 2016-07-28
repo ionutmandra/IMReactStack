@@ -39,7 +39,7 @@ class Expertise extends Component {
     render() {
         return (
             <article className="page page-expertise" ref="article">
-                <Header ref={'header'} title={'We aim to offer more than just working software by constantly improving our skills and processes'} />
+                <Header ref={'header'} title={'We aim to offer more than just working software by constantly improving our skills and processes'} highlightExpertise/>
                 <section className="content">
                     <div className="spacer-100"/>
                     <div className="row">

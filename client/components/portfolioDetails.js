@@ -38,7 +38,7 @@ class PortfolioDetails extends Component {
     render() {
         return (
             <article className="page page-portfolio-details" ref="article">
-                <Header title={'Safetybank is an enterprise class application with multiple platforms support'} />
+                <Header title={'Safetybank is an enterprise class application with multiple platforms support'} highlightPortfolio/>
                 <section className="content">
                 <div className="spacer-100"/>
                 <div className="row">

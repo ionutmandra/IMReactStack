@@ -26,7 +26,7 @@ class About extends Component {
         var inlineBock = { display: 'inline-block' };
         return (
             <article className="page page-about">
-                <Header ref={'header'} title={'We deliver high quality software by sustaining learning and innovation'} />
+                <Header ref={'header'} title={'We deliver high quality software by sustaining learning and innovation'} highlightAbout/>
                 <section className="content">
                     <div className="spacer-100"/>
                     <div className="row">

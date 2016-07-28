@@ -28,7 +28,7 @@ class Portfolio extends Component {
 
         return (
             <article className="page page-portfolio">
-                <Header title={'We create high impact software solutions that help business succeed'} />
+                <Header title={'We create high impact software solutions that help business succeed'} highlightPortfolio/>
                 <section className="content">
                     <div className="spacer-100"/>
                     <div className="row">
