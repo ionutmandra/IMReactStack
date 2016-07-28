@@ -57,13 +57,13 @@ class PortfolioDetails extends Component {
                     <div className="spacer-100" />
                     <div className="row align-middle awards">
                         <div className="large-9 large-offset-3 large-order-1 medium-22 medium-offset-1 medium-order-2 small-22 small-offset-1 small-order-2 columns project-awards">
-                            <span className="image-container award3 content-item large-6 large-offset-0 medium-6 medium-offset-0 small-12 small-offset-0"></span>
-                            <span className="image-container award1 content-item large-6 large-offset-2 medium-6 medium-offset-0 small-12 small-offset-0"></span>
-                            <span className="image-container award4 content-item large-6 large-offset-2 medium-6 medium-offset-0 small-12 small-offset-0"></span>
+                            <a href="http://housinginnovationawards.co.uk/portfolio/most-innovative-it-system-app/" target="_blank" className="image-container award3 content-item large-6 large-offset-0 medium-6 medium-offset-0 small-12 small-offset-0"></a>
+                            <a href="https://bcia.nce.co.uk/2015-winners-finalists" target="_blank" className="image-container award1 content-item large-6 large-offset-2 medium-6 medium-offset-0 small-12 small-offset-0"></a>
+                            <a href="http://www.ukitindustryawards.co.uk/static/2015-winners-photos" target="_blank" className="image-container award4 content-item large-6 large-offset-2 medium-6 medium-offset-0 small-12 small-offset-0"></a>
                             <div className="spacer-20 large-24 show-for-large"/>
-                            <span className="image-container award5 content-item large-6 large-offset-0 medium-6 medium-offset-0 small-12 small-offset-0"></span>
+                            <a href="https://stevieawards.com/iba/new-product-awards-winners-0" target="_blank" className="image-container award5 content-item large-6 large-offset-0 medium-6 medium-offset-0 small-12 small-offset-0"></a>
                             <div className="spacer-20 large-0 medium-24 show-for-medium-only"/>
-                            <span className="image-container award2 content-item large-6 large-offset-2 medium-6 medium-offset-0 small-12 small-offset-0"></span>
+                            <a href="http://caddealer.com/concompawards/?page=winnersandrunners2015" target="_blank" className="image-container award2 content-item large-6 large-offset-2 medium-6 medium-offset-0 small-12 small-offset-0"></a>
                         </div>
                         <div className="large-7 large-offset-0 large-order-2 medium-10 medium-offset-1 medium-order-1 small-22 small-offset-1 small-order-1 columns">
                             <h2 className="content-item">Safetybank is an award winning application in the last couple of years.</h2>
