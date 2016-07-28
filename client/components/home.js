@@ -11,6 +11,7 @@ class Home extends Component {
         super(props);
         this.handleLinkClick = this.handleLinkClick.bind(this);
         this.handleHintClick = this.handleHintClick.bind(this);
+        this.handleOrientationChange = this.handleOrientationChange.bind(this);
         this.setInitialScroll = this.setInitialScroll.bind(this);
         this.getInitialScroll = this.getInitialScroll.bind(this);
         this.initialScroll = undefined;
@@ -23,6 +24,8 @@ class Home extends Component {
         scenes[breakpoint.names.medium] = [];
         scenes[breakpoint.names.small] = [];
         this.animations = getAnimationUtils(this, controller, timeLines, scenes);
+
+        $window.on('resize', this.handleOrientationChange);
     }
 
     setInitialScroll(scroll) {
@@ -134,6 +137,7 @@ class Home extends Component {
         }
         this.controller.destroy();
         this.controller = null;
+        $window.off('resize', this.handleOrientationChange);
     }
 
     componentDidMount() {
@@ -148,6 +152,8 @@ class Home extends Component {
         this.article = $(this.refs.article);
 
         var gradients = this.gradients = ['#d6cb26', '#68bc45', '#1895a3', '#4f2063', '#c80786', '#ed2f2e'];
+
+        this.handleOrientationChange();
 
         //scenes
         this.animations.animateGradients(breakpoint.names.large, [this._section1, this._section2, this._section3], gradients);
@@ -286,14 +292,14 @@ class Home extends Component {
                 ]))
         );
 
-		//when navigating back to page media.current is not changing => shouldComponentUpdate not called => handleMediaChange not called
+        //when navigating back to page media.current is not changing => shouldComponentUpdate not called => handleMediaChange not called
         var notFirstPageLoad = this.props.ui.media.current != 'none' && this.props.ui.media.prev != 'none';
-        if(notFirstPageLoad){
+        if (notFirstPageLoad) {
             this.handleMediaChange(this.props.ui.media, this.props.transition);
         }
     }
 
-    disableAllScenesButCurrent(media, transition){
+    disableAllScenesButCurrent(media, transition) {
         for (let name in breakpoint.names) {
             this.setScenes(name, false);
         }
@@ -302,14 +308,14 @@ class Home extends Component {
         }
     }
 
-    showSlideAndContent(slide,images,leftContent,rightContent){
+    showSlideAndContent(slide, images, leftContent, rightContent) {
         this.animations.showSlide(slide);
         this.animations.showImgInstant(images);
         this.animations.moveToInitialInstant(leftContent);
         this.animations.moveToInitialInstant(rightContent);
     }
 
-    hideSlideContent(images,leftContent,rightContent){
+    hideSlideContent(images, leftContent, rightContent) {
         this.animations.hideImgInstant(images);
         this.animations.hideLeft(leftContent);
         this.animations.hideRight(rightContent);
@@ -343,42 +349,44 @@ class Home extends Component {
         var contactIsOpen = this.article.hasClass('contact-open');
         var menuIsOpen = this.article.hasClass('menu-open');
 
-        this.disableAllScenesButCurrent(media,transition);
+        this.disableAllScenesButCurrent(media, transition);
 
-        if (media.current == breakpoint.names.large){
+        if (media.current == breakpoint.names.large) {
             for (let i = 1; i < 4; i++) {
                 this.animations.hideSlide(sectionsContent[i]);
-                this.hideSlideContent(images[i],homeLeft[i],homeRight[i]);
+                this.hideSlideContent(images[i], homeLeft[i], homeRight[i]);
             }
 
             //resizing
-            if(media.current != media.prev){
+            if (media.current != media.prev) {
                 TweenMax.set([sectionsContent, sectionsBg], { clearProps: 'height,top' });
                 TweenMax.set(this._gradient, { clearProps: 'height' });
-                if(contactIsOpen){
-                    var currentSlide = Math.ceil(( initialScroll - 10) / height);
+                if (contactIsOpen) {
+                    var currentSlide = Math.ceil((initialScroll - 10) / height);
                     console.log('home with slide', currentSlide);
-                    this.timeLines.push(TweenMax.set(this._gradient, { background: 'linear-gradient(45deg, '
-                        + this.gradients[currentSlide] +' 0%,'
-                        + this.gradients[currentSlide+1] + ' 100%)' }));
+                    this.timeLines.push(TweenMax.set(this._gradient, {
+                        background: 'linear-gradient(45deg, '
+                        + this.gradients[currentSlide] + ' 0%,'
+                        + this.gradients[currentSlide + 1] + ' 100%)'
+                    }));
 
                     for (let i = 0; i < 4; i++) {
-                        if(currentSlide == i ){
+                        if (currentSlide == i) {
                             this.animations.showSlide(sectionsContent[i]);
                         }
                         else {
                             this.animations.hideSlide(sectionsContent[i]);
                         }
-                        this.hideSlideContent(images[i],homeLeft[i],homeRight[i]);
+                        this.hideSlideContent(images[i], homeLeft[i], homeRight[i]);
                     }
                 }
-                else{
+                else {
                     $window.scrollTop(0);
                     this.animations.clearGradient();
 
                     if (menuIsOpen) {
                         this.article.removeClass('menu-open');
-                        this.showSlideAndContent(sectionsContent[0],images[0],homeLeft[0],homeRight[0]);
+                        this.showSlideAndContent(sectionsContent[0], images[0], homeLeft[0], homeRight[0]);
                     }
                 }
             }
@@ -386,24 +394,38 @@ class Home extends Component {
 
         if (media.current != breakpoint.names.none && media.current != breakpoint.names.large) {
             this.animations.clearGradient();
-            var h = height * 1.09;
-            TweenMax.set(this._gradient, { height: 4 * h });
-            for (var i = 0; i < 4; i++) {
-                TweenMax.set(sectionsContent[i], { height: h, top: i * h });
-                TweenMax.set(sectionsBg[i], { height: h, top: i * h });
-            }
+            this.setSlidesHeight();
 
             if (menuIsOpen || contactIsOpen) {
                 for (let i = 0; i < 4; i++) {
                     this.animations.showSlide(sectionsContent[i]);
-                    this.hideSlideContent(images[i],homeLeft[i],homeRight[i]);
+                    this.hideSlideContent(images[i], homeLeft[i], homeRight[i]);
                 }
             }
             else {
                 for (let i = 0; i < 4; i++) {
-                    this.showSlideAndContent(sectionsContent[i],images[i],homeLeft[i],homeRight[i]);
+                    this.showSlideAndContent(sectionsContent[i], images[i], homeLeft[i], homeRight[i]);
                 }
             }
+        }
+    }
+
+    handleOrientationChange() {
+        let orientation = $window.outerHeight() > $window.outerWidth() ? 'portrait' : 'landscape';
+        if (this.orientation != orientation) {
+            this.orientation = orientation;
+            this.setSlidesHeight();
+        }
+    }
+
+    setSlidesHeight() {
+        var sectionsContent = [this._section1c, this._section2c, this._section3c, this._section4c];
+        var sectionsBg = [this._section1b, this._section2b, this._section3b, this._section4b];
+        var h = $window.outerHeight() * 1.09;
+        TweenMax.set(this._gradient, { height: 4 * h });
+        for (var i = 0; i < 4; i++) {
+            TweenMax.set(sectionsContent[i], { height: h, top: i * h });
+            TweenMax.set(sectionsBg[i], { height: h, top: i * h });
         }
     }
 
