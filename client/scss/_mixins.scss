@@ -2,7 +2,8 @@
 @mixin disable-link {
     text-decoration: none !important;
     pointer-events: none !important;
+    cursor: default !important;
     span:after {
-        display: none;
+        display: none !important;
     }
 }
