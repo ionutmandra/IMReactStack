@@ -12,14 +12,14 @@ class Portfolio extends Component {
     }
 
     componentDidMount(){
-      document.title = "Adaptabi - Our projects";
+      document.title = 'Adaptabi - Our projects';
     }
 
     handleProjDetailsClick(event) {
         this.props.dispatchTransition({
               type: 'content',
               column: 5,
-              target: event.target,
+              target: event.currentTarget,
           });
     }
 

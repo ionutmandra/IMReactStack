@@ -12,7 +12,7 @@ class Footer extends Component {
         this.props.dispatchTransition({
             type: 'content',
             column: 6,
-            target: event.target,
+            target: event.currentTarget,
         });
     }
 

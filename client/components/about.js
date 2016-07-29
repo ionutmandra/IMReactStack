@@ -5,25 +5,13 @@ import Footer from '../containers/footerContainer';
 class About extends Component {
     constructor(props) {
         super(props);
-        //this.handleSafetybankProjectClick = this.handleSafetybankProjectClick.bind(this);
     }
-
-    //   handleSafetybankProjectClick(event) {
-    //     this.props.dispatchTransition({
-    //       type: 'content',
-    //       column: 5,
-    //       target: event.target,
-    //     });
-    //   }
 
     componentDidMount() {
         document.title = 'Adaptabi - Team and culture';
     }
 
     render() {
-        //console.log('render about js');
-        var divStyle = { display: 'none' };
-        var inlineBock = { display: 'inline-block' };
         return (
             <article className="page page-about">
                 <Header ref={'header'} title={'We deliver high quality software by sustaining learning and innovation'} highlightAbout/>

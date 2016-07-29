@@ -14,12 +14,12 @@ class Careers extends Component {
         this.props.dispatchTransition({
             type: 'content',
             column: 6,
-            target: event.target,
+            target: event.currentTarget,
         });
     }
 
     componentDidMount(){
-        document.title = "Adaptabi - Careers";
+        document.title = 'Adaptabi - Careers';
     }
 
     render() {

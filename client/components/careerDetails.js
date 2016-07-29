@@ -19,27 +19,20 @@ class CareerDetails extends Component {
           this.props.dispatchTransition({
               type: 'content',
               column: 6,
-              target: event.target,
+              target: event.currentTarget,
           });
     }
 
     componentDidMount(){
-        document.title = "Adaptabi - Job details";
+        document.title = 'Adaptabi - Job details';
     }
 
     renderJobDescription(){
         switch (this.props.params.key){
-            case 'seniorsoftwaredeveloper':
-                    return (<CareerSeniorDeveloper onBackClick={this.handleBackToCareersClick} />);
-                break;
-            case 'juniorsoftwaredeveloper':
-                    return (<CareerJuniorDeveloper onBackClick={this.handleBackToCareersClick} />);
-                break;
-            case 'qualityengineer':
-                    return (<CareerQualityEngineer onBackClick={this.handleBackToCareersClick}/>);
-                break;
-            default:
-                return (<div></div>);
+            case 'seniorsoftwaredeveloper': return (<CareerSeniorDeveloper onBackClick={this.handleBackToCareersClick} />);
+            case 'juniorsoftwaredeveloper': return (<CareerJuniorDeveloper onBackClick={this.handleBackToCareersClick} />);
+            case 'qualityengineer': return (<CareerQualityEngineer onBackClick={this.handleBackToCareersClick}/>);
+            default: return (<div></div>);
         }
     }
 
@@ -50,10 +43,7 @@ class CareerDetails extends Component {
                     <section className="content">
                         <div className="spacer-100 show-for-medium"></div>
                         <div className="spacer-60 show-for-small-only"></div>
-
-                        {
-                         this.renderJobDescription()
-                        }
+                        {this.renderJobDescription()}
                         <div className="spacer-100"></div>
                     </section>
                     <Footer />

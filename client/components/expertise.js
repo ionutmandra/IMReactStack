@@ -29,11 +29,11 @@ class Expertise extends Component {
     }
 
     touchStart(event) {
-        $(event.target).addClass('hover');
+        $(event.currentTarget).addClass('hover');
     }
 
     touchEnd(event) {
-        setTimeout(() => { $(event.target).removeClass('hover'); }, 250);
+        setTimeout(() => { $(event.currentTarget).removeClass('hover'); }, 250);
     }
 
     render() {

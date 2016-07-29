@@ -83,9 +83,9 @@ class Home extends Component {
         if (this.scrolling) { event.preventDefault(); return; }
         this.props.dispatchTransition({
             type: 'home_content',
-            column: event.target.getAttribute('data-animate-line'),
-            target: event.target,
-            animations: this.getAnimations(event.target.getAttribute('data-section')),
+            column: event.currentTarget.getAttribute('data-animate-line'),
+            target: event.currentTarget,
+            animations: this.getAnimations(event.currentTarget.getAttribute('data-section')),
         });
     }
 
@@ -99,7 +99,7 @@ class Home extends Component {
             this.props.dispatchTransition({
                 type: 'home_content',
                 column: 3,
-                target: event.target,
+                target: event.currentTarget,
                 animations: this.getAnimations('4'),
             });
             browserHistory.push(routePaths.client.about);
@@ -142,7 +142,7 @@ class Home extends Component {
 
     componentDidMount() {
 
-        document.title = "Adaptabi - Software Innovators Happily Together";
+        document.title = 'Adaptabi - Software Innovators Happily Together';
 
         var controller = this.controller;
         var scenes = this.scenes[breakpoint.names.large];
@@ -367,7 +367,7 @@ class Home extends Component {
                     this.timeLines.push(TweenMax.set(this._gradient, {
                         background: 'linear-gradient(45deg, '
                         + this.gradients[currentSlide] + ' 0%,'
-                        + this.gradients[currentSlide + 1] + ' 100%)'
+                        + this.gradients[currentSlide + 1] + ' 100%)',
                     }));
 
                     for (let i = 0; i < 4; i++) {

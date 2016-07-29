@@ -2,6 +2,8 @@ import React, { PropTypes, Component } from 'react';
 import Header from '../containers/headerContainer';
 import Footer from '../containers/footerContainer';
 
+let $ = window.$;
+
 class PortfolioDetails extends Component {
 
     constructor(props) {
@@ -11,13 +13,7 @@ class PortfolioDetails extends Component {
     }
 
     componentDidMount() {
-        //   $('.grayscale-container').on('mouseenter mouseleave', function (e){
-        //     console.log('mouseleave/mouseenter');
-        //     $('.grayscale', this).toggleClass('hover grayscale-off');
-        //     $(this).find('.post-link').toggle();
-        // });
-
-        document.title = "Adaptabi - Safetybank";
+        document.title = 'Adaptabi - Safetybank';
 
         this.$icons = $(this.refs.article).find('.row.awards .image-container')
             .on('touchstart mouseenter', this.touchStart).on('touchend mouseleave', this.touchEnd);
@@ -28,11 +24,11 @@ class PortfolioDetails extends Component {
     }
 
     touchStart(event) {
-        $(event.target).addClass('hover');
+        $(event.currentTarget).addClass('hover');
     }
 
     touchEnd(event) {
-        setTimeout(() => { $(event.target).removeClass('hover'); }, 250);
+        setTimeout(() => { $(event.currentTarget).removeClass('hover'); }, 250);
     }
 
     render() {

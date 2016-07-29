@@ -11,8 +11,8 @@ class HeaderLinks extends Component {
     handleClick(event) {
         this.props.transition({
             type: this.props.animationType || 'header',
-            column: event.target.getAttribute('data-eq'),
-            target: event.target,
+            column: event.currentTarget.getAttribute('data-eq'),
+            target: event.currentTarget,
         });
     }
 
