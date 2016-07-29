@@ -515,7 +515,8 @@ class Home extends Component {
 
                     <div className="scroll-hint" ref={(c) => this._scrollHintContainer = c} onClick={this.handleHintClick}>
                         <svg ref={(c) => this._scrollHint = c} width="70" height="70" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                            <circle id="bar" ref={(c) => this._scrollHintBar = c} r="33" cx="34" cy="34" fill="transparent" strokeDasharray="207" strokeDashoffset="0"></circle>
+                            <circle id="bar" ref={(c) => this._scrollHintBar = c} r="33" cx="34" cy="34" fill="transparent" strokeDasharray="207" strokeDashoffset="0" 
+                                transform="rotate(270 34 34)"></circle>
                         </svg>
                         <i className="ncs-chevron-thin-down" ref={(c) => this._scrollArrow = c}></i>
                         <p ref={(c) => this._scrollArrowText = c}>{'Find out more'}</p>
