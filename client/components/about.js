@@ -32,7 +32,7 @@ class About extends Component {
                     <div className="row">
                         <div className="large-8 large-offset-3 medium-14 medium-offset-1 small-22 small-offset-1 columns">
                             <h1 className="content-item">We are crafting web and mobile software applications</h1>
-                            <div className="spacer-40 medium-0 small-24 hide-for-medium-only hide-for-small-only"></div>
+                            <div className="spacer-40 medium-0 small-24"></div>
                             <div className="text-under-header content-item">
                                 <p>The story begins in 2007 when two friends who loved <b>good code</b> and had <b>big dreams</b> decided to start a software company.</p>
                                 <p>As time passed the team grew up and with help from a good partner in the UK, we started working on a <b>startup project</b>.</p>
