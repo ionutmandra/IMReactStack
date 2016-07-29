@@ -34,7 +34,7 @@ span{
     left: rem-calc(-5pt);
     padding-left: rem-calc(5pt);
     ul {
-        padding-left: rem-calc(15pt);
+        padding-left: rem-calc(24pt);
         li:before {
             content: '∙';
             display: inline-block;
@@ -42,8 +42,10 @@ span{
             padding: 0;
             font-size: rem-calc(48pt);
             position: relative;
-            left: rem-calc(-15pt);
+            left: -26px;
             top: rem-calc(2pt);
+            width: 11px;
+            margin-right: -11px;
             transform: translateX(-45%);
         }
     }
