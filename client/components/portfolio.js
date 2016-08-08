@@ -38,7 +38,7 @@ class Portfolio extends Component {
                             </h1>
                             <div className="spacer-40 large-0 medium-0 small-24"/>
                             <div className="content-item">
-                                <p>This is our largest project and we took it from a 50 hours concept to a <span className="no-break">50 000</span> hours enterprise class application.</p>
+                                <p>This is our largest project to date which we have taken from a 50 hours concept to a <span className="no-break">50,000</span> hours enterprise class application.</p>
                                 <div className="spacer-20" />
                                 <p>The application was awarded "Most innovative application in housing industry" in 2016.</p>
                                 <div className="spacer-20" />

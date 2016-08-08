@@ -24,7 +24,7 @@ class About extends Component {
                             <div className="text-under-header content-item">
                                 <p>The story begins in 2007 when two friends who loved <b>good code</b> and had <b>big dreams</b> decided to start a software company.</p>
                                 <p>As time passed the team grew up and with help from a good partner in the UK, we started working on a <b>startup project</b>.</p>
-                                <p>The project got from a simple app to an enterprise class application recognized with the most <b>prestigious awards</b> in the industry.</p>
+                                <p>The project went from a simple app to an enterprise class application recognized with the most <b>prestigious awards</b> in the industry.</p>
                                 <p>Our journey continues with a growing family being ready to take on challenges because the <b>learning and innovation</b> process never stops.</p>
                             </div>
                         </div>
@@ -85,7 +85,7 @@ class About extends Component {
                             <div className="row">
                                 <div className="memeber-details-top columns">
                                     <p className="memeber-name content-item">Mario Theodorou</p>
-                                    <p className="memeber-job content-item">Account Manager</p>
+                                    <p className="memeber-job content-item">Co-founder and Account Manager</p>
                                 </div>
                             </div>
                             <div className="row">
