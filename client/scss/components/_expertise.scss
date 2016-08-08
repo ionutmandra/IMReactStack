@@ -188,3 +188,9 @@
         width: 75%;
     }
 }
+
+@media screen and (min-width: 1024px) and (max-width: 1440px) {
+    #page-container article.page-expertise .technologies img {
+        width: 67%;
+    }
+}
