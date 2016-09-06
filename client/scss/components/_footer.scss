@@ -66,11 +66,15 @@
     &.page-portfolio > footer .copy a {
         background: $white linear-gradient(45deg, #1895a3 0%, #4f2063 100%);
     }
-    &.page-portfolio-details > footer .copy a {
-        background: $white linear-gradient(45deg, #c80786 0%, #ed2f2e 100%);
+    &.page-portfolio-details,
+    &.page-career-details {
+        & > footer .copy a {
+            background: $white linear-gradient(45deg, #c80786 0%, #ed2f2e 100%);
+        }
     }
-    &.page-career-details > footer .copy a {
-        background: $white linear-gradient(45deg, #c80786 0%, #ed2f2e 100%);
+
+    &.page-contact > footer .copy a {
+        background: $white linear-gradient(45deg, #4f2063 0%, #c80786 100%);
     }
 }
 

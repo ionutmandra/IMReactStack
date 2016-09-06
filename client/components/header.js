@@ -121,7 +121,7 @@ class Header extends Component {
                 <header className="main" ref="header">
                     <div className="container">
                         <Logo isHomepage getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
-                        <HeaderLinks isHomepage openContact={this.openContact} getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll} highlightAbout={this.props.highlightAbout} highlightExpertise={this.props.highlightExpertise} highlightPortfolio={this.props.highlightPortfolio}/>
+                        <HeaderLinks isHomepage openContact={this.openContact} getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll} highlightAbout={this.props.highlightAbout} highlightExpertise={this.props.highlightExpertise} highlightPortfolio={this.props.highlightPortfolio} highlightContact={this.props.highlightContact} />
                         <Burger isHomepage getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
                         <Contact isHomepage renderCloseButton closeContact={this.closeContact} getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
                     </div>
@@ -135,7 +135,7 @@ class Header extends Component {
                         <div className="gradient" />
                         <div className="text"><h1>{this.props.title}</h1></div>
                         <Logo getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
-                        <HeaderLinks openContact={this.openContact} getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll} highlightAbout={this.props.highlightAbout} highlightExpertise={this.props.highlightExpertise} highlightPortfolio={this.props.highlightPortfolio}/>
+                        <HeaderLinks openContact={this.openContact} getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll} highlightAbout={this.props.highlightAbout} highlightExpertise={this.props.highlightExpertise} highlightPortfolio={this.props.highlightPortfolio} highlightContact={this.props.highlightContact}/>
                         <Burger getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
                         <Contact renderCloseButton closeContact={this.closeContact} getInitialScroll={this.getInitialScroll} setInitialScroll={this.setInitialScroll}/>
                     </div>

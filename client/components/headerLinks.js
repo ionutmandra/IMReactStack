@@ -173,6 +173,7 @@ class HeaderLinks extends Component {
             about: this.props.highlightAbout ? 'active' : '',
             expertise: this.props.highlightExpertise ? 'active' : '',
             portfolio: this.props.highlightPortfolio ? 'active' : '',
+            contact: this.props.highlightContact ? 'active' : '',
         };
         return (<nav className="links" ref="container">
             <ul>
@@ -180,7 +181,8 @@ class HeaderLinks extends Component {
                 <li><Link className={activeClass.expertise} ref={c => links.push(c)} data-animate-line="4" onClick={this.handleClick} to={routePaths.client.expertise}>{'Expertise'}</Link></li>
                 <li><Link className={activeClass.portfolio} ref={c => links.push(c)} data-animate-line="5" onClick={this.handleClick} to={routePaths.client.portfolio}>{'Portfolio'}</Link></li>
                 <li><a ref={c => links.push(c) } data-animate-line="6" onClick={this.handleClick} href="https://blog.adaptabi.com" target="_blank">{'Blog'}</a></li>
-                <li><Link ref={c => links.push(c) } data-animate-line="7" onClick={this.props.openContact} to={routePaths.client.contact}>{'Contact'}</Link></li>
+                {/*<li><Link ref={c => links.push(c) } data-animate-line="7" onClick={this.props.openContact} to={routePaths.client.contact}>{'Contact'}</Link></li>*/}
+                <li><Link className={activeClass.contact} ref={c => links.push(c) } data-animate-line="7" onClick={this.handleClick} to={routePaths.client.contact}>{'Contact'}</Link></li>
             </ul>
         </nav>);
     }
