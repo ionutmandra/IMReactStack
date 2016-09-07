@@ -38,14 +38,14 @@ class Home extends Component {
         switch (section) {
             case '2':
                 animations = {
-                    leftHide: [this._inputGrow, this._inputValuesRight],
-                    rightHide: [this._inputValuesLeft],
+                    leftHide: [this._inputCreating],
+                    rightHide: [this._inputOffering],
                 };
                 break;
             case '3':
                 animations = {
-                    leftHide: [this._inputCreating],
-                    rightHide: [this._inputOffering],
+                    leftHide: [this._inputGrow, this._inputValuesRight],
+                    rightHide: [this._inputValuesLeft],
                 };
                 break;
             case '4':
@@ -59,10 +59,10 @@ class Home extends Component {
         if (this.props.ui.media.current == breakpoint.names.small || this.props.ui.media.current == breakpoint.names.medium) {
             switch (section) {
                 case '2':
-                    animations.instantHide = [this._inputCreating, this._inputSustaining, this._inputCreate, this._inputOffering, this._inputSoftware];
+                    animations.instantHide = [this._inputGrow, this._inputValuesRight, this._inputSustaining, this._inputCreate, this._inputValuesLeft, this._inputSoftware];
                     break;
                 case '3':
-                    animations.instantHide = [this._inputGrow, this._inputValuesRight, this._inputSustaining, this._inputCreate, this._inputValuesLeft, this._inputSoftware];
+                    animations.instantHide = [this._inputCreating, this._inputSustaining, this._inputCreate, this._inputOffering, this._inputSoftware];
                     break;
                 case '4':
                     animations.instantHide = [this._inputGrow, this._inputValuesRight, this._inputCreating, this._inputCreate, this._inputOffering, this._inputValuesLeft, this._inputSoftware];
@@ -210,9 +210,8 @@ class Home extends Component {
                 .add(this.animations.hideSlide(this._section1c))
                 .add(this.animations.showSlide(this._section2c))
                 .add([
-                    this.animations.moveToInitial(this._inputGrow),
-                    this.animations.moveToInitial(this._inputValuesLeft),
-                    this.animations.moveToInitial(this._inputValuesRight),
+                    this.animations.moveToInitial(this._inputCreating),
+                    this.animations.moveToInitial(this._inputOffering),
                     this.animations.showImg(this._img2),
                 ])));
 
@@ -238,16 +237,17 @@ class Home extends Component {
             })
             .setTween(new TimelineMax()
                 .add([
-                    this.animations.moveLeft(this._inputGrow),
-                    this.animations.moveRight(this._inputValuesLeft),
-                    this.animations.moveLeft(this._inputValuesRight),
+                    this.animations.moveLeft(this._inputCreating),
+                    this.animations.moveRight(this._inputOffering),
                     this.animations.hideImg(this._img2),
                 ])
                 .add(this.animations.hideSlide(this._section2c))
                 .add(this.animations.showSlide(this._section3c))
                 .add([
-                    this.animations.moveToInitial(this._inputCreating),
-                    this.animations.moveToInitial(this._inputOffering),
+                    
+                    this.animations.moveToInitial(this._inputGrow),
+                    this.animations.moveToInitial(this._inputValuesLeft),
+                    this.animations.moveToInitial(this._inputValuesRight),
                     this.animations.showImg(this._img3),
                 ]))
         );
@@ -279,8 +279,9 @@ class Home extends Component {
             })
             .setTween(new TimelineMax()
                 .add([
-                    this.animations.moveLeft(this._inputCreating),
-                    this.animations.moveRight(this._inputOffering),
+                    this.animations.moveLeft(this._inputGrow),
+                    this.animations.moveRight(this._inputValuesLeft),
+                    this.animations.moveLeft(this._inputValuesRight),
                     this.animations.hideImg(this._img3),
                 ])
                 .add(this.animations.hideSlide(this._section3c))
@@ -336,14 +337,14 @@ class Home extends Component {
         var images = [this._img1, this._img2, this._img3, this._img4];
         var homeLeft = [
             this.article.find('.slide-1.content .text-2 h2').toArray(),
-            this.article.find('.slide-2.content .text-1 h1, .slide-2.content .text-3 .text-content').toArray(),
-            this.article.find('.slide-3.content .text-2 h2').toArray(),
+            this.article.find('.slide-2.content .text-2 h2').toArray(),
+            this.article.find('.slide-3.content .text-1 h1, .slide-3.content .text-3 .text-content').toArray(),
             this.article.find('.slide-4.content .text-1 h1').toArray(),
         ];
         var homeRight = [
             this.article.find('.slide-1.content .text-1 h1').toArray(),
-            this.article.find('.slide-2.content .text-2 .text-content').toArray(),
-            this.article.find('.slide-3.content .text-1 h1').toArray(),
+            this.article.find('.slide-2.content .text-1 h1').toArray(),
+            this.article.find('.slide-3.content .text-2 .text-content').toArray(),
             {},
         ];
         var contactIsOpen = this.article.hasClass('contact-open');
@@ -478,6 +479,12 @@ class Home extends Component {
                     </section>
 
                     <section className="slide slide-2 content"  ref={(c) => this._section2c = c}>
+                        <div className="text-1"><h1 ref={(c) => this._inputOffering = c}>Offering highest quality by constantly improving our <Link to="/expertise" data-animate-line="4" data-section="3" onClick={this.handleLinkClick}><span>skills</span> <span>and</span> <span>processes</span></Link></h1></div>
+                        <div className="text-2"><h2 ref={(c) => this._inputCreating = c}>Creating <Link to="/portfolio/sfb" data-animate-line="5" data-section="3" onClick={this.handleLinkClick}><span>high</span> <span>impact</span> <span>software</span> <span>solutions</span></Link> that help business succeed
+                        </h2></div>
+                    </section>
+
+                    <section className="slide slide-3 content" ref={(c) => this._section3c = c}>
                         <div className="text-1">
                             <h1 ref={(c) => this._inputGrow = c}>
                                 <p>Growing an outstanding</p>
@@ -501,12 +508,6 @@ class Home extends Component {
                                 <h2>INNOVATION</h2>
                             </div>
                         </div>
-                    </section>
-
-                    <section className="slide slide-3 content" ref={(c) => this._section3c = c}>
-                        <div className="text-1"><h1 ref={(c) => this._inputOffering = c}>Offering highest quality by constantly improving our <Link to="/expertise" data-animate-line="4" data-section="3" onClick={this.handleLinkClick}><span>skills</span> <span>and</span> <span>processes</span></Link></h1></div>
-                        <div className="text-2"><h2 ref={(c) => this._inputCreating = c}>Creating <Link to="/portfolio/sfb" data-animate-line="5" data-section="3" onClick={this.handleLinkClick}><span>high</span> <span>impact</span> <span>software</span> <span>solutions</span></Link> that help business succeed
-                        </h2></div>
                     </section>
 
                     <section className="slide slide-4 content"  ref={(c) => this._section4c = c}>
