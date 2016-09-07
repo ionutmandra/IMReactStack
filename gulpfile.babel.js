@@ -140,6 +140,12 @@ gulp.task('move-image-files', (callback) => {
       .pipe(gulp.dest('./client/dist/img'));
 });
 
+const emailPaths = ['./client/assets/email/**'];
+gulp.task('move-email-files', (callback) => {
+    return gulp.src(emailPaths)
+      .pipe(gulp.dest('./client/dist/email'));
+});
+
 gulp.task('move-site-maps', (callback) => {
     return gulp.src(['./siteMap.xml', './siteMapWww.xml'])
       .pipe(gulp.dest('./client/dist'));
@@ -164,8 +170,10 @@ gulp.task('test', (callback) => {
 });
 
 const scssPathsToWatch  = ['./client/lib/**/*.scss', './client/scss/**/*.scss'];
-gulp.task('default', ['vendor', 'watchify', 'app-sass', 'move-fonts', 'move-favicon', 'move-image-files', 'move-photoswipe-files'], function() {
+const emailPathsToWatch  = ['./client/assets/email/*'];
+gulp.task('default', ['vendor', 'watchify', 'app-sass', 'move-fonts', 'move-favicon', 'move-image-files', 'move-email-files', 'move-photoswipe-files'], function() {
   gulp.watch(scssPathsToWatch, ['app-sass']);
+  gulp.watch(emailPathsToWatch, ['move-email-files']);
 });
 
 gulp.task('clean', function () {
@@ -230,5 +238,5 @@ gulp.task('unit-tests', function () {
 });
 
 gulp.task('deploy', function () {
-  return runSequence('apply-prod-environment', 'clean', 'vendor', 'build', 'app-sass', 'move-fonts', 'move-favicon', 'move-image-files', 'move-photoswipe-files', 'move-site-maps', 'minify-css', 'unit-tests');
+  return runSequence('apply-prod-environment', 'clean', 'vendor', 'build', 'app-sass', 'move-fonts', 'move-favicon', 'move-image-files', 'move-email-files', 'move-photoswipe-files', 'move-site-maps', 'minify-css', 'unit-tests');
 });
