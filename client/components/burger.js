@@ -37,20 +37,20 @@ export default class Burger extends Component {
         if (this.props.isHomepage) {
             this.homeLeft = [
                 this.article.find('.slide-1.content .text-2 h2').toArray(),
-                this.article.find('.slide-2.content .text-1 h1, .slide-2.content .text-3 .text-content').toArray(),
-                this.article.find('.slide-3.content .text-2 h2').toArray(),
+                this.article.find('.slide-2.content .text-2 h2').toArray(),
+                this.article.find('.slide-3.content .text-1 h1, .slide-3.content .text-3 .text-content').toArray(),
                 this.article.find('.slide-4.content .text-1 h1').toArray(),
             ];
             this.homeRight = [
                 this.article.find('.slide-1.content .text-1 h1').toArray(),
-                this.article.find('.slide-2.content .text-2 .text-content').toArray(),
-                this.article.find('.slide-3.content .text-1 h1').toArray(),
+                this.article.find('.slide-2.content .text-1 h1').toArray(),
+                this.article.find('.slide-3.content .text-2 .text-content').toArray(),
                 {},
             ];
             this.smallHomeLeft = [
                 this.article.find('.slide-1.content .text-1 h1, .slide-1.content .text-2 h2').toArray(),
-                this.article.find('.slide-2.content .text-1 h1').toArray(),
-                this.article.find('.slide-3.content .text-1 h1, .slide-3.content .text-2 h2').toArray(),
+                this.article.find('.slide-2.content .text-1 h1, .slide-2.content .text-2 h2').toArray(),
+                this.article.find('.slide-3.content .text-1 h1').toArray(),
                 this.article.find('.slide-4.content .text-1 h1').toArray(),
             ];
             this.homeBottom = [
