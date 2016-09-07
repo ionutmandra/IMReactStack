@@ -35,6 +35,14 @@
     }
 }
 
+@media screen and (max-width: 780px) {
+    #page-container article.page-contact {
+        section.content {
+            background-image: none;
+        }
+    }
+}
+
 @media screen and #{breakpoint(small only)} {
     #page-container article.page-contact {
         section.content {
