@@ -72,7 +72,7 @@ class ContactPage extends Component {
                     <div className="row">
                         <ul className="large-18 large-offset-3 medium-22 medium-offset-1 small-22 small-offset-1 columns">
                             <li className="content-item social-media">
-                                <a target="_blank" href="https://www.linkedin.com/company/adaptabi" className="linkedin"><i className="ncs-linkedin-square" /></a>
+                                <a target="_blank" href="http://lnked.in/adaptabi" className="linkedin"><i className="ncs-linkedin-square" /></a>
                                 <a target="_blank" href="https://www.facebook.com/adaptabi/" className="facebook"><i className="ncs-facebook-square" /></a>
                                 <a target="_blank" href="https://twitter.com/adaptabidev" className="twitter"><i className="ncs-twitter" /></a>
                                 <a target="_blank" href="https://blog.adaptabi.com" className="medium"><i className="ncs-medium" /></a>

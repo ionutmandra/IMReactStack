@@ -30,7 +30,7 @@ class Footer extends Component {
             </div>
             <div className="large-6 large-offset-6 larger-order-2 medium-8 medium-order-2 small-22 small-offset-1 small-order-1 columns">
                 <ul className="row end">
-                    <li className="large-2 medium-6 medium-offset-0 small-4 small-offset-2"><a target="_blank" href="https://www.linkedin.com/company/adaptabi"><i className="ncs-linkedin-square" /></a></li>
+                    <li className="large-2 medium-6 medium-offset-0 small-4 small-offset-2"><a target="_blank" href="http://lnked.in/adaptabi"><i className="ncs-linkedin-square" /></a></li>
                     <li className="large-2 medium-6 medium-offset-0 small-4 small-offset-2"><a target="_blank" href="https://www.facebook.com/adaptabi/"><i className="ncs-facebook-square" /></a></li>
                     <li className="large-2 medium-6 medium-offset-0 small-4 small-offset-2"><a target="_blank" href="https://twitter.com/adaptabidev"><i className="ncs-twitter" /></a></li>
                     <li className="large-2 medium-6 medium-offset-0 small-4 small-offset-2"><a target="_blank" href="https://blog.adaptabi.com"><i className="ncs-medium" /></a></li>
