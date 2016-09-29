@@ -18,6 +18,7 @@ import PortfolioDetails from './containers/portfolioDetailsContainer';
 import Careers from './containers/careersContainer'; 
 import CareerDetails from './containers/careerDetailsContainer'; 
 import ContactPage from './containers/contactPageContainer';
+import NeedHelp from './containers/needHelpContainer';
 //import AdminHome from './containers/adminHomeContainer';
 //import { component as AboutList } from './containers/aboutListContainer';
 //import LoginComponent from './containers/loginContainer';
@@ -46,6 +47,7 @@ module.exports = (
             <Route path={routePaths.client.careers} component={Careers} />
             <Route path={routePaths.client.careerDetails} component={CareerDetails} />
             <Route path={routePaths.client.contact} component={ContactPage} />
+            <Route path={routePaths.client.needHelp} component={NeedHelp} />
             {/*<Route path={routePaths.client.root} component={Home} />
             <Route path={routePaths.client.about} component={AboutList}>
                 <Route path={routePaths.client.aboutName} component={AboutDetails} />

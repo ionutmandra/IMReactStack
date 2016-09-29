@@ -143,7 +143,17 @@
             background: $white linear-gradient(45deg, #4f2063 0%, #c80786 100%);
         }
         .image .img {
-            background-image: url(../img/photos/7.jpg);
+            background-image: url(../img/photos/6.jpg); //was 7
+        }
+    }
+
+    &.page-need-help header.main {
+        background: $white linear-gradient(45deg, #d6cb26 0%, #68bc45 100%);
+        .gradient {
+            background: $white linear-gradient(45deg, #d6cb26 0%, #68bc45 100%);
+        }
+        .image .img {
+            background-image: url(../img/photos/5.jpg);
         }
     }
 

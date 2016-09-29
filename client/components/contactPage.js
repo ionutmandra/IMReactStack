@@ -5,35 +5,8 @@ import Footer from '../containers/footerContainer';
 let $ = window.$;
 
 class ContactPage extends Component {
-    constructor(props) {
-        super(props);
-        this.touchStart = this.touchStart.bind(this);
-        this.touchEnd = this.touchEnd.bind(this);
-    }
-
     componentDidMount() {
-        //   $('.grayscale-container').on('mouseenter mouseleave', function (e){
-        //     console.log('mouseleave/mouseenter');
-        //     $('.grayscale', this).toggleClass('hover grayscale-off');
-        //     $(this).find('.post-link').toggle();
-        // });
-
-        document.title = "Adaptabi - Skills, processes and innovation";
-
-        this.$icons = $(this.refs.article).find('.grayscale-container img, .processes i')
-            .on('touchstart mouseenter', this.touchStart).on('touchend mouseleave', this.touchEnd);
-    }
-
-    componentWillUnmount() {
-        this.$icons.off('touchstart mouseenter', this.touchStart).off('touchend mouseleave', this.touchEnd);
-    }
-
-    touchStart(event) {
-        $(event.currentTarget).addClass('hover');
-    }
-
-    touchEnd(event) {
-        setTimeout(() => { $(event.currentTarget).removeClass('hover'); }, 250);
+        document.title = 'Adaptabi - Contact';
     }
 
     render() {
@@ -86,14 +59,5 @@ class ContactPage extends Component {
         );
     }
 }
-
-ContactPage.propTypes = {
-    strings: PropTypes.object.isRequired,
-};
-
-ContactPage.defaultProps = {
-    strings: {
-    },
-};
 
 export default ContactPage;
