@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 
 let $ = window.$;
 
-class ContactPage extends Component {
+class NeedHelpPage extends Component {
     constructor(props) {
         super(props);
         this.handleContentLinkClick = this.handleContentLinkClick.bind(this);
@@ -96,7 +96,7 @@ class ContactPage extends Component {
                                     <img src="/client/dist/img/icons/english.png" title="United Kingdom" />
                                 </div>
                                 <div className="content-item large-16 large-offset-0 medium-21 medium-offset-0 small-20 small-offset-0 columns">
-                                    <span className="center-v2">Proficient in English speaking and writing</span>
+                                    <span className="center-v2 fix-lines">Proficient in English speaking and writing</span>
                                 </div>
                             </div>
                         </div>
@@ -172,7 +172,7 @@ class ContactPage extends Component {
                         <div className="spacer-40 large-0 medium-0 small-24 show-for-small-only" />
                         <div className="large-6 large-offset-0 medium-22 medium-offset-1 small-22 small-offset-1 columns">
                             <h2 className="content-item">Want to meet us?</h2>
-                            <a className="cta-link" href="mailto:contact@adaptabi.com?subject=Need%20Help"><span>Send</span> <span>a</span> <span>message</span></a>
+                            <a className="cta-link" href="mailto:hello@adaptabi.com?subject=Need%20Help"><span>Send</span> <span>a</span> <span>message</span></a>
                         </div>
                     </div>
                     <div className="spacer-60" />
@@ -183,4 +183,4 @@ class ContactPage extends Component {
     }
 }
 
-export default ContactPage;
+export default NeedHelpPage;

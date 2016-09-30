@@ -17,7 +17,7 @@ class ContactPage extends Component {
                     <div className="spacer-100"/>
                     <div className="row">
                         <ul className="large-18 large-offset-3 medium-22 medium-offset-1 small-22 small-offset-1 columns">
-                            <li className="content-item e-mail"><span className="bold">E-mail: </span> <a href="mailto:contact@adaptabi.com?subject=Inquiry"><span>contact@adaptabi.com</span></a></li>
+                            <li className="content-item e-mail"><span className="bold">E-mail: </span> <a href="mailto:hello@adaptabi.com?subject=Inquiry"><span>hello@adaptabi.com</span></a></li>
                         </ul>
                     </div>
                     <div className="spacer-20"/>

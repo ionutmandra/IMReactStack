@@ -98,7 +98,7 @@ class Contact extends Component {
                     <li className="condensed">Romania: <span className="no-break">Sos. Tudor Neculai</span> <span className="no-break">nr. 52 D,</span> <span className="no-break">Iasi,</span> 700732, <a href="tel:+40729046526"><span>+40729046526</span></a></li>
                     <li className="condensed">UK: <span className="no-break">Prospect House,</span> <span className="no-break">2 Athenaeum Rd,</span> <span className="no-break">London,</span> <span className="no-break">N20 9AE,</span> <a href="tel:+447956809631"><span>+447956809631</span></a></li>
                     
-                    <li className="e-mail"><span className="tag">E-mail:</span> <a href="mailto:contact@adaptabi.com?subject=Inquiry"><span>contact@adaptabi.com</span></a></li>
+                    <li className="e-mail"><span className="tag">E-mail:</span> <a href="mailto:hello@adaptabi.com?subject=Inquiry"><span>hello@adaptabi.com</span></a></li>
                     
                     <li className="social-media">
                         <a target="_blank" href="http://lnked.in/adaptabi"><i className="ncs-linkedin-square" /></a>

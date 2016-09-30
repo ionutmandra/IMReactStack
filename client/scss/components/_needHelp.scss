@@ -156,3 +156,11 @@
         }
     }
 }
+
+@media screen and (min-width: 1025px) and (max-width: 1075px) {
+    #page-container article.page-need-help {
+        .fix-lines {
+            font-size: rem-calc(17pt);
+        }
+    }
+}
