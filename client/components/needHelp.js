@@ -73,8 +73,8 @@ class NeedHelpPage extends Component {
                                 <div className="large-3 large-offset-0 medium-6 medium-offset-0 small-12 small-offset-0 columns hide-for-medium-only"><a href="https://octopus.com/" target="_blank" className="grayscale-container"><img src="/client/dist/img/icons/octopus.png" title="Octopus Deploy" className="content-item grayscale"/></a></div>
                                 <div className="large-3 large-offset-0 medium-6 medium-offset-0 small-12 small-offset-0 columns"><a href="http://www.seleniumhq.org/" target="_blank" className="grayscale-container"><img src="/client/dist/img/icons/selenium.png" title="Selenium - Web Browser Automation" className="content-item grayscale" /></a></div>
                             </div>
-                            <div className="spacer-40 large-0 medium-0 small-24 show-for-small-only" />
                         </div>
+                        <div className="spacer-40 large-0 medium-0 small-24 show-for-small-only" />
                         <div className="facts large-6 large-offset-0 medium-22 medium-offset-1 small-22 small-offset-1 columns">
                             <div className="spacer-40 large-0 medium-24 small-0 show-for-medium-only" />
                             <div className="row">
@@ -119,6 +119,8 @@ class NeedHelpPage extends Component {
                                 Safetybank is an enterprise class application with multiple platforms support that was recognised with the "<a href="http://housinginnovationawards.co.uk/portfolio/most-innovative-it-system-app/" target="_blank"><span>Most</span> <span>innovative</span> <span>application</span> <span>in</span> <span>housing</span> <span>industry</span></a>" award in 2016.
                             </div>
                         </div>
+                        <div className="spacer-40 large-0 medium-24 small-0 show-for-medium-only" />
+                        <div className="spacer-40 large-0 medium-0 small-24 show-for-small-only" />
                         <div className="large-6 large-offset-0 medium-22 medium-offset-1 small-22 small-offset-1 columns">
                             <h1 className="content-item">Why us?</h1>
                             <div className="spacer-40"/>
