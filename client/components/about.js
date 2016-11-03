@@ -2,18 +2,38 @@ import React, { PropTypes, Component } from 'react';
 import Header from '../containers/headerContainer';
 import Footer from '../containers/footerContainer';
 
+let $ = window.$;
+
 class About extends Component {
     constructor(props) {
         super(props);
+        this.touchStart = this.touchStart.bind(this);
+        this.touchEnd = this.touchEnd.bind(this);
     }
 
     componentDidMount() {
         document.title = 'Adaptabi - Team and culture';
+        
+        this.$icons = $(this.refs.article).find('.member img')
+            .on('touchstart mouseenter', this.touchStart)
+            .on('touchend mouseleave', this.touchEnd);
+    }
+
+    componentWillUnmount() {
+        this.$icons.off('touchstart mouseenter', this.touchStart).off('touchend mouseleave', this.touchEnd);
+    }
+
+    touchStart(event) {
+        $(event.currentTarget).addClass('hover');
+    }
+
+    touchEnd(event) {
+        setTimeout(() => { $(event.currentTarget).removeClass('hover'); }, 250);
     }
 
     render() {
         return (
-            <article className="page page-about">
+            <article className="page page-about" ref="article">
                 <Header ref={'header'} title={'We deliver high quality software by sustaining learning and innovation'} highlightAbout/>
                 <section className="content">
                     <div className="spacer-100"/>
@@ -75,71 +95,62 @@ class About extends Component {
                     </div>
                     <div className="spacer-40 hide-for-small-only"/>
                     <div className="row">
-                        <div className="large-6 large-offset-3 medium-11 medium-offset-1 small-22 small-offset-1">
+                        <div className="large-12 large-offset-3 medium-22 medium-offset-1 small-22 small-offset-1">
                             <div className="row">
-                                <div className="memeber-details-top columns">
-                                    <p className="memeber-name content-item">Tudor Dumitriu</p>
-                                    <p className="memeber-job content-item">Co-founder and Project Manager</p>
+                                <div className="member large-12 large-offset-0 medium-12 medium-offset-0 small-24 small-offset-0 columns">
+                                    <img src="/client/dist/img/photos/team/tudor.jpg" title="Tudor Dumitriu" className="content-item grayscale" />
+                                    <p>Tudor <b>- Co-founder & Project Manager</b></p>
+                                </div>
+                                <div className="member large-12 large-offset-0 medium-12 medium-offset-0 small-24 small-offset-0 columns">
+                                    <img src="/client/dist/img/photos/team/laurentiu.jpg" title="Laurenţiu Macovei" className="content-item grayscale" />
+                                    <p>Laurenţiu <b>- Co-founder & Software Developer</b></p>
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="memeber-details-top columns">
-                                    <p className="memeber-name content-item">Mario Theodorou</p>
-                                    <p className="memeber-job content-item">Co-founder and Account Manager</p>
+                                <div className="member large-12 large-offset-0 medium-12 medium-offset-0 small-24 small-offset-0 columns">
+                                    <img src="/client/dist/img/photos/team/mario.jpg" title="Mario Theodorou" className="content-item grayscale" />
+                                    <p>Mario <b>- Co-founder & Account Manager</b></p>
+                                </div>
+                                <div className="member large-12 large-offset-0 medium-12 medium-offset-0 small-24 small-offset-0 columns">
+                                    <img src="/client/dist/img/photos/team/marius.jpg" title="Marius Baciu" className="content-item grayscale" />
+                                    <p>Marius <b>- Software Developer</b></p>
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="memeber-details-top columns">
-                                    <p className="memeber-name content-item">Mădălina Dumitriu</p>
-                                    <p className="memeber-job content-item">Quality Engineer</p>
+                                <div className="member large-12 large-offset-0 medium-12 medium-offset-0 small-24 small-offset-0 columns">
+                                    <img src="/client/dist/img/photos/team/madalina.jpg" title="Mădălina Dumitriu" className="content-item grayscale" />
+                                    <p>Mădălina <b>- Quality Engineer</b></p>
+                                </div>
+                                <div className="member large-12 large-offset-0 medium-12 medium-offset-0 small-24 small-offset-0 columns">
+                                    <img src="/client/dist/img/photos/team/bogdan.jpg" title="Bogdan Gherman" className="content-item grayscale" />
+                                    <p>Bogdan <b>- Software Developer</b></p>
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="memeber-details-top columns">
-                                    <p className="memeber-name content-item">Ionuţ Mândra</p>
-                                    <p className="memeber-job content-item">Software Developer</p>
+                                <div className="member large-12 large-offset-0 medium-12 medium-offset-0 small-24 small-offset-0 columns">
+                                    <img src="/client/dist/img/photos/team/ionut.jpg" title="Ionuţ Mândra" className="content-item grayscale" />
+                                    <p>Ionuţ <b>- Software Developer</b></p>
+                                </div>
+                                <div className="member large-12 large-offset-0 medium-12 medium-offset-0 small-24 small-offset-0 columns">
+                                    <img src="/client/dist/img/photos/team/dragos.jpg" title="Dragoş Radu" className="content-item grayscale" />
+                                    <p>Dragoş <b>- Quality Engineer</b></p>
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="memeber-details-top columns">
-                                    <p className="memeber-name content-item">Teodor Sandu</p>
-                                    <p className="memeber-job content-item">Software Developer</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="large-6 large-offset-0 medium-11 medium-offset-0 small-22 small-offset-1">
-                            <div className="row">
-                                <div className="memeber-details-top columns">
-                                    <p className="memeber-name content-item">Laurenţiu Macovei</p>
-                                    <p className="memeber-job content-item">Co-founder and Software Developer</p>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="memeber-details-top columns">
-                                    <p className="memeber-name content-item">Marius Baciu</p>
-                                    <p className="memeber-job content-item">Software Developer</p>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="memeber-details-top columns">
-                                    <p className="memeber-name content-item">Bogdan Gherman</p>
-                                    <p className="memeber-job content-item">Software Developer</p>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="memeber-details-top columns">
-                                    <p className="memeber-name content-item">Dragoş Radu</p>
-                                    <p className="memeber-job content-item">Quality Engineer</p>
+                                <div className="member large-12 large-offset-0 medium-12 medium-offset-0 small-24 small-offset-0 columns">
+                                    <img src="/client/dist/img/photos/team/teodor.jpg" title="Teodor Sandu" className="content-item grayscale" />
+                                    <p>Teodor <b>- Software Developer</b></p>
                                 </div>
                             </div>
                         </div>
-                        <div className="large-9 large-pull-3 show-for-large team-images">
+                        <div className="large-9 large-offset-0 show-for-large team-images">
                             <div className="row">
-                                <div className="image show-for-medium-up light large-24 large-offset-8 columns ">
-                                    <img src="/client/dist/img/photos/8.jpg" className="content-item"/>
+                                <div className="image show-for-medium-up light large-24 columns ">
+                                    <img src="/client/dist/img/photos/10.jpg" className="content-item"/>
+                                    <div className="spacer-100" />
                                 </div>
                                 <div className="image show-for-medium-up light large-24 columns ">
-                                    <img src="/client/dist/img/photos/9.jpg" className="content-item" />
+                                    <img src="/client/dist/img/photos/11.jpg" className="content-item" />
                                 </div>
                             </div>
                         </div>
