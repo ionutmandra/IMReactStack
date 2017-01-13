@@ -78,7 +78,7 @@ class NeedHelpPage extends Component {
                         <div className="facts large-6 large-offset-0 medium-22 medium-offset-1 small-22 small-offset-1 columns">
                             <div className="spacer-40 large-0 medium-24 small-0 show-for-medium-only" />
                             <div className="row">
-                                <div className="large-number content-item large-8 large-offset-0 medium-3 medium-offset-0 small-4 small-offset-0 columns">10</div>
+                                <div className="large-number content-item large-8 large-offset-0 medium-3 medium-offset-0 small-4 small-offset-0 columns">9</div>
                                 <div className="content-item large-16 large-offset-0 medium-21 medium-offset-0 small-20 small-offset-0 columns">
                                     <span className="center-v">Software Engineers</span>
                                 </div>
