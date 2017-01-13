@@ -40,10 +40,10 @@ var findUsers = function (args) {
 };
 
 var insertContactDetailsInDB = function (details) {
-    var con = MongoClient.connect(url, function (err, db) {
+    MongoClient.connect(url, function (err, db) {
         if (err == null) {
-            var colection = db.collection('contacts');
-            colection.insert(details);
+            var collection = db.collection('contacts');
+            collection.insert(details);
         }
     });
 };

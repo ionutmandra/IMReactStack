@@ -29,6 +29,126 @@
                 text-align: center;
             }
         }
+
+        form {
+            input[type="text"], input[type="tel"], textarea {
+                border: 0 none;
+                border-bottom: 2px solid $text-color;
+                padding: 5px 10px 5px 0;
+                margin: 0;
+                box-shadow: none;
+                background: transparent;
+                font-size: .8rem;
+            }
+            label[for] {
+                font-size: .8rem;
+                position: relative;
+                top: 30px;
+                cursor: text;
+                height: 20px;
+                transition: top .2s ease-out, font-size .2s ease-out;
+            }
+            .focus, .has-text {
+                label[for] {
+                    top: 0;
+                    font-size: .6rem;
+                }
+            }
+            footer {
+                position: relative; //important!
+                padding: 20px 0;
+            }
+            .field {
+                position: relative; //important!
+                padding-bottom: 20px;
+            }
+            h4 {
+                //min-height: 75px;
+            }
+            label.radio {
+                cursor: pointer;
+                position: relative;
+                padding: 6px 0 6px 22px;
+                line-height: 28px;
+                
+                input {
+                    position: absolute;
+                    margin-left: -9999px;
+                }
+
+                &:before {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    left: 0;
+                    top: 50%;
+                    margin-top: -10px;
+                    height: 16px;
+                    width: 16px;
+                    border-radius: 8px;
+                    border: 2px solid $text-color;
+                }
+
+                &:after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    left: 8px;
+                    top: 50%;
+                    margin-top: -2px;
+                    height: 0;
+                    width: 0;
+                    border-radius: 5px;
+                    background: $text-color;
+                    transition: all .2s ease-in;
+                }
+
+                &.selected:after {
+                    height: 10px;
+                    width: 10px;
+                    margin-top: -7px;
+                    margin-left: -5px;
+                }
+            }
+            button {
+                width: 100%;
+                height: 76px;
+                line-height: 76px;
+                text-align: middle;
+                padding: 0;
+                background: $white linear-gradient(45deg, #d6cb26 0%, #68bc45 100%);
+                color: $white;
+                outline: 0 none !important;
+
+                &[disabled] {
+                    background: $white linear-gradient(45deg, #c80786 0%, #ed2f2e 100%);
+
+                    &.done {
+                        background: $white linear-gradient(45deg, #1895a3 0%, #4f2063 100%);
+                    }
+                }
+            }
+            .error {
+                font-size: .6rem;
+                color: #ed2f2e;
+                overflow: hidden;
+                display: block;
+                height: 20px;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                transition: height .2s ease-in;
+                
+                &.hidden {
+                    height: 0;
+                }
+
+                &.submit {
+                    left: auto;
+                    right: 0;
+                }
+            }
+        }
     }
     .columns {
         overflow: hidden;

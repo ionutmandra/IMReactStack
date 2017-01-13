@@ -9,6 +9,8 @@ var routePaths = require('../common/routePaths');
 var pathToRegexp = require('path-to-regexp');
 var validators = require('../common/validators');
 var _ = require('lodash');
+var nodemailer = require('nodemailer');
+var https = require('https');
 
 //setup regexes to skip when checking for 404 (prevent server authenticated routes to get 404)
 var skip404regexes = [];
@@ -69,10 +71,61 @@ function setApiRoutes(router) {
 	});
 
     router.post('/api/contact', function (req, res) {
-        var errors = validators.contact(req.body),
-            success = _.isEmpty(errors);
-		db.insertContactDetails(req.body);
-        res.send({ success, errors });
+		console.log('==================== API ENTRY ======================');
+        var validation = validators.contact(req.body);
+		console.log('validation', validation);
+		if (validation.hasErrors) {
+			res.send({ success: !validation.hasErrors, errors: validation.errors });
+			return;
+		}
+		console.log('validation OK, validating captcha');
+		var request = https.request({
+			hostname: 'www.google.com',
+			path: '/recaptcha/api/siteverify?secret=6LdPnxEUAAAAAJLi04M6j1vmB_g-SqS_I37l-JQ0&response=' + req.body.captcha,		
+		}, function(res2) {
+			console.log('========== RESPONSE FROM GOOGLE RECAPTCHA');
+			console.log('statusCode:', res2.statusCode);
+			console.log('headers:', res2.headers);
+
+			res2.on('data', (d) => {
+				let json = JSON.parse(d.toString());
+				console.log('data:', d, json);
+				if (json.success) {
+					// create reusable transporter object using the default SMTP transport
+					var transporter = nodemailer.createTransport('smtps://testingwhattheheck%40gmail.com:qweqwe!!@smtp.gmail.com');
+
+					// setup e-mail data with unicode symbols
+					var mailOptions = {
+						from: '"test testiong" <testingwhattheheck@gmail.com>', // sender address
+						to: 'testingwhattheheck@gmail.com', //'tudor@adaptabi.com, ', // list of receivers
+						subject: 'Contact from Adaptabi website Contact Form', // Subject line
+						text: 'Hello world ?', // plaintext body
+						html: '<b>Hello world ?</b>', // html body
+					};
+
+					// send mail with defined transport object
+					transporter.sendMail(mailOptions, function(error, info){
+						if(error){
+							res.send({ success: false, errors: { submit: 'Mail sending failed.' } });
+							return console.log(error);
+						}
+						console.log('Message sent: ' + info.response);
+						db.insertContactDetails(req.body);
+						res.send({ success: true, errors: { } });
+					});
+
+				} else {
+					res.send({ success: false, errors: { captcha: 'Captcha validation failed.' } });
+				}
+			});
+		});
+
+		request.on('error', (e) => {
+			console.log('error:', e);
+			res.send({ success: false, errors: { captcha: 'Captcha validation request failed.' } });
+		});
+		
+		request.end();
     });
 
 	//init
