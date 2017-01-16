@@ -229,38 +229,38 @@ class ContactPage extends Component {
                             </div>
                             <div className="spacer-40"/>
                             <div className="row">
-                                <div className="field content-item large-8 large-offset-0 columns">
+                                <div className="field content-item large-8 medium-8 small-12 columns">
                                     <h4>Your type?</h4>
                                     <label className="radio"><input type="radio" name="who" value="startup" onChange={this.handleChange.bind(this, 'who')} /> Startup</label>
                                     <label className="radio"><input type="radio" name="who" value="business" onChange={this.handleChange.bind(this, 'who')} /> Business</label>
                                     <label className="radio"><input type="radio" name="who" value="enterprise" onChange={this.handleChange.bind(this, 'who')} /> Enterprise</label>
                                 </div>
-                                <div className="field content-item large-8 columns">
+                                <div className="field content-item large-8 medium-8 small-12 columns">
                                     <h4>Your need?</h4>
                                     <label className="radio"><input type="radio" name="what" value="website" onChange={this.handleChange.bind(this, 'what')} /> Website</label>
                                     <label className="radio"><input type="radio" name="what" value="software" onChange={this.handleChange.bind(this, 'what')} /> Software</label>
                                     <label className="radio"><input type="radio" name="what" value="mobile" onChange={this.handleChange.bind(this, 'what')} /> Mobile app</label>
                                 </div>
-                                <div className="field content-item large-8 columns">
+                                <div className="field content-item large-8 medium-8 small-12 columns">
                                     <h4>Your budget?</h4>
-                                    <label className="radio"><input type="radio" name="budget" value="low" onChange={this.handleChange.bind(this, 'budget')} /> $20k - $30k</label>
-                                    <label className="radio"><input type="radio" name="budget" value="medium" onChange={this.handleChange.bind(this, 'budget')} /> $30k - $50k</label>
-                                    <label className="radio"><input type="radio" name="budget" value="high" onChange={this.handleChange.bind(this, 'budget')} /> $50k+</label>
+                                    <label className="radio"><input type="radio" name="budget" value="$20k - $30k" onChange={this.handleChange.bind(this, 'budget')} /> $20k - $30k</label>
+                                    <label className="radio"><input type="radio" name="budget" value="$30k - $50k" onChange={this.handleChange.bind(this, 'budget')} /> $30k - $50k</label>
+                                    <label className="radio"><input type="radio" name="budget" value="$50k+" onChange={this.handleChange.bind(this, 'budget')} /> $50k+</label>
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="field content-item large-16 large-offset-0 columns">
+                                <div className="field content-item large-16 columns">
                                     <label htmlFor="message">Message *</label>
                                     <textarea id="message" value={form.message} onChange={this.handleChange.bind(this, 'message')} onFocus={this.handleFocus} onBlur={this.handleBlur}></textarea>
                                     <span className={this.getErrorClass('message')}>{this.getErrorText('message')}</span>
                                 </div>
                             </div>
                             <footer className="row">
-                                <div className="field content-item large-18 large-offset-0 columns">
+                                <div className="field content-item large-18 medium-12 small-24 columns">
                                     <div ref="captcha"></div>
                                     <span className={this.getErrorClass('captcha')}>{this.getErrorText('captcha')}</span>
                                 </div>
-                                <div className="content-item large-6 large-offset-0 columns">
+                                <div className="content-item large-6 medium-12 small-24 columns">
                                     {button}
                                 </div>
                                 <span className={this.getErrorClass('submit')}>{this.getErrorText('submit')}</span>

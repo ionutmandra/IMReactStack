@@ -70,19 +70,16 @@ function setApiRoutes(router) {
 		res.send('hello ' + req.params.name + '!');
 	});
 
-    router.post('/api/contact', function (req, res) {
-		console.log('==================== API ENTRY ======================');
-        var validation = validators.contact(req.body);
-		console.log('validation', validation);
+	router.post('/api/contact', function (req, res) {
+		var validation = validators.contact(req.body);
 		if (validation.hasErrors) {
 			res.send({ success: !validation.hasErrors, errors: validation.errors });
 			return;
 		}
-		console.log('validation OK, validating captcha');
 		var request = https.request({
 			hostname: 'www.google.com',
-			path: '/recaptcha/api/siteverify?secret=6LdPnxEUAAAAAJLi04M6j1vmB_g-SqS_I37l-JQ0&response=' + req.body.captcha,		
-		}, function(res2) {
+			path: '/recaptcha/api/siteverify?secret=6LdPnxEUAAAAAJLi04M6j1vmB_g-SqS_I37l-JQ0&response=' + req.body.captcha,
+		}, function (res2) {
 			console.log('========== RESPONSE FROM GOOGLE RECAPTCHA');
 			console.log('statusCode:', res2.statusCode);
 			console.log('headers:', res2.headers);
@@ -91,28 +88,29 @@ function setApiRoutes(router) {
 				let json = JSON.parse(d.toString());
 				console.log('data:', d, json);
 				if (json.success) {
-					// create reusable transporter object using the default SMTP transport
 					var transporter = nodemailer.createTransport('smtps://testingwhattheheck%40gmail.com:qweqwe!!@smtp.gmail.com');
+					var email = getContactEmailBody(req.body);
 
-					// setup e-mail data with unicode symbols
 					var mailOptions = {
-						from: '"test testiong" <testingwhattheheck@gmail.com>', // sender address
-						to: 'testingwhattheheck@gmail.com', //'tudor@adaptabi.com, ', // list of receivers
-						subject: 'Contact from Adaptabi website Contact Form', // Subject line
-						text: 'Hello world ?', // plaintext body
-						html: '<b>Hello world ?</b>', // html body
+						from: '"test testiong" <testingwhattheheck@gmail.com>',
+						to: 'testingwhattheheck@gmail.com', //'tudor@adaptabi.com',
+						subject: 'Contact form completion on Adaptabi.com website - contact page',
+						text: email.text,
+						html: email.html,
 					};
 
-					// send mail with defined transport object
-					transporter.sendMail(mailOptions, function(error, info){
-						if(error){
-							res.send({ success: false, errors: { submit: 'Mail sending failed.' } });
-							return console.log(error);
-						}
-						console.log('Message sent: ' + info.response);
-						db.insertContactDetails(req.body);
-						res.send({ success: true, errors: { } });
-					});
+					try {
+						transporter.sendMail(mailOptions, function (error, info) {
+							if (error) {
+								res.send({ success: false, errors: { submit: 'Mail sending failed.' } });
+								return console.log(error);
+							}
+							db.insertContactDetails(req.body);
+							res.send({ success: true, errors: {} });
+						});
+					} catch (e) {
+						res.send({ success: false, errors: { submit: 'Mail sending failure: ' + e.message } });
+					}
 
 				} else {
 					res.send({ success: false, errors: { captcha: 'Captcha validation failed.' } });
@@ -124,9 +122,9 @@ function setApiRoutes(router) {
 			console.log('error:', e);
 			res.send({ success: false, errors: { captcha: 'Captcha validation request failed.' } });
 		});
-		
+
 		request.end();
-    });
+	});
 
 	//init
 	router.get('/api/initUsers', function (req, res) {
@@ -192,4 +190,59 @@ function catch404(router) {
 			message: '404 Not found',
 		});
 	});
+}
+
+function removeTags(html) {
+	var tagBody = '(?:[^"\'>]|"[^"]*"|\'[^\']*\')*';
+
+	var tagOrComment = new RegExp(
+		'<(?:'
+		// Comment body.
+		+ '!--(?:(?:-*[^->])*--+|-?)'
+		// Special "raw text" elements whose content should be elided.
+		+ '|script\\b' + tagBody + '>[\\s\\S]*?</script\\s*'
+		+ '|style\\b' + tagBody + '>[\\s\\S]*?</style\\s*'
+		// Regular name
+		+ '|/?[a-z]'
+		+ tagBody
+		+ ')>',
+		'gi');
+
+	var oldHtml;
+
+	do {
+		oldHtml = html;
+		html = html.replace(tagOrComment, '');
+	} while (html !== oldHtml);
+
+	return html.replace(/</g, '&lt;');
+}
+
+function getContactEmailBody(payload) {
+	payload = Object.assign({}, payload);
+	for (var x in payload) {
+		payload[x] = removeTags(payload[x]);
+	}
+	var liStyle = ' style="padding-bottom: 15px;"';
+	return {
+		text: ['Company: ' + payload.company,
+			'Name: ' + payload.name,
+			'E-mail: ' + payload.email,
+			payload.phone && ('Telephone: ' + payload.phone) || '',
+			payload.who && ('Your type? ' + payload.who) || '',
+			payload.what && ('Your need? ' + payload.what) || '',
+			payload.budget && ('Your budget? ' + payload.budget) || '',
+			'Message: ' + payload.message,
+			''].filter(function (value) { return !!value; }).join('\n\n'),
+		html: ['<ul style="list-style: none; margin: 0; padding: 0;">',
+			'<li' + liStyle + '>Company: ' + payload.company,
+			'</li><li' + liStyle + '>Name: ' + payload.name,
+			'</li><li' + liStyle + '>E-mail: ' + payload.email,
+			payload.phone && ('</li><li' + liStyle + '>Telephone: ' + payload.phone) || '',
+			payload.who && ('</li><li' + liStyle + '>Your type? ' + payload.who) || '',
+			payload.what && ('</li><li' + liStyle + '>Your need? ' + payload.what) || '',
+			payload.budget && ('</li><li' + liStyle + '>Your budget? ' + payload.budget) || '',
+			'</li><li' + liStyle + '>Message: <br />' + payload.message.replace(/\n/g, '<br />'),
+			'</li></ul></div>'].join(''),
+	};
 }
