@@ -92,9 +92,9 @@ function setApiRoutes(router) {
 					var email = getContactEmailBody(req.body);
 
 					var mailOptions = {
-						from: '"test testiong" <testingwhattheheck@gmail.com>',
+						from: '"Adaptabi Contact Form" <testingwhattheheck@gmail.com>',
 						to: 'testingwhattheheck@gmail.com', //'tudor@adaptabi.com',
-						subject: 'Contact form completion on Adaptabi.com website - contact page',
+						subject: 'New Contact from Adaptabi.com',
 						text: email.text,
 						html: email.html,
 					};
