@@ -11,6 +11,7 @@ var validators = require('../common/validators');
 var _ = require('lodash');
 var nodemailer = require('nodemailer');
 var https = require('https');
+var settings = require('./settings');
 
 //setup regexes to skip when checking for 404 (prevent server authenticated routes to get 404)
 var skip404regexes = [];
@@ -78,7 +79,7 @@ function setApiRoutes(router) {
 		}
 		var request = https.request({
 			hostname: 'www.google.com',
-			path: '/recaptcha/api/siteverify?secret=6LdPnxEUAAAAAJLi04M6j1vmB_g-SqS_I37l-JQ0&response=' + req.body.captcha,
+			path: '/recaptcha/api/siteverify?secret=' + settings.recaptcha.secretKey + '&response=' + req.body.captcha,
 		}, function (res2) {
 			console.log('========== RESPONSE FROM GOOGLE RECAPTCHA');
 			console.log('statusCode:', res2.statusCode);
@@ -88,12 +89,12 @@ function setApiRoutes(router) {
 				let json = JSON.parse(d.toString());
 				console.log('data:', d, json);
 				if (json.success) {
-					var transporter = nodemailer.createTransport('smtps://testingwhattheheck%40gmail.com:qweqwe!!@smtp.gmail.com');
+					var transporter = nodemailer.createTransport(settings.email.smtp);
 					var email = getContactEmailBody(req.body);
 
 					var mailOptions = {
-						from: '"Adaptabi Contact Form" <testingwhattheheck@gmail.com>',
-						to: 'testingwhattheheck@gmail.com', //'tudor@adaptabi.com',
+						from: '"Adaptabi Contact Form" <' + settings.email.from + '>',
+						to: settings.email.to, //'tudor@adaptabi.com',
 						subject: 'New Contact from Adaptabi.com',
 						text: email.text,
 						html: email.html,

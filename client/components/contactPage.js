@@ -2,6 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import Header from '../containers/headerContainer';
 import Footer from '../containers/footerContainer';
 import { contact as validate } from '../../common/validators';
+import settings from '../../server/settings';
 
 let $ = window.$;
 
@@ -54,13 +55,13 @@ class ContactPage extends Component {
     initCaptcha() {
         console.warn('initing captcha', window.grecaptcha, window.gRecaptchaReady, this.refs.captcha);
         this.recaptchaID = window.grecaptcha.render(this.refs.captcha, {
-            sitekey: '6LdPnxEUAAAAAA2flZHeWiGboH9RYqAN_yax3hVm',
+            sitekey: settings.recaptcha.siteKey,
             callback: this.captchaCallback,
             'expired-callback': this.captchaExpiredCallback,
         });
     }
 
-    captchaCallback(code){
+    captchaCallback(code) {
         this.setState({ form: Object.assign({}, this.state.form, { captcha: code })});
         if (this.state.validation.hasErrors) {
             this.setState({ validation: validate(this.getPayload()) });

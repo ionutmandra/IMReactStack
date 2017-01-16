@@ -11,3 +11,4 @@ client/lib/icomoon/Read Me.txt
 client/lib/icomoon/selection.json
 client/lib/icomoon/style.css
 client/dist
+server/settings.js
