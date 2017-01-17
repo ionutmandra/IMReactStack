@@ -86,7 +86,7 @@ function setApiRoutes(router) {
 			console.log('headers:', res2.headers);
 
 			res2.on('data', (d) => {
-				let json = JSON.parse(d.toString());
+				var json = JSON.parse(d.toString());
 				console.log('data:', d, json);
 				if (json.success) {
 					var transporter = nodemailer.createTransport(settings.email.smtp);

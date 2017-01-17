@@ -94,7 +94,8 @@ class ContactPage extends Component {
         $(e.target).parent().addClass('focus');
     }
 
-    handleBlur(e) {
+    handleBlur(field, e) {
+        if (field && field.target) { e = field; }
         let val = $.trim(e.target.value);
         $(e.target).parent().removeClass('focus')[(val.length ? 'add' : 'remove') + 'Class']('has-text');
         if (val != e.target.value) {
@@ -102,6 +103,8 @@ class ContactPage extends Component {
         }
         if (this.state.validation.hasErrors) {
             this.setState({ validation: validate(this.getPayload()) });
+        } else {
+            this.setState({ validation: validate(this.getPayload(), field, this.state.validation.errors) });
         }
     }
 
@@ -114,7 +117,7 @@ class ContactPage extends Component {
 
     getErrorText(field) {
         if (field == 'submit') {
-            return this.state.validation.errors[field] || 'Please correct the errors and try again';
+            return this.state.validation.errors[field] || 'Please correct the errors.';
         }
         return this.state.validation.errors[field];
     }
@@ -183,14 +186,14 @@ class ContactPage extends Component {
         let button = null;
         switch (this.state.progress) {
             case 'sending':
-                button = <button type="submit" disabled>Sending</button>;
+                button = <button type="submit" className="content-item" disabled>Sending</button>;
             break;
             case 'done':
-                button = <button type="submit" className="done" disabled>Thanks!</button>;
+                button = <button type="submit" className="content-item done" disabled>Thanks!</button>;
             break;
             case 'initial':
             default:
-                button = <button type="submit">Send!</button>;
+                button = <button type="submit" className="content-item">Send!</button>;
             break;
         }
 
@@ -203,65 +206,67 @@ class ContactPage extends Component {
                         <form onSubmit={this.onSubmit} className="large-9 large-offset-3 medium-22 medium-offset-1 small-22 small-offset-1 columns">
                             <h1 className="content-item">Let's talk!</h1>
                             <div className="row">
-                                <div className="field content-item large-16 columns">
-                                    <label htmlFor="company-name">Company name *</label>
-                                    <input id="company-name" type="text" value={form.company} onChange={this.handleChange.bind(this, 'company')} onFocus={this.handleFocus} onBlur={this.handleBlur} />
+                                <div className="field large-16 columns">
+                                    <label htmlFor="company-name" className="content-item">Company name *</label>
+                                    <input id="company-name" className="content-item" type="text" value={form.company} onChange={this.handleChange.bind(this, 'company')} onFocus={this.handleFocus} onBlur={this.handleBlur.bind(this, 'company')} />
                                     <span className={this.getErrorClass('company')}>{this.getErrorText('company')}</span>
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="field content-item large-16 columns">
-                                    <label htmlFor="name">Name *</label>
-                                    <input id="name" type="text" value={form.name} onChange={this.handleChange.bind(this, 'name')} onFocus={this.handleFocus} onBlur={this.handleBlur} />
+                                <div className="field large-16 columns">
+                                    <label htmlFor="name" className="content-item">Name *</label>
+                                    <input id="name" className="content-item" type="text" value={form.name} onChange={this.handleChange.bind(this, 'name')} onFocus={this.handleFocus} onBlur={this.handleBlur.bind(this, 'name')} />
                                     <span className={this.getErrorClass('name')}>{this.getErrorText('name')}</span>
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="field content-item large-8 columns">
-                                    <label htmlFor="email">E-mail *</label>
-                                    <input id="email" type="text" value={form.email} onChange={this.handleChange.bind(this, 'email')} onFocus={this.handleFocus} onBlur={this.handleBlur} />
+                                <div className="field large-16 columns">
+                                    <label htmlFor="email" className="content-item">E-mail *</label>
+                                    <input id="email" className="content-item" type="text" value={form.email} onChange={this.handleChange.bind(this, 'email')} onFocus={this.handleFocus} onBlur={this.handleBlur.bind(this, 'email')} />
                                     <span className={this.getErrorClass('email')}>{this.getErrorText('email')}</span>
                                 </div>
-                                <div className="field content-item large-8 columns">
-                                    <label htmlFor="phone">Telephone</label>
-                                    <input id="phone" type="tel" value={form.phone} onChange={this.handleChange.bind(this, 'phone')} onFocus={this.handleFocus} onBlur={this.handleBlur} />
+                            </div>
+                            <div className="row">                            
+                                <div className="field large-16 columns">
+                                    <label htmlFor="phone" className="content-item">Telephone</label>
+                                    <input id="phone" className="content-item" type="tel" value={form.phone} onChange={this.handleChange.bind(this, 'phone')} onFocus={this.handleFocus} onBlur={this.handleBlur.bind(this, 'phone')} />
                                     <span className={this.getErrorClass('phone')}>{this.getErrorText('phone')}</span>
                                 </div>
                             </div>
                             <div className="spacer-40"/>
                             <div className="row">
-                                <div className="field content-item large-8 medium-8 small-12 columns">
-                                    <h4>Your type?</h4>
-                                    <label className="radio"><input type="radio" name="who" value="startup" onChange={this.handleChange.bind(this, 'who')} /> Startup</label>
-                                    <label className="radio"><input type="radio" name="who" value="business" onChange={this.handleChange.bind(this, 'who')} /> Business</label>
-                                    <label className="radio"><input type="radio" name="who" value="enterprise" onChange={this.handleChange.bind(this, 'who')} /> Enterprise</label>
+                                <div className="field large-8 medium-8 small-12 columns">
+                                    <h4 className="content-item">Your type?</h4>
+                                    <label className="radio content-item"><input type="radio" name="who" value="Startup" onChange={this.handleChange.bind(this, 'who')} /> Startup</label>
+                                    <label className="radio content-item"><input type="radio" name="who" value="Business" onChange={this.handleChange.bind(this, 'who')} /> Business</label>
+                                    <label className="radio content-item"><input type="radio" name="who" value="Enterprise" onChange={this.handleChange.bind(this, 'who')} /> Enterprise</label>
                                 </div>
                                 <div className="field content-item large-8 medium-8 small-12 columns">
-                                    <h4>Your need?</h4>
-                                    <label className="radio"><input type="radio" name="what" value="website" onChange={this.handleChange.bind(this, 'what')} /> Website</label>
-                                    <label className="radio"><input type="radio" name="what" value="software" onChange={this.handleChange.bind(this, 'what')} /> Software</label>
-                                    <label className="radio"><input type="radio" name="what" value="mobile" onChange={this.handleChange.bind(this, 'what')} /> Mobile app</label>
+                                    <h4 className="content-item">Your need?</h4>
+                                    <label className="radio content-item"><input type="radio" name="what" value="Website" onChange={this.handleChange.bind(this, 'what')} /> Website</label>
+                                    <label className="radio content-item"><input type="radio" name="what" value="Software" onChange={this.handleChange.bind(this, 'what')} /> Software</label>
+                                    <label className="radio content-item"><input type="radio" name="what" value="Mobile app" onChange={this.handleChange.bind(this, 'what')} /> Mobile app</label>
                                 </div>
                                 <div className="field content-item large-8 medium-8 small-12 columns">
-                                    <h4>Your budget?</h4>
-                                    <label className="radio"><input type="radio" name="budget" value="$20k - $30k" onChange={this.handleChange.bind(this, 'budget')} /> $20k - $30k</label>
-                                    <label className="radio"><input type="radio" name="budget" value="$30k - $50k" onChange={this.handleChange.bind(this, 'budget')} /> $30k - $50k</label>
-                                    <label className="radio"><input type="radio" name="budget" value="$50k+" onChange={this.handleChange.bind(this, 'budget')} /> $50k+</label>
+                                    <h4 className="content-item">Your budget?</h4>
+                                    <label className="radio content-item"><input type="radio" name="budget" value="$10k - $30k" onChange={this.handleChange.bind(this, 'budget')} /> $10k - $30k</label>
+                                    <label className="radio content-item"><input type="radio" name="budget" value="$30k - $50k" onChange={this.handleChange.bind(this, 'budget')} /> $30k - $50k</label>
+                                    <label className="radio content-item"><input type="radio" name="budget" value="$50k+" onChange={this.handleChange.bind(this, 'budget')} /> $50k+</label>
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="field content-item large-16 columns">
-                                    <label htmlFor="message">Message *</label>
-                                    <textarea id="message" value={form.message} onChange={this.handleChange.bind(this, 'message')} onFocus={this.handleFocus} onBlur={this.handleBlur}></textarea>
+                                <div className="field large-16 columns">
+                                    <label htmlFor="message" className="content-item">Message *</label>
+                                    <textarea id="message" className="content-item" value={form.message} onChange={this.handleChange.bind(this, 'message')} onFocus={this.handleFocus} onBlur={this.handleBlur.bind(this, 'message')}></textarea>
                                     <span className={this.getErrorClass('message')}>{this.getErrorText('message')}</span>
                                 </div>
                             </div>
                             <footer className="row">
-                                <div className="field content-item large-18 medium-12 small-24 columns">
-                                    <div ref="captcha"></div>
+                                <div className="field large-18 medium-12 small-24 columns">
+                                    <div ref="captcha" className="content-item"></div>
                                     <span className={this.getErrorClass('captcha')}>{this.getErrorText('captcha')}</span>
                                 </div>
-                                <div className="content-item large-6 medium-12 small-24 columns">
+                                <div className="large-6 medium-12 small-24 columns">
                                     {button}
                                 </div>
                                 <span className={this.getErrorClass('submit')}>{this.getErrorText('submit')}</span>
