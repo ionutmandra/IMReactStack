@@ -117,7 +117,7 @@ class ContactPage extends Component {
 
     getErrorText(field) {
         if (field == 'submit') {
-            return this.state.validation.errors[field] || 'Please correct the errors.';
+            return this.state.validation.errors[field] || 'Please correct the errors';
         }
         return this.state.validation.errors[field];
     }
@@ -175,10 +175,21 @@ class ContactPage extends Component {
     }
 
     setSuccess(){
-        this.setState({ progress: 'done' }); 
-        setTimeout(function(){ 
-            this.setState({ progress: 'initial' }); 
-        }.bind(this), 1000);
+        this.setState({ progress: 'done',
+            form: {
+                company: '',
+                name: '',
+                email: '',
+                message: '',
+            },
+            validation: {
+                hasErrors: false,
+                errors: {},
+            },
+        }); 
+        // setTimeout(function(){ 
+        //     this.setState({ progress: 'initial' }); 
+        // }.bind(this), 1000);
     }
 
     render() {
@@ -196,6 +207,7 @@ class ContactPage extends Component {
                 button = <button type="submit" className="content-item">Send!</button>;
             break;
         }
+        let formClass = 'progress-' + this.state.progress;
 
         return (
             <article className="page page-contact" ref="article">
@@ -203,7 +215,7 @@ class ContactPage extends Component {
                 <section className="content">
                     <div className="spacer-100"/>
                     <div className="row">
-                        <form onSubmit={this.onSubmit} className="large-9 large-offset-3 medium-22 medium-offset-1 small-22 small-offset-1 columns">
+                        <form onSubmit={this.onSubmit} className={formClass + ' large-9 large-offset-3 medium-22 medium-offset-1 small-22 small-offset-1 columns'}>
                             <h1 className="content-item">Let's talk!</h1>
                             <div className="row">
                                 <div className="field large-16 columns">
