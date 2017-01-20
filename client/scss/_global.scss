@@ -83,6 +83,12 @@ ul, ul li {
     margin-left: 0;
 }
 
+.caption {
+    font-size: 0.5rem;
+    color: #666;
+    font-style: italic;
+}
+
 @media screen and #{breakpoint(medium down)} {
     h1 {
         font-size: rem-calc(22pt);
