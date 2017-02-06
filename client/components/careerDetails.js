@@ -5,7 +5,6 @@ import Footer from '../containers/footerContainer';
 import CareerSeniorDeveloper from './careerSeniorDeveloper';
 import CareerJuniorDeveloper from './careerJuniorDeveloper';
 import CareerQualityEngineer from './careerQualityEngineer';
-import { Link } from 'react-router';
 
 class CareerDetails extends Component {
 

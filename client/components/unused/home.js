@@ -161,7 +161,7 @@ class Home extends Component {
                 <div className="gradient" />
 
                 <section className="slide slide-1 content">
-                    <div className="text-1"><h1>{'Software Innovators Happily Together'}</h1></div>
+                    <div className="text-1"><h1>{'Software Innovators Happy Together'}</h1></div>
                     <div className="text-2"><h2>{'Create a truly remarkable working environment and deliver high quality innovative software products and services'}</h2></div>
                     <div className="scroll-hint"><p>{'Find out more'}</p></div>
                 </section>
@@ -201,7 +201,7 @@ class Home extends Component {
                             <div className="grid-block-wrap1">
                                 <div className="grid-block1">
                                     <div className="grid-block-contentl" data-ref="text1">
-                                        <h1>Software Innovators Happily Together</h1>
+                                        <h1>Software Innovators Happy Together</h1>
                                     </div>
                                 </div>
                             </div>

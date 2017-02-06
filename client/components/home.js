@@ -142,7 +142,7 @@ class Home extends Component {
 
     componentDidMount() {
 
-        document.title = 'Adaptabi - Software Innovators Happily Together';
+        document.title = 'Adaptabi - Software Innovators Happy Together';
 
         var controller = this.controller;
         var scenes = this.scenes[breakpoint.names.large];
@@ -469,11 +469,10 @@ class Home extends Component {
                     <div className="gradient" ref={(c) => this._gradient = c}/>
 
                     <section className="slide slide-1 content"  ref={(c) => this._section1c = c}>
-                        <div className="text-1"><h1 ref={(c) => this._inputSoftware = c}>{'Software Innovators Happily Together'}</h1></div>
+                        <div className="text-1"><h1 ref={(c) => this._inputSoftware = c}>{'Software Innovators Happy Together'}</h1></div>
                         <div className="text-2">
                             <h2 ref={(c) => this._inputCreate = c}>
-                                {/*<p>Our vision is to create a truly remarkable working environment and deliver high quality, innovative software</p>*/}
-                                <p>Our vision is to deliver high quality, innovative software by creating a truly remarkable working environment</p>
+                                <p>Our vision is to deliver high quality, innovative custom software<span className="dot">.</span></p>
                             </h2>
                         </div>
                     </section>

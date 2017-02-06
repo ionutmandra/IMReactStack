@@ -104,6 +104,10 @@
                         line-height: rem-calc(30pt);
                         margin: 0;
                         padding: 0;
+                        .dot {
+                            font-family: Arial, sans-serif;
+                            font-size: rem-calc(60pt);
+                        }
                     }
                 }
             }

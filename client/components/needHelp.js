@@ -10,6 +10,7 @@ class NeedHelpPage extends Component {
     constructor(props) {
         super(props);
         this.handleContentLinkClick = this.handleContentLinkClick.bind(this);
+        this.handleContactClick = this.handleContactClick.bind(this);
         this.touchStart = this.touchStart.bind(this);
         this.touchEnd = this.touchEnd.bind(this);
     }
@@ -36,6 +37,14 @@ class NeedHelpPage extends Component {
         this.props.dispatchTransition({
             type: 'header',
             column: 4,
+            target: event.currentTarget,
+        });
+    }
+
+    handleContactClick(event) {
+        this.props.dispatchTransition({
+            type: 'content',
+            column: 7,
             target: event.currentTarget,
         });
     }
@@ -139,23 +148,23 @@ class NeedHelpPage extends Component {
                         <div className="large-12 large-offset-3 medium-22 medium-offset-1 small-22 small-offset-1 columns">
                             <div className="content-item large-18">If you are looking for recommendations we are more than happy to provide them from:</div>
                             <div className="spacer-40"/>       
-                            <div className="recommendations-grid">
+                            <div className="recommendations-grid content-item">
                                 <div className="row">
-                                    <div className="content-item large-6 large-offset-0 medium-12 medium-offset-0 small-24 small-offset-0 columns">
+                                    <div className="large-6 large-offset-0 medium-12 medium-offset-0 small-24 small-offset-0 columns">
                                         ArrayX, UK<br /><span className="gray">Ben Empson</span>
                                     </div>
                                     <div className="spacer-40 large-0 medium-0 small-24 show-for-small-only" />
-                                    <div className="content-item large-6 large-offset-0 medium-12 medium-offset-0 small-24 small-offset-0 columns">
+                                    <div className="large-6 large-offset-0 medium-12 medium-offset-0 small-24 small-offset-0 columns">
                                         Proxima, UK / USA<br /><span className="gray">Lance Jones / Roger Lockwood</span>
                                     </div>
                                 </div> 
                                 <div className="spacer-40"/>
                                 <div className="row recommendations">
-                                    <div className="content-item large-6 large-offset-0 medium-12 medium-offset-0 small-24 small-offset-0 columns">
+                                    <div className="large-6 large-offset-0 medium-12 medium-offset-0 small-24 small-offset-0 columns">
                                         Mindcast, USA<br /><span className="gray">Benjamin Kyan</span>
                                     </div>
                                     <div className="spacer-40 large-0 medium-0 small-24 show-for-small-only" />
-                                    <div className="content-item large-6 large-offset-0 medium-12 medium-offset-0 small-24 small-offset-0 columns">
+                                    <div className="large-6 large-offset-0 medium-12 medium-offset-0 small-24 small-offset-0 columns">
                                         European Railway Agency, France<br /><span className="gray">Marian Marculet</span>
                                     </div>
                                 </div>  
@@ -174,7 +183,7 @@ class NeedHelpPage extends Component {
                         <div className="spacer-40 large-0 medium-0 small-24 show-for-small-only" />
                         <div className="large-6 large-offset-0 medium-22 medium-offset-1 small-22 small-offset-1 columns">
                             <h2 className="content-item">Want to meet us?</h2>
-                            <a className="cta-link" href="mailto:hello@adaptabi.com?subject=Need%20Help"><span>Send</span> <span>a</span> <span>message</span></a>
+                            <Link className="content-item cta-link" to="/contact" onClick={this.handleContactClick}><span>Let's</span> <span>talk</span></Link>
                         </div>
                     </div>
                     <div className="spacer-60" />

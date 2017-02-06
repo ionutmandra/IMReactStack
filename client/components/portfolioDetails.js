@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import Header from '../containers/headerContainer';
 import Footer from '../containers/footerContainer';
+import { Link } from 'react-router';
 
 let $ = window.$;
 
@@ -10,6 +11,7 @@ class PortfolioDetails extends Component {
         super(props);
         this.touchStart = this.touchStart.bind(this);
         this.touchEnd = this.touchEnd.bind(this);
+        this.handleContactClick = this.handleContactClick.bind(this);
     }
 
     componentDidMount() {
@@ -29,6 +31,14 @@ class PortfolioDetails extends Component {
 
     touchEnd(event) {
         setTimeout(() => { $(event.currentTarget).removeClass('hover'); }, 250);
+    }
+
+    handleContactClick(event) {
+        this.props.dispatchTransition({
+            type: 'content',
+            column: 7,
+            target: event.currentTarget,
+        });
     }
 
     render() {
@@ -119,7 +129,7 @@ class PortfolioDetails extends Component {
                                 <p className="cta">
                                     <span className="hide-for-large">Interested? </span>
                                     <span className="action-links">
-                                        <a href="mailto:contact@adaptabi.com?subject=Inquiry"><span>Send</span> <span>a</span> <span>message</span></a>
+                                        <Link to="/contact" onClick={this.handleContactClick}><span>Let's</span> <span>talk</span></Link>
                                     </span>
                                  </p>
                             </div>
@@ -130,7 +140,7 @@ class PortfolioDetails extends Component {
                             <span className="show-for-large">Want to meet us? </span>
                             <span className="hide-for-large">Interested? </span>
                             <span className="action-links">
-                                <a href="mailto:contact@adaptabi.com?subject=Inquiry"><span>Send</span> <span>a</span> <span>message</span></a>
+                                <Link to="/contact" onClick={this.handleContactClick}><span>Let's</span> <span>talk</span></Link>
                             </span>
                         </p>
                     </div>

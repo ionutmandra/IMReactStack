@@ -1,4 +1,13 @@
 {
+  "scripts": {
+    "test": "mocha --compilers js:babel-register --require babel-polyfill",
+    "start": "nodemon server/index.js",
+    "dev": "start cmd /k nodemon server && start cmd /k gulp"
+  },
+  "__commented__scripts": {
+    "build": "browserify --debug -t [babelify] client/index.js > client/dist/js/bundle.js",
+    "watchify": "watchify -t [babelify] client/index.js -o client/dist/js/bundle.js -dv"
+  },
   "devDependencies": {
     "assert": "^1.3.0",
     "babel-core": "^6.5.2",
@@ -55,10 +64,6 @@
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0",
     "winston": "^2.2.0"
-  },
-  "__commented__scripts": {
-    "build": "browserify --debug -t [babelify] client/index.js > client/dist/js/bundle.js",
-    "watchify": "watchify -t [babelify] client/index.js -o client/dist/js/bundle.js -dv"
   },
   "dependencies": {
     "async": "^1.5.2",

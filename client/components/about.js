@@ -1,4 +1,5 @@
 import React, { PropTypes, Component } from 'react';
+import { Link } from 'react-router';
 import Header from '../containers/headerContainer';
 import Footer from '../containers/footerContainer';
 
@@ -9,6 +10,7 @@ class About extends Component {
         super(props);
         this.touchStart = this.touchStart.bind(this);
         this.touchEnd = this.touchEnd.bind(this);
+        this.handleContactClick = this.handleContactClick.bind(this);
     }
 
     componentDidMount() {
@@ -29,6 +31,14 @@ class About extends Component {
 
     touchEnd(event) {
         setTimeout(() => { $(event.currentTarget).removeClass('hover'); }, 250);
+    }
+
+    handleContactClick(event) {
+        this.props.dispatchTransition({
+            type: 'content',
+            column: 7,
+            target: event.currentTarget,
+        });
     }
 
     render() {
@@ -166,7 +176,7 @@ class About extends Component {
                                 <p className="cta">
                                     <span className="hide-for-large">Interested?</span>
                                     <span className="action-links">
-                                        <a href="mailto:contact@adaptabi.com?subject=Inquiry"><span>Send</span> <span>a</span> <span>message</span></a>
+                                        <Link to="/contact" onClick={this.handleContactClick}><span>Let's</span> <span>talk</span></Link>
                                     </span>
                                 </p>
                             </div>
@@ -178,7 +188,7 @@ class About extends Component {
                             <span className="show-for-large">Want to meet us?</span>
                             <span className="hide-for-large">Interested?</span>
                             <span className="action-links">
-                                <a href="mailto:contact@adaptabi.com?subject=Inquiry"><span>Send</span> <span>a</span> <span>message</span></a>
+                                <Link to="/contact" onClick={this.handleContactClick}><span>Let's</span> <span>talk</span></Link>
                             </span>
                         </p>
                     </div>

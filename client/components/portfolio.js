@@ -61,7 +61,7 @@ class Portfolio extends Component {
                             <div className="content-item">
                                 <p>This project is your idea’s best chance to thrive out in the open. It reduces MVP delivery time, as well as development and maintenance costs. Good technology choices enable short, data-driven development cycles, effectively making you highly adaptable and responsive to market changes.</p>
                                 <div className="spacer-20" />
-                                <p>It is based on a tried and proven industry standard called <a href="http://alistair.cockburn.us/Hexagonal+architecture" target="_blank"><span>Hexagonal</span> <span>Architecture</span></a> (proposed by Alistair Cockburn back in 2009), and we are continuously refining and building on it.</p>
+                                <p>It is based on a tried and proven industry standard called <a href="http://alistair.cockburn.us/Hexagonal+architecture" target="_blank"><span>Hexagonal</span> <span>Architecture</span></a>, and we are continuously refining and building on it.</p>
                             </div>
                         </div>
                         <div className="spacer-40 large-0 medium-0 small-24  show-for-small-only"/>

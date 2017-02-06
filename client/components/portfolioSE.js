@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import Header from '../containers/headerContainer';
 import Footer from '../containers/footerContainer';
+import { Link } from 'react-router';
 
 let $ = window.$;
 
@@ -10,6 +11,7 @@ class PortfolioSE extends Component {
         super(props);
         this.touchStart = this.touchStart.bind(this);
         this.touchEnd = this.touchEnd.bind(this);
+        this.handleContactClick = this.handleContactClick.bind(this);
     }
 
     componentDidMount() {
@@ -29,6 +31,14 @@ class PortfolioSE extends Component {
 
     touchEnd(event) {
         setTimeout(() => { $(event.currentTarget).removeClass('hover'); }, 250);
+    }
+
+    handleContactClick(event) {
+        this.props.dispatchTransition({
+            type: 'content',
+            column: 7,
+            target: event.currentTarget,
+        });
     }
 
     render() {
@@ -55,8 +65,8 @@ class PortfolioSE extends Component {
                     <div className="spacer-100" />
                     <div className="row">
                         <div className="large-9 large-offset-3 large-order-1 medium-22 medium-offset-1 medium-order-2 small-22 small-offset-1 small-order-2 columns">
-                            <img src="/client/dist/img/projects/systemessentials/fig1.gif" className="content-item" />
-                            <div className="caption content-item">Original <a href="http://alistair.cockburn.us/Hexagonal+architecture" target="_blank"><span>hexagonal</span> <span>architecture</span></a> concept</div>
+                            {/*<img src="/client/dist/img/projects/systemessentials/fig1.gif" className="content-item" />
+                            <div className="caption content-item">Original <a href="http://alistair.cockburn.us/Hexagonal+architecture" target="_blank"><span>hexagonal</span> <span>architecture</span></a> concept</div>*/}
                             <img src="/client/dist/img/projects/systemessentials/screen4.jpg" className="content-item" />
                             <div className="caption content-item">System Essentials server-side architecture concept</div>
                         </div>
@@ -66,9 +76,9 @@ class PortfolioSE extends Component {
                             <div className="project-description content-item">
                                 <p>The application domain is where your business logic resides. The <b>fastest startup</b> is obtained by implementing initial business rules in a single app.</p>
                                 <div className="spacer-20" />
-                                <p>We did that, but in a way that allows for easy separation into relevant, decoupled <b>microservices</b>. Why? Because microservices enable <b>painless horizontal scalability</b> from the MVP stage.</p>
+                                <p>We did that, but in a way that allows for easy separation into relevant, decoupled <b>microservices</b>, which brings you <b>horizontal scalability</b>.</p>
                                 <div className="spacer-20" />
-                                <p>This means development and validation loops can start <b>as fast as possible</b>, and you will not get into trouble if on launch your app becomes an <b>instant hit</b> with millions of users.</p>
+                                <p>This means development and validation loops can start <b>as fast as possible</b>, and you will not get into trouble if your app quickly becomes an <b>instant hit</b> with millions of users.</p>
                             </div>
                         </div>
                     </div>
@@ -78,9 +88,9 @@ class PortfolioSE extends Component {
                             <h1 className="content-item">High technology diversity brings utmost performance.</h1>
                             <div className="spacer-40 small-24"/>
                             <div className="project-description content-item">
-                                <p><b>Vertical scalability</b> means that improving or allocating more hardware resources speeds up corresponding parts of the app. If it does not, that is usually a consequence of wrong tech choices in key places.</p>
+                                <p><b>Vertical scalability</b> means that improving or allocating more hardware resources speeds up corresponding parts of the app.</p>
                                 <div className="spacer-20" />
-                                <p>Making <b>effective use</b> of different technologies across the entire system ensures utmost performance, scalability and maintanability.</p>
+                                <p>We make <b>effective use</b> of different technologies in key places, which enables your app to take full advantage of hardware advancements.</p>
                             </div>
                         </div>
                         <div className="large-7 large-offset-0 medium-22 medium-offset-1 small-22 small-offset-1 columns">
@@ -130,7 +140,7 @@ class PortfolioSE extends Component {
                                 <p className="cta">
                                     <span className="hide-for-large">Interested? </span>
                                     <span className="action-links">
-                                        <a href="mailto:contact@adaptabi.com?subject=Inquiry"><span>Send</span> <span>a</span> <span>message</span></a>
+                                        <Link to="/contact" onClick={this.handleContactClick}><span>Let's</span> <span>talk</span></Link>
                                     </span>
                                  </p>
                             </div>
@@ -141,7 +151,7 @@ class PortfolioSE extends Component {
                             <span className="show-for-large">Want to meet us? </span>
                             <span className="hide-for-large">Interested? </span>
                             <span className="action-links">
-                                <a href="mailto:contact@adaptabi.com?subject=Inquiry"><span>Send</span> <span>a</span> <span>message</span></a>
+                                <Link to="/contact" onClick={this.handleContactClick}><span>Let's</span> <span>talk</span></Link>
                             </span>
                         </p>
                     </div>
