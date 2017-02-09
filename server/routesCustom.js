@@ -81,13 +81,9 @@ function setApiRoutes(router) {
 			hostname: 'www.google.com',
 			path: '/recaptcha/api/siteverify?secret=' + settings.recaptcha.secretKey + '&response=' + req.body.captcha,
 		}, function (res2) {
-			console.log('========== RESPONSE FROM GOOGLE RECAPTCHA');
-			console.log('statusCode:', res2.statusCode);
-			console.log('headers:', res2.headers);
-
+			
 			res2.on('data', (d) => {
 				var json = JSON.parse(d.toString());
-				console.log('data:', d, json);
 				if (json.success) {
 					var transporter = nodemailer.createTransport(settings.email.smtp);
 					var email = getContactEmailBody(req.body);
@@ -120,7 +116,6 @@ function setApiRoutes(router) {
 		});
 
 		request.on('error', (e) => {
-			console.log('error:', e);
 			res.send({ success: false, errors: { captcha: 'Captcha validation request failed.' } });
 		});
 
@@ -161,6 +156,7 @@ function setFileRoutes(app) {
 	app.use('/client/dist', express.static(path.join(rootPath + '/client/dist')));
 	app.use('/client/assets', express.static(path.join(rootPath + '/client/assets')));
 	app.use('/favicon.ico', express.static(path.join(rootPath + '/favicon.ico')));
+	app.use('/public', express.static(path.join(rootPath + '/public')));
 }
 
 function setAdminRoutes(router) {

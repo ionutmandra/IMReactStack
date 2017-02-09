@@ -100,13 +100,15 @@
                     //font-weight: $semibold;
                     font-size: rem-calc(20pt);
                     line-height: rem-calc(30pt);
+                    padding-top: rem-calc(10pt);
                     p {
-                        line-height: rem-calc(30pt);
+                        line-height: rem-calc(20pt);
                         margin: 0;
                         padding: 0;
                         .dot {
                             font-family: Arial, sans-serif;
                             font-size: rem-calc(60pt);
+                            line-height: rem-calc(20pt);
                         }
                     }
                 }
