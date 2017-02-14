@@ -294,6 +294,13 @@ class ContactPage extends Component {
                             <div className="spacer-20"/>
                             <div className="row">
                                 <ul>
+                                    <li className="content-item bold">United States: </li>
+                                    <li className="content-item"><a href="tel:+18883962816"><span>+1</span> <span>888 </span> <span>396 </span> <span>2816</span></a></li>
+                                </ul>
+                            </div>                    
+                            <div className="spacer-20"/>
+                            <div className="row">
+                                <ul>
                                     <li className="content-item bold">Romania: </li>
                                     <li className="content-item"><span className="no-break">Sos.Tudor Neculai</span> <span className="no-break">nr.52 D, </span> <span className="no-break">Iasi, </span> 700732</li>
                                     <li className="content-item"><a href="tel:+40729046526"><span>+40</span> <span>729 </span> <span>046</span> <span>526</span></a></li>

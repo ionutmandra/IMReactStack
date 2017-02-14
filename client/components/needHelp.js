@@ -121,7 +121,7 @@ class NeedHelpPage extends Component {
                             </div>
                             <div className="spacer-20"/>
                             <div className="content-item large-18">
-                                Since 2011 we are working in partnership on <Link to={routePaths.client.portfolioSfb} onClick={this.handleContentLinkClick}><span>Safetybank</span></Link> which is a product that revolutionizes the built environment in the UK.
+                                Since 2011 we are working in partnership on <Link to={routePaths.client.portfolioSfb} onClick={this.handleContentLinkClick}><span>Safetybank</span></Link> which is a product that revolutionizes the building environment in the UK and worldwide.
                             </div>
                             <div className="spacer-20"/>
                             <div className="content-item large-18">

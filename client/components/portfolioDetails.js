@@ -52,7 +52,7 @@ class PortfolioDetails extends Component {
                             <h1 className="content-item">Safetybank is an online health and safety information system</h1>
                             <div className="spacer-40 small-24"/>
                             <div className="project-description content-item">
-                                <p>It revolutionizes the built environment in UK and worldwide.</p>
+                                <p>It revolutionizes the building environment in the UK and worldwide.</p>
                             </div>
                             <div className="spacer-20 large-0 medium-0 small-24 hide-for-large"/>
                         </div>
