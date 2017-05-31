@@ -141,28 +141,17 @@ export default class Burger extends Component {
         }
 
         let initialScroll = this.props.getInitialScroll(),
-            menuIsOpen = this.article.hasClass('menu-open'),
-            contactIsOpen = this.article.hasClass('contact-open');
+            menuIsOpen = this.article.hasClass('menu-open');
 
         if (media.current == breakpoint.names.large) {
             if (this.props.isHomepage) {
                 if (menuIsOpen) {
-                    if (contactIsOpen) {
-                        this.hideBurgerLeftInstant();
-                        this.hideCloseLeftInstant();
-                        this.article.removeClass('menu-open');
-                        this.hamburger.removeClass('active');
-                    }
-                    else {
-                        this.hideBurgerLeftInstant();
-                        this.hideCloseLeftInstant();
-                        //this.article.removeClass('menu-open');
-                        this.hamburger.removeClass('active');
-
-                        $.scrollLock(false);
-                        setTimeout(this.props.enableScenes, 100);
-                        this.props.setInitialScroll(undefined);
-                    }
+                    this.hideBurgerLeftInstant();
+                    this.hideCloseLeftInstant();
+                    this.hamburger.removeClass('active');
+                    $.scrollLock(false);
+                    setTimeout(this.props.enableScenes, 100);
+                    this.props.setInitialScroll(undefined);
                 }
                 else {
                     this.hideBurgerLeftInstant();
@@ -174,21 +163,7 @@ export default class Burger extends Component {
             //generic page
             else {
                 if (menuIsOpen) {
-                    if (contactIsOpen) {
-                        if (initialScroll == 0) {
-                            this.hideBurgerLeftInstant();
-                            this.hideCloseLeftInstant();
-                            //this.article.removeClass('menu-open');
-                            this.hamburger.removeClass('active');
-                        }
-                        else {
-                            this.hideBurgerLeftInstant();
-                            this.hideCloseLeftInstant();
-                        }
-                    }
-                    else {
-                        this.hideBurgerLeftInstant();
-                    }
+                    this.hideBurgerLeftInstant();
                 }
                 else {
                     if (initialScroll == 0) {
@@ -209,28 +184,13 @@ export default class Burger extends Component {
             }
         } else if (media.current != breakpoint.names.none) {
             if (menuIsOpen) {
-                if (contactIsOpen) {
-                    this.hideBurgerRightInstant();
-                    this.hideCloseRightInstant();
-                    this.lightInstant();
-                }
-                else {
-                    this.hideBurgerRightInstant();
-                    this.lightInstant();
-                }
+                this.hideBurgerRightInstant();
+                this.lightInstant();
             } else {
-                if (contactIsOpen) {
-                    this.article.addClass('menu-open');
-                    this.hamburger.addClass('active');
-                    this.hideCloseRightInstant();
-                    this.hideBurgerRightInstant();
-                }
-                else {
-                    this.hamburger.addClass('active');
-                    this.showBurgerInstant();
-                    this.lightInstant();
-                    this.hideCloseRightInstant();
-                }
+                this.hamburger.addClass('active');
+                this.showBurgerInstant();
+                this.lightInstant();
+                this.hideCloseRightInstant();
             }
         }
     }
@@ -405,7 +365,7 @@ export default class Burger extends Component {
     render() {
         return (
             <div className="hamburger" ref="hamburger">
-                <div className="open"  onClick={this.openBurger} ref="burger"><div className="burger" ref="burgerIcon" /></div>
+                <div className="open" onClick={this.openBurger} ref="burger"><div className="burger" ref="burgerIcon" /></div>
                 <i className="close ncs-chevron-with-circle-left" onClick={this.closeBurger} ref="close" />
             </div>
         );

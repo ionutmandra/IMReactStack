@@ -114,13 +114,10 @@ class HeaderLinks extends Component {
 
         //console.warn('headerLinks handleMediaChange', media, this.props.isHomepage, $window.scrollTop());
         let scrollTop = $window.scrollTop(), menuIsOpen = this.article.hasClass('menu-open');
-        var contactIsOpen = this.article.hasClass('contact-open');
 
         if(media.current == breakpoint.names.large){
             if (this.props.isHomepage) {
-                if(!contactIsOpen ){
                     this.showInstant();
-                }
             }
             //generic page
             else{
@@ -131,7 +128,7 @@ class HeaderLinks extends Component {
                 }
             }
         } else if (media.current != breakpoint.names.none) {
-            if (menuIsOpen && !contactIsOpen) {
+            if (menuIsOpen) {
                 this.showInstant();
             } else {
                 this.hideInstant();
@@ -181,7 +178,6 @@ class HeaderLinks extends Component {
                 <li><Link className={activeClass.expertise} ref={c => links.push(c)} data-animate-line="4" onClick={this.handleClick} to={routePaths.client.expertise}>{'Expertise'}</Link></li>
                 <li><Link className={activeClass.portfolio} ref={c => links.push(c)} data-animate-line="5" onClick={this.handleClick} to={routePaths.client.portfolio}>{'Portfolio'}</Link></li>
                 <li><a ref={c => links.push(c) } data-animate-line="6" onClick={this.handleClick} href="https://blog.adaptabi.com" target="_blank">{'Blog'}</a></li>
-                {/*<li><Link ref={c => links.push(c) } data-animate-line="7" onClick={this.props.openContact} to={routePaths.client.contact}>{'Contact'}</Link></li>*/}
                 <li><Link className={activeClass.contact} ref={c => links.push(c) } data-animate-line="7" onClick={this.handleClick} to={routePaths.client.contact}>{'Contact'}</Link></li>
             </ul>
         </nav>);
@@ -220,7 +216,6 @@ HeaderLinks.propTypes = {
     animationType: PropTypes.string,
     dispatchTransition: PropTypes.func.isRequired,
     isHomepage: PropTypes.bool,
-    openContact: PropTypes.func.isRequired,
     strings: PropTypes.object.isRequired,
     transition: PropTypes.object,
 };

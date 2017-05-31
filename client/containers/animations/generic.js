@@ -127,7 +127,7 @@ export function large_leave_header(ref, callback, transition, initialScroll) {
             TweenMax.set([elements.header, elements.footer], { clearProps: 'height' });
             setTimeout(callback, 0);
             timeline = null;
-        }
+        },
     })
         .add(_.filter([
             elements.contentItems && TweenMax.to(elements.contentItems, .3, { x: '-110%', ease: Power3.easeIn }),
@@ -244,33 +244,24 @@ export function large_enter_burger(ref, callback, transition) {
 // }
 
 export function large_leave_burger(ref, callback, transition, initialScroll) {
-    let elements = extractDOMElements(ref, transition.column),
-        contactIsOpen = elements.$article.hasClass('contact-open');
+    let elements = extractDOMElements(ref, transition.column);
 
     let timeline = new TimelineLite({
         onComplete: () => {
-            !contactIsOpen && TweenMax.set([elements.links, elements.burgerClose], { clearProps: 'transform' });
-            contactIsOpen && TweenMax.set(elements.contactPieces.large, { clearProps: 'transform' });
+            TweenMax.set([elements.links, elements.burgerClose], { clearProps: 'transform' });
             callback();
             timeline = null;
-        }
+        },
     })
         .add(_.filter([
-            !contactIsOpen && TweenMax.to(elements.links, .6, {
+            TweenMax.to(elements.links, .6, {
                 x: '-100%', ease: Power3.easeIn,
                 onComplete: () => {
                     $.scrollLock(false, false); //scroll goes top
                     $.scrollLock(true);
                 },
             }),
-            !contactIsOpen && TweenMax.to(elements.burgerClose, .6, { x: '-100%', ease: Power3.easeIn }),
-            contactIsOpen && TweenMax.to(elements.contactPieces.large, .6, {
-                x: '-100%', ease: Power3.easeIn,
-                onComplete: () => {
-                    $.scrollLock(false, false); //scroll goes top
-                    $.scrollLock(true);
-                },
-            }),
+            TweenMax.to(elements.burgerClose, .6, { x: '-100%', ease: Power3.easeIn }),
         ]))
         .set({}, {}, 1.5);
 }
@@ -546,10 +537,6 @@ function extractDOMElements(ref, column) {
         image: $article.find('header.main .image .img')[0],
         text: $article.find('header.main .text h1')[0],
         contentItems: $article.find('.content-item'),
-        footer: $article.find('footer')[0],
-
-        contactPieces: {
-            large: $article.find('header.main .contact .content').toArray(),
-        },
+        footer: $article.find('> footer')[0],
     };
 }

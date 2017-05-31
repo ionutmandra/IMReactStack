@@ -132,22 +132,11 @@ export function large_enter_burger(ref, callback, transition) {
 //     callback();
 // }
 
-export function large_leave_burger(ref, callback, transition, initialScroll) {
+//export function large_leave_burger(ref, callback, transition, initialScroll) {
     //this happens when navigating from Contact page
-    let elements = extractDOMElements(ref);
-    $.scrollLock(false, false); //scroll goes top
-    $.scrollLock(true);
-
-    let timeline = new TimelineLite({ onComplete: () => {
-        TweenMax.set(elements.contactPieces.large, { clearProps: 'transform' });
-        callback();
-        timeline = null;
-    }})
-        .add(_.filter([
-            TweenMax.to(elements.contactPieces.large, .3, { x: '-100%', ease: Power3.easeIn }),
-        ]))
-        .set({}, {}, 1.5);
-}
+    //     console.warn('TO BE IMPLEMENTED');
+    //     callback();
+//}
 
 // export function medium_leave_burger(ref, callback, transition, initialScroll) {
 //     console.warn('TO BE IMPLEMENTED');
@@ -260,9 +249,6 @@ function extractDOMElements(ref) {
         gridLeft: $('#page-grid li:first-child').offset().left,
         container: $article.find('> .container')[0],
 
-        contactPieces: {
-            large: $article.find('header.main .contact .content').toArray(),
-        },
         links: $article.find('header.main nav ul li a').toArray(),
         logoImg: $article.find('header.main a.logo .img')[0],
         logoText: $article.find('header.main a.logo .text svg')[0],

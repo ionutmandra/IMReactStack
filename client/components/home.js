@@ -244,7 +244,7 @@ class Home extends Component {
                 .add(this.animations.hideSlide(this._section2c))
                 .add(this.animations.showSlide(this._section3c))
                 .add([
-                    
+
                     this.animations.moveToInitial(this._inputGrow),
                     this.animations.moveToInitial(this._inputValuesLeft),
                     this.animations.moveToInitial(this._inputValuesRight),
@@ -347,7 +347,6 @@ class Home extends Component {
             this.article.find('.slide-3.content .text-2 .text-content').toArray(),
             {},
         ];
-        var contactIsOpen = this.article.hasClass('contact-open');
         var menuIsOpen = this.article.hasClass('menu-open');
 
         this.disableAllScenesButCurrent(media, transition);
@@ -362,33 +361,11 @@ class Home extends Component {
             if (media.current != media.prev) {
                 TweenMax.set([sectionsContent, sectionsBg], { clearProps: 'height,top' });
                 TweenMax.set(this._gradient, { clearProps: 'height' });
-                if (contactIsOpen) {
-                    var currentSlide = Math.ceil((initialScroll - 10) / height);
-                    console.log('home with slide', currentSlide);
-                    this.timeLines.push(TweenMax.set(this._gradient, {
-                        background: 'linear-gradient(45deg, '
-                        + this.gradients[currentSlide] + ' 0%,'
-                        + this.gradients[currentSlide + 1] + ' 100%)',
-                    }));
-
-                    for (let i = 0; i < 4; i++) {
-                        if (currentSlide == i) {
-                            this.animations.showSlide(sectionsContent[i]);
-                        }
-                        else {
-                            this.animations.hideSlide(sectionsContent[i]);
-                        }
-                        this.hideSlideContent(images[i], homeLeft[i], homeRight[i]);
-                    }
-                }
-                else {
-                    $window.scrollTop(0);
-                    this.animations.clearGradient();
-
-                    if (menuIsOpen) {
-                        this.article.removeClass('menu-open');
-                        this.showSlideAndContent(sectionsContent[0], images[0], homeLeft[0], homeRight[0]);
-                    }
+                $window.scrollTop(0);
+                this.animations.clearGradient();
+                if (menuIsOpen) {
+                    this.article.removeClass('menu-open');
+                    this.showSlideAndContent(sectionsContent[0], images[0], homeLeft[0], homeRight[0]);
                 }
             }
         }
@@ -397,7 +374,7 @@ class Home extends Component {
             this.animations.clearGradient();
             this.setSlidesHeight();
 
-            if (menuIsOpen || contactIsOpen) {
+            if (menuIsOpen) {
                 for (let i = 0; i < 4; i++) {
                     this.animations.showSlide(sectionsContent[i]);
                     this.hideSlideContent(images[i], homeLeft[i], homeRight[i]);
@@ -451,13 +428,13 @@ class Home extends Component {
         return (
             <article className="page page-home" ref="article">
                 <div className="container">
-                    <Header isHomepage setInitialScroll={this.setInitialScroll}  />
+                    <Header isHomepage setInitialScroll={this.setInitialScroll} />
 
                     <section className="slide slide-1 background" ref={(c) => this._section1b = c}>
-                        <div  className="image"><div ref={(c) => this._img1 = c} className="img" /></div>
+                        <div className="image"><div ref={(c) => this._img1 = c} className="img" /></div>
                     </section>
                     <section className="slide slide-2 background" ref={(c) => this._section2b = c}>
-                        <div  className="image"><div ref={(c) => this._img2 = c} className="img" /></div>
+                        <div className="image"><div ref={(c) => this._img2 = c} className="img" /></div>
                     </section>
                     <section className="slide slide-3 background" ref={(c) => this._section3b = c}>
                         <div className="image"><div ref={(c) => this._img3 = c} className="img" /></div>
@@ -466,9 +443,9 @@ class Home extends Component {
                         <div className="image"><div ref={(c) => this._img4 = c} className="img" /></div>
                     </section>
 
-                    <div className="gradient" ref={(c) => this._gradient = c}/>
+                    <div className="gradient" ref={(c) => this._gradient = c} />
 
-                    <section className="slide slide-1 content"  ref={(c) => this._section1c = c}>
+                    <section className="slide slide-1 content" ref={(c) => this._section1c = c}>
                         <div className="text-1"><h1 ref={(c) => this._inputSoftware = c}>{'Software Innovators Happy Together'}</h1></div>
                         <div className="text-2">
                             <h2 ref={(c) => this._inputCreate = c}>
@@ -477,7 +454,7 @@ class Home extends Component {
                         </div>
                     </section>
 
-                    <section className="slide slide-2 content"  ref={(c) => this._section2c = c}>
+                    <section className="slide slide-2 content" ref={(c) => this._section2c = c}>
                         <div className="text-1"><h1 ref={(c) => this._inputOffering = c}>Offering highest quality by constantly improving our <Link to="/expertise" data-animate-line="4" data-section="3" onClick={this.handleLinkClick}><span>skills</span> <span>and</span> <span>processes</span></Link></h1></div>
                         <div className="text-2"><h2 ref={(c) => this._inputCreating = c}>Creating <Link to="/portfolio/sfb" data-animate-line="5" data-section="3" onClick={this.handleLinkClick}><span>high</span> <span>impact</span> <span>software</span> <span>solutions</span></Link> that help business succeed
                         </h2></div>
@@ -509,13 +486,13 @@ class Home extends Component {
                         </div>
                     </section>
 
-                    <section className="slide slide-4 content"  ref={(c) => this._section4c = c}>
+                    <section className="slide slide-4 content" ref={(c) => this._section4c = c}>
                         <div className="text-1"><h1 ref={(c) => this._inputSustaining = c} >Sustaining <Link to="/expertise#innovation" data-animate-line="4" data-section="4" onClick={this.handleLinkClick}><span>learning</span> <span>and</span> <span>innovation</span></Link> as a part of our day to day activity.</h1></div>
                     </section>
 
                     <div className="scroll-hint" ref={(c) => this._scrollHintContainer = c} onClick={this.handleHintClick}>
                         <svg ref={(c) => this._scrollHint = c} width="70" height="70" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                            <circle id="bar" ref={(c) => this._scrollHintBar = c} r="33" cx="34" cy="34" fill="transparent" strokeDasharray="207" strokeDashoffset="0" 
+                            <circle id="bar" ref={(c) => this._scrollHintBar = c} r="33" cx="34" cy="34" fill="transparent" strokeDasharray="207" strokeDashoffset="0"
                                 transform="rotate(270 34 34)"></circle>
                         </svg>
                         <i className="ncs-chevron-thin-down" ref={(c) => this._scrollArrow = c}></i>

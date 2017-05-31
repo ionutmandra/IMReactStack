@@ -291,13 +291,13 @@ class ContactPage extends Component {
                                     <li className="content-item e-mail"><span className="bold">E-mail: </span> <a href="mailto:hello@adaptabi.com?subject=Inquiry"><span>hello@adaptabi.com</span></a></li>
                                 </ul>
                             </div>
-                            <div className="spacer-20"/>
+                            {/*<div className="spacer-20"/>
                             <div className="row">
                                 <ul>
                                     <li className="content-item bold">United States: </li>
                                     <li className="content-item"><a href="tel:+18883962816"><span>+1</span> <span>888 </span> <span>396 </span> <span>2816</span></a></li>
                                 </ul>
-                            </div>                    
+                            </div>*/}                    
                             <div className="spacer-20"/>
                             <div className="row">
                                 <ul>
@@ -306,14 +306,14 @@ class ContactPage extends Component {
                                     <li className="content-item"><a href="tel:+40729046526"><span>+40</span> <span>729 </span> <span>046</span> <span>526</span></a></li>
                                 </ul>
                             </div>
-                            <div className="spacer-20"/>
+                            {/*<div className="spacer-20"/>
                             <div className="row">
                                 <ul>
                                     <li className="content-item bold">United Kingdom: </li>
                                     <li className="content-item"><span className="no-break">Prospect House, </span> <span className="no-break">2 Athenaeum Rd, </span> <span className="no-break">London, </span> <span className="no-break">N20 9AE</span></li>
                                     <li className="content-item"><a href="tel:+4407956809631"><span>+44</span> <span>(0) </span> <span>795 </span> <span>680</span> <span>9631</span></a></li>
                                 </ul>
-                            </div>                    
+                            </div>*/}
                             <div className="spacer-20"/>
                             <div className="row">
                                 <div>

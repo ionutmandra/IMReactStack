@@ -95,8 +95,7 @@ class Logo extends Component {
 
         // console.warn('logo handleMediaChange', media, this.props.isHomepage, $window.scrollTop());
         let initialScroll = this.props.getInitialScroll(),
-            menuIsOpen = this.article.hasClass('menu-open'),
-            contactIsOpen = this.article.hasClass('contact-open');
+            menuIsOpen = this.article.hasClass('menu-open');
 
         if(media.current == breakpoint.names.large)
         {
@@ -104,7 +103,7 @@ class Logo extends Component {
                 this.showInstant();
             } else { //generic page
                 if (initialScroll == 0) {
-                    !contactIsOpen && this.showInstant();
+                    this.showInstant();
                 } else {
                     if (!menuIsOpen){
                         if (initialScroll < 355) {
@@ -120,7 +119,7 @@ class Logo extends Component {
                 }
             }
         } else if (media.current == breakpoint.names.medium) {
-            !contactIsOpen && this.showInstant();
+            this.showInstant();
             this.lightInstant();
         } else if (media.current != breakpoint.names.none) {
             !menuIsOpen && this.hideInstant();
@@ -135,7 +134,6 @@ class Logo extends Component {
 
     handleClick(event) {
         let burgerIsOpen = this.article.hasClass('menu-open');
-        let contactIsOpen = this.article.hasClass('contact-open');
         let isLarge = this.props.ui.media.current == breakpoint.names.large;
         let isMedium = this.props.ui.media.current == breakpoint.names.medium;
 
@@ -145,7 +143,7 @@ class Logo extends Component {
 
         let type = 'header';
         $window.scrollTop() && (type = 'content');
-        (burgerIsOpen || contactIsOpen) && (type = 'burger');
+        burgerIsOpen && (type = 'burger');
 
         this.props.dispatchTransition({
             type: type,

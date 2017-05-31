@@ -118,32 +118,22 @@ class About extends Component {
                             </div>
                             <div className="row">
                                 <div className="member large-12 large-offset-0 medium-12 medium-offset-0 small-24 small-offset-0 columns">
-                                    <img src="/client/dist/img/photos/team/mario.jpg" title="Mario Theodorou" className="content-item grayscale" />
-                                    <p>Mario <b>- Co-founder & Account Manager</b></p>
-                                </div>
-                                <div className="member large-12 large-offset-0 medium-12 medium-offset-0 small-24 small-offset-0 columns">
                                     <img src="/client/dist/img/photos/team/marius.jpg" title="Marius Baciu" className="content-item grayscale" />
                                     <p>Marius <b>- Software Developer</b></p>
                                 </div>
-                            </div>
-                            <div className="row">
                                 <div className="member large-12 large-offset-0 medium-12 medium-offset-0 small-24 small-offset-0 columns">
                                     <img src="/client/dist/img/photos/team/madalina.jpg" title="Mădălina Dumitriu" className="content-item grayscale" />
                                     <p>Mădălina <b>- Quality Engineer</b></p>
                                 </div>
+                            </div>
+                            <div className="row">
                                 <div className="member large-12 large-offset-0 medium-12 medium-offset-0 small-24 small-offset-0 columns">
                                     <img src="/client/dist/img/photos/team/bogdan.jpg" title="Bogdan Gherman" className="content-item grayscale" />
                                     <p>Bogdan <b>- Software Developer</b></p>
                                 </div>
-                            </div>
-                            <div className="row">
                                 <div className="member large-12 large-offset-0 medium-12 medium-offset-0 small-24 small-offset-0 columns">
                                     <img src="/client/dist/img/photos/team/ionut.jpg" title="Ionuţ Mândra" className="content-item grayscale" />
                                     <p>Ionuţ <b>- Software Developer</b></p>
-                                </div>
-                                <div className="member large-12 large-offset-0 medium-12 medium-offset-0 small-24 small-offset-0 columns">
-                                    <img src="/client/dist/img/photos/team/dragos.jpg" title="Dragoş Radu" className="content-item grayscale" />
-                                    <p>Dragoş <b>- Quality Engineer</b></p>
                                 </div>
                             </div>
                             <div className="row">
@@ -157,7 +147,7 @@ class About extends Component {
                             <div className="row">
                                 <div className="image show-for-medium-up light large-24 columns ">
                                     <img src="/client/dist/img/photos/10.jpg" className="content-item"/>
-                                    <div className="spacer-100" />
+                                    <div className="spacer-60" />
                                 </div>
                                 <div className="image show-for-medium-up light large-24 columns ">
                                     <img src="/client/dist/img/photos/11.jpg" className="content-item" />
@@ -165,7 +155,7 @@ class About extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="spacer-100" />
+                    <div className="spacer-60" />
                 </section>
                 <section className="call-to-action row align-middle">
                     <div className="large-9 large-order-1 medium-11 medium-order-2 small-24 columns">
