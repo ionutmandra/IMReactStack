@@ -2,7 +2,6 @@
 *.log
 node_modules
 dist
-.*/
 client/lib/icomoon/demo-files
 .idea
 client/lib/icomoon/demo-filesicomoon/ie7
