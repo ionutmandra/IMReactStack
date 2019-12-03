@@ -19,101 +19,115 @@ for (var r in routes) {
 	}
 }
 
-function setApiRoutes(router){
+module.exports = {
+	init: function (rootPathParam) {
+		rootPath = rootPathParam;
 
-	winston.log('info', 'setting api routes ', {timestamp: Date.now(), pid: process.pid});
+		return {
+			setClientRoutes: setClientRoutes,
+			setApiRoutes: setApiRoutes,
+			setFileRoutes: setFileRoutes,
+			setAdminRoutes: setAdminRoutes,
+			catch404: catch404,
+		};
+	},
+};
 
-	router.get('/api/members', function(req, res) {
+function setApiRoutes(router) {
+
+	winston.log('info', 'setting api routes ', { timestamp: Date.now(), pid: process.pid });
+
+	router.get('/api/members', function (req, res) {
 
 		var membersRepo = new db.create('members');
 		var memberslInfo = new db.create('membersInfo');
 
 		async.parallel([
-			function(cb) { db.getAllUsers(cb) },
-			function(cb) { memberslInfo.find( cb) }
-			], function(err, dataResult) {
-				if (!err) {
+			function (cb) { db.getAllUsers(cb); },
+			function (cb) { memberslInfo.find(cb); },
+		], function (err, dataResult) {
+			if (!err) {
 
-					var result = Object.assign({},
-						{members:dataResult[0].data},
-						{membersInfo:dataResult[1].data});
+				var result = Object.assign({},
+					{ members: dataResult[0].data },
+					{ membersInfo: dataResult[1].data });
 
-					res.json(result);
-				}
-				else{
-					res.json({Err:err});
-				}
-			});
+				res.json(result);
+			}
+			else {
+				res.json({ Err: err });
+			}
+		});
 	});
 
-	router.get('/api/about', function(req, res) {
+	router.get('/api/about', function (req, res) {
 		res.send('im the about page2!');
 	});
 
-	router.get('/api/hello/:name', function(req, res) {
+	router.get('/api/hello/:name', function (req, res) {
 		res.send('hello ' + req.params.name + '!');
 	});
 
-    router.post('/api/contact', function(req, res) {
+    router.post('/api/contact', function (req, res) {
         var errors = validators.contact(req.body),
             success = _.isEmpty(errors);
-				db.insertContactDetails(req.body);
-        res.send({success, errors});
+		db.insertContactDetails(req.body);
+        res.send({ success, errors });
     });
 
 	//init
-	router.get('/api/initUsers', function(req, res) {		
+	router.get('/api/initUsers', function (req, res) {
 		db.initUsers();
 	});
-
 }
 
-function setClientRoutes(router, routes){
+function setClientRoutes(router, routes) {
 	routes = routes || routePaths.client;
 
 	for (var r in routes) {
 		if (routes.hasOwnProperty(r)) {
 			if (_.isString(routes[r])) {
 				router.all(routes[r], serveIndex);
-			}	
+			}
 			if (_.isObject(routes[r])) {
 				setClientRoutes(router, routes[r]);
 			}
 		}
 	}
-	
+
 	function serveIndex(req, res) {
 		fs.readFile('../index.html', 'utf-8', function (error, data) {
-			winston.log('index html ', {timestamp: Date.now(), pid: process.pid});
+			winston.log('index html ', { timestamp: Date.now(), pid: process.pid });
 			res.sendFile(path.join(rootPath + '/index.html'));
 			//https://www.npmjs.com/package/serve-static
 		});
 	}
 }
 
-function setFileRoutes(app){
-	app.use('/dist', express.static(path.join(rootPath + '/dist')));
-	app.use('/res', express.static(path.join(rootPath + '/res')));
-};
+function setFileRoutes(app) {
+	app.use('/client/dist', express.static(path.join(rootPath + '/client/dist')));
+	app.use('/client/assets', express.static(path.join(rootPath + '/client/assets')));
+}
 
-function setAdminRoutes(router){
-	router.get(routePaths.serverAuthorized.apiEditMembers, function(req, res) {
+function setAdminRoutes(router) {
+	router.get(routePaths.serverAuthorized.apiEditMembers, function (req, res) {
 
 		var initialState = {
-			generalInfo:{description: 'fuisabfiusabfasui'},
-			members:[
-			{name:'ionut',email:'ionut@ionut.com',id:1},
-			{name:'tudrel',email:'tudrel@tudrel.com',id:2},
-			{name:'marusica',email:'marusciac@tudrel.com',id:3}]};
+			generalInfo: { description: 'fuisabfiusabfasui' },
+			members: [
+				{ name: 'ionut', email: 'ionut@ionut.com', id: 1 },
+				{ name: 'tudrel', email: 'tudrel@tudrel.com', id: 2 },
+				{ name: 'marusica', email: 'marusciac@tudrel.com', id: 3 }],
+		};
 
-			res.json(initialState);
-		});
-};
+		res.json(initialState);
+	});
+}
 
-function catch404(router){
-	router.use(function(req, res, next){
+function catch404(router) {
+	router.use(function (req, res, next) {
 		for (var r of skip404regexes) {
-			if (r.test(req.path)){
+			if (r.test(req.path)) {
 				next();
 				return;
 			}
@@ -124,17 +138,3 @@ function catch404(router){
 		});
 	});
 }
-
-module.exports = {
-	init:function(rootPathParam){
-		rootPath =rootPathParam;
-
-		return{
-			setClientRoutes:setClientRoutes,
-			setApiRoutes:setApiRoutes,
-			setFileRoutes:setFileRoutes,
-			setAdminRoutes: setAdminRoutes,
-			catch404: catch404,
-		};
-	}
-};

@@ -1,19 +1,19 @@
-"use strict";
+'use strict';
 // nodemon server.js
 
 //node modules
 var express = require('express');
-var bodyParser  = require('body-parser');
+var bodyParser = require('body-parser');
 
 //cust modules
-var config 	= require('./server/config');
-var login 	= require('./server/routesLogin');
+var config = require('./server/config');
+var login = require('./server/routesLogin');
 var authCheck = require('./server/authenticationCheck');
 
 //vars
-var app     = express();
-var router  = express.Router();
-var port    = process.env.PORT || 8080;
+var app = express();
+var router = express.Router();
+var port = process.env.PORT || 8080;
 
 app.set('superSecret', config.secret);
 
@@ -37,4 +37,4 @@ routes.setAdminRoutes(router);
 app.use('/', router);
 
 app.listen(port);
-console.log('listeninng on port... ' + port );
+console.log('listening on port ' + port);

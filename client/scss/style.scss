@@ -1,0 +1,20 @@
+//Framework
+@import "../lib/bootstrap/scss/bootstrap"; //v4
+@import "../lib/icomoon/style.scss"; //icons font
+@import "../lib/photoswipe/_photoswipe.scss"; //photo gallery
+
+//Site-specific vars & mixins
+@import "./variables";
+@import "./mixins";
+
+//Site layout, globals and components 
+@import "./global";
+@import "./layout";
+@import "components/header";
+@import "components/footer";
+@import "components/page";
+@import "components/projects";
+@import "components/services";
+
+//One-off rules (use sparingly) 
+@import "./custom";

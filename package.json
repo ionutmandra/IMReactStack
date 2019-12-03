@@ -16,14 +16,18 @@
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-change": "^1.0.0",
+    "gulp-clean": "^0.3.2",
+    "gulp-clean-css": "^2.0.6",
+    "gulp-debug": "^2.1.2",
     "gulp-duration": "0.0.0",
+    "gulp-mocha": "^2.2.0",
     "gulp-notify": "^2.2.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.2.0",
     "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.3",
     "lodash": "^4.0.0",
     "mocha": "^2.4.5",
-    "mongodb": "^2.1.18",
     "nock": "^7.2.2",
     "path-to-regexp": "^1.2.1",
     "photoswipe": "^4.1.1",
@@ -40,14 +44,15 @@
     "redux-thunk": "^1.0.3",
     "run-sequence": "^1.1.5",
     "sinon": "^1.17.3",
+    "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0",
     "winston": "^2.2.0"
   },
-  "scripts": {
-    "build": "browserify --debug -t [babelify] src/index.js > bundle.js",
-    "watchify": "watchify -t [babelify] src/index.js -o bundle.js -dv"
-  },
+   "__commented__scripts": {
+     "build": "browserify --debug -t [babelify] client/index.js > client/dist/js/bundle.js",
+     "watchify": "watchify -t [babelify] client/index.js -o client/dist/js/bundle.js -dv"
+   },
   "dependencies": {
     "async": "^1.5.2",
     "body-parser": "^1.15.0",
